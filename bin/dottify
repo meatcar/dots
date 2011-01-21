@@ -1,0 +1,5 @@
+#!/bin/sh 
+DOTFOLDER="/home/meatcar/.dots/$2"
+mv -f $1 $DOTFOLDER 
+ln -sf $DOTFOLDER $1
+echo $1 has been dottified to $DOTFOLDER
