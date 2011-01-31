@@ -65,8 +65,10 @@ myKeys conf = [ ("M-<Return>", spawn "urxvtc")
               , ("M-p",        spawn "launch")
               , ("M-b",        spawn "dmenfm")
               , ("M-d",        kill)
+              -- Next random wallpaper
+              , ("M-n",        spawn "wallp -n")
               -- Recompile
-              , ("M-S-q",      spawn "xmonad --recompile && xmonad --restart")
+              , ("M-q",      spawn "xmonad --recompile && xmonad --restart")
               -- Screen Shot
               , ("M-<F7>",     spawn "scrot '%s-%Y-%m-%d_full.png' -q 100 -e 'mv $f ~/Multimedia/Pictures/screenies'")
               , ("M-S-<F7>",   spawn "scrot '%s-%Y-%m-%d_sel_$wx$h.png' -s -q 100 -e 'mv $f ~/Multimedia/Pictures/screenies'")
@@ -74,7 +76,7 @@ myKeys conf = [ ("M-<Return>", spawn "urxvtc")
               , ("M-<Esc>",    spawn "xscreensaver-command -lock")
 
               -- run programs
-              , ("M-f",        spawn "firefox")
+              , ("M-f",        spawn "firefox-beta-bin")
               , ("M-e",        spawn "thunar")
               -- resize tile
               , ("M-a",        sendMessage MirrorShrink)

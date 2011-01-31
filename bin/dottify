@@ -1,5 +1,9 @@
 #!/bin/sh 
-DOTFOLDER="/home/meatcar/.dots/$2"
-mv -f $1 $DOTFOLDER 
-ln -sf $DOTFOLDER $1
-echo $1 has been dottified to $DOTFOLDER
+DOTFOLDER="/home/meatcar/.dots"
+DOTFILE="$DOTFOLDER/$2"
+mv -f $1 $DOTFILE
+ln -sf $DOTFILE $1
+cd $DOTFOLDER
+git add $DOTFILE
+git commit -m "added $1 as ~/.dots/$2"
+echo $1 has been dottified to $DOTFILE 

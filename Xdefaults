@@ -2,7 +2,7 @@
 ! file:     ~/.Xdefaults
 ! author:   Denys Pavlov
 ! modified: April 2010
-! vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+! vim:ft=xdefaults:
 ! ----------------------------------------------------------------------------
 
 ! Xcursor --------------------------------------------------------------------
@@ -12,8 +12,8 @@ Xcursor.theme: OpenZone_Black
 
 
 ! terminal colors ------------------------------------------------------------
-*foreground: #EDF7ED
-*background: #1C1C1C
+!*foreground: #EDF7ED
+!*background: #1C1C1C
 
 !black
 *color0: #1C1C1C
@@ -49,10 +49,12 @@ Xft.dpi: 96
 Xft.hintstyle:  hintslight
 
 URxvt.transparent:   true
-URxvt.tintColor:     black
-URxvt.shading:       33 
+!URxvt.tintColor:     black
+!URxvt.shading:       33 
+URxvt.depth:         32
 !URxvt.inheritPixmap: true
-URxvt.background:       rgba:0000/0000/0000/CCCCC 
+URxvt.foreground:       white
+URxvt.background:       [70]black
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
 urxvt*loginShell: true
@@ -70,5 +72,4 @@ URxvt.scrollBar:        False
 URxvt.scrollstyle:      plain
 URxvt.saveLines:        65535
 URxvt.pastableTabs:     true
-URxvt.scrollBar_right:  true
 

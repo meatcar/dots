@@ -2,4 +2,4 @@
 FG='white'
 BG='black'
 FONT='smoothansi-10'
-conky -c ~/.bin/dzconky-scripts/conkyrc | dzen2 -ta l -fn $FONT -fg $FG -bg $BG -xs 1 -x 0 -y 1032 -w 1480 -h 18 -dock
+conky -c ~/.bin/dzconky-scripts/conkyrc 2>/dev/null | dzen2 -ta l -fn $FONT -fg $FG -bg $BG -xs 1 -x 0 -y 1032 -w 1480 -h 18 -dock

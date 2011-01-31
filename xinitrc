@@ -31,12 +31,14 @@ case $1 in
            sleep 3
            gnome-power-manager&
         fi
-
+        
+        udiskie &
         urxvtd &
         parcellite &
         wicd-client &
         deluged &
-        nitrogen --restore &
+#        nitrogen --restore &
+        wallp &
         sleep 1
         dzconky &
         blueman-applet &
