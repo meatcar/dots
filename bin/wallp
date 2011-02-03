@@ -1,0 +1,33 @@
+#!/bin/bash 
+##############################################################################
+# Random Wallpaper Selector.
+# author: meatcar
+# vim:ft=sh:
+next(){
+    WALLFOLDER='/media/win/Lipid/Mutimedia/Pictures/Wallpapers/'
+#    echo $WALLFOLDER
+
+    # find all the files in $WALLFOLDER and shuffle them, returning only one item.
+    WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
+    echo $WALLPAPER
+    
+    # force-create a symbolic link in the home directory 
+    # (force incase one exists...)
+    # then, tell your wallpaper-setter of choice to set the wallpaper.
+    # note: this could have been done without the link, but I like to be able to
+    #       access my current wallpaper if I need to. :)
+    rm -rf $HOME/.wallpaper
+    ln -fs $WALLPAPER $HOME/.wallpaper 
+    nitrogen --set-zoom-fill $HOME/.wallpaper 
+}
+
+if [ $1 = '-n' ]
+then
+    next
+else
+    while true
+    do 
+        next
+        sleep 300
+    done
+fi
