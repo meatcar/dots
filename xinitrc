@@ -37,8 +37,8 @@ case $1 in
         parcellite &
         wicd-client &
         deluged &
-#        nitrogen --restore &
-        wallp &
+        nitrogen --restore &
+#        wallp &
         sleep 1
         dzconky &
         blueman-applet &
