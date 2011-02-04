@@ -11,14 +11,8 @@ next(){
     WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
     echo $WALLPAPER
     
-    # force-create a symbolic link in the home directory 
-    # (force incase one exists...)
     # then, tell your wallpaper-setter of choice to set the wallpaper.
-    # note: this could have been done without the link, but I like to be able to
-    #       access my current wallpaper if I need to. :)
-    rm -rf $HOME/.wallpaper
-    ln -fs $WALLPAPER $HOME/.wallpaper 
-    nitrogen --set-zoom-fill $HOME/.wallpaper 
+    nitrogen --set-zoom-fill "$WALLPAPER"
 }
 
 if [ $1 = '-n' ]
