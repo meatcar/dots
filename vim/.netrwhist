@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/meatcar'
-let g:netrw_dirhist_2='/etc'
-let g:netrw_dirhist_3='/etc/rc.d'
-let g:netrw_dirhist_4='/usr/share/vim/vimfiles/ftplugin/latex-suite/macros'
-let g:netrw_dirhist_5='/home/meatcar/.dzen'
-let g:netrw_dirhist_6='/media/win/Lipid/hwk2/csc207/Project/status/g0pavlov'
-let g:netrw_dirhist_7='/home/meatcar/.dots/xmonad'
-let g:netrw_dirhist_8='/home/meatcar/.dots'
-let g:netrw_dirhist_9='/etc'
+let g:netrw_dirhist_cnt =0
