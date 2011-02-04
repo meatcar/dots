@@ -5,7 +5,7 @@
 # vim:ft=sh:
 next(){
     WALLFOLDER='/media/win/Lipid/Mutimedia/Pictures/Wallpapers/'
-#    echo $WALLFOLDER
+#    echo $WALLFOLDER this is text from ~/.dots
 
     # find all the files in $WALLFOLDER and shuffle them, returning only one item.
     WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
