@@ -15,7 +15,7 @@ next(){
     nitrogen --set-zoom-fill "$WALLPAPER"
 }
 
-if [ $1 = '-n' ]
+if [ $1 == '-n' ]
 then
     next
 else
