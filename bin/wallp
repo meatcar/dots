@@ -7,7 +7,7 @@ next(){
     WALLFOLDER='/media/win/Lipid/Mutimedia/Pictures/Wallpapers/'
 #    echo $WALLFOLDER this is text from ~/testgit
 
-    # find all the files in $WALLFOLDER and shuffle them, returning only one item.
+# find all the files in $WALLFOLDER and shuffle them, returning only one item.
     WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
     echo $WALLPAPER
     

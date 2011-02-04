@@ -22,7 +22,7 @@ case $1 in
         dualhead &
 
         # Fire up apps
-        xscreensaver -no-splash &
+        xscreensaver  -no-splash &
         xcompmgr -c -C&
         mpd /home/meatcar/.config/mpd/mpd.conf &&
         mpc pause &
