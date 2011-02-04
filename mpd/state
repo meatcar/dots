@@ -1,7 +1,8 @@
-sw_volume: 70
+sw_volume: 64
 audio_device_state:1:default detected output
-state: stop
-current: 15
+state: pause
+current: 30
+time: 141
 random: 0
 repeat: 0
 single: 0
@@ -10,32 +11,39 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: nan
 playlist_begin
-0:Tokyo Blade 83/01 - Powergame.mp3
-1:Tokyo Blade 83/02 - Break The Chains.mp3
-2:Tokyo Blade 83/03 - If Heaven Is Hell.mp3
-3:Tokyo Blade 83/04 - On Through The Night.mp3
-4:Tokyo Blade 83/05 - Killer City.mp3
-5:Tokyo Blade 83/07 - Tonight.mp3
-6:Tokyo Blade 83/08 - Sunrise In Tokyo.mp3
-7:Tokyo Blade 83/09 - Blue Ridge Mountains Of Virginia.mp3
-8:New Young Pony Club/Fantastic Playroom/01 Get Lucky.mp3
-9:New Young Pony Club/Fantastic Playroom/02 Hiding On The Staircase.mp3
-10:New Young Pony Club/Fantastic Playroom/03 Ice Cream.mp3
-11:New Young Pony Club/Fantastic Playroom/04 The Bomb.mp3
-12:New Young Pony Club/Fantastic Playroom/05 Jerk Me.mp3
-13:New Young Pony Club/Fantastic Playroom/06 The Get Go.mp3
-14:New Young Pony Club/Fantastic Playroom/07 Talking Talking.mp3
-15:New Young Pony Club/Fantastic Playroom/08 Grey.mp3
-16:New Young Pony Club/Fantastic Playroom/09 Fan.mp3
-17:New Young Pony Club/Fantastic Playroom/10 Tight Fit.mp3
-18:New Young Pony Club/The Optimist/01 Lost A Girl.mp3
-19:New Young Pony Club/The Optimist/02 Chaos.mp3
-20:New Young Pony Club/The Optimist/03 The Optimist.mp3
-21:New Young Pony Club/The Optimist/04 Stone.mp3
-22:New Young Pony Club/The Optimist/05 We Want To.mp3
-23:New Young Pony Club/The Optimist/06 Dolls.mp3
-24:New Young Pony Club/The Optimist/07 Before The Light.mp3
-25:New Young Pony Club/The Optimist/08 Oh Cherie.mp3
-26:New Young Pony Club/The Optimist/09 Rapture.mp3
-27:New Young Pony Club/The Optimist/10 Architect Of Love.mp3
+0:Music/Õî› è î›êåñò› Áîëüøîãî òåàò›à ÑÑÑ‹, äè›èæ¸› Ã.‹îæäåñòâåíñêèé/Unknown Album/Èíòå›íàöèîíàë.mp3
+1:Music/Yeah Yeah Yeahs/Fever to Tell/01 Rich.mp3
+2:Music/Õî› è î›êåñò› Áîëüøîãî òåàò›à ÑÑÑ‹, äè›èæ¸› Ã.‹îæäåñòâåíñêèé/Unknown Album/Èíòå›íàöèîíàë.mp3
+3:Music/Electric Six/Fire/01 Dance Commander.mp3
+4:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
+5:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
+6:Music/Electric Six/Flashy/11 Graphic Designer.mp3
+7:Ozzy Music/Coldplay/X&Y/01 Things I Don't Understand.mp3
+8:Ozzy Music/Coldplay/X&Y/02 Proof (New).mp3
+9:Ozzy Music/Coldplay/X&Y/03 The World Turned Upside Down.mp3
+10:Ozzy Music/Coldplay/X&Y/04 Pour Me - Live At The Hollywood B.mp3
+11:Ozzy Music/Coldplay/X&Y/05 Square One.mp3
+12:Ozzy Music/Coldplay/X&Y/06 What If.mp3
+13:Ozzy Music/Coldplay/X&Y/07 White Shadows.mp3
+14:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
+15:Ozzy Music/Coldplay/X&Y/09 Talk.mp3
+16:Ozzy Music/Coldplay/X&Y/10 X&Y.mp3
+17:Ozzy Music/Coldplay/X&Y/11 Speed Of Sound.mp3
+18:Ozzy Music/Coldplay/X&Y/12 A Message.mp3
+19:Ozzy Music/Coldplay/X&Y/13 Low.mp3
+20:Ozzy Music/Coldplay/X&Y/14 The Hardest Part.mp3
+21:Ozzy Music/Coldplay/X&Y/15 Swallowed In The Sea.mp3
+22:Ozzy Music/Coldplay/X&Y/16 Twisted Logic.mp3
+23:Ozzy Music/Coldplay/X&Y/17 Till Kingdom Come.mp3
+24:Music/The Shins/Wincing The Night Away/01 Sleeping Lessons.mp3
+25:Music/The Shins/Wincing The Night Away/02 Australia.mp3
+26:Music/The Shins/Wincing The Night Away/03 Pan Berry.mp3
+27:Music/The Shins/Wincing The Night Away/04 Phantom Limb.mp3
+28:Music/The Shins/Wincing The Night Away/05 Sealegs.mp3
+29:Music/The Shins/Wincing The Night Away/06 Red Rabbits.mp3
+30:Music/The Shins/Wincing The Night Away/07 Turn On Me.mp3
+31:Music/The Shins/Wincing The Night Away/08 Black Wave.mp3
+32:Music/The Shins/Wincing The Night Away/09 Split Needles.mp3
+33:Music/The Shins/Wincing The Night Away/10 Girl Sailor.mp3
+34:Music/The Shins/Wincing The Night Away/11 A Comet Appears.mp3
 playlist_end

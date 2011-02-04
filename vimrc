@@ -8,16 +8,11 @@
 " general --------------------------------------------------------------
 
 set t_Co=256            " enable 256-color support
-"colorscheme python      " define syntax color scheme
 colorscheme ir_black    "define syntax color scheme
-"colorscheme rubyblue   " define syntax color scheme
-"colorscheme wombat     " define syntax color scheme
-"colorscheme molokai
-set nocompatible        " disregard vi compatibility
+set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap     " keep swap files in one place
 set bdir=~/.vim/backup  " keep backups in one place
 set encoding=utf-8      " UTF-8 encoding for all new files
-"set fileencoding=utf-8  " force filetype encoding for existing files
 set termencoding=utf-8  " force terminal encoding
 set mouse=a             " allow mouse input in all modes
 set ttymouse=xterm2     " enable scrolling within screen sessions (MUST HAVE)
@@ -43,7 +38,8 @@ filetype plugin indent on   " enable filetype-sensitive plugins and indenting
 let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 set grepprg=grep\ -nH\ $*
 
-" latex stuff.
+" latex stuff. ---------------------------------------------------------
+"
 let g:tex_flavor = "latex"
 
 " python hiliting ------------------------------------------------------
@@ -54,7 +50,6 @@ let g:tex_flavor = "latex"
 :let python_highlight_space_errors = 1
 highlight OverLength ctermbg=black
 match OverLength /\%>79v.\+/
-
 
 " html conversion (:help 2html.vim) ------------------------------------
 
@@ -73,8 +68,7 @@ set showmode            " show mode in status line
 set showcmd             " show partial commands in status line
 " left: fileformat, filetype, fileencoding, RO/HELP/PREVIEW, modified flag filepath
 " right: buffer num, lines/total, cols/virtual, display percentage
-set statusline=%([%{&ff}]%)%(:[%{&fenc}]%)%(:%y%)\ \ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ \ %1.7l/%L,%1.7c%V\ \ [%P]\
-
+set statusline=%([%{&ff}]%)%(:[%{&fenc}]%)%(:%y%)\ \ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ \ %1.7l/%L,%1.7c%V\ \ [%P]
 
 " tabs and indenting ---------------------------------------------------
 
@@ -90,7 +84,6 @@ set cinoptions=:0,p0,t0 " recommended defaults from O'Reilly
 set cinwords=if,else,while,do,for,switch,case   " recommended defaults from O'Reilly
 set formatoptions=tcqr  " recommended defaults from O'Reilly
 
-
 " searching ------------------------------------------------------------
 
 set hlsearch            " highlight all search results
@@ -98,7 +91,6 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
-
 
 " hotkeys --------------------------------------------------------------
 
@@ -108,10 +100,6 @@ nmap q: :q<cr>
 " enter ex mode with a semi-colon too
 nnoremap ; :
 vnoremap ; :
-
-" C-s to save
-inoremap <C-s> <esc>:w<cr>a
-nnoremap <C-s> :w<cr>
 
 " F2 selects all
 "nnoremap <F2> ggVG
