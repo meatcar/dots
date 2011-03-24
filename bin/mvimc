@@ -1,4 +1,9 @@
 #!/bin/sh 
+##############################################################################
+# Use an existing open instance of vim. Make one if it doesnt exist. 
+# If more than one vim servers exist, the user gotta specify the name of the 
+# one they wish to utilise.
+##############################################################################
 PATH=/bin:/usr/bin 
 
 vim=`which 2>/dev/null vim`
