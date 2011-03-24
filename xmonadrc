@@ -36,7 +36,7 @@ import XMonad.Util.Font
 
 import Data.Ratio ((%))
 
-statusBarCmd= "dzen2 -e '' -ta l -fn 'smoothansi-10' -bg black -fg white -xs 1 -dock"
+statusBarCmd= "dzen2 -e '' -ta l -fn 'terminus-9' -bg black -fg white -xs 1 -dock"
 
 main = do
        xmproc <- spawnPipe statusBarCmd
@@ -77,7 +77,7 @@ myKeys conf = [ ("M-<Return>", spawn "urxvtc")
 
               -- run programs
               , ("M-f",        spawn "firefox-beta-bin")
-              , ("M-e",        spawn "thunar")
+              , ("M-e",        spawn "pcmanfm")
               -- resize tile
               , ("M-a",        sendMessage MirrorShrink)
               , ("M-z",        sendMessage MirrorExpand)

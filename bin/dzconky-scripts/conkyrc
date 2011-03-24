@@ -13,13 +13,13 @@ TEXT
 #########################################################################################
 # Yaourt updates 
 #
-| ${if_match  ${execi 360 /home/meatcar/.bin/dzconky-scripts/up.pl} != 0}^fg(red)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pacman.xbm) ${execi 360 /home/meatcar/.bin/dzconky-scripts/up.pl}^fg() ${else}^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pacman.xbm) 0 $endif\
+#| ${if_match  ${execi 360 /home/meatcar/.bin/dzconky-scripts/up.pl} != 0}^fg(red)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pacman.xbm) ${execi 360 /home/meatcar/.bin/dzconky-scripts/up.pl}^fg() ${else}^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pacman.xbm) 0 $endif\
 #
 ###########################################################################################
 # MPD | status scrolling name elapsed/percent/total | volume |
 # 
-| ^ca(1, urxvtc -e "ncmpcpp" )${if_match "$mpd_status" == "Playing"}^fg(green)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/play.xbm) ^fg(lightgreen)${scroll 35 ${mpd_smart}}^fg() ${mpd_elapsed}/${mpd_percent}%/${mpd_length} $endif\
-${if_match "$mpd_status" == "Paused"}^fg(orange)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pause.xbm)^fg() ^fg(yellow)${scroll 35 ${mpd_smart}}^fg() ${mpd_elapsed}/${mpd_percent}%/${mpd_length} ${endif}\
+| ^ca(1, urxvtc -e "ncmpcpp" )${if_match "$mpd_status" == "Playing"}^fg(green)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/play.xbm) ^fg(lightgreen)${scroll 70 ${mpd_smart}}^fg() ${mpd_elapsed}/${mpd_percent}%/${mpd_length} $endif\
+${if_match "$mpd_status" == "Paused"}^fg(orange)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/pause.xbm)^fg() ^fg(yellow)${scroll 70 ${mpd_smart}}^fg() ${mpd_elapsed}/${mpd_percent}%/${mpd_length} ${endif}\
 ${if_match "$mpd_status" == "Stopped"}^fg(blue)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/stop.xbm)^fg() 0:00/0%/0:00 ${endif}^ca()\
 |^ca(1, urxvtc -e "alsamixer") ^i(/home/meatcar/.xmonad/bitmaps/sm4tik/spkr_01.xbm) ${mpd_vol}^ca() \
 #
@@ -33,6 +33,4 @@ ${if_match "$mpd_status" == "Stopped"}^fg(blue)^i(/home/meatcar/.xmonad/bitmaps/
 ######################################################################################
 # Battery
 #
-| ${if_match "$battery_percent" > "15"}^i(/home/meatcar/.xmonad/bitmaps/sm4tik/bat_full_02.xbm) $endif\
-${if_match "$battery_percent" < "15"}^fg(red)^i(/home/meatcar/.xmonad/bitmaps/sm4tik/bat_low_02.xbm)^fg() $endif\
-${battery_short} ${battery_time} 
+| ${battery_percent}% ${battery_short} ${battery_time} 

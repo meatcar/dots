@@ -38,15 +38,26 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 ####################################################
 # Exports
+#
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}"
+export PATH="${PATH}:/home/meatcar/.cabal/bin"
+####################################################
+# Set up colorings
+#
+# ls
+eval $(dircolors -b ~/.dircolors)
+# grep 
+export GREP_COLOR="1;33"
+# less syntax-hilite
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
 ####################################################
 # Aliases
-
-# modified commands
-alias ls="ls --color=always"
+#
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 alias pacman="sudo pacman"
 alias y="yaourt"
 alias ys="yaourt -Syu && yaourt -S"
@@ -55,8 +66,9 @@ alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
 alias mix="alsamixer"
-alias suspend="sudo pm-suspend && slock"
+alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
+alias v="mvimc"
 
 # cd 
 alias cd..="cd .."
@@ -75,5 +87,4 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;47;30m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[0;36m")
-
 
