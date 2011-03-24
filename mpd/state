@@ -1,8 +1,7 @@
-sw_volume: 64
+sw_volume: 100
 audio_device_state:1:default detected output
-state: pause
-current: 30
-time: 141
+state: stop
+current: 66
 random: 0
 repeat: 0
 single: 0
@@ -11,39 +10,214 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: nan
 playlist_begin
-0:Music/Õî› è î›êåñò› Áîëüøîãî òåàò›à ÑÑÑ‹, äè›èæ¸› Ã.‹îæäåñòâåíñêèé/Unknown Album/Èíòå›íàöèîíàë.mp3
-1:Music/Yeah Yeah Yeahs/Fever to Tell/01 Rich.mp3
-2:Music/Õî› è î›êåñò› Áîëüøîãî òåàò›à ÑÑÑ‹, äè›èæ¸› Ã.‹îæäåñòâåíñêèé/Unknown Album/Èíòå›íàöèîíàë.mp3
-3:Music/Electric Six/Fire/01 Dance Commander.mp3
-4:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
-5:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
-6:Music/Electric Six/Flashy/11 Graphic Designer.mp3
-7:Ozzy Music/Coldplay/X&Y/01 Things I Don't Understand.mp3
-8:Ozzy Music/Coldplay/X&Y/02 Proof (New).mp3
-9:Ozzy Music/Coldplay/X&Y/03 The World Turned Upside Down.mp3
-10:Ozzy Music/Coldplay/X&Y/04 Pour Me - Live At The Hollywood B.mp3
-11:Ozzy Music/Coldplay/X&Y/05 Square One.mp3
-12:Ozzy Music/Coldplay/X&Y/06 What If.mp3
-13:Ozzy Music/Coldplay/X&Y/07 White Shadows.mp3
-14:Ozzy Music/Coldplay/X&Y/08 Fix You.mp3
-15:Ozzy Music/Coldplay/X&Y/09 Talk.mp3
-16:Ozzy Music/Coldplay/X&Y/10 X&Y.mp3
-17:Ozzy Music/Coldplay/X&Y/11 Speed Of Sound.mp3
-18:Ozzy Music/Coldplay/X&Y/12 A Message.mp3
-19:Ozzy Music/Coldplay/X&Y/13 Low.mp3
-20:Ozzy Music/Coldplay/X&Y/14 The Hardest Part.mp3
-21:Ozzy Music/Coldplay/X&Y/15 Swallowed In The Sea.mp3
-22:Ozzy Music/Coldplay/X&Y/16 Twisted Logic.mp3
-23:Ozzy Music/Coldplay/X&Y/17 Till Kingdom Come.mp3
-24:Music/The Shins/Wincing The Night Away/01 Sleeping Lessons.mp3
-25:Music/The Shins/Wincing The Night Away/02 Australia.mp3
-26:Music/The Shins/Wincing The Night Away/03 Pan Berry.mp3
-27:Music/The Shins/Wincing The Night Away/04 Phantom Limb.mp3
-28:Music/The Shins/Wincing The Night Away/05 Sealegs.mp3
-29:Music/The Shins/Wincing The Night Away/06 Red Rabbits.mp3
-30:Music/The Shins/Wincing The Night Away/07 Turn On Me.mp3
-31:Music/The Shins/Wincing The Night Away/08 Black Wave.mp3
-32:Music/The Shins/Wincing The Night Away/09 Split Needles.mp3
-33:Music/The Shins/Wincing The Night Away/10 Girl Sailor.mp3
-34:Music/The Shins/Wincing The Night Away/11 A Comet Appears.mp3
+0:Music/Mark Ronson/Version/01 God Put A Smile Upon Your Face.mp3
+1:Music/Mark Ronson/Version/02 Oh My God.mp3
+2:Music/Mark Ronson/Version/03 Stop Me Ft. Daniel Merriweather.mp3
+3:Music/Mark Ronson/Version/04 Toxic.mp3
+4:Music/Mark Ronson/Version/05 Valerie.mp3
+5:Music/Mark Ronson/Version/06 Apply Some Pressure.mp3
+6:Music/Mark Ronson/Version/07 Inversion.mp3
+7:Music/Mark Ronson/Version/08 Pretty Green.mp3
+8:Music/Mark Ronson/Version/09 Just.mp3
+9:Music/Mark Ronson/Version/10 Amy.mp3
+10:Music/Mark Ronson/Version/11 The Only One I Know Ft. Robbie Williams.mp3
+11:Music/Mark Ronson/Version/12 Diversion.mp3
+12:Music/Mark Ronson/Version/13 LSF Ft. Kasabian.mp3
+13:Music/Mark Ronson/Version/14 Outversion.mp3
+14:Music/Kaiser Chiefs/Employment/06 Oh My God.mp3
+15:Music/Prodigy/Fat Of The Land/Fire Starter.mp3
+16:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/101  The Prodigy - Invaders Must Die.mp3
+17:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/102  The Prodigy - Omen.mp3
+18:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/102  The Prodigy - Thunder.mp3
+19:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/104  The Prodigy - Colours.mp3
+20:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/105  The Prodigy - Take Me To The Hospital.mp3
+21:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/106  The Prodigy - Warriors Dance.mp3
+22:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/107  The Prodigy - Run With The Wolves.mp3
+23:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/108  The Prodigy - Omen Reprise.mp3
+24:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/109  The Prodigy - Worlds On Fire.mp3
+25:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/110  The Prodigy - Piranha.mp3
+26:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/111  The Prodigy - Stand Up.mp3
+27:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/201  The Prodigy - The Big Gundown.mp3
+28:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/202  The Prodigy - Black Smoke.mp3
+29:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/203  The Prodigy - Wild West.mp3
+30:New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov/204  The Prodigy - Fighter Beat.mp3
+31:New Music/Zaz/Je veux.flac
+32:New Music/Zaz/Les passants.flac
+33:New Music/Zaz/Je veux.flac
+34:New Music/Zaz/Le long de la route.flac
+35:New Music/Zaz/La fee.flac
+36:New Music/Zaz/Trop sensible.flac
+37:New Music/Zaz/Prends garde à ta langue.flac
+38:New Music/Zaz/Ni oui Ni non.flac
+39:New Music/Zaz/Port Coton.flac
+40:New Music/Zaz/J'aime à nouveau.flac
+41:New Music/Zaz/Dans ma rue.flac
+42:New Music/Zaz/Éblouie par la nuit.flac
+43:Music/Maximum Balloon/Maximum Balloon/01 Groove Me.mp3
+44:Music/Maximum Balloon/Maximum Balloon/02 Young Love.mp3
+45:Music/Maximum Balloon/Maximum Balloon/03 Absence of Light.mp3
+46:Music/Maximum Balloon/Maximum Balloon/04 If You Return.mp3
+47:Music/Maximum Balloon/Maximum Balloon/05 Shakedown.mp3
+48:Music/Maximum Balloon/Maximum Balloon/06 Communion.mp3
+49:Music/Maximum Balloon/Maximum Balloon/07 Tiger.mp3
+50:Music/Maximum Balloon/Maximum Balloon/08 The Lesson.mp3
+51:Music/Maximum Balloon/Maximum Balloon/09 Apartment Wrestling.mp3
+52:Music/Maximum Balloon/Maximum Balloon/10 Pink Bricks.mp3
+53:Music/Matt & Kim/Matt & Kim/13 Verbs Before Nouns.mp3
+54:Music/Matt & Kim/To_From/01 Silver Tiles.mp3
+55:Music/Matt & Kim/To_From/02 5k.mp3
+56:Music/Matt & Kim/To_From/03 Verbs Before Nouns.mp3
+57:Music/Matt & Kim/To_From/04 Jesse Jane.mp3
+58:Music/Matt & Kim/To_From/05 Blazing Dynamite.mp3
+59:Music/Matt & Kim/Matt & Kim/01 It's A Fact (Printed Stained).mp3
+60:Music/Matt & Kim/Matt & Kim/02 Dash After Dash.mp3
+61:Music/Matt & Kim/Matt & Kim/03 Yea Yeah.mp3
+62:Music/Matt & Kim/Matt & Kim/04 Ready_ OK..mp3
+63:Music/Matt & Kim/Matt & Kim/05 No More Long Years.mp3
+64:Music/Matt & Kim/Matt & Kim/06 5K.mp3
+65:Music/Matt & Kim/Matt & Kim/07 Grand.mp3
+66:Music/Matt & Kim/Matt & Kim/08 Frank.mp3
+67:Music/Matt & Kim/Matt & Kim/09 Someday.mp3
+68:Music/Matt & Kim/Matt & Kim/10 Lightspeed.mp3
+69:Music/Matt & Kim/Matt & Kim/11 Secret.mp3
+70:Music/Matt & Kim/Grand/01 Daylight 1.mp3
+71:Music/Matt & Kim/Grand/02 Cutdown.mp3
+72:Music/Matt & Kim/Grand/03 Good Ol' Fashion Nightmare.mp3
+73:Music/Matt & Kim/Grand/04 Spare Change.mp3
+74:Music/Matt & Kim/Grand/05 I Wanna.mp3
+75:Music/Matt & Kim/Grand/06 Lessons Learned.mp3
+76:Music/Matt & Kim/Grand/07 Don't Slow Down.mp3
+77:Music/Matt & Kim/Grand/08 Turn This Boat Around.mp3
+78:Music/Matt & Kim/Grand/09 Cinders.mp3
+79:Music/Matt & Kim/Grand/10 I'll Take Us Home.mp3
+80:Music/Deadmau5/4x4=12 (Deluxe Version)/14 Sofi Needs a Ladder (Live from Brixton).m4v
+81:Music/La Roux/La Roux/01 In For The Kill.mp3
+82:Music/La Roux/La Roux/02 Tigerlily.mp3
+83:Music/La Roux/La Roux/03 Quicksand.mp3
+84:Music/La Roux/La Roux/04 Bulletproof.mp3
+85:Music/La Roux/La Roux/05 Colourless Colour.mp3
+86:Music/La Roux/La Roux/06 I'm Not Your Toy.mp3
+87:Music/La Roux/La Roux/07 Cover My Eyes.mp3
+88:Music/La Roux/La Roux/08 As If By Magic.mp3
+89:Music/La Roux/La Roux/09 Fascination.mp3
+90:Music/La Roux/La Roux/10 Reflections Are Protection.mp3
+91:Music/La Roux/La Roux/11 Armour Love.mp3
+92:Music/La Roux/La Roux/12 Growing Pains.mp3
+93:Music/LCD Soundsystem/Sound Of Silver/01 LCD Soundsystem - Get Innocuous!.mp3
+94:Music/LCD Soundsystem/Sound Of Silver/02 LCD Soundsystem - Time To Get Away.mp3
+95:Music/LCD Soundsystem/Sound Of Silver/03 LCD Soundsystem - North American Scum.mp3
+96:Music/LCD Soundsystem/Sound Of Silver/04 LCD Soundsystem - Someone Great.mp3
+97:Music/LCD Soundsystem/Sound Of Silver/05 LCD Soundsystem - All My Friends.mp3
+98:Music/LCD Soundsystem/Sound Of Silver/06 LCD Soundsystem - Us v Them.mp3
+99:Music/LCD Soundsystem/Sound Of Silver/07 LCD Soundsystem - Watch The Tapes.mp3
+100:Music/LCD Soundsystem/Sound Of Silver/08 LCD Soundsystem - Sound Of Silver.mp3
+101:Music/LCD Soundsystem/Sound Of Silver/09 LCD Soundsystem - New York, I Love You But You're Bringing Me Down.mp3
+102:Music/Yeah Yeah Yeahs/Fever to Tell/01 Rich.mp3
+103:Music/Yeah Yeah Yeahs/Fever to Tell/02 Y Control.mp3
+104:Music/Yeah Yeah Yeahs/Fever to Tell/03 Modern Romance.mp3
+105:Music/Yeah Yeah Yeahs/Fever to Tell/04 Date With The Night.mp3
+106:Music/Yeah Yeah Yeahs/Fever to Tell/05 Man.mp3
+107:Music/Yeah Yeah Yeahs/Fever to Tell/06 Tick.mp3
+108:Music/Yeah Yeah Yeahs/Fever to Tell/07 Black Tongue.mp3
+109:Music/Yeah Yeah Yeahs/Fever to Tell/08 Pin.mp3
+110:Music/Yeah Yeah Yeahs/Fever to Tell/09 Cold Light.mp3
+111:Music/Yeah Yeah Yeahs/Fever to Tell/10 No No No.mp3
+112:Music/Yeah Yeah Yeahs/Fever to Tell/11 Maps.mp3
+113:Music/Yeah Yeah Yeahs/Show Your Bones/01 Gold Lion.mp3
+114:Music/Yeah Yeah Yeahs/Show Your Bones/02 Way Out.mp3
+115:Music/Yeah Yeah Yeahs/Show Your Bones/03 Fancy.mp3
+116:Music/Yeah Yeah Yeahs/Show Your Bones/04 Phenomena.mp3
+117:Music/Yeah Yeah Yeahs/Show Your Bones/05 Honeybear.mp3
+118:Music/Yeah Yeah Yeahs/Show Your Bones/06 Cheated Hearts.mp3
+119:Music/Yeah Yeah Yeahs/Show Your Bones/07 Dudley.mp3
+120:Music/Yeah Yeah Yeahs/Show Your Bones/08 Mysteries.mp3
+121:Music/Yeah Yeah Yeahs/Show Your Bones/09 The Sweets.mp3
+122:Music/Yeah Yeah Yeahs/Show Your Bones/10 Warrior.mp3
+123:Music/Yeah Yeah Yeahs/Show Your Bones/11 Turn Into.mp3
+124:Music/Yeah Yeah Yeahs/Show Your Bones/12 Deja Vu.mp3
+125:Music/Yeah Yeah Yeahs/It's Blitz/2-01 Zero.mp3
+126:Music/Yeah Yeah Yeahs/It's Blitz/2-02 Heads Will Roll.mp3
+127:Music/Yeah Yeah Yeahs/It's Blitz/2-03 Soft Shock.mp3
+128:Music/Yeah Yeah Yeahs/It's Blitz/2-04 Skeletons.mp3
+129:Music/Yeah Yeah Yeahs/It's Blitz/2-05 Dull Life.mp3
+130:Music/Yeah Yeah Yeahs/It's Blitz/2-06 Shame And Fortune.mp3
+131:Music/Yeah Yeah Yeahs/It's Blitz/2-07 Runaway.mp3
+132:Music/Yeah Yeah Yeahs/It's Blitz/2-08 Dragon Queen.mp3
+133:Music/Yeah Yeah Yeahs/It's Blitz/2-09 Hysteric.mp3
+134:Music/Yeah Yeah Yeahs/It's Blitz/2-10 Little Shadow.mp3
+135:Music/Tokyo Blade/Tokyo Blade/01 - Powergame.mp3
+136:Music/Tokyo Blade/Tokyo Blade/02 - Break The Chains.mp3
+137:Music/Tokyo Blade/Tokyo Blade/03 - If Heaven Is Hell.mp3
+138:Music/Tokyo Blade/Tokyo Blade/04 - On Through The Night.mp3
+139:Music/Tokyo Blade/Tokyo Blade/05 - Killer City.mp3
+140:Music/Tokyo Blade/Tokyo Blade/07 - Tonight.mp3
+141:Music/Tokyo Blade/Tokyo Blade/08 - Sunrise In Tokyo.mp3
+142:Music/Tokyo Blade/Tokyo Blade/09 - Blue Ridge Mountains Of Virginia.mp3
+143:Music/Tokyo Police Club/A Lesson In Crime/01 Cheer It On.mp3
+144:Music/Tokyo Police Club/A Lesson In Crime/02 Nature Of The Experiment.mp3
+145:Music/Tokyo Police Club/A Lesson In Crime/03 Citizens Of Tomorrow.mp3
+146:Music/Tokyo Police Club/A Lesson In Crime/04 Shoulders & Arms.mp3
+147:Music/Tokyo Police Club/A Lesson In Crime/05 If It Works.mp3
+148:Music/Tokyo Police Club/A Lesson In Crime/06 Be Good.mp3
+149:Music/Tokyo Police Club/A Lesson In Crime/07 La Ferrassie.mp3
+150:Music/Tokyo Police Club/Elephant Shell/01 Centennial.mp3
+151:Music/Tokyo Police Club/Elephant Shell/02 In A Cave.mp3
+152:Music/Tokyo Police Club/Elephant Shell/03 Graves.mp3
+153:Music/Tokyo Police Club/Elephant Shell/04 Juno.mp3
+154:Music/Tokyo Police Club/Elephant Shell/05 Tessellate.mp3
+155:Music/Tokyo Police Club/Elephant Shell/06 Sixties Remake.mp3
+156:Music/Tokyo Police Club/Elephant Shell/07 The Harrowing Adventures Of....mp3
+157:Music/Tokyo Police Club/Elephant Shell/08 Nursery, Academy.mp3
+158:Music/Tokyo Police Club/Elephant Shell/09 Your English Is Good.mp3
+159:Music/Tokyo Police Club/Elephant Shell/10 Listen To The Math.mp3
+160:Music/Tokyo Police Club/Elephant Shell/11 The Baskervilles.mp3
+161:Music/Tokyo Police Club/Champ/01 Favourite Food.mp3
+162:Music/Tokyo Police Club/Champ/02 Favourite Colour.mp3
+163:Music/Tokyo Police Club/Champ/03 Breakneck Speed.mp3
+164:Music/Tokyo Police Club/Champ/04 Wait Up (Boots of Danger).mp3
+165:Music/Tokyo Police Club/Champ/05 Bambi.mp3
+166:Music/Tokyo Police Club/Champ/06 End of a Spark.mp3
+167:Music/Tokyo Police Club/Champ/07 Hands Reversed.mp3
+168:Music/Tokyo Police Club/Champ/08 Gone.mp3
+169:Music/Tokyo Police Club/Champ/09 Big Difference.mp3
+170:Music/Tokyo Police Club/Champ/10 Not Sick.mp3
+171:Music/Tokyo Police Club/Champ/11 Frankenstein.mp3
+172:Music/Tokyo Police Club/Champ/12 Wait Up (Boots of Danger) Passion Pit Remix.mp3
+173:Music/The Go! Team/Thunder Lightning Strike/01 Panther Dash.mp3
+174:Music/The Go! Team/Thunder Lightning Strike/02 Ladyflash.mp3
+175:Music/The Go! Team/Thunder Lightning Strike/03 Feelgood By Numbers.mp3
+176:Music/The Go! Team/Thunder Lightning Strike/04 The Power Is On.mp3
+177:Music/The Go! Team/Thunder Lightning Strike/05 Get It Together.mp3
+178:Music/The Go! Team/Thunder Lightning Strike/06 Junior Kickstart.mp3
+179:Music/The Go! Team/Thunder Lightning Strike/07 Air Raid Gtr.mp3
+180:Music/The Go! Team/Thunder Lightning Strike/08 Bottle Rocket.mp3
+181:Music/The Go! Team/Thunder Lightning Strike/09 Friendship Update.mp3
+182:Music/The Go! Team/Thunder Lightning Strike/10 Huddle Formation.mp3
+183:Music/The Go! Team/Thunder Lightning Strike/11 Everyone_s A V.I.P To Someone.mp3
+184:Music/Go! Team/Proof of Youth/01 Grip Like a Vice.mp3
+185:Music/Go! Team/Proof of Youth/02 Doing It Right.mp3
+186:Music/Go! Team/Proof of Youth/03 My World.mp3
+187:Music/Go! Team/Proof of Youth/04 Titanic Vandalism.mp3
+188:Music/Go! Team/Proof of Youth/05 Fake ID.mp3
+189:Music/Go! Team/Proof of Youth/06 Universal Speech.mp3
+190:Music/Go! Team/Proof of Youth/07 Keys to the City.mp3
+191:Music/Go! Team/Proof of Youth/08 The Wrath of Marcie.mp3
+192:Music/Go! Team/Proof of Youth/09 I Never Needed It Now So Much.mp3
+193:Music/Go! Team/Proof of Youth/10 Flashlight Fight (Featuring Chuck D).mp3
+194:Music/Go! Team/Proof of Youth/11 Patricia's Moving Picture.mp3
+195:New Music/OPM/Menace to Sobriety/01 - Stash Up.mp3
+196:New Music/OPM/Menace to Sobriety/02 - Interlude; Punanny.mp3
+197:New Music/OPM/Menace to Sobriety/03 - Heaven Is A Halfpipe.mp3
+198:New Music/OPM/Menace to Sobriety/04 - El Capitan.mp3
+199:New Music/OPM/Menace to Sobriety/05 - Undercover Freak.mp3
+200:New Music/OPM/Menace to Sobriety/06 Brighter side.mp3
+201:New Music/OPM/Menace to Sobriety/07 Better Daze.mp3
+202:New Music/OPM/Menace to Sobriety/08 Trucha.mp3
+203:New Music/OPM/Menace to Sobriety/09 Dealerman.mp3
+204:New Music/OPM/Menace to Sobriety/10 Reality Check.mp3
+205:New Music/OPM/Menace to Sobriety/11 Interlude_ Rage Against The Coke Machine.mp3
+206:New Music/OPM/Menace to Sobriety/12 Unda.mp3
+207:New Music/OPM/Menace to Sobriety/13 Interlude_ 15 Minutes.mp3
+208:New Music/OPM/Menace to Sobriety/14 Fish Out Of Water.mp3
+209:New Music/OPM/Menace to Sobriety/15 Sound System.mp3
 playlist_end
