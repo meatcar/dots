@@ -1,0 +1,27 @@
+#!/bin/bash 
+##############################################################################
+# Random Wallpaper Selector.
+# author: meatcar
+# vim:ft=sh:
+next(){
+    WALLFOLDER='/media/win/Lipid/Mutimedia/Pictures/Wallpapers/'
+#    echo $WALLFOLDER this is text from ~/testgit
+
+# find all the files in $WALLFOLDER and shuffle them, returning only one item.
+    WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
+    echo $WALLPAPER
+    
+    # then, tell your wallpaper-setter of choice to set the wallpaper.
+    nitrogen --set-zoom-fill "$WALLPAPER"
+}
+
+if [ $1 == '-n' ]
+then
+    next
+else
+    while true
+    do 
+        next
+        sleep 300
+    done
+fi
