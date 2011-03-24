@@ -1,44 +1,30 @@
 "1.0b5 (created: 2011/01/20 22:11:06)
 
 loadplugins '\.(js|penta)$'
-highlight Boolean color: #dca3a3;
-highlight BufTab padding: 0 2px;
-highlight BufTabs margin: 0 4px; overflow: hidden;
-highlight BufTabSelected color: #2e3330; background-color: #88b090; padding: 0 4px;
-highlight Cmd background-color:#313633; font-size:9pt;
-highlight CmdLine padding: 0 3px; font-weight: normal;
-highlight CompItem[selected] background: yellow; background-color: #4c504d !important;
-highlight CompLess text-align: center; height: 0; line-height: .5ex; padding-top: 1ex; margin-top: .5ex; margin-bottom: 1ex;
-highlight CompMore text-align: center; height: .5ex; line-height: .5ex; margin-bottom: 0; margin-top: .5ex;
-highlight CompTitle color: lightblue; background: white; font-weight: bold; background-color: transparent;
-highlight CompTitleSep height: 1px; background: -moz-linear-gradient(60deg, lightblue, white);
-highlight ErrorMsg color:#80d4aa !important; background-color:#2f2f2f !important; font-weight:bold; font-size:9pt;
-highlight Filter font-weight: bold; font-style: normal;
-highlight Function color: #efef8f;
-highlight InfoMsg color:#cccccc !important;
-highlight Keyword color: #f0dfaf; font-weight: bold;
-highlight LineNr color: #9fafaf; background: white       !important; background-color: #262626;
-highlight ModeMsg color: #ffcfaf; background: white       !important; background-color: transparent !important;
-highlight MoreMsg color: #ffffff !important; background: white       !important; background-color: inherit !important; font-weight: bold;
-highlight NonText color: #404040; background: transparent !important; font-weight: bold;
-highlight Normal color:#dcdccc !important; background-color:#313633 !important; font-size:9pt;
-highlight Number color: #8cd0d3;
-highlight Question color:#ffffff !important; background-color:inherit !important; font-weight:bold;
-highlight StatusInfoMsg
-highlight StatusLineBroken color:#ffa0a0;
-highlight StatusLineExtended color:#a0ffa0;
-highlight StatusLineNormal color: #ccdc90; background: black   !important; background-color: #313633 !important; margin-bottom: -2px; font-size: 9pt;
-highlight StatusLineSecure color:#87af87;
-highlight StatusModeMsg
-highlight StatusMoreMsg
-highlight StatusNormal
-highlight StatusQuestion
-highlight StatusWarningMsg
-highlight String color: #cc9393; white-space: pre;
-highlight Tag color: #e89393; font-weight: bold;
-highlight Title color: #efefef; background: white; font-weight: bold; background-color: inherit;
-highlight URL text-decoration: none; color: #9ECE9E; background: inherit; background-color: inherit;
-highlight WarningMsg color:#ffffff; background-color:#333333 !important; font-weight:bold;
 set runtimepath=/home/meatcar/.pentadactyl
+
+" Set the tool-bar layout.
+set go=bCrsN
+
+" Set :open completion options:
+set complete=slfS
+
+" Set the default search engine
+set defsearch=g
+set suggestengines=g
+
+" Set the colorscheme
 colorscheme zenburn
-" vim: set ft=pentadactyl:
+
+" Hints:
+" Make all hints uppercase
+highlight -a Hint text-transform: uppercase;
+" Make hints be home-row keys
+set hintkeys='asdfg;lkjh'
+
+" define which commands will ope in a new tab
+set newtab=all 
+
+
+
+" vim: set ft=vim:

@@ -1,0 +1,24 @@
+#!/bin/sh 
+PATH=/bin:/usr/bin 
+
+vim=`which 2>/dev/null vim`
+if [ -z $vim ]; then
+    echo "$SHELL: vim: command not found"
+    exit 1;
+fi
+
+vimserv=`$vim --serverlist`
+servcount=`$vim --serverlist | wc -l`
+case $servcount in
+    0)
+        urxvtc -e $vim --servername v "$@"
+        ;;
+    1)
+        $vim --servername "$vimserv" --remote-silent "$@"
+        ;;
+    *)
+        vimserv="$1"
+        shift 1
+        $vim --servername "$vimserv" --remote-silent "$@"
+        ;;
+esac

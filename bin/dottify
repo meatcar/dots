@@ -6,4 +6,5 @@ ln -sf $DOTFILE $1
 cd $DOTFOLDER
 git add $DOTFILE
 git commit -m "added $1 as ~/.dots/$2"
+echo "ln -s \"\$DOTFOLDER/$2\" \"$PWD/$1\"" >> ~/.dots/reinstate.sh
 echo $1 has been dottified to $DOTFILE 
