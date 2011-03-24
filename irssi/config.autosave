@@ -210,6 +210,13 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 
   # statusbar to use in inactive split windows
@@ -270,7 +277,7 @@ statusbar = {
 settings = {
   "fe-text" = { actlist_sort = "refnum"; autostick_split_windows = "no"; };
   core = {
-    real_name = "Denys Pavlov";
+    real_name = "cw cw";
     user_name = "meatcar";
     nick = "meatcar";
     timestamp_format = "%H:%M:00";

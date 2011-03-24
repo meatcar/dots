@@ -24,21 +24,12 @@ case $1 in
         # Fire up apps
         xscreensaver  -no-splash &
         xcompmgr -c -C&
-        mpd /home/meatcar/.config/mpd/mpd.conf &&
-        mpc pause &
-
-        if [ -x /usr/bin/gnome-power-manager ] ; then
-           sleep 3
-           gnome-power-manager&
-        fi
-        
-        udiskie &
+        (mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
         urxvtd &
         parcellite &
         wicd-client &
         deluged &
         nitrogen --restore &
-#        wallp &
         sleep 1
         dzconky &
         blueman-applet &

@@ -8,7 +8,7 @@
 " general --------------------------------------------------------------
 
 set t_Co=256            " enable 256-color support
-colorscheme ir_black    "define syntax color scheme
+colorscheme molokai     "define syntax color scheme
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap     " keep swap files in one place
 set bdir=~/.vim/backup  " keep backups in one place
@@ -41,6 +41,23 @@ set grepprg=grep\ -nH\ $*
 " latex stuff. ---------------------------------------------------------
 "
 let g:tex_flavor = "latex"
+
+" c stuff. ------------------------------------------------------------
+"
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
 
 " python hiliting ------------------------------------------------------
 
@@ -152,11 +169,11 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Dina\ 9     " backslash any spaces
-        "set guioptions-=T      "hide the toolbar
-        colorscheme evening 
-        set columns=118         "previous values: 120
-        set lines=40            "previous values: 40, 32
+        set guifont=Terminus\ 9     " backslash any spaces
+        set guioptions-=T      "hide the toolbar
+        "colorscheme evening 
+        "set columns=118         "previous values: 120
+        "set lines=40            "previous values: 40, 32
     endif
 endif
 
@@ -190,3 +207,7 @@ map T :TaskList<CR>
 map P :TlistToggle<CR>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+"---------------------------
+"mutt stuff
+
