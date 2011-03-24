@@ -1,10 +1,19 @@
 #!/bin/sh 
+##############################################################################
+# Add a desired file to the dots folder.
+##############################################################################
+
+if [ $# -lt 2 ]; then 
+    echo "usage: $0 path dot-name" >&2
+    exit 1
+fi 
+
 DOTFOLDER="/home/meatcar/.dots"
 DOTFILE="$DOTFOLDER/$2"
 mv -f $1 $DOTFILE
 ln -sf $DOTFILE $1
 cd $DOTFOLDER
 git add $DOTFILE
-git commit -m "added $1 as ~/.dots/$2"
-echo "ln -s \"\$DOTFOLDER/$2\" \"$PWD/$1\"" >> ~/.dots/reinstate.sh
-echo $1 has been dottified to $DOTFILE 
+git commit -m "added $1 as $DOTFOLDER/$2"
+echo "ln -s \"\$DOTFOLDER/$2\" \"$PWD/$1\"" >> "$DOTFOLDER/reinstate.sh"
+echo "$1 has been dottified to $DOTFILE" 
