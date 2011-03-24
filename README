@@ -1,0 +1,7 @@
+How to use meatcar's dot-files:
+
+To unpack everything, take a look at reinstate.sh, found in this directory.
+
+To add new files to your dots folder, take a look at bin/dottify.
+
+Enjoy!
