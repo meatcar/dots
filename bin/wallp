@@ -1,27 +1,41 @@
-#!/bin/bash 
-##############################################################################
-# Random Wallpaper Selector.
-# author: meatcar
-# vim:ft=sh:
-next(){
-    WALLFOLDER='/media/win/Lipid/Mutimedia/Pictures/Wallpapers/'
-#    echo $WALLFOLDER this is text from ~/testgit
+#!/bin/bash
+temp="/tmp/bgchanger"
+temp2="/tmp/bgchanger.$$"
+trap "rm -f $temp2" 0 1 2 15
 
-# find all the files in $WALLFOLDER and shuffle them, returning only one item.
-    WALLPAPER=`find $WALLFOLDER -type f | shuf -n1`
-    echo $WALLPAPER
-    
-    # then, tell your wallpaper-setter of choice to set the wallpaper.
-    nitrogen --set-zoom-fill "$WALLPAPER"
-}
+WALLFOLDER=/media/win/Lipid/Multimedia/Pictures/Wallpapers
 
-if [ $1 == '-n' ]
-then
-    next
-else
-    while true
-    do 
-        next
-        sleep 300
-    done
+if [ ! -e $temp ]; then
+    find "$WALLFOLDER" -type f | sort -R > $temp
 fi
+
+case $# in
+    1)
+        case $1 in
+            -p)
+                cur=`tail -1 $temp`
+                cat $temp > $temp2
+                echo "$cur" > $temp
+                cat $temp2 >> $temp
+                sed -i '$d' $temp
+                cur=`tail -1 $temp`
+                nitrogen --set-zoom-fill "$cur"
+                ;;
+            -r)
+                find "$WALLFOLDER" -type f | sort -R > $temp
+                ;;
+            -n)
+                cur=`head -1 $temp`
+                nitrogen --set-zoom-fill "$cur"
+                cat $temp > $temp2
+                sed -i 1d $temp2
+                echo "$cur" >> $temp2
+                cat $temp2 > $temp
+                ;;
+        esac 
+        ;;
+    *)
+        echo "usage: $0 -(p|r|n)" >&2
+        exit 1
+        ;;
+esac
