@@ -12,16 +12,31 @@ txtcyn='\e[0;36m' # Cyan
 txtwht='\e[0;37m' # White
 txtrst='\e[0m'    # Text Reset
 
-PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+source /home/meatcar/.git-completion.bash
+ 
+PS1="\[$txtcyn\]\H\[$txtrst\]:\[$txtpur\]\w\[$txtylw\]$(__git_ps1 " (%s)")"
+if [[ $EUID -ne 0 ]]; then
+    PS1="\[$PS1\]\[$txtgrn\] \$\[$txtrst\] "
+else
+   PS1="\[$PS1\]\[$txtred\] #\[$txtrst\] "
+fi
 
 ## Aliases
 
 # modified commands
-alias ls='ls -FG'
+alias ls='ls --color=always'
+alias pacman='sudo pacman'
+alias y='yaourt'
+alias ys='yaourt -S'
+alias yss='yaourt -Ss'
+#alias ping='ping -c 5'
 alias mkdir='mkdir -p -v'
 alias more='less'
 alias svim='sudo vim'
 alias sudo='sudo -E'
+alias mix='alsamixer'
+alias less='vimpager'
+alias suspend='sudo pm-suspend && slock'
 alias cdfwifi='ssh g0pavlov-cdf@wifi.cs.toronto.edu'
 
 # cd
@@ -45,7 +60,7 @@ export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[0;36m")
 
 ## core-git
-export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH=/usr/share/perl5/vendor_perl/auto/share/dist/Cope:$PATH:/home/meatcar/.bin/
 export EDITOR=vim
 
 ## Faster Completion
