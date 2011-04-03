@@ -18208,3 +18208,638 @@ Mar 22 11:19 : decoder_thread: Failed to open "/media/Mercury/Multimedia/Music/M
 Mar 22 11:19 : decoder_thread: Failed to open "/media/Mercury/Multimedia/Music/Music/Matt & Kim/Matt & Kim/08 Frank.mp3": Permission denied
 Mar 22 11:19 : decoder_thread: Failed to open "/media/Mercury/Multimedia/Music/Music/Matt & Kim/Matt & Kim/09 Someday.mp3": Permission denied
 Mar 22 11:19 : decoder_thread: Failed to open "/media/Mercury/Multimedia/Music/Music/Matt & Kim/Matt & Kim/09 Someday.mp3": Permission denied
+Mar 24 17:00 : avahi: Client Disconnected, will reconnect shortly
+Mar 24 17:00 : avahi: Could not reconnect: Daemon not running
+Mar 25 15:33 : player_thread: played "Music/Benji Hughes/A Love Extreme/1-01 I Am You, You Are Me, We Are One.mp3"
+Mar 25 15:37 : player_thread: played "Music/AIR/Pocket Symphony/04 Napalm Love.mp3"
+Mar 25 15:43 : player_thread: played "Music/Deadmau5/4x4=12 (Deluxe Version)/05 Animal Rights.m4a"
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/01. Parov Stelar - Coco (feat. Lilja Bloom).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/02. Parov Stelar - Hurt.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/03. Parov Stelar - For Rose.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/04. Parov Stelar - True Romance (feat. Lilja Bloom).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/05. Parov Stelar - Distance (feat. Lylith).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/06. Parov Stelar - Wake Up Sister (feat. Max The Sax).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/07. Parov Stelar - Let's Roll (feat. Blaktroniks).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/08. Parov Stelar - Sunny Bunny Blues (feat. Veda36).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/09. Parov Stelar - Dandy (feat. Yola).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/10. Parov Stelar - Your Man.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/11. Parov Stelar - Promises (feat. Klaus Hainy).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/12. Parov Stelar - Letoile (feat. Max The Sax).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/13. Parov Stelar - You And Me (feat. Lilja Bloom).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/01. Parov Stelar - The Mojo Radio Gang (Radioversion).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/02. Parov Stelar - Ragtimecat (feat. Lilja Bloom).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/03. Parov Stelar - Silent Snow (Original Version).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/04. Parov Stelar - Libella Swing.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/05. Parov Stelar - Catgroove.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/06. Parov Stelar - Matilda.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/07. Parov Stelar - The Flame.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/08. Parov Stelar - Fleur De Lille.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/09. Parov Stelar - Hotel Axos.flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/10. Parov Stelar - Monster (Original Version).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/11. Parov Stelar - Nosferatu (Original Version).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/12. Parov Stelar - Starlight (Club Version).flac
+Mar 25 16:40 : update: added Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/13. Parov Stelar - The Mojo Radio Gang (Clubversion).flac
+Mar 25 16:43 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/01. Parov Stelar - Coco (feat. Lilja Bloom).flac"
+Mar 25 16:46 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/02. Parov Stelar - Ragtimecat (feat. Lilja Bloom).flac"
+Mar 25 16:49 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/10. Parov Stelar - Your Man.flac"
+Mar 25 16:52 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/01. Parov Stelar - The Mojo Radio Gang (Radioversion).flac"
+Mar 25 16:55 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/09. Parov Stelar - Dandy (feat. Yola).flac"
+Mar 25 17:01 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/11. Parov Stelar - Nosferatu (Original Version).flac"
+Mar 25 17:06 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/04. Parov Stelar - Libella Swing.flac"
+Mar 25 17:09 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/07. Parov Stelar - Let's Roll (feat. Blaktroniks).flac"
+Mar 25 17:12 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/12. Parov Stelar - Letoile (feat. Max The Sax).flac"
+Mar 25 17:15 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/11. Parov Stelar - Promises (feat. Klaus Hainy).flac"
+Mar 25 17:19 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/06. Parov Stelar - Matilda.flac"
+Mar 25 17:24 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 2) [FLAC]/13. Parov Stelar - The Mojo Radio Gang (Clubversion).flac"
+Mar 25 17:27 : player_thread: played "Flacs/Parov Stelar - (2009) Coco [FLAC]/Parov Stelar - (2009) Coco (Disc 1) [FLAC]/05. Parov Stelar - Distance (feat. Lylith).flac"
+Mar 26 12:39 : avahi: Client Disconnected, will reconnect shortly
+Mar 26 12:39 : avahi: Could not reconnect: Daemon not running
+Mar 27 23:16 : decoder_thread: Unrecognized URI
+Mar 27 23:16 : decoder_thread: Unrecognized URI
+Mar 27 23:16 : decoder_thread: Unrecognized URI
+Mar 27 23:16 : decoder_thread: Unrecognized URI
+Mar 28 11:23 : avahi: Client Disconnected, will reconnect shortly
+Mar 28 11:23 : avahi: Could not reconnect: Daemon not running
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : decoder_thread: Unrecognized URI
+Apr 02 18:06 : update: added New Music/Parov Stelar/Catgroove.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Coco (feat. Lilja Bloom).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Dandy (feat. Yola).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Distance (feat. Lylith).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Fleur De Lille.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/For Rose.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Hotel Axos.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Hurt.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Let's Roll (feat. Blaktroniks).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Letoile (feat. Max The Sax).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Libella Swing.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Matilda.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Monster (Original Version).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Nosferatu (Original Version).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Promises (feat. Klaus Hainy).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Ragtimecat (feat. Lilja Bloom).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Silent Snow (Original Version).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Starlight (Club Version).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Sunny Bunny Blues (feat. Veda36).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/The Flame.mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/The Mojo Radio Gang (Clubversion).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/The Mojo Radio Gang (Radioversion).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/True Romance (feat. Lilja Bloom).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Wake Up Sister (feat. Max The Sax).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/You And Me (feat. Lilja Bloom).mp3
+Apr 02 18:06 : update: added New Music/Parov Stelar/Your Man.mp3
+Apr 02 18:10 : player_thread: played "New Music/Parov Stelar/Coco (feat. Lilja Bloom).mp3"
+Apr 02 18:16 : player_thread: played "New Music/Parov Stelar/The Flame.mp3"
+Apr 02 18:19 : player_thread: played "New Music/Parov Stelar/Promises (feat. Klaus Hainy).mp3"
+Apr 02 18:24 : player_thread: played "New Music/Parov Stelar/Monster (Original Version).mp3"
+Apr 02 18:29 : player_thread: played "New Music/Parov Stelar/The Mojo Radio Gang (Clubversion).mp3"
+Apr 02 18:32 : player_thread: played "New Music/Parov Stelar/Hurt.mp3"
+Apr 02 18:35 : player_thread: played "New Music/Parov Stelar/Your Man.mp3"
+Apr 02 18:41 : player_thread: played "New Music/Parov Stelar/Nosferatu (Original Version).mp3"
+Apr 02 18:45 : player_thread: played "New Music/Parov Stelar/Matilda.mp3"
+Apr 02 18:47 : player_thread: played "New Music/Parov Stelar/The Mojo Radio Gang (Radioversion).mp3"
+Apr 02 18:51 : player_thread: played "New Music/Parov Stelar/Dandy (feat. Yola).mp3"
+Apr 02 18:56 : player_thread: played "New Music/Parov Stelar/Hotel Axos.mp3"
+Apr 02 19:01 : player_thread: played "New Music/Parov Stelar/Fleur De Lille.mp3"
+Apr 02 19:05 : player_thread: played "New Music/Parov Stelar/Letoile (feat. Max The Sax).mp3"
+Apr 02 19:10 : player_thread: played "New Music/Parov Stelar/Silent Snow (Original Version).mp3"
+Apr 02 19:13 : player_thread: played "New Music/Parov Stelar/For Rose.mp3"
+Apr 02 19:16 : player_thread: played "New Music/Parov Stelar/Distance (feat. Lylith).mp3"
+Apr 02 19:19 : player_thread: played "New Music/Parov Stelar/Let's Roll (feat. Blaktroniks).mp3"
+Apr 02 19:22 : player_thread: played "New Music/Parov Stelar/Ragtimecat (feat. Lilja Bloom).mp3"
+Apr 02 19:25 : player_thread: played "New Music/Parov Stelar/True Romance (feat. Lilja Bloom).mp3"
+Apr 02 19:30 : player_thread: played "New Music/Parov Stelar/Starlight (Club Version).mp3"
+Apr 02 19:34 : player_thread: played "New Music/Parov Stelar/You And Me (feat. Lilja Bloom).mp3"
+Apr 02 19:38 : player_thread: played "New Music/Parov Stelar/Catgroove.mp3"
+Apr 02 19:42 : player_thread: played "New Music/Parov Stelar/Libella Swing.mp3"
+Apr 02 19:45 : player_thread: played "New Music/Parov Stelar/Wake Up Sister (feat. Max The Sax).mp3"
+Apr 02 20:08 : player_thread: played "Music/Cage The Elephant/Cage The Elephant/01 In One Ear.mp3"
+Apr 02 20:12 : player_thread: played "New Music/Parov Stelar/True Romance (feat. Lilja Bloom).mp3"
+Apr 02 20:15 : player_thread: played "New Music/Parov Stelar/Your Man.mp3"
+Apr 02 20:19 : player_thread: played "Music/Cage The Elephant/Cage The Elephant/06 Back Against The Wall.mp3"
+Apr 02 20:22 : player_thread: played "Music/Electric Six/Flashy/07 Face Cuts.mp3"
+Apr 02 20:25 : player_thread: played "Music/Eels/Meet The Eels-Essential Eels Vol 1 1996-2006/24 Losing Streak.mp3"
+Apr 02 20:28 : player_thread: played "Music/Eels/Meet The Eels-Essential Eels Vol 1 1996-2006/23 Railroad Man.mp3"
+Apr 02 20:32 : player_thread: played "Music/Electric Six/Fire/05 She's White.mp3"
+Apr 02 20:36 : player_thread: played "Music/Electric Six/Switzerland/10 Slices of You.mp3"
+Apr 02 20:40 : player_thread: played "Music/Electric Six/I Shall Exterminate Everything Around Me That Restricts Me from Being the Master/04 Rip It!.mp3"
+Apr 02 20:46 : player_thread: played "New Music/Parov Stelar/Nosferatu (Original Version).mp3"
+Apr 02 20:53 : player_thread: played "Music/Deadmau5/4x4=12 (Deluxe Version)/01 Some Chords.m4a"

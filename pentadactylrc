@@ -25,6 +25,7 @@ set hintkeys='asdfg;lkjh'
 " define which commands will ope in a new tab
 set newtab=all 
 
-
+" Define style overrides.
+style -name=greymono www.dgp.toronto.edu body { font-family: monospace; bgcolor: #CCCCCC }
 
 " vim: set ft=vim:
