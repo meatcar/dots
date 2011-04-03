@@ -1,0 +1,8 @@
+#!/bin/sh 
+
+while true; do
+    # Log
+    dwm 2> ~/.dwm.log 
+    # not log 
+    dwm >/dev/nukk 2>&1
+done
