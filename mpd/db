@@ -1,6 +1,6 @@
 info_begin
 format: 1
-mpd_version: 0.16.1
+mpd_version: 0.16.2
 fs_charset: UTF-8
 tag: Artist
 tag: ArtistSort
@@ -21,7 +21,7 @@ tag: MUSICBRAINZ_ALBUMARTISTID
 tag: MUSICBRAINZ_TRACKID
 info_end
 directory: Flacs
-mtime: 1297783541
+mtime: 1301252763
 begin: Flacs
 directory: Absolute Elsewhere - In Search of Ancient Gods (UK LP RIP - 9624 to 4416 w Izotope)
 mtime: 1270343585
@@ -25240,7 +25240,7 @@ end: Music/Муха/Альбом для рисования
 end: Music/Муха
 end: Music
 directory: New Music
-mtime: 1299357365
+mtime: 1301251520
 begin: New Music
 directory: OPM
 mtime: 1299357381
@@ -25904,6 +25904,270 @@ mtime: 1299304193
 song_end
 end: New Music/OPM/Menace to Sobriety
 end: New Music/OPM
+directory: Parov Stelar
+mtime: 1301252317
+begin: New Music/Parov Stelar
+song_begin: Coco (feat. Lilja Bloom).mp3
+Time: 181
+Artist: Parov Stelar
+Title: Coco (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 01
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252103
+song_end
+song_begin: Hurt.mp3
+Time: 183
+Artist: Parov Stelar
+Title: Hurt
+Album: Coco (Disc 1)
+Track: 02
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252103
+song_end
+song_begin: For Rose.mp3
+Time: 191
+Artist: Parov Stelar
+Title: For Rose
+Album: Coco (Disc 1)
+Track: 03
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252117
+song_end
+song_begin: True Romance (feat. Lilja Bloom).mp3
+Time: 200
+Artist: Parov Stelar
+Title: True Romance (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 04
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252118
+song_end
+song_begin: Distance (feat. Lylith).mp3
+Time: 163
+Artist: Parov Stelar
+Title: Distance (feat. Lylith)
+Album: Coco (Disc 1)
+Track: 05
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252130
+song_end
+song_begin: Wake Up Sister (feat. Max The Sax).mp3
+Time: 176
+Artist: Parov Stelar
+Title: Wake Up Sister (feat. Max The Sax)
+Album: Coco (Disc 1)
+Track: 06
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252134
+song_end
+song_begin: Let's Roll (feat. Blaktroniks).mp3
+Time: 196
+Artist: Parov Stelar
+Title: Let's Roll (feat. Blaktroniks)
+Album: Coco (Disc 1)
+Track: 07
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252144
+song_end
+song_begin: Sunny Bunny Blues (feat. Veda36).mp3
+Time: 186
+Artist: Parov Stelar
+Title: Sunny Bunny Blues (feat. Veda36)
+Album: Coco (Disc 1)
+Track: 08
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252153
+song_end
+song_begin: Dandy (feat. Yola).mp3
+Time: 183
+Artist: Parov Stelar
+Title: Dandy (feat. Yola)
+Album: Coco (Disc 1)
+Track: 09
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252158
+song_end
+song_begin: Your Man.mp3
+Time: 196
+Artist: Parov Stelar
+Title: Your Man
+Album: Coco (Disc 1)
+Track: 10
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252168
+song_end
+song_begin: Promises (feat. Klaus Hainy).mp3
+Time: 180
+Artist: Parov Stelar
+Title: Promises (feat. Klaus Hainy)
+Album: Coco (Disc 1)
+Track: 11
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252171
+song_end
+song_begin: Letoile (feat. Max The Sax).mp3
+Time: 187
+Artist: Parov Stelar
+Title: Letoile (feat. Max The Sax)
+Album: Coco (Disc 1)
+Track: 12
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252181
+song_end
+song_begin: You And Me (feat. Lilja Bloom).mp3
+Time: 222
+Artist: Parov Stelar
+Title: You And Me (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 13
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252190
+song_end
+song_begin: The Mojo Radio Gang (Radioversion).mp3
+Time: 161
+Artist: Parov Stelar
+Title: The Mojo Radio Gang (Radioversion)
+Album: Coco (Disc 2)
+Track: 01
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252192
+song_end
+song_begin: Ragtimecat (feat. Lilja Bloom).mp3
+Time: 181
+Artist: Parov Stelar
+Title: Ragtimecat (feat. Lilja Bloom)
+Album: Coco (Disc 2)
+Track: 02
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252204
+song_end
+song_begin: Silent Snow (Original Version).mp3
+Time: 312
+Artist: Parov Stelar
+Title: Silent Snow (Original Version)
+Album: Coco (Disc 2)
+Track: 03
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252212
+song_end
+song_begin: Libella Swing.mp3
+Time: 246
+Artist: Parov Stelar
+Title: Libella Swing
+Album: Coco (Disc 2)
+Track: 04
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252222
+song_end
+song_begin: Catgroove.mp3
+Time: 238
+Artist: Parov Stelar
+Title: Catgroove
+Album: Coco (Disc 2)
+Track: 05
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252228
+song_end
+song_begin: Matilda.mp3
+Time: 204
+Artist: Parov Stelar
+Title: Matilda
+Album: Coco (Disc 2)
+Track: 06
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252236
+song_end
+song_begin: The Flame.mp3
+Time: 333
+Artist: Parov Stelar
+Title: The Flame
+Album: Coco (Disc 2)
+Track: 07
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252251
+song_end
+song_begin: Fleur De Lille.mp3
+Time: 317
+Artist: Parov Stelar
+Title: Fleur De Lille
+Album: Coco (Disc 2)
+Track: 08
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252259
+song_end
+song_begin: Hotel Axos.mp3
+Time: 336
+Artist: Parov Stelar
+Title: Hotel Axos
+Album: Coco (Disc 2)
+Track: 09
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252276
+song_end
+song_begin: Monster (Original Version).mp3
+Time: 315
+Artist: Parov Stelar
+Title: Monster (Original Version)
+Album: Coco (Disc 2)
+Track: 10
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252280
+song_end
+song_begin: Nosferatu (Original Version).mp3
+Time: 358
+Artist: Parov Stelar
+Title: Nosferatu (Original Version)
+Album: Coco (Disc 2)
+Track: 11
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252300
+song_end
+song_begin: Starlight (Club Version).mp3
+Time: 298
+Artist: Parov Stelar
+Title: Starlight (Club Version)
+Album: Coco (Disc 2)
+Track: 12
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252303
+song_end
+song_begin: The Mojo Radio Gang (Clubversion).mp3
+Time: 307
+Artist: Parov Stelar
+Title: The Mojo Radio Gang (Clubversion)
+Album: Coco (Disc 2)
+Track: 13
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252317
+song_end
+end: New Music/Parov Stelar
 directory: Prodigy-Invaders Must Die 2009 2CD + XviD+Cov
 mtime: 1298267839
 begin: New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov
