@@ -27,5 +27,6 @@ set newtab=all
 
 " Define style overrides.
 style -name=greymono www.dgp.toronto.edu body { font-family: monospace; bgcolor: #CCCCCC }
+style -name=archbbs  bbs.archlinux.org .pun code { font-size: 1.5em; }
 
 " vim: set ft=vim:

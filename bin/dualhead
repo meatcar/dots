@@ -4,3 +4,5 @@
 xrandr --output LVDS --auto
 xrandr --output DVI-0 --auto
 xrandr --output DVI-0 --right-of LVDS --rotate left
+
+nitrogen --restore

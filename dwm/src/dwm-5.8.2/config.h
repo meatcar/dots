@@ -93,12 +93,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_t,      rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
-	{ MODKEY,                       XK_Tab,    rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
-	{ MODKEY|ShiftMask,             XK_Tab,    rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
-	{ MODKEY|ShiftMask,             XK_m,      mirrorlayout,     {0} },
-	{ MODKEY|ShiftMask,             XK_h,      shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
-	{ MODKEY|ShiftMask,             XK_l,      shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
+  	{ MODKEY|ShiftMask,             XK_t,      rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
+  	{ MODKEY,                       XK_Tab,    rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+  	{ MODKEY|ShiftMask,             XK_Tab,    rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+  	{ MODKEY|ShiftMask,             XK_m,      mirrorlayout,     {0} },
+  	{ MODKEY|ShiftMask,             XK_h,      shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
+  	{ MODKEY|ShiftMask,             XK_l,      shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
 };
 
 /* button definitions */
