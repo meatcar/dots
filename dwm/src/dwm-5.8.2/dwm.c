@@ -138,6 +138,7 @@ static Bool applysizehints(Client *c, int *x, int *y, int *w, int *h, Bool inter
 static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
+static void attachaside(Client *c);
 static void attachstack(Client *c);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
@@ -217,7 +218,6 @@ static void updatestatus(void);
 static void updatetitle(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
-static void warp(const Client *c);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -256,7 +256,6 @@ static Display *dpy;
 static DC dc;
 static Monitor *mons = NULL, *selmon = NULL;
 static Window root;
-static Bool warpmouse = True;
 static int globalborder ;
 static int globalborder ;
 
@@ -397,6 +396,17 @@ attach(Client *c) {
 }
 
 void
+attachaside(Client *c) {
+	Client *at = nexttiled(c->mon->clients);;
+	if(c->mon->sel == NULL || c->mon->sel->isfloating || !at) {
+		attach(c);
+		return;
+	}
+	c->next = at->next;
+	at->next = c;
+}
+
+void
 attachstack(Client *c) {
 	c->snext = c->mon->stack;
 	c->mon->stack = c;
@@ -437,12 +447,10 @@ buttonpress(XEvent *e) {
 		focus(c);
 		click = ClkClientWin;
 	}
-	warpmouse = False;
 	for(i = 0; i < LENGTH(buttons); i++)
 		if(click == buttons[i].click && buttons[i].func && buttons[i].button == ev->button
 		&& CLEANMASK(buttons[i].mask) == CLEANMASK(ev->state))
 			buttons[i].func(click == ClkTagBar && buttons[i].arg.i == 0 ? &arg : &buttons[i].arg);
-	warpmouse = True;
 }
 
 void
@@ -861,7 +869,6 @@ focusmon(const Arg *arg) {
 	unfocus(selmon->sel, True);
 	selmon = m;
 	focus(NULL);
-	warp(selmon->sel);
 }
 
 void
@@ -887,7 +894,6 @@ focusstack(const Arg *arg) {
 	if(c) {
 		focus(c);
 		restack(selmon);
-		warp(c);
 	}
 }
 
@@ -1153,13 +1159,12 @@ manage(Window w, XWindowAttributes *wa) {
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if(c->isfloating)
 		XRaiseWindow(dpy, c->win);
-	attach(c);
+	attachaside(c);
 	attachstack(c);
 	XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
 	XMapWindow(dpy, c->win);
 	setclientstate(c, NormalState);
 	arrange(c->mon);
-	warp(c);
 }
 
 void
@@ -1627,7 +1632,6 @@ tag(const Arg *arg) {
 	if(selmon->sel && arg->ui & TAGMASK) {
 		selmon->sel->tags = arg->ui & TAGMASK;
 		arrange(selmon);
-		warp(selmon->sel);
 	}
 }
 
@@ -1707,7 +1711,6 @@ toggleview(const Arg *arg) {
 	if(newtagset) {
 		selmon->tagset[selmon->seltags] = newtagset;
 		arrange(selmon);
-		warp(selmon->sel);
 	}
 }
 
@@ -1996,26 +1999,6 @@ view(const Arg *arg) {
 	selmon->msplit = selmon->msplits[selmon->curtag];
 	arrange(selmon);
 }
-
-void
-warp(const Client *c) {
-	Window dummy;
-	int x, y, di;
-	unsigned int dui;
-
-	if(!c || !warpmouse)
-		return;
-	XQueryPointer(dpy, root, &dummy, &dummy, &x, &y, &di, &di, &dui);
-	if(x > c->x && y > c->y && x < c->y + c->w && y < c->y + c->h)
-		return;
-	XSelectInput(dpy, root, SubstructureRedirectMask
-		& EnterWindowMask);
-	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0,
-		c->w / 2, c->h / 2);
-	XSelectInput(dpy, root, SubstructureRedirectMask | SubstructureNotifyMask
-		| EnterWindowMask | LeaveWindowMask | StructureNotifyMask);
-}
-
 
 Client *
 wintoclient(Window w) {

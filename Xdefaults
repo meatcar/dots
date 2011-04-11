@@ -87,7 +87,7 @@ URxvt.buffered:         true
 URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
 URxvt.boldFont:         xft:Terminus:pixelsize=10:antialias=false
 URxvt.perl-ext-common:  default,matcher
-URxvt.title:            mC Term
+URxvt.title:            urxvtc
 URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1 
 URxvt.urgentOnBell:     true
