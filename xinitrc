@@ -6,6 +6,9 @@
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
 
+# set capslock to escape.
+#xmodmap -e "remove lock = Caps_Lock"
+#xmodmap -e "keysym Caps_Lock = Escape"
 
 # set dual-head
 dualhead &
@@ -17,10 +20,9 @@ xcompmgr -c -C&
 urxvtd &
 parcellite &
 wicd-client &
-deluged &
-nitrogen --restore &
+# deluged &
 sleep 1
-blueman-applet &
+# blueman-applet &
 
 # Do wm-dependent stuff.
 case $1 in
@@ -37,17 +39,8 @@ case $1 in
     *)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-
-        while true; do 
-            if acpi -a | grep off-line > /dev/null; then
-                xsetroot -name "Bat. $( acpi -b | awk '{ print $4 " " $5 }' | tr -d ',' ) | Vol. $(amixer get Master | tail -1 | awk '{ print $5}' | tr -d '[]') | $(date +"%a, %b %d %R")"
-            else
-                xsetroot -name "Vol. $(amixer get Master | tail -1 | awk '{ print $5}' | tr -d '[]') | $(date +"%a, %b %d %R")"
-            fi
-            sleep 1s   
-        done &
-
-
+        
+        statnot ~/.dwm/statnot.conf.py &
         startdwm
         ;;
 esac

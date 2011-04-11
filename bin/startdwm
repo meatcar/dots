@@ -1,8 +1,14 @@
 #!/bin/sh 
 
-while true; do
-    # Log
-    dwm 2> ~/.dwm.log 
-    # not log 
-    dwm >/dev/nukk 2>&1
+while true; do 
+    case $1 in
+        -q)
+            # not log 
+            dwm >/dev/null 2>&1
+            ;;
+        *)
+            # Log
+            dwm 2> ~/.dwm.log 
+            ;;
+    esac
 done
