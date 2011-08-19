@@ -22,7 +22,9 @@ parcellite &
 wicd-client &
 # deluged &
 sleep 1
-# blueman-applet &
+#blueman-applet &
+VBoxClient-all &
+sh ~/.fehbg &
 
 # Do wm-dependent stuff.
 case $1 in
