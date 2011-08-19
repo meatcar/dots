@@ -16,7 +16,7 @@ compinit
 ####################################################
 # Set the prompt.
 autoload -U colors && colors
-PROMPT="%{$fg[cyan]%}%m%{$fg[green]%} %#%{$reset_color%} "
+PROMPT="%{$fg[blue]%}%m%{$fg[green]%} %#%{$reset_color%} "
 RPROMPT="%{$fg[magenta]%}%~%{$reset_color%}"
 ####################################################
 # Set Keybindings.
@@ -42,7 +42,7 @@ bindkey "\e[F" end-of-line
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/.cabal/bin"
+export PATH="/home/meatcar/.bin:${PATH}:/home/meatcar/.cabal/bin"
 ####################################################
 # Set up colorings
 #
