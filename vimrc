@@ -12,6 +12,7 @@ colorscheme molokai     "define syntax color scheme
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap     " keep swap files in one place
 set bdir=~/.vim/backup  " keep backups in one place
+set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
 set mouse=a             " allow mouse input in all modes
@@ -35,57 +36,7 @@ set previewheight=5     " default height for a preview window (def:12)
 "set textwidth=79       " insert carriage return after n cols wide
 syntax on               " enable syntax highlighting
 filetype plugin indent on   " enable filetype-sensitive plugins and indenting
-let g:pydiction_location = '/usr/share/pydiction/complete-dict'
 set grepprg=grep\ -nH\ $*
-
-" latex stuff. ---------------------------------------------------------
-"
-let g:tex_flavor = "latex"
-
-" c stuff. ------------------------------------------------------------
-"
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
-    set cst
-    set nocsverb
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
-endif
-
-" python hiliting ------------------------------------------------------
-
-:let python_highlight_numbers = 1
-:let python_highlight_builtins = 1
-:let python_highlight_exceptions = 1
-:let python_highlight_space_errors = 1
-highlight OverLength ctermbg=black
-match OverLength /\%>79v.\+/
-
-" html conversion (:help 2html.vim) ------------------------------------
-
-let g:html_use_css = 1
-let g:use_xhtml = 1
-let g:html_use_encoding = "utf8"
-let g:html_number_lines = 1
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-
-" statusline -----------------------------------------------------------
-
-set cmdheight=1         " command line height
-set laststatus=2        " condition to show status line, 2=always.
-set ruler               " show cursor position in status line
-set showmode            " show mode in status line
-set showcmd             " show partial commands in status line
-" left: fileformat, filetype, fileencoding, RO/HELP/PREVIEW, modified flag filepath
-" right: buffer num, lines/total, cols/virtual, display percentage
-set statusline=%([%{&ff}]%)%(:[%{&fenc}]%)%(:%y%)\ \ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ \ %1.7l/%L,%1.7c%V\ \ [%P]
 
 " tabs and indenting ---------------------------------------------------
 
@@ -109,6 +60,74 @@ set ignorecase          " case-insensitive search
 set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
 
+" Vundle stuff ---------------------------------------------------------
+call vundle#rc()
+ " let Vundle manage Vundle
+ " required! 
+Bundle 'gmarik/vundle'
+Bundle 'molokai'
+Bundle 'Markdown'
+Bundle 'Markdown-syntax'
+Bundle 'LaTeX-Help'
+Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+Bundle 'snipmate-snippets'
+Bundle 'surround.vim'
+Bundle 'repeat.vim'
+Bundle 'EasyMotion'
+
+" key-bindings --------------------------------------------------------
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+" latex stuff. ---------------------------------------------------------
+"
+let g:tex_flavor = "latex"
+
+" c stuff. ------------------------------------------------------------
+"
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+
+" statusline -----------------------------------------------------------
+
+set cmdheight=1         " command line height
+set laststatus=2        " condition to show status line, 2=always.
+set ruler               " show cursor position in status line
+set showmode            " show mode in status line
+set showcmd             " show partial commands in status line
+
+set statusline=
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4c\ %*             "column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#dd3333 guibg=#222222
+hi User3 guifg=#ff66ff guibg=#222222
+hi User4 guifg=#a0ee40 guibg=#222222
+hi User5 guifg=#eeee40 guibg=#222222
+
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
@@ -118,26 +137,8 @@ nmap q: :q<cr>
 nnoremap ; :
 vnoremap ; :
 
-" F2 selects all
-"nnoremap <F2> ggVG
-
-" F3 toggles wordwrap
-"nnoremap <F3> :set invwrap wrap?<CR>
-
-" F5 toggles paste mode
-"set pastetoggle=<F5>
-
-" F6 toggles spell checking
-"map <F6> :setlocal spell! spelllang=en_ca<cr>
-"imap <F6> <C-o>:setlocal spell! spelllang=en_ca<cr>
-
-" F9 runs 2html conversion
-"map :runtime syntax/2html.vim
-
 " strip ^M linebreaks from dos formatted files
 map M :%s/
-"$//g
-
 
 " firefox style tabbing ------------------------------------------------
 
@@ -156,12 +157,10 @@ map <a-8> 8gt
 map <a-9> 9gt
 map <a-0> 10gt
 
-
 " highlight extra whitespace and tabs ----------------------------------
 
 "highlight RedundantSpaces ctermbg=red guibg=red`
 "match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
-
 
 " gvim settings --------------------------------------------------------
 
@@ -169,7 +168,7 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ 9     " backslash any spaces
+        set guifont=Monaco:h8:cANSI "set the font
         set guioptions-=T      "hide the toolbar
         "colorscheme evening 
         "set columns=118         "previous values: 120
@@ -177,37 +176,13 @@ if has ("gui_running")
     endif
 endif
 
-" HACK: I don't want a .gvimrc but some stuff gets reset during GUI init,
-" therefore re-source .vimrc at GUI start
-if has("gui")
-    "autocmd GUIEnter * source <sfile>
-endif
-
-
 " autocmd rules --------------------------------------------------------
 
 if has("autocmd")
     au BufRead,BufNewFile PKGBUILD set ft=sh
-    "autocmd BufRead *.txt set tw=78             " limit width to n cols for txt files
-    "autocmd BufRead /tmp/mutt-* set tw=72 ft=mail nocindent spell  " width, mail syntax hilight, spellcheck
     " always jump to the last cursor position
     autocmd BufReadPost * if line("'\"")>0 && line("'\"")<=line("$")|exe "normal g`\""|endif
 
-    " experimental stuff
-    "au FileType css setlocal ofu=csscomplete#CompleteCSS    " ala phrak
-    "
     "remove trailing whitespace in python files upon save
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 endif
-
-" PYTHON-VIM  -----------------------------------------------------------
-
-" tasklist.vim
-map T :TaskList<CR>
-map P :TlistToggle<CR>
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-"---------------------------
-"mutt stuff
-
