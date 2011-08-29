@@ -1,6 +1,6 @@
 info_begin
 format: 1
-mpd_version: 0.16.2
+mpd_version: 0.16.3
 fs_charset: UTF-8
 tag: Artist
 tag: ArtistSort
@@ -21,18 +21,24 @@ tag: MUSICBRAINZ_ALBUMARTISTID
 tag: MUSICBRAINZ_TRACKID
 info_end
 directory: Flacs
-mtime: 1301252763
+mtime: 1305210811
 begin: Flacs
 directory: Absolute Elsewhere - In Search of Ancient Gods (UK LP RIP - 9624 to 4416 w Izotope)
 mtime: 1270343585
 begin: Flacs/Absolute Elsewhere - In Search of Ancient Gods (UK LP RIP - 9624 to 4416 w Izotope)
 song_begin: Side One.flac
 Time: 1557
-mtime: 1267295436
+Album: Some EP
+Artist: Absolute Elsewhere
+Title: Side One
+mtime: 1306878238
 song_end
 song_begin: Side Two.flac
 Time: 1504
-mtime: 1267376632
+Album: Some EP
+Artist: Absolute Elsewhere
+Title: Side Two
+mtime: 1306878238
 song_end
 end: Flacs/Absolute Elsewhere - In Search of Ancient Gods (UK LP RIP - 9624 to 4416 w Izotope)
 directory: African Guitar Summit - 2004
@@ -187,113 +193,113 @@ mtime: 1269298250
 begin: Flacs/Air-10000 Hz Legend-2001 [FLAC+Artwork]
 song_begin: 01 Electronic Performers.flac
 Time: 336
-Artist: Air
-Title: Electronic Performers
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 01
 Genre: Electronica
-mtime: 1267480756
+Title: Electronic Performers
+Track: 1
+mtime: 1303952939
 song_end
 song_begin: 02 How Does It Make You Feel .flac
 Time: 278
 Album: 10000 Hz Legend
-Artist: Air
+Artist: AIR
 Date: 2001
 Genre: Electronica
 Title: How Does It Make You Feel?
-Track: 02
-mtime: 1290742407
+Track: 2
+mtime: 1303952939
 song_end
 song_begin: 03 Radio #1.flac
 Time: 263
-Artist: Air
-Title: Radio #1
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 03
 Genre: Electronica
-mtime: 1267481034
+Title: Radio #1
+Track: 3
+mtime: 1303952939
 song_end
 song_begin: 04 The Vagabond.flac
 Time: 338
-Artist: Air
-Title: The Vagabond
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 04
 Genre: Electronica
-mtime: 1267481027
+Title: The Vagabond
+Track: 4
+mtime: 1303952939
 song_end
 song_begin: 05 Radian.flac
 Time: 458
-Artist: Air
-Title: Radian
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 05
 Genre: Electronica
-mtime: 1267480777
+Title: Radian
+Track: 5
+mtime: 1303952939
 song_end
 song_begin: 06 Lucky And Unhappy.flac
 Time: 272
-Artist: Air
-Title: Lucky And Unhappy
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 06
 Genre: Electronica
-mtime: 1267480683
+Title: Lucky And Unhappy
+Track: 6
+mtime: 1303952939
 song_end
 song_begin: 07 Sex Born Poison.flac
 Time: 379
-Artist: Air
-Title: Sex Born Poison
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 07
 Genre: Electronica
-mtime: 1267480713
+Title: Sex Born Poison
+Track: 7
+mtime: 1303952939
 song_end
 song_begin: 08 People In The City.flac
 Time: 298
-Artist: Air
-Title: People In The City
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 08
 Genre: Electronica
-mtime: 1267480734
+Title: People In The City
+Track: 8
+mtime: 1303952939
 song_end
 song_begin: 09 Wonder Milky Bitch.flac
 Time: 351
-Artist: Air
-Title: Wonder Milky Bitch
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 09
 Genre: Electronica
-mtime: 1267480706
+Title: Wonder Milky Bitch
+Track: 9
+mtime: 1303952939
 song_end
 song_begin: 10 Don't Be Light.flac
 Time: 379
-Artist: Air
-Title: Don't Be Light
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 10
 Genre: Electronica
-mtime: 1267481026
+Title: Don't Be Light
+Track: 10
+mtime: 1303952939
 song_end
 song_begin: 11 Caramel Prisoner.flac
 Time: 297
-Artist: Air
-Title: Caramel Prisoner
 Album: 10000 Hz Legend
+Artist: AIR
 Date: 2001
-Track: 11
 Genre: Electronica
-mtime: 1267480879
+Title: Caramel Prisoner
+Track: 11
+mtime: 1303952939
 song_end
 end: Flacs/Air-10000 Hz Legend-2001 [FLAC+Artwork]
 directory: Gogol Bordello
@@ -434,6 +440,153 @@ mtime: 1290668373
 song_end
 end: Flacs/Gogol Bordello/Transcontinental Hustle
 end: Flacs/Gogol Bordello
+directory: Kanye West - My Beautiful Dark Twisted Fantasy [Explicit] (2010)
+mtime: 1305210871
+begin: Flacs/Kanye West - My Beautiful Dark Twisted Fantasy [Explicit] (2010)
+song_begin: 01 Kanye West - Dark Fantasy.flac
+Time: 281
+Title: Dark Fantasy
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 1
+Disc: 1
+Date: 2010
+mtime: 1305206019
+song_end
+song_begin: 02 Kanye West - Gorgeous [feat. Kid Cudi].flac
+Time: 358
+Title: Gorgeous [feat. Kid Cudi]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 2
+Disc: 1
+Date: 2010
+mtime: 1305206029
+song_end
+song_begin: 03 Kanye West - POWER.flac
+Time: 293
+Title: POWER
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 3
+Disc: 1
+Date: 2010
+mtime: 1305206011
+song_end
+song_begin: 04 Kanye West - All Of The Lights [Interlude].flac
+Time: 63
+Title: All Of The Lights [Interlude]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 4
+Disc: 1
+Date: 2010
+mtime: 1305205777
+song_end
+song_begin: 05 Kanye West - All Of The Lights.flac
+Time: 300
+Title: All Of The Lights
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 5
+Disc: 1
+Date: 2010
+mtime: 1305205996
+song_end
+song_begin: 06 Kanye West - Monster [feat. Jay-Z, Rick Ross, Nicki Minaj & Bon Iver].flac
+Time: 379
+Title: Monster [feat. Jay-Z, Rick Ross, Nicki Minaj & Bon Iver]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 6
+Disc: 1
+Date: 2010
+mtime: 1305206024
+song_end
+song_begin: 07 Kanye West - So Appalled [feat. Jay-Z, Pusha T, CyHi Da Prynce, Swizz Beatz & The RZA].flac
+Time: 399
+Title: So Appalled [feat. Jay-Z, Pusha T, CyHi Da Prynce, Swizz Beatz & The RZA]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 7
+Disc: 1
+Date: 2010
+mtime: 1305206021
+song_end
+song_begin: 08 Kanye West - Devil In A New Dress [feat. Rick Ross].flac
+Time: 353
+Title: Devil In A New Dress [feat. Rick Ross]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 8
+Disc: 1
+Date: 2010
+mtime: 1305206029
+song_end
+song_begin: 09 Kanye West - Runaway [feat. Pusha T].flac
+Time: 549
+Title: Runaway [feat. Pusha T]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 9
+Disc: 1
+Date: 2010
+mtime: 1305206027
+song_end
+song_begin: 10 Kanye West - Hell Of A Life.flac
+Time: 328
+Title: Hell Of A Life
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 10
+Disc: 1
+Date: 2010
+mtime: 1305206004
+song_end
+song_begin: 11 Kanye West - Blame Game [feat. John Legend].flac
+Time: 470
+Title: Blame Game [feat. John Legend]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 11
+Disc: 1
+Date: 2010
+mtime: 1305206020
+song_end
+song_begin: 12 Kanye West - Lost In The World [feat. Bon Iver].flac
+Time: 257
+Title: Lost In The World [feat. Bon Iver]
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 12
+Disc: 1
+Date: 2010
+mtime: 1305206032
+song_end
+song_begin: 13 Kanye West - Who Will Survive In America.flac
+Time: 99
+Title: Who Will Survive In America
+Artist: Kanye West
+Album: My Beautiful Dark Twisted Fantasy
+Genre: Rap
+Track: 13
+Disc: 1
+Date: 2010
+mtime: 1305206014
+song_end
+end: Flacs/Kanye West - My Beautiful Dark Twisted Fantasy [Explicit] (2010)
 directory: Modeselektor - 2005 - Hello Mom!
 mtime: 1269298297
 begin: Flacs/Modeselektor - 2005 - Hello Mom!
@@ -594,6 +747,140 @@ Track: 13/13
 mtime: 1267329403
 song_end
 end: Flacs/Modeselektor - 2005 - Hello Mom!
+directory: TV on the Radio - Nine Types of Light [FLAC]
+mtime: 1302835871
+begin: Flacs/TV on the Radio - Nine Types of Light [FLAC]
+song_begin: 01. Second Song.flac
+Time: 261
+Artist: TV on the Radio
+Title: Second Song
+Album: Nine Types of Light
+Date: 2011
+Track: 01
+Genre: Indie
+mtime: 1302820388
+song_end
+song_begin: 02. Keep Your Heart.flac
+Time: 343
+Artist: TV on the Radio
+Title: Keep Your Heart
+Album: Nine Types of Light
+Date: 2011
+Track: 02
+Genre: Indie
+mtime: 1302820368
+song_end
+song_begin: 03. You.flac
+Time: 245
+Artist: TV on the Radio
+Title: You
+Album: Nine Types of Light
+Date: 2011
+Track: 03
+Genre: Indie
+mtime: 1302820381
+song_end
+song_begin: 04. No Future Shock.flac
+Time: 243
+Artist: TV on the Radio
+Title: No Future Shock
+Album: Nine Types of Light
+Date: 2011
+Track: 04
+Genre: Indie
+mtime: 1302820389
+song_end
+song_begin: 05. Killer Crane.flac
+Time: 375
+Artist: TV on the Radio
+Title: Killer Crane
+Album: Nine Types of Light
+Date: 2011
+Track: 05
+Genre: Indie
+mtime: 1302820371
+song_end
+song_begin: 06. Will Do.flac
+Time: 225
+Artist: TV on the Radio
+Title: Will Do
+Album: Nine Types of Light
+Date: 2011
+Track: 06
+Genre: Indie
+mtime: 1302820376
+song_end
+song_begin: 07. New Cannonball Blues.flac
+Time: 274
+Artist: TV on the Radio
+Title: New Cannonball Blues
+Album: Nine Types of Light
+Date: 2011
+Track: 07
+Genre: Indie
+mtime: 1302821372
+song_end
+song_begin: 08. Repetition.flac
+Time: 225
+Artist: TV on the Radio
+Title: Repetition
+Album: Nine Types of Light
+Date: 2011
+Track: 08
+Genre: Indie
+mtime: 1302821375
+song_end
+song_begin: 09. Forgotten.flac
+Time: 220
+Artist: TV on the Radio
+Title: Forgotten
+Album: Nine Types of Light
+Date: 2011
+Track: 09
+Genre: Indie
+mtime: 1302820379
+song_end
+song_begin: 10. Caffeinated Consciousness.flac
+Time: 200
+Artist: TV on the Radio
+Title: Caffeinated Consciousness
+Album: Nine Types of Light
+Date: 2011
+Track: 10
+Genre: Indie
+mtime: 1302820357
+song_end
+song_begin: 11. All Falls Down.flac
+Time: 295
+Artist: TV on the Radio
+Title: All Falls Down
+Album: Nine Types of Light
+Date: 2011
+Track: 11
+Genre: Indie
+mtime: 1302820380
+song_end
+song_begin: 12. Will Do (Switch Remix).flac
+Time: 321
+Artist: TV on the Radio
+Title: Will Do (Switch Remix)
+Album: Nine Types of Light
+Date: 2011
+Track: 12
+Genre: Indie
+mtime: 1302820359
+song_end
+song_begin: 13. Will Do (XXXChange Dancehall Mix).flac
+Time: 225
+Artist: TV on the Radio
+Title: Will Do (XXXChange Dancehall Mix)
+Album: Nine Types of Light
+Date: 2011
+Track: 13
+Genre: Indie
+mtime: 1302820380
+song_end
+end: Flacs/TV on the Radio - Nine Types of Light [FLAC]
 directory: Tashi Lhuno Monks - Dawn Till Dusk - Sacred Tibetan Chant, Mantras & Music
 mtime: 1269298327
 begin: Flacs/Tashi Lhuno Monks - Dawn Till Dusk - Sacred Tibetan Chant, Mantras & Music
@@ -856,9 +1143,156 @@ mtime: 1290049662
 song_end
 end: Flacs/The Legendary Pink Dots/Seconds Late for the Brighton Line
 end: Flacs/The Legendary Pink Dots
+directory: Zaz
+mtime: 1298408800
+begin: Flacs/Zaz
+song_begin: Les passants.flac
+Time: 213
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Les passants
+Track: 1
+mtime: 1303952903
+song_end
+song_begin: Je veux.flac
+Time: 220
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Je veux
+Track: 2
+mtime: 1303952911
+song_end
+song_begin: Le long de la route.flac
+Time: 218
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Le long de la route
+Track: 3
+mtime: 1303952903
+song_end
+song_begin: La fee.flac
+Time: 174
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: La fee
+Track: 4
+mtime: 1303952907
+song_end
+song_begin: Trop sensible.flac
+Time: 240
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Trop sensible
+Track: 5
+mtime: 1303952903
+song_end
+song_begin: Prends garde à ta langue.flac
+Time: 222
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Prends garde à ta langue
+Track: 6
+mtime: 1303952884
+song_end
+song_begin: Ni oui Ni non.flac
+Time: 212
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Ni oui Ni non
+Track: 7
+mtime: 1303952903
+song_end
+song_begin: Port Coton.flac
+Time: 177
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Port Coton
+Track: 8
+mtime: 1303952907
+song_end
+song_begin: J'aime à nouveau.flac
+Time: 231
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: J'aime à nouveau
+Track: 9
+mtime: 1303952903
+song_end
+song_begin: Dans ma rue.flac
+Time: 281
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Dans ma rue
+Track: 10
+mtime: 1303952888
+song_end
+song_begin: Éblouie par la nuit.flac
+Time: 161
+Album: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+AlbumArtist: Zaz
+Artist: Zaz
+Date: 2010
+Genre: Jazz
+Title: Éblouie par la nuit
+Track: 11
+mtime: 1303952907
+song_end
+end: Flacs/Zaz
 end: Flacs
 directory: Music
-mtime: 1298234736
+mtime: 1311083606
 begin: Music
 directory: AIR
 mtime: 1291259904
@@ -1055,7 +1489,10 @@ mtime: 1291082731
 begin: Music/Aaron Parks/Unknown Album
 song_begin: 3 Nemesis.mp3
 Time: 383
-mtime: 1271624456
+Artist: Aaron Parks
+Title: Nemesis
+Album: Invisible Cinema
+mtime: 1306878563
 song_end
 end: Music/Aaron Parks/Unknown Album
 end: Music/Aaron Parks
@@ -1663,7 +2100,7 @@ song_end
 end: Music/As Tall as Lions/Lafcadio
 end: Music/As Tall as Lions
 directory: Astor Piazzolla
-mtime: 1298225690
+mtime: 1306789382
 begin: Music/Astor Piazzolla
 directory: Ballet Tango
 mtime: 1291083021
@@ -1694,6 +2131,164 @@ Genre: Tango
 mtime: 1258503556
 song_end
 end: Music/Astor Piazzolla/Blow Up
+directory: Metaform - The Electric Mist (MP3)
+mtime: 1306789391
+begin: Music/Astor Piazzolla/Metaform - The Electric Mist (MP3)
+song_begin: 01_ Metaform - ElectricEyes.mp3
+Time: 203
+Artist: Metaform
+AlbumArtist: Metaform
+Title: ElectricEyes
+Album: The Electric Mist
+Track: 01
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 02_ Metaform - RevengeOfANerd.mp3
+Time: 176
+Artist: Metaform
+AlbumArtist: Metaform
+Title: RevengeOfANerd
+Album: The Electric Mist
+Track: 02
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 03_ Metaform - Candy.mp3
+Time: 162
+Artist: Metaform
+AlbumArtist: Metaform
+Title: Candy
+Album: The Electric Mist
+Track: 03
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 04_ Metaform - OCD.mp3
+Time: 190
+Artist: Metaform
+AlbumArtist: Metaform
+Title: OCD
+Album: The Electric Mist
+Track: 04
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 05_ Metaform - My_Love.mp3
+Time: 187
+Artist: Metaform
+AlbumArtist: Metaform
+Title: My_Love
+Album: The Electric Mist
+Track: 05
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 06_ Metaform - IDreamtOfTheMachine.mp3
+Time: 49
+Artist: Metaform
+AlbumArtist: Metaform
+Title: IDreamtOfTheMachine
+Album: The Electric Mist
+Track: 06
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 07_ Metaform - ItsGottaBe.mp3
+Time: 253
+Artist: Metaform
+AlbumArtist: Metaform
+Title: ItsGottaBe
+Album: The Electric Mist
+Track: 07
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 08_ Metaform - SecretlyAlone.mp3
+Time: 222
+Artist: Metaform
+AlbumArtist: Metaform
+Title: SecretlyAlone
+Album: The Electric Mist
+Track: 08
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 09_ Metaform - PopTheTrunk.mp3
+Time: 155
+Artist: Metaform
+AlbumArtist: Metaform
+Title: PopTheTrunk
+Album: The Electric Mist
+Track: 09
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 10_ Metaform - DoorNumberOne.mp3
+Time: 222
+Artist: Metaform
+AlbumArtist: Metaform
+Title: DoorNumberOne
+Album: The Electric Mist
+Track: 10
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 11_ Metaform - Introversion.mp3
+Time: 85
+Artist: Metaform
+AlbumArtist: Metaform
+Title: Introversion
+Album: The Electric Mist
+Track: 11
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 12_ Metaform - Premonition-2010-(featuring Azeem).mp3
+Time: 173
+Artist: Metaform
+AlbumArtist: Metaform
+Title: Premonition-2010-(featuring Azeem)
+Album: The Electric Mist
+Track: 12
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 13_ Metaform - StrangeGirl.mp3
+Time: 257
+Artist: Metaform
+AlbumArtist: Metaform
+Title: StrangeGirl
+Album: The Electric Mist
+Track: 13
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+song_begin: 14_ Metaform - TheMachineApproaches.mp3
+Time: 103
+Artist: Metaform
+AlbumArtist: Metaform
+Title: TheMachineApproaches
+Album: The Electric Mist
+Track: 14
+Genre: Alt. Rock
+Disc: /
+mtime: 1306879106
+song_end
+end: Music/Astor Piazzolla/Metaform - The Electric Mist (MP3)
 end: Music/Astor Piazzolla
 directory: Badlo
 mtime: 1291083192
@@ -3050,6 +3645,120 @@ mtime: 1232333411
 song_end
 end: Music/Buddhuza/Unknown Album
 end: Music/Buddhuza
+directory: C418 - 72 Minutes Of Fame
+mtime: 1311084333
+begin: Music/C418 - 72 Minutes Of Fame
+song_begin: 01. C418 - Timelapse Kingdom.mp3
+Time: 504
+Artist: C418
+AlbumArtist: C418
+Title: Timelapse Kingdom
+Album: 72 Minutes Of Fame
+Track: 01
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 02. C418 - United Colors of Scrapyard.mp3
+Time: 476
+Artist: C418
+AlbumArtist: C418
+Title: United Colors of Scrapyard
+Album: 72 Minutes Of Fame
+Track: 02
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 03. C418 - Alive.mp3
+Time: 334
+Artist: C418
+AlbumArtist: C418
+Title: Alive
+Album: 72 Minutes Of Fame
+Track: 03
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 04. C418 - I Jike my Lob.mp3
+Time: 383
+Artist: C418
+AlbumArtist: C418
+Title: I Jike my Lob
+Album: 72 Minutes Of Fame
+Track: 04
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 05. C418 - BD09.mp3
+Time: 159
+Artist: C418
+AlbumArtist: C418
+Title: BD09
+Album: 72 Minutes Of Fame
+Track: 05
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 06. C418 - You Have to Cut the Dope.mp3
+Time: 514
+Artist: C418
+AlbumArtist: C418
+Title: You Have to Cut the Dope
+Album: 72 Minutes Of Fame
+Track: 06
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 07. C418 - Marketing Squander Versus the Little Man.mp3
+Time: 523
+Artist: C418
+AlbumArtist: C418
+Title: Marketing Squander Versus the Little Man
+Album: 72 Minutes Of Fame
+Track: 07
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 08. C418 - From the Window.mp3
+Time: 419
+Artist: C418
+AlbumArtist: C418
+Title: From the Window
+Album: 72 Minutes Of Fame
+Track: 08
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 09. C418 - Along the Busiest of Roads.mp3
+Time: 311
+Artist: C418
+AlbumArtist: C418
+Title: Along the Busiest of Roads
+Album: 72 Minutes Of Fame
+Track: 09
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 10. C418 - Welcome Back to the Machine.mp3
+Time: 318
+Artist: C418
+AlbumArtist: C418
+Title: Welcome Back to the Machine
+Album: 72 Minutes Of Fame
+Track: 10
+Date: 2011
+mtime: 1311084431
+song_end
+song_begin: 11. C418 - Stilbruch.mp3
+Time: 380
+Artist: C418
+AlbumArtist: C418
+Title: Stilbruch
+Album: 72 Minutes Of Fame
+Track: 11
+Date: 2011
+mtime: 1311084431
+song_end
+end: Music/C418 - 72 Minutes Of Fame
 directory: Cage The Elephant
 mtime: 1298223098
 begin: Music/Cage The Elephant
@@ -6260,6 +6969,158 @@ mtime: 1258503494
 song_end
 end: Music/Dan Le Sac VS Scroobius Pip/Angels
 end: Music/Dan Le Sac VS Scroobius Pip
+directory: Dan Mangan
+mtime: 1303068306
+begin: Music/Dan Mangan
+directory: Nice, Nice, Very Nice
+mtime: 1303068328
+begin: Music/Dan Mangan/Nice, Nice, Very Nice
+song_begin: 01 Road Regrets.mp3
+Time: 271
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Road Regrets
+Album: Nice, Nice, Very Nice
+Track: 1/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989173
+song_end
+song_begin: 02 Robots.mp3
+Time: 245
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Robots
+Album: Nice, Nice, Very Nice
+Track: 2/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989174
+song_end
+song_begin: 03 The Indie Queens Are Waiting.mp3
+Time: 218
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: The Indie Queens Are Waiting
+Album: Nice, Nice, Very Nice
+Track: 3/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989174
+song_end
+song_begin: 04 Sold.mp3
+Time: 229
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Sold
+Album: Nice, Nice, Very Nice
+Track: 4/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989160
+song_end
+song_begin: 05 Fair Verona.mp3
+Time: 349
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Fair Verona
+Album: Nice, Nice, Very Nice
+Track: 5/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989173
+song_end
+song_begin: 06 You Silly Git.mp3
+Time: 225
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: You Silly Git
+Album: Nice, Nice, Very Nice
+Track: 6/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989169
+song_end
+song_begin: 07 Tina's Glorious Comeback.mp3
+Time: 161
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Tina's Glorious Comeback
+Album: Nice, Nice, Very Nice
+Track: 7/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989175
+song_end
+song_begin: 08 Et Les Mots Croisés.mp3
+Time: 202
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Et Les Mots Croisés
+Album: Nice, Nice, Very Nice
+Track: 8/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989164
+song_end
+song_begin: 09 Some People.mp3
+Time: 217
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Some People
+Album: Nice, Nice, Very Nice
+Track: 9/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989170
+song_end
+song_begin: 10 Pine For Cedars.mp3
+Time: 197
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Pine For Cedars
+Album: Nice, Nice, Very Nice
+Track: 10/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989167
+song_end
+song_begin: 11 Basket.mp3
+Time: 233
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Basket
+Album: Nice, Nice, Very Nice
+Track: 11/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989166
+song_end
+song_begin: 12 Set The Sails.mp3
+Time: 150
+Artist: Dan Mangan
+AlbumArtist: Dan Mangan
+Title: Set The Sails
+Album: Nice, Nice, Very Nice
+Track: 12/12
+Date: 2010
+Genre: Alternative Rock
+Disc: 1/1
+mtime: 1302989166
+song_end
+end: Music/Dan Mangan/Nice, Nice, Very Nice
+end: Music/Dan Mangan
 directory: Daniel Mustard
 mtime: 1291259893
 begin: Music/Daniel Mustard
@@ -6320,11 +7181,15 @@ mtime: 1291259987
 begin: Music/Dave Soldier_Komar_Melamid/Unknown Album
 song_begin: KomarMelamid_The-Most-UnwantedSong.mp3
 Time: 1319
-mtime: 1271633261
+Artist: Komar Melamid
+Title: The Most Unwanted Song
+mtime: 1306878612
 song_end
 song_begin: KomarMelamid_The-Most-Wanted-Song.mp3
 Time: 309
-mtime: 1271633298
+Artist: Komar Melamid
+Title: The Most Wanted Music
+mtime: 1306878612
 song_end
 end: Music/Dave Soldier_Komar_Melamid/Unknown Album
 end: Music/Dave Soldier_Komar_Melamid
@@ -6546,8 +7411,144 @@ song_end
 end: Music/Deadmau5/4x4=12 (Deluxe Version)
 end: Music/Deadmau5
 directory: Death Cab For Cutie
-mtime: 1291259907
+mtime: 1306853785
 begin: Music/Death Cab For Cutie
+directory: Death Cab For Cutie - Codes & Keys (2011)
+mtime: 1306853789
+begin: Music/Death Cab For Cutie/Death Cab For Cutie - Codes & Keys (2011)
+song_begin: 01 Home Is a Fire.mp3
+Time: 244
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Home Is a Fire
+Album: Codes and Keys
+Track: 1/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853745
+song_end
+song_begin: 02 Codes and Keys.mp3
+Time: 202
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Codes and Keys
+Album: Codes and Keys
+Track: 2/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853747
+song_end
+song_begin: 03 Some Boys.mp3
+Time: 191
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Some Boys
+Album: Codes and Keys
+Track: 3/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853745
+song_end
+song_begin: 04 Doors Unlocked and Open.mp3
+Time: 337
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Doors Unlocked and Open
+Album: Codes and Keys
+Track: 4/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 05 You Are a Tourist.mp3
+Time: 287
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: You Are a Tourist
+Album: Codes and Keys
+Track: 5/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 06 Unobstructed Views.mp3
+Time: 371
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Unobstructed Views
+Album: Codes and Keys
+Track: 6/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 07 Monday Morning.mp3
+Time: 259
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Monday Morning
+Album: Codes and Keys
+Track: 7/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 08 Portable Television.mp3
+Time: 173
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Portable Television
+Album: Codes and Keys
+Track: 8/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 09 Underneath the Sycamore.mp3
+Time: 207
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Underneath the Sycamore
+Album: Codes and Keys
+Track: 9/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853745
+song_end
+song_begin: 10 St. Peter's Cathedral.mp3
+Time: 270
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: St. Peter's Cathedral
+Album: Codes and Keys
+Track: 10/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+song_begin: 11 Stay Young, Go Dancing.mp3
+Time: 170
+Artist: Death Cab For Cutie
+AlbumArtist: Death Cab For Cutie
+Title: Stay Young, Go Dancing
+Album: Codes and Keys
+Track: 11/11
+Date: 2011
+Genre: Rock
+Disc: 1/1
+mtime: 1306853746
+song_end
+end: Music/Death Cab For Cutie/Death Cab For Cutie - Codes & Keys (2011)
 directory: Late Great Daniel Johnston [Disc 1] (The Covers)
 mtime: 1291259907
 begin: Music/Death Cab For Cutie/Late Great Daniel Johnston [Disc 1] (The Covers)
@@ -6638,15 +7639,15 @@ mtime: 1291259894
 begin: Music/Deathcab for Cutie/Unknown Album
 song_begin: A Lack Of Color.mp3
 Time: 216
-Artist: Deathcab for Cutie
+Artist: Death Cab For Cutie
 Title: A Lack Of Color
-mtime: 1210196638
+mtime: 1303952967
 song_end
 song_begin: Photobooth.mp3
 Time: 226
-Artist: Deathcab for Cutie
+Artist: Death Cab For Cutie
 Title: Photobooth
-mtime: 1244084887
+mtime: 1303952967
 song_end
 end: Music/Deathcab for Cutie/Unknown Album
 end: Music/Deathcab for Cutie
@@ -8675,6 +9676,365 @@ mtime: 1234747742
 song_end
 end: Music/Fernando E. Solanas/Sur
 end: Music/Fernando E. Solanas
+directory: Finley Quaye
+mtime: 1307987127
+begin: Music/Finley Quaye
+directory: Maverick A Strike
+mtime: 1307987120
+begin: Music/Finley Quaye/Maverick A Strike
+song_begin: 01 Ultra Stimulation.mp3
+Time: 235
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Ultra Stimulation
+Album: Maverick A Strike
+Track: 1
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475349
+song_end
+song_begin: 02 It's Great When We're Togethe.mp3
+Time: 222
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: It's Great When We're Together
+Album: Maverick A Strike
+Track: 2
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475264
+song_end
+song_begin: 03 Sunday Shining.mp3
+Time: 225
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Sunday Shining
+Album: Maverick A Strike
+Track: 3
+Date: 1997
+Genre: Rock
+Composer: Bob Marley/Finley Quaye
+mtime: 1307475359
+song_end
+song_begin: 04 Even After All.mp3
+Time: 238
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Even After All
+Album: Maverick A Strike
+Track: 4
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475229
+song_end
+song_begin: 05 Ride on and Turn the People On Finley.mp3
+Time: 231
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Ride on and Turn the People On
+Album: Maverick A Strike
+Track: 5
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475556
+song_end
+song_begin: 06 The Way of the Explosive.mp3
+Time: 287
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: The Way of the Explosive
+Album: Maverick A Strike
+Track: 6
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475606
+song_end
+song_begin: 07 Your Love Gets Sweeter.mp3
+Time: 195
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Your Love Gets Sweeter
+Album: Maverick A Strike
+Track: 7
+Date: 1997
+Genre: Rock
+mtime: 1307474885
+song_end
+song_begin: 08 Supreme I Preme.mp3
+Time: 302
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Supreme I Preme
+Album: Maverick A Strike
+Track: 8
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475585
+song_end
+song_begin: 09 Sweet and Loving Man.mp3
+Time: 205
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Sweet and Loving Man
+Album: Maverick A Strike
+Track: 9
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475205
+song_end
+song_begin: 10 Red Rolled and Seen.mp3
+Time: 251
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Red Rolled and Seen
+Album: Maverick A Strike
+Track: 10
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475576
+song_end
+song_begin: 11 Falling.mp3
+Time: 201
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Falling
+Album: Maverick A Strike
+Track: 11
+Date: 1997
+Genre: Rock
+Composer: Adhi Propfh/Finley Quaye
+mtime: 1307475363
+song_end
+song_begin: 12 I Need a Lover.mp3
+Time: 248
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: I Need a Lover
+Album: Maverick A Strike
+Track: 12
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475049
+song_end
+song_begin: 13 Maverick a Strike.mp3
+Time: 300
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Maverick a Strike
+Album: Maverick A Strike
+Track: 13
+Date: 1997
+Genre: Rock
+Composer: Finley Quaye
+mtime: 1307475212
+song_end
+end: Music/Finley Quaye/Maverick A Strike
+directory: The Epic Years
+mtime: 1307986929
+begin: Music/Finley Quaye/The Epic Years
+song_begin: 01 Sunday Shining.mp3
+Time: 225
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Sunday Shining
+Album: The Epic Years
+Track: 1
+Date: 2008
+Genre: Electronica
+Composer: Bob Marley/Finley Quaye
+mtime: 1307986923
+song_end
+song_begin: 02 It's Great When We're Together.mp3
+Time: 221
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: It's Great When We're Together
+Album: The Epic Years
+Track: 2
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986924
+song_end
+song_begin: 03 Dice.mp3
+Time: 257
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Dice
+Album: The Epic Years
+Track: 3
+Date: 2008
+Genre: Electronica
+Composer: Beth Orton/Finley Quaye/William Orbit
+mtime: 1307986924
+song_end
+song_begin: 04 Your Love Gets Sweeter [Abbey Road Version].mp3
+Time: 173
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Your Love Gets Sweeter [Abbey Road Version]
+Album: The Epic Years
+Track: 4
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986924
+song_end
+song_begin: 05 Even After All.mp3
+Time: 237
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Even After All
+Album: The Epic Years
+Track: 5
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986925
+song_end
+song_begin: 06 Something to Say.mp3
+Time: 217
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Something to Say
+Album: The Epic Years
+Track: 6
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986925
+song_end
+song_begin: 07 Ultra Stimulation.mp3
+Time: 235
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Ultra Stimulation
+Album: The Epic Years
+Track: 7
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye/George Oban
+mtime: 1307986926
+song_end
+song_begin: 08 Living Without You.mp3
+Time: 226
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Living Without You
+Album: The Epic Years
+Track: 8
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986926
+song_end
+song_begin: 09 Spiritualized.mp3
+Time: 218
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Spiritualized
+Album: The Epic Years
+Track: 9
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986926
+song_end
+song_begin: 10 Maverick a Strike.mp3
+Time: 300
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Maverick a Strike
+Album: The Epic Years
+Track: 10
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986926
+song_end
+song_begin: 11 When I Burn Off into the Distance.mp3
+Time: 175
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: When I Burn Off into the Distance
+Album: The Epic Years
+Track: 11
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986927
+song_end
+song_begin: 12 This Is How I Feel.mp3
+Time: 205
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: This Is How I Feel
+Album: The Epic Years
+Track: 12
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986927
+song_end
+song_begin: 13 White Paper.mp3
+Time: 280
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: White Paper
+Album: The Epic Years
+Track: 13
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986928
+song_end
+song_begin: 14 Hey Now.mp3
+Time: 257
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Hey Now
+Album: The Epic Years
+Track: 14
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986928
+song_end
+song_begin: 15 Sweet and Loving Man.mp3
+Time: 205
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Sweet and Loving Man
+Album: The Epic Years
+Track: 15
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986929
+song_end
+song_begin: 16 Burning.mp3
+Time: 167
+Artist: Finley Quaye
+AlbumArtist: Finley Quaye
+Title: Burning
+Album: The Epic Years
+Track: 16
+Date: 2008
+Genre: Electronica
+Composer: Finley Quaye
+mtime: 1307986929
+song_end
+end: Music/Finley Quaye/The Epic Years
+end: Music/Finley Quaye
 directory: Flaming Lips
 mtime: 1291259915
 begin: Music/Flaming Lips
@@ -8889,8 +10249,422 @@ song_end
 end: Music/Flight Of The Conchords/Unknown Album
 end: Music/Flight Of The Conchords
 directory: Flight of the Conchords
-mtime: 1293228398
+mtime: 1307542114
 begin: Music/Flight of the Conchords
+directory: Flight Of The Conchords
+mtime: 1307542110
+begin: Music/Flight of the Conchords/Flight Of The Conchords
+song_begin: 01 Foux Du Fafa.m4a
+Time: 167
+Title: Foux Du Fafa
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 1
+Disc: 1
+Date: 2008
+mtime: 1306958520
+song_end
+song_begin: 02 Inner City Pressure.m4a
+Time: 207
+Title: Inner City Pressure
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 2
+Disc: 1
+Date: 2008
+mtime: 1306957988
+song_end
+song_begin: 03 Hiphopopotamus Vs. Rhymenoceros.m4a
+Time: 129
+Title: Hiphopopotamus Vs. Rhymenoceros
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 3
+Disc: 1
+Date: 2008
+mtime: 1306957581
+song_end
+song_begin: 04 Think About It.m4a
+Time: 195
+Title: Think About It
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 4
+Disc: 1
+Date: 2008
+mtime: 1306959941
+song_end
+song_begin: 05 Ladies Of The World.m4a
+Time: 237
+Title: Ladies Of The World
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 5
+Disc: 1
+Date: 2008
+mtime: 1306959167
+song_end
+song_begin: 06 Mutha'uckas.m4a
+Time: 147
+Title: Mutha'uckas
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 6
+Disc: 1
+Date: 2008
+mtime: 1306958511
+song_end
+song_begin: 07 The Prince Of Parties.m4a
+Time: 109
+Title: The Prince Of Parties
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 7
+Disc: 1
+Date: 2008
+mtime: 1306959874
+song_end
+song_begin: 08 Leggy Blonde.m4a
+Time: 162
+Title: Leggy Blonde
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 8
+Disc: 1
+Date: 2008
+mtime: 1306958821
+song_end
+song_begin: 09 Robots.m4a
+Time: 223
+Title: Robots
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 9
+Disc: 1
+Date: 2008
+mtime: 1306959904
+song_end
+song_begin: 10 Boom.m4a
+Time: 138
+Title: Boom
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 10
+Disc: 1
+Date: 2008
+mtime: 1306957964
+song_end
+song_begin: 11 A Kiss Is Not A Contract.m4a
+Time: 115
+Title: A Kiss Is Not A Contract
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 11
+Disc: 1
+Date: 2008
+mtime: 1306957939
+song_end
+song_begin: 12 The Most Beautiful Girl (In The Room).m4a
+Time: 242
+Title: The Most Beautiful Girl (In The Room)
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 12
+Disc: 1
+Date: 2008
+mtime: 1306960210
+song_end
+song_begin: 13 Business Time.m4a
+Time: 245
+Title: Business Time
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 13
+Disc: 1
+Date: 2008
+mtime: 1306960421
+song_end
+song_begin: 14 Bowie.m4a
+Time: 196
+Title: Bowie
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 14
+Disc: 1
+Date: 2008
+mtime: 1306959941
+song_end
+song_begin: 15 Au Revoir.m4a
+Time: 22
+Title: Au Revoir
+Artist: Flight Of The Conchords
+Composer: Flight Of The Conchords
+Album: Flight Of The Conchords
+Genre: Books & Spoken
+Track: 15
+Disc: 1
+Date: 2008
+mtime: 1306948926
+song_end
+end: Music/Flight of the Conchords/Flight Of The Conchords
+directory: I Told You I Was Freaky
+mtime: 1307542114
+begin: Music/Flight of the Conchords/I Told You I Was Freaky
+song_begin: 01 Hurt Feelings.m4a
+Time: 158
+Title: Hurt Feelings
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 1
+Disc: 1
+Date: 2009
+mtime: 1306959959
+song_end
+song_begin: 02 Sugalumps.m4a
+Time: 132
+Title: Sugalumps
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 2
+Disc: 1
+Date: 2009
+mtime: 1306958794
+song_end
+song_begin: 03 We're Both In Love With A Sexy Lady.m4a
+Time: 169
+Title: We're Both In Love With A Sexy Lady
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 3
+Disc: 1
+Date: 2009
+mtime: 1306960254
+song_end
+song_begin: 04 I Told You I Was Freaky.m4a
+Time: 195
+Title: I Told You I Was Freaky
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 4
+Disc: 1
+Date: 2009
+mtime: 1306959371
+song_end
+song_begin: 05 Demon Woman.m4a
+Time: 120
+Title: Demon Woman
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 5
+Disc: 1
+Date: 2009
+mtime: 1306957956
+song_end
+song_begin: 06 Rambling Through The Avenues Of Time.m4a
+Time: 164
+Title: Rambling Through The Avenues Of Time
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 6
+Disc: 1
+Date: 2009
+mtime: 1306959588
+song_end
+song_begin: 07 Fashion Is Danger.m4a
+Time: 140
+Title: Fashion Is Danger
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 7
+Disc: 1
+Date: 2009
+mtime: 1306958535
+song_end
+song_begin: 08 Petrov, Yelyena And Me.m4a
+Time: 148
+Title: Petrov, Yelyena And Me
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 8
+Disc: 1
+Date: 2009
+mtime: 1306958556
+song_end
+song_begin: 09 Too Many Dicks (On The Dance Floor).m4a
+Time: 149
+Title: Too Many Dicks (On The Dance Floor)
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 9
+Disc: 1
+Date: 2009
+mtime: 1306960368
+song_end
+song_begin: 10 You Don't Have To Be A Prostitute.m4a
+Time: 170
+Title: You Don't Have To Be A Prostitute
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 10
+Disc: 1
+Date: 2009
+mtime: 1306960130
+song_end
+song_begin: 11 Friends.m4a
+Time: 124
+Title: Friends
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 11
+Disc: 1
+Date: 2009
+mtime: 1306960313
+song_end
+song_begin: 12 Carol Brown.m4a
+Time: 207
+Title: Carol Brown
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 12
+Disc: 1
+Date: 2009
+mtime: 1306959830
+song_end
+song_begin: 13 Angels.m4a
+Time: 156
+Title: Angels
+Artist: Flight Of The Conchords
+Composer: Jemaine Clement And Bret McKenzie
+Album: I Told You I Was Freaky
+Genre: Alternative & Punk
+Track: 13
+Disc: 1
+Date: 2009
+mtime: 1306959997
+song_end
+end: Music/Flight of the Conchords/I Told You I Was Freaky
+directory: The Distant Future
+mtime: 1307542116
+begin: Music/Flight of the Conchords/The Distant Future
+song_begin: 01 Business Time.m4a
+Time: 245
+Title: Business Time
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 1
+Disc: 1
+Date: 2007
+mtime: 1306958921
+song_end
+song_begin: 02 If You're Into It.m4a
+Time: 106
+Title: If You're Into It
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 2
+Disc: 1
+Date: 2007
+mtime: 1306958459
+song_end
+song_begin: 03 I'm Not Crying.m4a
+Time: 204
+Title: I'm Not Crying
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 3
+Disc: 1
+Date: 2007
+mtime: 1306960059
+song_end
+song_begin: 04 The Most Beautiful Girl In The Room [Live].m4a
+Time: 310
+Title: The Most Beautiful Girl In The Room [Live]
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 4
+Disc: 1
+Date: 2007
+mtime: 1306959720
+song_end
+song_begin: 05 Banter [Live].m4a
+Time: 213
+Title: Banter [Live]
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 5
+Disc: 1
+Date: 2007
+mtime: 1306960459
+song_end
+song_begin: 06 Robots [Live].m4a
+Time: 300
+Title: Robots [Live]
+Artist: Flight Of The Conchords
+Album: The Distant Future
+Genre: Alternative & Punk
+Track: 6
+Disc: 1
+Date: 2007
+mtime: 1306958883
+song_end
+end: Music/Flight of the Conchords/The Distant Future
 directory: The Unofficial FotC HBO TV Show Songbook_ Bonus CD
 mtime: 1293228398
 begin: Music/Flight of the Conchords/The Unofficial FotC HBO TV Show Songbook_ Bonus CD
@@ -8928,10 +10702,10 @@ mtime: 1291259916
 begin: Music/Flight of the Concords/Unknown Album
 song_begin: If You're Into It.mp3
 Time: 127
-Artist: Flight of the Concords
+Artist: Flight of the Conchords
 Title: If You're Into It
 Genre: Comedy
-mtime: 1249773716
+mtime: 1303952766
 song_end
 end: Music/Flight of the Concords/Unknown Album
 end: Music/Flight of the Concords
@@ -10466,138 +12240,153 @@ mtime: 1293821863
 begin: Music/Gorillaz/The Fall
 song_begin: 01 Phoner to Arizona.mp3
 Time: 255
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Phoner to Arizona
 Album: The Fall
 Track: 01
 Date: 2010
-mtime: 1293564853
+mtime: 1306877938
 song_end
 song_begin: 02 Revolving doors.mp3
 Time: 206
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Revolving doors
 Album: The Fall
 Track: 02
 Date: 2010
-mtime: 1293564854
+mtime: 1306877938
 song_end
 song_begin: 03 Hillbilly man.mp3
 Time: 230
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Hillbilly man
 Album: The Fall
 Track: 03
 Date: 2010
-mtime: 1293564840
+mtime: 1306877938
 song_end
 song_begin: 04 Detroit.mp3
 Time: 123
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Detroit
 Album: The Fall
 Track: 04
 Date: 2010
-mtime: 1293564863
+mtime: 1306877938
 song_end
 song_begin: 05 Shytown.mp3
 Time: 175
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Shytown
 Album: The Fall
 Track: 05
 Date: 2010
-mtime: 1293564842
+mtime: 1306877938
 song_end
 song_begin: 06 Little plastic bags.mp3
 Time: 190
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Little plastic bags
 Album: The Fall
 Track: 06
 Date: 2010
-mtime: 1293564863
+mtime: 1306877938
 song_end
 song_begin: 07 The Joplin spider.mp3
 Time: 202
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: The Joplin spider
 Album: The Fall
 Track: 07
 Date: 2010
-mtime: 1293564864
+mtime: 1306877938
 song_end
 song_begin: 08 The Parish of space dust.mp3
 Time: 146
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: The Parish of space dust
 Album: The Fall
 Track: 08
 Date: 2010
-mtime: 1293564864
+mtime: 1306877938
 song_end
 song_begin: 09 The snake in Dallas.mp3
 Time: 131
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: The snake in Dallas
 Album: The Fall
 Track: 09
 Date: 2010
-mtime: 1293564862
+mtime: 1306877938
 song_end
 song_begin: 10 Amarillo.mp3
 Time: 204
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Amarillo
 Album: The Fall
 Track: 10
 Date: 2010
-mtime: 1293564862
+mtime: 1306877938
 song_end
 song_begin: 11 The speak it mountains.mp3
 Time: 135
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: The speak it mountains
 Album: The Fall
 Track: 11
 Date: 2010
-mtime: 1293564848
+mtime: 1306877938
 song_end
 song_begin: 12 Aspen forest.mp3
 Time: 170
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Aspen forest
 Album: The Fall
 Track: 12
 Date: 2010
-mtime: 1293564850
+mtime: 1306877938
 song_end
 song_begin: 13 Bobby in Phoenix.mp3
 Time: 197
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Bobby in Phoenix
 Album: The Fall
 Track: 13
 Date: 2010
-mtime: 1293564861
+mtime: 1306877938
 song_end
 song_begin: 14 California & the slipping of the Sun.mp3
 Time: 204
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: California & the slipping of the Sun
 Album: The Fall
 Track: 14
 Date: 2010
-mtime: 1293564861
+mtime: 1306877938
 song_end
 song_begin: 15 Seattle Yodel.mp3
 Time: 39
+Artist: Gorillaz
 AlbumArtist: Gorillaz
 Title: Seattle Yodel
 Album: The Fall
 Track: 15
 Date: 2010
-mtime: 1293564851
+mtime: 1306877938
 song_end
 end: Music/Gorillaz/The Fall
 directory: demon days
@@ -11505,7 +13294,7 @@ mtime: 1291259976
 begin: Music/Hayden/Skyscraper National Park
 song_begin: 02 Dynamite Walls.mp3
 Time: 403
-Artist: Hayden, @ www.emusic.com.  Download, play, burn MP3s @ www.emusic.com.
+Artist: Hayden
 AlbumArtist: Hayden
 Title: Dynamite Walls
 Album: Skyscraper National Park
@@ -11513,7 +13302,7 @@ Track: 02
 Date: 2000
 Genre: Other
 Composer: Hayden Desser
-mtime: 1271630526
+mtime: 1303953007
 song_end
 end: Music/Hayden/Skyscraper National Park
 end: Music/Hayden
@@ -11904,43 +13693,63 @@ mtime: 1291259981
 begin: Music/Josh Rouse/Unknown Album
 song_begin: 01 Suburban Sweetheart.mp3
 Time: 169
-mtime: 1271632451
+Artist: Josh Rouse
+Title: Suburban Sweethart
+mtime: 1306878462
 song_end
 song_begin: 02 Dressed Up Like Nebraska.mp3
 Time: 205
-mtime: 1271632451
+Artist: Josh Rouse
+Title: Dressed Up Like Nebraska
+mtime: 1306878462
 song_end
 song_begin: 03 Invisible.mp3
 Time: 215
-mtime: 1271632451
+Artist: Josh Rouse
+Title: Invisible
+mtime: 1306878462
 song_end
 song_begin: 04 Late Night Conversation.mp3
 Time: 234
-mtime: 1271632451
+Artist: Josh Rouse
+Title: Late Night Conversation
+mtime: 1306878462
 song_end
 song_begin: 05 Flair.mp3
 Time: 266
-mtime: 1271632451
+Artist: Josh Rouse
+Title: Flair
+mtime: 1306878462
 song_end
 song_begin: 06 The White Trash Period Of My Life.mp3
 Time: 406
-mtime: 1271632452
+Artist: Josh Rouse
+Title: The White Trash Period Of My Life
+mtime: 1306878462
 song_end
 song_begin: 07 A Simple Thing.mp3
 Time: 250
-mtime: 1271632452
+Artist: Josh Rouse
+Title: A Simple Thing
+mtime: 1306878462
 song_end
 song_begin: 08 A Woman Lost In Serious Problems.mp3
 Time: 194
-mtime: 1271632452
+Artist: Josh Rouse
+Title: A Woman Lost In Serious Problems
+mtime: 1306878462
 song_end
 song_begin: 09 Lavina.mp3
 Time: 255
-mtime: 1271632452
+Artist: Josh Rouse
+Title: Lavina
+mtime: 1306878462
 song_end
 song_begin: 10 Reminiscent.mp3
 Time: 310
-mtime: 1271632452
+Artist: Josh Rouse
+Title: Reminiscent
+mtime: 1306878462
 song_end
 end: Music/Josh Rouse/Unknown Album
 end: Music/Josh Rouse
@@ -12137,9 +13946,9 @@ directory: Kid Koala
 mtime: 1298232268
 begin: Music/Kid Koala
 directory: Basin Street Blues Cdm
-mtime: 1291259982
+mtime: 1303083224
 begin: Music/Kid Koala/Basin Street Blues Cdm
-song_begin: 01 Kid Koala - Basin Street Blues.mp3
+song_begin: 01 Basin Street Blues.mp3
 Time: 290
 Artist: Kid Koala
 Title: Basin Street Blues
@@ -12412,9 +14221,9 @@ mtime: 1290048078
 song_end
 end: Music/Kid Koala/Live From The Short Attention Span Audio Theatre Tour
 directory: Live In Boulder, Colorado [12_05_00]
-mtime: 1291259983
+mtime: 1303083229
 begin: Music/Kid Koala/Live In Boulder, Colorado [12_05_00]
-song_begin: 01 Kid Koala - Intro.mp3
+song_begin: 01 Intro.mp3
 Time: 363
 Artist: Kid Koala
 Title: Intro
@@ -12787,9 +14596,9 @@ mtime: 1290048803
 song_end
 end: Music/Kid Koala/ScratchHappyLand
 directory: ScratchHappyLand 10_
-mtime: 1291259986
+mtime: 1303083245
 begin: Music/Kid Koala/ScratchHappyLand 10_
-song_begin: 01 Kid Koala - Start Hear.mp3
+song_begin: 01 Start Hear.mp3
 Time: 13
 Artist: Kid Koala
 Title: Start Hear
@@ -13190,196 +14999,196 @@ directory: Kid Koala + P Love
 mtime: 1291259984
 begin: Music/Kid Koala + P Love
 directory: Live in Montreal - Nufonia Must Fall Book Tour 2003
-mtime: 1291259985
+mtime: 1303083240
 begin: Music/Kid Koala + P Love/Live in Montreal - Nufonia Must Fall Book Tour 2003
-song_begin: 01 Kid Koala + P Love - patty smitdt intro.mp3
+song_begin: 01 patty smitdt intro.mp3
 Time: 311
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: patty smitdt intro
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 1
+Track: 01
 Genre: genre
-mtime: 1290048089
+mtime: 1303953019
 song_end
 song_begin: 02 Kid Koala + P Love - new track.mp3
 Time: 264
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: new track
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 2
+Track: 02
 Genre: genre
-mtime: 1290048137
+mtime: 1303953019
 song_end
 song_begin: 03 Kid Koala + P Love - amon tobin - nova (koala remix).mp3
 Time: 350
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: amon tobin - nova (koala remix)
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 3
+Track: 03
 Genre: genre
-mtime: 1290048327
+mtime: 1303953019
 song_end
 song_begin: 04 Kid Koala + P Love - interlude.mp3
 Time: 60
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: interlude
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 4
+Track: 04
 Genre: genre
-mtime: 1290048136
+mtime: 1303953019
 song_end
 song_begin: 05 Kid Koala + P Love - nufonia must fall opening credits.mp3
 Time: 99
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall opening credits
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 5
+Track: 05
 Genre: genre
-mtime: 1290048051
+mtime: 1303953019
 song_end
 song_begin: 06 Kid Koala + P Love - nufonia must fall track.mp3
 Time: 104
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall track
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 6
+Track: 06
 Genre: genre
-mtime: 1290047845
+mtime: 1303953019
 song_end
 song_begin: 07 Kid Koala + P Love - interlude.mp3
 Time: 32
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: interlude
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 7
+Track: 07
 Genre: genre
-mtime: 1290048065
+mtime: 1303953019
 song_end
 song_begin: 08 Kid Koala + P Love - nufonia must fall trailer music.mp3
 Time: 117
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall trailer music
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 8
+Track: 08
 Genre: genre
-mtime: 1290048114
+mtime: 1303953019
 song_end
 song_begin: 09 Kid Koala + P Love - interlude.mp3
 Time: 14
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: interlude
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
-Track: 9
+Track: 09
 Genre: genre
-mtime: 1289778579
+mtime: 1303953019
 song_end
 song_begin: 10 Kid Koala + P Love - moon river.mp3
 Time: 323
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: moon river
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 10
 Genre: genre
-mtime: 1290048416
+mtime: 1303953019
 song_end
 song_begin: 11 Kid Koala + P Love - interlude.mp3
 Time: 41
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: interlude
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 11
 Genre: genre
-mtime: 1290047673
+mtime: 1303953019
 song_end
 song_begin: 12 Kid Koala + P Love - music for dates.mp3
 Time: 240
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: music for dates
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 12
 Genre: genre
-mtime: 1290048191
+mtime: 1303953019
 song_end
 song_begin: 13 Kid Koala + P Love - nufonia must fall track.mp3
 Time: 80
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall track
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 13
 Genre: genre
-mtime: 1290048201
+mtime: 1303953019
 song_end
 song_begin: 14 Kid Koala + P Love - interlude.mp3
 Time: 63
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: interlude
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 14
 Genre: genre
-mtime: 1290048082
+mtime: 1303953019
 song_end
 song_begin: 15 Kid Koala + P Love - nufonia must fall track.mp3
 Time: 232
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall track
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 15
 Genre: genre
-mtime: 1290048253
+mtime: 1303953019
 song_end
 song_begin: 16 Track 16.mp3
 Time: 91
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: Track 16
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 16
 Genre: genre
-mtime: 1290048331
+mtime: 1303953019
 song_end
 song_begin: 17 cold song.mp3
 Time: 91
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: cold song
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 17
 Genre: genre
-mtime: 1290048314
+mtime: 1303953019
 song_end
 song_begin: 18 hip hop love songs medly.mp3
 Time: 941
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: hip hop love songs medly
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 18
 Genre: genre
-mtime: 1290048243
+mtime: 1303953019
 song_end
 song_begin: 19 koala vs p love battle.mp3
 Time: 444
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: koala vs p love battle
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 19
 Genre: genre
-mtime: 1290048160
+mtime: 1303953019
 song_end
 song_begin: 20 gorrillaz routine.mp3
 Time: 424
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: gorrillaz routine
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 20
 Genre: genre
-mtime: 1290048376
+mtime: 1303953019
 song_end
 song_begin: 21 nufonia must fall outro.mp3
 Time: 153
-Artist: Kid Koala + P Love
+Artist: Kid Koala
 Title: nufonia must fall outro
 Album: Live in Montreal - Nufonia Must Fall Book Tour 2003
 Track: 21
 Genre: genre
-mtime: 1290048157
+mtime: 1303953019
 song_end
 end: Music/Kid Koala + P Love/Live in Montreal - Nufonia Must Fall Book Tour 2003
 end: Music/Kid Koala + P Love
@@ -13415,7 +15224,9 @@ mtime: 1291259987
 begin: Music/Kobayashi/Unknown Album
 song_begin: 4 2 Cent.mp3
 Time: 299
-mtime: 1271632560
+Artist: Kobayashi
+Title: Cent
+mtime: 1306878636
 song_end
 end: Music/Kobayashi/Unknown Album
 end: Music/Kobayashi
@@ -13427,15 +15238,15 @@ mtime: 1291259990
 begin: Music/Konstantin Scherbakov/Beethoven's Symphony No. 9 (Scherzo)
 song_begin: 01 Symphony No. 9 (Scherzo).m4a
 Time: 76
-Title: Symphony No. 9 (Scherzo)
-Artist: Ludwig van Beethoven, composer. Seattle Symphony. Gerard Schwarz, director
-Composer: Beethoven
-Album: Beethoven's Symphony No. 9 (Scherzo)
-Genre: Classical
-Track: 1
-Date: 2001
 AlbumArtist: Konstantin Scherbakov
-mtime: 1271633386
+Track: 1
+Artist: Ludwig van Beethoven
+Album: Beethoven's Symphony No. 9 (Scherzo)
+Date: 2001
+Genre: Classical
+Title: Symphony No. 9 (Scherzo)
+Composer: Beethoven
+mtime: 1303953036
 song_end
 end: Music/Konstantin Scherbakov/Beethoven's Symphony No. 9 (Scherzo)
 end: Music/Konstantin Scherbakov
@@ -13617,9 +15428,9 @@ mtime: 1297059068
 song_end
 end: Music/LCD Soundsystem/LCD Soundsystem
 directory: Sound Of Silver
-mtime: 1293821930
+mtime: 1303083373
 begin: Music/LCD Soundsystem/Sound Of Silver
-song_begin: 01 LCD Soundsystem - Get Innocuous!.mp3
+song_begin: 01 Get Innocuous!.mp3
 Time: 432
 Artist: LCD Soundsystem
 Title: Get Innocuous!
@@ -14783,6 +16594,522 @@ mtime: 1244089031
 song_end
 end: Music/Lemon Demon/Live from the Haunted Candle Shop
 end: Music/Lemon Demon
+directory: Ludwig Van Beethoven (MP3@320Kbps)
+mtime: 1306861863
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)
+directory: Beethoven-All Symphonies
+mtime: 1306861857
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies
+directory: Symphony No. 1
+mtime: 1306861831
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 1
+song_begin: Symphony 1- I. Adagio molto - Allegro con brio.mp3
+Time: 529
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 1- I. Adagio molto -
+Album: Symphonies Nos. 1 & 6
+Track: 1
+Date: 1988
+Genre: Blues
+mtime: 1306857941
+song_end
+song_begin: Symphony 1- II. Andante cantibile con moto.mp3
+Time: 428
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 1- II. Andante cantib
+Album: Symphonies Nos. 1 & 6
+Track: 2
+Date: 1988
+Genre: Blues
+mtime: 1306857935
+song_end
+song_begin: Symphony 1- III. Menuetto- Allegro molto e vivace.mp3
+Time: 260
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 1- III. Menuetto: All
+Album: Symphonies Nos. 1 & 6
+Track: 3
+Date: 1988
+Genre: Blues
+mtime: 1306857935
+song_end
+song_begin: Symphony 1- IV. Adagio - Allegro molto e vivace.mp3
+Time: 342
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 1- IV. Adagio - Alleg
+Album: Symphonies Nos. 1 & 6
+Track: 4
+Date: 1988
+Genre: Blues
+mtime: 1306857948
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 1
+directory: Symphony No. 2
+mtime: 1306861834
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 2
+song_begin: Symphony no.2 II in D major, op.36- Adagio molto - Allegro con brio.mp3
+Time: 715
+Artist: Ludwig van Beethoven
+Title: Symphony no.2 in D major, op.3
+Album: Symphonies 2 & 8
+Track: 1
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Symphony no.2 IV in D major, op.36- Larghetto.mp3
+Time: 602
+Artist: Ludwig van Beethoven
+Title: Symphony no.2 in D major, op.3
+Album: Symphonies 2 & 8
+Track: 2
+Genre: Blues
+mtime: 1306858206
+song_end
+song_begin: Symphony no.2 I in D major, op.36- Scherzo (Allegro).mp3
+Time: 277
+Artist: Ludwig van Beethoven
+Title: Symphony no.2 in D major, op.3
+Album: Symphonies 2 & 8
+Track: 3
+Genre: Blues
+mtime: 1306858194
+song_end
+song_begin: Symphony no.2 III in D major, op.36- Allegro molto.mp3
+Time: 395
+Artist: Ludwig van Beethoven
+Title: Symphony no.2 in D major, op.3
+Album: Symphonies 2 & 8
+Track: 4
+Genre: Blues
+mtime: 1306858186
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 2
+directory: Symphony No. 3
+mtime: 1306861838
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 3
+song_begin: Prometheus Overture, Op.43.mp3
+Time: 300
+Artist: Ludwig van Beethoven
+Title: Prometheus Overture, Op.43
+Album: Symphony No.3, 'Eroica'
+Track: 1
+Date: 1989
+Genre: Blues
+mtime: 1306857936
+song_end
+song_begin: Symphony No.3 II In E Flat Major, Op.55- Allegro con brio.mp3
+Time: 920
+Artist: Ludwig van Beethoven
+Title: Symphony No.3 In E Flat Major,
+Album: Symphony No.3, 'Eroica'
+Track: 2
+Date: 1989
+Genre: Blues
+mtime: 1306857936
+song_end
+song_begin: Symphony No.3 IV In E Flat Major, Op.55- Marcia funebre. Adagio assai.mp3
+Time: 758
+Artist: Ludwig van Beethoven
+Title: Symphony No.3 In E Flat Major,
+Album: Symphony No.3, 'Eroica'
+Track: 3
+Date: 1989
+Genre: Blues
+mtime: 1306858022
+song_end
+song_begin: Symphony No.3  I In E Flat Major, Op.55- Scherzo. Allegro vivace.mp3
+Time: 344
+Artist: Ludwig van Beethoven
+Title: Symphony No.3 In E Flat Major,
+Album: Symphony No.3, 'Eroica'
+Track: 4
+Date: 1989
+Genre: Blues
+mtime: 1306857936
+song_end
+song_begin: Symphony No.3 III In E Flat Major, Op.55- Finale. Allegro molto - Poco andante - Presto.mp3
+Time: 602
+Artist: Ludwig van Beethoven
+Title: Symphony No.3 In E Flat Major,
+Album: Symphony No.3, 'Eroica'
+Track: 5
+Date: 1989
+Genre: Blues
+mtime: 1306857981
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 3
+directory: Symphony No. 4
+mtime: 1306861841
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4
+song_begin: Op. 60 - I Adagio - Allegro vivace, Symphony No. 4 in Bb Major.mp3
+Time: 650
+Artist: Beethoven - The London Classic
+Title: Op. 60 - I Adagio - Allegro vi
+Album: Symphonies No.4 & 5
+Track: 1
+Date: 1989
+Genre: Blues
+mtime: 1306858193
+song_end
+song_begin: Op. 60 - II Adagio, Symphony No. 4 in Bb Major.mp3
+Time: 470
+Artist: Beethoven - The London Classic
+Title: Op. 60 - II Adagio, Symphony N
+Album: Symphonies No.4 & 5
+Track: 2
+Date: 1989
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Op. 60 - III Allegro vivace - Trio-Un poco meno Allergo, Symphony No. 4 in Bb Major.mp3
+Time: 335
+Artist: Beethoven - The London Classic
+Title: Op. 60 - III Allegro vivace -
+Album: Symphonies No.4 & 5
+Track: 3
+Date: 1989
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Op. 60 - IV Allegro ma non troppo, Symphony No. 4 in Bb Major.mp3
+Time: 398
+Artist: Beethoven - The London Classic
+Title: Op. 60 - IV Allegro ma non tro
+Album: Symphonies No.4 & 5
+Track: 4
+Date: 1989
+Genre: Blues
+mtime: 1306858188
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4
+directory: Symphony No. 5
+mtime: 1306861844
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5
+song_begin: Op. 21 - I Allegro con brio, Symphony No. 5 in C minor.mp3
+Time: 393
+Artist: Beethoven - The London Classic
+Title: Op. 21 - I Allegro con brio, S
+Album: Symphonies No.4 & 5
+Track: 5
+Date: 1989
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Op. 21 - II Andante con moto, Symphony No. 5 in C minor.mp3
+Time: 528
+Artist: Beethoven - The London Classic
+Title: Op. 21 - II Andante con moto,
+Album: Symphonies No.4 & 5
+Track: 6
+Date: 1989
+Genre: Blues
+mtime: 1306858191
+song_end
+song_begin: Op. 21 - III Allegro, Symphony No. 5 in C minor.mp3
+Time: 460
+Artist: Beethoven - The London Classic
+Title: Op. 21 - III Allegro, Symphony
+Album: Symphonies No.4 & 5
+Track: 7
+Date: 1989
+Genre: Blues
+mtime: 1306858193
+song_end
+song_begin: Op. 21 - IV Allegro - Presto, Symphony No. 5 in C minor.mp3
+Time: 642
+Artist: Beethoven - The London Classic
+Title: Op. 21 - IV Allegro - Presto,
+Album: Symphonies No.4 & 5
+Track: 8
+Date: 1989
+Genre: Blues
+mtime: 1306858188
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5
+directory: Symphony No. 6
+mtime: 1306861848
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 6
+song_begin: Symphony 6- I. Awakening of happy feelings on arriving in the country.mp3
+Time: 633
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 6- I. Awakening of ha
+Album: Symphonies Nos. 1 & 6
+Track: 5
+Date: 1988
+Genre: Blues
+mtime: 1306858193
+song_end
+song_begin: Symphony 6- II. Scene by the brook.mp3
+Time: 717
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 6- II. Scene by the b
+Album: Symphonies Nos. 1 & 6
+Track: 6
+Date: 1988
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Symphony 6- III. Merry gathering of the country folk.mp3
+Time: 309
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 6- III. Merry gatheri
+Album: Symphonies Nos. 1 & 6
+Track: 7
+Date: 1988
+Genre: Blues
+mtime: 1306858195
+song_end
+song_begin: Symphony 6- IV. Storm and Tempest.mp3
+Time: 223
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 6- IV. Storm and Temp
+Album: Symphonies Nos. 1 & 6
+Track: 8
+Date: 1988
+Genre: Blues
+mtime: 1306858194
+song_end
+song_begin: Symphony 6- V. Shepherds' Song- Happy and thankful feelings after the storm.mp3
+Time: 525
+Artist: Ludwig van Beethoven, London C
+Title: Symphony 6- V. Shepherds' Song
+Album: Symphonies Nos. 1 & 6
+Track: 9
+Date: 1988
+Genre: Blues
+mtime: 1306858188
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 6
+directory: Symphony No. 7
+mtime: 1306861855
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 7
+song_begin: Coriolan Overture, Op.62.mp3
+Time: 450
+Artist: Ludwig van Beethoven, London C
+Title: Coriolan Overture, Op.62
+Album: Symphony No. 7, Coriolan & Egm
+Track: 1
+Date: 1989
+Genre: Blues
+mtime: 1306857935
+song_end
+song_begin: Egmont Overture, Op.84.mp3
+Time: 418
+Artist: Ludwig van Beethoven, London C
+Title: Egmont Overture, Op.84
+Album: Symphony No. 7, Coriolan & Egm
+Track: 2
+Date: 1989
+Genre: Blues
+mtime: 1306857963
+song_end
+song_begin: Symphony No.7 in A major, Op.92- I. Poco sostenuto - Vivace.mp3
+Time: 833
+Artist: Ludwig van Beethoven, London C
+Title: Symphony No.7 in A major, Op.9
+Album: Symphony No. 7, Coriolan & Egm
+Track: 3
+Date: 1989
+Genre: Blues
+mtime: 1306857987
+song_end
+song_begin: Symphony No.7 in A major, Op.92- II. Allegretto.mp3
+Time: 435
+Artist: Ludwig van Beethoven, London C
+Title: Symphony No.7 in A major, Op.9
+Album: Symphony No. 7, Coriolan & Egm
+Track: 4
+Date: 1989
+Genre: Blues
+mtime: 1306858174
+song_end
+song_begin: Symphony No.7 in A major, Op.92- III. Presto - Assai meno presto.mp3
+Time: 493
+Artist: Ludwig van Beethoven, London C
+Title: Symphony No.7 in A major, Op.9
+Album: Symphony No. 7, Coriolan & Egm
+Track: 5
+Date: 1989
+Genre: Blues
+mtime: 1306858043
+song_end
+song_begin: Symphony No.7 in A major, Op.92- IV. Allegro con brio.mp3
+Time: 542
+Artist: Ludwig van Beethoven, London C
+Title: Symphony No.7 in A major, Op.9
+Album: Symphony No. 7, Coriolan & Egm
+Track: 6
+Date: 1989
+Genre: Blues
+mtime: 1306858181
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 7
+directory: Symphony No. 8
+mtime: 1306861857
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 8
+song_begin: Symphony no.8 in F major, op.93- Allegro vivace e con brio.mp3
+Time: 530
+Artist: Ludwig van Beethoven
+Title: Symphony no.8 in F major, op.9
+Album: Symphonies 2 & 8
+Track: 5
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Symphony no.8 in F major, op.93- Allegretto scherzando.mp3
+Time: 235
+Artist: Ludwig van Beethoven
+Title: Symphony no.8 in F major, op.9
+Album: Symphonies 2 & 8
+Track: 6
+Genre: Blues
+mtime: 1306858188
+song_end
+song_begin: Symphony no.8 in F major, op.93- Tempo di Menuetto.mp3
+Time: 341
+Artist: Ludwig van Beethoven
+Title: Symphony no.8 in F major, op.9
+Album: Symphonies 2 & 8
+Track: 7
+Genre: Blues
+mtime: 1306858187
+song_end
+song_begin: Symphony no.8 in F major, op.93- Allegro vivace.mp3
+Time: 424
+Artist: Ludwig van Beethoven
+Title: Symphony no.8 in F major, op.9
+Album: Symphonies 2 & 8
+Track: 8
+Genre: Blues
+mtime: 1306858200
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 8
+directory: Symphony No. 9
+mtime: 1306861863
+begin: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 9
+song_begin: 01 - Choral I.   Allegro Ma Non Troppo, Un Poco Maestoso.mp3
+Time: 854
+Artist: Ludwig van Beethoven
+Title: I: Allegro Ma Non Troppo, Un P
+Album: Symphony No.9 In D Minor - Nor
+Track: 1
+Date: 1987
+Genre: Blues
+mtime: 1306858241
+song_end
+song_begin: 02 - Choral II.  Molto Vivace - Presto - Molto Vivace - Presto.mp3
+Time: 411
+Artist: Ludwig van Beethoven
+Title: II: Molto Vivace - Presto - Mo
+Album: Symphony No.9 In D Minor - Nor
+Track: 2
+Date: 1987
+Genre: Blues
+mtime: 1306858225
+song_end
+song_begin: 03 - Choral III. Molto Vivace - Presto - Molto Vivace - Presto.mp3
+Time: 212
+Artist: Ludwig van Beethoven
+Title: II: 2
+Album: Symphony No.9 In D Minor - Nor
+Track: 3
+Date: 1987
+Genre: Blues
+mtime: 1306858226
+song_end
+song_begin: 04 - Choral IV.  Molto Vivace - Presto - Molto Vivace - Presto.mp3
+Time: 237
+Artist: Ludwig van Beethoven
+Title: II: 3
+Album: Symphony No.9 In D Minor - Nor
+Track: 4
+Date: 1987
+Genre: Blues
+mtime: 1306858233
+song_end
+song_begin: 05 -  Adagio Molto E Cantabile - Andante Moderato - Tempo I - Andant.mp3
+Time: 669
+Artist: Ludwig van Beethoven
+Title: III:  Adagio Molto E Cantabile
+Album: Symphony No.9 In D Minor - Nor
+Track: 5
+Date: 1987
+Genre: Blues
+mtime: 1306858226
+song_end
+song_begin: 06 - Presto - Allegro Ma Non Troppo - Tempo I - Vivace - Tempo I - Adagio Cantabile - Tempo I.mp3
+Time: 305
+Artist: Ludwig van Beethoven
+Title: IV: Presto - Allegro Ma Non Tr
+Album: Symphony No.9 In D Minor - Nor
+Track: 6
+Date: 1987
+Genre: Blues
+mtime: 1306858226
+song_end
+song_begin: 07 - Presto - Recitativo - Allegro Assai.mp3
+Time: 188
+Artist: Ludwig van Beethoven
+Title: - Presto - Recitativo - Allegr
+Album: Symphony No.9 In D Minor - Nor
+Track: 7
+Date: 1987
+Genre: Blues
+mtime: 1306858228
+song_end
+song_begin: 08 - Allegro Assai Vivace.  Alla Marcia.mp3
+Time: 322
+Artist: Ludwig van Beethoven
+Title: - Allegro Assai Vivace.  Alla
+Album: Symphony No.9 In D Minor - Nor
+Track: 8
+Date: 1987
+Genre: Blues
+mtime: 1306858227
+song_end
+song_begin: 09 - Andante Maestoso - Adagio Ma Non Troppo, Ma Divoto.mp3
+Time: 169
+Artist: Ludwig van Beethoven
+Title: - Andante Maestoso - Adagio Ma
+Album: Symphony No.9 In D Minor - Nor
+Track: 9
+Date: 1987
+Genre: Blues
+mtime: 1306858228
+song_end
+song_begin: 10 - Allegro Energico, Sempre Ben Marcato.mp3
+Time: 154
+Artist: Ludwig van Beethoven
+Title: - Allegro Energico, Sempre Ben
+Album: Symphony No.9 In D Minor - Nor
+Track: 10
+Date: 1987
+Genre: Blues
+mtime: 1306858226
+song_end
+song_begin: 11 - Allegro Ma Non Tanto - Poco Adagio - Tempo I - Poco Adagio.mp3
+Time: 119
+Artist: Ludwig van Beethoven
+Title: - Allegro Ma Non Tanto - Poco
+Album: Symphony No.9 In D Minor - Nor
+Track: 11
+Date: 1987
+Genre: Blues
+mtime: 1306858224
+song_end
+song_begin: 12 - Poco Allegro, Stringendo Il Tempo, Sempre Piu Allegro - Prestissimo.mp3
+Time: 102
+Artist: Ludwig van Beethoven
+Title: - Poco Allegro, Stringendo Il
+Album: Symphony No.9 In D Minor - Nor
+Track: 12
+Date: 1987
+Genre: Blues
+mtime: 1306858227
+song_end
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 9
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies
+end: Music/Ludwig Van Beethoven (MP3@320Kbps)
 directory: Luis Castiñeira de Dios
 mtime: 1291259990
 begin: Music/Luis Castiñeira de Dios
@@ -15610,115 +17937,115 @@ mtime: 1293228531
 begin: Music/Maximum Balloon/Maximum Balloon
 song_begin: 01 Groove Me.mp3
 Time: 225
-Artist: Maximum Balloon / Theophilus London
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Groove Me
 Album: Maximum Balloon
-Track: 1/10
+Track: 01/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867241
+mtime: 1303952844
 song_end
 song_begin: 02 Young Love.mp3
 Time: 209
-Artist: Maximum Balloon / Katrina Ford
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Young Love
 Album: Maximum Balloon
-Track: 2/10
+Track: 02/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867219
+mtime: 1303952814
 song_end
 song_begin: 03 Absence of Light.mp3
 Time: 232
-Artist: Maximum Balloon / Tunde Adebimpe
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Absence of Light
 Album: Maximum Balloon
-Track: 3/10
+Track: 03/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867227
+mtime: 1303952849
 song_end
 song_begin: 04 If You Return.mp3
 Time: 264
-Artist: Maximum Balloon / Little Dragon
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: If You Return
 Album: Maximum Balloon
-Track: 4/10
+Track: 04/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867223
+mtime: 1303952823
 song_end
 song_begin: 05 Shakedown.mp3
 Time: 215
-Artist: Maximum Balloon / Kyp Malone
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Shakedown
 Album: Maximum Balloon
-Track: 5/10
+Track: 05/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867222
+mtime: 1303952819
 song_end
 song_begin: 06 Communion.mp3
 Time: 258
-Artist: Maximum Balloon / Karen O
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Communion
 Album: Maximum Balloon
-Track: 6/10
+Track: 06/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867225
+mtime: 1303952810
 song_end
 song_begin: 07 Tiger.mp3
 Time: 216
-Artist: Maximum Balloon / Aku Orraca-Tetteh
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Tiger
 Album: Maximum Balloon
-Track: 7/10
+Track: 07/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867231
+mtime: 1303952795
 song_end
 song_begin: 08 The Lesson.mp3
 Time: 246
-Artist: Maximum Balloon / Holly Miranda
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: The Lesson
 Album: Maximum Balloon
-Track: 8/10
+Track: 08/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867240
+mtime: 1303952806
 song_end
 song_begin: 09 Apartment Wrestling.mp3
 Time: 219
-Artist: Maximum Balloon / David Byrne
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Apartment Wrestling
 Album: Maximum Balloon
-Track: 9/10
+Track: 09/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867229
+mtime: 1303952798
 song_end
 song_begin: 10 Pink Bricks.mp3
 Time: 230
-Artist: Maximum Balloon, Ambrosia Parsley / Ambrosia Nicole Parsley
+Artist: Maximum Balloon
 AlbumArtist: Maximum Balloon
 Title: Pink Bricks
 Album: Maximum Balloon
@@ -15726,7 +18053,7 @@ Track: 10/10
 Date: 2010
 Genre: Alternative
 Disc: 1/1
-mtime: 1292867227
+mtime: 1303952855
 song_end
 end: Music/Maximum Balloon/Maximum Balloon
 end: Music/Maximum Balloon
@@ -16111,6 +18438,691 @@ mtime: 1263762908
 song_end
 end: Music/Miike Snow/Miike Snow
 end: Music/Miike Snow
+directory: Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)
+mtime: 1306857253
+begin: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)
+directory: Chilled 1991-2008 Disc 1 mp3
+mtime: 1306857238
+begin: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 1 mp3
+song_begin: 01 - The Orb - Little Fluffy Clouds.mp3
+Time: 228
+Artist: Ministry of Sound
+Title: The Orb - Little Fluffy Clouds
+Album: Chilled 1991-2008
+Track: 01
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 02 - Rob Dougan - Clubbed To Death 2.mp3
+Time: 250
+Artist: Ministry of Sound
+Title: Rob Dougan - Clubbed To Death 2
+Album: Chilled 1991-2008
+Track: 02
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 03 - The Beloved - Sweet Harmony.mp3
+Time: 230
+Artist: Ministry of Sound
+Title: The Beloved - Sweet Harmony
+Album: Chilled 1991-2008
+Track: 03
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 04 - The Sabres Of Paradise - Smokebelch II.mp3
+Time: 208
+Artist: Ministry of Sound
+Title: The Sabres Of Paradise - Smokebelch II
+Album: Chilled 1991-2008
+Track: 04
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 05 - Chicane - Offshore.mp3
+Time: 229
+Artist: Ministry of Sound
+Title: Chicane - Offshore
+Album: Chilled 1991-2008
+Track: 05
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 06 - Groove Armada - Fireside Favourite.mp3
+Time: 210
+Artist: Ministry of Sound
+Title: Groove Armada - Fireside Favourite
+Album: Chilled 1991-2008
+Track: 06
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 07 - Leftfield - Fanfare Of Life.mp3
+Time: 232
+Artist: Ministry of Sound
+Title: Leftfield - Fanfare Of Life
+Album: Chilled 1991-2008
+Track: 07
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 08 - Moloko - Fun For Me.mp3
+Time: 225
+Artist: Ministry of Sound
+Title: Moloko - Fun For Me
+Album: Chilled 1991-2008
+Track: 08
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 09 - Fatboy Slim Feat. Macy Gray - Demons.mp3
+Time: 222
+Artist: Ministry of Sound
+Title: Fatboy Slim Feat. Macy Gray - Demons
+Album: Chilled 1991-2008
+Track: 09
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 10 - Smoke City - Underwater Love.mp3
+Time: 186
+Artist: Ministry of Sound
+Title: Smoke City - Underwater Love
+Album: Chilled 1991-2008
+Track: 10
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 11 - A Man Called Adam Vs Coco Steel & Lovebomb - Yachts.mp3
+Time: 238
+Artist: Ministry of Sound
+Title: A Man Called Adam Vs Coco Steel & Lovebomb - Yachts
+Album: Chilled 1991-2008
+Track: 11
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 12 - Koop - Waltz For Koop.mp3
+Time: 183
+Artist: Ministry of Sound
+Title: Koop - Waltz For Koop
+Album: Chilled 1991-2008
+Track: 12
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 13 - Tim “Love” Lee - One Night Samba.mp3
+Time: 237
+Artist: Ministry of Sound
+Title: Tim Love Lee - One Night Samba
+Album: Chilled 1991-2008
+Track: 13
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 14 - The Karminsky Experience Inc - Exploration.mp3
+Time: 183
+Artist: Ministry of Sound
+Title: The Karminsky Experience Inc - Exploration
+Album: Chilled 1991-2008
+Track: 14
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 15 - Sub Sub - Past.mp3
+Time: 170
+Artist: Ministry of Sound
+Title: Sub Sub - Past
+Album: Chilled 1991-2008
+Track: 15
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 16 - Black Mighty Orchestra - Ocean Beach.mp3
+Time: 279
+Artist: Ministry of Sound
+Title: Black Mighty Orchestra - Ocean Beach
+Album: Chilled 1991-2008
+Track: 16
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 17 - Coldcut - Autumn Leaves.mp3
+Time: 301
+Artist: Ministry of Sound
+Title: Coldcut - Autumn Leaves
+Album: Chilled 1991-2008
+Track: 17
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 18 - Underworld - Second Hand.mp3
+Time: 288
+Artist: Ministry of Sound
+Title: Underworld - Second Hand
+Album: Chilled 1991-2008
+Track: 18
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 19 - Nightmares On Wax - Les Nuits.mp3
+Time: 258
+Artist: Ministry of Sound
+Title: Nightmares On Wax - Les Nuits
+Album: Chilled 1991-2008
+Track: 19
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+song_begin: 20 - Art Of Noise - Moments In Love.mp3
+Time: 307
+Artist: Ministry of Sound
+Title: Art Of Noise - Moments In Love
+Album: Chilled 1991-2008
+Track: 20
+Date: 2008
+Genre: Dance
+Disc: 1
+mtime: 1306878842
+song_end
+playlist_begin: - Ministry Of Sound - Chilled 1991-2008 Disc 1.m3u
+mtime: 1306854787
+playlist_end
+end: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 1 mp3
+directory: Chilled 1991-2008 Disc 2 mp3
+mtime: 1306857245
+begin: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 2 mp3
+song_begin: 01 - William Orbit - Barber's Adagio For Strings.mp3
+Time: 149
+Artist: Ministry of Sound
+Title: William Orbit - Barber's Adagio For Strings
+Album: Chilled 1991-2008
+Track: 01
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 02 - Lemon Jelly - His Majesty King Raam.mp3
+Time: 255
+Artist: Ministry of Sound
+Title: Lemon Jelly - His Majesty King Raam
+Album: Chilled 1991-2008
+Track: 02
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 03 - I Monster - Daydream In Blue.mp3
+Time: 212
+Artist: Ministry of Sound
+Title: I Monster - Daydream In Blue
+Album: Chilled 1991-2008
+Track: 03
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 04 - Sebastien Tellier - La Ritournelle.mp3
+Time: 326
+Artist: Ministry of Sound
+Title: Sebastien Tellier - La Ritournelle
+Album: Chilled 1991-2008
+Track: 04
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 05 - Basement Jaxx - Romeo.mp3
+Time: 196
+Artist: Ministry of Sound
+Title: Basement Jaxx - Romeo
+Album: Chilled 1991-2008
+Track: 05
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 06 - DJ Sammy & Yanou Feat. Do - Heaven.mp3
+Time: 239
+Artist: Ministry of Sound
+Title: DJ Sammy & Yanou Feat. Do - Heaven
+Album: Chilled 1991-2008
+Track: 06
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 07 - Bent - I Love My Man.mp3
+Time: 229
+Artist: Ministry of Sound
+Title: Bent - I Love My Man
+Album: Chilled 1991-2008
+Track: 07
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 08 - The Avalanches - Since I Left You.mp3
+Time: 231
+Artist: Ministry of Sound
+Title: The Avalanches - Since I Left You
+Album: Chilled 1991-2008
+Track: 08
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 09 - Jamiroquai - Corner Of The Earth.mp3
+Time: 227
+Artist: Ministry of Sound
+Title: Jamiroquai - Corner Of The Earth
+Album: Chilled 1991-2008
+Track: 09
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 10 - Thievery Corporation - Lebanese Blonde.mp3
+Time: 248
+Artist: Ministry of Sound
+Title: Thievery Corporation - Lebanese Blonde
+Album: Chilled 1991-2008
+Track: 10
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 11 - Badly Drawn Boy - Once Around The Block.mp3
+Time: 239
+Artist: Ministry of Sound
+Title: Badly Drawn Boy - Once Around The Block
+Album: Chilled 1991-2008
+Track: 11
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 12 - Cicada Feat. Ben Onono - Can't Be Doin' With Love.mp3
+Time: 226
+Artist: Ministry of Sound
+Title: Cicada Feat. Ben Onono - Can't Be Doin' With Love
+Album: Chilled 1991-2008
+Track: 12
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 13 - Bonobo - Kota.mp3
+Time: 194
+Artist: Ministry of Sound
+Title: Bonobo - Kota
+Album: Chilled 1991-2008
+Track: 13
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 14 - Fenomenon - Sleepy Meadows Of Buxton.mp3
+Time: 252
+Artist: Ministry of Sound
+Title: Fenomenon - Sleepy Meadows Of Buxton
+Album: Chilled 1991-2008
+Track: 14
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 15 - The Herbaliser - The Sensual Woman.mp3
+Time: 197
+Artist: Ministry of Sound
+Title: The Herbaliser - The Sensual Woman
+Album: Chilled 1991-2008
+Track: 15
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 16 - Jose Gonzalez - Heartbeats.mp3
+Time: 158
+Artist: Ministry of Sound
+Title: Jose Gonzalez - Heartbeats
+Album: Chilled 1991-2008
+Track: 16
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 17 - Finley Quaye - Dice.mp3
+Time: 239
+Artist: Ministry of Sound
+Title: Finley Quaye - Dice
+Album: Chilled 1991-2008
+Track: 17
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 18 - Peter, Bjorn & John Feat. Victoria Bergsman - Young Folks.mp3
+Time: 264
+Artist: Ministry of Sound
+Title: Peter, Bjorn & John Feat. Victoria Bergsman - Young Folks
+Album: Chilled 1991-2008
+Track: 18
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 19 - FC Kahuna (Hayling).mp3
+Time: 225
+Artist: Ministry of Sound
+Title: FC Kahuna (Hayling)
+Album: Chilled 1991-2008
+Track: 19
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+song_begin: 20 - Radiohead - Nude.mp3
+Time: 249
+Artist: Ministry of Sound
+Title: Radiohead - Nude
+Album: Chilled 1991-2008
+Track: 20
+Date: 2008
+Genre: Dance
+Disc: 2
+mtime: 1306878885
+song_end
+playlist_begin: - Ministry Of Sound - Chilled 1991-2008 Disc 2.m3u
+mtime: 1306855897
+playlist_end
+end: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 2 mp3
+directory: Chilled 1991-2008 Disc 3 mp3
+mtime: 1306857252
+begin: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 3 mp3
+song_begin: 01 - Jakatta - American Dream.mp3
+Time: 267
+Artist: Ministry of Sound
+Title: Jakatta - American Dream
+Album: Chilled 1991-2008
+Track: 01
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 02 - Everything But The Girl - Missing.mp3
+Time: 259
+Artist: Ministry of Sound
+Title: Everything But The Girl - Missing
+Album: Chilled 1991-2008
+Track: 02
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 03 - X-Press 2 - Lazy.mp3
+Time: 240
+Artist: Ministry of Sound
+Title: X-Press 2 - Lazy
+Album: Chilled 1991-2008
+Track: 03
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 04 - Dubtribe Sound System - Do It Now.mp3
+Time: 307
+Artist: Ministry of Sound
+Title: Dubtribe Sound System - Do It Now
+Album: Chilled 1991-2008
+Track: 04
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 05 - Etienne De Crecy - Prix Choc.mp3
+Time: 202
+Artist: Ministry of Sound
+Title: Etienne De Crecy - Prix Choc
+Album: Chilled 1991-2008
+Track: 05
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 06 - Julien Jabre - Swimming Places.mp3
+Time: 183
+Artist: Ministry of Sound
+Title: Julien Jabre - Swimming Places
+Album: Chilled 1991-2008
+Track: 06
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 07 - Mylo - In My Arms.mp3
+Time: 183
+Artist: Ministry of Sound
+Title: Mylo - In My Arms
+Album: Chilled 1991-2008
+Track: 07
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 08 - Crazy P - Bumcop.mp3
+Time: 235
+Artist: Ministry of Sound
+Title: Crazy P - Bumcop
+Album: Chilled 1991-2008
+Track: 08
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 09 - Lindstrøm - I Feel Space.mp3
+Time: 232
+Artist: Ministry of Sound
+Title: Lindstrøm - I Feel Space
+Album: Chilled 1991-2008
+Track: 09
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 10 - Röyksopp - Eple.mp3
+Time: 200
+Artist: Ministry of Sound
+Title: Röyksopp - Eple
+Album: Chilled 1991-2008
+Track: 10
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 11 - Simian Mobile Disco - I Believe.mp3
+Time: 163
+Artist: Ministry of Sound
+Title: Simian Mobile Disco - I Believe
+Album: Chilled 1991-2008
+Track: 11
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 12 - Dr Rockit - Café de Flore.mp3
+Time: 217
+Artist: Ministry of Sound
+Title: Dr Rockit - Café de Flore
+Album: Chilled 1991-2008
+Track: 12
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 13 - The Whip - Divebomb.mp3
+Time: 145
+Artist: Ministry of Sound
+Title: The Whip - Divebomb
+Album: Chilled 1991-2008
+Track: 13
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 14 - Deepest Blue - Deepest Blue.mp3
+Time: 189
+Artist: Ministry of Sound
+Title: Deepest Blue - Deepest Blue
+Album: Chilled 1991-2008
+Track: 14
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 15 - Roger Sanchez - Another Chance.mp3
+Time: 325
+Artist: Ministry of Sound
+Title: Roger Sanchez - Another Chance
+Album: Chilled 1991-2008
+Track: 15
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 16 - iiO - Rapture.mp3
+Time: 320
+Artist: Ministry of Sound
+Title: iiO - Rapture
+Album: Chilled 1991-2008
+Track: 16
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 17 - Slusnik Luna - Sun.mp3
+Time: 231
+Artist: Ministry of Sound
+Title: Slusnik Luna - Sun
+Album: Chilled 1991-2008
+Track: 17
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 18 - Three Drives - Greece 2000.mp3
+Time: 273
+Artist: Ministry of Sound
+Title: Three Drives - Greece 2000
+Album: Chilled 1991-2008
+Track: 18
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 19 - Delerium Feat. Sarah McLachlan - Silence.mp3
+Time: 302
+Artist: Ministry of Sound
+Title: Delerium Feat. Sarah McLachlan - Silence
+Album: Chilled 1991-2008
+Track: 19
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+song_begin: 20 - Hybrid - Finished Symphony.mp3
+Time: 186
+Artist: Ministry of Sound
+Title: Hybrid - Finished Symphony
+Album: Chilled 1991-2008
+Track: 20
+Date: 2008
+Genre: Dance
+Disc: 3
+mtime: 1306878944
+song_end
+playlist_begin: - Ministry Of Sound - Chilled 1991-2008 Disc 3.m3u
+mtime: 1306854807
+playlist_end
+end: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)/Chilled 1991-2008 Disc 3 mp3
+end: Music/Ministry Of Sound - Chilled 1991-2008 (2008) [EAC @ 320 MP3](oan)
 directory: Modeselektor
 mtime: 1291260098
 begin: Music/Modeselektor
@@ -16163,6 +19175,629 @@ mtime: 1271645000
 song_end
 end: Music/Modeselektor/Hello Mom!
 end: Music/Modeselektor
+directory: Moloko
+mtime: 1307542064
+begin: Music/Moloko
+directory: Do You Like My Tight Sweater_
+mtime: 1307542051
+begin: Music/Moloko/Do You Like My Tight Sweater_
+song_begin: 01 Fun For Me.mp3
+Time: 309
+Artist: Moloko
+Title: Fun For Me
+Album: Do You Like My Tight Sweater?
+Track: 1
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477230
+song_end
+song_begin: 02 Tight Sweater.mp3
+Time: 16
+Artist: Moloko
+Title: Tight Sweater
+Album: Do You Like My Tight Sweater?
+Track: 2
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477733
+song_end
+song_begin: 03 Day For Night.mp3
+Time: 324
+Artist: Moloko
+Title: Day For Night
+Album: Do You Like My Tight Sweater?
+Track: 3
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477764
+song_end
+song_begin: 04 I Can't Help Myself.mp3
+Time: 345
+Artist: Moloko
+Title: I Can't Help Myself
+Album: Do You Like My Tight Sweater?
+Track: 4
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477681
+song_end
+song_begin: 05 Circus.mp3
+Time: 20
+Artist: Moloko
+Title: Circus
+Album: Do You Like My Tight Sweater?
+Track: 5
+Date: 1995
+Genre: Trip Hop
+mtime: 1307476932
+song_end
+song_begin: 06 Lotus Eaters.mp3
+Time: 452
+Artist: Moloko
+Title: Lotus Eaters
+Album: Do You Like My Tight Sweater?
+Track: 6
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477822
+song_end
+song_begin: 07 On My Horsey.mp3
+Time: 35
+Artist: Moloko
+Title: On My Horsey
+Album: Do You Like My Tight Sweater?
+Track: 7
+Date: 1995
+Genre: Trip Hop
+mtime: 1307476696
+song_end
+song_begin: 08 Dominoid.mp3
+Time: 252
+Artist: Moloko
+Title: Dominoid
+Album: Do You Like My Tight Sweater?
+Track: 8
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477640
+song_end
+song_begin: 09 Party Weirdo.mp3
+Time: 421
+Artist: Moloko
+Title: Party Weirdo
+Album: Do You Like My Tight Sweater?
+Track: 9
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477729
+song_end
+song_begin: 10 Tubeliar.mp3
+Time: 28
+Artist: Moloko
+Title: Tubeliar
+Album: Do You Like My Tight Sweater?
+Track: 10
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477353
+song_end
+song_begin: 11 Ho Humm.mp3
+Time: 337
+Artist: Moloko
+Title: Ho Humm
+Album: Do You Like My Tight Sweater?
+Track: 11
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477611
+song_end
+song_begin: 12 Butterfly 747.mp3
+Time: 272
+Artist: Moloko
+Title: Butterfly 747
+Album: Do You Like My Tight Sweater?
+Track: 12
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477835
+song_end
+song_begin: 13 Dirty Monkey.mp3
+Time: 24
+Artist: Moloko
+Title: Dirty Monkey
+Album: Do You Like My Tight Sweater?
+Track: 13
+Date: 1995
+Genre: Trip Hop
+mtime: 1307476795
+song_end
+song_begin: 14 Killa Bunnies.mp3
+Time: 141
+Artist: Moloko
+Title: Killa Bunnies
+Album: Do You Like My Tight Sweater?
+Track: 14
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477729
+song_end
+song_begin: 15 Boo.mp3
+Time: 348
+Artist: Moloko
+Title: Boo
+Album: Do You Like My Tight Sweater?
+Track: 15
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477752
+song_end
+song_begin: 16 Where Is The What If The What Is Why_.mp3
+Time: 257
+Artist: Moloko
+Title: Where Is The What If The What Is Why?
+Album: Do You Like My Tight Sweater?
+Track: 16
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477661
+song_end
+song_begin: 17 Who Shot The Go Go Dancer_.mp3
+Time: 420
+Artist: Moloko
+Title: Who Shot The Go Go Dancer?
+Album: Do You Like My Tight Sweater?
+Track: 17
+Date: 1995
+Genre: Trip Hop
+mtime: 1307477628
+song_end
+end: Music/Moloko/Do You Like My Tight Sweater_
+directory: I Am Not A Doctor
+mtime: 1307542054
+begin: Music/Moloko/I Am Not A Doctor
+song_begin: 01 The Flipside.mp3
+Time: 252
+Artist: Moloko
+Title: The Flipside
+Album: I Am Not A Doctor
+Track: 1
+Genre: rock
+mtime: 1307477442
+song_end
+song_begin: 02 Knee Deepen.mp3
+Time: 339
+Artist: Moloko
+Title: Knee Deepen
+Album: I Am Not A Doctor
+Track: 2
+Genre: rock
+mtime: 1307477673
+song_end
+song_begin: 03 Blink.mp3
+Time: 263
+Artist: Moloko
+Title: Blink
+Album: I Am Not A Doctor
+Track: 3
+Genre: rock
+mtime: 1307477781
+song_end
+song_begin: 04 Stylophone Pet.mp3
+Time: 67
+Artist: Moloko
+Title: Stylophone Pet
+Album: I Am Not A Doctor
+Track: 4
+Genre: rock
+mtime: 1307476719
+song_end
+song_begin: 05 Downsized.mp3
+Time: 253
+Artist: Moloko
+Title: Downsized
+Album: I Am Not A Doctor
+Track: 5
+Genre: rock
+mtime: 1307477725
+song_end
+song_begin: 06 Sorry.mp3
+Time: 94
+Artist: Moloko
+Title: Sorry
+Album: I Am Not A Doctor
+Track: 6
+Genre: rock
+mtime: 1307477797
+song_end
+song_begin: 07 Sing It Back.mp3
+Time: 264
+Artist: Moloko
+Title: Sing It Back
+Album: I Am Not A Doctor
+Track: 7
+Genre: rock
+mtime: 1307477529
+song_end
+song_begin: 08 Pretty Bridges.mp3
+Time: 336
+Artist: Moloko
+Title: Pretty Bridges
+Album: I Am Not A Doctor
+Track: 8
+Genre: rock
+mtime: 1307477529
+song_end
+song_begin: 09 Be Like You.mp3
+Time: 284
+Artist: Moloko
+Title: Be Like You
+Album: I Am Not A Doctor
+Track: 9
+Genre: rock
+mtime: 1307477405
+song_end
+song_begin: 10 Caught In A Whisper.mp3
+Time: 275
+Artist: Moloko
+Title: Caught In A Whisper
+Album: I Am Not A Doctor
+Track: 10
+Genre: rock
+mtime: 1307477487
+song_end
+song_begin: 11 Dr Zee.mp3
+Time: 337
+Artist: Moloko
+Title: Dr Zee
+Album: I Am Not A Doctor
+Track: 11
+Genre: rock
+mtime: 1307477574
+song_end
+song_begin: 12 The Id.mp3
+Time: 362
+Artist: Moloko
+Title: The Id
+Album: I Am Not A Doctor
+Track: 12
+Genre: rock
+mtime: 1307477789
+song_end
+song_begin: 13 Tatty Narja.mp3
+Time: 37
+Artist: Moloko
+Title: Tatty Narja
+Album: I Am Not A Doctor
+Track: 13
+Genre: rock
+mtime: 1307474904
+song_end
+song_begin: 14 Over My Head.mp3
+Time: 308
+Artist: Moloko
+Title: Over My Head
+Album: I Am Not A Doctor
+Track: 14
+Genre: rock
+mtime: 1307477134
+song_end
+song_begin: 15 Should've Been Could've Been.mp3
+Time: 336
+Artist: Moloko
+Title: Should've Been Could've Been
+Album: I Am Not A Doctor
+Track: 15
+Genre: rock
+mtime: 1307477805
+song_end
+end: Music/Moloko/I Am Not A Doctor
+directory: Statues
+mtime: 1307542058
+begin: Music/Moloko/Statues
+song_begin: 01 Familiar Feeling.mp3
+Time: 392
+Artist: Moloko
+Title: Familiar Feeling
+Album: Statues
+Track: 1
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477818
+song_end
+song_begin: 02 Come On.mp3
+Time: 283
+Artist: Moloko
+Title: Come On
+Album: Statues
+Track: 2
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477581
+song_end
+song_begin: 03 Cannot Contain This.mp3
+Time: 340
+Artist: Moloko
+Title: Cannot Contain This
+Album: Statues
+Track: 3
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477578
+song_end
+song_begin: 04 Statues.mp3
+Time: 327
+Artist: Moloko
+Title: Statues
+Album: Statues
+Track: 4
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477371
+song_end
+song_begin: 05 Forever More.mp3
+Time: 443
+Artist: Moloko
+Title: Forever More
+Album: Statues
+Track: 5
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477425
+song_end
+song_begin: 06 Blow X Blow.mp3
+Time: 192
+Artist: Moloko
+Title: Blow X Blow
+Album: Statues
+Track: 6
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477777
+song_end
+song_begin: 07 100%.mp3
+Time: 314
+Artist: Moloko
+Title: 100%
+Album: Statues
+Track: 7
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477566
+song_end
+song_begin: 08 The Only Ones.mp3
+Time: 255
+Artist: Moloko
+Title: The Only Ones
+Album: Statues
+Track: 8
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477810
+song_end
+song_begin: 09 I Want You.mp3
+Time: 309
+Artist: Moloko
+Title: I Want You
+Album: Statues
+Track: 9
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477834
+song_end
+song_begin: 10 Over & Over.mp3
+Time: 592
+Artist: Moloko
+Title: Over & Over
+Album: Statues
+Track: 10/12
+Date: 2003
+Genre: Trip Hop
+mtime: 1307477785
+song_end
+song_begin: 11 Bankrupt Emotionally (Catalogue).mp3
+Time: 266
+Artist: Moloko
+Title: Bankrupt Emotionally (Catalogue)
+Album: Statues
+Track: 11/11
+Genre: Trip Hop
+mtime: 1307477648
+song_end
+song_begin: 12 Take My Hand (b-side).mp3
+Time: 419
+Artist: Moloko
+Title: Take My Hand (b-side)
+Album: Statues
+Track: 12/12
+Genre: Trip Hop
+mtime: 1307477835
+song_end
+end: Music/Moloko/Statues
+directory: Things To Make And Do
+mtime: 1307542064
+begin: Music/Moloko/Things To Make And Do
+song_begin: 01 Radio Moscow.mp3
+Time: 25
+Artist: Moloko
+Title: Radio Moscow
+Album: Things To Make And Do
+Track: 01/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477183
+song_end
+song_begin: 02 Pure Pleasure Seeker.mp3
+Time: 391
+Artist: Moloko
+Title: Pure Pleasure Seeker
+Album: Things To Make And Do
+Track: 02/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477710
+song_end
+song_begin: 03 Absent Minded Friends.mp3
+Time: 286
+Artist: Moloko
+Title: Absent Minded Friends
+Album: Things To Make And Do
+Track: 03/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477739
+song_end
+song_begin: 04 Indigo.mp3
+Time: 337
+Artist: Moloko
+Title: Indigo
+Album: Things To Make And Do
+Track: 04/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477814
+song_end
+song_begin: 05 Being Is Bewildering.mp3
+Time: 247
+Artist: Moloko
+Title: Being Is Bewildering
+Album: Things To Make And Do
+Track: 05/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477694
+song_end
+song_begin: 06 Remain The Same.mp3
+Time: 221
+Artist: Moloko
+Title: Remain The Same
+Album: Things To Make And Do
+Track: 06/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477619
+song_end
+song_begin: 07 A Drop In The Ocean.mp3
+Time: 118
+Artist: Moloko
+Title: A Drop In The Ocean
+Album: Things To Make And Do
+Track: 07/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477632
+song_end
+song_begin: 08 Dumb Inc..mp3
+Time: 267
+Artist: Moloko
+Title: Dumb Inc.
+Album: Things To Make And Do
+Track: 08/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477668
+song_end
+song_begin: 09 The Time Is Now.mp3
+Time: 318
+Artist: Moloko
+Title: The Time Is Now
+Album: Things To Make And Do
+Track: 09/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477830
+song_end
+song_begin: 10 Mother.mp3
+Time: 285
+Artist: Moloko
+Title: Mother
+Album: Things To Make And Do
+Track: 10/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477653
+song_end
+song_begin: 11 It's Your Problem.mp3
+Time: 67
+Artist: Moloko
+Title: It's Your Problem
+Album: Things To Make And Do
+Track: 11/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307476503
+song_end
+song_begin: 12 It's Nothing.mp3
+Time: 313
+Artist: Moloko
+Title: It's Nothing
+Album: Things To Make And Do
+Track: 12/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477553
+song_end
+song_begin: 13 Bingo Massacre.mp3
+Time: 25
+Artist: Moloko
+Title: Bingo Massacre
+Album: Things To Make And Do
+Track: 13/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307475256
+song_end
+song_begin: 14 Somebody Somewhere.mp3
+Time: 342
+Artist: Moloko
+Title: Somebody Somewhere
+Album: Things To Make And Do
+Track: 14/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477801
+song_end
+song_begin: 15 Just You And Me Dancing.mp3
+Time: 78
+Artist: Moloko
+Title: Just You And Me Dancing
+Album: Things To Make And Do
+Track: 15/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477359
+song_end
+song_begin: 16 If You Have A Cross To Bear You May As Well Use It As A Crutch.mp3
+Time: 206
+Artist: Moloko
+Title: If You Have A Cross To Bear You May As Well Use It As A Crutch
+Album: Things To Make And Do
+Track: 16/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477541
+song_end
+song_begin: 17 Keep Stepping.mp3
+Time: 21
+Artist: Moloko
+Title: Keep Stepping
+Album: Things To Make And Do
+Track: 17/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307476301
+song_end
+song_begin: 18 Sing It Back (Boris Musical Mix).mp3
+Time: 560
+Artist: Moloko
+Title: Sing It Back (Boris Musical Mix)
+Album: Things To Make And Do
+Track: 18/18
+Date: 2000
+Genre: Synthpop
+mtime: 1307477826
+song_end
+end: Music/Moloko/Things To Make And Do
+end: Music/Moloko
 directory: Movits!
 mtime: 1291260037
 begin: Music/Movits!
@@ -17162,10 +20797,12 @@ mtime: 1291259967
 begin: Music/Nine Inch Nails/Ghosts I-IV
 song_begin: ghostPlayer_swf_application_x_shockwave_flash_Object_13_Ghosts_II.mp3
 Time: 193
-AlbumArtist: Nine Inch Nails
+Artist: Ghostly
+AlbumArtist: Ghostly
+Title: Ghostly
 Album: Ghosts I-IV
 Date: 2008
-mtime: 1273689618
+mtime: 1306878103
 song_end
 end: Music/Nine Inch Nails/Ghosts I-IV
 directory: The Fragile Disc 2
@@ -17184,6 +20821,668 @@ mtime: 1258503747
 song_end
 end: Music/Nine Inch Nails/The Fragile Disc 2
 end: Music/Nine Inch Nails
+directory: OPM
+mtime: 1305907011
+begin: Music/OPM
+directory: California Poppy
+mtime: 1303068353
+begin: Music/OPM/California Poppy
+song_begin: 01 Intro.mp3
+Time: 30
+Artist: OPM
+AlbumArtist: OPM
+Title: Intro
+Album: California Poppy
+Track: 1
+Date: 2006
+Genre: Rock
+mtime: 1299301848
+song_end
+song_begin: 02 For Tonight.mp3
+Time: 223
+Artist: OPM
+AlbumArtist: OPM
+Title: For Tonight
+Album: California Poppy
+Track: 2
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/S. Fox/S. Frazier/W. Foster
+mtime: 1299304195
+song_end
+song_begin: 03 Lion's Pride.mp3
+Time: 302
+Artist: OPM
+AlbumArtist: OPM
+Title: Lion's Pride
+Album: California Poppy
+Track: 3
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/J. Perkins/J. Williams/M. Rowe
+mtime: 1299304204
+song_end
+song_begin: 04 Rock Me Slow.mp3
+Time: 234
+Artist: OPM
+AlbumArtist: OPM
+Title: Rock Me Slow
+Album: California Poppy
+Track: 4
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/M. Rowe
+mtime: 1299303832
+song_end
+song_begin: 05 Love Don't.mp3
+Time: 188
+Artist: OPM
+AlbumArtist: OPM
+Title: Love Don't
+Album: California Poppy
+Track: 5
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/M. Rowe
+mtime: 1299304029
+song_end
+song_begin: 06 Somewhere (Further Than the Valley).mp3
+Time: 262
+Artist: OPM
+AlbumArtist: OPM
+Title: Somewhere (Further Than the Valley)
+Album: California Poppy
+Track: 6
+Date: 2006
+Genre: Rock
+Composer: B. Mahoney/G. Turney/J. Edney/J. Williams/M. Rowe
+mtime: 1299304225
+song_end
+song_begin: 07 Desire.mp3
+Time: 264
+Artist: OPM
+AlbumArtist: OPM
+Title: Desire
+Album: California Poppy
+Track: 7
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/M. Rowe
+mtime: 1299303960
+song_end
+song_begin: 08 Right Now.mp3
+Time: 262
+Artist: OPM
+AlbumArtist: OPM
+Title: Right Now
+Album: California Poppy
+Track: 8
+Date: 2006
+Genre: Rock
+Composer: B. Mahoney/G. Turney/J. Endey/M. Rowe/T.J. Lavin
+mtime: 1299304202
+song_end
+song_begin: 09 Leave 'Em for Dead.mp3
+Time: 282
+Artist: OPM
+AlbumArtist: OPM
+Title: Leave 'Em for Dead
+Album: California Poppy
+Track: 9
+Date: 2006
+Genre: Rock
+Composer: B. Xavier/G. Turney/J. Edney/M. Rowe
+mtime: 1299304220
+song_end
+song_begin: 10 Interlude.mp3
+Time: 25
+Artist: OPM
+AlbumArtist: OPM
+Title: Interlude
+Album: California Poppy
+Track: 10
+Date: 2006
+Genre: Rock
+mtime: 1299304220
+song_end
+song_begin: 11 Voodoo Hex.mp3
+Time: 189
+Artist: OPM
+AlbumArtist: OPM
+Title: Voodoo Hex
+Album: California Poppy
+Track: 11
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/M. Rowe
+mtime: 1299304200
+song_end
+song_begin: 12 That's the Sound.mp3
+Time: 271
+Artist: OPM
+AlbumArtist: OPM
+Title: That's the Sound
+Album: California Poppy
+Track: 12
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/J. William/K. Wassman/M. Rowe
+mtime: 1299303998
+song_end
+song_begin: 13 Born Again Virgin.mp3
+Time: 540
+Artist: OPM
+AlbumArtist: OPM
+Title: Born Again Virgin
+Album: California Poppy
+Track: 13
+Date: 2006
+Genre: Rock
+Composer: G. Turney/J. Edney/M. Rowe
+mtime: 1299304048
+song_end
+end: Music/OPM/California Poppy
+directory: ForTheMasses
+mtime: 1303068388
+begin: Music/OPM/ForTheMasses
+song_begin: 01 Conflict.mp3
+Time: 244
+Artist: OPM
+AlbumArtist: OPM
+Title: Conflict
+Album: ForTheMasses
+Track: 1
+Date: 2005
+Genre: Rock/Pop
+mtime: 1299303881
+song_end
+song_begin: 01 intro.mp3
+Time: 35
+Artist: OPM
+AlbumArtist: OPM
+Title: intro
+Album: ForTheMasses
+Track: 1
+Date: 2004
+Genre: 200
+mtime: 1299303965
+song_end
+song_begin: 02 Down Under.mp3
+Time: 238
+Artist: OPM
+AlbumArtist: OPM
+Title: Down Under
+Album: ForTheMasses
+Track: 2
+Date: 2005
+Genre: Rock/Pop
+mtime: 1299304216
+song_end
+song_begin: 02 bump.mp3
+Time: 218
+Artist: OPM
+AlbumArtist: OPM
+Title: bump
+Album: ForTheMasses
+Track: 2
+Date: 2004
+Genre: 200
+Composer: D. Swann/G. Turney/John Edney
+mtime: 1299304011
+song_end
+song_begin: 03 rollin.mp3
+Time: 229
+Artist: OPM
+AlbumArtist: OPM
+Title: rollin
+Album: ForTheMasses
+Track: 3
+Date: 2004
+Genre: 200
+Composer: B. Mahoney/G. Turney/John Edney
+mtime: 1299303823
+song_end
+song_begin: 04 luffy.mp3
+Time: 196
+Artist: OPM
+Title: luffy
+Album: ForTheMasses
+Track: 4
+Genre: 200
+mtime: 1299303896
+song_end
+song_begin: 05 interlude-dave_grohl.mp3
+Time: 12
+Artist: OPM
+AlbumArtist: OPM
+Title: interlude-dave_grohl
+Album: ForTheMasses
+Track: 5
+Date: 2004
+Genre: 200
+mtime: 1299303385
+song_end
+song_begin: 06 Kali Kings (Feat. Richter From Kottonmouth Kings).mp3
+Time: 282
+Artist: OPM
+Title: Kali Kings (Feat. Richter From Kottonmouth Kings)
+Album: ForTheMasses
+Track: 6
+Date: 2004
+Genre: Rap
+mtime: 1299303948
+song_end
+song_begin: 07 everyday.mp3
+Time: 250
+Artist: OPM
+AlbumArtist: OPM
+Title: everyday
+Album: ForTheMasses
+Track: 7
+Date: 2004
+Genre: 200
+Composer: G. Turney/John Edney
+mtime: 1299304181
+song_end
+song_begin: 08 Perfect Day (Feat. Eek-A-Mouse).mp3
+Time: 247
+Artist: OPM
+Title: Perfect Day (Feat. Eek-A-Mouse)
+Album: ForTheMasses
+Track: 8
+Date: 2004
+Genre: Rap
+mtime: 1299304157
+song_end
+song_begin: 09 interlude-doggy_style.mp3
+Time: 12
+Artist: OPM
+AlbumArtist: OPM
+Title: interlude-doggy_style
+Album: ForTheMasses
+Track: 9
+Date: 2004
+Genre: 200
+mtime: 1299303189
+song_end
+song_begin: 10 horny.mp3
+Time: 214
+Artist: OPM
+AlbumArtist: OPM
+Title: horny
+Album: ForTheMasses
+Track: 10
+Date: 2004
+Genre: 200
+Composer: B. Mahoney/G. Turney/John Edney/N. Sixx
+mtime: 1299303951
+song_end
+song_begin: 11 how_it_sounds.mp3
+Time: 210
+Artist: OPM
+AlbumArtist: OPM
+Title: how_it_sounds
+Album: ForTheMasses
+Track: 11
+Date: 2005
+Genre: 200
+mtime: 1299303996
+song_end
+song_begin: 12 i_dont_o_u.mp3
+Time: 219
+Artist: OPM
+AlbumArtist: OPM
+Title: i_dont_o_u
+Album: ForTheMasses
+Track: 12
+Date: 2004
+Genre: 200
+Composer: B. Mahoney/G. Turney/John Edney/M.. Caren
+mtime: 1299304211
+song_end
+song_begin: 13 necropolis_(feat_yellowman).mp3
+Time: 307
+Artist: OPM
+Title: necropolis_(feat_yellowman)
+Album: ForTheMasses
+Track: 13
+Genre: 200
+mtime: 1299304211
+song_end
+song_begin: 14 Interlude_ You Have A Collect....mp3
+Time: 25
+Artist: OPM
+Title: Interlude: You Have A Collect...
+Album: ForTheMasses
+Track: 14
+Date: 2004
+Genre: Rap
+mtime: 1299303141
+song_end
+song_begin: 15 pot_luck.mp3
+Time: 153
+Artist: OPM
+AlbumArtist: OPM
+Title: pot_luck
+Album: ForTheMasses
+Track: 15
+Date: 2004
+Genre: 200
+Composer: B. Mahoney/G. Turney/John Edney
+mtime: 1299303402
+song_end
+song_begin: 16 viva.mp3
+Time: 600
+Artist: OPM
+AlbumArtist: OPM
+Title: viva
+Album: ForTheMasses
+Track: 16
+Date: 2004
+Genre: 200
+Composer: B. Mahoney/G. Turney/John Edney
+mtime: 1299304166
+song_end
+end: Music/OPM/ForTheMasses
+directory: Golden State Of Mind
+mtime: 1303068415
+begin: Music/OPM/Golden State Of Mind
+song_begin: 01 Feel The Vibration.mp3
+Time: 193
+Artist: OPM
+Title: Feel The Vibration
+Album: Golden State Of Mind
+Track: 1/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304143
+song_end
+song_begin: 02 Family And Friends.mp3
+Time: 235
+Artist: OPM
+Title: Family And Friends
+Album: Golden State Of Mind
+Track: 2/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304159
+song_end
+song_begin: 03 Runwaway.mp3
+Time: 222
+Artist: OPM
+Title: Runwaway
+Album: Golden State Of Mind
+Track: 3/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299303808
+song_end
+song_begin: 04 Tell Me What You Want.mp3
+Time: 214
+Artist: OPM
+Title: Tell Me What You Want
+Album: Golden State Of Mind
+Track: 4/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304164
+song_end
+song_begin: 05 Dirty White.mp3
+Time: 191
+Artist: OPM
+Title: Dirty White
+Album: Golden State Of Mind
+Track: 5/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304191
+song_end
+song_begin: 06 Honey.mp3
+Time: 231
+Artist: OPM
+Title: Honey
+Album: Golden State Of Mind
+Track: 6/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304126
+song_end
+song_begin: 07 Square Peg.mp3
+Time: 243
+Artist: OPM
+Title: Square Peg
+Album: Golden State Of Mind
+Track: 7/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304210
+song_end
+song_begin: 08 Set It On Fire.mp3
+Time: 216
+Artist: OPM
+Title: Set It On Fire
+Album: Golden State Of Mind
+Track: 8/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304173
+song_end
+song_begin: 09 Dub Op.mp3
+Time: 232
+Artist: OPM
+Title: Dub Op
+Album: Golden State Of Mind
+Track: 9/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299303649
+song_end
+song_begin: 10 Every Minute.mp3
+Time: 175
+Artist: OPM
+Title: Every Minute
+Album: Golden State Of Mind
+Track: 10/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304145
+song_end
+song_begin: 11 Shoot Em Up.mp3
+Time: 230
+Artist: OPM
+Title: Shoot Em Up
+Album: Golden State Of Mind
+Track: 11/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304207
+song_end
+song_begin: 12 Like That.mp3
+Time: 224
+Artist: OPM
+Title: Like That
+Album: Golden State Of Mind
+Track: 12/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304044
+song_end
+song_begin: 13 Addicted.mp3
+Time: 221
+Artist: OPM
+Title: Addicted
+Album: Golden State Of Mind
+Track: 13/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304223
+song_end
+song_begin: 14 Family And Friends (Saber Mix).mp3
+Time: 245
+Artist: OPM
+Title: Family And Friends (Saber Mix)
+Album: Golden State Of Mind
+Track: 14/14
+Date: 2008-08-19
+Genre: Rock
+mtime: 1299304214
+song_end
+end: Music/OPM/Golden State Of Mind
+directory: Menace to Sobriety
+mtime: 1303068444
+begin: Music/OPM/Menace to Sobriety
+song_begin: 01 Stash Up.mp3
+Time: 179
+Artist: OPM
+Title: Stash Up
+Album: Menace to Sobriety
+Track: 1
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304125
+song_end
+song_begin: 02 Interlude_ Punanny.mp3
+Time: 34
+Artist: OPM
+Title: Interlude: Punanny
+Album: Menace to Sobriety
+Track: 2
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299302913
+song_end
+song_begin: 03 Heaven Is A Halfpipe.mp3
+Time: 258
+Artist: OPM
+Title: Heaven Is A Halfpipe
+Album: Menace to Sobriety
+Track: 3
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304161
+song_end
+song_begin: 04 El Capitan.mp3
+Time: 202
+Artist: OPM
+Title: El Capitan
+Album: Menace to Sobriety
+Track: 4
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303886
+song_end
+song_begin: 05 Undercover Freak.mp3
+Time: 228
+Artist: OPM
+Title: Undercover Freak
+Album: Menace to Sobriety
+Track: 5
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304169
+song_end
+song_begin: 06 Brighter side.mp3
+Time: 211
+Artist: OPM
+Title: Brighter side
+Album: Menace to Sobriety
+Track: 6
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304141
+song_end
+song_begin: 07 Better Daze.mp3
+Time: 238
+Artist: OPM
+Title: Better Daze
+Album: Menace to Sobriety
+Track: 7
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303891
+song_end
+song_begin: 08 Trucha.mp3
+Time: 241
+Artist: OPM
+Title: Trucha
+Album: Menace to Sobriety
+Track: 8
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304176
+song_end
+song_begin: 09 Dealerman.mp3
+Time: 221
+Artist: OPM
+Title: Dealerman
+Album: Menace to Sobriety
+Track: 9
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303983
+song_end
+song_begin: 10 Reality Check.mp3
+Time: 238
+Artist: OPM
+Title: Reality Check
+Album: Menace to Sobriety
+Track: 10
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303937
+song_end
+song_begin: 11 Interlude_ Rage Against The Coke Machine.mp3
+Time: 63
+Artist: OPM
+Title: Interlude: Rage Against The Coke Machine
+Album: Menace to Sobriety
+Track: 11
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303606
+song_end
+song_begin: 12 Unda.mp3
+Time: 171
+Artist: OPM
+Title: Unda
+Album: Menace to Sobriety
+Track: 12
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304218
+song_end
+song_begin: 13 Interlude_ 15 Minutes.mp3
+Time: 45
+Artist: OPM
+Title: Interlude: 15 Minutes
+Album: Menace to Sobriety
+Track: 13
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299303201
+song_end
+song_begin: 14 Fish Out Of Water.mp3
+Time: 213
+Artist: OPM
+Title: Fish Out Of Water
+Album: Menace to Sobriety
+Track: 14
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304033
+song_end
+song_begin: 15 Sound System.mp3
+Time: 363
+Artist: OPM
+Title: Sound System
+Album: Menace to Sobriety
+Track: 15
+Date: 2000
+Genre: Hip-Hop/Reggae
+mtime: 1299304193
+song_end
+end: Music/OPM/Menace to Sobriety
+end: Music/OPM
 directory: Obi Best
 mtime: 1291260054
 begin: Music/Obi Best
@@ -17239,6 +21538,278 @@ mtime: 1240367297
 song_end
 end: Music/Outkast/Speakerboxx_The Love Below
 end: Music/Outkast
+directory: Parov Stelar
+mtime: 1303068448
+begin: Music/Parov Stelar
+directory: Coco (Disc 1)
+mtime: 1303068494
+begin: Music/Parov Stelar/Coco (Disc 1)
+song_begin: 01 Coco (feat. Lilja Bloom).mp3
+Time: 181
+Artist: Parov Stelar
+Title: Coco (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 01
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252103
+song_end
+song_begin: 02 Hurt.mp3
+Time: 183
+Artist: Parov Stelar
+Title: Hurt
+Album: Coco (Disc 1)
+Track: 02
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252103
+song_end
+song_begin: 03 For Rose.mp3
+Time: 191
+Artist: Parov Stelar
+Title: For Rose
+Album: Coco (Disc 1)
+Track: 03
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252117
+song_end
+song_begin: 04 True Romance (feat. Lilja Bloom).mp3
+Time: 200
+Artist: Parov Stelar
+Title: True Romance (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 04
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252118
+song_end
+song_begin: 05 Distance (feat. Lylith).mp3
+Time: 163
+Artist: Parov Stelar
+Title: Distance (feat. Lylith)
+Album: Coco (Disc 1)
+Track: 05
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252130
+song_end
+song_begin: 06 Wake Up Sister (feat. Max The Sax).mp3
+Time: 176
+Artist: Parov Stelar
+Title: Wake Up Sister (feat. Max The Sax)
+Album: Coco (Disc 1)
+Track: 06
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252134
+song_end
+song_begin: 07 Let's Roll (feat. Blaktroniks).mp3
+Time: 196
+Artist: Parov Stelar
+Title: Let's Roll (feat. Blaktroniks)
+Album: Coco (Disc 1)
+Track: 07
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252144
+song_end
+song_begin: 08 Sunny Bunny Blues (feat. Veda36).mp3
+Time: 186
+Artist: Parov Stelar
+Title: Sunny Bunny Blues (feat. Veda36)
+Album: Coco (Disc 1)
+Track: 08
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252153
+song_end
+song_begin: 09 Dandy (feat. Yola).mp3
+Time: 183
+Artist: Parov Stelar
+Title: Dandy (feat. Yola)
+Album: Coco (Disc 1)
+Track: 09
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252158
+song_end
+song_begin: 10 Your Man.mp3
+Time: 196
+Artist: Parov Stelar
+Title: Your Man
+Album: Coco (Disc 1)
+Track: 10
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252168
+song_end
+song_begin: 11 Promises (feat. Klaus Hainy).mp3
+Time: 180
+Artist: Parov Stelar
+Title: Promises (feat. Klaus Hainy)
+Album: Coco (Disc 1)
+Track: 11
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252171
+song_end
+song_begin: 12 Letoile (feat. Max The Sax).mp3
+Time: 187
+Artist: Parov Stelar
+Title: Letoile (feat. Max The Sax)
+Album: Coco (Disc 1)
+Track: 12
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252181
+song_end
+song_begin: 13 You And Me (feat. Lilja Bloom).mp3
+Time: 222
+Artist: Parov Stelar
+Title: You And Me (feat. Lilja Bloom)
+Album: Coco (Disc 1)
+Track: 13
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252190
+song_end
+end: Music/Parov Stelar/Coco (Disc 1)
+directory: Coco (Disc 2)
+mtime: 1303068486
+begin: Music/Parov Stelar/Coco (Disc 2)
+song_begin: 01 The Mojo Radio Gang (Radioversion).mp3
+Time: 161
+Artist: Parov Stelar
+Title: The Mojo Radio Gang (Radioversion)
+Album: Coco (Disc 2)
+Track: 01
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252192
+song_end
+song_begin: 02 Ragtimecat (feat. Lilja Bloom).mp3
+Time: 181
+Artist: Parov Stelar
+Title: Ragtimecat (feat. Lilja Bloom)
+Album: Coco (Disc 2)
+Track: 02
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252204
+song_end
+song_begin: 03 Silent Snow (Original Version).mp3
+Time: 312
+Artist: Parov Stelar
+Title: Silent Snow (Original Version)
+Album: Coco (Disc 2)
+Track: 03
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252212
+song_end
+song_begin: 04 Libella Swing.mp3
+Time: 246
+Artist: Parov Stelar
+Title: Libella Swing
+Album: Coco (Disc 2)
+Track: 04
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252222
+song_end
+song_begin: 05 Catgroove.mp3
+Time: 238
+Artist: Parov Stelar
+Title: Catgroove
+Album: Coco (Disc 2)
+Track: 05
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252228
+song_end
+song_begin: 06 Matilda.mp3
+Time: 204
+Artist: Parov Stelar
+Title: Matilda
+Album: Coco (Disc 2)
+Track: 06
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252236
+song_end
+song_begin: 07 The Flame.mp3
+Time: 333
+Artist: Parov Stelar
+Title: The Flame
+Album: Coco (Disc 2)
+Track: 07
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252251
+song_end
+song_begin: 08 Fleur De Lille.mp3
+Time: 317
+Artist: Parov Stelar
+Title: Fleur De Lille
+Album: Coco (Disc 2)
+Track: 08
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252259
+song_end
+song_begin: 09 Hotel Axos.mp3
+Time: 336
+Artist: Parov Stelar
+Title: Hotel Axos
+Album: Coco (Disc 2)
+Track: 09
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252276
+song_end
+song_begin: 10 Monster (Original Version).mp3
+Time: 315
+Artist: Parov Stelar
+Title: Monster (Original Version)
+Album: Coco (Disc 2)
+Track: 10
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252280
+song_end
+song_begin: 11 Nosferatu (Original Version).mp3
+Time: 358
+Artist: Parov Stelar
+Title: Nosferatu (Original Version)
+Album: Coco (Disc 2)
+Track: 11
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252300
+song_end
+song_begin: 12 Starlight (Club Version).mp3
+Time: 298
+Artist: Parov Stelar
+Title: Starlight (Club Version)
+Album: Coco (Disc 2)
+Track: 12
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252303
+song_end
+song_begin: 13 The Mojo Radio Gang (Clubversion).mp3
+Time: 307
+Artist: Parov Stelar
+Title: The Mojo Radio Gang (Clubversion)
+Album: Coco (Disc 2)
+Track: 13
+Date: 2009
+Genre: Acid Jazz
+mtime: 1301252317
+song_end
+end: Music/Parov Stelar/Coco (Disc 2)
+end: Music/Parov Stelar
 directory: Passion Pit
 mtime: 1298223777
 begin: Music/Passion Pit
@@ -17472,6 +22043,256 @@ mtime: 1260394129
 song_end
 end: Music/Passion Pit/Manners
 end: Music/Passion Pit
+directory: Portal2-OST-Volume1
+mtime: 1306350405
+begin: Music/Portal2-OST-Volume1
+directory: Music
+mtime: 1306350409
+begin: Music/Portal2-OST-Volume1/Music
+song_begin: Portal2-01-Science_is_Fun.mp3
+Time: 153
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Science is Fun
+Album: Portal 2: Songs to Test By
+Track: 1
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-02-Concentration_Enhancing_Menu_Initialiser.mp3
+Time: 137
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Concentration Enhancing Menu Initialiser
+Album: Portal 2: Songs to Test By
+Track: 2
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-03-999999.mp3
+Time: 191
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: 9999999
+Album: Portal 2: Songs to Test By
+Track: 3
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-04-The_Courtesy_Call.mp3
+Time: 217
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: The Courtesy Call
+Album: Portal 2: Songs to Test By
+Track: 4
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-05-Technical_Difficulties.mp3
+Time: 202
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Technical Difficulties
+Album: Portal 2: Songs to Test By
+Track: 5
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-06-Overgrowth.mp3
+Time: 171
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Overgrowth
+Album: Portal 2: Songs to Test By
+Track: 6
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-07-Ghost_of_Rattman.mp3
+Time: 246
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Ghost of Rattman
+Album: Portal 2: Songs to Test By
+Track: 7
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-08-Haunted_Panels.mp3
+Time: 96
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Haunted Panels
+Album: Portal 2: Songs to Test By
+Track: 8
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333384
+song_end
+song_begin: Portal2-09-The_Future_Starts_With_You.mp3
+Time: 202
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: The Future Starts With You
+Album: Portal 2: Songs to Test By
+Track: 9
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-10-There_She_Is.mp3
+Time: 261
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: There She Is
+Album: Portal 2: Songs to Test By
+Track: 10
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-11-You_Know_Her.mp3
+Time: 191
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: You Know Her?
+Album: Portal 2: Songs to Test By
+Track: 11
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-12-The_Friendly_Faith_Plate.mp3
+Time: 179
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: The Friendly Faith Plate
+Album: Portal 2: Songs to Test By
+Track: 12
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-13-15_Acres_of_Broken_Glass.mp3
+Time: 300
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: 15 Acres of Broken Glass
+Album: Portal 2: Songs to Test By
+Track: 13
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-14-Love_as_a_Construct.mp3
+Time: 297
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Love as a Construct
+Album: Portal 2: Songs to Test By
+Track: 14
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-15-I_Saw_a_Deer_Today.mp3
+Time: 193
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: I Saw a Deer Today
+Album: Portal 2: Songs to Test By
+Track: 15
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333386
+song_end
+song_begin: Portal2-16-Hard_Sunshine.mp3
+Time: 168
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Hard Sunshine
+Album: Portal 2: Songs to Test By
+Track: 16
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-17-I_Am_Different.mp3
+Time: 269
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: I'm Different
+Album: Portal 2: Songs to Test By
+Track: 17
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-18-Adrenal_Vapor.mp3
+Time: 156
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Adrenal Vapor
+Album: Portal 2: Songs to Test By
+Track: 18
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-19-Turret_Wife_Serenade.mp3
+Time: 99
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Turret Wife Serenade
+Album: Portal 2: Songs to Test By
+Track: 19
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-20-I_Made_It_All_Up.mp3
+Time: 236
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: I Made It All Up
+Album: Portal 2: Songs to Test By
+Track: 20
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-21-Comedy_Equals_Tragedy_Plus_Time.mp3
+Time: 210
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Comedy = Tragedy + Time
+Album: Portal 2: Songs to Test By
+Track: 21
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+song_begin: Portal2-22-Triple_Laser_Phase.mp3
+Time: 255
+Artist: Aperture Science Psychoacoustics Laboratory
+Title: Triple Laser Phase
+Album: Portal 2: Songs to Test By
+Track: 22
+Genre: Soundtrack
+Composer: Aperture Science
+Disc: 1
+mtime: 1306333388
+song_end
+end: Music/Portal2-OST-Volume1/Music
+end: Music/Portal2-OST-Volume1
 directory: Portishead
 mtime: 1291260100
 begin: Music/Portishead
@@ -19978,17 +24799,17 @@ mtime: 1291260086
 begin: Music/Red Hot Chili Peppers/Blood Sugar Sex Magik
 song_begin: 05 Suck My Kiss.mp3
 Time: 218
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 AlbumArtist: Red Hot Chili Peppers
 Title: Suck My Kiss
 Album: Blood Sugar Sex Magik
-Track: 5
+Track: 05
 Genre: Alternative
 Composer: Anthony Kiedis
 Composer: Chad Smith
 Composer: Flea
 Composer: John Frusciante
-mtime: 1258503555
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/Blood Sugar Sex Magik
 directory: By the Way
@@ -19996,33 +24817,33 @@ mtime: 1291260086
 begin: Music/Red Hot Chili Peppers/By the Way
 song_begin: 06 The Zephyr Song.mp3
 Time: 234
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 AlbumArtist: Red Hot Chili Peppers
 Title: The Zephyr Song
 Album: By the Way
-Track: 6
+Track: 06
 Genre: Alternative
 Composer: Anthony Kiedis
 Composer: Chad Smith
 Composer: Flea
 Composer: John Frusciante
-mtime: 1258503581
+mtime: 1303953095
 song_end
 song_begin: 07 Can't Stop.mp3
 Time: 268
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 AlbumArtist: Red Hot Chili Peppers
 Title: Can't Stop
 Album: By the Way
-Track: 7
+Track: 07
 Date: 2002
 Genre: Alternative
 Composer: Anthony Kiedis/Chad Smith/Flea/John Frusciante
-mtime: 1258503583
+mtime: 1303953095
 song_end
 song_begin: 16 Venice Queen.mp3
 Time: 369
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 AlbumArtist: Red Hot Chili Peppers
 Title: Venice Queen
 Album: By the Way
@@ -20030,7 +24851,7 @@ Track: 16
 Date: 2002
 Genre: Alternative
 Composer: Anthony Kiedis/Chad Smith/Flea/John Frusciante
-mtime: 1258503586
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/By the Way
 directory: Californication
@@ -20038,30 +24859,30 @@ mtime: 1291260086
 begin: Music/Red Hot Chili Peppers/Californication
 song_begin: Scar Tissue.mp3
 Time: 217
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Scar Tissue
 Album: Californication
 Date: 1999
 Genre: (17)
-mtime: 1244863386
+mtime: 1303953095
 song_end
 song_begin: 01 Road Trippin'.mp3
 Time: 205
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Road Trippin'
 Album: Californication
 Track: 01
-mtime: 1202339849
+mtime: 1303953095
 song_end
 song_begin: 18 Quixoticelixer.mp3
 Time: 288
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Quixoticelixer
 Album: Californication
 Track: 18
 Date: 2006
 Genre: Rock
-mtime: 1202339850
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/Californication
 directory: Shared
@@ -20069,12 +24890,12 @@ mtime: 1291260086
 begin: Music/Red Hot Chili Peppers/Shared
 song_begin: 13 Wet Sand.mp3
 Time: 278
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Wet Sand
 Album: Shared
 Track: 13
 Genre: (12)
-mtime: 1210804396
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/Shared
 directory: Stadium Arcadium
@@ -20082,31 +24903,31 @@ mtime: 1291260089
 begin: Music/Red Hot Chili Peppers/Stadium Arcadium
 song_begin: 02 Snow (Hey Oh).mp3
 Time: 335
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Snow (Hey Oh)
 Album: Stadium Arcadium
-Track: 2
+Track: 02
 Genre: (17)
-mtime: 1208993861
+mtime: 1303953095
 song_end
 song_begin: 02 Tell Me Baby.mp3
 Time: 248
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Tell Me Baby
 Album: Stadium Arcadium
-Track: 2
+Track: 02
 Date: 2006
 Genre: Rock
-mtime: 1202341278
+mtime: 1303953095
 song_end
 song_begin: 05 Hump De Bump.mp3
 Time: 213
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Hump De Bump
 Album: Stadium Arcadium
-Track: 5
+Track: 05
 Genre: Other
-mtime: 1210804657
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/Stadium Arcadium
 directory: Unknown Album
@@ -20114,22 +24935,22 @@ mtime: 1291260089
 begin: Music/Red Hot Chili Peppers/Unknown Album
 song_begin: Aeroplane.mp3
 Time: 285
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Aeroplane
 Genre: (6)
-mtime: 1208720478
+mtime: 1303953095
 song_end
 song_begin: Higher Ground.mp3
 Time: 293
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Higher Ground
-mtime: 1187028427
+mtime: 1303953095
 song_end
 song_begin: Other Side.mp3
 Time: 216
-Artist: Red Hot Chili Peppers
+Artist: Red Hot Chilli Peppers
 Title: Other Side
-mtime: 1186798774
+mtime: 1303953095
 song_end
 end: Music/Red Hot Chili Peppers/Unknown Album
 end: Music/Red Hot Chili Peppers
@@ -20836,10 +25657,10 @@ song_end
 end: Music/TV On The Radio/Province EP
 end: Music/TV On The Radio
 directory: TV on the Radio
-mtime: 1298234804
+mtime: 1305907000
 begin: Music/TV on the Radio
 directory: Dear Science,
-mtime: 1293228616
+mtime: 1305906964
 begin: Music/TV on the Radio/Dear Science,
 song_begin: 01 Halfway Home.mp3
 Time: 332
@@ -20964,7 +25785,7 @@ mtime: 1291357507
 song_end
 end: Music/TV on the Radio/Dear Science,
 directory: Desperate Youth, Bloodthirsty Babes
-mtime: 1293228684
+mtime: 1305906980
 begin: Music/TV on the Radio/Desperate Youth, Bloodthirsty Babes
 song_begin: 01 The Wrong Way.mp3
 Time: 278
@@ -21058,7 +25879,7 @@ mtime: 1291358298
 song_end
 end: Music/TV on the Radio/Desperate Youth, Bloodthirsty Babes
 directory: Live At Amoeba Music EP
-mtime: 1293228764
+mtime: 1305906999
 begin: Music/TV on the Radio/Live At Amoeba Music EP
 song_begin: 01 Blues From Down Here.mp3
 Time: 343
@@ -21109,8 +25930,142 @@ Disc: 1/1
 mtime: 1291356649
 song_end
 end: Music/TV on the Radio/Live At Amoeba Music EP
+directory: Nine Types of Light
+mtime: 1305906958
+begin: Music/TV on the Radio/Nine Types of Light
+song_begin: 01 Second Song.mp3
+Time: 260
+Artist: TV on the Radio
+Title: Second Song
+Album: Nine Types of Light
+Track: 01
+Date: 2011
+Genre: Indie
+mtime: 1302887466
+song_end
+song_begin: 02 Keep Your Heart.mp3
+Time: 342
+Artist: TV on the Radio
+Title: Keep Your Heart
+Album: Nine Types of Light
+Track: 02
+Date: 2011
+Genre: Indie
+mtime: 1302887471
+song_end
+song_begin: 03 You.mp3
+Time: 244
+Artist: TV on the Radio
+Title: You
+Album: Nine Types of Light
+Track: 03
+Date: 2011
+Genre: Indie
+mtime: 1302887485
+song_end
+song_begin: 04 No Future Shock.mp3
+Time: 243
+Artist: TV on the Radio
+Title: No Future Shock
+Album: Nine Types of Light
+Track: 04
+Date: 2011
+Genre: Indie
+mtime: 1302887490
+song_end
+song_begin: 05 Killer Crane.mp3
+Time: 375
+Artist: TV on the Radio
+Title: Killer Crane
+Album: Nine Types of Light
+Track: 05
+Date: 2011
+Genre: Indie
+mtime: 1302887519
+song_end
+song_begin: 06 Will Do.mp3
+Time: 225
+Artist: TV on the Radio
+Title: Will Do
+Album: Nine Types of Light
+Track: 06
+Date: 2011
+Genre: Indie
+mtime: 1302887511
+song_end
+song_begin: 07 New Cannonball Blues.mp3
+Time: 274
+Artist: TV on the Radio
+Title: New Cannonball Blues
+Album: Nine Types of Light
+Track: 07
+Date: 2011
+Genre: Indie
+mtime: 1302887528
+song_end
+song_begin: 08 Repetition.mp3
+Time: 225
+Artist: TV on the Radio
+Title: Repetition
+Album: Nine Types of Light
+Track: 08
+Date: 2011
+Genre: Indie
+mtime: 1302887534
+song_end
+song_begin: 09 Forgotten.mp3
+Time: 219
+Artist: TV on the Radio
+Title: Forgotten
+Album: Nine Types of Light
+Track: 09
+Date: 2011
+Genre: Indie
+mtime: 1302887543
+song_end
+song_begin: 10 Caffeinated Consciousness.mp3
+Time: 200
+Artist: TV on the Radio
+Title: Caffeinated Consciousness
+Album: Nine Types of Light
+Track: 10
+Date: 2011
+Genre: Indie
+mtime: 1302887554
+song_end
+song_begin: 11 All Falls Down.mp3
+Time: 295
+Artist: TV on the Radio
+Title: All Falls Down
+Album: Nine Types of Light
+Track: 11
+Date: 2011
+Genre: Indie
+mtime: 1302887595
+song_end
+song_begin: 12 Will Do (Switch Remix).mp3
+Time: 321
+Artist: TV on the Radio
+Title: Will Do (Switch Remix)
+Album: Nine Types of Light
+Track: 12
+Date: 2011
+Genre: Indie
+mtime: 1302887575
+song_end
+song_begin: 13 Will Do (XXXChange Dancehall Mix).mp3
+Time: 225
+Artist: TV on the Radio
+Title: Will Do (XXXChange Dancehall Mix)
+Album: Nine Types of Light
+Track: 13
+Date: 2011
+Genre: Indie
+mtime: 1302887592
+song_end
+end: Music/TV on the Radio/Nine Types of Light
 directory: OK Calculator
-mtime: 1293228657
+mtime: 1305906972
 begin: Music/TV on the Radio/OK Calculator
 song_begin: 01 Freeway.mp3
 Time: 140
@@ -21294,7 +26249,7 @@ mtime: 1291357509
 song_end
 end: Music/TV on the Radio/OK Calculator
 directory: Return To Cookie Mountain
-mtime: 1293228752
+mtime: 1305906995
 begin: Music/TV on the Radio/Return To Cookie Mountain
 song_begin: 01 I Was A Lover.mp3
 Time: 261
@@ -21588,7 +26543,7 @@ mtime: 1291357953
 song_end
 end: Music/TV on the Radio/Return To Cookie Mountain
 directory: Staring at the Sun EP
-mtime: 1293228696
+mtime: 1305906982
 begin: Music/TV on the Radio/Staring at the Sun EP
 song_begin: 01 Staring at the Sun.mp3
 Time: 207
@@ -21624,7 +26579,7 @@ mtime: 1291357263
 song_end
 end: Music/TV on the Radio/Staring at the Sun EP
 directory: Unknown Album
-mtime: 1298234808
+mtime: 1305907000
 begin: Music/TV on the Radio/Unknown Album
 song_begin: Pony Ride (TV on the Radio Remix) 1.mp3
 Time: 161
@@ -21640,7 +26595,7 @@ mtime: 1298234804
 song_end
 end: Music/TV on the Radio/Unknown Album
 directory: Wolf Like Me EP
-mtime: 1293228756
+mtime: 1305906996
 begin: Music/TV on the Radio/Wolf Like Me EP
 song_begin: 01 Wolf Like Me.mp3
 Time: 279
@@ -21664,7 +26619,7 @@ mtime: 1291356961
 song_end
 end: Music/TV on the Radio/Wolf Like Me EP
 directory: Young Liars EP
-mtime: 1293228667
+mtime: 1305906975
 begin: Music/TV on the Radio/Young Liars EP
 song_begin: 01 Satellite.mp3
 Time: 274
@@ -22875,6 +27830,510 @@ mtime: 1270785326
 song_end
 end: Music/The Kills/No Wow
 end: Music/The Kills
+directory: The Plastic Eulogy - Bend Your Machines - demonoid Sampler
+mtime: 1306789471
+begin: Music/The Plastic Eulogy - Bend Your Machines - demonoid Sampler
+song_begin: 01 Distaste.mp3
+Time: 360
+Artist: The Plastic Eulogy
+AlbumArtist: The Plastic Eulogy
+Title: Distaste
+Album: Bend Your Machines [Demonoid Sampler]
+Track: 1
+mtime: 1306782105
+song_end
+song_begin: 02 Kill Your Neighbor.mp3
+Time: 290
+Artist: The Plastic Eulogy
+AlbumArtist: The Plastic Eulogy
+Title: Kill Your Neighbor
+Album: Bend Your Machines [Demonoid Sampler]
+Track: 2
+mtime: 1306782103
+song_end
+song_begin: 03 Scar.mp3
+Time: 366
+Artist: The Plastic Eulogy
+AlbumArtist: The Plastic Eulogy
+Title: Scar
+Album: Bend Your Machines [Demonoid Sampler]
+Track: 3
+mtime: 1306782103
+song_end
+end: Music/The Plastic Eulogy - Bend Your Machines - demonoid Sampler
+directory: The Prodigy
+mtime: 1303068518
+begin: Music/The Prodigy
+directory: Invaders Must Die
+mtime: 1303068516
+begin: Music/The Prodigy/Invaders Must Die
+song_begin: 01 Invaders Must Die.mp3
+Time: 295
+Artist: The Prodigy
+Title: Invaders Must Die
+Album: Invaders Must Die
+Track: 1
+Date: 2009
+Genre: Electronic
+mtime: 1295647669
+song_end
+song_begin: 02 Omen.mp3
+Time: 216
+Artist: The Prodigy
+Title: Omen
+Album: Invaders Must Die
+Track: 2
+Date: 2009
+Genre: Electronic
+mtime: 1295647658
+song_end
+song_begin: 03 Thunder.mp3
+Time: 250
+Artist: The Prodigy
+Title: Thunder
+Album: Invaders Must Die
+Track: 3
+Date: 2009
+Genre: Electronic
+mtime: 1295647662
+song_end
+song_begin: 04 Colours.mp3
+Time: 208
+Artist: The Prodigy
+Title: Colours
+Album: Invaders Must Die
+Track: 4
+Date: 2009
+Genre: Electronic
+mtime: 1295647671
+song_end
+song_begin: 05 Take Me To The Hospital.mp3
+Time: 220
+Artist: The Prodigy
+Title: Take Me To The Hospital
+Album: Invaders Must Die
+Track: 5
+Date: 2009
+Genre: Electronic
+mtime: 1295647628
+song_end
+song_begin: 06 Warriors Dance.mp3
+Time: 313
+Artist: The Prodigy
+Title: Warriors Dance
+Album: Invaders Must Die
+Track: 6
+Date: 2009
+Genre: Electronic
+mtime: 1295647666
+song_end
+song_begin: 07 Run With The Wolves.mp3
+Time: 265
+Artist: The Prodigy
+Title: Run With The Wolves
+Album: Invaders Must Die
+Track: 7
+Date: 2009
+Genre: Electronic
+mtime: 1295647682
+song_end
+song_begin: 08 Omen Reprise.mp3
+Time: 134
+Artist: The Prodigy
+Title: Omen Reprise
+Album: Invaders Must Die
+Track: 8
+Date: 2009
+Genre: Electronic
+mtime: 1295647623
+song_end
+song_begin: 09 Worlds On Fire.mp3
+Time: 290
+Artist: The Prodigy
+Title: Worlds On Fire
+Album: Invaders Must Die
+Track: 9
+Date: 2009
+Genre: Electronic
+mtime: 1295647638
+song_end
+song_begin: 10 Piranha.mp3
+Time: 245
+Artist: The Prodigy
+Title: Piranha
+Album: Invaders Must Die
+Track: 10
+Date: 2009
+Genre: Electronic
+mtime: 1295647632
+song_end
+song_begin: 11 Stand Up.mp3
+Time: 330
+Artist: The Prodigy
+Title: Stand Up
+Album: Invaders Must Die
+Track: 11
+Date: 2009
+Genre: Electronic
+mtime: 1295647675
+song_end
+end: Music/The Prodigy/Invaders Must Die
+directory: Lost Beats EP
+mtime: 1303068523
+begin: Music/The Prodigy/Lost Beats EP
+song_begin: 01 The Big Gundown.mp3
+Time: 262
+Artist: The Prodigy
+Title: The Big Gundown
+Album: Lost Beats EP
+Track: 1
+Date: 2009
+Genre: Electronic
+mtime: 1295647585
+song_end
+song_begin: 02 Black Smoke.mp3
+Time: 208
+Artist: The Prodigy
+Title: Black Smoke
+Album: Lost Beats EP
+Track: 2
+Date: 2009
+Genre: Electronic
+mtime: 1295647640
+song_end
+song_begin: 03 Wild West.mp3
+Time: 256
+Artist: The Prodigy
+Title: Wild West
+Album: Lost Beats EP
+Track: 3
+Date: 2009
+Genre: Electronic
+mtime: 1295647615
+song_end
+song_begin: 04 Fighter Beat.mp3
+Time: 215
+Artist: The Prodigy
+Title: Fighter Beat
+Album: Lost Beats EP
+Track: 4
+Date: 2009
+Genre: Electronic
+mtime: 1295647615
+song_end
+end: Music/The Prodigy/Lost Beats EP
+end: Music/The Prodigy
+directory: The Script
+mtime: 1306789389
+begin: Music/The Script
+directory: Science And Faith
+mtime: 1306789382
+begin: Music/The Script/Science And Faith
+song_begin: 13 Science & Faith (Track By Track).m4v
+Time: 753
+Title: Science & Faith (Track By Track)
+Artist: The Script
+Date: 2010-09-10T07:00:00Z
+Album: Science & Faith (Bonus Track Version)
+Track: 13
+mtime: 1306782489
+song_end
+song_begin: 14 For the First Time.m4v
+Time: 281
+Title: For the First Time
+Artist: The Script
+Date: 2010-11-09T08:00:00Z
+Album: Science & Faith (Bonus Track Version)
+Track: 14
+mtime: 1306782471
+song_end
+song_begin: 15 Nothing.m4v
+Time: 273
+Title: Nothing
+Artist: The Script
+Date: 2010-11-19T08:00:00Z
+Album: Science & Faith (Bonus Track Version)
+Track: 15
+mtime: 1306782467
+song_end
+song_begin: 01 You Won't Feel a Thing.m4a
+Time: 274
+Title: You Won't Feel a Thing
+Artist: The Script
+AlbumArtist: The Script
+Composer: Andrew Frampton, Ben Sargeant, Daniel O'Donoghue, Glen Power, Mark Sheehan & Steve Kipner
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 1
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782535
+song_end
+song_begin: 02 For the First Time.m4a
+Time: 253
+Title: For the First Time
+Artist: The Script
+AlbumArtist: The Script
+Composer: Daniel O'Donoghue & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 2
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306781976
+song_end
+song_begin: 03 Nothing.m4a
+Time: 272
+Title: Nothing
+Artist: The Script
+AlbumArtist: The Script
+Composer: Andrew Frampton, Daniel O'Donoghue, Mark Sheehan & Steve Kipner
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 3
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782554
+song_end
+song_begin: 04 Science & Faith.m4a
+Time: 260
+Title: Science & Faith
+Artist: The Script
+AlbumArtist: The Script
+Composer: Daniel O'Donoghue & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 4
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782559
+song_end
+song_begin: 05 If You Ever Come Back.m4a
+Time: 242
+Title: If You Ever Come Back
+Artist: The Script
+AlbumArtist: The Script
+Composer: Andrew Frampton, Daniel O'Donoghue, Mark Sheehan & Steve Kipner
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 5
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782554
+song_end
+song_begin: 06 Long Gone and Moved On.m4a
+Time: 258
+Title: Long Gone and Moved On
+Artist: The Script
+AlbumArtist: The Script
+Composer: Daniel O'Donoghue, Glen Power & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 6
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782499
+song_end
+song_begin: 07 Dead Man Walking.m4a
+Time: 235
+Title: Dead Man Walking
+Artist: The Script
+AlbumArtist: The Script
+Composer: Daniel O'Donoghue & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 7
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782497
+song_end
+song_begin: 08 This = Love.m4a
+Time: 261
+Title: This = Love
+Artist: The Script
+AlbumArtist: The Script
+Composer: Ben Sargeant, Daniel O'Donoghue, Glen Power & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 8
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782544
+song_end
+song_begin: 09 Walk Away (feat. B.o.B.).m4a
+Time: 219
+Title: Walk Away (feat. B.o.B.)
+Artist: The Script
+AlbumArtist: The Script
+Composer: Ben Sargeant, Bobby Ray Simmons, Daniel O'Donoghue, Glen Power & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 9
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782539
+song_end
+song_begin: 10 Exit Wounds.m4a
+Time: 265
+Title: Exit Wounds
+Artist: The Script
+AlbumArtist: The Script
+Composer: Andrew Frampton, Daniel O'Donoghue, Mark Sheehan & Steve Kipner
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 10
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782552
+song_end
+song_begin: 11 Bullet from a Gun.m4a
+Time: 204
+Title: Bullet from a Gun
+Artist: The Script
+AlbumArtist: The Script
+Composer: Andrew Frampton, Daniel O'Donoghue, Mark Sheehan & Steve Kipner
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 11
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782445
+song_end
+song_begin: 12 Walk Away.m4a
+Time: 216
+Title: Walk Away
+Artist: The Script
+AlbumArtist: The Script
+Composer: Ben Sargeant, Daniel O'Donoghue, Glen Power & Mark Sheehan
+Album: Science & Faith (Bonus Track Version)
+Genre: Pop
+Track: 12
+Disc: 1
+Date: 2011-01-18T08:00:00Z
+mtime: 1306782560
+song_end
+end: Music/The Script/Science And Faith
+directory: The Script
+mtime: 1306789388
+begin: Music/The Script/The Script
+song_begin: 10 I'm Yours.mp3
+Time: 255
+Artist: The Script
+Title: I'm Yours
+mtime: 1306878669
+song_end
+song_begin: 01 We Cry.mp3
+Time: 225
+Artist: The Script
+AlbumArtist: The Script
+Title: We Cry
+Album: The Script
+Track: 01/11
+Date: 2008
+Genre: Indie
+mtime: 1306878665
+song_end
+song_begin: 02 Before The Worst.mp3
+Time: 203
+Artist: The Script
+AlbumArtist: The Script
+Title: Before The Worst
+Album: The Script
+Track: 02/11
+Date: 2008
+Genre: Indie
+mtime: 1306878665
+song_end
+song_begin: 03 Talk You Down.mp3
+Time: 231
+Artist: The Script
+AlbumArtist: The Script
+Title: Talk You Down
+Album: The Script
+Track: 03/11
+Date: 2008
+Genre: Indie
+mtime: 1306878666
+song_end
+song_begin: 04 The Man Who Can't Be Moved.mp3
+Time: 242
+Artist: The Script
+AlbumArtist: The Script
+Title: The Man Who Can't Be Moved
+Album: The Script
+Track: 04/11
+Date: 2008
+Genre: Indie
+mtime: 1306878666
+song_end
+song_begin: 05 Breakeven.mp3
+Time: 261
+Artist: The Script
+AlbumArtist: The Script
+Title: Breakeven
+Album: The Script
+Track: 05/11
+Date: 2008
+Genre: Indie
+mtime: 1306878667
+song_end
+song_begin: 06 Rusty Halo.mp3
+Time: 215
+Artist: The Script
+AlbumArtist: The Script
+Title: Rusty Halo
+Album: The Script
+Track: 06/11
+Date: 2008
+Genre: Indie
+mtime: 1306878668
+song_end
+song_begin: 07 The End Is Where I Begin.mp3
+Time: 215
+Artist: The Script
+AlbumArtist: The Script
+Title: The End Is Where I Begin
+Album: The Script
+Track: 07/11
+Date: 2008
+Genre: Indie
+mtime: 1306878668
+song_end
+song_begin: 08 Fall For Anything.mp3
+Time: 273
+Artist: The Script
+AlbumArtist: The Script
+Title: Fall For Anything
+Album: The Script
+Track: 08/11
+Date: 2008
+Genre: Indie
+mtime: 1306878669
+song_end
+song_begin: 09 If You See Kay.mp3
+Time: 194
+Artist: The Script
+AlbumArtist: The Script
+Title: If You See Kay
+Album: The Script
+Track: 09/11
+Date: 2008
+Genre: Indie
+mtime: 1306878669
+song_end
+song_begin: 11 Anybody There.mp3
+Time: 180
+Artist: The Script
+AlbumArtist: The Script
+Title: Anybody There
+Album: The Script
+Track: 11/11
+Date: 2008
+Genre: Indie
+mtime: 1306878670
+song_end
+end: Music/The Script/The Script
+end: Music/The Script
 directory: The Shins
 mtime: 1291260102
 begin: Music/The Shins
@@ -24067,10 +29526,10 @@ song_end
 end: Music/Tokyo Police Club/Elephant Shell
 end: Music/Tokyo Police Club
 directory: Tv on the Radio
-mtime: 1298234808
+mtime: 1305906948
 begin: Music/Tv on the Radio
 directory: New Health Rock EP
-mtime: 1293228690
+mtime: 1305906948
 begin: Music/Tv on the Radio/New Health Rock EP
 song_begin: 01 New Health Rock.mp3
 Time: 243
@@ -25239,1460 +30698,11 @@ song_end
 end: Music/Муха/Альбом для рисования
 end: Music/Муха
 end: Music
-directory: New Music
-mtime: 1301251520
-begin: New Music
-directory: OPM
-mtime: 1299357381
-begin: New Music/OPM
-directory: California Poppy
-mtime: 1299357370
-begin: New Music/OPM/California Poppy
-song_begin: 01 Intro.mp3
-Time: 30
-Artist: OPM
-AlbumArtist: OPM
-Title: Intro
-Album: California Poppy
-Track: 1
-Date: 2006
-Genre: Rock
-mtime: 1299301848
-song_end
-song_begin: 02 For Tonight.mp3
-Time: 223
-Artist: OPM
-AlbumArtist: OPM
-Title: For Tonight
-Album: California Poppy
-Track: 2
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/S. Fox/S. Frazier/W. Foster
-mtime: 1299304195
-song_end
-song_begin: 03 Lion's Pride.mp3
-Time: 302
-Artist: OPM
-AlbumArtist: OPM
-Title: Lion's Pride
-Album: California Poppy
-Track: 3
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/J. Perkins/J. Williams/M. Rowe
-mtime: 1299304204
-song_end
-song_begin: 04 Rock Me Slow.mp3
-Time: 234
-Artist: OPM
-AlbumArtist: OPM
-Title: Rock Me Slow
-Album: California Poppy
-Track: 4
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/M. Rowe
-mtime: 1299303832
-song_end
-song_begin: 05 Love Don't.mp3
-Time: 188
-Artist: OPM
-AlbumArtist: OPM
-Title: Love Don't
-Album: California Poppy
-Track: 5
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/M. Rowe
-mtime: 1299304029
-song_end
-song_begin: 06 Somewhere (Further Than the Valley).mp3
-Time: 262
-Artist: OPM
-AlbumArtist: OPM
-Title: Somewhere (Further Than the Valley)
-Album: California Poppy
-Track: 6
-Date: 2006
-Genre: Rock
-Composer: B. Mahoney/G. Turney/J. Edney/J. Williams/M. Rowe
-mtime: 1299304225
-song_end
-song_begin: 07 Desire.mp3
-Time: 264
-Artist: OPM
-AlbumArtist: OPM
-Title: Desire
-Album: California Poppy
-Track: 7
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/M. Rowe
-mtime: 1299303960
-song_end
-song_begin: 08 Right Now.mp3
-Time: 262
-Artist: OPM
-AlbumArtist: OPM
-Title: Right Now
-Album: California Poppy
-Track: 8
-Date: 2006
-Genre: Rock
-Composer: B. Mahoney/G. Turney/J. Endey/M. Rowe/T.J. Lavin
-mtime: 1299304202
-song_end
-song_begin: 09 Leave 'Em for Dead.mp3
-Time: 282
-Artist: OPM
-AlbumArtist: OPM
-Title: Leave 'Em for Dead
-Album: California Poppy
-Track: 9
-Date: 2006
-Genre: Rock
-Composer: B. Xavier/G. Turney/J. Edney/M. Rowe
-mtime: 1299304220
-song_end
-song_begin: 10 Interlude.mp3
-Time: 25
-Artist: OPM
-AlbumArtist: OPM
-Title: Interlude
-Album: California Poppy
-Track: 10
-Date: 2006
-Genre: Rock
-mtime: 1299304220
-song_end
-song_begin: 11 Voodoo Hex.mp3
-Time: 189
-Artist: OPM
-AlbumArtist: OPM
-Title: Voodoo Hex
-Album: California Poppy
-Track: 11
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/M. Rowe
-mtime: 1299304200
-song_end
-song_begin: 12 That's the Sound.mp3
-Time: 271
-Artist: OPM
-AlbumArtist: OPM
-Title: That's the Sound
-Album: California Poppy
-Track: 12
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/J. William/K. Wassman/M. Rowe
-mtime: 1299303998
-song_end
-song_begin: 13 Born Again Virgin.mp3
-Time: 540
-Artist: OPM
-AlbumArtist: OPM
-Title: Born Again Virgin
-Album: California Poppy
-Track: 13
-Date: 2006
-Genre: Rock
-Composer: G. Turney/J. Edney/M. Rowe
-mtime: 1299304048
-song_end
-end: New Music/OPM/California Poppy
-directory: ForTheMasses
-mtime: 1299357374
-begin: New Music/OPM/ForTheMasses
-song_begin: 01 Conflict.mp3
-Time: 244
-Artist: OPM
-AlbumArtist: OPM
-Title: Conflict
-Album: ForTheMasses
-Track: 1
-Date: 2005
-Genre: Rock/Pop
-mtime: 1299303881
-song_end
-song_begin: 01 intro.mp3
-Time: 35
-Artist: OPM
-AlbumArtist: OPM
-Title: intro
-Album: ForTheMasses
-Track: 1
-Date: 2004
-Genre: 200
-mtime: 1299303965
-song_end
-song_begin: 02 Down Under.mp3
-Time: 238
-Artist: OPM
-AlbumArtist: OPM
-Title: Down Under
-Album: ForTheMasses
-Track: 2
-Date: 2005
-Genre: Rock/Pop
-mtime: 1299304216
-song_end
-song_begin: 02 bump.mp3
-Time: 218
-Artist: OPM
-AlbumArtist: OPM
-Title: bump
-Album: ForTheMasses
-Track: 2
-Date: 2004
-Genre: 200
-Composer: D. Swann/G. Turney/John Edney
-mtime: 1299304011
-song_end
-song_begin: 03 rollin.mp3
-Time: 229
-Artist: OPM
-AlbumArtist: OPM
-Title: rollin
-Album: ForTheMasses
-Track: 3
-Date: 2004
-Genre: 200
-Composer: B. Mahoney/G. Turney/John Edney
-mtime: 1299303823
-song_end
-song_begin: 04 luffy.mp3
-Time: 196
-Artist: OPM
-Title: luffy
-Album: ForTheMasses
-Track: 4
-Genre: 200
-mtime: 1299303896
-song_end
-song_begin: 05 interlude-dave_grohl.mp3
-Time: 12
-Artist: OPM
-AlbumArtist: OPM
-Title: interlude-dave_grohl
-Album: ForTheMasses
-Track: 5
-Date: 2004
-Genre: 200
-mtime: 1299303385
-song_end
-song_begin: 06 Kali Kings (Feat. Richter From Kottonmouth Kings).mp3
-Time: 282
-Artist: OPM
-Title: Kali Kings (Feat. Richter From Kottonmouth Kings)
-Album: ForTheMasses
-Track: 6
-Date: 2004
-Genre: Rap
-mtime: 1299303948
-song_end
-song_begin: 07 everyday.mp3
-Time: 250
-Artist: OPM
-AlbumArtist: OPM
-Title: everyday
-Album: ForTheMasses
-Track: 7
-Date: 2004
-Genre: 200
-Composer: G. Turney/John Edney
-mtime: 1299304181
-song_end
-song_begin: 08 Perfect Day (Feat. Eek-A-Mouse).mp3
-Time: 247
-Artist: OPM
-Title: Perfect Day (Feat. Eek-A-Mouse)
-Album: ForTheMasses
-Track: 8
-Date: 2004
-Genre: Rap
-mtime: 1299304157
-song_end
-song_begin: 09 interlude-doggy_style.mp3
-Time: 12
-Artist: OPM
-AlbumArtist: OPM
-Title: interlude-doggy_style
-Album: ForTheMasses
-Track: 9
-Date: 2004
-Genre: 200
-mtime: 1299303189
-song_end
-song_begin: 10 horny.mp3
-Time: 214
-Artist: OPM
-AlbumArtist: OPM
-Title: horny
-Album: ForTheMasses
-Track: 10
-Date: 2004
-Genre: 200
-Composer: B. Mahoney/G. Turney/John Edney/N. Sixx
-mtime: 1299303951
-song_end
-song_begin: 11 how_it_sounds.mp3
-Time: 210
-Artist: OPM
-AlbumArtist: OPM
-Title: how_it_sounds
-Album: ForTheMasses
-Track: 11
-Date: 2005
-Genre: 200
-mtime: 1299303996
-song_end
-song_begin: 12 i_dont_o_u.mp3
-Time: 219
-Artist: OPM
-AlbumArtist: OPM
-Title: i_dont_o_u
-Album: ForTheMasses
-Track: 12
-Date: 2004
-Genre: 200
-Composer: B. Mahoney/G. Turney/John Edney/M.. Caren
-mtime: 1299304211
-song_end
-song_begin: 13 necropolis_(feat_yellowman).mp3
-Time: 307
-Artist: OPM
-Title: necropolis_(feat_yellowman)
-Album: ForTheMasses
-Track: 13
-Genre: 200
-mtime: 1299304211
-song_end
-song_begin: 14 Interlude_ You Have A Collect....mp3
-Time: 25
-Artist: OPM
-Title: Interlude: You Have A Collect...
-Album: ForTheMasses
-Track: 14
-Date: 2004
-Genre: Rap
-mtime: 1299303141
-song_end
-song_begin: 15 pot_luck.mp3
-Time: 153
-Artist: OPM
-AlbumArtist: OPM
-Title: pot_luck
-Album: ForTheMasses
-Track: 15
-Date: 2004
-Genre: 200
-Composer: B. Mahoney/G. Turney/John Edney
-mtime: 1299303402
-song_end
-song_begin: 16 viva.mp3
-Time: 600
-Artist: OPM
-AlbumArtist: OPM
-Title: viva
-Album: ForTheMasses
-Track: 16
-Date: 2004
-Genre: 200
-Composer: B. Mahoney/G. Turney/John Edney
-mtime: 1299304166
-song_end
-end: New Music/OPM/ForTheMasses
-directory: Golden State Of Mind
-mtime: 1299357378
-begin: New Music/OPM/Golden State Of Mind
-song_begin: 01 feel the vibration.mp3
-Time: 193
-Artist: OPM
-Title: Feel The Vibration
-Album: Golden State Of Mind
-Track: 1/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304143
-song_end
-song_begin: 02 family and friends.mp3
-Time: 235
-Artist: OPM
-Title: Family And Friends
-Album: Golden State Of Mind
-Track: 2/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304159
-song_end
-song_begin: 03 runwaway.mp3
-Time: 222
-Artist: OPM
-Title: Runwaway
-Album: Golden State Of Mind
-Track: 3/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299303808
-song_end
-song_begin: 04 tell me what you want.mp3
-Time: 214
-Artist: OPM
-Title: Tell Me What You Want
-Album: Golden State Of Mind
-Track: 4/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304164
-song_end
-song_begin: 05 dirty white.mp3
-Time: 191
-Artist: OPM
-Title: Dirty White
-Album: Golden State Of Mind
-Track: 5/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304191
-song_end
-song_begin: 06 honey.mp3
-Time: 231
-Artist: OPM
-Title: Honey
-Album: Golden State Of Mind
-Track: 6/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304126
-song_end
-song_begin: 07 square peg.mp3
-Time: 243
-Artist: OPM
-Title: Square Peg
-Album: Golden State Of Mind
-Track: 7/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304210
-song_end
-song_begin: 08 Set It On Fire.mp3
-Time: 216
-Artist: OPM
-Title: Set It On Fire
-Album: Golden State Of Mind
-Track: 8/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304173
-song_end
-song_begin: 09 Dub Op.mp3
-Time: 232
-Artist: OPM
-Title: Dub Op
-Album: Golden State Of Mind
-Track: 9/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299303649
-song_end
-song_begin: 10 Every Minute.mp3
-Time: 175
-Artist: OPM
-Title: Every Minute
-Album: Golden State Of Mind
-Track: 10/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304145
-song_end
-song_begin: 11 Shoot Em Up.mp3
-Time: 230
-Artist: OPM
-Title: Shoot Em Up
-Album: Golden State Of Mind
-Track: 11/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304207
-song_end
-song_begin: 12 Like That.mp3
-Time: 224
-Artist: OPM
-Title: Like That
-Album: Golden State Of Mind
-Track: 12/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304044
-song_end
-song_begin: 13 Addicted.mp3
-Time: 221
-Artist: OPM
-Title: Addicted
-Album: Golden State Of Mind
-Track: 13/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304223
-song_end
-song_begin: 14 Family And Friends (Saber Mix).mp3
-Time: 245
-Artist: OPM
-Title: Family And Friends (Saber Mix)
-Album: Golden State Of Mind
-Track: 14/14
-Date: 2008-08-19
-Genre: Rock
-mtime: 1299304214
-song_end
-end: New Music/OPM/Golden State Of Mind
-directory: Menace to Sobriety
-mtime: 1299357381
-begin: New Music/OPM/Menace to Sobriety
-song_begin: 01 - Stash Up.mp3
-Time: 179
-Artist: OPM
-Title: Stash Up
-Album: Menace to Sobriety
-Track: 1
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304125
-song_end
-song_begin: 02 - Interlude; Punanny.mp3
-Time: 34
-Artist: OPM
-Title: Interlude: Punanny
-Album: Menace to Sobriety
-Track: 2
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299302913
-song_end
-song_begin: 03 - Heaven Is A Halfpipe.mp3
-Time: 258
-Artist: OPM
-Title: Heaven Is A Halfpipe
-Album: Menace to Sobriety
-Track: 3
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304161
-song_end
-song_begin: 04 - El Capitan.mp3
-Time: 202
-Artist: OPM
-Title: El Capitan
-Album: Menace to Sobriety
-Track: 4
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303886
-song_end
-song_begin: 05 - Undercover Freak.mp3
-Time: 228
-Artist: OPM
-Title: Undercover Freak
-Album: Menace to Sobriety
-Track: 5
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304169
-song_end
-song_begin: 06 Brighter side.mp3
-Time: 211
-Artist: OPM
-Title: Brighter side
-Album: Menace to Sobriety
-Track: 6
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304141
-song_end
-song_begin: 07 Better Daze.mp3
-Time: 238
-Artist: OPM
-Title: Better Daze
-Album: Menace to Sobriety
-Track: 7
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303891
-song_end
-song_begin: 08 Trucha.mp3
-Time: 241
-Artist: OPM
-Title: Trucha
-Album: Menace to Sobriety
-Track: 8
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304176
-song_end
-song_begin: 09 Dealerman.mp3
-Time: 221
-Artist: OPM
-Title: Dealerman
-Album: Menace to Sobriety
-Track: 9
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303983
-song_end
-song_begin: 10 Reality Check.mp3
-Time: 238
-Artist: OPM
-Title: Reality Check
-Album: Menace to Sobriety
-Track: 10
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303937
-song_end
-song_begin: 11 Interlude_ Rage Against The Coke Machine.mp3
-Time: 63
-Artist: OPM
-Title: Interlude: Rage Against The Coke Machine
-Album: Menace to Sobriety
-Track: 11
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303606
-song_end
-song_begin: 12 Unda.mp3
-Time: 171
-Artist: OPM
-Title: Unda
-Album: Menace to Sobriety
-Track: 12
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304218
-song_end
-song_begin: 13 Interlude_ 15 Minutes.mp3
-Time: 45
-Artist: OPM
-Title: Interlude: 15 Minutes
-Album: Menace to Sobriety
-Track: 13
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299303201
-song_end
-song_begin: 14 Fish Out Of Water.mp3
-Time: 213
-Artist: OPM
-Title: Fish Out Of Water
-Album: Menace to Sobriety
-Track: 14
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304033
-song_end
-song_begin: 15 Sound System.mp3
-Time: 363
-Artist: OPM
-Title: Sound System
-Album: Menace to Sobriety
-Track: 15
-Date: 2000
-Genre: Hip-Hop/Reggae
-mtime: 1299304193
-song_end
-end: New Music/OPM/Menace to Sobriety
-end: New Music/OPM
-directory: Parov Stelar
-mtime: 1301252317
-begin: New Music/Parov Stelar
-song_begin: Coco (feat. Lilja Bloom).mp3
-Time: 181
-Artist: Parov Stelar
-Title: Coco (feat. Lilja Bloom)
-Album: Coco (Disc 1)
-Track: 01
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252103
-song_end
-song_begin: Hurt.mp3
-Time: 183
-Artist: Parov Stelar
-Title: Hurt
-Album: Coco (Disc 1)
-Track: 02
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252103
-song_end
-song_begin: For Rose.mp3
-Time: 191
-Artist: Parov Stelar
-Title: For Rose
-Album: Coco (Disc 1)
-Track: 03
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252117
-song_end
-song_begin: True Romance (feat. Lilja Bloom).mp3
-Time: 200
-Artist: Parov Stelar
-Title: True Romance (feat. Lilja Bloom)
-Album: Coco (Disc 1)
-Track: 04
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252118
-song_end
-song_begin: Distance (feat. Lylith).mp3
-Time: 163
-Artist: Parov Stelar
-Title: Distance (feat. Lylith)
-Album: Coco (Disc 1)
-Track: 05
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252130
-song_end
-song_begin: Wake Up Sister (feat. Max The Sax).mp3
-Time: 176
-Artist: Parov Stelar
-Title: Wake Up Sister (feat. Max The Sax)
-Album: Coco (Disc 1)
-Track: 06
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252134
-song_end
-song_begin: Let's Roll (feat. Blaktroniks).mp3
-Time: 196
-Artist: Parov Stelar
-Title: Let's Roll (feat. Blaktroniks)
-Album: Coco (Disc 1)
-Track: 07
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252144
-song_end
-song_begin: Sunny Bunny Blues (feat. Veda36).mp3
-Time: 186
-Artist: Parov Stelar
-Title: Sunny Bunny Blues (feat. Veda36)
-Album: Coco (Disc 1)
-Track: 08
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252153
-song_end
-song_begin: Dandy (feat. Yola).mp3
-Time: 183
-Artist: Parov Stelar
-Title: Dandy (feat. Yola)
-Album: Coco (Disc 1)
-Track: 09
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252158
-song_end
-song_begin: Your Man.mp3
-Time: 196
-Artist: Parov Stelar
-Title: Your Man
-Album: Coco (Disc 1)
-Track: 10
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252168
-song_end
-song_begin: Promises (feat. Klaus Hainy).mp3
-Time: 180
-Artist: Parov Stelar
-Title: Promises (feat. Klaus Hainy)
-Album: Coco (Disc 1)
-Track: 11
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252171
-song_end
-song_begin: Letoile (feat. Max The Sax).mp3
-Time: 187
-Artist: Parov Stelar
-Title: Letoile (feat. Max The Sax)
-Album: Coco (Disc 1)
-Track: 12
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252181
-song_end
-song_begin: You And Me (feat. Lilja Bloom).mp3
-Time: 222
-Artist: Parov Stelar
-Title: You And Me (feat. Lilja Bloom)
-Album: Coco (Disc 1)
-Track: 13
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252190
-song_end
-song_begin: The Mojo Radio Gang (Radioversion).mp3
-Time: 161
-Artist: Parov Stelar
-Title: The Mojo Radio Gang (Radioversion)
-Album: Coco (Disc 2)
-Track: 01
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252192
-song_end
-song_begin: Ragtimecat (feat. Lilja Bloom).mp3
-Time: 181
-Artist: Parov Stelar
-Title: Ragtimecat (feat. Lilja Bloom)
-Album: Coco (Disc 2)
-Track: 02
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252204
-song_end
-song_begin: Silent Snow (Original Version).mp3
-Time: 312
-Artist: Parov Stelar
-Title: Silent Snow (Original Version)
-Album: Coco (Disc 2)
-Track: 03
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252212
-song_end
-song_begin: Libella Swing.mp3
-Time: 246
-Artist: Parov Stelar
-Title: Libella Swing
-Album: Coco (Disc 2)
-Track: 04
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252222
-song_end
-song_begin: Catgroove.mp3
-Time: 238
-Artist: Parov Stelar
-Title: Catgroove
-Album: Coco (Disc 2)
-Track: 05
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252228
-song_end
-song_begin: Matilda.mp3
-Time: 204
-Artist: Parov Stelar
-Title: Matilda
-Album: Coco (Disc 2)
-Track: 06
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252236
-song_end
-song_begin: The Flame.mp3
-Time: 333
-Artist: Parov Stelar
-Title: The Flame
-Album: Coco (Disc 2)
-Track: 07
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252251
-song_end
-song_begin: Fleur De Lille.mp3
-Time: 317
-Artist: Parov Stelar
-Title: Fleur De Lille
-Album: Coco (Disc 2)
-Track: 08
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252259
-song_end
-song_begin: Hotel Axos.mp3
-Time: 336
-Artist: Parov Stelar
-Title: Hotel Axos
-Album: Coco (Disc 2)
-Track: 09
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252276
-song_end
-song_begin: Monster (Original Version).mp3
-Time: 315
-Artist: Parov Stelar
-Title: Monster (Original Version)
-Album: Coco (Disc 2)
-Track: 10
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252280
-song_end
-song_begin: Nosferatu (Original Version).mp3
-Time: 358
-Artist: Parov Stelar
-Title: Nosferatu (Original Version)
-Album: Coco (Disc 2)
-Track: 11
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252300
-song_end
-song_begin: Starlight (Club Version).mp3
-Time: 298
-Artist: Parov Stelar
-Title: Starlight (Club Version)
-Album: Coco (Disc 2)
-Track: 12
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252303
-song_end
-song_begin: The Mojo Radio Gang (Clubversion).mp3
-Time: 307
-Artist: Parov Stelar
-Title: The Mojo Radio Gang (Clubversion)
-Album: Coco (Disc 2)
-Track: 13
-Date: 2009
-Genre: Acid Jazz
-mtime: 1301252317
-song_end
-end: New Music/Parov Stelar
-directory: Prodigy-Invaders Must Die 2009 2CD + XviD+Cov
-mtime: 1298267839
-begin: New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov
-song_begin: The Prodigy - Invaders Must Die [2009][SkidVid]_XviD.avi
-Time: 205
-mtime: 1295646898
-song_end
-song_begin: The Prodigy - Omen [2009]_XviD.avi
-Time: 203
-mtime: 1295647160
-song_end
-song_begin: 101  The Prodigy - Invaders Must Die.mp3
-Time: 295
-Artist: The Prodigy
-Title: Invaders Must Die
-Album: Invaders Must Die
-Track: 1
-Date: 2009
-Genre: Electronic
-mtime: 1295647669
-song_end
-song_begin: 102  The Prodigy - Omen.mp3
-Time: 216
-Artist: The Prodigy
-Title: Omen
-Album: Invaders Must Die
-Track: 2
-Date: 2009
-Genre: Electronic
-mtime: 1295647658
-song_end
-song_begin: 102  The Prodigy - Thunder.mp3
-Time: 250
-Artist: The Prodigy
-Title: Thunder
-Album: Invaders Must Die
-Track: 3
-Date: 2009
-Genre: Electronic
-mtime: 1295647662
-song_end
-song_begin: 104  The Prodigy - Colours.mp3
-Time: 208
-Artist: The Prodigy
-Title: Colours
-Album: Invaders Must Die
-Track: 4
-Date: 2009
-Genre: Electronic
-mtime: 1295647671
-song_end
-song_begin: 105  The Prodigy - Take Me To The Hospital.mp3
-Time: 220
-Artist: The Prodigy
-Title: Take Me To The Hospital
-Album: Invaders Must Die
-Track: 5
-Date: 2009
-Genre: Electronic
-mtime: 1295647628
-song_end
-song_begin: 106  The Prodigy - Warriors Dance.mp3
-Time: 313
-Artist: The Prodigy
-Title: Warriors Dance
-Album: Invaders Must Die
-Track: 6
-Date: 2009
-Genre: Electronic
-mtime: 1295647666
-song_end
-song_begin: 107  The Prodigy - Run With The Wolves.mp3
-Time: 265
-Artist: The Prodigy
-Title: Run With The Wolves
-Album: Invaders Must Die
-Track: 7
-Date: 2009
-Genre: Electronic
-mtime: 1295647682
-song_end
-song_begin: 108  The Prodigy - Omen Reprise.mp3
-Time: 134
-Artist: The Prodigy
-Title: Omen Reprise
-Album: Invaders Must Die
-Track: 8
-Date: 2009
-Genre: Electronic
-mtime: 1295647623
-song_end
-song_begin: 109  The Prodigy - Worlds On Fire.mp3
-Time: 290
-Artist: The Prodigy
-Title: Worlds On Fire
-Album: Invaders Must Die
-Track: 9
-Date: 2009
-Genre: Electronic
-mtime: 1295647638
-song_end
-song_begin: 110  The Prodigy - Piranha.mp3
-Time: 245
-Artist: The Prodigy
-Title: Piranha
-Album: Invaders Must Die
-Track: 10
-Date: 2009
-Genre: Electronic
-mtime: 1295647632
-song_end
-song_begin: 111  The Prodigy - Stand Up.mp3
-Time: 330
-Artist: The Prodigy
-Title: Stand Up
-Album: Invaders Must Die
-Track: 11
-Date: 2009
-Genre: Electronic
-mtime: 1295647675
-song_end
-song_begin: 201  The Prodigy - The Big Gundown.mp3
-Time: 262
-Artist: The Prodigy
-Title: The Big Gundown
-Album: Lost Beats EP
-Track: 1
-Date: 2009
-Genre: Electronic
-mtime: 1295647585
-song_end
-song_begin: 202  The Prodigy - Black Smoke.mp3
-Time: 208
-Artist: The Prodigy
-Title: Black Smoke
-Album: Lost Beats EP
-Track: 2
-Date: 2009
-Genre: Electronic
-mtime: 1295647640
-song_end
-song_begin: 203  The Prodigy - Wild West.mp3
-Time: 256
-Artist: The Prodigy
-Title: Wild West
-Album: Lost Beats EP
-Track: 3
-Date: 2009
-Genre: Electronic
-mtime: 1295647615
-song_end
-song_begin: 204  The Prodigy - Fighter Beat.mp3
-Time: 215
-Artist: The Prodigy
-Title: Fighter Beat
-Album: Lost Beats EP
-Track: 4
-Date: 2009
-Genre: Electronic
-mtime: 1295647615
-song_end
-end: New Music/Prodigy-Invaders Must Die 2009 2CD + XviD+Cov
-directory: Zaz
-mtime: 1298408800
-begin: New Music/Zaz
-song_begin: Les passants.flac
-Time: 213
-Title: Les passants
-Artist: Zaz, Geffroy, Isabelle
-Album: Zaz
-Genre: Jazz
-Track: 1
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400575
-song_end
-song_begin: Je veux.flac
-Time: 220
-Title: Je veux
-Artist: Zaz, Soltani, Kerredine
-Album: Zaz
-Genre: Jazz
-Track: 2
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400578
-song_end
-song_begin: Le long de la route.flac
-Time: 218
-Title: Le long de la route
-Artist: Zaz, Geffroy, Isabelle
-Album: Zaz
-Genre: Jazz
-Track: 3
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400546
-song_end
-song_begin: La fee.flac
-Time: 174
-Title: La fee
-Artist: Zaz, Haroche, Raphael
-Album: Zaz
-Genre: Jazz
-Track: 4
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400577
-song_end
-song_begin: Trop sensible.flac
-Time: 240
-Title: Trop sensible
-Artist: Zaz, Geffroy, Isabelle
-Album: Zaz
-Genre: Jazz
-Track: 5
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400585
-song_end
-song_begin: Prends garde à ta langue.flac
-Time: 222
-Title: Prends garde à ta langue
-Artist: Zaz, Cirone, Dino
-Album: Zaz
-Genre: Jazz
-Track: 6
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400584
-song_end
-song_begin: Ni oui Ni non.flac
-Time: 212
-Title: Ni oui Ni non
-Artist: Zaz, Geffroy, Isabelle
-Album: Zaz
-Genre: Jazz
-Track: 7
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400554
-song_end
-song_begin: Port Coton.flac
-Time: 177
-Title: Port Coton
-Artist: Zaz, Haroche, Raphael
-Album: Zaz
-Genre: Jazz
-Track: 8
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400559
-song_end
-song_begin: J'aime à nouveau.flac
-Time: 231
-Title: J'aime à nouveau
-Artist: Zaz, Geffroy, Isabelle
-Album: Zaz
-Genre: Jazz
-Track: 9
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400579
-song_end
-song_begin: Dans ma rue.flac
-Time: 281
-Title: Dans ma rue
-Artist: Zaz, Datin, Jacques
-Album: Zaz
-Genre: Jazz
-Track: 10
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400595
-song_end
-song_begin: Éblouie par la nuit.flac
-Time: 161
-Title: Éblouie par la nuit
-Artist: Zaz, Haroche, Raphael
-Album: Zaz
-Genre: Jazz
-Track: 11
-Date: 2010
-AlbumArtist: Zaz
-AlbumArtist: Zaz
-mtime: 1298400529
-song_end
-end: New Music/Zaz
-end: New Music
 directory: Podcasts
-mtime: 1291260068
+mtime: 1303072087
 begin: Podcasts
-directory: Anthropology - Video
-mtime: 1262400297
-begin: Podcasts/Anthropology - Video
-song_begin: Law and justice in Japan.m4v
-Time: 3104
-Title: Law and justice in Japan
-Artist: Cambridge University
-Date: 2008-08-13T23:55:41Z
-Album: Anthropology - Video
-Genre: Podcast
-mtime: 1250395091
-song_end
-end: Podcasts/Anthropology - Video
-directory: CBC Radio 3 New Music Canada Track of the Day
-mtime: 1291083396
-begin: Podcasts/CBC Radio 3 New Music Canada Track of the Day
-song_begin: 593 Church Of The Very Bright Lights - Bad Decisions.m4a
-Time: 229
-Artist: CBC Radio 3
-AlbumArtist: CBC Radio 3
-Album: CBC Radio 3 New Music Canada Track of the Day
-Track: 593
-Title: Church Of The Very Bright Lights - Bad Decisions
-Genre: Podcast
-Date: 2009-06-03T07:00:00Z
-mtime: 1244086609
-song_end
-song_begin: 595 Chixdiggit - I Remember You.m4a
-Time: 201
-Artist: CBC Radio 3
-AlbumArtist: CBC Radio 3
-Album: CBC Radio 3 New Music Canada Track of the Day
-Track: 595
-Title: Chixdiggit - I Remember You
-Genre: Podcast
-Date: 2009-06-05T07:00:00Z
-mtime: 1244258013
-song_end
-song_begin: 599 Harvee - Father Was A Gambler.m4a
-Time: 271
-Artist: CBC Radio 3
-AlbumArtist: CBC Radio 3
-Album: CBC Radio 3 New Music Canada Track of the Day
-Track: 599
-Title: Harvee - Father Was A Gambler
-Genre: Podcast
-Date: 2009-06-11T07:00:00Z
-mtime: 1244749839
-song_end
-song_begin: 600 Subb - A Little More of Chomsky (A Little Less Of You And Me).m4a
-Time: 169
-Artist: CBC Radio 3
-AlbumArtist: CBC Radio 3
-Album: CBC Radio 3 New Music Canada Track of the Day
-Track: 600
-Title: Subb - A Little More of Chomsky (A Little Less Of You And Me)
-Genre: Podcast
-Date: 2009-06-12T07:00:00Z
-mtime: 1244935909
-song_end
-end: Podcasts/CBC Radio 3 New Music Canada Track of the Day
-directory: Cool Hunting Video
-mtime: 1262400320
-begin: Podcasts/Cool Hunting Video
-song_begin: CH Video - Billes Products International Design Contest 2008.m4v
-Time: 89
-Title: CH Video - Billes Products International Design Contest 2008
-Artist: Cool Hunting and Michael Tyburski
-Date: 2008-11-27T08:00:00Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1228618622
-song_end
-song_begin: CH Video - Cut Brooklyn_ Knifemaker Joel Bukiewicz.m4v
-Time: 200
-Title: CH Video - Cut Brooklyn: Knifemaker Joel Bukiewicz
-Artist: Cool Hunting and Gregory Mitnick
-Date: 2008-10-03T18:00:00Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1223521412
-song_end
-song_begin: CH Video - Robert Hammond at The 99 Percent Conference.m4v
-Time: 197
-Title: CH Video - Robert Hammond at The 99 Percent Conference
-Artist: Cool Hunting, Gregory Mitnick
-Date: 2009-05-26T18:18:49Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1244086837
-song_end
-song_begin: CH Video - Sunpie Barnes.m4v
-Time: 198
-Title: CH Video - Sunpie Barnes
-Artist: Cool Hunting and Michael Tyburski
-Date: 2009-01-13T21:00:00Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1232903563
-song_end
-song_begin: CH Video - Veuve Clicquot.m4v
-Time: 218
-Title: CH Video - Veuve Clicquot
-Artist: Cool Hunting and Seth Brau
-Date: 2008-10-15T23:11:00Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1224541015
-song_end
-song_begin: CH Video - Whartscape.m4v
-Time: 194
-Title: CH Video - Whartscape
-Artist: Cool Hunting, Gregory Mitnick
-Date: 2008-10-27T13:01:49Z
-Album: Cool Hunting Video
-Genre: Podcast
-mtime: 1228530233
-song_end
-end: Podcasts/Cool Hunting Video
-directory: Highlighted lectures and interviews - Audio
-mtime: 1291083361
-begin: Podcasts/Highlighted lectures and interviews - Audio
-song_begin: Understanding Humans - Serendipity and Anthropology.mp3
-Time: 3266
-Artist: Cambridge University
-Title: Understanding Humans - Serendipity and Anthropology
-Album: Highlighted lectures and interviews - Audio
-Genre: Podcast
-mtime: 1250394924
-song_end
-end: Podcasts/Highlighted lectures and interviews - Audio
-directory: LATINUM  - The Online Latin Language Audio Course from London
-mtime: 1291259903
-begin: Podcasts/LATINUM  - The Online Latin Language Audio Course from London
-song_begin: 12 - SENSUS - LATINE ET ANGLICE.mp3
-Time: 307
-Artist: Evan der Millner
-Title: 12 - SENSUS - LATINE ET ANGLICE
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245210907
-song_end
-song_begin: Adler 001 a re-uploaded.mp3
-Time: 1167
-Artist: Evan der Millner
-Title: Adler 001 a re-uploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169175
-song_end
-song_begin: Adler 002 a reuploaded.mp3
-Time: 900
-Artist: Evan der Millner
-Title: Adler 002 a reuploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169162
-song_end
-song_begin: Adler 002 b re-uploaded.mp3
-Time: 510
-Artist: Evan der Millner
-Title: Adler 002 b re-uploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169202
-song_end
-song_begin: Adler 003 b re-uploaded.mp3
-Time: 114
-Artist: Evan der Millner
-Title: Adler 003 b re-uploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169195
-song_end
-song_begin: Problem with some Episodes.mp3
-Time: 112
-Artist: Evan der Millner
-Title: Problem with some Episodes
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2009
-Genre: Podcast
-mtime: 1245168643
-song_end
-song_begin: adler 003 a reuploaded.mp3
-Time: 510
-Artist: Evan der Millner
-Title: adler 003 a reuploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169191
-song_end
-song_begin: adler 004 a re-uploaded.mp3
-Time: 1140
-Artist: Evan der Millner
-Title: adler 004 a re-uploaded
-Album: LATINUM  - The Online Latin Language Audio Course from London
-Date: 2007
-Genre: Podcast
-mtime: 1245169284
-song_end
-end: Podcasts/LATINUM  - The Online Latin Language Audio Course from London
-directory: Law & Society
-mtime: 1291260068
-begin: Podcasts/Law & Society
-song_begin: 02 Criminal Law.m4v
-Time: 3444
-Title: Criminal Law
-Artist: McGill University
-Date: 2009-04-22T11:15:01Z
-Album: Law & Society
-Genre: Law & Society
-Track: 2
-mtime: 1250394901
-song_end
-end: Podcasts/Law & Society
 directory: Radio Three Sixty ACC
-mtime: 1291260005
+mtime: 1303505847
 begin: Podcasts/Radio Three Sixty ACC
 song_begin: Radio Three Sixty Part Fifty Four 1.m4a
 Time: 1729
@@ -26704,26 +30714,6 @@ Genre: Podcast
 Date: 2009-04-15T16:00:07Z
 mtime: 1260212382
 song_end
-song_begin: Radio Three Sixty Part Fifty Four.m4a
-Time: 1729
-Composer: DJ Darkhorse
-Title: Radio Three Sixty Part Fifty Four
-Artist: DJ Darkhorse
-Album: Radio Three Sixty ACC
-Genre: Podcast
-Date: 2009-04-15T16:00:07Z
-mtime: 1250394815
-song_end
-song_begin: Radio Three Sixty Part Fifty Six 1.m4a
-Time: 2072
-Composer: DJ Darkhorse
-Title: Radio Three Sixty Part Fifty Six
-Artist: DJ Darkhorse
-Album: Radio Three Sixty ACC
-Genre: Podcast
-Date: 2009-06-23T15:00:07Z
-mtime: 1260212386
-song_end
 song_begin: Radio Three Sixty Part Fifty Six.m4a
 Time: 2072
 Composer: DJ Darkhorse
@@ -26734,171 +30724,222 @@ Genre: Podcast
 Date: 2009-06-23T15:00:07Z
 mtime: 1245816505
 song_end
+song_begin: Radio Three Sixty Part Seventy One.m4a
+Time: 2730
+Composer: DJ Darkhorse
+Title: Radio Three Sixty Part Seventy One
+Artist: DJ Darkhorse
+Album: Radio Three Sixty ACC
+Genre: Podcast
+Date: 2011-03-19T18:00:07Z
+mtime: 1303072186
+song_end
+song_begin: Radio Three Sixty Part Seventy Two.m4a
+Time: 2692
+Composer: DJ Darkhorse
+Title: Radio Three Sixty Part Seventy Two
+Artist: DJ Darkhorse
+Album: Radio Three Sixty ACC
+Genre: Podcast
+Date: 2011-04-20T18:00:07Z
+mtime: 1303505847
+song_end
+song_begin: Radio Three Sixty Part Seventy.m4a
+Time: 2352
+Composer: DJ Darkhorse
+Title: Radio Three Sixty Part Seventy
+Artist: DJ Darkhorse
+Album: Radio Three Sixty ACC
+Genre: Podcast
+Date: 2011-01-20T19:00:07Z
+mtime: 1303072919
+song_end
+song_begin: Radio Three Sixty Part Sixty Nine.m4a
+Time: 2171
+Composer: DJ Darkhorse
+Title: Radio Three Sixty Part Sixty Nine
+Artist: DJ Darkhorse
+Album: Radio Three Sixty ACC
+Genre: Podcast
+Date: 2010-11-20T19:00:07Z
+mtime: 1303077352
+song_end
 end: Podcasts/Radio Three Sixty ACC
-directory: TEDTalks (video)
-mtime: 1291260035
-begin: Podcasts/TEDTalks (video)
-song_begin: TEDTalks _ A meditation on hope - Sherwin Nuland (2003).mp4
-Time: 757
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : A meditation on hope - Sherwin Nuland (2003)
-Genre: Podcast
-Date: 2009-01-23T07:00:00Z
-mtime: 1260212222
-song_end
-song_begin: TEDTalks _ Design, discovery and humor - David Carson (2003).mp4
-Time: 1480
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : Design, discovery and humor - David Carson (2003)
-Genre: Podcast
-Date: 2009-01-19T14:08:00Z
-mtime: 1260212228
-song_end
-song_begin: TEDTalks _ How I'm trying to change the world now - Bill Gates (2009).mp4
-Time: 1217
-Title: TEDTalks : How I'm trying to change the world now - Bill Gates (2009)
-Artist: Bill Gates
-Album: TEDTalks (video)
-Genre: Podcast
-Date: 2009-02-05T08:24:00Z
-mtime: 1260212514
-song_end
-song_begin: TEDTalks _ Inventing the next amazing thing - Woody Norris (2004).mp4
-Time: 916
-Artist: Woody Norris
-Album: TEDTalks (video)
-Title: TEDTalks : Inventing the next amazing thing - Woody Norris (2004)
-Genre: Podcast
-Date: 2009-01-26T07:00:00Z
-mtime: 1260212464
-song_end
-song_begin: TEDTalks _ Life on Mars_ Let's look in the caves - Penelope Boston (2006).mp4
-Time: 1196
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : Life on Mars? Let's look in the caves - Penelope Boston (2006)
-Genre: Podcast
-Date: 2008-12-18T03:47:00Z
-mtime: 1260212236
-song_end
-song_begin: TEDTalks _ Playing the Cape Breton fiddle - Natalie MacMaster (2003).mp4
-Time: 1127
-Artist: Natalie MacMaster
-Album: TEDTalks (video)
-Title: TEDTalks : Playing the Cape Breton fiddle - Natalie MacMaster (2003)
-Genre: Podcast
-Date: 2009-01-30T16:11:00Z
-mtime: 1260212539
-song_end
-song_begin: TEDTalks _ Publisher Felix Dennis' odes to vice and consequences - Felix Dennis (2004).mp4
-Time: 1044
-Artist: Felix Dennis
-Album: TEDTalks (video)
-Title: TEDTalks : Publisher Felix Dennis' odes to vice and consequences - Felix Dennis (2004)
-Genre: Podcast
-Date: 2009-06-05T13:11:00Z
-mtime: 1260212399
-song_end
-song_begin: TEDTalks _ Richard St. John_ _Success is a continuous journey_ - Richard St. John (2009).mp4
-Time: 308
-Artist: Richard St. John
-Album: TEDTalks (video)
-Title: TEDTalks : Richard St. John: "Success is a continuous journey" - Richard St. John (2009)
-Genre: Podcast
-Date: 2009-06-12T06:00:00Z
-mtime: 1260212421
-song_end
-song_begin: TEDTalks _ Robert Full_ Learning from the gecko's tail - Robert Full (2009).mp4
-Time: 747
-Artist: Robert Full
-Album: TEDTalks (video)
-Title: TEDTalks : Robert Full: Learning from the gecko's tail - Robert Full (2009)
-Genre: Podcast
-Date: 2009-06-11T06:00:00Z
-mtime: 1260212425
-song_end
-song_begin: TEDTalks _ Running without legs - Aimee Mullins (1998).mp4
-Time: 1244
-Artist: Aimee Mullins
-Album: TEDTalks (video)
-Title: TEDTalks : Running without legs - Aimee Mullins (1998)
-Genre: Podcast
-Date: 2009-01-28T07:00:00Z
-mtime: 1260212193
-song_end
-song_begin: TEDTalks _ Siftables, the toy blocks that think - David Merrill (2009).mp4
-Time: 429
-Artist: David Merrill
-Album: TEDTalks (video)
-Title: TEDTalks : Siftables, the toy blocks that think - David Merrill (2009)
-Genre: Podcast
-Date: 2009-02-12T15:35:00Z
-mtime: 1260212377
-song_end
-song_begin: TEDTalks _ The art of baking bread - Peter Reinhart (2008).mp4
-Time: 935
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : The art of baking bread - Peter Reinhart (2008)
-Genre: Podcast
-Date: 2009-01-14T07:00:00Z
-mtime: 1260212243
-song_end
-song_begin: TEDTalks _ The beautiful math that links coral, crochet and hyperbolic geometry - Margaret Wertheim (2009).mp4
-Time: 997
-Artist: Margaret Wertheim
-Album: TEDTalks (video)
-Title: TEDTalks : The beautiful math that links coral, crochet and hyperbolic geometry - Margaret Wertheim (2009)
-Genre: Podcast
-Date: 2009-04-20T06:00:00Z
-mtime: 1260212133
-song_end
-song_begin: TEDTalks _ The next Web of open, linked data - Tim Berners-Lee (2009).mp4
-Time: 1011
-Artist: Tim Berners-Lee
-Album: TEDTalks (video)
-Title: TEDTalks : The next Web of open, linked data - Tim Berners-Lee (2009)
-Genre: Podcast
-Date: 2009-03-13T06:00:00Z
-mtime: 1260212275
-song_end
-song_begin: TEDTalks _ Tools for building a better world - Jamais Cascio (2006).mp4
-Time: 976
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : Tools for building a better world - Jamais Cascio (2006)
-Genre: Podcast
-Date: 2009-01-21T07:00:00Z
-mtime: 1260212251
-song_end
-song_begin: TEDTalks _ Understanding comics - Scott McCloud (2005).mp4
-Time: 1060
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : Understanding comics - Scott McCloud (2005)
-Genre: Podcast
-Date: 2009-01-13T07:00:00Z
-mtime: 1260212259
-song_end
-song_begin: TEDTalks _ What do consumers really want_ - Joseph Pine (2004).mp4
-Time: 859
-Artist: TED
-Album: TEDTalks (video)
-Title: TEDTalks : What do consumers really want? - Joseph Pine (2004)
-Genre: Podcast
-Date: 2009-01-15T07:00:00Z
-mtime: 1260212265
-song_end
-song_begin: TEDTalks _ Yann Arthus-Bertrand captures fragile Earth in wide-angle - Yann Arthus-Bertrand (2009).mp4
-Time: 895
-Artist: Yann Arthus-Bertrand
-Album: TEDTalks (video)
-Title: TEDTalks : Yann Arthus-Bertrand captures fragile Earth in wide-angle - Yann Arthus-Bertrand (2009)
-Genre: Podcast
-Date: 2009-06-03T06:00:00Z
-mtime: 1260212469
-song_end
-end: Podcasts/TEDTalks (video)
 end: Podcasts
+directory: temp
+mtime: 1307979415
+begin: temp
+directory: 02 Azazel
+mtime: 1307979419
+begin: temp/02 Azazel
+song_begin: 01 Tufiel.m4a
+Time: 383
+Title: Tufiel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 1
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649097
+song_end
+song_begin: 02 Mibi.m4a
+Time: 114
+Title: Mibi
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 2
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307647548
+song_end
+song_begin: 03 Tabaet.m4a
+Time: 406
+Title: Tabaet
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 3
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649463
+song_end
+song_begin: 04 Symnay.m4a
+Time: 323
+Title: Symnay
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 4
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649317
+song_end
+song_begin: 05 Mastema.m4a
+Time: 399
+Title: Mastema
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 5
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649426
+song_end
+song_begin: 06 Bethor.m4a
+Time: 325
+Title: Bethor
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 6
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649041
+song_end
+song_begin: 07 Uriel.m4a
+Time: 278
+Title: Uriel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 7
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649779
+song_end
+song_begin: 08 Gurid.m4a
+Time: 112
+Title: Gurid
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 8
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307648650
+song_end
+song_begin: 09 Gazriel.m4a
+Time: 244
+Title: Gazriel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 9
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307648968
+song_end
+song_begin: 10 Azazel.m4a
+Time: 326
+Title: Azazel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 10
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649400
+song_end
+song_begin: 11 Rssasiel.m4a
+Time: 158
+Title: Rssasiel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 11
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307648183
+song_end
+song_begin: 12 Garzanal.m4a
+Time: 321
+Title: Garzanal
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 12
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649398
+song_end
+song_begin: 13 Ahiel.m4a
+Time: 227
+Title: Ahiel
+Artist: Masada
+Album: Azazel: The Book of Angels, Vol. 2
+Track: 13
+Genre: Jazz
+Composer: John Zorn
+AlbumArtist: Masada String Trio
+Disc: 1
+Date: 2005
+mtime: 1307649242
+song_end
+end: temp/02 Azazel
+end: temp

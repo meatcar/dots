@@ -288,6 +288,12 @@ settings = {
     nicklist_height = "68";
     nicklist_automode = "screen";
   };
+  "irc/dcc" = {
+    dcc_download_path = "~/Downloads/dcc";
+    dcc_timeout = "5min";
+    dcc_port = "10000 20000";
+    dcc_file_create_mode = "644";
+  };
 };
 logs = { };
 ignores = (
