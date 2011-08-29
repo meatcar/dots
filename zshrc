@@ -42,7 +42,7 @@ bindkey "\e[F" end-of-line
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/.cabal/bin"
+export PATH="${PATH}:/home/meatcar/.cabal/bin:/home/meatcar/tmp/droid/android-sdk-linux_x86/platform-tools/:/home/meatcar/Documents/OpenOME/eclipse/:/home/meatcar/.bin/"
 ####################################################
 # Set up colorings
 #
@@ -60,8 +60,6 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias pacman="sudo pacman"
 alias y="yaourt"
-alias ys="yaourt -Syu && yaourt -S"
-alias yss="yaourt -Ss"
 alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
