@@ -23,6 +23,10 @@ wicd-client &
 # deluged &
 sleep 1
 # blueman-applet &
+synergyc --daemon monster &
+syndaemon -t -k -i 1 -d &
+dropbox.py start &
+eval $(cat ~/.fehbg) &
 
 # Do wm-dependent stuff.
 case $1 in
