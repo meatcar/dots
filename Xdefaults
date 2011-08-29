@@ -71,9 +71,9 @@ Xft.dpi: 96
 Xft.hintstyle:  hintslight
 
 URxvt*termName: rxvt
-URxvt.transparent:   true
+!URxvt.transparent:   true
 !URxvt.tintColor:     black
-!URxvt.shading:       33 
+URxvt.shading:       44 
 URxvt.depth:         32
 !URxvt.inheritPixmap: true
 !URxvt.foreground:       white
@@ -88,7 +88,8 @@ URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
 URxvt.boldFont:         xft:Terminus:pixelsize=10:antialias=false
 URxvt.perl-ext-common:  default,matcher
 URxvt.title:            urxvtc
-URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.urlLauncher:      google-chrome
+URxvt.colorUL:          #86a2be
 URxvt.matcher.button:   1 
 URxvt.urgentOnBell:     true
 URxvt.scrollBar:        False
