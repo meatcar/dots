@@ -74,6 +74,7 @@ Bundle 'snipmate-snippets'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'EasyMotion'
+Bundle 'fugitive.vim'
 
 " key-bindings --------------------------------------------------------
 map <C-j> <C-W>j
