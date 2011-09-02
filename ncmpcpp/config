@@ -7,17 +7,17 @@
 #
 ## set it in order to make tag editor and renaming files work properly
 #
-#mpd_host = "localhost"
-#
-#mpd_port = "6600"
-#
-#mpd_music_dir = ""
-#
-#mpd_connection_timeout = "5"
-#
-#mpd_crossfade_time = "5"
-#
-#mpd_communication_mode = "notifications" (polling/notifications)
+mpd_host = "localhost"
+
+mpd_port = "6600"
+
+mpd_music_dir = "/media/Mercury/Multimedia/Music/"
+
+mpd_connection_timeout = "5"
+
+mpd_crossfade_time = "5"
+
+mpd_communication_mode = "notifications" # (polling/notifications)
 #
 ##### music visualizer #####
 ##
@@ -142,13 +142,13 @@
 ## Note: colors can be nested.
 ##
 #
-#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
+song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
 #
-#song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
+song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
 #
-#song_library_format = "{%n - }{%t}|{%f}"
+song_library_format = "{%n - }{%t}|{%f}"
 #
-#tag_editor_album_format = "{(%y) }%b"
+tag_editor_album_format = "{(%y) }%b"
 #
 ##
 ## Note: Below variables are for alternative version of user's interface.
@@ -245,9 +245,9 @@
 #
 #playlist_separate_albums = "no"
 #
-#playlist_display_mode = "classic" (classic/columns)
+playlist_display_mode = "columns" # (classic/columns)
 #
-#browser_display_mode = "classic" (classic/columns)
+browser_display_mode = "columns" # (classic/columns)
 #
 #search_engine_display_mode = "classic" (classic/columns)
 #
@@ -265,11 +265,11 @@
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-#progressbar_look = "=>"
+progressbar_look = "-> "
 #
 #default_place_to_search_in = "database" (database/playlist)
 #
-#user_interface = "classic" (classic/alternative)
+x#user_interface = "alternative" # (classic/alternative)
 #
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
 #

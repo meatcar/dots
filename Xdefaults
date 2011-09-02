@@ -94,7 +94,8 @@ URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
 URxvt.boldFont:         xft:Terminus:pixelsize=10:antialias=false
 URxvt.perl-ext-common:  default,matcher
 URxvt.title:            urxvtc
-URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.urlLauncher:      google-chrome
+URxvt.colorUL:          #86a2be
 URxvt.matcher.button:   1 
 URxvt.urgentOnBell:     true
 URxvt.scrollBar:        False

@@ -10,8 +10,8 @@
 set t_Co=256            " enable 256-color support
 colorscheme molokai     "define syntax color scheme
 set nocompatible        " disregard vi compatibility:
-set dir=~/.vim/swap     " keep swap files in one place
-set bdir=~/.vim/backup  " keep backups in one place
+set dir=~/.vim/swap,/tmp     " keep swap files in one place
+set bdir=~/.vim/backup,/tmp  " keep backups in one place
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
@@ -37,6 +37,8 @@ set previewheight=5     " default height for a preview window (def:12)
 syntax on               " enable syntax highlighting
 filetype plugin indent on   " enable filetype-sensitive plugins and indenting
 set grepprg=grep\ -nH\ $*
+set wildmenu
+set wildmode=list:longest
 
 " tabs and indenting ---------------------------------------------------
 
@@ -59,6 +61,7 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
+runtime macros/matchit.vim  " extend the % key
 
 " Vundle stuff ---------------------------------------------------------
 call vundle#rc()
@@ -75,6 +78,8 @@ Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'EasyMotion'
 Bundle 'fugitive.vim'
+Bundle 'xml.vim'
+Bundle 'rails.vim'
 
 " key-bindings --------------------------------------------------------
 map <C-j> <C-W>j
@@ -82,10 +87,15 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-
 " latex stuff. ---------------------------------------------------------
 "
 let g:tex_flavor = "latex"
+let g:Tex_ViewRule_pdf = 'zathura'
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" xml stuff ----------------------------------------------------------
+
+
 
 " c stuff. ------------------------------------------------------------
 "
@@ -107,27 +117,29 @@ endif
 
 " statusline -----------------------------------------------------------
 
-set cmdheight=1         " command line height
-set laststatus=2        " condition to show status line, 2=always.
-set ruler               " show cursor position in status line
-set showmode            " show mode in status line
-set showcmd             " show partial commands in status line
-
-set statusline=
-set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4c\ %*             "column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
 hi User1 guifg=#eea040 guibg=#222222
 hi User2 guifg=#dd3333 guibg=#222222
 hi User3 guifg=#ff66ff guibg=#222222
 hi User4 guifg=#a0ee40 guibg=#222222
 hi User5 guifg=#eeee40 guibg=#222222
+
+set cmdheight=1                " command line height
+set laststatus=2               " condition to show status line, 2=always.
+set ruler                      " show cursor position in status line
+set showmode                   " show mode in status line
+set showcmd                    " show partial commands in status line
+set shortmess=at
+
+set statusline=
+set statusline +=%1*\ %n\ %*   "buffer number
+set statusline +=%5*%{&ff}%*   "file format
+set statusline +=%3*%y%*       "file type
+set statusline +=%4*\ %<%F%*   "full path
+set statusline +=%2*%m%*       "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4c\ %*             "column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
 
 " hotkeys --------------------------------------------------------------
 
