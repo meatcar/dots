@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='scp://dnka.ca/irclogs/minbif/'
+let g:netrw_dirhist_2='/tmp'
+let g:netrw_dirhist_3='/etc/rc.d'
+let g:netrw_dirhist_4='/home/meatcar/.dots/dwm'
+let g:netrw_dirhist_5='/home/meatcar/csc209-a4'
+let g:netrw_dirhist_6='/home/meatcar/csc209-a4/cdf'
+let g:netrw_dirhist_7='/etc/rc.d'
+let g:netrw_dirhist_8='/etc'
+let g:netrw_dirhist_9='/usr/share/vim/vimfiles/colors'
