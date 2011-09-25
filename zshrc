@@ -16,7 +16,7 @@ compinit
 ####################################################
 # Set the prompt.
 autoload -U colors && colors
-PROMPT="%{$fg[cyan]%}%m%{$fg[green]%} %#%{$reset_color%} "
+PROMPT="%{$fg[blue]%}%m%{$fg[green]%} %#%{$reset_color%} "
 RPROMPT="%{$fg[magenta]%}%~%{$reset_color%}"
 ####################################################
 # Set Keybindings.
