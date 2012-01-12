@@ -1,9 +1,9 @@
 #!/bin/bash
-temp="/tmp/bgchanger"
-temp2="/tmp/bgchanger.$$"
+temp="/tmp/wallp"
+temp2="/tmp/wallp.$$"
 trap "rm -f $temp2" 0 1 2 15
 
-WALLFOLDER=/media/win/Lipid/Multimedia/Pictures/Wallpapers
+WALLFOLDER='/mnt/win/Valhalla/Multimedia/Pictures/Wallpapers'
 
 if [ ! -e $temp ]; then
     find "$WALLFOLDER" -type f | sort -R > $temp
@@ -12,30 +12,41 @@ fi
 case $# in
     1)
         case $1 in
-            -p)
+            -p) #previous
                 cur=`tail -1 $temp`
                 cat $temp > $temp2
                 echo "$cur" > $temp
                 cat $temp2 >> $temp
                 sed -i '$d' $temp
                 cur=`tail -1 $temp`
-                nitrogen --set-zoom-fill "$cur"
+                feh --bg-fill "$cur"
                 ;;
-            -r)
+            -r) #refresh
                 find "$WALLFOLDER" -type f | sort -R > $temp
                 ;;
-            -n)
+            -d) #delete from rotation
+                cat $temp > $temp2
+                sed -i 1d $temp2
+                cat $temp2 > $temp
                 cur=`head -1 $temp`
-                nitrogen --set-zoom-fill "$cur"
+                feh --bg-fill "$cur"
+                ;;
+            -n) #next
+                cur=`head -1 $temp`
+                feh --bg-fill "$cur"
                 cat $temp > $temp2
                 sed -i 1d $temp2
                 echo "$cur" >> $temp2
                 cat $temp2 > $temp
                 ;;
+            *)
+                echo "usage: $0 -(p|r|n)" >&2
+                exit 1
+                ;;
         esac 
         ;;
     *)
-        echo "usage: $0 -(p|r|n)" >&2
+        echo "usage: $0 -(p|r|n|d)" >&2
         exit 1
         ;;
 esac
