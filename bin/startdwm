@@ -2,13 +2,13 @@
 
 while true; do 
     case $1 in
-        -q)
-            # not log 
-            dwm >/dev/null 2>&1
-            ;;
-        *)
+        -v)
             # Log
             dwm 2> ~/.dwm.log 
+            ;;
+        *)
+            # not log 
+            dwm >/dev/null 2>&1
             ;;
     esac
 done
