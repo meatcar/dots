@@ -1,1 +1,1 @@
-/home/meatcar/abs/dwm/config.h
+/home/meatcar/dots/dwm/config.h
