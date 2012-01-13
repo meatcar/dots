@@ -70,10 +70,10 @@ urxvt*color15: #F8F8F0
 
 
 ! rxvt-unicode ---------------------------------------------------------------
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
 Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
 Xft.hintstyle:  hintslight
 
 URxvt*termName: rxvt
