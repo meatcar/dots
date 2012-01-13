@@ -1,6 +1,6 @@
 " ----------------------------------------------------------------------
 " file:     ~/.vimrc
-" author:   Thayer Williams - http://cinderwick.ca
+" author:   Denys Pavlov
 " modified: June 21, 2008
 " vim:nu:ai:si:et:ts=4:sw=4:ft=vim:
 " ----------------------------------------------------------------------
@@ -12,6 +12,7 @@ colorscheme molokai     "define syntax color scheme
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
 set bdir=~/.vim/backup,/tmp  " keep backups in one place
+set undodir=~/.vim/undo,/tmp " keep undos in one place
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
@@ -71,8 +72,8 @@ Bundle 'gmarik/vundle'
 Bundle 'molokai'
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
-Bundle 'LaTeX-Help'
-Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+"Bundle 'LaTeX-Help'
+"Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 Bundle 'snipmate-snippets'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
@@ -80,6 +81,10 @@ Bundle 'EasyMotion'
 Bundle 'fugitive.vim'
 Bundle 'xml.vim'
 Bundle 'rails.vim'
+Bundle 'TeX-9'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'digitaltoad/vim-jade'
 
 " key-bindings --------------------------------------------------------
 map <C-j> <C-W>j
@@ -155,20 +160,20 @@ map M :%s/
 
 " firefox style tabbing ------------------------------------------------
 
-nmap <c-t> :tabnew<cr>
+" nmap <c-t> :tabnew<cr>
 " nmap <c-w> :close<cr>
-map <S-h> gT
-map <S-l> gt
-map <a-1> 1gt
-map <a-2> 2gt
-map <a-3> 3gt
-map <a-4> 4gt
-map <a-5> 5gt
-map <a-6> 6gt
-map <a-7> 7gt
-map <a-8> 8gt
-map <a-9> 9gt
-map <a-0> 10gt
+" map <S-h> gT
+" map <S-l> gt
+" map <a-1> 1gt
+" map <a-2> 2gt
+" map <a-3> 3gt
+" map <a-4> 4gt
+" map <a-5> 5gt
+" map <a-6> 6gt
+" map <a-7> 7gt
+" map <a-8> 8gt
+" map <a-9> 9gt
+" map <a-0> 10gt
 
 " highlight extra whitespace and tabs ----------------------------------
 
@@ -181,8 +186,9 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Monaco:h8:cANSI "set the font
-        set guioptions-=T      "hide the toolbar
+        set guifont=Terminus\ 9 "set the font
+        set guioptions-=T       "hide the toolbar 
+        set guioptions-=m       "and menubar
         "colorscheme evening 
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
