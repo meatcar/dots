@@ -40,6 +40,7 @@ filetype plugin indent on   " enable filetype-sensitive plugins and indenting
 set grepprg=grep\ -nH\ $*
 set wildmenu
 set wildmode=list:longest
+set hidden              " un-saved buffers in the background
 
 " tabs and indenting ---------------------------------------------------
 
@@ -91,6 +92,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+command BW :b#|:bw#
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -160,20 +162,20 @@ map M :%s/
 
 " firefox style tabbing ------------------------------------------------
 
-" nmap <c-t> :tabnew<cr>
+nmap <c-t> :tabnew<cr>
 " nmap <c-w> :close<cr>
-" map <S-h> gT
-" map <S-l> gt
-" map <a-1> 1gt
-" map <a-2> 2gt
-" map <a-3> 3gt
-" map <a-4> 4gt
-" map <a-5> 5gt
-" map <a-6> 6gt
-" map <a-7> 7gt
-" map <a-8> 8gt
-" map <a-9> 9gt
-" map <a-0> 10gt
+map <S-h> gT
+map <S-l> gt
+map <a-1> 1gt
+map <a-2> 2gt
+map <a-3> 3gt
+map <a-4> 4gt
+map <a-5> 5gt
+map <a-6> 6gt
+map <a-7> 7gt
+map <a-8> 8gt
+map <a-9> 9gt
+map <a-0> 10gt
 
 " highlight extra whitespace and tabs ----------------------------------
 
@@ -187,8 +189,8 @@ if has ("gui_running")
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
         set guifont=Terminus\ 9 "set the font
-        set guioptions-=T       "hide the toolbar 
-        set guioptions-=m       "and menubar
+        set guioptions-=T      "hide the toolbar
+        set guioptions-=m      "hide the toolbar
         "colorscheme evening 
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
