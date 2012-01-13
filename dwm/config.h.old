@@ -2,21 +2,24 @@
 
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#1e1e1e";
-static const char normbgcolor[]     = "#000000";
-static const char normfgcolor[]     = "#7dbd00";
-static const char selbordercolor[]  = "#ffffff";
-static const char selbgcolor[]      = "#2e2f2f";
-static const char selfgcolor[]      = "#7dbd00";
-static const char urgbordercolor[]  = "#eb8921";
+static const char normbordercolor[] = "#2b2825";
+static const char normbgcolor[]     = "#2b2825";
+static const char normfgcolor[]     = "#fcf8bc";
+static const char selbordercolor[]  = "#cacf43";
+static const char selbgcolor[]      = "#0b8c8f";
+static const char selfgcolor[]      = "#fcf8bc";
+static const char urgbordercolor[]  = "#d6156c";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 10;       /* gap pixel between windows */
+static const unsigned int gappx     = 6;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
 static const char *tags[] = { "1:main", "2:web", "3:dev", "4:im", "5", "6", "7", "8", "9" };
+
+// includes depending on the tags array
+#include "flextile.h"
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -26,8 +29,12 @@ static const Rule rules[] = {
 
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
+static const int layoutaxis[] = {
+	1,    /* layout axis: 1 = x, 2 = y; negative values mirror the layout, setting the master area to the right / bottom instead of left / top */
+	2,    /* master axis: 1 = x (from left to right), 2 = y (from top to bottom), 3 = z (monocle) */
+	2,    /* stack axis:  1 = x (from left to right), 2 = y (from top to bottom), 3 = z (monocle) */
+};
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -51,19 +58,15 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", "terminus-9", "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *filemgrcmd[]  = { "pcmanfm", NULL };
-static const char *editcmd[]  = { "gvim", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemgrcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_g,      spawn,          {.v = editcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
@@ -90,6 +93,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+  	{ MODKEY|ShiftMask,             XK_t,      rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
+  	{ MODKEY,                       XK_Tab,    rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+  	{ MODKEY|ShiftMask,             XK_Tab,    rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+  	{ MODKEY|ShiftMask,             XK_m,      mirrorlayout,     {0} },
+  	{ MODKEY|ShiftMask,             XK_h,      shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
+  	{ MODKEY|ShiftMask,             XK_l,      shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
 };
 
 /* button definitions */
