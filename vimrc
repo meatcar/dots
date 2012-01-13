@@ -162,20 +162,20 @@ map M :%s/
 
 " firefox style tabbing ------------------------------------------------
 
-nmap <c-t> :tabnew<cr>
+"nmap <c-t> :tabnew<cr>
 " nmap <c-w> :close<cr>
-map <S-h> gT
-map <S-l> gt
-map <a-1> 1gt
-map <a-2> 2gt
-map <a-3> 3gt
-map <a-4> 4gt
-map <a-5> 5gt
-map <a-6> 6gt
-map <a-7> 7gt
-map <a-8> 8gt
-map <a-9> 9gt
-map <a-0> 10gt
+"map <S-h> gT
+"map <S-l> gt
+"map <a-1> 1gt
+"map <a-2> 2gt
+"map <a-3> 3gt
+"map <a-4> 4gt
+"map <a-5> 5gt
+"map <a-6> 6gt
+"map <a-7> 7gt
+"map <a-8> 8gt
+"map <a-9> 9gt
+"map <a-0> 10gt
 
 " highlight extra whitespace and tabs ----------------------------------
 
