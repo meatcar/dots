@@ -17,19 +17,13 @@ xrdb ~/.Xdefaults &
 #xmodmap -e "remove lock = Caps_Lock"
 #xmodmap -e "keysym Caps_Lock = Escape"
 
-# set dual-head
-#dualhead &
-
 # Fire up apps
 xscreensaver  -no-splash &
 xcompmgr -c -C&
 #(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 urxvtd &
 parcellite &
-#wicd-client &
-# deluged &
 synergyc --daemon monster &
-#syndaemon -t -k -i 1 -d &
 dropbox start &
 eval $(cat ~/.fehbg) &
 
