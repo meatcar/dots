@@ -1,0 +1,26 @@
+# Original user agent. All lines beginning with a '#' are ignored, as are blank lines.
+Uzbl: Uzbl (Webkit @WEBKIT_MAJOR.@WEBKIT_MINOR.@WEBKIT_MICRO) (@(uname -s)@ @(uname -n)@ @(uname -r)@ @(uname -v)@ @(uname -m)@ [@ARCH_UZBL]) (Commit @COMMIT)
+#
+# ----------------------
+# --  Major Browsers  --
+# ----------------------
+Chrome: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2
+Firefox: Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0
+Internet Explorer 7: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322)
+Opera: Opera/10.00 (X11; Linux i686 ; U; en) Presto/2.2.0
+Safari: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-us) AppleWebKit/525.28.3 (KHTML, like Gecko) Version/3.2.3 Safari/525.28.3
+Konqueror: Mozilla/5.0 (compatible; Konqueror/4.0; Linux) KHTML/4.0.5 (like Gecko)
+#
+# ----------------------
+# --      Mobile      --
+# ----------------------
+iPhone: Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_1 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F136 Safari/525.20
+Android (G1) Browser: Mozilla/5.0 (Linux; U; Android 1.1; en-gb; dream) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2
+#
+# ----------------------
+# --   Other / Misc   --
+# ----------------------
+cURL: curl/7.7.2 (powerpc-apple-darwin6.0) libcurl 7.7.2 (OpenSSL 0.9.6b)
+Google Bot: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+#
+# All these user agents were collected from http://www.zytrax.com/tech/web/browser_ids.htm
