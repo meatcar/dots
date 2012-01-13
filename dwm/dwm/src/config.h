@@ -1,0 +1,1 @@
+/home/meatcar/abs/dwm/config.h
