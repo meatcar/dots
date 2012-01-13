@@ -39,10 +39,11 @@ bindkey "\e[F" end-of-line
 ####################################################
 # Exports
 #
+export VTERM="urxvtc"
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/.cabal/bin:/home/meatcar/tmp/droid/android-sdk-linux_x86/platform-tools/:/home/meatcar/Documents/OpenOME/eclipse/:/home/meatcar/.bin/"
+export PATH="${PATH}:/home/meatcar/bin/"
 ####################################################
 # Set up colorings
 #
@@ -67,6 +68,8 @@ alias mix="alsamixer"
 alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
 alias v="mvimc"
+alias cmouse="sudo hidd --connect 00:1F:20:19:48:08"
+alias byobu="byobu-screen"
 
 # cd 
 alias cd..="cd .."
