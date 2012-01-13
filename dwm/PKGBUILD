@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 18861 2010-06-16 09:09:52Z spupykin $
+# $Id: PKGBUILD 60970 2011-12-19 21:33:58Z spupykin $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Dag Odenhall <dag.odenhall@gmail.com>
 # Contributor: Grigorios Bouzakis <grbzks@gmail.com>
 
 pkgname=dwm
-pkgver=5.8.2
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -13,32 +13,28 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
-source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz \
+source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
 	dwm.desktop)
-md5sums=('f0b422bfeaa812d66c6dd15c3cc92a6b'
-         'f0ba59bf77a53e3a2fc8596740ee5cb8'
+md5sums=('8bb00d4142259beb11e13473b81c0857'
+         '2453e037f46449774ec8afab49b4f1a2'
          '939f403a71b6e85261d09fc3412269ee')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-
   cp $srcdir/config.h config.h
-
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
-  sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
-  sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
-
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 || return 1
-  make PREFIX=/usr DESTDIR=$pkgdir install || return 1
-
-  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE && \
-  install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README && \
-  install -m644 -D $srcdir/dwm.desktop $pkgdir//etc/X11/sessions/dwm.desktop
+  sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+  sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+  sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
+  sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
-md5sums=('f0b422bfeaa812d66c6dd15c3cc92a6b'
-         '6aa3413683ce0fb2385f93ff1eca95f7'
-         '939f403a71b6e85261d09fc3412269ee')
-md5sums=('f0b422bfeaa812d66c6dd15c3cc92a6b'
-         '22c2c819e1070efeae277dcab2581008'
-         '939f403a71b6e85261d09fc3412269ee')
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  make PREFIX=/usr DESTDIR=$pkgdir install
+  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
+  install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
+}
