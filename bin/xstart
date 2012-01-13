@@ -28,7 +28,7 @@ urxvtd &
 parcellite &
 #wicd-client &
 # deluged &
-#synergyc --daemon monster &
+synergyc --daemon monster &
 #syndaemon -t -k -i 1 -d &
 dropbox start &
 eval $(cat ~/.fehbg) &
