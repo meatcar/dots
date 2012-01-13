@@ -68,8 +68,6 @@ alias mix="alsamixer"
 alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
 alias v="mvimc"
-alias cmouse="sudo hidd --connect 00:1F:20:19:48:08"
-alias byobu="byobu-screen"
 
 # cd 
 alias cd..="cd .."
