@@ -149,6 +149,8 @@ inoremap [<CR>  [<CR>]<Left>
 inoremap [[     [
 inoremap []     []
 
+nmap <silent> <C-n> :NERDTreeToggle<CR>
+
 
 " gvim settings --------------------------------------------------------
 
