@@ -84,6 +84,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
+Bundle 'AutoClose--Alves'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -132,22 +133,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" lazy brackets
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Left>
-inoremap ((     (
-inoremap ()     ()
-
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Left>
-inoremap {{     {
-inoremap {}     {}
-
-inoremap [      []<Left>
-inoremap [<CR>  [<CR>]<Left>
-inoremap [[     [
-inoremap []     []
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
