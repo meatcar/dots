@@ -52,6 +52,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", "terminus-9", "-nb", normb
 static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *filemgrcmd[]  = { "pcmanfm", NULL };
 static const char *editcmd[]  = { "gvim", NULL };
+static const char *wallpn[]  = { "wallp", "-n", NULL };
+static const char *wallpp[]  = { "wallp", "-p", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -59,6 +61,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemgrcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = editcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = wallpn } },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = wallpp } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -67,7 +71,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-//	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_d,      killclient,     {0} },
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
     { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
