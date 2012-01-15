@@ -14,8 +14,8 @@ xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
 
 # set capslock to escape.
-#xmodmap -e "remove lock = Caps_Lock"
-#xmodmap -e "keysym Caps_Lock = Escape"
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "keysym Caps_Lock = Escape"
 
 # Fire up apps
 xscreensaver  -no-splash &
@@ -23,7 +23,7 @@ xcompmgr -c -C&
 #(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 urxvtd &
 parcellite &
-synergyc --daemon monster &
+synergyc monster &
 dropbox start &
 eval $(cat ~/.fehbg) &
 
