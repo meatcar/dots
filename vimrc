@@ -1,7 +1,7 @@
 " ----------------------------------------------------------------------
 " file:     ~/.vimrc
 " author:   Denys Pavlov
-" modified: June 21, 2008
+" modified: January 15, 2011
 " vim:nu:ai:si:et:ts=4:sw=4:ft=vim:
 " ----------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ set splitbelow          " place the new split below the current file
 set autowrite           " write file if modified on each :next, :make, etc.
 set writebackup         " make a backup before writing a file until successful
 set shell=/bin/zsh       " set default shell type
-set previewheight=5     " default height for a preview window (def:12)
+set previewheight=9     " default height for a preview window (def:12)
 "set textwidth=79       " insert carriage return after n cols wide
 syntax on               " enable syntax highlighting
 filetype plugin indent on   " enable filetype-sensitive plugins and indenting
@@ -73,8 +73,6 @@ Bundle 'gmarik/vundle'
 Bundle 'molokai'
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
-"Bundle 'LaTeX-Help'
-"Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 Bundle 'snipmate-snippets'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
@@ -87,41 +85,13 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
-
-" key-bindings --------------------------------------------------------
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-command BW :b#|:bw#
+Bundle 'ervandew/supertab'
 
 " latex stuff. ---------------------------------------------------------
 "
 let g:tex_flavor = "latex"
 let g:Tex_ViewRule_pdf = 'zathura'
 let g:Tex_DefaultTargetFormat = 'pdf'
-
-" xml stuff ----------------------------------------------------------
-
-
-
-" c stuff. ------------------------------------------------------------
-"
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
-    set cst
-    set nocsverb
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
-endif
-
 
 " statusline -----------------------------------------------------------
 
@@ -152,36 +122,18 @@ set statusline +=%2*0x%04B\ %*          "character under cursor
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
-nmap q: :q<cr>
+nmap q: :q<cr>          
+command BW :b#|:bw#     " easier buffer closing
 
 " enter ex mode with a semi-colon too
 nnoremap ; :
 vnoremap ; :
 
-" strip ^M linebreaks from dos formatted files
-map M :%s/
-
-" firefox style tabbing ------------------------------------------------
-
-"nmap <c-t> :tabnew<cr>
-" nmap <c-w> :close<cr>
-"map <S-h> gT
-"map <S-l> gt
-"map <a-1> 1gt
-"map <a-2> 2gt
-"map <a-3> 3gt
-"map <a-4> 4gt
-"map <a-5> 5gt
-"map <a-6> 6gt
-"map <a-7> 7gt
-"map <a-8> 8gt
-"map <a-9> 9gt
-"map <a-0> 10gt
-
-" highlight extra whitespace and tabs ----------------------------------
-
-"highlight RedundantSpaces ctermbg=red guibg=red`
-"match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+" easier window browsing
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " gvim settings --------------------------------------------------------
 
@@ -203,8 +155,20 @@ endif
 if has("autocmd")
     au BufRead,BufNewFile PKGBUILD set ft=sh
     " always jump to the last cursor position
-    autocmd BufReadPost * if line("'\"")>0 && line("'\"")<=line("$")|exe "normal g`\""|endif
+    autocmd BufReadPost * 
+                \ if line("'\"")>0 && line("'\"")<=line("$") |
+                \   exe "normal g`\"" | 
+                \ endif
 
     "remove trailing whitespace in python files upon save
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+
+    " Set up omnicompletion
+    if exists("+omnifunc")
+        autocmd Filetype *
+                    \ if &omnifunc == "" |
+                    \   setlocal omnifunc=syntaxcomplete#Complete |
+                    \ endif
+    endif
 endif
+
