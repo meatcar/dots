@@ -11,6 +11,7 @@ vundle-about	vundle.txt	/*vundle-about*
 vundle-contents	vundle.txt	/*vundle-contents*
 vundle-interactive	vundle.txt	/*vundle-interactive*
 vundle-keymappings	vundle.txt	/*vundle-keymappings*
+vundle-options	vundle.txt	/*vundle-options*
 vundle-quickstart	vundle.txt	/*vundle-quickstart*
 vundle-scripts	vundle.txt	/*vundle-scripts*
 vundle-scripts-cleanup	vundle.txt	/*vundle-scripts-cleanup*

@@ -86,6 +86,7 @@ Bundle 'TeX-9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'Lokaltog/vim-powerline'
 
 " key-bindings --------------------------------------------------------
 map <C-j> <C-W>j
