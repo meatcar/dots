@@ -73,10 +73,8 @@ Bundle 'gmarik/vundle'
 Bundle 'molokai'
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
-Bundle 'snipmate-snippets'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
-Bundle 'EasyMotion'
 Bundle 'fugitive.vim'
 Bundle 'xml.vim'
 Bundle 'rails.vim'
@@ -134,6 +132,23 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" lazy brackets
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Left>
+inoremap ((     (
+inoremap ()     ()
+
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Left>
+inoremap {{     {
+inoremap {}     {}
+
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Left>
+inoremap [[     [
+inoremap []     []
+
 
 " gvim settings --------------------------------------------------------
 
