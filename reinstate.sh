@@ -7,7 +7,7 @@
 DOTS="$HOME/dots"
 
 ln -s "$DOTS/bashrc" "$HOME/.bashrc"
-ln -s "$DOTS/bin" "$HOME/.bin"
+ln -s "$DOTS/bin" "$HOME/bin"
 ln -s "$DOTS/dircolors" "$HOME/.dircolors"
 ln -s "$DOTS/fonts.conf" "$HOME/.fonts.conf"
 ln -s "$DOTS/htoprc" "$HOME/.htoprc"
