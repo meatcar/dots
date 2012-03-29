@@ -20,7 +20,7 @@ xmodmap -e "keysym Caps_Lock = Escape"
 # Fire up apps
 xscreensaver  -no-splash &
 xcompmgr -c -C&
-#(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
+(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 urxvtd &
 parcellite &
 synergyc monster &
