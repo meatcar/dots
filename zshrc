@@ -43,7 +43,9 @@ export VTERM="urxvtc"
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/bin/"
+export PATH="${PATH}:/home/meatcar/bin:/home/meatcar/Dropbox/uni/csc369/tools/bin"
+# fix svn errors
+export LC_CTYPE=C
 ####################################################
 # Set up colorings
 #
