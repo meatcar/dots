@@ -43,7 +43,8 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
         
-        dwm-status &
+        #dwm-status &
+        dzenstatus &
         startdwm
         ;;
 esac
