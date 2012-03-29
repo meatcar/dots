@@ -1,4 +1,6 @@
 #!/bin/sh
+ICONS="/home/meatcar/dots/status/dzen/xbm8x8"
+
 function netstatus {
     link=`ip link | grep ' UP ' | awk '{print $2}' | tr -d ':'`
     if [ -z "$link" ]; then
@@ -12,20 +14,26 @@ function netspeed {
     # 2 second delay
     #
     netstatus
+    net=""
     if [ "$link" == "down" ]; then
-        echo -e "Network Down"
-        exit 1
+        net="^fg(red)^i($ICONS/info_01)Network Down^fg()"
+        echo "$net"
+        exit
+    elif [ "$link" == "eth0" ]; then
+        net="^fg(orange)^i($ICONS/net_wired.xbm)^fg()"
+    else
+        # access point name
+        ap=`iwconfig "$link" | grep wlan0 | awk '{ print $4 }' | sed -e 's/.*"\(.*\)"/\1/'`
+        if [ "$ap" == "extensions." ]; then
+            ap="$link"
+        fi
+        net="^fg(orange)^i($ICONS/wifi_01.xbm) '$ap'^fg()"
     fi
 
-    # access point name
-    ap=`iwconfig "$link" | grep wlan0 | awk '{ print $4 }' | sed -e 's/.*"\(.*\)"/\1/'`
-    if [ "$ap" == "extensions." ]; then
-        ap="$link"
-    fi
 
-    old_state=$(cat /proc/net/dev | grep ${link})
+    old_state=$(cat /proc/net/dev | grep $link)
     sleep 1
-    new_state=$(cat /proc/net/dev | grep ${link})
+    new_state=$(cat /proc/net/dev | grep $link)
 
     old_dn=`echo ${old_state/*:/} | awk -F " " '{ print $1 }'`
     new_dn=`echo ${new_state/*:/} | awk -F " " '{ print $1 }'`
@@ -38,7 +46,10 @@ function netspeed {
     d_speed=$(echo "scale=0;${dnload}/1024" | bc -lq)
     u_speed=$(echo "scale=0;${upload}/1024" | bc -lq)
 
-    echo -e "'$ap'" D ${d_speed}K/s U ${u_speed}K/s
+    down="^fg(green)^i($ICONS/net_down_03.xbm)${d_speed}K^fg()"
+    up="^fg(blue)^i($ICONS/net_up_03.xbm)${u_speed}K^fg()"
+
+    echo "$net $down $up"
 }
 
 function batt {
@@ -73,13 +84,9 @@ function volume {
     echo "V $vol"
 }
 
-function date_time {  # Print Date, Time. Highlight it all if volume is muted
+function date_time {  
 	d=`date +'%a %d %b %H:%M'`
     echo "$d"
 }
 
-if [ $# -eq 0 ]; then
-    echo " $(netspeed) :: $(batt) :: $(volume) :: $(date_time) "
-else
-    echo -e " $(netspeed) :: $(batt) :: $(volume) :: \x02$1\x01 "
-fi
+echo " $(netspeed) :: $(batt) :: $(volume) :: $(date_time) "
