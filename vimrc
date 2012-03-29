@@ -8,7 +8,6 @@
 " general --------------------------------------------------------------
 
 set t_Co=256            " enable 256-color support
-colorscheme molokai     "define syntax color scheme
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
 set bdir=~/.vim/backup,/tmp  " keep backups in one place
@@ -84,13 +83,18 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
-Bundle 'AutoClose--Alves'
+Bundle 'jellybeans.vim'
 
 " latex stuff. ---------------------------------------------------------
 "
-let g:tex_flavor = "latex"
+let g:tex_flavor = 'pdflatex'
+let g:tex_viewer = {'app': 'zathura', 'target': 'pdf'}
 let g:Tex_ViewRule_pdf = 'zathura'
 let g:Tex_DefaultTargetFormat = 'pdf'
+
+" colorscheme -----------------------------------------------------------
+"
+colorscheme jellybeans  "define syntax color scheme
 
 " statusline -----------------------------------------------------------
 
@@ -106,7 +110,6 @@ set ruler                      " show cursor position in status line
 set showmode                   " show mode in status line
 set showcmd                    " show partial commands in status line
 set shortmess=at
-
 set statusline=
 set statusline +=%1*\ %n\ %*   "buffer number
 set statusline +=%5*%{&ff}%*   "file format
@@ -146,6 +149,7 @@ if has ("gui_running")
         set guifont=Terminus\ 9 "set the font
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
+        let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
         "colorscheme evening 
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
