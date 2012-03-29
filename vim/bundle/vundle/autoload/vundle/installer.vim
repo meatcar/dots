@@ -103,7 +103,7 @@ func! vundle#installer#docs() abort
 endf
 
 func! vundle#installer#helptags(bundles) abort
-  let bundle_dirs = map(copy(a:bundles),'v:val.rtpath()')
+  let bundle_dirs = map(copy(a:bundles),'v:val.rtpath')
   let help_dirs = filter(bundle_dirs, 's:has_doc(v:val)')
 
   call s:log('')
@@ -126,7 +126,7 @@ endf
 
 func! vundle#installer#clean(bang) abort
   let bundle_dirs = map(copy(g:bundles), 'v:val.path()') 
-  let all_dirs = split(globpath(g:bundle_dir, '*', 1), "\n")
+  let all_dirs = v:version >= 702 ? split(globpath(g:bundle_dir, '*', 1), "\n") : split(globpath(g:bundle_dir, '*'), "\n")
   let x_dirs = filter(all_dirs, '0 > index(bundle_dirs, v:val)')
 
   if empty(x_dirs)
@@ -179,7 +179,9 @@ endf
 func! s:has_doc(rtp) abort
   return isdirectory(a:rtp.'/doc')
   \   && (!filereadable(a:rtp.'/doc/tags') || filewritable(a:rtp.'/doc/tags'))
-  \   && !(empty(glob(a:rtp.'/doc/*.txt', 1)) && empty(glob(a:rtp.'/doc/*.??x', 1)))
+  \   && v:version >= 702
+  \     ? !(empty(glob(a:rtp.'/doc/*.txt', 1)) && empty(glob(a:rtp.'/doc/*.??x', 1)))
+  \     : !(empty(glob(a:rtp.'/doc/*.txt')) && empty(glob(a:rtp.'/doc/*.??x')))
 endf
 
 func! s:helptags(rtp) abort

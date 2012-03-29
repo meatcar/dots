@@ -61,7 +61,7 @@ urxvt*color12: #70F0F0
 urxvt*color5: #8c54fe
 urxvt*color13: #9e6ffe
 !cyan
-#urxvt*color6: #3579a8 
+!urxvt*color6: #3579a8 
 urxvt*color6: #465457
 urxvt*color14: #75715e
 !white
@@ -86,12 +86,12 @@ URxvt*termName: rxvt
 !URxvt.background:       [70]black
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
-urxvt*loginShell: true
+urxvt*loginShell: false
 urxvt*secondaryScroll:  true
 
 URxvt.buffered:         true
-URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
-URxvt.boldFont:         xft:Terminus:pixelsize=10:antialias=false
+
+URxvt.font:             xft:Terminus:size=9
 URxvt.perl-ext-common:  default,matcher
 URxvt.title:            urxvtc
 URxvt.urlLauncher:      google-chrome
