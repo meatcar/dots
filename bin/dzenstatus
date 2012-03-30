@@ -13,7 +13,6 @@ status() {
     while true
     do
         ~/dots/status/status.sh
-        sleep 1s
     done
 }
 
