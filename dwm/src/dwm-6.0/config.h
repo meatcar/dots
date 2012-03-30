@@ -4,7 +4,7 @@
 static const char font[]            = "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#1e1e1e";
 static const char normbgcolor[]     = "#000000";
-static const char normfgcolor[]     = "#FFFFFF";
+static const char normfgcolor[]     = "#AAAAAA";
 static const char selbordercolor[]  = "#ffffff";
 static const char selbgcolor[]      = "#53868b";
 static const char selfgcolor[]      = "#ffffff";
