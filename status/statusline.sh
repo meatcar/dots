@@ -53,40 +53,41 @@ function netspeed {
 }
 
 function batt {
-	perc=`acpi | awk '{print $4}'| tr -d ','`
-	state=`acpi | awk '{print $3}'`
+    perc=`acpi | awk '{print $4}'| tr -d ','`
+    state=`acpi | awk '{print $3}'`
     time_rem=`acpi | awk '{print $5}' | cut -d':' -f1,2`
-	if [ "$state" = "Discharging," ]; then
-		echo "D $perc $time_rem"h
-	else
-		echo -n "C $perc"
+    if [ "$state" = "Discharging," ]; then
+        echo "D $perc $time_rem"h
+    else
+        echo -n "C $perc"
         if [ -n "$time_rem" ]; then
             echo " $time_rem"h
         fi
-	fi
+    fi
 }
 
 function music {  ## Print currently playing artist
-	tmp=`mpc |grep "\[playing\]" | wc -l`
-	if [ "$tmp" == "1" ]; then
-		vis=`mpc current | awk -F "-" '{print $1}'`
-		echo ":: $vis"
-	fi
+    tmp=`mpc |grep "\[playing\]" | wc -l`
+    if [ "$tmp" == "1" ]; then
+        vis=`mpc current | awk -F "-" '{print $1}'`
+        echo "$vis"
+    fi
 }
 
 function volume {
-	vol_mode=`amixer|head -n5|tail -n1|awk '{print $6}' | tr -d '[]'`
+    vol_mode=`amixer|head -n5|tail -n1|awk '{print $6}' | tr -d '[]'`
     if [ "$vol_mode" == "off" ]; then
-        vol='Mute'
+        vol="^fg(grey30)^i($ICONS/spkr_02.xbm)^fg()"
     else
         vol="`amixer|head -n5|tail -n1|awk '{print $5}' | tr -d '[]'`"
+        vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
-    echo "V $vol"
+    echo "$vol"
 }
 
 function date_time {  
-	d=`date +'%a %d %b %H:%M'`
+    d=`date +'%a %d %b %H:%M'`
     echo "$d"
 }
 
-echo " $(netspeed) :: $(batt) :: $(volume) :: $(date_time) "
+echo " $(music) :: $(netspeed) :: $(batt) :: $(volume) :: $(date_time) "
