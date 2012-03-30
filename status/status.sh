@@ -30,7 +30,7 @@ function netspeed {
         net="^fg(orange)^i($ICONS/wifi_01.xbm) '$ap'^fg()"
     fi
 
-
+    # get the up/down speed
     old_state=$(cat /proc/net/dev | grep $link)
     sleep 1
     new_state=$(cat /proc/net/dev | grep $link)
@@ -67,11 +67,19 @@ function batt {
 }
 
 function music {  ## Print currently playing artist
-    tmp=`mpc |grep "\[playing\]" | wc -l`
-    if [ "$tmp" == "1" ]; then
-        vis=`mpc current | awk -F "-" '{print $1}'`
-        echo "$vis"
+    toggle="^ca(1, mpc toggle 1>/dev/null)"
+
+    status=`mpc | grep "\[playing\]" | wc -l`
+    if mpc | grep '\[playing\]'; then
+        toggle="$toggle^i($ICONS/pause.xbm)^ca()"
+    else
+        toggle="$toggle^i($ICONS/play.xbm)^ca()"
     fi
+
+    current=`mpc current`
+    next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
+    prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
+    echo "[$current] $prev $toggle $next"
 }
 
 function volume {
