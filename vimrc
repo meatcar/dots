@@ -76,7 +76,6 @@ Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'fugitive.vim'
 Bundle 'xml.vim'
-Bundle 'rails.vim'
 Bundle 'TeX-9'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -84,6 +83,8 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'jellybeans.vim'
+Bundle 'Gundo'
+Bundle 'Solarized'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -95,31 +96,7 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " colorscheme -----------------------------------------------------------
 "
 colorscheme jellybeans  "define syntax color scheme
-
-" statusline -----------------------------------------------------------
-
-hi User1 guifg=#eea040 guibg=#222222
-hi User2 guifg=#dd3333 guibg=#222222
-hi User3 guifg=#ff66ff guibg=#222222
-hi User4 guifg=#a0ee40 guibg=#222222
-hi User5 guifg=#eeee40 guibg=#222222
-
-set cmdheight=1                " command line height
-set laststatus=2               " condition to show status line, 2=always.
-set ruler                      " show cursor position in status line
-set showmode                   " show mode in status line
-set showcmd                    " show partial commands in status line
-set shortmess=at
-set statusline=
-set statusline +=%1*\ %n\ %*   "buffer number
-set statusline +=%5*%{&ff}%*   "file format
-set statusline +=%3*%y%*       "file type
-set statusline +=%4*\ %<%F%*   "full path
-set statusline +=%2*%m%*       "modified flag
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4c\ %*             "column number
-set statusline +=%2*0x%04B\ %*          "character under cursor
+"colorscheme solarized "define syntax color scheme
 
 " hotkeys --------------------------------------------------------------
 
@@ -138,6 +115,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
+nmap <silent> <C-g> :GundoToggle<CR>
 
 
 " gvim settings --------------------------------------------------------
