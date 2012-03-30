@@ -49,7 +49,7 @@ function netspeed {
     down="^fg()^i($ICONS/net_down_03.xbm)^fg()${d_speed}K"
     up="^fg()^i($ICONS/net_up_03.xbm)^fg()${u_speed}K"
 
-    echo "^bg(CadetBlue4) $net $down$up ^bg()"
+    echo "^bg(CadetBlue4) $net $down $up ^bg()"
 }
 
 function batt {
