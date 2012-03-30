@@ -46,10 +46,10 @@ function netspeed {
     d_speed=$(echo "scale=0;${dnload}/1024" | bc -lq)
     u_speed=$(echo "scale=0;${upload}/1024" | bc -lq)
 
-    down="^fg(green)^i($ICONS/net_down_03.xbm)${d_speed}K^fg()"
-    up="^fg(blue)^i($ICONS/net_up_03.xbm)${u_speed}K^fg()"
+    down="^fg(green)^i($ICONS/net_down_03.xbm)^fg(orange)${d_speed}K^fg()"
+    up="^fg(blue)^i($ICONS/net_up_03.xbm)^fg(orange)${u_speed}K^fg()"
 
-    echo "$net $down $up"
+    echo "$net $down$up"
 }
 
 function batt {
@@ -69,17 +69,15 @@ function batt {
 function music {  ## Print currently playing artist
     toggle="^ca(1, mpc toggle 1>/dev/null)"
 
-    status=`mpc | grep "\[playing\]" | wc -l`
-    if mpc | grep '\[playing\]'; then
+    if mpc | grep '\[playing\]' 1>/dev/null; then
         toggle="$toggle^i($ICONS/pause.xbm)^ca()"
     else
         toggle="$toggle^i($ICONS/play.xbm)^ca()"
     fi
 
-    current=`mpc current`
     next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
     prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
-    echo "[$current] $prev $toggle $next"
+    echo "^fg(grey70)$prev $toggle $next^fg()"
 }
 
 function volume {
@@ -94,8 +92,8 @@ function volume {
 }
 
 function date_time {  
-    d=`date +'%a %d %b %H:%M'`
+    d=`date +'^fg(grey50)%a %d %b^fg() %H:%M'`
     echo "$d"
 }
 
-echo " $(music) :: $(netspeed) :: $(batt) :: $(volume) :: $(date_time) "
+echo " $(netspeed) $(batt) $(music) $(volume) $(date_time) "
