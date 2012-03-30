@@ -2,8 +2,8 @@
 # Display a status in a dzen bar
 fn='Terminus-9'
 ta='r'
-tw=1000
-x=366
+tw=1070
+x=296
 h=15
 fg='#FFFFFF'
 bg='#000000'
@@ -16,4 +16,4 @@ status() {
     done
 }
 
-status | dzen2 -fn "$fn" -ta "$ta" -tw "$tw" -x "$x" -h "$h" -fg "$fg" -bg "$bg" -expand "$expand"
+status | dzen2 -fn "$fn" -ta "$ta" -tw "$tw" -x "$x" -h "$h" -fg "$fg" -bg "$bg"
