@@ -27,7 +27,7 @@ function netspeed {
         if [ "$ap" == "extensions." ]; then
             ap="$link"
         fi
-        net="^fg(orange)^i($ICONS/wifi_01.xbm) '$ap'^fg()"
+        net="^fg()^i($ICONS/wifi_01.xbm)^fg() '$ap'"
     fi
 
     # get the up/down speed
@@ -46,23 +46,31 @@ function netspeed {
     d_speed=$(echo "scale=0;${dnload}/1024" | bc -lq)
     u_speed=$(echo "scale=0;${upload}/1024" | bc -lq)
 
-    down="^fg(green)^i($ICONS/net_down_03.xbm)^fg(orange)${d_speed}K^fg()"
-    up="^fg(blue)^i($ICONS/net_up_03.xbm)^fg(orange)${u_speed}K^fg()"
+    down="^fg()^i($ICONS/net_down_03.xbm)^fg()${d_speed}K"
+    up="^fg()^i($ICONS/net_up_03.xbm)^fg()${u_speed}K"
 
-    echo "$net $down$up"
+    echo "^bg(CadetBlue4) $net $down$up ^bg()"
 }
 
 function batt {
-    perc=`acpi | awk '{print $4}'| tr -d ','`
+    perc=`acpi | awk '{print $4}'| tr -d ',%'`
     state=`acpi | awk '{print $3}'`
     time_rem=`acpi | awk '{print $5}' | cut -d':' -f1,2`
     if [ "$state" = "Discharging," ]; then
-        echo "D $perc $time_rem"h
-    else
-        echo -n "C $perc"
-        if [ -n "$time_rem" ]; then
-            echo " $time_rem"h
+        if  test "( $perc -le 100 ) -a ( $perc -gt 30 )"; then
+            icon="^fg()^i($ICONS/bat_full_02.xbm)"
+        elif test "( $perc -le 30 ) -a ( $perc -gt 10 )"; then
+            icon="^fg()^i($ICONS/bat_low_02.xbm)"
+        else
+            icon="^fg()^i($ICONS/bat_empty_02.xbm)"
         fi
+        echo "^bg(CadetBlue4) $icon^fg() $perc% $time_rem ^bg()"
+    else
+        icon="^i($ICONS/ac_01.xbm)"
+        if [ -n "$time_rem" ]; then
+            time_rem=" $time_rem"
+        fi
+        echo "^bg(CadetBlue4) ^fg()$icon^fg() $perc%$time_rem ^bg()"
     fi
 }
 
@@ -77,7 +85,8 @@ function music {  ## Print currently playing artist
 
     next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
     prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
-    echo "^fg(grey70)$prev $toggle $next^fg()"
+    phones="^i($ICONS/phones.xbm)"
+    echo "^bg(CadetBlue4) $phones [$prev|$toggle|$next] ^bg()"
 }
 
 function volume {
@@ -85,15 +94,15 @@ function volume {
     if [ "$vol_mode" == "off" ]; then
         vol="^fg(grey30)^i($ICONS/spkr_02.xbm)^fg()"
     else
-        vol="`amixer|head -n5|tail -n1|awk '{print $5}' | tr -d '[]'`"
+        vol="`amixer|head -n5|tail -n1|awk '{print $4}' | tr -d '[]'`"
         vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
-    echo "$vol"
+    echo "^bg(CadetBlue4) ^ca(1,)^ca(2,)^ca(4,)^ca(5,)$vol^ca()^ca()^ca()^ca() ^bg()"
 }
 
 function date_time {  
-    d=`date +'^fg(grey50)%a %d %b^fg() %H:%M'`
-    echo "$d"
+    d=`date +'^fg(grey90)%a %d %b^fg() %H:%M'`
+    echo "^bg(CadetBlue4) $d ^bg()"
 }
 
-echo " $(netspeed) $(batt) $(music) $(volume) $(date_time) "
+echo " $(netspeed) $(batt) $(music) $(volume) $(date_time)"
