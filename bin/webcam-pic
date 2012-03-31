@@ -2,7 +2,7 @@
 
 ## Open mplayer and take webcam pics and videos.
 
-FOLDER="/media/win/Lipid/Mutimedia/Pictures/Webcam/"
+FOLDER="/mnt/win/Valhalla/Multimedia/Pictures/Camera/Webcam/"
 
 cd $FOLDER
 

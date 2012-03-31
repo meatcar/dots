@@ -23242,3 +23242,7 @@ Mar 30 13:18 : player_thread: played "Safri Duo - Episode II/Safri Duo - Played 
 Mar 30 13:36 : player_thread: played "Safri Duo - Episode II/01.Played-A-Live (The Bongo Song).mp3"
 Mar 30 13:42 : player_thread: played "Safri Duo - Episode II/02.Snakefood.mp3"
 Mar 30 13:48 : player_thread: played "Safri Duo - Episode II/03.A-Gusta.mp3"
+Mar 30 16:22 : avahi: Client Disconnected, will reconnect shortly
+Mar 30 16:22 : avahi: Could not reconnect: Daemon not running
+Mar 30 20:59 : avahi: Client Disconnected, will reconnect shortly
+Mar 30 20:59 : avahi: Could not reconnect: Daemon not running
