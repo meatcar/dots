@@ -16,11 +16,11 @@ function netspeed {
     netstatus
     net=""
     if [ "$link" == "down" ]; then
-        net="^fg(red)^i($ICONS/info_01)Network Down^fg()"
+        net="^bg(CadetBlue4) ^fg(red)^i($ICONS/info_01)Network Down^fg() ^bg()"
         echo "$net"
         exit
     elif [ "$link" == "eth0" ]; then
-        net="^fg(orange)^i($ICONS/net_wired.xbm)^fg()"
+        net="^fg()^i($ICONS/net_wired.xbm)^fg()"
     else
         # access point name
         ap=`iwconfig "$link" | grep wlan0 | awk '{ print $4 }' | sed -e 's/.*"\(.*\)"/\1/'`
@@ -29,6 +29,8 @@ function netspeed {
         fi
         net="^fg()^i($ICONS/wifi_01.xbm)^fg() '$ap'"
     fi
+
+    ip=`ip addr show dev wlan0 | grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
 
     # get the up/down speed
     old_state=$(cat /proc/net/dev | grep $link)
@@ -49,7 +51,7 @@ function netspeed {
     down="^fg()^i($ICONS/net_down_03.xbm)^fg()${d_speed}K"
     up="^fg()^i($ICONS/net_up_03.xbm)^fg()${u_speed}K"
 
-    echo "^bg(CadetBlue4) $net $down $up ^bg()"
+    echo "^bg(CadetBlue4) $net $ip $down $up ^bg()"
 }
 
 function batt {
@@ -86,7 +88,7 @@ function music {  ## Print currently playing artist
     next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
     prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
     phones="^i($ICONS/phones.xbm)"
-    echo "^bg(CadetBlue4) $phones [$prev|$toggle|$next] ^bg()"
+    echo "^bg(CadetBlue4) $phones $prev|$toggle|$next ^bg()"
 }
 
 function volume {
