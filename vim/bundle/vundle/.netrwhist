@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/etc/bumblebee'
 let g:netrw_dirhist_2='/home/meatcar/dots'
 let g:netrw_dirhist_3='/home/meatcar/dots/statnot'
 let g:netrw_dirhist_4='/home/meatcar/.fontconfig'
+let g:netrw_dirhist_5='/home/meatcar/Dropbox/uni/csc369/os161/Group25/a4/a3/src'
