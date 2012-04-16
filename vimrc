@@ -85,6 +85,7 @@ Bundle 'ervandew/supertab'
 Bundle 'jellybeans.vim'
 Bundle 'Gundo'
 Bundle 'Solarized'
+Bundle 'Command-T'
 
 " latex stuff. ---------------------------------------------------------
 "
