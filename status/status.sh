@@ -51,7 +51,11 @@ function netspeed {
     down="^fg()^i($ICONS/net_down_03.xbm)^fg()${d_speed}K"
     up="^fg()^i($ICONS/net_up_03.xbm)^fg()${u_speed}K"
 
-    echo "^bg(CadetBlue4) $net $ip $down $up ^bg()"
+    net=" $net $ip $down $up "
+    net="^ca(1,urxvtc -e wicd-curses)$net^ca()"
+    net="^bg(CadetBlue4)$net^bg()"
+
+    echo "$net"
 }
 
 function batt {
@@ -99,12 +103,13 @@ function volume {
         vol="`amixer|head -n5|tail -n1|awk '{print $4}' | tr -d '[]'`"
         vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
-    vol="^ca(1,urxvtc -e alsamixer) $vol "
-    vol="^ca(2,amixer set 'Master' 'toggle' 1>&2 2>/dev/null)$vol"
-    vol="^ca(4,amixer set 'Master' 5%+ 1>&2 2>/dev/null)$vol"
-    vol="^ca(5,amixer set 'Master' 5%- 1>&2 2>/dev/null)$vol"
-    vol="^bg(CadetBlue4)$vol"
-    echo "$vol^ca()^ca()^ca()^ca()^bg()"
+    vol=" $vol "
+    vol="^ca(1,urxvtc -e alsamixer)$vol^ca()"
+    vol="^ca(2,amixer set 'Master' 'toggle' 1>&2 2>/dev/null)$vol^ca()"
+    vol="^ca(4,amixer set 'Master' 5%+ 1>&2 2>/dev/null)$vol^ca()"
+    vol="^ca(5,amixer set 'Master' 5%- 1>&2 2>/dev/null)$vol^ca()"
+    vol="^bg(CadetBlue4)$vol^bg()"
+    echo "$vol"
 }
 
 function date_time {  
