@@ -16,4 +16,4 @@ status() {
     done
 }
 
-status | dzen2 -fn "$fn" -ta "$ta" -tw "$tw" -x "$x" -h "$h" -fg "$fg" -bg "$bg"
+status | dzen2 -fn "$fn" -ta "$ta" -tw "$tw" -x "$x" -h "$h" -fg "$fg" -bg "$bg" >/dev/null
