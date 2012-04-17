@@ -86,6 +86,8 @@ Bundle 'jellybeans.vim'
 Bundle 'Gundo'
 Bundle 'Solarized'
 Bundle 'Command-T'
+Bundle 'groenewege/vim-less'
+Bundle 'skammer/vim-css-color'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -104,6 +106,7 @@ colorscheme jellybeans  "define syntax color scheme
 " typo corrections
 nmap q: :q<cr>          
 command BW :b#|:bw#     " easier buffer closing
+command SO :so ~/.vimrc " easier buffer closing
 
 " enter ex mode with a semi-colon too
 nnoremap ; :
@@ -147,6 +150,11 @@ if has("autocmd")
 
     "remove trailing whitespace in python files upon save
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+
+    " web-coding stuff
+    au BufNewFile,BufRead *.less set filetype=less
+    au Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au Filetype javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     " Set up omnicompletion
     if exists("+omnifunc")
