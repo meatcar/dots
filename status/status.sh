@@ -87,7 +87,7 @@ function music {  ## Print currently playing artist
 
     next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
     prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
-    phones="^i($ICONS/phones.xbm)"
+    phones="^ca(1,urxvtc -e ncmpcpp)^i($ICONS/phones.xbm)^ca()"
     echo "^bg(CadetBlue4) $phones $prev|$toggle|$next ^bg()"
 }
 
@@ -99,7 +99,12 @@ function volume {
         vol="`amixer|head -n5|tail -n1|awk '{print $4}' | tr -d '[]'`"
         vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
-    echo "^bg(CadetBlue4) ^ca(1,)^ca(2,)^ca(4,)^ca(5,)$vol^ca()^ca()^ca()^ca() ^bg()"
+    vol="^ca(1,urxvtc -e alsamixer) $vol "
+    vol="^ca(2,amixer set 'Master' 'toggle' 1>&2 2>/dev/null)$vol"
+    vol="^ca(4,amixer set 'Master' 5%+ 1>&2 2>/dev/null)$vol"
+    vol="^ca(5,amixer set 'Master' 5%- 1>&2 2>/dev/null)$vol"
+    vol="^bg(CadetBlue4)$vol"
+    echo "$vol^ca()^ca()^ca()^ca()^bg()"
 }
 
 function date_time {  
