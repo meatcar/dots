@@ -772,27 +772,7 @@ drawbar(Monitor *m) {
 	drawtext(m->ltsymbol, dc.norm, False);
 	dc.x += dc.w;
 	x = dc.x;
-	if(m == selmon) { /* status is only drawn on selected monitor */
-		dc.w = TEXTW(stext);
-		dc.x = m->ww - dc.w;
-		if(dc.x < x) {
-			dc.x = x;
-			dc.w = m->ww - x;
-		}
-		drawtext(stext, dc.norm, False);
-	}
-	else
-		dc.x = m->ww;
-	if((dc.w = dc.x - x) > bh) {
-		dc.x = x;
-		if(m->sel) {
-			col = m == selmon ? dc.sel : dc.norm;
-			drawtext(m->sel->name, col, False);
-			drawsquare(m->sel->isfixed, m->sel->isfloating, False, col);
-		}
-		else
-			drawtext(NULL, dc.norm, False);
-	}
+    dc.x = m->ww;
 	XCopyArea(dpy, dc.drawable, m->barwin, dc.gc, 0, 0, m->ww, bh, 0, 0);
 	XSync(dpy, False);
 }
