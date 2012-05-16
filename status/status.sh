@@ -1,5 +1,7 @@
 #!/bin/sh
 ICONS="/home/meatcar/dots/status/dzen/xbm8x8"
+fg='white'
+bg='CadetBlue4'
 
 function netstatus {
     link=`ip link | grep ' UP ' | awk '{print $2}' | tr -d ':'`
@@ -16,8 +18,8 @@ function netspeed {
     netstatus
     net=""
     if [ "$link" == "down" ]; then
-        net="^bg(CadetBlue4) ^fg(red)^i($ICONS/info_01)Network Down^fg() ^bg()"
-        echo "$net"
+        net="^bg($bg) ^fg(red)^i($ICONS/info_01)Network Down^fg() ^bg()"
+        echo "^ca(1, urxvtc -e wicd-curses)$net^ca()"
         exit
     elif [ "$link" == "eth0" ]; then
         net="^fg()^i($ICONS/net_wired.xbm)^fg()"
@@ -53,7 +55,7 @@ function netspeed {
 
     net=" $net $ip $down $up "
     net="^ca(1,urxvtc -e wicd-curses)$net^ca()"
-    net="^bg(CadetBlue4)$net^bg()"
+    net="^bg($bg)$net^bg()"
 
     echo "$net"
 }
@@ -70,13 +72,13 @@ function batt {
         else
             icon="^fg()^i($ICONS/bat_empty_02.xbm)"
         fi
-        echo "^bg(CadetBlue4) $icon^fg() $perc% $time_rem ^bg()"
+        echo "^bg($bg) $icon^fg() $perc% $time_rem ^bg()"
     else
         icon="^i($ICONS/ac_01.xbm)"
         if [ -n "$time_rem" ]; then
             time_rem=" $time_rem"
         fi
-        echo "^bg(CadetBlue4) ^fg()$icon^fg() $perc%$time_rem ^bg()"
+        echo "^bg($bg) ^fg()$icon^fg() $perc%$time_rem ^bg()"
     fi
 }
 
@@ -92,7 +94,7 @@ function music {  ## Print currently playing artist
     next="^ca(1, mpc next)^i($ICONS/next.xbm)^ca()"
     prev="^ca(1, mpc prev)^i($ICONS/prev.xbm)^ca()"
     phones="^ca(1,urxvtc -e ncmpcpp)^i($ICONS/phones.xbm)^ca()"
-    echo "^bg(CadetBlue4) $phones $prev|$toggle|$next ^bg()"
+    echo "^bg($bg) $phones $prev|$toggle|$next ^bg()"
 }
 
 function volume {
@@ -108,13 +110,13 @@ function volume {
     vol="^ca(2,amixer set 'Master' 'toggle' 1>&2 2>/dev/null)$vol^ca()"
     vol="^ca(4,amixer set 'Master' 5%+ 1>&2 2>/dev/null)$vol^ca()"
     vol="^ca(5,amixer set 'Master' 5%- 1>&2 2>/dev/null)$vol^ca()"
-    vol="^bg(CadetBlue4)$vol^bg()"
+    vol="^bg($bg)$vol^bg()"
     echo "$vol"
 }
 
 function date_time {  
     d=`date +'^fg(grey90)%a %d %b^fg() %H:%M'`
-    echo "^bg(CadetBlue4) $d ^bg()"
+    echo "^bg($bg) $d ^bg()"
 }
 
 echo " $(netspeed) $(batt) $(music) $(volume) $(date_time)"
