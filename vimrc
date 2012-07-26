@@ -105,6 +105,11 @@ colorscheme molokai "define syntax color scheme
 
 set laststatus=2
 
+" syntastic --------------------------------------------------------------
+
+" opens and closes list of errors automatically
+let g:syntastic_auto_loc_list=1
+
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
