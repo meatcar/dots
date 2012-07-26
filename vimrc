@@ -88,6 +88,7 @@ Bundle 'Solarized'
 Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
+Bundle 'Syntastic'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -98,8 +99,11 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme jellybeans  "define syntax color scheme
-"colorscheme solarized "define syntax color scheme
+colorscheme molokai "define syntax color scheme
+
+" powerline -----------------------------------------------------------
+
+set laststatus=2
 
 " hotkeys --------------------------------------------------------------
 
@@ -128,10 +132,10 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ 9 "set the font
-        set guioptions-=T      "hide the toolbar
-        set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
+        set guifont=Terminus\ 9             "set the font
+        set guioptions-=T                   "hide the toolbar
+        set guioptions-=m                   "hide the menubar
         "colorscheme evening 
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
@@ -153,8 +157,8 @@ if has("autocmd")
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
-    au Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au Filetype javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au Filetype html setlocal shiftwidth=4 tabstop=4 softtabstop=4
+    au Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
     " Set up omnicompletion
     if exists("+omnifunc")
