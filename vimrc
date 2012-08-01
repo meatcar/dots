@@ -89,6 +89,8 @@ Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
 Bundle 'Syntastic'
+Bundle 'vim-json-bundle'
+Bundle 'Lucius'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -138,7 +140,8 @@ if has ("gui_running")
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
-        set guifont=Terminus\ 9             "set the font
+        set guifont=Monaco10px
+        set linespace=1
         set guioptions-=T                   "hide the toolbar
         set guioptions-=m                   "hide the menubar
         "colorscheme evening 
