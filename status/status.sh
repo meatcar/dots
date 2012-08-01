@@ -32,7 +32,7 @@ function netspeed {
         net="^fg()^i($ICONS/wifi_01.xbm)^fg() '$ap'"
     fi
 
-    ip=`ip addr show dev wlan0 | grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
+    ip=`ip addr show dev $link | grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
 
     # get the up/down speed
     old_state=$(cat /proc/net/dev | grep $link)
@@ -98,7 +98,7 @@ function music {  ## Print currently playing artist
 }
 
 function volume {
-    vol_mode=`amixer|head -n5|tail -n1|awk '{print $6}' | tr -d '[]'`
+    vol_mode=`amixer|head -n5|tail -n1|awk '{print $5}' | tr -d '[]'`
     if [ "$vol_mode" == "off" ]; then
         vol="^fg(grey30)^i($ICONS/spkr_02.xbm)^fg()"
     else
@@ -119,4 +119,4 @@ function date_time {
     echo "^bg($bg) $d ^bg()"
 }
 
-echo " $(netspeed) $(batt) $(music) $(volume) $(date_time)"
+echo " $(netspeed) $(music) $(volume) $(date_time)"
