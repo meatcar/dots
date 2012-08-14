@@ -93,6 +93,10 @@ Bundle 'vim-json-bundle'
 Bundle 'Lucius'
 Bundle 'proton'
 Bundle 'mayansmoke'
+Bundle 'Enhanced-Javascript-syntax'
+Bundle 'Better-Javascript-Indentation'
+Bundle "pangloss/vim-javascript"
+Bundle 'jsbeautify'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -134,6 +138,16 @@ map <C-l> <C-W>l
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 nmap <silent> <C-g> :GundoToggle<CR>
 
+" diff current buffer agains filesystem version ------------------------
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
 " gvim settings --------------------------------------------------------
 
@@ -146,8 +160,6 @@ if has ("gui_running")
         set linespace=1
         set guioptions-=T                   "hide the toolbar
         set guioptions-=m                   "hide the menubar
-        set background=light
-        colorscheme proton
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
     endif
