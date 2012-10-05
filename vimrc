@@ -35,7 +35,6 @@ set shell=/bin/zsh       " set default shell type
 set previewheight=9     " default height for a preview window (def:12)
 "set textwidth=79       " insert carriage return after n cols wide
 syntax on               " enable syntax highlighting
-filetype plugin indent on   " enable filetype-sensitive plugins and indenting
 set grepprg=grep\ -nH\ $*
 set wildmenu
 set wildmode=list:longest
@@ -65,6 +64,8 @@ set wrapscan            " searches wrap back to the top of file
 runtime macros/matchit.vim  " extend the % key
 
 " Vundle stuff ---------------------------------------------------------
+filetype off
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
  " let Vundle manage Vundle
  " required! 
@@ -89,6 +90,8 @@ Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
 
+filetype plugin indent on   " enable filetype-sensitive plugins and indenting
+
 " latex stuff. ---------------------------------------------------------
 "
 let g:tex_flavor = 'pdflatex'
@@ -98,8 +101,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme jellybeans  "define syntax color scheme
-"colorscheme solarized "define syntax color scheme
+"colorscheme jellybeans  "define syntax color scheme
+colorscheme molokai      "define syntax color scheme
+"colorscheme solarized   "define syntax color scheme
 
 " hotkeys --------------------------------------------------------------
 
@@ -107,10 +111,6 @@ colorscheme jellybeans  "define syntax color scheme
 nmap q: :q<cr>          
 command BW :b#|:bw#     " easier buffer closing
 command SO :so ~/.vimrc " easier buffer closing
-
-" enter ex mode with a semi-colon too
-nnoremap ; :
-vnoremap ; :
 
 " easier window browsing
 map <C-j> <C-W>j
@@ -152,9 +152,8 @@ if has("autocmd")
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
     " web-coding stuff
-    au BufNewFile,BufRead *.less set filetype=less
-    au Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au Filetype javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au BufWritePost *.less silent !lessc % %:r.css
+    au Filetype html,javascript,jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     " Set up omnicompletion
     if exists("+omnifunc")

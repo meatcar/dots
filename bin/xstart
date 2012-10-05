@@ -13,9 +13,16 @@ esac
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
 
+# screen powersave
+xset +dpms
+xset dpms 0 0 300
+
 # set capslock to escape.
 xmodmap -e "remove lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Escape"
+
+#sunaptics settings
+gsynaptics-init &
 
 # Fire up apps
 xscreensaver  -no-splash &
@@ -26,6 +33,7 @@ parcellite &
 synergyc monster &
 dropbox start &
 eval $(cat ~/.fehbg) &
+twnmd &
 
 # Do wm-dependent stuff.
 case $1 in
@@ -38,6 +46,12 @@ case $1 in
             --transparent true --alpha 0 --tint 0x000000 --height 18 \
             --SetDockType true --SetPartialStrut true &
         xmonad
+        ;;
+    i3)
+        exec i3
+        ;;
+    wmii)
+        exec wmii
         ;;
     *)
         # Set the wm name to somethign Java recognizes.

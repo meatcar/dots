@@ -1,8 +1,8 @@
-sw_volume: 78
+sw_volume: 99
 audio_device_state:1:default detected output
 state: pause
-current: 17
-time: 10
+current: 28
+time: 189
 random: 0
 repeat: 0
 single: 0
@@ -39,4 +39,5 @@ playlist_begin
 25:Safri Duo - Episode II/09.Adagio.mp3
 26:Safri Duo - Episode II/Safri Duo - Labamba Remix 2005.mp3
 27:Safri Duo - Episode II/Safri Duo - Ritmo De La Noche (Extended).mp3
+28:Drive - Soundtrack (2011)/03. College - A Real Hero (feat. Electric Youth).mp3
 playlist_end
