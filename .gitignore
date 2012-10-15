@@ -1,0 +1,5 @@
+vim/bundle
+!vim/bundle/vundle
+vim/.netrwhist
+vim/undo
+vim/swap
