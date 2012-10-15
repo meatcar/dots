@@ -39,6 +39,9 @@ case $1 in
             --SetDockType true --SetPartialStrut true &
         xmonad
         ;;
+    wmii)
+	exec wmii
+	;;
     *)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
