@@ -16,11 +16,12 @@ noticetimeout=5
 noticebar=/rbar/!notice
 
 # Colors tuples: "<text> <background> <border>"
-export WMII_NORMCOLORS='#000000 #c1c48b #81654f'
-export WMII_FOCUSCOLORS='#000000 #81654f #000000'
+export WMII_NORMCOLORS='#99B898 #2A363B #556270'
+export WMII_FOCUSCOLORS='#FECEA8 #E84A5F #FF847C'
+export WMII_SELTAGCOLORS='#2A363B #99B898 #99B898'
 
-export WMII_BACKGROUND='#333333'
-export WMII_FONT='-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
+export WMII_BACKGROUND='#556270'
+export WMII_FONT='xft:Terminus-9'
 
 set -- $(echo $WMII_NORMCOLORS $WMII_FOCUSCOLORS)
 export WMII_TERM="urxvtc"
@@ -77,7 +78,7 @@ Event UnfocusTag
 	wmiir xwrite "/lbar/$@" "$WMII_NORMCOLORS" "$@"
 Event UrgentTag
 	shift
-	wmiir xwrite "/lbar/$@" "*$@"
+	wmiir xwrite "/lbar/$@" "$WMII_FOCUSCOLORS" "#$@#"
 Event NotUrgentTag
 	shift
 	wmiir xwrite "/lbar/$@" "$@"
@@ -259,7 +260,7 @@ unset IFS
 wi_tags | while read tag
 do
 	if [ "$tag" = "$seltag" ]; then
-		echo "$WMII_FOCUSCOLORS" "$tag"
+		echo "$WMII_SELTAGCOLORS" "$tag"
 	else
 		echo "$WMII_NORMCOLORS" "$tag"
 	fi | wmiir create "/lbar/$tag"

@@ -23270,3 +23270,5 @@ Apr 14 22:23 : avahi: Client Disconnected, will reconnect shortly
 Apr 14 22:23 : avahi: Could not reconnect: Daemon not running
 Apr 14 22:45 : avahi: Client Disconnected, will reconnect shortly
 Apr 14 22:45 : avahi: Could not reconnect: Daemon not running
+Oct 15 18:57 : decoder_thread: Unrecognized URI
+Oct 15 18:57 : decoder_thread: Unrecognized URI
