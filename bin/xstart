@@ -2,10 +2,13 @@
 #
 # ~/.xinitrc
 
+# Gnome takes care of itself. Just run it by itself.
 case $1 in
     gnome)
         gnome-session
-    ;;
+        ;;
+    *)
+        ;;
 esac
 
 
@@ -17,17 +20,42 @@ xrdb ~/.Xdefaults &
 xmodmap -e "remove lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Escape"
 
-# Fire up apps
+# screensaver
 xscreensaver  -no-splash &
-xcompmgr -c -C&
+
+# start compositor
+xcompmgr -c -C &
+
+# start mpd, and make sure it's not blaring music
 (mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
+
+# rxvt-unicode daemon
 urxvtd &
+
+# clipboard manager
 parcellite &
-synergyc monster &
-dropbox start &
+
+dropboxd &
+# wallpaper
 eval $(cat ~/.fehbg) &
 
-# Do wm-dependent stuff.
+#######################
+# host-dependent setup
+#######################
+case `hostname` in
+    aether)
+        VBoxClient-all &
+        xrandr --output VBOX1 --right-of VBOX0 &
+        ;;
+    *)
+        synergyc monster &
+        ;;
+esac 
+
+
+#####################
+# WM-dependent setup
+#####################
 case $1 in
     kde)
         exec startkde
@@ -40,8 +68,9 @@ case $1 in
         xmonad
         ;;
     wmii)
-	exec wmii
-	;;
+        exec wmii
+        ;;
+    # dwm)
     *)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
