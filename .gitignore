@@ -1,6 +1,15 @@
 vim/bundle
 !vim/bundle/vundle
-mpd/db
+vim/.netrwhist
+vim/undo
+vim/swap
+
+# mpd
 mpd/log
-mpd/pid
 mpd/state
+mpd/pid
+mpd/db
+
+# wmii
+wmii/history.actions
+wmii/history.progs

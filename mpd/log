@@ -23270,6 +23270,7 @@ Apr 14 22:23 : avahi: Client Disconnected, will reconnect shortly
 Apr 14 22:23 : avahi: Could not reconnect: Daemon not running
 Apr 14 22:45 : avahi: Client Disconnected, will reconnect shortly
 Apr 14 22:45 : avahi: Could not reconnect: Daemon not running
+<<<<<<< HEAD
 Aug 17 15:20 : decoder_thread: Unrecognized URI
 Aug 17 15:20 : decoder_thread: Unrecognized URI
 Aug 17 15:21 : decoder_thread: Unrecognized URI
@@ -35642,3 +35643,7 @@ Oct 31 14:37 : player_thread: played "MP3/Red Hot Chili Peppers/By the Way/06 Th
 Oct 31 14:41 : player_thread: played "MP3/Red Hot Chili Peppers/Californication/01 Road Trippin'.mp3"
 Oct 31 14:45 : player_thread: played "MP3/Red Hot Chili Peppers/Shared/13 Wet Sand.mp3"
 Oct 31 14:51 : player_thread: played "MP3/Red Hot Chili Peppers/Stadium Arcadium/02 Snow (Hey Oh).mp3"
+=======
+Oct 15 18:57 : decoder_thread: Unrecognized URI
+Oct 15 18:57 : decoder_thread: Unrecognized URI
+>>>>>>> 4c683dab224f8de06db3b1b4c4973f9c9df9dc83
