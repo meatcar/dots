@@ -29,3 +29,4 @@ ln -s "$DOTS/uzbl/local" "$HOME/.local/share/uzbl"
 ln -s "$DOTS/uzbl/config" "$HOME/.config/uzbl"
 ln -s "$DOTS/fonts" "/home/meatcar/dots/.fonts"
 ln -s "$DOTS/ackrc" "/home/meatcar/dots/.ackrc"
+ln -s "$DOTS/gitconfig" \'/home/meatcar/dots/.gitconfig\'
