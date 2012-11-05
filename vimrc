@@ -88,6 +88,9 @@ Bundle 'Solarized'
 Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
+Bundle 'ack.vim'
+Bundle 'ack.vim'
+Bundle 'ctrlp.vim'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -99,7 +102,6 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " colorscheme -----------------------------------------------------------
 "
 colorscheme molokai "define syntax color scheme
-"colorscheme solarized "define syntax color scheme
 
 " hotkeys --------------------------------------------------------------
 
@@ -132,8 +134,6 @@ if has ("gui_running")
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
-        "set columns=118         "previous values: 120
-        "set lines=40            "previous values: 40, 32
     endif
 endif
 
@@ -152,8 +152,6 @@ if has("autocmd")
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
-    au Filetype html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au Filetype javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     " Set up omnicompletion
     if exists("+omnifunc")
