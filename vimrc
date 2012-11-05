@@ -7,6 +7,7 @@
 
 " general --------------------------------------------------------------
 
+colorscheme molokai
 set t_Co=256            " enable 256-color support
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
@@ -128,11 +129,10 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ 9 "set the font
+        set guifont=Terminus\ (TTF)\ 9 "set the font
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
-        "colorscheme evening 
         "set columns=118         "previous values: 120
         "set lines=40            "previous values: 40, 32
     endif
