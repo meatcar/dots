@@ -308,6 +308,7 @@ settings = {
     awl_display_key = "[$N]$H$C$S";
   };
 };
+logs = { };
 ignores = (
   { level = "JOINS PARTS"; servertag = "freenode"; },
   { level = "JOINS PARTS QUITS"; servertag = "freenode"; },

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo modprobe rtl8187
+sudo ip link set wlan0 up
+sudo wpa_supplicant -B -c /etc/wpa_supplicant/viafoura.conf -i wlan0
+sudo dhcpcd wlan0

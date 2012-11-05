@@ -8,13 +8,13 @@ if [ $# -lt 2 ]; then
     exit 1
 fi 
 
-DOTS="/home/meatcar/dots"
+DOTS="$HOME/dots"
 DOTFILE="$DOTS/$2"
 mv -f $1 $DOTFILE
 ln -sf $DOTFILE $1
 cd $DOTS
 git add $DOTFILE
 git commit -m "added $1 as $DOTS/$2"
-echo "ln -s \"\$DOTS/$2\" \"$PWD/$1\"" >> "$DOTS/reinstate.sh"
+echo "ln -s \"\$DOTS/$2\" \"\$HOME/dots/$1\"" >> "$DOTS/reinstate.sh"
 echo "$1 has been dottified to $DOTS" 
 

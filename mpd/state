@@ -1,8 +1,22 @@
+<<<<<<< HEAD
 sw_volume: 78
 audio_device_state:1:default detected output
 state: pause
 current: 17
 time: 10
+=======
+sw_volume: 98
+audio_device_state:1:default detected output
+<<<<<<< HEAD
+state: pause
+current: 116
+time: 75
+=======
+state: play
+current: 17
+time: 0
+>>>>>>> 4c683dab224f8de06db3b1b4c4973f9c9df9dc83
+>>>>>>> 7152956441ee0d3382026619622d5f2846b4718e
 random: 0
 repeat: 0
 single: 0
@@ -11,6 +25,7 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: nan
 playlist_begin
+<<<<<<< HEAD
 0:Danger Mouse/Rome/01 Theme Of Rome.mp3
 1:Danger Mouse/Rome/02 The Rose With The Broken Neck.mp3
 2:Danger Mouse/Rome/03 Morning Fog (Interlude).mp3
@@ -39,4 +54,136 @@ playlist_begin
 25:Safri Duo - Episode II/09.Adagio.mp3
 26:Safri Duo - Episode II/Safri Duo - Labamba Remix 2005.mp3
 27:Safri Duo - Episode II/Safri Duo - Ritmo De La Noche (Extended).mp3
+=======
+0:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/01-silver_jews-canada.flac
+1:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/02-silver_jews-the_walnut_falcon.flac
+2:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/03-silver_jews-september_1999.flac
+3:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/04-silver_jews-svm_f.t._troops.flac
+4:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/05-silver_jews-the_unchained_melody.flac
+5:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/06-silver_jews-secret_knowledge_of_backroots.flac
+6:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/07-silver_jews-i_love_the_rights.flac
+7:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/08-silver_jews-jackson_nightz.flac
+8:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/09-silver_jews-the_war_in_apartment_1812.flac
+9:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/10-silver_jews-west_s.flac
+10:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/11-silver_jews-you_cant_trust_it_to_remain.flac
+11:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/12-silver_jews-the_wild_palms.flac
+12:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/13-silver_jews-welcome_to_the_house_of_the_bats.flac
+13:FLAC/Silver Jews Early Times CD FLAC 2012 JLM/14-silver_jews-bar_scene_from_star_wars.flac
+14:MP3/The Go! Team/Thunder Lightning Strike/01 Panther Dash.mp3
+15:MP3/The Go! Team/Thunder Lightning Strike/01 Panther Dash.mp3
+16:MP3/Ministry of sound/Ministry of Sound Anthems II 2008 [MP3 @ 320](oan)/Ministry of Sound Anthems II (Disc 1)/09. Snap! - Rhythm Is A Dancer.mp3
+17:MP3/RadioReddit/Shotgun_Diplomacy_(Keenalie)_I____m_Ron_Burgundy_.mp3
+18:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/01 - Russian roulette.flac
+19:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/02 - Endless time.flac
+20:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/03 - Leap of faith.flac
+21:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/04 - Radiation day.flac
+22:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/05 - God and machines.flac
+23:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/06 - No star too far.flac
+24:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/07 - Someday.flac
+25:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/08 - Hauptbahnhof 20-10.flac
+26:FLAC/The Legendary Pink Dots/Seconds Late for the Brighton Line/09 - Ascension.flac
+27:MP3/Survivor/Eye Of The Tiger/01 Eye Of The Tiger.mp3
+28:MP3/Ministry of sound/Ministry of Sound Anthems II 2008 [MP3 @ 320](oan)/Ministry of Sound Anthems II (Disc 2)/12. Sash - Encore Une Fois.mp3
+29:MP3/Rush/Unknown Album/Closer To The Heart.mp3
+30:MP3/Rush/Unknown Album/Drum Solo.mp3
+31:MP3/Rush/Unknown Album/Freewill.mp3
+32:MP3/Rush/Unknown Album/Rush - Time Stands Still.MP3
+33:MP3/Rush/Unknown Album/Spirit Of Radio.mp3
+34:MP3/Rush/Unknown Album/01 Working Man.mp3
+35:MP3/Rush/Moving Pictures/02 Red Barchetta.mp3
+36:MP3/Rush/Moving Pictures/03 YYZ.mp3
+37:MP3/Rush/Snakes and Arrows/Far Cry.mp3
+38:MP3/Rush/Hemispheres/03 The Trees.mp3
+39:MP3/Drive - Soundtrack (2011)/01. Kavinsky & Lovefoxxx - Nightcall.mp3
+40:FLAC/African Guitar Summit - 2004/01 -  Pa Joe  - Obaa Y Ewa.flac
+41:FLAC/African Guitar Summit - 2004/02 -  Donne Robert - Malembo.flac
+42:FLAC/African Guitar Summit - 2004/03 - Adam Solomon - Mwajuma.flac
+43:FLAC/African Guitar Summit - 2004/04 - Alpha Ya Ya Diallo - Cette Vie.flac
+44:FLAC/African Guitar Summit - 2004/05 - Madagascar Slim - Zanahary.flac
+45:FLAC/African Guitar Summit - 2004/06 - Mighty Popo - Urwibitso.flac
+46:FLAC/African Guitar Summit - 2004/07 - Adam Solomon - Pesa Ni Unfunguo.flac
+47:FLAC/African Guitar Summit - 2004/08 - Alpha YaYa Diallo - Djarabi.flac
+48:FLAC/African Guitar Summit - 2004/09 - Donne Robert - Sadebake.flac
+49:FLAC/African Guitar Summit - 2004/10 - Pa Joe - Nyame Somafo.flac
+50:FLAC/African Guitar Summit - 2004/11 -  Mighty Popo - Mwembo.flac
+51:FLAC/African Guitar Summit - 2004/12 - Alpha YaYa Diallo - Nabhoran.flac
+52:FLAC/African Guitar Summit - 2004/13 - Madagascar Slim - Salama.flac
+53:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4/Op. 60 - I Adagio - Allegro vivace, Symphony No. 4 in Bb Major.mp3
+54:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4/Op. 60 - II Adagio, Symphony No. 4 in Bb Major.mp3
+55:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4/Op. 60 - III Allegro vivace - Trio-Un poco meno Allergo, Symphony No. 4 in Bb Major.mp3
+56:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 4/Op. 60 - IV Allegro ma non troppo, Symphony No. 4 in Bb Major.mp3
+57:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5/Op. 21 - I Allegro con brio, Symphony No. 5 in C minor.mp3
+58:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5/Op. 21 - II Andante con moto, Symphony No. 5 in C minor.mp3
+59:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5/Op. 21 - III Allegro, Symphony No. 5 in C minor.mp3
+60:MP3/Ludwig Van Beethoven (MP3@320Kbps)/Beethoven-All Symphonies/Symphony No. 5/Op. 21 - IV Allegro - Presto, Symphony No. 5 in C minor.mp3
+61:MP3/Azealia Banks/Azealia Banks - 212.mp3
+62:MP3/Cage The Elephant/Cage The Elephant/01 In One Ear.mp3
+63:MP3/Cage The Elephant/Cage The Elephant/02 James Brown.mp3
+64:MP3/Cage The Elephant/Cage The Elephant/03 Aint No Rest For The Wicked.mp3
+65:MP3/Cage The Elephant/Cage The Elephant/04 Tiny Little Robots.mp3
+66:MP3/Cage The Elephant/Cage The Elephant/05 Lotus.mp3
+67:MP3/Cage The Elephant/Cage The Elephant/06 Back Against The Wall.mp3
+68:MP3/Cage The Elephant/Cage The Elephant/07 Drones In The Valley.mp3
+69:MP3/Cage The Elephant/Cage The Elephant/08 Judas.mp3
+70:MP3/Cage The Elephant/Cage The Elephant/09 Back Stabbin' Betty.mp3
+71:MP3/Cage The Elephant/Cage The Elephant/10 Soil To The Sun.mp3
+72:MP3/Cage The Elephant/Cage The Elephant/11 Free Love.mp3
+73:MP3/Miike Snow/Miike Snow/01 Animal.mp3
+74:MP3/Miike Snow/Miike Snow/02 Burial.mp3
+75:MP3/Miike Snow/Miike Snow/03 Silvia.mp3
+76:MP3/Miike Snow/Miike Snow/04 Song for No One.mp3
+77:MP3/Miike Snow/Miike Snow/05 Black & Blue.mp3
+78:MP3/Miike Snow/Miike Snow/06 Sans Soleil.mp3
+79:MP3/Miike Snow/Miike Snow/07 A Horse Is Not a Home.mp3
+80:MP3/Miike Snow/Miike Snow/08 Cult Logic.mp3
+81:MP3/Miike Snow/Miike Snow/09 Plastic Jungle.mp3
+82:MP3/Miike Snow/Miike Snow/10 In Search Of.mp3
+83:MP3/Miike Snow/Miike Snow/11 Faker.mp3
+84:MP3/Obi Best/Capades/08 Swedish Boy.mp3
+85:MP3/Nine Inch Nails/The Fragile Disc 2/02 Into the Void.mp3
+86:MP3/OPM/Menace to Sobriety/06 Brighter side.mp3
+87:MP3/OPM/Menace to Sobriety/06 Brighter side.mp3
+88:MP3/New Young Pony Club/Fantastic Playroom/01 Get Lucky.mp3
+89:MP3/New Young Pony Club/Fantastic Playroom/02 Hiding On The Staircase.mp3
+90:MP3/New Young Pony Club/Fantastic Playroom/03 Ice Cream.mp3
+91:MP3/New Young Pony Club/Fantastic Playroom/04 The Bomb.mp3
+92:MP3/New Young Pony Club/Fantastic Playroom/05 Jerk Me.mp3
+93:MP3/New Young Pony Club/Fantastic Playroom/06 The Get Go.mp3
+94:MP3/New Young Pony Club/Fantastic Playroom/07 Talking Talking.mp3
+95:MP3/New Young Pony Club/Fantastic Playroom/08 Grey.mp3
+96:MP3/New Young Pony Club/Fantastic Playroom/09 Fan.mp3
+97:MP3/New Young Pony Club/Fantastic Playroom/10 Tight Fit.mp3
+98:MP3/New Young Pony Club/The Optimist/01 Lost A Girl.mp3
+99:MP3/New Young Pony Club/The Optimist/02 Chaos.mp3
+100:MP3/New Young Pony Club/The Optimist/03 The Optimist.mp3
+101:MP3/New Young Pony Club/The Optimist/04 Stone.mp3
+102:MP3/New Young Pony Club/The Optimist/05 We Want To.mp3
+103:MP3/New Young Pony Club/The Optimist/06 Dolls.mp3
+104:MP3/New Young Pony Club/The Optimist/07 Before The Light.mp3
+105:MP3/New Young Pony Club/The Optimist/08 Oh Cherie.mp3
+106:MP3/New Young Pony Club/The Optimist/09 Rapture.mp3
+107:MP3/New Young Pony Club/The Optimist/10 Architect Of Love.mp3
+108:MP3/Red Hot Chili Peppers/Unknown Album/Other Side.mp3
+109:MP3/Red Hot Chili Peppers/Unknown Album/Higher Ground.mp3
+110:MP3/Red Hot Chili Peppers/Unknown Album/Aeroplane.mp3
+111:MP3/Red Hot Chili Peppers/Blood Sugar Sex Magik/05 Suck My Kiss.mp3
+112:MP3/Red Hot Chili Peppers/By the Way/06 The Zephyr Song.mp3
+113:MP3/Red Hot Chili Peppers/Californication/01 Road Trippin'.mp3
+114:MP3/Red Hot Chili Peppers/Shared/13 Wet Sand.mp3
+115:MP3/Red Hot Chili Peppers/Stadium Arcadium/02 Snow (Hey Oh).mp3
+116:MP3/Red Hot Chili Peppers/Stadium Arcadium/05 Hump De Bump.mp3
+117:MP3/Red Hot Chilli Peppers/Blood Sugar Sex Magik/01 Suck My Kiss.mp3
+118:MP3/Red Hot Chili Peppers/Californication/Scar Tissue.mp3
+119:MP3/Red Hot Chilli Peppers/Californication/Scar Tissue.mp3
+120:MP3/Red Hot Chilli Peppers/Californication/Otherside.mp3
+121:MP3/Red Hot Chilli Peppers/Californication/Californication.mp3
+122:MP3/Red Hot Chilli Peppers/By The Way/By the Way.mp3
+123:MP3/Red Hot Chili Peppers/By the Way/07 Can't Stop.mp3
+124:MP3/Red Hot Chili Peppers/By the Way/16 Venice Queen.mp3
+125:MP3/Red Hot Chili Peppers/Californication/18 Quixoticelixer.mp3
+126:MP3/Red Hot Chilli Peppers/Stadium Arcadium/01 Dani California.mp3
+127:MP3/Red Hot Chili Peppers/Stadium Arcadium/02 Tell Me Baby.mp3
+128:MP3/Red Hot Chilli Peppers/Stadium Arcadium/02 Snow ((Hey Oh)).mp3
+129:MP3/Red Hot Chilli Peppers/Stadium Arcadium/02 Tell Me Baby.mp3
+>>>>>>> 7152956441ee0d3382026619622d5f2846b4718e
 playlist_end
