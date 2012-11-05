@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/etc/bumblebee'
-let g:netrw_dirhist_2='/home/meatcar/dots'
-let g:netrw_dirhist_3='/home/meatcar/dots/statnot'
-let g:netrw_dirhist_4='/home/meatcar/.fontconfig'
-let g:netrw_dirhist_5='/home/meatcar/Dropbox/uni/csc369/os161/Group25/a4/a3/src'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/meatcar/.fontconfig'
+let g:netrw_dirhist_2='/home/meatcar/dev/dev/Viafoura-Core/js/js/src'
+let g:netrw_dirhist_3='/home/meatcar/dev/Viafoura-Core/js/webdir/tests/tests'
+let g:netrw_dirhist_4='/home/meatcar/.ncmpcpp'
+let g:netrw_dirhist_5='/'
+let g:netrw_dirhist_6='/home/meatcar/dev/Viafoura-Core/.git/hooks'
+let g:netrw_dirhist_7='/home/meatcar/Dropbox/notes'

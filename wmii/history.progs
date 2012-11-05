@@ -1,0 +1,23 @@
+killall X
+mpd /home/meatcar/.config/mpd/mpd.conf
+dwb
+twmnd
+virtualbox
+slogin
+urxvtc
+urxvtd
+google-musicmanager
+trayer
+gimp
+urxvt
+gview
+firefox
+vlc
+pcmanfm
+freemind
+subl
+pidgin
+gvim
+google-chrome
+lxappearance
+slock

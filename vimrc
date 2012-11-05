@@ -40,6 +40,10 @@ set grepprg=grep\ -nH\ $*
 set wildmenu
 set wildmode=list:longest
 set hidden              " un-saved buffers in the background
+set scrolloff=5         " un-saved buffers in the background
+set rnu                 " un-saved buffers in the background
+
+set foldmethod=indent
 
 " tabs and indenting ---------------------------------------------------
 
@@ -70,8 +74,6 @@ call vundle#rc()
  " required! 
 Bundle 'gmarik/vundle'
 Bundle 'molokai'
-Bundle 'Markdown'
-Bundle 'Markdown-syntax'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'fugitive.vim'
@@ -84,7 +86,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'jellybeans.vim'
 Bundle 'Gundo'
-Bundle 'Solarized'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
@@ -93,10 +95,10 @@ Bundle 'vim-json-bundle'
 Bundle 'Lucius'
 Bundle 'proton'
 Bundle 'mayansmoke'
-Bundle 'Enhanced-Javascript-syntax'
-Bundle 'Better-Javascript-Indentation'
-Bundle "pangloss/vim-javascript"
-Bundle 'jsbeautify'
+Bundle 'ZenCoding.vim'
+Bundle 'Gist.vim'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'ctrlp.vim'
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -109,6 +111,10 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 "
 colorscheme molokai "define syntax color scheme
 
+" completion -------------------
+
+let g:SuperTabDefaultCompletionType = "context"
+
 " powerline -----------------------------------------------------------
 
 set laststatus=2
@@ -117,6 +123,7 @@ set laststatus=2
 
 " opens and closes list of errors automatically
 let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=3
 
 " hotkeys --------------------------------------------------------------
 
@@ -156,7 +163,7 @@ if has ("gui_running")
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
-        set guifont=Terminus\ 9
+        set guifont=Terminus\ (TTF)\ 9
         set linespace=1
         set guioptions-=T                   "hide the toolbar
         set guioptions-=m                   "hide the menubar
@@ -181,14 +188,10 @@ if has("autocmd")
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
     au Filetype html setlocal shiftwidth=4 tabstop=4 softtabstop=4
-    au Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
-
-    " Set up omnicompletion
-    if exists("+omnifunc")
-        autocmd Filetype *
-                    \ if &omnifunc == "" |
-                    \   setlocal omnifunc=syntaxcomplete#Complete |
-                    \ endif
-    endif
+    au Filetype javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 makeprg=grunt
+    au BufNewFile,BufRead *.jade set filetype=jade
+    au Filetype jade setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au BufNewFile,BufRead *.less set filetype=less
+    au Filetype less setlocal shiftwidth=2 tabstop=2 softtabstop=2 makeprg=grunt
 endif
 
