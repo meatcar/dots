@@ -76,14 +76,7 @@ Xft.rgba: rgb
 Xft.hinting: true
 Xft.hintstyle:  hintslight
 
-URxvt*termName: rxvt
-!URxvt.transparent:   true
-!URxvt.tintColor:     black
-!URxvt.shading:       33 
-!URxvt.depth:         32
-!URxvt.inheritPixmap: true
-!URxvt.foreground:       white
-!URxvt.background:       [70]black
+urxvt*termName: rxvt 
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
 urxvt*loginShell: false
@@ -91,10 +84,9 @@ urxvt*secondaryScroll:  true
 
 URxvt.buffered:         true
 
-URxvt.font:             xft:Terminus:size=9
-URxvt.perl-ext-common:  default,matcher
-URxvt.title:            urxvtc
+URxvt.font:             xft:Terminus (TTF):size=9
 URxvt.urlLauncher:      google-chrome
+URxvt.perl-ext-common:  default,matcher
 URxvt.colorUL:          #86a2be
 URxvt.matcher.button:   1 
 URxvt.urgentOnBell:     true

@@ -1,0 +1,6 @@
+vim/bundle
+!vim/bundle/vundle
+mpd/db
+mpd/log
+mpd/pid
+mpd/state

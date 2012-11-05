@@ -43,9 +43,7 @@ export VTERM="urxvtc"
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/bin:/home/meatcar/Dropbox/uni/csc369/tools/bin"
-# fix svn errors
-export LC_CTYPE=C
+export PATH="${PATH}:/home/meatcar/bin:./node/bin:./node_modules/.bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 ####################################################
 # Set up colorings
 #

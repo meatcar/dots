@@ -2,7 +2,7 @@
 # Display a status in a dzen bar
 fn='Terminus-9'
 ta='r'
-tw=1070
+tw=1304
 x=296
 h=15
 fg='#FFFFFF'
