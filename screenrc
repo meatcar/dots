@@ -15,10 +15,8 @@ altscreen on
 
 # Programs opening by default
 
-screen -t "bash" 1
-screen -t "Irssi" 2 irssi
-screen -t "ncmpcpp" 3 ncmpcpp
-screen -t "htop" 4 htop
+screen -t "htop" 0 htop
+screen -t "irssi" 1 irssi
 
 # Keys
 
