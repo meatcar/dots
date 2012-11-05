@@ -3,7 +3,7 @@ temp="/tmp/wallp"
 temp2="/tmp/wallp.$$"
 trap "rm -f $temp2" 0 1 2 15
 
-WALLFOLDER='/mnt/win/Valhalla/Multimedia/Pictures/Wallpapers'
+WALLFOLDER="$HOME/Storage/Multimedia/Pictures/Wallpapers"
 
 if [ ! -e $temp ]; then
     find "$WALLFOLDER" -type f | sort -R > $temp
