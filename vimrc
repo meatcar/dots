@@ -7,7 +7,6 @@
 
 " general --------------------------------------------------------------
 
-colorscheme molokai
 set t_Co=256            " enable 256-color support
 set nocompatible        " disregard vi compatibility:
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
@@ -99,7 +98,7 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme jellybeans  "define syntax color scheme
+colorscheme molokai "define syntax color scheme
 "colorscheme solarized "define syntax color scheme
 
 " hotkeys --------------------------------------------------------------
