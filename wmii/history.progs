@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 killall X
 mpd /home/meatcar/.config/mpd/mpd.conf
 dwb
@@ -20,4 +21,15 @@ pidgin
 gvim
 google-chrome
 lxappearance
+=======
+VBoxClient-all
+firefox
+lxappearance
+pidgin
+dropboxd
+google-chrome
+pcmanfm
+gvim
+lslocks
+>>>>>>> 4c683dab224f8de06db3b1b4c4973f9c9df9dc83
 slock

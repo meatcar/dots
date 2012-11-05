@@ -1,8 +1,14 @@
 sw_volume: 98
 audio_device_state:1:default detected output
+<<<<<<< HEAD
 state: pause
 current: 116
 time: 75
+=======
+state: play
+current: 17
+time: 0
+>>>>>>> 4c683dab224f8de06db3b1b4c4973f9c9df9dc83
 random: 0
 repeat: 0
 single: 0
