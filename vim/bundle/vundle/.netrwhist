@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/meatcar/.fontconfig'
-let g:netrw_dirhist_2='/home/meatcar/dev/dev/Viafoura-Core/js/js/src'
-let g:netrw_dirhist_3='/home/meatcar/dev/Viafoura-Core/js/webdir/tests/tests'
-let g:netrw_dirhist_4='/home/meatcar/.ncmpcpp'
-let g:netrw_dirhist_5='/'
-let g:netrw_dirhist_6='/home/meatcar/dev/Viafoura-Core/.git/hooks'
-let g:netrw_dirhist_7='/home/meatcar/Dropbox/notes'
