@@ -69,7 +69,13 @@ call vundle#rc()
  " let Vundle manage Vundle
  " required! 
 Bundle 'gmarik/vundle'
+
+" colorschemes
 Bundle 'molokai'
+Bundle 'jellybeans.vim'
+Bundle 'proton'
+Bundle 'Solarized'
+
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
 Bundle 'surround.vim'
@@ -82,13 +88,10 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
-Bundle 'jellybeans.vim'
 Bundle 'Gundo'
-Bundle 'Solarized'
 Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
-Bundle 'ack.vim'
 Bundle 'ack.vim'
 Bundle 'ctrlp.vim'
 

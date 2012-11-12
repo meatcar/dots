@@ -221,7 +221,6 @@ wmiir write /ctl <<!
 	grabmod $MODKEY
 	border 1
 !
-xsetroot -solid "$WMII_BACKGROUND" &
 
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
