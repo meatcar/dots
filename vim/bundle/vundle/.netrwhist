@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/etc/bumblebee'
 let g:netrw_dirhist_2='/home/meatcar/dots'
 let g:netrw_dirhist_3='/home/meatcar/dots/statnot'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/meatcar/Dropbox/uni/csc369/os161/Group25/a4/a3/src'
 let g:netrw_dirhist_6='/etc/nginx/sites-enabled'
 let g:netrw_dirhist_7='/etc/nginx/sites-available'
 let g:netrw_dirhist_8='/srv/www/denys.me'
+let g:netrw_dirhist_9='/home/meatcar/dev/Viafoura-Core/js/webdir/tests/qunit'

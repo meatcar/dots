@@ -27,7 +27,5 @@
   untracked = cyan
 [merge]
 	tool = meld
-[diff]
-	external = meld
 [push]
 	default = simple
