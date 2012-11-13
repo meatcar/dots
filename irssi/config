@@ -24,18 +24,19 @@ servers = (
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "viafoura.irc.grove.io";
+    address = "denys.me";
     chatnet = "viafoura";
-    port = "6697";
-    password = "viafoura";
+    port = "7778";
+    password = "meatcar:wearew:viafoura";
     use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
   },
   {
-    address = "chat.freenode.net";
+    address = "denys.me";
     chatnet = "freenode";
-    port = "6697";
+    port = "7778";
+    password = "meatcar:wearew:freenode";
     use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
@@ -286,6 +287,13 @@ statusbar = {
       items = {
         barstart = { priority = "100"; };
         awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
         barend = { priority = "100"; alignment = "right"; };
       };
     };
