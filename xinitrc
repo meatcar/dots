@@ -11,6 +11,7 @@ case $1 in
         ;;
 esac
 
+
 # set the cursor
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
@@ -42,7 +43,8 @@ eval $(cat ~/.fehbg) &
 case `hostname` in
     aether)
         VBoxClient-all &
-        xrandr --output VBOX1 --right-of VBOX0 &
+		sleep 3
+        xrandr --output VBOX1 --right-of VBOX0
         ;;
     viafoura.denys.me)
         xrandr --output VGA-0 --left-of DVI-I-1 &
@@ -75,10 +77,13 @@ case $1 in
         exec openbox-session
         ;;
     wmii)
+        # Set the wm name to somethign Java recognizes.
+        wmname LG3D
+        
         exec wmii
         ;;
     dwm)
-        xcompmgr -c -C&
+        xcompmgr -c -C &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
         
