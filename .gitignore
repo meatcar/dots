@@ -13,3 +13,5 @@ mpd/db
 # wmii
 wmii/history.actions
 wmii/history.progs
+irssi/away.log
+irssi/*.autosave
