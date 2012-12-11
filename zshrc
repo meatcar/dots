@@ -16,8 +16,17 @@ compinit
 ####################################################
 # Set the prompt.
 autoload -U colors && colors
-PROMPT="%{$fg[cyan]%}%m%{$fg[green]%} %#%{$reset_color%} "
-RPROMPT="%{$fg[magenta]%}%~%{$reset_color%}"
+
+# set up vcs
+autoload -Uz vcs_info
+precmd () { vcs_info }
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' formats "%b"
+zstyle ':vcs_info:*' actionformats "%b %a"
+
+PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} $vcs_info_msg_0_
+    %{$fg[green]%}do%{$reset_color%} "
 ####################################################
 # Set Keybindings.
 bindkey -v
@@ -43,7 +52,7 @@ export VTERM="urxvtc"
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/bin:/home/meatcar/Dropbox/uni/csc369/tools/bin"
+export PATH="${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 # fix svn errors
 export LC_CTYPE=C
 ####################################################
@@ -70,6 +79,7 @@ alias mix="alsamixer"
 alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
 alias v="mvimc"
+alias g="git"
 
 # cd 
 alias cd..="cd .."

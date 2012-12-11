@@ -11,7 +11,6 @@ case $1 in
         ;;
 esac
 
-
 # set the cursor
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
@@ -23,9 +22,6 @@ xmodmap -e "keysym Caps_Lock = Escape"
 # screensaver
 xscreensaver  -no-splash &
 
-# start compositor
-xcompmgr -c -C &
-
 # start mpd, and make sure it's not blaring music
 (mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 
@@ -36,6 +32,7 @@ urxvtd &
 parcellite &
 
 dropboxd &
+systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
@@ -47,8 +44,9 @@ case `hostname` in
         VBoxClient-all &
         xrandr --output VBOX1 --right-of VBOX0 &
         ;;
-    tyrion)
+    viafoura.denys.me)
         xrandr --output VGA-0 --left-of DVI-I-1 &
+        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
         ;;
     *)
         synergyc hyperion&

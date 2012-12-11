@@ -310,6 +310,7 @@ settings = {
     theme = "dot";
     bell_beeps = "yes";
     beep_msg_level = "MSGS NOTICES INVITES DCC DCCMSGS HILIGHT";
+    term_charset = "utf-8";
   };
   "perl/core/scripts" = {
     neat_maxlength = "13";
