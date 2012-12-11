@@ -76,15 +76,13 @@ Xft.rgba: rgb
 Xft.hinting: true
 Xft.hintstyle:  hintslight
 
-urxvt*termName: rxvt 
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
-urxvt*loginShell: false
 urxvt*secondaryScroll:  true
 
 URxvt.buffered:         true
 
-URxvt.font:             xft:Terminus (TTF):size=9
+URxvt.font:             xft:Terminus:size=9
 URxvt.urlLauncher:      google-chrome
 URxvt.perl-ext-common:  default,matcher
 URxvt.colorUL:          #86a2be
