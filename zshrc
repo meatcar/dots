@@ -25,8 +25,14 @@ zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' formats "%b"
 zstyle ':vcs_info:*' actionformats "%b %a"
 
+# set up command verb (do, sudo, redo)
+root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
+exit_verb="%(?..%{$fg[yellow]%}re)" # failed command
+verb="%{$fg[green]%}${root_verb}${exit_verb}do%{$reset_color%}"
+
+
 PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} $vcs_info_msg_0_
-    %{$fg[green]%}do%{$reset_color%} "
+    ${verb} "
 ####################################################
 # Set Keybindings.
 bindkey -v
@@ -71,7 +77,6 @@ export LESS=' -R '
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias pacman="sudo pacman"
-alias y="yaourt"
 alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
@@ -79,7 +84,6 @@ alias mix="alsamixer"
 alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
 alias v="mvimc"
-alias g="git"
 
 # cd 
 alias cd..="cd .."
