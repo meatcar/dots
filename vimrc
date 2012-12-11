@@ -67,14 +67,14 @@ runtime macros/matchit.vim  " extend the % key
 " Vundle stuff ---------------------------------------------------------
 call vundle#rc()
  " let Vundle manage Vundle
- " required! 
+ " required!
 Bundle 'gmarik/vundle'
 
 " colorschemes
 Bundle 'molokai'
 Bundle 'jellybeans.vim'
 Bundle 'proton'
-Bundle 'Solarized'
+Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
@@ -94,6 +94,18 @@ Bundle 'groenewege/vim-less'
 Bundle 'skammer/vim-css-color'
 Bundle 'ack.vim'
 Bundle 'ctrlp.vim'
+Bundle 'Syntastic'
+" required for Gist.vim
+Bundle 'WebAPI.vim'
+Bundle 'Gist.vim'
+
+
+" Syntastic settings ---------------------------------------------------------
+
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=3
+
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -105,11 +117,26 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " colorscheme -----------------------------------------------------------
 "
 colorscheme molokai "define syntax color scheme
+let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 
+" gist settings --------------------------------------------------------
+
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_browser_command = 'google-chrome %URL% &'
+
+" ctrl-p settings ------------------------------------------------------
+let g:ctrlp_user_command = {
+\ 'types': {
+  \ 1: ['.git/', 'cd %s && git ls-files'],
+  \ },
+\ 'fallback': ''
+\ }
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
-nmap q: :q<cr>          
+nmap q: :q<cr>
 command BW :b#|:bw#     " easier buffer closing
 command SO :so ~/.vimrc " easier buffer closing
 
@@ -125,6 +152,8 @@ map <C-l> <C-W>l
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 nmap <silent> <C-g> :GundoToggle<CR>
+
+nmap <silent> <C-p> :CtrlPLastMode<CR>
 
 
 " gvim settings --------------------------------------------------------
@@ -145,13 +174,17 @@ endif
 if has("autocmd")
     au BufRead,BufNewFile PKGBUILD set ft=sh
     " always jump to the last cursor position
-    autocmd BufReadPost * 
+    autocmd BufReadPost *
                 \ if line("'\"")>0 && line("'\"")<=line("$") |
-                \   exe "normal g`\"" | 
+                \   exe "normal g`\"" |
                 \ endif
 
     "remove trailing whitespace in python files upon save
-    autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+    function TrimWhiteSpace()
+      %s/\s*$//
+      ''
+    :endfunction
+    autocmd FileType javascript,python autocmd BufWritePre * :%s/\s\+$//e
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less

@@ -29,3 +29,5 @@
 	tool = meld
 [push]
 	default = simple
+[github]
+	user = meatcar
