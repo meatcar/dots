@@ -82,7 +82,9 @@ urxvt*secondaryScroll:  true
 
 URxvt.buffered:         true
 
-URxvt.font:             xft:Terminus:size=9
+
+urxvt*termName:         rxvt
+URxvt.font:             xft:Terminus (TTF):size=9
 URxvt.urlLauncher:      google-chrome
 URxvt.perl-ext-common:  default,matcher
 URxvt.colorUL:          #86a2be

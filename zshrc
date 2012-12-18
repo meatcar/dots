@@ -28,7 +28,7 @@ zstyle ':vcs_info:*' actionformats "%b %a"
 # set up command verb (do, sudo, redo)
 root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
 exit_verb="%(?..%{$fg[yellow]%}re)" # failed command
-verb="%{$fg[green]%}${root_verb}${exit_verb}do%{$reset_color%}"
+verb="%{$fg[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
 
 PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} $vcs_info_msg_0_
@@ -58,7 +58,7 @@ export VTERM="urxvtc"
 export EDITOR="vim"
 export BROWSER="firefox"
 #export PAGER="vimpager"
-export PATH="${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
+export PATH="/usr/share/perl5/vendor_perl/auto/share/dist/Cope:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 # fix svn errors
 export LC_CTYPE=C
 ####################################################

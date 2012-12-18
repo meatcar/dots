@@ -21,7 +21,7 @@ export WMII_FOCUSCOLORS='#FECEA8 #E84A5F #FF847C'
 export WMII_URGENTCOLORS='#E84A5F #FECEA8 #FF847C'
 
 export WMII_BACKGROUND='#2A363B'
-export WMII_FONT='xft:Terminus:size=9'
+export WMII_FONT='xft:Terminus (TTF):size=9'
 
 set -- $(echo $WMII_NORMCOLORS $WMII_FOCUSCOLORS)
 export WMII_TERM="urxvtc"

@@ -75,6 +75,12 @@ Bundle 'molokai'
 Bundle 'jellybeans.vim'
 Bundle 'proton'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'BusyBee'
+Bundle 'pyte'
+Bundle 'github-theme'
+Bundle 'summerfruit256.vim'
+Bundle 'ironman.vim'
+Bundle 'nuvola.vim'
 
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
@@ -95,6 +101,7 @@ Bundle 'skammer/vim-css-color'
 Bundle 'ack.vim'
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
+Bundle 'paradigm/vim-multicursor'
 " required for Gist.vim
 Bundle 'WebAPI.vim'
 Bundle 'Gist.vim'
@@ -155,6 +162,14 @@ nmap <silent> <C-g> :GundoToggle<CR>
 
 nmap <silent> <C-p> :CtrlPLastMode<CR>
 
+" Multicursor maps
+
+nnoremap <Leader>mp :<c-u>call Hmmm.. Ok. MultiCursorPlaceCursor()<cr>
+nnoremap <Leader>mm :<c-u>call MultiCursorManual()<cr>
+nnoremap <Leader>md :<c-u>call Hmmm.. Ok. MultiCursorRemoveCursors()<cr>
+xnoremap <Leader>mv :<c-u>call MultiCursorVisual()<cr>
+nnoremap <Leader>ms :<c-u>call Hmmm.. Ok. MultiCursorSearch('')<cr>
+let g:multicursor_quit = '<Leader>mq'
 
 " gvim settings --------------------------------------------------------
 
@@ -162,7 +177,7 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ 9 "set the font
+        set guifont=Terminus\ (TTF)\ 9 "set the font
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
