@@ -5,7 +5,7 @@ wmiiscript=wmiirc # For wmii.sh
 
 
 # Configuration Variables
-MODKEY=Mod1
+MODKEY=Mod4
 UP=k
 DOWN=j
 LEFT=h
@@ -215,6 +215,7 @@ wi_events events local_events
 
 # WM Configuration
 wmiir write /ctl <<!
+    bar on top
 	font $WMII_FONT
 	focuscolors $WMII_FOCUSCOLORS
 	normcolors $WMII_NORMCOLORS

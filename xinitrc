@@ -37,6 +37,8 @@ systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
+xautolock  -time 10 -locker slimlock &
+
 #######################
 # host-dependent setup
 #######################
@@ -47,7 +49,7 @@ case `hostname` in
         xrandr --output VBOX1 --right-of VBOX0
         ;;
     viafoura.denys.me)
-        xrandr --output VGA-0 --left-of DVI-I-1 &
+        xrandr --output VGA-0 --left-of DVI-I-1 --primary &
         x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
         ;;
     *)
@@ -81,6 +83,12 @@ case $1 in
         wmname LG3D
         
         exec wmii
+        ;;
+    i3)
+        # Set the wm name to somethign Java recognizes.
+        wmname LG3D
+
+        exec i3
         ;;
     dwm)
         xcompmgr -c -C &
