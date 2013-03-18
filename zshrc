@@ -17,21 +17,13 @@ compinit
 # Set the prompt.
 autoload -U colors && colors
 
-# set up vcs
-autoload -Uz vcs_info
-precmd () { vcs_info }
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' get-revision true
-zstyle ':vcs_info:*' formats "%b"
-zstyle ':vcs_info:*' actionformats "%b %a"
-
 # set up command verb (do, sudo, redo)
 root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
 exit_verb="%(?..%{$fg[yellow]%}re)" # failed command
 verb="%{$fg[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
 
-PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} $vcs_info_msg_0_
+PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%}
     ${verb} "
 ####################################################
 # Set Keybindings.

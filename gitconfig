@@ -1,5 +1,5 @@
 [user]
-	email = denys.pavlov@gmail.com
+	email = denys@viafoura.com
 	name = Denys Pavlov
 
 [alias]
@@ -32,6 +32,6 @@
 	default = simple
 [github]
 	user = meatcar
-	password = 
+	password = wearew
 [mergetool]
 	keepBackup = false
