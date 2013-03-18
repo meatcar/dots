@@ -40,6 +40,7 @@ set grepprg=grep\ -nH\ $*
 set wildmenu
 set wildmode=list:longest
 set hidden              " un-saved buffers in the background
+set cc=80
 
 " tabs and indenting ---------------------------------------------------
 
@@ -71,22 +72,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " colorschemes
-Bundle 'molokai'
-Bundle 'jellybeans.vim'
-Bundle 'proton'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'BusyBee'
-Bundle 'pyte'
-Bundle 'github-theme'
-Bundle 'summerfruit256.vim'
-Bundle 'ironman.vim'
-Bundle 'nuvola.vim'
+Bundle 'flazz/vim-colorschemes'
 
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'fugitive.vim'
+Bundle 'tpope/vim-rhubarb'
 Bundle 'xml.vim'
 Bundle 'TeX-9'
 Bundle 'scrooloose/nerdtree'
@@ -95,15 +88,15 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'Gundo'
-Bundle 'Command-T'
 Bundle 'groenewege/vim-less'
 Bundle 'less.vim'
-Bundle 'skammer/vim-css-color'
+Bundle 'ap/vim-css-color'
 Bundle 'nono/vim-handlebars'
 Bundle 'ack.vim'
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
-Bundle 'paradigm/vim-multicursor'
+Bundle 'tpope/vim-sleuth'
+Bundle 'airblade/vim-gitgutter'
 " required for Gist.vim
 Bundle 'WebAPI.vim'
 Bundle 'Gist.vim'
@@ -125,7 +118,7 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme molokai "define syntax color scheme
+colorscheme github "define syntax color scheme
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 
 " gist settings --------------------------------------------------------
@@ -142,6 +135,12 @@ let g:ctrlp_user_command = {
   \ },
 \ 'fallback': ''
 \ }
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
@@ -154,6 +153,11 @@ nnoremap ; :
 vnoremap ; :
 
 " easier window browsing
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <C-L> <C-W>l<C-W>_
+
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -164,22 +168,13 @@ nmap <silent> <C-g> :GundoToggle<CR>
 
 nmap <silent> <C-p> :CtrlPLastMode<CR>
 
-" Multicursor maps
-
-nnoremap <Leader>mp :<c-u>call Hmmm.. Ok. MultiCursorPlaceCursor()<cr>
-nnoremap <Leader>mm :<c-u>call MultiCursorManual()<cr>
-nnoremap <Leader>md :<c-u>call Hmmm.. Ok. MultiCursorRemoveCursors()<cr>
-xnoremap <Leader>mv :<c-u>call MultiCursorVisual()<cr>
-nnoremap <Leader>ms :<c-u>call Hmmm.. Ok. MultiCursorSearch('')<cr>
-let g:multicursor_quit = '<Leader>mq'
-
 " gvim settings --------------------------------------------------------
 
 if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ (TTF)\ 9 "set the font
+        set guifont=Inconsolata-g\ 9 "set the font
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
@@ -206,12 +201,12 @@ if has("autocmd")
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
 
-    " Set up omnicompletion
-    if exists("+omnifunc")
-        autocmd Filetype *
-                    \ if &omnifunc == "" |
-                    \   setlocal omnifunc=syntaxcomplete#Complete |
-                    \ endif
-    endif
+     "Set up omnicompletion
+    "if exists("+omnifunc")
+        "autocmd Filetype *
+                    "\ if &omnifunc == "" |
+                    "\   setlocal omnifunc=syntaxcomplete#Complete |
+                    "\ endif
+    "endif
 endif
 
