@@ -70,7 +70,7 @@ urxvt*color15: #F8F8F0
 
 
 ! rxvt-unicode ---------------------------------------------------------------
-Xft.dpi: 96
+Xft.dpi: 92
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
