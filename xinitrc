@@ -37,7 +37,7 @@ systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
-xautolock  -time 10 -locker slimlock &
+xautolock  -time 10 -locker slock &
 
 #######################
 # host-dependent setup
