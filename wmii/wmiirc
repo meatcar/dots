@@ -5,7 +5,7 @@ wmiiscript=wmiirc # For wmii.sh
 
 
 # Configuration Variables
-MODKEY=Mod4
+MODKEY=Mod1
 UP=k
 DOWN=j
 LEFT=h
@@ -56,7 +56,7 @@ wmiir write /tagrules <<!
 
 # Status Bar Info
 status() {
-	echo -n $(uptime | sed 's/.*://; s/,//g') '|' $(date)
+	echo -n $(mpc current) '|' $(date)
 }
 
 local_events() { true;}
