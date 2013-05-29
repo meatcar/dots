@@ -7,7 +7,7 @@
 
 ! Xcursor --------------------------------------------------------------------
 
-Xcursor.theme: OpenZone_Black 
+Xcursor.theme: OpenZone_Black
 !Xcursor.size:   22
 
 
@@ -61,7 +61,7 @@ urxvt*color12: #70F0F0
 urxvt*color5: #8c54fe
 urxvt*color13: #9e6ffe
 !cyan
-!urxvt*color6: #3579a8 
+!urxvt*color6: #3579a8
 urxvt*color6: #465457
 urxvt*color14: #75715e
 !white
@@ -85,13 +85,14 @@ URxvt.buffered:         true
 
 urxvt*termName:         rxvt
 URxvt.font:             xft:Terminus (TTF):size=9
-URxvt.urlLauncher:      google-chrome
-URxvt.perl-ext-common:  default,matcher
 URxvt.colorUL:          #86a2be
-URxvt.matcher.button:   1 
 URxvt.urgentOnBell:     true
 URxvt.scrollBar:        False
 URxvt.scrollstyle:      plain
 URxvt.saveLines:        65535
 URxvt.pastableTabs:     true
+URxvt.perl-lib:         /usr/lib/urxvt/perl/
+URxvt.perl-ext-common:  default,matcher
+URxvt.matcher.button:   1
+URxvt.urlLauncher:      /usr/bin/chromium
 
