@@ -1,2 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/meatcar/dev/dev'
+let g:netrw_dirhist_2='/run/user/1000/gvfs/sftp:host=dev.viafoura.denys.me,user=viafoura'
+let g:netrw_dirhist_3='/run/user/1000/gvfs/sftp:host=dev.viafoura.denys.me,user=viafoura/home/viafoura'
+let g:netrw_dirhist_4='/run/user/1000/gvfs/sftp:host=dev.viafoura.denys.me,user=viafoura/home/viafoura/Viafoura-Core/vf/js/sections'
+let g:netrw_dirhist_5='/home/meatcar/dev/Viafoura-Core/vf-node'
+let g:netrw_dirhist_6='/home/meatcar/dots/bin/git-open-pull'

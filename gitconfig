@@ -32,6 +32,5 @@
 	default = simple
 [github]
 	user = meatcar
-	password = wearew
 [mergetool]
 	keepBackup = false
