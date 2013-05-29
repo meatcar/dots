@@ -24,19 +24,19 @@ servers = (
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "denys.me";
+    address = "viafoura.irc.grove.io";
     chatnet = "viafoura";
-    port = "7778";
-    password = "meatcar:wearew:viafoura";
+    port = "6697";
+    password = "viafoura";
     use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
   },
   {
-    address = "denys.me";
+    address = "chat.freenode.net";
     chatnet = "freenode";
-    port = "7778";
-    password = "meatcar:wearew:freenode";
+    port = "6697";
+    password = "";
     use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "yes";
@@ -214,7 +214,7 @@ statusbar = {
     # the "default statusbar" to be displayed at the bottom of the window.
     # contains all the normal items.
     window = {
-      disabled = "no";
+      disabled = "yes";
 
       # window, root
       type = "window";
@@ -236,6 +236,7 @@ statusbar = {
         act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        usercount = { };
       };
     };
 
@@ -290,13 +291,6 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_1 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_1 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 settings = {
@@ -307,15 +301,12 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
-    theme = "dot";
+    theme = "meatcar";
     bell_beeps = "yes";
     beep_msg_level = "MSGS NOTICES INVITES DCC DCCMSGS HILIGHT";
     term_charset = "utf-8";
   };
-  "perl/core/scripts" = {
-    neat_maxlength = "13";
-    awl_display_key = "[$N]$H$C$S";
-  };
+  "perl/core/scripts" = { awl_display_key = "$N$H$C$S"; };
 };
 logs = { };
 ignores = (
