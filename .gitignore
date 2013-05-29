@@ -3,6 +3,7 @@ vim/bundle
 vim/.netrwhist
 vim/undo
 vim/swap
+vim/tmp/unite/*
 
 # mpd
 mpd/log
