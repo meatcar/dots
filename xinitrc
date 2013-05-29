@@ -2,6 +2,13 @@
 #
 # ~/.xinitrc
 
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
 # Gnome takes care of itself. Just run it by itself.
 case $1 in
     gnome)
@@ -30,7 +37,7 @@ xscreensaver  -no-splash &
 urxvtd &
 
 # clipboard manager
-parcellite &
+parcellite -n &
 
 dropboxd &
 systemd --user &
@@ -58,8 +65,12 @@ case `hostname` in
         xrandr --output VBOX1 --right-of VBOX0
         ;;
     viafoura.denys.me)
+        # Model M has no super.
+        xmodmap -e "keysym Alt_R = Super_L"
         xrandr --output VGA-0 --left-of DVI-I-1 --primary &
         x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
+        systemd --user &
+        udiskie &
         ;;
     *)
         synergyc hyperion&
@@ -87,12 +98,6 @@ case $1 in
         tint2 &
         exec openbox-session
         ;;
-    wmii)
-        # Set the wm name to somethign Java recognizes.
-        wmname LG3D
-        
-        exec wmii
-        ;;
     i3)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
@@ -108,5 +113,22 @@ case $1 in
         dzenstatus &
         twmnd &
         startdwm
+        ;;
+    scrollwm) 
+        xcompmgr -c -C &
+        wmname LG3D
+        twmnd &
+        exec scrollwm
+        ;;
+    subtle)
+        twmnd &
+        exec subtle
+        ;;
+    wmii|*)
+        # Set the wm name to somethign Java recognizes.
+        wmname LG3D
+        twmnd &
+        
+        exec wmii
         ;;
 esac

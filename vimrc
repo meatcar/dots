@@ -19,7 +19,7 @@ set mouse=a             " allow mouse input in all modes
 set ttymouse=xterm2     " enable scrolling within screen sessions (MUST HAVE)
 set backspace=2         " full backspacing capabilities (indent,eol,start)
 set history=100         " 100 lines of command line history
-set number              " show line numbers
+set relativenumber      " show line numbers
 set numberwidth=1       " minimum num of cols to reserve for line numbers
 set nobackup            " disable backup files (filename~)
 set showmatch           " show matching brackets (),{},[]
@@ -82,7 +82,6 @@ Bundle 'fugitive.vim'
 Bundle 'tpope/vim-rhubarb'
 Bundle 'xml.vim'
 Bundle 'TeX-9'
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
@@ -93,10 +92,15 @@ Bundle 'less.vim'
 Bundle 'skammer/vim-css-color'
 Bundle 'nono/vim-handlebars'
 Bundle 'ack.vim'
-Bundle 'ctrlp.vim'
+"Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
 Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'wting/gitsessions.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimfiler.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 " required for Gist.vim
 Bundle 'WebAPI.vim'
 Bundle 'Gist.vim'
@@ -116,9 +120,14 @@ let g:tex_viewer = {'app': 'zathura', 'target': 'pdf'}
 let g:Tex_ViewRule_pdf = 'zathura'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
+" indent highlights ----------------------------------------------------
+
+let g:indent_guides_color_change_percent = 3
+  let g:indent_guides_enable_on_vim_startup = 1
+
 " colorscheme -----------------------------------------------------------
 "
-colorscheme github "define syntax color scheme
+colorscheme molokai "define syntax color scheme
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 
 " gist settings --------------------------------------------------------
@@ -153,10 +162,10 @@ nnoremap ; :
 vnoremap ; :
 
 " easier window browsing
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-H> <C-W>h<C-W>_
-map <C-L> <C-W>l<C-W>_
+map <M-j> <C-W>j<C-W>_
+map <M-k> <C-W>k<C-W>_
+map <M-h> <C-W>h<C-W>_
+map <M-l> <C-W>l<C-W>_
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -166,6 +175,9 @@ map <C-l> <C-W>l
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 nmap <silent> <C-g> :GundoToggle<CR>
 
+nmap H gT
+nmap L gt
+
 nmap <silent> <C-p> :CtrlPLastMode<CR>
 
 " gvim settings --------------------------------------------------------
@@ -174,7 +186,7 @@ if has ("gui_running")
     " only initialize window size if has not been initialized yet
     if !exists ("s:my_windowInitialized_variable")
         let s:my_windowInitialized_variable=1
-        set guifont=Inconsolata-g\ 9 "set the font
+        set guifont=Terminus\ 9 "set the font
         set guioptions-=T      "hide the toolbar
         set guioptions-=m      "hide the toolbar
         let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
@@ -182,10 +194,8 @@ if has ("gui_running")
 endif
 
 " autocmd rules --------------------------------------------------------
-if has("autocmd")
-    set rtp+=$GOROOT/misc/vim
-    autocmd BufWritePost *.go :silent Fmt
 
+if has("autocmd")
     au BufRead,BufNewFile PKGBUILD set ft=sh
     " always jump to the last cursor position
     autocmd BufReadPost *
@@ -212,3 +222,46 @@ if has("autocmd")
     "endif
 endif
 
+" Unite ------------------------------------------------------------
+augroup UniteAutoCmd
+    autocmd!
+augroup END
+let g:unite_data_directory = '~/.vim/tmp/unite/'
+let g:unite_source_process_enable_confirm = 1
+let g:unite_source_history_yank_enable = 1
+let g:unite_enable_split_vertically = 0
+let g:unite_winheight = 20
+let g:unite_source_directory_mru_limit = 300
+let g:unite_source_file_mru_limit = 300
+let g:unite_source_file_mru_filename_format = ':~:.'
+let g:unite_source_grep_command = 'ack'
+let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
+let g:unite_source_grep_recursive_opt = ''
+nno <leader>a :<C-u>Unite grep -default-action=above<CR>
+nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
+nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert<CR>
+"nno <leader><leader> :<C-u>UniteWithCurrentDir buffer file -buffer-name=united -start-insert<CR>
+nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
+nno <leader>u :<C-u>Unite<space>
+nno <C-p> :<C-u>:Unite history/yank -buffer-name=yanks<CR>
+nno // :<C-u>:Unite line -buffer-name=lines -start-insert -direction=botright -winheight=10<CR>
+function! s:unite_settings()
+    map <buffer> <leader> <Esc><leader>
+endfunction
+autocmd UniteAutoCmd FileType unite call s:unite_settings()
+
+" wimviki replacement ----------------------------------------
+map <leader>W :<C-u>Unite file file/new -buffer-name=notes -start-insert
+      \ -toggle -default-action=split -profile-name=files
+      \ -input=<CR>
+
+" ctrl-p replacement --------------------------------------------
+
+nno <leader>t :<C-u>Unite file_mru file_rec/async -start-insert -buffer-name=files<CR>
+nno <leader>cd :<C-u>Unite directory_mru directory -start-insert -buffer-name=cd -default-action=cd<CR>
+
+" VimFiler ------------------------------------------------------------
+let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_execute_file_list = { "_": "vim" }
+nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -toggle<CR>

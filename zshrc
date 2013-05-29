@@ -48,7 +48,6 @@ bindkey "\e[F" end-of-line
 #
 export VTERM="urxvtc"
 export EDITOR="vim"
-export BROWSER="firefox"
 #export PAGER="vimpager"
 export PATH="/usr/share/perl5/vendor_perl/auto/share/dist/Cope:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 # fix svn errors
