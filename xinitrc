@@ -43,9 +43,18 @@ xautolock  -time 10 -locker slock &
 # host-dependent setup
 #######################
 case `hostname` in
-    aether)
+    aether.denys.me)
         VBoxClient-all &
 		sleep 3
+        # set resolution of first screen.
+        xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+        xrandr --addmode VBOX0 1920x1080_60.00
+        xrandr --output VBOX0 --mode 1920x1080_60.00
+        # set resolutions of second screen
+        xrandr --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync
+        xrandr --addmode VBOX1 1280x1024_60.00
+        xrandr --output VBOX1 --mode 1280x1024_60.00
+        # move screen over
         xrandr --output VBOX1 --right-of VBOX0
         ;;
     viafoura.denys.me)

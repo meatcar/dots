@@ -90,7 +90,7 @@ Bundle 'ervandew/supertab'
 Bundle 'Gundo'
 Bundle 'groenewege/vim-less'
 Bundle 'less.vim'
-Bundle 'ap/vim-css-color'
+Bundle 'skammer/vim-css-color'
 Bundle 'nono/vim-handlebars'
 Bundle 'ack.vim'
 Bundle 'ctrlp.vim'
@@ -182,8 +182,10 @@ if has ("gui_running")
 endif
 
 " autocmd rules --------------------------------------------------------
-
 if has("autocmd")
+    set rtp+=$GOROOT/misc/vim
+    autocmd BufWritePost *.go :silent Fmt
+
     au BufRead,BufNewFile PKGBUILD set ft=sh
     " always jump to the last cursor position
     autocmd BufReadPost *
