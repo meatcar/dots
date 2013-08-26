@@ -85,6 +85,7 @@ URxvt.buffered:         true
 
 urxvt*termName:         rxvt
 URxvt.font:             xft:Terminus (TTF):size=9
+urxvt*imLocale: en_US.utf8
 URxvt.colorUL:          #86a2be
 URxvt.urgentOnBell:     true
 URxvt.scrollBar:        False
@@ -92,7 +93,8 @@ URxvt.scrollstyle:      plain
 URxvt.saveLines:        65535
 URxvt.pastableTabs:     true
 URxvt.perl-lib:         /usr/lib/urxvt/perl/
-URxvt.perl-ext-common:  default,matcher
+URxvt.perl-ext-common:  default,matcher,vtwheel
 URxvt.matcher.button:   1
-URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.url-launcher:     /usr/bin/chromium
+
 
