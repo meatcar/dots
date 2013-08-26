@@ -17,6 +17,15 @@ compinit
 # Set the prompt.
 autoload -U colors && colors
 
+WMII_IS_RUNNING=`ps aux | grep wmii | awk '/[^"grep"] wmii$/'`
+if [ -n "$WMII_IS_RUNNING" ]; then
+  PROMPT_COMMAND="$PROMPT_COMMAND; dirs | wmiir write /client/sel/label"
+fi
+
+function precmd() {
+  eval ${PROMPT_COMMAND}
+}
+
 # set up command verb (do, sudo, redo)
 root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
 exit_verb="%(?..%{$fg[yellow]%}re)" # failed command
@@ -77,6 +86,7 @@ alias mix="alsamixer"
 alias suspend="sudo pm-suspend"
 alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
 alias v="mvimc"
+alias tree="tree -AF"
 
 # cd 
 alias cd..="cd .."
