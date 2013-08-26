@@ -23,6 +23,9 @@ esac
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
 
+# set keyboard repeat rate
+xset r rate 190 40
+
 # set capslock to escape.
 xmodmap -e "remove lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Escape"
@@ -77,6 +80,7 @@ case `hostname` in
         ;;
 esac 
 
+unclutter -idle 6 -grab -root &
 
 #####################
 # WM-dependent setup
@@ -98,7 +102,7 @@ case $1 in
         tint2 &
         exec openbox-session
         ;;
-    i3)
+    i3|*)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
@@ -124,7 +128,7 @@ case $1 in
         twmnd &
         exec subtle
         ;;
-    wmii|*)
+    wmii)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
         twmnd &
