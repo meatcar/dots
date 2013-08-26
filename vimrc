@@ -19,7 +19,7 @@ set mouse=a             " allow mouse input in all modes
 set ttymouse=xterm2     " enable scrolling within screen sessions (MUST HAVE)
 set backspace=2         " full backspacing capabilities (indent,eol,start)
 set history=100         " 100 lines of command line history
-set relativenumber      " show line numbers
+set number              " show line numbers
 set numberwidth=1       " minimum num of cols to reserve for line numbers
 set nobackup            " disable backup files (filename~)
 set showmatch           " show matching brackets (),{},[]
@@ -41,6 +41,8 @@ set wildmenu
 set wildmode=list:longest
 set hidden              " un-saved buffers in the background
 set cc=80
+set encoding=utf-8
+set laststatus=2        " show the status bar even when editing one file.
 
 " tabs and indenting ---------------------------------------------------
 
@@ -78,13 +80,14 @@ Bundle 'Markdown'
 Bundle 'Markdown-syntax'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
-Bundle 'fugitive.vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rhubarb'
 Bundle 'xml.vim'
 Bundle 'TeX-9'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'ervandew/supertab'
 Bundle 'Gundo'
 Bundle 'groenewege/vim-less'
@@ -122,12 +125,12 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 " indent highlights ----------------------------------------------------
 
-let g:indent_guides_color_change_percent = 3
-  let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_color_change_percent = 3
+  "let g:indent_guides_enable_on_vim_startup = 1
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme molokai "define syntax color scheme
+colorscheme github "define syntax color scheme
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 
 " gist settings --------------------------------------------------------
@@ -172,6 +175,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Arrow keys for buffer switching
+nnoremap <left> :bprev<cr>
+nnoremap <right> :bnext<cr>
+nnoremap <down> :buffer #<cr>
+nnoremap <up> :buffers<cr>:buffer<space>
+
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 nmap <silent> <C-g> :GundoToggle<CR>
 
@@ -180,17 +189,18 @@ nmap L gt
 
 nmap <silent> <C-p> :CtrlPLastMode<CR>
 
+" airline statusline config --------------------------------------------
+
+let g:airline_powerline_fonts=1
+let g:airline_enable_syntastic=1
+let g:airline_theme='solarized'
+
 " gvim settings --------------------------------------------------------
 
 if has ("gui_running")
-    " only initialize window size if has not been initialized yet
-    if !exists ("s:my_windowInitialized_variable")
-        let s:my_windowInitialized_variable=1
-        set guifont=Terminus\ 9 "set the font
-        set guioptions-=T      "hide the toolbar
-        set guioptions-=m      "hide the toolbar
-        let g:Powerline_symbols = 'fancy'   " enable pretty powerline fonts
-    endif
+    set guifont=Terminus\ 9 "set the font
+    set guioptions-=T      "hide the toolbar
+    set guioptions-=m      "hide the manubar
 endif
 
 " autocmd rules --------------------------------------------------------
@@ -212,6 +222,7 @@ if has("autocmd")
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
+    au BufNewFile,BufRead *.md set filetype=markdown
 
      "Set up omnicompletion
     "if exists("+omnifunc")
@@ -226,7 +237,13 @@ endif
 augroup UniteAutoCmd
     autocmd!
 augroup END
-let g:unite_data_directory = '~/.vim/tmp/unite/'
+"call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      "\'matchers', 'matcher_fuzzy')     " set fuzzy mactcher
+call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      \'filters', ['sorter_rank', 'converter_relative_word', 'converter_relative_abbr', 'matcher_fuzzy'])     " set fuzzy mactcher
+call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      \'ignore_pattern', 'node_modules') " ignore node modules"
+let g:unite_data_directory = expand('~/.vim/tmp/unite/')
 let g:unite_source_process_enable_confirm = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_enable_split_vertically = 0
@@ -239,7 +256,7 @@ let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-fil
 let g:unite_source_grep_recursive_opt = ''
 nno <leader>a :<C-u>Unite grep -default-action=above<CR>
 nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
-nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert<CR>
+nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert -no-split -toggle<CR>
 "nno <leader><leader> :<C-u>UniteWithCurrentDir buffer file -buffer-name=united -start-insert<CR>
 nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
 nno <leader>u :<C-u>Unite<space>
@@ -257,11 +274,15 @@ map <leader>W :<C-u>Unite file file/new -buffer-name=notes -start-insert
 
 " ctrl-p replacement --------------------------------------------
 
-nno <leader>t :<C-u>Unite file_mru file_rec/async -start-insert -buffer-name=files<CR>
+nno <leader>t :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
 nno <leader>cd :<C-u>Unite directory_mru directory -start-insert -buffer-name=cd -default-action=cd<CR>
 
 " VimFiler ------------------------------------------------------------
 let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_execute_file_list = { "_": "vim" }
-nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -toggle<CR>
+nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status<CR>
+function! s:vimfiler_settings()
+  nmap <buffer> ` <Plug>(vimfiler_exit)
+endfunction
+autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
