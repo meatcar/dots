@@ -47,12 +47,16 @@ systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
-xautolock  -time 10 -locker slock &
+xautolock  -time 10 -locker slimlock &
 
 #######################
 # host-dependent setup
 #######################
 case `hostname` in
+    targaryen)
+        syndaemon -t -i 1 -d &
+        xrandr --dpi 165 &
+        ;;
     aether.denys.me)
         VBoxClient-all &
 		sleep 3
@@ -102,12 +106,6 @@ case $1 in
         tint2 &
         exec openbox-session
         ;;
-    i3|*)
-        # Set the wm name to somethign Java recognizes.
-        wmname LG3D
-
-        exec i3
-        ;;
     dwm)
         xcompmgr -c -C &
         # Set the wm name to somethign Java recognizes.
@@ -134,5 +132,11 @@ case $1 in
         twmnd &
         
         exec wmii
+        ;;
+    i3|*)
+        # Set the wm name to somethign Java recognizes.
+        wmname LG3D
+
+        exec i3
         ;;
 esac
