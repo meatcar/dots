@@ -58,7 +58,7 @@ bindkey "\e[F" end-of-line
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
-export PATH="/usr/share/perl5/vendor_perl/auto/share/dist/Cope:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
+export PATH="/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 # fix svn errors
 export LC_CTYPE=C
 source /etc/profile.d/go.sh

@@ -69,8 +69,8 @@ runtime macros/matchit.vim  " extend the % key
 
 " Vundle stuff ---------------------------------------------------------
 call vundle#rc()
- " let Vundle manage Vundle
- " required!
+" let Vundle manage Vundle
+" required!
 Bundle 'gmarik/vundle'
 
 " colorschemes
@@ -101,9 +101,12 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'wting/gitsessions.vim'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimfiler.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'AutoTag'
+Bundle 'PotatoesMaster/i3-vim-syntax'
 " required for Gist.vim
 Bundle 'WebAPI.vim'
 Bundle 'Gist.vim'
@@ -165,21 +168,16 @@ nnoremap ; :
 vnoremap ; :
 
 " easier window browsing
-map <M-j> <C-W>j<C-W>_
-map <M-k> <C-W>k<C-W>_
-map <M-h> <C-W>h<C-W>_
-map <M-l> <C-W>l<C-W>_
+map <S-j> <C-W>j<C-W>_
+map <S-k> <C-W>k<C-W>_
+map <S-h> <C-W>h<C-W>_
+map <S-l> <C-W>l<C-W>_
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" Arrow keys for buffer switching
-nnoremap <left> :bprev<cr>
-nnoremap <right> :bnext<cr>
-nnoremap <down> :buffer #<cr>
-nnoremap <up> :buffers<cr>:buffer<space>
+map <C-l> <C-W>l
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 nmap <silent> <C-g> :GundoToggle<CR>
@@ -191,9 +189,21 @@ nmap <silent> <C-p> :CtrlPLastMode<CR>
 
 " airline statusline config --------------------------------------------
 
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 let g:airline_enable_syntastic=1
-let g:airline_theme='solarized'
+let g:airline#extensions#branch#enabled = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" old vim-powerline symbols
+let g:airline_left_sep = '⮀'
+let g:airline_right_sep = '⮂'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " gvim settings --------------------------------------------------------
 

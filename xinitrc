@@ -11,7 +11,7 @@ fi
 
 # Gnome takes care of itself. Just run it by itself.
 case $1 in
-    gnome)
+    gnome-session)
         gnome-session
         ;;
     *)
@@ -47,7 +47,7 @@ systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
-xautolock  -time 10 -locker slimlock &
+xautolock  -time 10 -locker 'i3lock -c 000000' &
 
 #######################
 # host-dependent setup
@@ -56,6 +56,7 @@ case `hostname` in
     targaryen)
         syndaemon -t -i 1 -d &
         xrandr --dpi 165 &
+        udiskie &
         ;;
     aether.denys.me)
         VBoxClient-all &
@@ -132,6 +133,8 @@ case $1 in
         twmnd &
         
         exec wmii
+        ;;
+    gnome-session|gnome)
         ;;
     i3|*)
         # Set the wm name to somethign Java recognizes.
