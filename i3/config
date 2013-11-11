@@ -13,13 +13,21 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Terminus 9
+font pango:Fira Sans 10
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
+
+# colors                border  backgr. text    indicator
+client.focused          #33B5E5 #33B5E5 #313131 #BB2B10
+client.focused_inactive #313131 #313131 #D0D0D0 #BB2B10
+client.unfocused        #000000 #000000 #D0D0D0 #BB2B10
+client.urgent           #BB2B10 #BB2B10 #D0D0D0 #BB2B10
+
+new_window normal 5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -136,4 +144,15 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         status_command i3pystatus
+
+        colors {
+                background #000000
+                statusline #F0F0F0
+
+                #                  border  bg      fg
+                focused_workspace  #33B5E5 #33B5E5 #31313
+                active_workspace   #000000 #000000 #304848
+                inactive_workspace #000000 #313131 #D0D0D0
+                urgent_workspace   #000000 #BB2B10 #000000
+        }
 }
