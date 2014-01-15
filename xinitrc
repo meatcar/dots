@@ -29,6 +29,7 @@ xset r rate 190 40
 # set capslock to escape.
 xmodmap -e "remove lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Escape"
+xbindkeys &
 
 # screensaver
 xscreensaver  -no-splash &
@@ -37,23 +38,25 @@ xscreensaver  -no-splash &
 (mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 
 # rxvt-unicode daemon
-urxvtd &
+urxvtd -q -f -o&
 
 # clipboard manager
-parcellite -n &
+#parcellite -n &
+xcmenu --daemon &
 
 dropboxd &
 systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
-xautolock  -time 10 -locker 'i3lock -c 000000' &
+xautolock  -time 10 -locker 'slimlock' &
 
 #######################
 # host-dependent setup
 #######################
 case `hostname` in
     targaryen)
+        compton --config ~/.config/compton/compton.conf -b &
         syndaemon -t -i 1 -d &
         xrandr --dpi 165 &
         udiskie &
@@ -136,6 +139,13 @@ case $1 in
         ;;
     gnome-session|gnome)
         ;;
+    bspwm)
+        sxhkd &
+        exec bspwm
+        ;;
+    herbstluftwm)
+        exec herbstluftwm
+        ;;
     i3|*)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
@@ -143,3 +153,4 @@ case $1 in
         exec i3
         ;;
 esac
+
