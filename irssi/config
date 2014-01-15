@@ -121,7 +121,7 @@ channels = (
   },
   { name = "jquery"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "documentcloud"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##utcs"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##cssu"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -288,6 +288,13 @@ statusbar = {
       items = {
         barstart = { priority = "100"; };
         awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
         barend = { priority = "100"; alignment = "right"; };
       };
     };
