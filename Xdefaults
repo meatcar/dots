@@ -69,13 +69,14 @@ urxvt*color7: #ccccc6
 urxvt*color15: #F8F8F0
 
 
-! rxvt-unicode ---------------------------------------------------------------
-Xft.dpi: 92
+! Xft settings ---------------------------------------------------------------
+Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
 Xft.hintstyle:  hintslight
 
+! rxvt-unicode ---------------------------------------------------------------
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
 urxvt*secondaryScroll:  true
@@ -84,17 +85,40 @@ URxvt.buffered:         true
 
 
 urxvt*termName:         rxvt
-URxvt.font:             xft:Terminus (TTF):size=9
-urxvt*imLocale: en_US.utf8
+URxvt.depth:            32
+URxvt.font:             xft:Monaco:size=9, \
+                        xft:Inconsolata:size=11, \
+                        xft:DejaVu Sans Mono for Powerline:size=9, \
+                        xft:FreeSerif, \
+                        xft:Monospace
+URxvt.letterSpace:      -2
+URxvt.lineSpace:        -1
+URxvt.internalBorder:   5
+URxvt.externalBorder:   0
 URxvt.colorUL:          #86a2be
 URxvt.urgentOnBell:     true
-URxvt.scrollBar:        False
+URxvt.scrollBar:        false
 URxvt.scrollstyle:      plain
 URxvt.saveLines:        65535
 URxvt.pastableTabs:     true
 URxvt.perl-lib:         /usr/lib/urxvt/perl/
-URxvt.perl-ext-common:  default,matcher,vtwheel
+URxvt.perl-ext-common:  default,matcher
 URxvt.matcher.button:   1
 URxvt.url-launcher:     /usr/bin/chromium
 
+!Disables the insanely annoying Ctrl+Shift shortcut that enters ISO14755 mode
+URxvt.iso14755:         False
 
+
+! xchoyce ---------------------------------------------
+XChoyce.mod:                    mod4
+XChoyce.action:                 Tab
+XChoyce.focusedalpha:           0.75
+XChoyce.focusedcolor:           #daa520
+XChoyce.unfocusedalpha:         0.5
+XChoyce.unfocusedcolor:         #404040
+XChoyce.titlebgcolor:           #292929
+XChoyce.titlebgalpha:           0.25
+XChoyce.titlefgcolor:           #616161
+XChoyce.titlefont:              Ubuntu:bold:pixelsize=28:antialias=true
+XChoyce.subtitlefont:           Ubuntu Condensed:bold:pixelsize=18:antialias=true
