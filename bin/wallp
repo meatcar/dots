@@ -3,11 +3,17 @@ temp="/tmp/wallp"
 temp2="/tmp/wallp.$$"
 trap "rm -f $temp2" 0 1 2 15
 
-WALLFOLDER="$HOME/Storage/Multimedia/Pictures/Wallpapers"
+WALLFOLDER="$HOME/Dropbox/Public/wallpapers/"
+WALLLINK="$HOME/.wallpaper"
 
 if [ ! -e $temp ]; then
     find "$WALLFOLDER" -type f | sort -R > $temp
 fi
+
+set_wall() {
+    feh --bg-fill "$1"
+    blur "$1" "$WALLLINK" &
+}
 
 case $# in
     1)
@@ -19,7 +25,7 @@ case $# in
                 cat $temp2 >> $temp
                 sed -i '$d' $temp
                 cur=`tail -1 $temp`
-                feh --bg-fill "$cur"
+                set_wall "$cur"
                 ;;
             -r) #refresh
                 find "$WALLFOLDER" -type f | sort -R > $temp
@@ -29,21 +35,24 @@ case $# in
                 sed -i 1d $temp2
                 cat $temp2 > $temp
                 cur=`head -1 $temp`
-                feh --bg-fill "$cur"
+                set_wall "$cur"
                 ;;
             -n) #next
                 cur=`head -1 $temp`
-                feh --bg-fill "$cur"
+                set_wall "$cur"
                 cat $temp > $temp2
                 sed -i 1d $temp2
                 echo "$cur" >> $temp2
                 cat $temp2 > $temp
                 ;;
-            *)
-                echo "usage: $0 -(p|r|n)" >&2
+            -h|--help)
+                echo "usage: $0 [-r|-d|-n|-p|-h|--help]" >&2
                 exit 1
                 ;;
         esac 
+        ;;
+    0)
+        tail -n1 "$temp"
         ;;
     *)
         echo "usage: $0 -(p|r|n|d)" >&2
