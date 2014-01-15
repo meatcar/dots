@@ -6,24 +6,22 @@ from . import Status
 
 status = Status(standalone=True)
 
-# Displays clock like this:
-# Tue 30 Jul 11:59:46 PM KW31
-#                          ^-- calendar week
+# Displays clock
 status.register("clock",
         format="◷ %a %-d %b %l:%M:%S %P ",)
 
 # Shows alsa default sink volume
 status.register("alsa",
     card=1,
-    format="♪{volume}",)
+    format="♪ {volume}% ♪",)
 
 status.register("backlight",
-    format="☀ {percentage}%",)
+    format="☀ {percentage}% ☀",)
 
 # This would look like this:
 # Discharging 6h:51m
 status.register("battery",
-    format="{status} {percentage:.2f}% {remaining:%E%hh:%Mm}",
+    format="{status} {percentage:.2f}% {remaining:%E%hh:%Mm} {status}",
     alert=True,
     alert_percentage=5,
     status={
