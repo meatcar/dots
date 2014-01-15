@@ -31,7 +31,7 @@ set wildmenu            " enhanced tab-completion shows all matching cmds
 set splitbelow          " place the new split below the current file
 set autowrite           " write file if modified on each :next, :make, etc.
 set writebackup         " make a backup before writing a file until successful
-set shell=/bin/zsh       " set default shell type
+set shell=/bin/sh       " set default shell type
 set previewheight=9     " default height for a preview window (def:12)
 "set textwidth=79       " insert carriage return after n cols wide
 syntax on               " enable syntax highlighting
@@ -41,7 +41,6 @@ set wildmenu
 set wildmode=list:longest
 set hidden              " un-saved buffers in the background
 set cc=80
-set encoding=utf-8
 set laststatus=2        " show the status bar even when editing one file.
 
 " tabs and indenting ---------------------------------------------------
@@ -86,7 +85,6 @@ Bundle 'xml.vim'
 Bundle 'TeX-9'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'digitaltoad/vim-jade'
-"Bundle 'Lokaltog/vim-powerline'
 Bundle 'bling/vim-airline'
 Bundle 'ervandew/supertab'
 Bundle 'Gundo'
@@ -95,8 +93,7 @@ Bundle 'less.vim'
 Bundle 'skammer/vim-css-color'
 Bundle 'nono/vim-handlebars'
 Bundle 'ack.vim'
-"Bundle 'ctrlp.vim'
-Bundle 'Syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'airblade/vim-gitgutter'
@@ -104,9 +101,10 @@ Bundle 'wting/gitsessions.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimfiler.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'AutoTag'
 Bundle 'PotatoesMaster/i3-vim-syntax'
+Bundle 'Raimondi/delimitMate'
+
 " required for Gist.vim
 Bundle 'WebAPI.vim'
 Bundle 'Gist.vim'
@@ -118,23 +116,29 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=3
 
+" These are the tweaks I apply to YCM's config, you don't need them but they might help.
+" YCM gives you popups and splits by default that some people might not like, so these should tidy it up a bit for you.
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
 
 " latex stuff. ---------------------------------------------------------
 "
-let g:tex_flavor = 'pdflatex'
-let g:tex_viewer = {'app': 'zathura', 'target': 'pdf'}
-let g:Tex_ViewRule_pdf = 'zathura'
-let g:Tex_DefaultTargetFormat = 'pdf'
-
-" indent highlights ----------------------------------------------------
-
-"let g:indent_guides_color_change_percent = 3
-  "let g:indent_guides_enable_on_vim_startup = 1
+"let g:tex_flavor = 'pdflatex'
+"let g:tex_viewer = {'app': 'zathura', 'target': 'pdf'}
+"let g:Tex_ViewRule_pdf = 'zathura'
+"let g:Tex_DefaultTargetFormat = 'pdf'
+    " Old school LaTeX user
+let g:tex_nine_config = {
+    \'compiler': 'pdflatex',
+    \'viewer': {'app':'zathura', 'target':'pdf'}
+\}
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme github "define syntax color scheme
+colorscheme molokai "define syntax color scheme
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
+let g:zenesque_colors=2
 
 " gist settings --------------------------------------------------------
 
@@ -163,16 +167,6 @@ nmap q: :q<cr>
 command BW :b#|:bw#     " easier buffer closing
 command SO :so ~/.vimrc " easier buffer closing
 
-" enter ex mode with a semi-colon too
-nnoremap ; :
-vnoremap ; :
-
-" easier window browsing
-map <S-j> <C-W>j<C-W>_
-map <S-k> <C-W>k<C-W>_
-map <S-h> <C-W>h<C-W>_
-map <S-l> <C-W>l<C-W>_
-
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -189,26 +183,15 @@ nmap <silent> <C-p> :CtrlPLastMode<CR>
 
 " airline statusline config --------------------------------------------
 
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 let g:airline_enable_syntastic=1
 let g:airline#extensions#branch#enabled = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-" old vim-powerline symbols
-let g:airline_left_sep = '⮀'
-let g:airline_right_sep = '⮂'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
 
 " gvim settings --------------------------------------------------------
 
 if has ("gui_running")
-    set guifont=Terminus\ 9 "set the font
+    set lsp=0             "set linespacing"
+    set guifont=Monaco\ 9 "set the font
     set guioptions-=T      "hide the toolbar
     set guioptions-=m      "hide the manubar
 endif
@@ -223,12 +206,8 @@ if has("autocmd")
                 \   exe "normal g`\"" |
                 \ endif
 
-    "remove trailing whitespace in python files upon save
-    function TrimWhiteSpace()
-      %s/\s*$//
-      ''
-    :endfunction
-    autocmd FileType javascript,python autocmd BufWritePre * :%s/\s\+$//e
+    "remove trailing whitespace upon save
+    autocmd FileType javascript,python,tex autocmd BufWritePre * :%s/\s\+$//e
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
