@@ -10,17 +10,26 @@ zstyle :compinstall filename '/home/meatcar/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+#####################################################
+# Antigen Bundles
+#####################################################
+#export ADOTDIR="$HOME/.zsh"
+#source $ADOTDIR/antigen.zsh
+
+#antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle git
+#antigen bundle command-not-found
+#antigen bundle kennethreitz/autoenv
+
+#antigen apply
+
 # End of lines added by compinstall
 ####################################################
 # The following lines were added by meatcar
 ####################################################
 # Set the prompt.
 autoload -U colors && colors
-
-WMII_IS_RUNNING=`ps aux | grep wmii | awk '/[^"grep"] wmii$/'`
-if [ -n "$WMII_IS_RUNNING" ]; then
-  PROMPT_COMMAND="$PROMPT_COMMAND; dirs | wmiir write /client/sel/label"
-fi
 
 function precmd() {
   eval ${PROMPT_COMMAND}
@@ -58,11 +67,10 @@ bindkey "\e[F" end-of-line
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
-export PATH="/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
+export PATH="/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
 # fix svn errors
-export LC_CTYPE=C
 source /etc/profile.d/go.sh
-export GOPATH="$HOME/go:$GOPATH"
+export GOPATH="$HOME/dev/go:$GOPATH"
 ####################################################
 # Set up colorings
 #
@@ -70,9 +78,6 @@ export GOPATH="$HOME/go:$GOPATH"
 eval $(dircolors -b ~/.dircolors)
 # grep 
 export GREP_COLOR="1;33"
-# less syntax-hilite
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 ####################################################
 # Aliases
 #
@@ -83,9 +88,6 @@ alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
 alias mix="alsamixer"
-alias suspend="sudo pm-suspend"
-alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
-alias v="mvimc"
 alias tree="tree -AF"
 
 # cd 
@@ -99,13 +101,4 @@ alias rm="rm -i"
 
 # reconnect sshfs on discnnect.
 alias sshfs="sshfs -o reconnect -C -o workaround=all"
-
-## Colorize manpage via less
-export LESS_TERMCAP_mb=$(printf "\e[1;37m")
-export LESS_TERMCAP_md=$(printf "\e[1;37m")
-export LESS_TERMCAP_me=$(printf "\e[0m")
-export LESS_TERMCAP_se=$(printf "\e[0m")
-export LESS_TERMCAP_so=$(printf "\e[1;47;30m")
-export LESS_TERMCAP_ue=$(printf "\e[0m")
-export LESS_TERMCAP_us=$(printf "\e[0;36m")
 
