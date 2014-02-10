@@ -1,6 +1,5 @@
 vim/bundle
-!vim/bundle/vundle
-vim/bundle/vundle/.netrwhist
+!vim/bundle/neobundle.vim
 vim/.netrwhist
 vim/undo
 vim/swap
