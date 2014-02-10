@@ -8,11 +8,12 @@
 " general --------------------------------------------------------------
 
 set t_Co=256            " enable 256-color support
+set title
 set nocompatible        " disregard vi compatibility:
+set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/neobundle.vim
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
 set bdir=~/.vim/backup,/tmp  " keep backups in one place
 set undodir=~/.vim/undo,/tmp " keep undos in one place
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
 set mouse=a             " allow mouse input in all modes
@@ -67,48 +68,71 @@ set wrapscan            " searches wrap back to the top of file
 runtime macros/matchit.vim  " extend the % key
 
 " Vundle stuff ---------------------------------------------------------
-call vundle#rc()
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " colorschemes
-Bundle 'flazz/vim-colorschemes'
+NeoBundle 'flazz/vim-colorschemes'
 
-Bundle 'Markdown'
-Bundle 'Markdown-syntax'
-Bundle 'surround.vim'
-Bundle 'repeat.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rhubarb'
-Bundle 'xml.vim'
-Bundle 'TeX-9'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'bling/vim-airline'
-Bundle 'ervandew/supertab'
-Bundle 'Gundo'
-Bundle 'groenewege/vim-less'
-Bundle 'less.vim'
-Bundle 'skammer/vim-css-color'
-Bundle 'nono/vim-handlebars'
-Bundle 'ack.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'wting/gitsessions.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimfiler.vim'
-Bundle 'AutoTag'
-Bundle 'PotatoesMaster/i3-vim-syntax'
-Bundle 'Raimondi/delimitMate'
+NeoBundle 'surround.vim'
+NeoBundle 'repeat.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rhubarb'
+NeoBundle 'xml.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'Gundo'
+NeoBundle 'nono/vim-handlebars'
+NeoBundle 'ack.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'wting/gitsessions.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'AutoTag'
+NeoBundle 'PotatoesMaster/i3-vim-syntax'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'mtth/cursorcross.vim'
 
-" required for Gist.vim
-Bundle 'WebAPI.vim'
-Bundle 'Gist.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+       \ 'build' : {
+       \     'windows' : 'make -f make_mingw32.mak',
+       \     'cygwin' : 'make -f make_cygwin.mak',
+       \     'mac' : 'make -f make_mac.mak',
+       \     'unix' : 'make -f make_unix.mak',
+       \    },
+       \ }
 
+NeoBundle 'Gist.vim', {'depends': 'WebAPI.vim'}
+
+" filetype-dependent bundles
+NeoBundleLazy 'Markdown', {'autoload': {'filetypes': ['markdown']}}
+NeoBundleLazy 'Markdown-syntax', {'autoload': {'filetypes': ['markdown']}}
+NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
+NeoBundleLazy 'less.vim', {'autoload': {'filetypes': ['less']}}
+NeoBundleLazy 'skammer/vim-css-color', {'autoload': {'filetypes': ['css', 'less']}}
+NeoBundleLazy 'digitaltoad/vim-jade', {'autoload': {'filetypes': ['jade']}}
+NeoBundleLazy 'TeX-9', {'autoload': {'filetypes': ['tex', 'latex']}}
+
+filetype plugin indent on
+
+NeoBundleCheck
+
+if !has('vim_starting')
+  " Call on_source hook when reloading .vimrc.
+  call neobundle#call_hook('on_source')
+endif
 
 " Syntastic settings ---------------------------------------------------------
 
@@ -146,6 +170,11 @@ let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_browser_command = 'google-chrome %URL% &'
+
+
+" cursorcross settings -----------------------------------------------
+let g:cursorcross_dynamic = "clw"
+
 
 " ctrl-p settings ------------------------------------------------------
 let g:ctrlp_user_command = {
