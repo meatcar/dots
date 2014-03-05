@@ -17,3 +17,6 @@ wmii/history.actions
 wmii/history.progs
 irssi/away.log
 irssi/*.autosave
+
+# uzbl
+uzbl/local/history
