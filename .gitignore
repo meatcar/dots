@@ -21,3 +21,4 @@ irssi/*.autosave
 # uzbl
 uzbl/local/history
 pentadactyl/info/default/command-history
+vim/.netrwhist
