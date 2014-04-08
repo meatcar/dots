@@ -8,6 +8,8 @@ unsetopt beep
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/meatcar/.zshrc'
 
+source /usr/bin/aws_zsh_completer.sh
+
 autoload -Uz compinit
 compinit
 
@@ -67,9 +69,10 @@ bindkey "\e[F" end-of-line
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
-export PATH="/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
+export PATH="/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin"
+export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
 # fix svn errors
-source /etc/profile.d/go.sh
+#source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go:$GOPATH"
 ####################################################
 # Set up colorings

@@ -18,10 +18,10 @@ password_msg
 input_panel_x           50%
 input_panel_y           50%
 input_name_x            50
-input_name_y            276
+input_name_y            279
 input_pass_x            50
-input_pass_y            276
-input_font              Inconsolata:size=15
+input_pass_y            279
+input_font              Inconsolata:size=13
 input_color		#333
 
 # slimlock

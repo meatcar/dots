@@ -23,10 +23,10 @@ font pango:Fira Sans 5.3
 # font pango:DejaVu Sans Mono 10
 
 # colors                border  backgr. text    indicator
-client.focused          #33B5E5 #33B5E5 #313131 #BB2B10
-client.focused_inactive #313131 #313131 #D0D0D0 #BB2B10
-client.unfocused        #000000 #000000 #D0D0D0 #BB2B10
-client.urgent           #BB2B10 #BB2B10 #D0D0D0 #BB2B10
+client.focused          #7AC43E #72AA47 #F5F5F5 #BB2B10
+client.focused_inactive #3B95BD #3B95BD #F5F5F5 #BB2B10
+client.unfocused        #001E28 #001E28 #3B95BD #BB2B10
+client.urgent           #C11515 #FFAB19 #C11515 #BB2B10
 
 new_window normal 2
 
@@ -144,19 +144,25 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango:Meslo LG L 5
+        i3bar_command pyi3bar
+        #font pango:Meslo LG L 5
         #font pango:Terminus 5
-        position top
-        status_command i3pystatus
+        #position top
+        #mode hide
+        #hidden_state hide
+        #modifier $mod
+        #status_command i3pystatus
 
-        colors {
-                background #000000
-                statusline #F0F0F0
+        #colors {
+                #background #000000
+                #statusline #9E9E9E
 
-                #                  border  bg      fg
-                focused_workspace  #33B5E5 #33B5E5 #31313
-                active_workspace   #000000 #000000 #304848
-                inactive_workspace #000000 #313131 #D0D0D0
-                urgent_workspace   #000000 #BB2B10 #000000
-        }
+                ##                  border  bg      fg
+                #focused_workspace  #7AC43E #72AA47 #F5F5F5
+                #active_workspace   #3B95BD #3B95BD #F5F5F5
+                #inactive_workspace #001E28 #001E28 #3B95BD
+                #urgent_workspace   #000000 #FFAB19 #9E9E9E
+        #}
 }
+
+exec pyi3bar
