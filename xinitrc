@@ -19,12 +19,55 @@ case $1 in
 esac
 
 
+export PATH="$PATH:/home/meatcar/bin"
+
+#######################
+# host-dependent setup
+#######################
+case `hostname` in
+    targaryen)
+        #compton --config ~/.config/compton/compton.conf -b &
+        syndaemon -t -i 1 -d &
+        xrandr --dpi 165 &
+        udiskie &
+        start-pulseaudio-x11 &
+        synergyc hyperion&
+
+        if (xrandr | grep 'HDMI1 connected' && iwconfig wlp1s0 | grep 'UofT') > /dev/null
+        then
+          xrandr --output HDMI1 --mode 1680x1050 --right-of eDP1
+        fi
+        ;;
+    aether.denys.me)
+        VBoxClient-all &
+		sleep 3
+        # set resolution of first screen.
+        xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+        xrandr --addmode VBOX0 1920x1080_60.00
+        xrandr --output VBOX0 --mode 1920x1080_60.00
+        # set resolutions of second screen
+        xrandr --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync
+        xrandr --addmode VBOX1 1280x1024_60.00
+        xrandr --output VBOX1 --mode 1280x1024_60.00
+        # move screen over
+        xrandr --output VBOX1 --right-of VBOX0
+        ;;
+    viafoura.denys.me)
+        # Model M has no super.
+        xmodmap -e "keysym Alt_R = Super_L"
+        xrandr --output VGA-0 --left-of DVI-I-1 --primary &
+        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
+        systemd --user &
+        udiskie &
+        ;;
+esac
+
 # set the cursor
 xsetroot -cursor_name left_ptr
 xrdb ~/.Xdefaults &
 
 # set keyboard repeat rate
-xset r rate 190 40
+#xset r rate 190 40
 
 # set capslock to escape.
 xmodmap -e "remove lock = Caps_Lock"
@@ -49,46 +92,10 @@ systemd --user &
 # wallpaper
 eval $(cat ~/.fehbg) &
 
-xautolock  -time 10 -locker 'slimlock' &
+xautolock  -time 10 -locker 'lock' &
 
-#######################
-# host-dependent setup
-#######################
-case `hostname` in
-    targaryen)
-        compton --config ~/.config/compton/compton.conf -b &
-        syndaemon -t -i 1 -d &
-        xrandr --dpi 165 &
-        udiskie &
-        ;;
-    aether.denys.me)
-        VBoxClient-all &
-		sleep 3
-        # set resolution of first screen.
-        xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
-        xrandr --addmode VBOX0 1920x1080_60.00
-        xrandr --output VBOX0 --mode 1920x1080_60.00
-        # set resolutions of second screen
-        xrandr --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync
-        xrandr --addmode VBOX1 1280x1024_60.00
-        xrandr --output VBOX1 --mode 1280x1024_60.00
-        # move screen over
-        xrandr --output VBOX1 --right-of VBOX0
-        ;;
-    viafoura.denys.me)
-        # Model M has no super.
-        xmodmap -e "keysym Alt_R = Super_L"
-        xrandr --output VGA-0 --left-of DVI-I-1 --primary &
-        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
-        systemd --user &
-        udiskie &
-        ;;
-    *)
-        synergyc hyperion&
-        ;;
-esac 
 
-unclutter -idle 6 -grab -root &
+#unclutter -idle 6 -grab -root &
 
 #####################
 # WM-dependent setup
@@ -114,13 +121,13 @@ case $1 in
         xcompmgr -c -C &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-        
+
         #dwm-status &
         dzenstatus &
         twmnd &
         startdwm
         ;;
-    scrollwm) 
+    scrollwm)
         xcompmgr -c -C &
         wmname LG3D
         twmnd &
@@ -134,7 +141,7 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
         twmnd &
-        
+
         exec wmii
         ;;
     gnome-session|gnome)
@@ -147,6 +154,7 @@ case $1 in
         exec herbstluftwm
         ;;
     i3|*)
+        dzenstatus &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 

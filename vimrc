@@ -52,10 +52,7 @@ set shiftwidth=4        " allows the use of < and > for VISUAL indenting
 set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
 set smarttab            " set <Tab>s according to shiftwidth
 set autoindent          " auto indents next new line
-set nosmartindent       " intelligent indenting -- DEPRECATED by cindent
 set nocindent           " C style indenting off
-set cinoptions=:0,p0,t0 " recommended defaults from O'Reilly
-set cinwords=if,else,while,do,for,switch,case   " recommended defaults from O'Reilly
 set formatoptions=tcqr  " recommended defaults from O'Reilly
 
 " searching ------------------------------------------------------------
@@ -93,7 +90,6 @@ NeoBundle 'ervandew/supertab'
 NeoBundle 'Gundo'
 NeoBundle 'nono/vim-handlebars'
 NeoBundle 'ack.vim'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'airblade/vim-gitgutter'
@@ -104,6 +100,7 @@ NeoBundle 'AutoTag'
 NeoBundle 'PotatoesMaster/i3-vim-syntax'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'mtth/cursorcross.vim'
+NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
@@ -124,6 +121,7 @@ NeoBundleLazy 'less.vim', {'autoload': {'filetypes': ['less']}}
 NeoBundleLazy 'skammer/vim-css-color', {'autoload': {'filetypes': ['css', 'less']}}
 NeoBundleLazy 'digitaltoad/vim-jade', {'autoload': {'filetypes': ['jade']}}
 NeoBundleLazy 'TeX-9', {'autoload': {'filetypes': ['tex', 'latex']}}
+NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}} " emmet for vim: http://emmet.io/
 
 filetype plugin indent on
 
@@ -133,6 +131,14 @@ if !has('vim_starting')
   " Call on_source hook when reloading .vimrc.
   call neobundle#call_hook('on_source')
 endif
+
+" Signify settings -----------------------------------------------------------
+
+let g:signify_vcs_list = [ 'git' ]
+
+" Airline settings -----------------------------------------------------------
+
+let g:airline_theme='understated'
 
 " Syntastic settings ---------------------------------------------------------
 
@@ -160,9 +166,13 @@ let g:tex_nine_config = {
 
 " colorscheme -----------------------------------------------------------
 "
-colorscheme molokai "define syntax color scheme
-let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 let g:zenesque_colors=2
+let g:solarized_italic=0 " disable italics for solarized. They look ugly.
+if has ("gui_running")
+  colorscheme github "define syntax color scheme
+else
+  colorscheme molokai
+endif
 
 " gist settings --------------------------------------------------------
 
@@ -202,13 +212,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <C-l> <C-W>l
 
-nmap <silent> <C-n> :NERDTreeToggle<CR>
-nmap <silent> <C-g> :GundoToggle<CR>
+nmap <silent> <leader>g :GundoToggle<CR>
 
 nmap H gT
 nmap L gt
-
-nmap <silent> <C-p> :CtrlPLastMode<CR>
 
 " airline statusline config --------------------------------------------
 
@@ -220,7 +227,7 @@ let g:airline#extensions#branch#enabled = 1
 
 if has ("gui_running")
     set lsp=0             "set linespacing"
-    set guifont=Monaco\ 9 "set the font
+    set guifont=Fantasque\ Sans\ Mono\ 11 "set the font
     set guioptions-=T      "hide the toolbar
     set guioptions-=m      "hide the manubar
 endif
