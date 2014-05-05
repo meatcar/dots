@@ -16,6 +16,10 @@
 
 file1=$(mktemp --tmpdir lock-wrapper-XXXXXXXXXX.png)
 
+if pgrep slimlock; then
+    exit 0
+fi
+
 scrot -d0 "$file1"
 convert "$file1" -blur 0x4 "/tmp/lockscreen_bg"
 rm -f "$file1"
