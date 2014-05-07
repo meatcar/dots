@@ -1,0 +1,26 @@
+# Google Now SLiM themes. Created by Nourman Hajar/masnormen
+# Semarang, ID. 02-08-2013
+
+Some FAQs:
+
+1. If you are the only user in your system, it is recommended to enable the "direct log-in" function in SLiM.
+
+	file: /etc/slim.conf
+	----------------------------------------------------------------------------
+	...
+	# default user, leave blank or remove this line
+	# for avoid pre-loading the username.
+	default_user YOURUSERNAMEHERE
+
+	# Focus the password field on start when default_user is set
+	# Set to "yes" to enable this feature
+	focus_password yes
+	...
+	----------------------------------------------------------------------------
+
+2. For the avatar, edit the panel.png with your image editor and simply place your avatar and save.
+
+Copyright © 2013 Nourman Hajar <masnormen@yahoo.com>
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the COPYING file for more details.

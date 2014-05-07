@@ -11,7 +11,7 @@ fi
 
 # Gnome takes care of itself. Just run it by itself.
 case $1 in
-    gnome)
+    gnome-session)
         gnome-session
         ;;
     *)
@@ -19,37 +19,25 @@ case $1 in
 esac
 
 
-# set the cursor
-xsetroot -cursor_name left_ptr
-xrdb ~/.Xdefaults &
-
-# set capslock to escape.
-xmodmap -e "remove lock = Caps_Lock"
-xmodmap -e "keysym Caps_Lock = Escape"
-
-# screensaver
-xscreensaver  -no-splash &
-
-# start mpd, and make sure it's not blaring music
-(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
-
-# rxvt-unicode daemon
-urxvtd &
-
-# clipboard manager
-parcellite -n &
-
-dropboxd &
-systemd --user &
-# wallpaper
-eval $(cat ~/.fehbg) &
-
-xautolock  -time 10 -locker slock &
+export PATH="$PATH:/home/meatcar/bin"
 
 #######################
 # host-dependent setup
 #######################
 case `hostname` in
+    targaryen)
+        #compton --config ~/.config/compton/compton.conf -b &
+        syndaemon -t -i 1 -d &
+        xrandr --dpi 165 &
+        udiskie &
+        start-pulseaudio-x11 &
+        synergyc hyperion&
+
+        if (xrandr | grep 'HDMI1 connected' && iwconfig wlp1s0 | grep 'UofT') > /dev/null
+        then
+          xrandr --output HDMI1 --mode 1680x1050 --right-of eDP1
+        fi
+        ;;
     aether.denys.me)
         VBoxClient-all &
 		sleep 3
@@ -72,11 +60,42 @@ case `hostname` in
         systemd --user &
         udiskie &
         ;;
-    *)
-        synergyc hyperion&
-        ;;
-esac 
+esac
 
+# set the cursor
+xsetroot -cursor_name left_ptr
+xrdb ~/.Xdefaults &
+
+# set keyboard repeat rate
+#xset r rate 190 40
+
+# set capslock to escape.
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "keysym Caps_Lock = Escape"
+xbindkeys &
+
+# screensaver
+xscreensaver  -no-splash &
+
+# start mpd, and make sure it's not blaring music
+(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
+
+# rxvt-unicode daemon
+urxvtd -q -f -o&
+
+# clipboard manager
+#parcellite -n &
+xcmenu --daemon &
+
+dropboxd &
+systemd --user &
+# wallpaper
+eval $(cat ~/.fehbg) &
+
+xautolock  -time 10 -locker 'lock' &
+
+
+#unclutter -idle 6 -grab -root &
 
 #####################
 # WM-dependent setup
@@ -98,23 +117,17 @@ case $1 in
         tint2 &
         exec openbox-session
         ;;
-    i3)
-        # Set the wm name to somethign Java recognizes.
-        wmname LG3D
-
-        exec i3
-        ;;
     dwm)
         xcompmgr -c -C &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-        
+
         #dwm-status &
         dzenstatus &
         twmnd &
         startdwm
         ;;
-    scrollwm) 
+    scrollwm)
         xcompmgr -c -C &
         wmname LG3D
         twmnd &
@@ -124,11 +137,28 @@ case $1 in
         twmnd &
         exec subtle
         ;;
-    wmii|*)
+    wmii)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
         twmnd &
-        
+
         exec wmii
         ;;
+    gnome-session|gnome)
+        ;;
+    bspwm)
+        sxhkd &
+        exec bspwm
+        ;;
+    herbstluftwm)
+        exec herbstluftwm
+        ;;
+    i3|*)
+        dzenstatus &
+        # Set the wm name to somethign Java recognizes.
+        wmname LG3D
+
+        exec i3
+        ;;
 esac
+

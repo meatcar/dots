@@ -1,0 +1,37 @@
+# meatcar's slim theme
+
+# valid values: center, stretch, tile
+background_style        stretch
+background_color        #fff
+
+# Login Name
+username_font		Fira Sans:style=Light:size=10
+username_color		#333
+password_x		50%
+password_y		50%
+username_x		50%
+username_y		100%
+username_msg            
+password_msg		
+
+# Input controls
+input_panel_x           50%
+input_panel_y           50%
+input_name_x            50
+input_name_y            279
+input_pass_x            50
+input_pass_y            279
+input_font              Inconsolata:size=13
+input_color		#333
+
+# slimlock
+passwd_feedback_font            Fira Sans:style=Light:size=17
+passwd_feedback_color           #333
+passwd_feedback_x               50%
+passwd_feedback_y               58%
+
+#Message Contols
+msg_color               #333
+msg_font                Fira Sans:style=Light:size=17
+msg_x                   50%
+msg_y                   58%

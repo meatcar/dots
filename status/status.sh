@@ -1,7 +1,7 @@
 #!/bin/sh
-ICONS="/home/meatcar/dots/status/dzen/xbm8x8"
-fg='white'
-bg='CadetBlue4'
+ICONS="/home/meatcar/dots/status/xbm8x8"
+fg='#3B95BD'
+bg='#001E28'
 
 function netstatus {
     link=`ip link | grep ' UP ' | awk '{print $2}' | tr -d ':'`
@@ -16,6 +16,7 @@ function netspeed {
     # 2 second delay
     #
     netstatus
+    dev="wlp1s0"
     net=""
     if [ "$link" == "down" ]; then
         net="^bg($bg) ^fg(red)^i($ICONS/info_01)Network Down^fg() ^bg()"
@@ -25,14 +26,14 @@ function netspeed {
         net="^fg()^i($ICONS/net_wired.xbm)^fg()"
     else
         # access point name
-        ap=`iwconfig "$link" | grep wlan0 | awk '{ print $4 }' | sed -e 's/.*"\(.*\)"/\1/'`
+        ap=`iwconfig "$link" | grep "$dev"| awk '{ print $4 }' | sed -e 's/.*"\(.*\)"/\1/'`
         if [ "$ap" == "extensions." ]; then
             ap="$link"
         fi
         net="^fg()^i($ICONS/wifi_01.xbm)^fg() '$ap'"
     fi
 
-    ip=`ip addr show dev wlan0 | grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
+    ip=`ip addr show dev "$dev"| grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
 
     # get the up/down speed
     old_state=$(cat /proc/net/dev | grep $link)
@@ -58,6 +59,14 @@ function netspeed {
     net="^bg($bg)$net^bg()"
 
     echo "$net"
+}
+
+function backlight() {
+    light=`xbacklight | sed 's/\.\?0*$//g'`
+    light="^i($ICONS/full.xbm) $light%"
+    light="^bg($bg) $light ^bg()"
+
+    echo "$light"
 }
 
 function batt {
@@ -98,25 +107,25 @@ function music {  ## Print currently playing artist
 }
 
 function volume {
-    vol_mode=`amixer|head -n5|tail -n1|awk '{print $6}' | tr -d '[]'`
+    vol_mode=`amixer|head -n6|tail -n1|awk '{print $6}' | tr -d '[]'`
     if [ "$vol_mode" == "off" ]; then
         vol="^fg(grey30)^i($ICONS/spkr_02.xbm)^fg()"
     else
-        vol="`amixer|head -n5|tail -n1|awk '{print $4}' | tr -d '[]'`"
+        vol="`amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]'`"
         vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
     vol=" $vol "
     vol="^ca(1,urxvtc -e alsamixer)$vol^ca()"
-    vol="^ca(2,amixer set 'Master' 'toggle' 1>&2 2>/dev/null)$vol^ca()"
-    vol="^ca(4,amixer set 'Master' 5%+ 1>&2 2>/dev/null)$vol^ca()"
-    vol="^ca(5,amixer set 'Master' 5%- 1>&2 2>/dev/null)$vol^ca()"
+    vol="^ca(2,amixer set 'Master' 'toggle')$vol^ca()"
+    vol="^ca(4,amixer set 'Master' 5%+ )$vol^ca()"
+    vol="^ca(5,amixer set 'Master' 5%- )$vol^ca()"
     vol="^bg($bg)$vol^bg()"
     echo "$vol"
 }
 
-function date_time {  
-    d=`date +'^fg(grey90)%a %d %b^fg() %H:%M'`
+function date_time {
+    d=`date +'^fg(#4d6080)%a %d %b^fg() %H:%M'`
     echo "^bg($bg) $d ^bg()"
 }
 
-echo " $(netspeed) $(batt) $(music) $(volume) $(date_time)"
+echo "$(netspeed) $(batt) $(backlight) $(volume) $(date_time)"

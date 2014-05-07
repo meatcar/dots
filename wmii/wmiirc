@@ -52,6 +52,7 @@ wmiir write /colrules <<!
 # Tagging Rules
 wmiir write /tagrules <<!
 /MPlayer|VLC/ -> ~
+/Pidgin|Buddy List/ -> 0
 !
 
 # Status Bar Info

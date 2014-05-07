@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case $# in
+    2)
+        convert "$1" -modulate 100,30 "$2"
+        #convert "$1" -grayscale Rec709Luma "$2"
+        #convert "$1" -adaptive-blur 0x4 "$2"
+        #convert "$1" -blue-shift 0.1 "$2"
+        ;;
+    *)
+        echo "usage: $0 FROM_IMG TO_IMG" >&2
+        exit 1
+        ;;
+esac

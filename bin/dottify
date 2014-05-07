@@ -4,17 +4,18 @@
 ##############################################################################
 
 if [ $# -lt 2 ]; then 
-    echo "usage: $0 path dot-name" >&2
+    echo "usage: $0 <path> <name in dots dir>" >&2
     exit 1
 fi 
 
 DOTS="$HOME/dots"
 DOTFILE="$DOTS/$2"
+
 mv -f $1 $DOTFILE
 ln -sf $DOTFILE $1
 cd $DOTS
 git add $DOTFILE
 git commit -m "added $1 as $DOTS/$2"
-echo "ln -s \"\$DOTS/$2\" \"\$HOME/dots/$1\"" >> "$DOTS/reinstate.sh"
+echo "ln -rs \"$2\" ~\"$1\"" >> "$DOTS/reinstate.sh"
 echo "$1 has been dottified to $DOTS" 
 

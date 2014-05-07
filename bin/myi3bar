@@ -1,0 +1,258 @@
+#!/usr/bin/env python
+#======================================================================
+# i3 (Python module for communicating with i3 window manager)
+# Copyright (C) 2012  Jure Ziberna
+# Modified by Denys Pavlov in 2013
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#======================================================================
+
+
+import sys
+import time
+import subprocess
+
+import i3
+
+
+class Colors(object):
+    """
+    A class for easier managing of bar's colors.
+    Attributes (hexadecimal color values):
+    - background
+    - foreground
+    (below are (foreground, background) tuples for workspace buttons)
+    - focused
+    - active (when a workspace is opened on unfocused output)
+    - inactive (unfocused workspace)
+    - urgent
+    The naming comes from i3-wm itself.
+    Default values are also i3-wm's defaults.
+    """
+    # bar colors
+    background = '#000000'
+    foreground = '#ffffff'
+    # workspace button colors
+    focused = ('#F5F5F5', '#72AA47')
+    active = ('#F5F5F5', '#3B95BD')
+    inactive = ('#3B95BD', '#001E28')
+    urgent = ('#9E9E9E', '#FFAB19')
+
+    def get_color(self, workspace, output):
+        """
+        Returns a (foreground, background) tuple based on given workspace
+        state.
+        """
+        if workspace['focused']:
+            if output['current_workspace'] == workspace['name']:
+                return self.focused
+            else:
+                return self.active
+        if workspace['urgent']:
+            return self.urgent
+        else:
+            return self.inactive
+
+class Icons(object):
+    icons = {
+            "1": "!",
+            "2": "@",
+            "3": "#",
+            "4": "$",
+            "5": "%",
+            "6": "^",
+            "7": "&",
+            "8": "*",
+            "9": "(",
+            "10": ")"
+            }
+    def get_icon(self, string):
+        """
+        Returns a string representation of the icon that represents the given
+        string
+        """
+        if string in self.icons:
+            #return "^i(/usr/share/icons/stlarch_icons/{}.xbm)".format(self.icons[string])
+            return self.icons[string]
+        else:
+            return string
+
+class i3wsbar(object):
+    """
+    A workspace bar; display a list of workspaces using a given bar
+    application. Defaults to dzen2.
+    Changeable settings (attributes):
+    - button_format
+    - bar_format
+    - colors (see i3wsbar.Colors docs)
+    - font
+    - bar_command (the bar application)
+    - bar_arguments (command-line arguments for the bar application)
+    """
+    # default bar style
+    colors = Colors()
+    icons = Icons()
+    font = 'Meslo LG S:size=10'
+    # default bar settings
+    bar_command = 'dzen2'
+    bar_arguments = [
+            '-e', 'button2=;',
+            '-dock',
+            '-ta', 'c',
+            '-expand', 'both',
+            '-x', '{x}',
+            '-w', '{width}',
+            '-fn', font,
+            '-bg', colors.background,
+            '-fg', colors.foreground
+    ]
+
+    def __init__(self, colors=None, font=None, bar_cmd=None, bar_args=None):
+        if colors:
+            self.colors = colors
+        if font:
+            self.font = font
+        if bar_cmd:
+            self.dzen_command = bar_cmd
+        if bar_args:
+            self.bar_arguments = bar_args
+
+        # Open i3 socket
+        self.socket = i3.Socket()
+
+        workspaces = self.socket.get('get_workspaces')
+        outputs = self.get_active_outputs()
+
+        self.start_bars(workspaces, outputs)
+        self.display(workspaces, outputs)
+
+        # Subscribe to an event
+        self.subscription = i3.Subscription(
+                lambda data, event, _: self.on_workspace_event(data, event),
+                'workspace')
+
+        self.subscription = i3.Subscription(
+                lambda data, event, _: self.on_output_event(data, event),
+                'output')
+
+    def on_workspace_event(self, event, workspaces):
+        """
+        Receives event and workspace data, changes the bar if change is
+        present in event.
+        """
+        # redraw the workspaces
+        if 'change' in event:
+            outputs = self.socket.get('get_outputs')
+            outputs = [o for o in outputs if o['active']]
+            self.display(workspaces, outputs)
+
+    def on_output_event(self, data, event):
+        self.terminate_all_bars()
+
+        workspaces = self.socket.get('get_workspaces')
+        outputs = self.get_active_outputs()
+        self.start_bars(workspaces, outputs)
+        self.display(workspaces, outputs)
+
+    def format(self, workspaces, output):
+        """
+        Formats the bar text according to the workspace data given.
+        """
+        bar = ''
+        for workspace in workspaces:
+            # only draw workspaces in bar
+            if output['name'] != workspace['output']:
+                continue
+
+            foreground, background = self.colors.get_color(workspace, output)
+            if not foreground:
+                continue
+            num = workspace['name']
+            name = self.icons.get_icon(num)
+            button_format = '^ca(1,i3-msg "workspace {num}")'\
+                        '^bg({bg})^fg({fg})'\
+                        ' {name} '\
+                        '^fg()^bg()'\
+                    '^ca()'
+            button = button_format.format(
+                    bg=background,
+                    num=num,
+                    name=name,
+                    fg=foreground)
+            bar += button
+        return "{}".format(bar)
+
+    def display(self, workspaces, outputs):
+        """
+        Displays a text on the bar by piping it to the bar application.
+        """
+        for output in outputs:
+            bar_text = self.format(workspaces, output)
+            bar_text += '\n'
+            try:
+                bar_text = bar_text.encode()
+            except AttributeError:
+                pass  # already a byte string
+            self.bars[output['name']].stdin.write(bar_text)
+            self.bars[output['name']].stdin.flush()
+
+    def quit(self):
+        """
+        Quits the i3wsbar; closes the subscription and terminates the bar
+        application.
+        """
+        self.subscription.close()
+        self.terminate_all_bars()
+
+    def get_active_outputs(self):
+        return [o for o in self.socket.get('get_outputs') if o['active']]
+
+    def start_bars(self, workspaces, outputs):
+        """
+        Create a bar per output
+        """
+
+        self.bars = {}
+        for output in outputs:
+            x = str(output['rect']['x'])
+            y = str(output['rect']['y'])
+            width = str(output['rect']['width'])
+            height = str(output['rect']['height'])
+
+            args = [self.bar_command] + self.bar_arguments
+            for i in range(len(args)):
+                args[i] = args[i].format(x=x, y=y, width=width, height=height)
+
+            self.bars[output['name']] = subprocess.Popen(args, stdin=subprocess.PIPE)
+
+
+    def terminate_all_bars(self):
+        """
+        Terminate all the bars currently open
+        """
+        for bar in self.bars:
+            self.bars[bar].terminate()
+
+
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    bar = i3wsbar(bar_args=args)
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print('')  # force new line
+    finally:
+        bar.quit()
+
