@@ -1,14 +1,5 @@
 #!/bin/sh
 # Display a status in a dzen bar
-fn='Terminus-9'
-ta='r'
-tw=1304
-x=296
-h=15
-fg='#FFFFFF'
-bg='#000000'
-expand='l'
-
 status() {
     while true
     do
@@ -16,4 +7,10 @@ status() {
     done
 }
 
-status | dzen2 -fn "$fn" -ta "$ta" -tw "$tw" -x "$x" -h "$h" -fg "$fg" -bg "$bg" >/dev/null
+status | \
+    dzen2 -e ''\
+          -fn "Meslo LG M:size=9" \
+          -ta "r" \
+          -expand "left"\
+          -fg "#3B95BD" \
+          -bg "#000000" \

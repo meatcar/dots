@@ -1,5 +1,12 @@
 #!/bin/bash
 
-cd "/mnt/win/Valhalla/Multimedia/Pictures/Camera/Webcam/timeline/"
+cd "/home/meatcar/Dropbox/Pics/webcam"
 
-fswebcam --no-banner --no-shadow --no-title --no-subtitle -r '1024x768' --jpeg 95 --save "`date`.jpg"
+IMAGE=`date +%s`
+
+sleep 1
+
+mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -frames 1 -vf screenshot -vo "png:z=9:prefix=$IMAGE"
+mv $IMAGE* $IMAGE.png
+
+IMAGE="$IMAGE.png"

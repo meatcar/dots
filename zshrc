@@ -8,14 +8,34 @@ unsetopt beep
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/meatcar/.zshrc'
 
+source /usr/bin/aws_zsh_completer.sh
+
 autoload -Uz compinit
 compinit
+
+#####################################################
+# Antigen Bundles
+#####################################################
+#export ADOTDIR="$HOME/.zsh"
+#source $ADOTDIR/antigen.zsh
+
+#antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle git
+#antigen bundle command-not-found
+#antigen bundle kennethreitz/autoenv
+
+#antigen apply
+
 # End of lines added by compinstall
 ####################################################
 # The following lines were added by meatcar
 ####################################################
 # Set the prompt.
 autoload -U colors && colors
+
+function precmd() {
+  eval ${PROMPT_COMMAND}
+}
 
 # set up command verb (do, sudo, redo)
 root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
@@ -49,11 +69,11 @@ bindkey "\e[F" end-of-line
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
-export PATH="/usr/share/perl5/vendor_perl/auto/share/dist/Cope:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin"
+export PATH="/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin"
+export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
 # fix svn errors
-export LC_CTYPE=C
-source /etc/profile.d/go.sh
-export GOPATH="$HOME/go:$GOPATH"
+#source /etc/profile.d/go.sh
+export GOPATH="$HOME/dev/go:$GOPATH"
 ####################################################
 # Set up colorings
 #
@@ -61,9 +81,6 @@ export GOPATH="$HOME/go:$GOPATH"
 eval $(dircolors -b ~/.dircolors)
 # grep 
 export GREP_COLOR="1;33"
-# less syntax-hilite
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 ####################################################
 # Aliases
 #
@@ -74,9 +91,7 @@ alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
 alias mix="alsamixer"
-alias suspend="sudo pm-suspend"
-alias cdfwifi="ssh g0pavlov-cdf@wifi.cs.toronto.edu"
-alias v="mvimc"
+alias tree="tree -AF"
 
 # cd 
 alias cd..="cd .."
@@ -89,13 +104,4 @@ alias rm="rm -i"
 
 # reconnect sshfs on discnnect.
 alias sshfs="sshfs -o reconnect -C -o workaround=all"
-
-## Colorize manpage via less
-export LESS_TERMCAP_mb=$(printf "\e[1;37m")
-export LESS_TERMCAP_md=$(printf "\e[1;37m")
-export LESS_TERMCAP_me=$(printf "\e[0m")
-export LESS_TERMCAP_se=$(printf "\e[0m")
-export LESS_TERMCAP_so=$(printf "\e[1;47;30m")
-export LESS_TERMCAP_ue=$(printf "\e[0m")
-export LESS_TERMCAP_us=$(printf "\e[0;36m")
 
