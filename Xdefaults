@@ -35,43 +35,81 @@ Xcursor.theme: OpenZone_Black
 !*color6: #09997C
 !*color14: #0AF2C8
 
-! Molokai theme
-URxvt.cursorColor: #72757b
+! Github theme
+URxvt.cursorColor: #444454
 
-URxvt.background: #001E28
-URxvt.foreground: #f8f8f2
+URxvt.background: #f8f8ff
+URxvt.foreground: #000000
 
 ! Black
-URxvt.color0: #262729
-URxvt.color8: #353739
+URxvt.color0: #000000
+URxvt.color8: #555555
 
 ! Red
-URxvt.color1: #f92672
-URxvt.color9: #ff689e
+URxvt.color1: #aa0000
+URxvt.color9: #d01040
 
 ! Green
-URxvt.color2: #a6e22e
-URxvt.color10: #c6ff55
+URxvt.color2: #3c5d5d
+URxvt.color10: #009926
 
 ! Yellow
-URxvt.color3: #faeb60
-URxvt.color11: #f7efa8
+URxvt.color3: #999988
+URxvt.color11: #ffffcc
 
 ! Blue
-URxvt.color4: #66d9ef
-URxvt.color12: #8de6f7
+URxvt.color4: #445588
+URxvt.color12: #0086B3
 
 ! Magenta
-URxvt.color5: #fd5ff0
-URxvt.color13: #f9a8f3
+URxvt.color5: #800080
+URxvt.color13: #990073
 
 ! Cyan
-URxvt.color6: #5e7175
-URxvt.color14: #b7c3c5
+URxvt.color6: #008080
+URxvt.color14: #009999
 
 ! White
-URxvt.color7: #909090
-URxvt.color15: #f8f8f2
+URxvt.color7: #bbbbbb
+URxvt.color15: #f8f8ff
+
+!! Molokai theme
+!URxvt.cursorColor: #72757b
+!
+!URxvt.background: #001E28
+!URxvt.foreground: #f8f8f2
+!
+!! Black
+!URxvt.color0: #262729
+!URxvt.color8: #353739
+!
+!! Red
+!URxvt.color1: #f92672
+!URxvt.color9: #ff689e
+!
+!! Green
+!URxvt.color2: #a6e22e
+!URxvt.color10: #c6ff55
+!
+!! Yellow
+!URxvt.color3: #faeb60
+!URxvt.color11: #f7efa8
+!
+!! Blue
+!URxvt.color4: #66d9ef
+!URxvt.color12: #8de6f7
+!
+!! Magenta
+!URxvt.color5: #fd5ff0
+!URxvt.color13: #f9a8f3
+!
+!! Cyan
+!URxvt.color6: #5e7175
+!URxvt.color14: #b7c3c5
+!
+!! White
+!URxvt.color7: #909090
+!URxvt.color15: #f8f8f2
 ! Xft settings ---------------------------------------------------------------
 Xft.dpi: 96
 Xft.antialias: true

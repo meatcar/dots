@@ -38,12 +38,12 @@ function precmd() {
 }
 
 # set up command verb (do, sudo, redo)
-root_verb="%(!.%{$fg[red]%}su.)" # elevated privilige
-exit_verb="%(?..%{$fg[yellow]%}re)" # failed command
-verb="%{$fg[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
+root_verb="%(!.%{$fg_bold[red]%}su.)" # elevated privilige
+exit_verb="%(?..%{$fg_bold[magenta]%}re)" # failed command
+verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
 
-PROMPT="%{$fg[blue]%}%n%{$reset_color%} at %{$fg[magenta]%}%M%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%}
+PROMPT="%{$fg_bold[blue]%}%n%{$reset_color%} at %{$fg_bold[magenta]%}%M%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}
     ${verb} "
 ####################################################
 # Set Keybindings.
@@ -74,6 +74,7 @@ export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
 # fix svn errors
 #source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go:$GOPATH"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 ####################################################
 # Set up colorings
 #
