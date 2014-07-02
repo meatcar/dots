@@ -24,15 +24,6 @@ servers = (
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
-    address = "viafoura.irc.grove.io";
-    chatnet = "viafoura";
-    port = "6697";
-    password = "viafoura";
-    use_ssl = "yes";
-    ssl_verify = "no";
-    autoconnect = "yes";
-  },
-  {
     address = "chat.freenode.net";
     chatnet = "freenode";
     port = "6697";
@@ -106,22 +97,23 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
-  viafoura = { type = "IRC"; nick = "denys"; };
   freenode = { type = "IRC"; };
 };
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
+  { name = "jquery"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "documentcloud"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "##cssu"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#medsavant"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "archlinux"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "docker"; chatnet = "freenode"; autojoin = "yes"; },
   {
     name = "archlinux-offtopic";
     chatnet = "freenode";
     autojoin = "yes";
-  },
-  { name = "jquery"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "documentcloud"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "##cssu"; chatnet = "freenode"; autojoin = "yes"; }
+  }
 );
 
 aliases = {
@@ -199,7 +191,7 @@ statusbar = {
     prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
     topic = " $topic";
-    topic_empty = " Irssi v$J - http://www.irssi.org";
+    topic_empty = "Irssi v$J - http://www.irssi.org";
 
     # all of these treated specially, they're only displayed when needed
     lag = "{sb Lag: $0-}";
@@ -313,11 +305,21 @@ settings = {
     beep_msg_level = "MSGS NOTICES INVITES DCC DCCMSGS HILIGHT";
     term_charset = "utf-8";
   };
-  "perl/core/scripts" = { awl_display_key = "$N$H$C$S"; };
+  "perl/core/scripts" = {
+    awl_display_key = "$N$H$C$S";
+    neat_right_mode = "yes";
+    neat_left_messages = "no";
+    neat_melength = "1";
+    neat_colors = "rRgGyYbBmMcC";
+  };
 };
 logs = { };
-ignores = (
-  { level = "JOINS PARTS"; servertag = "freenode"; },
-  { level = "JOINS PARTS QUITS"; servertag = "freenode"; },
-  { level = "JOINS PARTS QUITS"; servertag = "freenode"; }
+ignores = ( { level = "JOINS PARTS QUITS"; servertag = "freenode"; } );
+hilights = (
+  { text = "meatcar"; nick = "yes"; word = "yes"; },
+  { text = "meat"; nick = "yes"; word = "yes"; },
+  { text = "Denys"; nick = "yes"; word = "yes"; }
+);
+keyboard = ( 
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
 );

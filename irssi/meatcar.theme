@@ -68,7 +68,7 @@ abstracts = {
   #line_start = "%B-|%B-%n";
   line_start = "";
   # timestamp styling, nothing by default
-  timestamp = "%K$*%n";
+  timestamp = "$*";
 
   # any kind of text that needs hilighting, default is to bold
   hilight = "%r$*%n";
@@ -144,7 +144,7 @@ abstracts = {
 
   # public message in channel, $0 = nick mode, $1 = nick
   pubmsgnick = "{msgnick $0 $1}";
-  pubnick = "%N$*%n";
+  pubnick = "%n$*%n";
 
   # public message in channel meant for me, $0 = nick mode, $1 = nick
   pubmsgmenick = "{msgnick $0 $1}";
@@ -253,13 +253,13 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%0%w";
+  sb_background = "%n%k";
   # normaly 1
 
   # default backround for "default" statusbar group
-  #sb_default_bg = "%4";
+  sb_default_bg = "%n";
   # background for prompt / input line
-  sb_prompt_bg = "%K";
+  sb_prompt_bg = "%k";
   # background for info statusbar
   sb_info_bg = "%8";
   # background for topicbar (same default)
@@ -272,7 +272,7 @@ abstracts = {
   # used for anything.
   sbend = " }";
 
-  prompt = "$*%K:%n ";
+  prompt = "$* <%n ";
 
   #sb = " %c[%n$*%c]%n";
   sb = "$*";
@@ -284,13 +284,13 @@ abstracts = {
   # activity in statusbar
 
   # ',' separator
-  sb_act_sep = "%y$*";
+  sb_act_sep = "  ";
   # normal text
-  sb_act_text = "%y$*";
+  sb_act_text = "%K$*";
   # public message
-  sb_act_msg = "%c$*";
+  sb_act_msg = "%b$*";
   # hilight
-  sb_act_hilight = "%r$*";
+  sb_act_hilight = "%R$*";
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1%n";
 
@@ -309,21 +309,21 @@ abstracts = {
 formats = {
   "fe-common/core" = {
     # $0 = my nick, $1 = target nick, $2 = message
-    own_msg = "{ownmsgnick {ownnick $0$2}}$1";
-    own_msg_channel = "{ownmsgnick {ownnick $0$3}{msgchannel $1}}$2";
+    own_msg = "{ownmsgnick {ownnick $[-16]0$2}}$1";
+    own_msg_channel = "{ownmsgnick {ownnick $[-16]0$3}{msgchannel $1}}$2";
 
-    pubmsg_me = "{pubmsgmenick {menick $0}$2}$1";
-    pubmsg_me_channel = "{pubmsgmenick {menick $0$3}{msgchannel $1}}$2";
+    pubmsg_me = "{pubmsgmenick {menick $[-16]0}$2}$1";
+    pubmsg_me_channel = "{pubmsgmenick {menick $[-16]0$3}{msgchannel $1}}$2";
 
-    pubmsg_hilight = "{pubmsghinick $0 $0 $1$3%n}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $1$4{msgchannel $2}}$3";
+    pubmsg_hilight = "{pubmsghinick $0 $0 $[-16]1$3%n}$2";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $[-16]1$4{msgchannel $2}}$3";
 
-    pubmsg = "{pubmsgnick {pubnick %M$0}$2}$1";
+    pubmsg = "{pubmsgnick {pubnick %Y$[-16]0}$2}$1";
     #0
-    pubmsg_channel = "{pubmsgnick {pubnick %M$0}$2}$1";
+    pubmsg_channel = "{pubmsgnick {pubnick %Y$[-16]0}$2}$1";
 
-    own_msg_private_query = "{ownprivmsgnick {ownprivnick $2}}$1";
-    msg_private_query = "{privmsgnick $0}$2";
+    own_msg_private_query = "{ownprivmsgnick {ownprivnick $[-16]2}}$1";
+    msg_private_query = "{privmsgnick $[-16]0}$2";
 
     servertag = "            $0";
     quit = "{channick $0} %rquit%K - {reason $2}";
@@ -332,25 +332,20 @@ formats = {
 
     nick_changed = "{channick $0} %Kis now %n{channick_hilight $1}";
 
-    timestamp = "{timestamp }";
+    timestamp = "{timestamp $Z} ";
   };
 
-  "fe-common/irc" = {
-    notice_private = " {notice $0{pvtnotice_host $1}}$2";
-    own_action = "{ownaction $0} $1";
-    action_private = "{pvtaction $0}$1";
-    action_private_query = "{pvtaction_query $0} $2";
-    action_public = "{pubaction $0}$1";
-  };
-  "fe-common/irc/dcc" = {
-    own_dcc_query = " {ownmsgnick {ownnick $0}}$2";
-    dcc_msg_query = " {privmsgnick $0}$1";
-  };
   "fe-text" = {
     statusbar_list_header = "%y%#Name                           Type   Placement Position Visible";
   };
   "Irssi::Script::nickcolor" = {
     pubmsg_hilight = "{pubmsghinick $0 $3 $1}$2";
+  };
+  "fe-common/irc" = {
+    own_action = "{ownaction $[-15]0} $1";
+    action_private = "{pvtaction $[-15]0}$1";
+    action_private_query = "{pvtaction_query $[-15]0} $2";
+    action_public = "{pubaction $[-15]0}$1";
   };
 };
 

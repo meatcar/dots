@@ -5,6 +5,7 @@
 [alias]
 	s = status -sb
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ignore = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 
 [color]
   branch = auto
