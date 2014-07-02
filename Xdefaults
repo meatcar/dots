@@ -54,11 +54,11 @@ URxvt.color2: #3c5d5d
 URxvt.color10: #009926
 
 ! Yellow
-URxvt.color3: #999988
-URxvt.color11: #ffffcc
+URxvt.color3: #eb6420
+URxvt.color11: #fbca04
 
 ! Blue
-URxvt.color4: #445588
+URxvt.color4: #207de5
 URxvt.color12: #0086B3
 
 ! Magenta
@@ -111,6 +111,7 @@ URxvt.color15: #f8f8ff
 !URxvt.color7: #909090
 !URxvt.color15: #f8f8f2
 ! Xft settings ---------------------------------------------------------------
+!Xft.dpi: 215
 Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
@@ -127,13 +128,12 @@ URxvt.buffered:         true
 
 urxvt*termName:         rxvt-unicode-256color
 URxvt.depth:            32
-URxvt.font:             xft:Monaco:size=9, \
-                        xft:Inconsolata:size=11, \
-                        xft:DejaVu Sans Mono for Powerline:size=9, \
+URxvt.font:             xft:Inconsolata:size=12, \
+                        xft:DejaVu Sans Mono for Powerline:size=12, \
                         xft:FreeSerif, \
                         xft:Monospace, \
                         xft:Symbola
-URxvt.letterSpace:      -2
+URxvt.letterSpace:      -1
 URxvt.lineSpace:        -1
 URxvt.internalBorder:   5
 URxvt.externalBorder:   0

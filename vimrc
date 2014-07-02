@@ -99,7 +99,7 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'AutoTag'
 NeoBundle 'PotatoesMaster/i3-vim-syntax'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'mtth/cursorcross.vim'
+"NeoBundle 'mtth/cursorcross.vim'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'Shougo/vimproc.vim', {
@@ -171,7 +171,7 @@ let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 if has ("gui_running")
   colorscheme github "define syntax color scheme
 else
-  colorscheme molokai
+  colorscheme github
 endif
 
 " gist settings --------------------------------------------------------
@@ -227,7 +227,7 @@ let g:airline#extensions#branch#enabled = 1
 
 if has ("gui_running")
     set lsp=0             "set linespacing"
-    set guifont=Fantasque\ Sans\ Mono\ 11 "set the font
+    set guifont=Inconsolata\ 12 "set the font
     set guioptions-=T      "hide the toolbar
     set guioptions-=m      "hide the manubar
 endif

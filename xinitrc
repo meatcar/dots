@@ -38,6 +38,9 @@ case `hostname` in
           xrandr --output HDMI1 --mode 1680x1050 --right-of eDP1
         fi
         ;;
+    thumbnail)
+        VBoxClient-all &
+        ;;
     aether.denys.me)
         VBoxClient-all &
 		sleep 3
@@ -154,10 +157,10 @@ case $1 in
         exec herbstluftwm
         ;;
     i3|*)
-        dzenstatus &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
+        dzenstatus &
         exec i3
         ;;
 esac

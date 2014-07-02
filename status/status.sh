@@ -16,13 +16,13 @@ function netspeed {
     # 2 second delay
     #
     netstatus
-    dev="wlp1s0"
+    dev="enp0s3"
     net=""
     if [ "$link" == "down" ]; then
         net="^bg($bg) ^fg(red)^i($ICONS/info_01)Network Down^fg() ^bg()"
         echo "^ca(1, urxvtc -e wicd-curses)$net^ca()"
         exit
-    elif [ "$link" == "eth0" ]; then
+    elif [ "$link" == "$dev" ]; then
         net="^fg()^i($ICONS/net_wired.xbm)^fg()"
     else
         # access point name
@@ -128,4 +128,4 @@ function date_time {
     echo "^bg($bg) $d ^bg()"
 }
 
-echo "$(netspeed) $(batt) $(backlight) $(volume) $(date_time)"
+echo "$(netspeed)  $(batt)  $(volume)  $(date_time)"
