@@ -10,7 +10,7 @@
 set t_Co=256            " enable 256-color support
 set title
 set nocompatible        " disregard vi compatibility:
-set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/neobundle.vim
+set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vim-plug
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
 set bdir=~/.vim/backup,/tmp  " keep backups in one place
 set undodir=~/.vim/undo,/tmp " keep undos in one place
@@ -66,71 +66,56 @@ runtime macros/matchit.vim  " extend the % key
 
 " Vundle stuff ---------------------------------------------------------
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-endif
+call plug#begin('~/.vim/bundle')
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'tpope/vim-sensible'
 
 " colorschemes
-NeoBundle 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 
-NeoBundle 'surround.vim'
-NeoBundle 'repeat.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-rhubarb'
-NeoBundle 'xml.vim'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'Gundo'
-NeoBundle 'nono/vim-handlebars'
-NeoBundle 'ack.vim'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'wting/gitsessions.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'AutoTag'
-NeoBundle 'PotatoesMaster/i3-vim-syntax'
-NeoBundle 'Raimondi/delimitMate'
-"NeoBundle 'mtth/cursorcross.vim'
-NeoBundle 'scrooloose/syntastic'
+Plug 'surround.vim'
+Plug 'repeat.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jaxbot/github-issues.vim' " Github issue lookup in Vim
+Plug 'tpope/vim-rhubarb'
+Plug 'scrooloose/nerdcommenter'
+Plug 'bling/vim-airline'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-unimpaired'
+Plug 'airblade/vim-gitgutter'
+Plug 'wting/gitsessions.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'Raimondi/delimitMate'
+"Plug 'scrooloose/syntastic'
+Plug 'trapd00r/irc.vim' " syntax file for irc logs
 
-NeoBundle 'Shougo/vimproc.vim', {
-       \ 'build' : {
-       \     'windows' : 'make -f make_mingw32.mak',
-       \     'cygwin' : 'make -f make_cygwin.mak',
-       \     'mac' : 'make -f make_mac.mak',
-       \     'unix' : 'make -f make_unix.mak',
-       \    },
-       \ }
+Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/vimfiler.vim'
 
-NeoBundle 'Gist.vim', {'depends': 'WebAPI.vim'}
+Plug 'WebAPI.vim'
+Plug 'Gist.vim', {'on': 'Gist'}
+
+Plug 'Gundo', {'on': 'GundoToggle'}
+Plug 'ack.vim', {'on': 'Ack'}
 
 " filetype-dependent bundles
-NeoBundleLazy 'Markdown', {'autoload': {'filetypes': ['markdown']}}
-NeoBundleLazy 'Markdown-syntax', {'autoload': {'filetypes': ['markdown']}}
-NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
-NeoBundleLazy 'less.vim', {'autoload': {'filetypes': ['less']}}
-NeoBundleLazy 'skammer/vim-css-color', {'autoload': {'filetypes': ['css', 'less']}}
-NeoBundleLazy 'digitaltoad/vim-jade', {'autoload': {'filetypes': ['jade']}}
-NeoBundleLazy 'TeX-9', {'autoload': {'filetypes': ['tex', 'latex']}}
-NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}} " emmet for vim: http://emmet.io/
+Plug 'xml.vim', {'for': 'xml'}
+Plug 'nono/vim-handlebars', {'for': ['html', 'hbs']}
+Plug 'Markdown', {'for': 'markdown'}
+Plug 'Markdown-syntax', {'for': 'markdown'}
+Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'less.vim', {'for': 'less'}
+Plug 'skammer/vim-css-color', {'for': ['css', 'less']}
+Plug 'digitaltoad/vim-jade', {'for': 'jade'}
+Plug 'TeX-9', {'for': ['tex', 'latex']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'xml']} " emmet for vim: http://emmet.io/
+Plug 'beyondmarc/glsl.vim', {'for': 'glsl'} " OpenGL Shading Language (GLSL) Vim syntax highlighting
+Plug 'sealemar/vtl', {'for': 'velocity'} " velocity syntax for vim
 
-filetype plugin indent on
-
-NeoBundleCheck
-
-if !has('vim_starting')
-  " Call on_source hook when reloading .vimrc.
-  call neobundle#call_hook('on_source')
-endif
+call plug#end()
 
 " Signify settings -----------------------------------------------------------
 
