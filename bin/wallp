@@ -3,7 +3,7 @@ temp="/tmp/wallp"
 temp2="/tmp/wallp.$$"
 trap "rm -f $temp2" 0 1 2 15
 
-DROPBOX="/media/sf_Dropbox"
+DROPBOX="$HOME/Dropbox"
 WALLFOLDER="$DROPBOX/Public/wallpapers/"
 WALLLINK="$HOME/.wallpaper"
 
