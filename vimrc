@@ -187,23 +187,6 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-" hotkeys --------------------------------------------------------------
-
-" typo corrections
-nmap q: :q<cr>
-command BW :b#|:bw#     " easier buffer closing
-command SO :so ~/.vimrc " easier buffer closing
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-map <C-l> <C-W>l
-
-nmap <silent> <leader>g :GundoToggle<CR>
-
-nmap H gT
-nmap L gt
 
 " airline statusline config --------------------------------------------
 
@@ -231,11 +214,12 @@ if has("autocmd")
                 \ endif
 
     "remove trailing whitespace upon save
-    autocmd FileType javascript,python,tex autocmd BufWritePre * :%s/\s\+$//e
+    autocmd FileType javascript,python,tex,java autocmd BufWritePre * :%s/\s\+$//e
 
     " web-coding stuff
     au BufNewFile,BufRead *.less set filetype=less
     au BufNewFile,BufRead *.md set filetype=markdown
+    au BufNewFile,BufRead *.glsl set filetype=glsl
 
      "Set up omnicompletion
     "if exists("+omnifunc")
@@ -250,12 +234,17 @@ endif
 augroup UniteAutoCmd
     autocmd!
 augroup END
-"call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      "\'matchers', 'matcher_fuzzy')     " set fuzzy mactcher
+" set fuzzy matcher
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'filters', ['sorter_rank', 'converter_relative_word', 'converter_relative_abbr', 'matcher_fuzzy'])     " set fuzzy mactcher
+      \'matchers', [ 'converter_relative_word',  'matcher_fuzzy'])
+call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      \'sorters', ['sorter_rank'])
+call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      \'converters', [ 'converter_relative_abbr' ])
+
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
       \'ignore_pattern', 'node_modules') " ignore node modules"
+
 let g:unite_data_directory = expand('~/.vim/tmp/unite/')
 let g:unite_source_process_enable_confirm = 1
 let g:unite_source_history_yank_enable = 1
@@ -293,9 +282,39 @@ nno <leader>cd :<C-u>Unite directory_mru directory -start-insert -buffer-name=cd
 " VimFiler ------------------------------------------------------------
 let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
 let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_execute_file_list = { "_": "vim" }
+" disable netrw.vim
+let g:loaded_netrwPlugin = 1
+let g:vimfiler_as_default_expolorer = 1
 nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status<CR>
+
 function! s:vimfiler_settings()
   nmap <buffer> ` <Plug>(vimfiler_exit)
 endfunction
+
+" Go into directory or file under the cursor.
+autocmd FileType vimfiler nmap  <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+    \ "\<Plug>(vimfiler_execute)", 
+    \ "\<Plug>(vimfiler_edit_file)")
+autocmd FileType vimfiler nmap  <silent><buffer><expr> l vimfiler#smart_cursor_map(
+    \ "\<Plug>(vimfiler_execute)", 
+    \ "\<Plug>(vimfiler_edit_file)")
+
 autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
+
+" hotkeys --------------------------------------------------------------
+
+" typo corrections
+nmap q: :q<cr>
+command BW :b#|:bw#     " easier buffer closing
+command SO :so ~/.vimrc " easier buffer closing
+
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+nmap <silent> <leader>g :GundoToggle<CR>
+
+nmap H gT
+nmap L gt
+
