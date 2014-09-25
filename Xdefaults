@@ -38,7 +38,7 @@ Xcursor.theme: OpenZone_Black
 ! Github theme
 URxvt.cursorColor: #444454
 
-URxvt.background: #f8f8ff
+URxvt.background: [85]#f8f8ff
 URxvt.foreground: #000000
 
 ! Black

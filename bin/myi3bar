@@ -41,13 +41,13 @@ class Colors(object):
     Default values are also i3-wm's defaults.
     """
     # bar colors
-    background = '#000000'
-    foreground = '#ffffff'
-    # workspace button colors
-    focused = ('#F5F5F5', '#72AA47')
-    active = ('#F5F5F5', '#3B95BD')
-    inactive = ('#3B95BD', '#001E28')
-    urgent = ('#9E9E9E', '#FFAB19')
+    background = '#D7DCE7'
+    foreground = '#1D4290'
+    # workspace button colors (bg, fg)
+    focused =  ('#D7DCE7', '#1D4290')
+    active =   ('#D7DCE7', '#516DA8')
+    inactive = ('#516DA8', '#D7DCE7')
+    urgent =   ('#FFF9EC', '#D89718')
 
     def get_color(self, workspace, output):
         """
@@ -66,16 +66,16 @@ class Colors(object):
 
 class Icons(object):
     icons = {
-            "1": "!",
-            "2": "@",
-            "3": "#",
-            "4": "$",
-            "5": "%",
-            "6": "^",
-            "7": "&",
-            "8": "*",
-            "9": "(",
-            "10": ")"
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0"
             }
     def get_icon(self, string):
         """
@@ -103,7 +103,7 @@ class i3wsbar(object):
     # default bar style
     colors = Colors()
     icons = Icons()
-    font = 'Meslo LG S:size=10'
+    font = 'Inconsolata:size=11'
     # default bar settings
     bar_command = 'dzen2'
     bar_arguments = [
@@ -169,7 +169,7 @@ class i3wsbar(object):
         """
         Formats the bar text according to the workspace data given.
         """
-        bar = ''
+        bar = 'Alt '
         for workspace in workspaces:
             # only draw workspaces in bar
             if output['name'] != workspace['output']:

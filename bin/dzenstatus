@@ -9,8 +9,8 @@ status() {
 
 status | \
     dzen2 -e ''\
-          -fn "Meslo LG M:size=9" \
+          -fn "Inconsolata:size=11" \
           -ta "r" \
           -expand "left"\
-          -fg "#3B95BD" \
-          -bg "#000000" \
+          -fg "#516DA7" \
+          -bg "#D7DCE7" \

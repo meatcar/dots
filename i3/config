@@ -15,7 +15,7 @@ set $mod Mod1
 # is used in the bar {} block below. ISO 10646 = Unicode
 #font pango:Terminus 5
 #font pango:Fira Sans 5.3
-font pango:Overpass 6.5
+font pango:Noto Sans 10
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
@@ -24,12 +24,12 @@ font pango:Overpass 6.5
 # font pango:DejaVu Sans Mono 10
 
 # colors                border  backgr. text    indicator
-client.focused          #7AC43E #72AA47 #F5F5F5 #BB2B10
-client.focused_inactive #3B95BD #3B95BD #F5F5F5 #BB2B10
-client.unfocused        #001E28 #001E28 #3B95BD #BB2B10
+client.focused          #d89718 #FBCa6a #916000 #BB2B10
+client.focused_inactive #1D4290 #516Da8 #D7DCE7 #BB2B10
+client.unfocused        #FFF9EC #D7DCE7 #516DA8 #BB2B10
 client.urgent           #C11515 #FFAB19 #C11515 #BB2B10
 
-new_window pixel 3
+new_window pixel 5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -38,7 +38,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+c kill
+bindsym $mod+d kill
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec mydmenu_run
