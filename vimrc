@@ -44,6 +44,9 @@ set hidden              " un-saved buffers in the background
 set cc=80
 set laststatus=2        " show the status bar even when editing one file.
 
+set diffopt-=iwhite
+set listchars=tab:>-,trail:-
+
 " tabs and indenting ---------------------------------------------------
 
 set expandtab           " insert spaces instead of tabs
