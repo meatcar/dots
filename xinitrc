@@ -63,32 +63,42 @@ case `hostname` in
         systemd --user &
         udiskie &
         ;;
+    littlefinger)
+        systemd --user &
+        numlockx on &
+        xrandr --dpi 96 &
+        compton --backend glx\
+          --blur-background-frame --blur-kern 7x7box\
+          -b &
+
+        ;;
 esac
 
 # set the cursor
-xsetroot -cursor_name left_ptr
-xrdb ~/.Xdefaults &
+xsetroot -cursor_name left_ptr &
+xrdb -merge ~/.Xdefaults &
 
 # set keyboard repeat rate
 #xset r rate 190 40
 
 # set capslock to escape.
-xmodmap -e "remove lock = Caps_Lock"
-xmodmap -e "keysym Caps_Lock = Escape"
+xmodmap -e "remove lock = Caps_Lock" &
+xmodmap -e "keysym Caps_Lock = Escape" &
 xbindkeys &
 
 # screensaver
-xscreensaver  -no-splash &
+#xscreensaver  -no-splash &
 
 # start mpd, and make sure it's not blaring music
 (mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 
 # rxvt-unicode daemon
-urxvtd -q -f -o&
+urxvtd -q -f -o &
 
 # clipboard manager
 #parcellite -n &
-xcmenu --daemon &
+xcmenu -dpsc &
+clipit &
 
 dropboxd &
 systemd --user &
