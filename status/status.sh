@@ -137,7 +137,8 @@ function music {  ## Print currently playing artist
 function volume {
     vol_mode=`amixer|head -n6|tail -n1|awk '{print $6}' | tr -d '[]'`
     if [ "$vol_mode" == "off" ]; then
-        vol="^fg(grey30)^i($ICONS/spkr_02.xbm)^fg()"
+        vol="`amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]'`"
+        vol="^i($ICONS/spkr_02.xbm) M $vol"
     else
         vol="`amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]'`"
         vol="^i($ICONS/spkr_01.xbm) $vol"
