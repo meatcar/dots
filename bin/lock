@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Copyright (c) 2013 Artem Shinkarov <artyom.shinkaroff@gmail.com>
 #
@@ -14,13 +14,6 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-file1=$(mktemp --tmpdir lock-wrapper-XXXXXXXXXX.png)
+killall slimlock
 
-if pgrep slimlock; then
-    exit 0
-fi
-
-scrot -d0 "$file1"
-convert "$file1" -blur 0x4 "/tmp/lockscreen_bg"
-rm -f "$file1"
 slimlock
