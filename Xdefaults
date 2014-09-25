@@ -111,12 +111,8 @@ URxvt.color15: #f8f8ff
 !URxvt.color7: #909090
 !URxvt.color15: #f8f8f2
 ! Xft settings ---------------------------------------------------------------
+
 !Xft.dpi: 215
-Xft.dpi: 96
-Xft.antialias: true
-Xft.rgba: rgb
-Xft.hinting: true
-Xft.hintstyle:  hintslight
 
 ! rxvt-unicode ---------------------------------------------------------------
 urxvt*scrollTtyKeypress: true
