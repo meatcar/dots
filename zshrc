@@ -8,10 +8,10 @@ unsetopt beep
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/meatcar/.zshrc'
 
-source /usr/bin/aws_zsh_completer.sh
-
 autoload -Uz compinit
 compinit
+
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 #####################################################
 # Antigen Bundles
@@ -69,12 +69,14 @@ bindkey "\e[F" end-of-line
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
-export PATH="/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin"
+export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
 export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
 # fix svn errors
 #source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go:$GOPATH"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export JAVA_FONTS=/usr/share/fonts/TTF
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
 ####################################################
 # Set up colorings
 #
