@@ -1,0 +1,2 @@
+#!/bin/sh
+mvn package exec:exec -Dexec.executable=java -Dexec.args="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=9000 -Xdebug -jar target/medsavant-client-1.3-SNAPSHOT.jar"
