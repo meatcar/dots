@@ -297,13 +297,6 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_0 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_0 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 settings = {
@@ -328,7 +321,7 @@ settings = {
   };
 };
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS"; servertag = "freenode"; } );
+ignores = ( { level = "JOINS PARTS QUITS"; } );
 hilights = (
   { text = "meatcar"; nick = "yes"; word = "yes"; },
   { text = "Denys"; nick = "yes"; word = "yes"; }

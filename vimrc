@@ -10,7 +10,7 @@
 set t_Co=256            " enable 256-color support
 set title
 set nocompatible        " disregard vi compatibility:
-set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.vim/bundle/vim-plug
+set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
 set bdir=~/.vim/backup,/tmp  " keep backups in one place
 set undodir=~/.vim/undo,/tmp " keep undos in one place
@@ -90,13 +90,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'wting/gitsessions.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'Raimondi/delimitMate'
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'trapd00r/irc.vim' " syntax file for irc logs
 
 Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimfiler.vim'
+
+Plug 'freitass/todo.txt-vim'
 
 Plug 'WebAPI.vim'
 Plug 'Gist.vim', {'on': 'Gist'}
@@ -117,6 +119,10 @@ Plug 'TeX-9', {'for': ['tex', 'latex']}
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml']} " emmet for vim: http://emmet.io/
 Plug 'beyondmarc/glsl.vim', {'for': 'glsl'} " OpenGL Shading Language (GLSL) Vim syntax highlighting
 Plug 'sealemar/vtl', {'for': 'velocity'} " velocity syntax for vim
+Plug 'dln/avro-vim', {'for': 'avro-idl'}
+
+Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
+Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 
 call plug#end()
 
@@ -220,6 +226,8 @@ if has("autocmd")
     au BufNewFile,BufRead *.less set filetype=less
     au BufNewFile,BufRead *.md set filetype=markdown
     au BufNewFile,BufRead *.glsl set filetype=glsl
+    au BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
+    au BufRead,BufNewFile *.avdl setlocal filetype=avro-idl
 
      "Set up omnicompletion
     "if exists("+omnifunc")

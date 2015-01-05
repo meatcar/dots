@@ -1,5 +1,5 @@
-vim/bundle
-!vim/bundle/neobundle.vim
+vim/bundle/*
+!vim/bundle/
 vim/.netrwhist
 vim/undo
 vim/swap
@@ -22,3 +22,4 @@ irssi/*.autosave
 uzbl/local/history
 pentadactyl/info/default/command-history
 vim/.netrwhist
+vim/tmp/
