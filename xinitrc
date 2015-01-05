@@ -69,6 +69,7 @@ case `hostname` in
         xrandr --dpi 96 &
         compton --backend glx\
           --blur-background-frame --blur-kern 7x7box\
+         -c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
           -b &
 
         ;;
@@ -98,7 +99,6 @@ urxvtd -q -f -o &
 # clipboard manager
 #parcellite -n &
 xcmenu -dpsc &
-clipit &
 
 dropboxd &
 systemd --user &
@@ -170,6 +170,7 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
+        twmnd &
         dzenstatus &
         exec i3
         ;;

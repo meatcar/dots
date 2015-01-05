@@ -1,0 +1,13 @@
+#!/bin/sh
+
+instance="$HOME/dev/phenotips_instance/phenotips-standalone-1.0-SNAPSHOT"
+dev="$HOME/dev/phenotips/"
+m2home="$HOME/.m2"
+
+
+# Boqa
+# cp "$m2home/repository/sonumina/boqa/1.0-SNAPSHOT/boqa-1.0-SNAPSHOT.jar" "$instance/webapps/phenotips/WEB-INF/lib/boqa-1.0-SNAPSHOT.jar"
+
+mvn clean install
+cp -f api/target/*-SNAPSHOT.jar "$instance/webapps/phenotips/WEB-INF/lib"
+

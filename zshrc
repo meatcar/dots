@@ -73,7 +73,7 @@ export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meat
 export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
 # fix svn errors
 #source /etc/profile.d/go.sh
-export GOPATH="$HOME/dev/go:$GOPATH"
+export GOPATH="$HOME/dev/go"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export JAVA_FONTS=/usr/share/fonts/TTF
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
@@ -89,12 +89,14 @@ export GREP_COLOR="1;33"
 #
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias pacman="sudo pacman"
+alias pacman="sudo pacmatic"
 alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
 alias mix="alsamixer"
 alias tree="tree -AF"
+
+alias t="todo.sh"
 
 # cd 
 alias cd..="cd .."
