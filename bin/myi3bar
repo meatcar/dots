@@ -244,15 +244,24 @@ class i3wsbar(object):
         for bar in self.bars:
             self.bars[bar].terminate()
 
-
-if __name__ == '__main__':
+def main():
     args = sys.argv[1:]
     bar = i3wsbar(bar_args=args)
+    restart = False
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
         print('')  # force new line
+    except:
+        restart = True
     finally:
         bar.quit()
+
+    if restart:
+        main()
+
+
+if __name__ == '__main__':
+    main()
 
