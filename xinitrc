@@ -39,7 +39,12 @@ case `hostname` in
         fi
         ;;
     thumbnail)
+        xrandr --dpi 120 &
         VBoxClient-all &
+        compton --backend glx\
+          --blur-background-frame --blur-kern 7x7box\
+          -b &
+
         ;;
     aether.denys.me)
         VBoxClient-all &
@@ -170,9 +175,9 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
-        twmnd &
-        dzenstatus &
-        exec i3
+	twmnd &
+        (sleep 2 && dzenstatus &) &
+        exec i3 -V > ~/.i3/log 2>&1
         ;;
 esac
 
