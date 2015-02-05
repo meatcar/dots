@@ -14,12 +14,14 @@ case $1 in
     gnome-session)
         gnome-session
         ;;
+    budgie|budgie-session)
+        budgie-session
+        ;;
     *)
         ;;
 esac
 
-
-export PATH="$PATH:/home/meatcar/bin"
+source ~/.xsessionrc
 
 #######################
 # host-dependent setup
@@ -82,7 +84,8 @@ esac
 
 # set the cursor
 xsetroot -cursor_name left_ptr &
-xrdb -merge ~/.Xdefaults &
+
+xdefaults &
 
 # set keyboard repeat rate
 #xset r rate 190 40
@@ -96,7 +99,7 @@ xbindkeys &
 #xscreensaver  -no-splash &
 
 # start mpd, and make sure it's not blaring music
-(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
+#(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
 
 # rxvt-unicode daemon
 urxvtd -q -f -o &
@@ -106,8 +109,7 @@ urxvtd -q -f -o &
 xcmenu -dpsc &
 
 dropboxd &
-systemd --user &
-# wallpaper
+## wallpaper
 eval $(cat ~/.fehbg) &
 
 xautolock  -time 10 -locker 'lock' &
@@ -142,27 +144,29 @@ case $1 in
 
         #dwm-status &
         dzenstatus &
-        twmnd &
+        dunst &
         startdwm
         ;;
     scrollwm)
         xcompmgr -c -C &
         wmname LG3D
-        twmnd &
+        dunst &
         exec scrollwm
         ;;
     subtle)
-        twmnd &
+        dunst &
         exec subtle
         ;;
     wmii)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-        twmnd &
+        dunst &
 
         exec wmii
         ;;
     gnome-session|gnome)
+        ;;
+    budgie|budgie-session)
         ;;
     bspwm)
         sxhkd &
@@ -175,8 +179,8 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
-	twmnd &
-        (sleep 2 && dzenstatus &) &
+        dunst &
+        (sleep 3 && dzenstatus &) &
         exec i3 -V > ~/.i3/log 2>&1
         ;;
 esac

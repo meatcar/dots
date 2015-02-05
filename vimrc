@@ -39,7 +39,7 @@ syntax on               " enable syntax highlighting
 filetype plugin indent on   " enable filetype-sensitive plugins and indenting
 set grepprg=grep\ -nH\ $*
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest,list:longest
 set hidden              " un-saved buffers in the background
 set cc=80
 set laststatus=2        " show the status bar even when editing one file.
@@ -67,6 +67,12 @@ set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
 runtime macros/matchit.vim  " extend the % key
 
+" complete -------------------------------------------------------------
+
+set complete=.,b,u,]
+set completeopt=menu,preview
+set omnifunc=syntaxcomplete#Complete
+
 " Vundle stuff ---------------------------------------------------------
 
 call plug#begin('~/.vim/bundle')
@@ -76,6 +82,7 @@ Plug 'tpope/vim-sensible'
 " colorschemes
 Plug 'flazz/vim-colorschemes'
 
+Plug 'fmoralesc/vim-pad'
 Plug 'surround.vim'
 Plug 'repeat.vim'
 Plug 'tpope/vim-fugitive'
@@ -89,7 +96,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'wting/gitsessions.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'trapd00r/irc.vim' " syntax file for irc logs
 
@@ -100,6 +106,8 @@ Plug 'Shougo/vimfiler.vim'
 
 Plug 'freitass/todo.txt-vim'
 
+Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 'scss']}
+
 Plug 'WebAPI.vim'
 Plug 'Gist.vim', {'on': 'Gist'}
 
@@ -108,7 +116,7 @@ Plug 'ack.vim', {'on': 'Ack'}
 
 " filetype-dependent bundles
 Plug 'xml.vim', {'for': 'xml'}
-Plug 'nono/vim-handlebars', {'for': ['html', 'hbs']}
+Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars']}
 Plug 'Markdown', {'for': 'markdown'}
 Plug 'Markdown-syntax', {'for': 'markdown'}
 Plug 'groenewege/vim-less', {'for': 'less'}
@@ -124,6 +132,8 @@ Plug 'dln/avro-vim', {'for': 'avro-idl'}
 Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 
+Plug 'wting/rust.vim', {'for': 'rust'}
+
 call plug#end()
 
 " Signify settings -----------------------------------------------------------
@@ -132,19 +142,13 @@ let g:signify_vcs_list = [ 'git' ]
 
 " Airline settings -----------------------------------------------------------
 
-let g:airline_theme='understated'
+let g:airline_theme='zenburn'
 
 " Syntastic settings ---------------------------------------------------------
 
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=3
-
-" These are the tweaks I apply to YCM's config, you don't need them but they might help.
-" YCM gives you popups and splits by default that some people might not like, so these should tidy it up a bit for you.
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
 
 " latex stuff. ---------------------------------------------------------
 "
@@ -159,14 +163,16 @@ let g:tex_nine_config = {
 \}
 
 " colorscheme -----------------------------------------------------------
-"
+let g:base16_shell_path=$COLORSCHEME_DIR."/shell/"
 let g:zenesque_colors=2
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
-if has ("gui_running")
-  colorscheme github "define syntax color scheme
-else
-  colorscheme github
-endif
+
+"let &background = $COLORSCHEME_LIGHT
+"set background?
+
+"colorscheme meatcar
+
+colorscheme github
 
 " gist settings --------------------------------------------------------
 
@@ -212,30 +218,29 @@ endif
 " autocmd rules --------------------------------------------------------
 
 if has("autocmd")
-    au BufRead,BufNewFile PKGBUILD set ft=sh
-    " always jump to the last cursor position
-    autocmd BufReadPost *
-                \ if line("'\"")>0 && line("'\"")<=line("$") |
-                \   exe "normal g`\"" |
-                \ endif
+  " define a group `vimrc` and initialize
+  augroup vimrc
+    autocmd!
+  augroup END
 
-    "remove trailing whitespace upon save
-    autocmd FileType javascript,python,tex,java autocmd BufWritePre * :%s/\s\+$//e
+  autocmd vimrc BufRead,BufNewFile PKGBUILD set ft=sh
+  " always jump to the last cursor position
+  autocmd vimrc BufReadPost *
+        \ if line("'\"")>0 && line("'\"")<=line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 
-    " web-coding stuff
-    au BufNewFile,BufRead *.less set filetype=less
-    au BufNewFile,BufRead *.md set filetype=markdown
-    au BufNewFile,BufRead *.glsl set filetype=glsl
-    au BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
-    au BufRead,BufNewFile *.avdl setlocal filetype=avro-idl
+  "remove trailing whitespace upon save
+  autocmd vimrc FileType javascript,python,tex,java autocmd BufWritePre * :%s/\s\+$//e
 
-     "Set up omnicompletion
-    "if exists("+omnifunc")
-        "autocmd Filetype *
-                    "\ if &omnifunc == "" |
-                    "\   setlocal omnifunc=syntaxcomplete#Complete |
-                    "\ endif
-    "endif
+  " Set filetypes based on extensions
+  autocmd vimrc BufNewFile,BufRead *.less set filetype=less
+  autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
+  autocmd vimrc BufNewFile,BufRead *.hbs set filetype=handlebars
+  autocmd vimrc BufNewFile,BufRead *.glsl set filetype=glsl
+  autocmd vimrc BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
+  autocmd vimrc BufNewFile,BufRead *.rs set filetype=rust
+  autocmd vimrc BufNewFile,BufRead *.avdl set filetype=avro-idl
 endif
 
 " Unite ------------------------------------------------------------
@@ -264,28 +269,28 @@ let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
 let g:unite_source_grep_recursive_opt = ''
-nno <leader>a :<C-u>Unite grep -default-action=above<CR>
-nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
-nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert -no-split -toggle<CR>
-"nno <leader><leader> :<C-u>UniteWithCurrentDir buffer file -buffer-name=united -start-insert<CR>
-nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
-nno <leader>u :<C-u>Unite<space>
-nno <C-p> :<C-u>:Unite history/yank -buffer-name=yanks<CR>
-nno // :<C-u>:Unite line -buffer-name=lines -start-insert -direction=botright -winheight=10<CR>
 function! s:unite_settings()
     map <buffer> <leader> <Esc><leader>
 endfunction
 autocmd UniteAutoCmd FileType unite call s:unite_settings()
 
-" wimviki replacement ----------------------------------------
-map <leader>W :<C-u>Unite file file/new -buffer-name=notes -start-insert
-      \ -toggle -default-action=split -profile-name=files
-      \ -input=<CR>
-
-" ctrl-p replacement --------------------------------------------
-
+" ack/grep
+nno <leader>a :<C-u>Unite grep -default-action=above<CR>
+nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
+" ctrl-p
 nno <leader>t :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
 nno <leader>cd :<C-u>Unite directory_mru directory -start-insert -buffer-name=cd -default-action=cd<CR>
+" search in file
+nno // :<C-u>:Unite line -buffer-name=lines -start-insert -direction=botright -winheight=10<CR>
+" yanks
+nno <C-p> :<C-u>:Unite history/yank -buffer-name=yanks<CR>
+" buffers
+nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert -no-split -toggle<CR>
+" processes
+nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
+" vimviki
+map <leader>w :<C-u>Unite file_rec/async file/new -buffer-name=notes -start-insert
+      \ -path=/home/meatcar/Dropbox/notes/ -toggle -default-action=split -profile-name=files <CR>
 
 " VimFiler ------------------------------------------------------------
 let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
@@ -293,19 +298,17 @@ let g:vimfiler_safe_mode_by_default = 0
 " disable netrw.vim
 let g:loaded_netrwPlugin = 1
 let g:vimfiler_as_default_expolorer = 1
-nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status<CR>
+nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status -toggle<CR>
 
 function! s:vimfiler_settings()
   nmap <buffer> ` <Plug>(vimfiler_exit)
 endfunction
 
 " Go into directory or file under the cursor.
-autocmd FileType vimfiler nmap  <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
-    \ "\<Plug>(vimfiler_execute)", 
-    \ "\<Plug>(vimfiler_edit_file)")
-autocmd FileType vimfiler nmap  <silent><buffer><expr> l vimfiler#smart_cursor_map(
-    \ "\<Plug>(vimfiler_execute)", 
-    \ "\<Plug>(vimfiler_edit_file)")
+"autocmd FileType vimfiler nmap  <buffer><expr> <CR> vimfiler#smart_cursor_map(
+    "\ "\<Plug>(vimfiler_expand_or_edit)") 
+"autocmd FileType vimfiler nmap  <buffer><expr> l vimfiler#smart_cursor_map(
+    "\ "\<Plug>(vimfiler_expand_or_edit)") 
 
 autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
 

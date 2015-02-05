@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Colors Light
+    Author:     mrmrs (http://clrs.cc)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-colors-light.CodeMirror {background: #ffffff; color: #333333;}
+.cm-s-base16-colors-light div.CodeMirror-selected {background: #dddddd !important;}
+.cm-s-base16-colors-light .CodeMirror-gutters {background: #ffffff; border-right: 0px;}
+.cm-s-base16-colors-light .CodeMirror-linenumber {color: #999999;}
+.cm-s-base16-colors-light .CodeMirror-cursor {border-left: 1px solid #777777 !important;}
+
+.cm-s-base16-colors-light span.cm-comment {color: #85144b;}
+.cm-s-base16-colors-light span.cm-atom {color: #b10dc9;}
+.cm-s-base16-colors-light span.cm-number {color: #b10dc9;}
+
+.cm-s-base16-colors-light span.cm-property, .cm-s-base16-colors-light span.cm-attribute {color: #2ecc40;}
+.cm-s-base16-colors-light span.cm-keyword {color: #ff4136;}
+.cm-s-base16-colors-light span.cm-string {color: #ffdc00;}
+
+.cm-s-base16-colors-light span.cm-variable {color: #2ecc40;}
+.cm-s-base16-colors-light span.cm-variable-2 {color: #0074d9;}
+.cm-s-base16-colors-light span.cm-def {color: #ff851b;}
+.cm-s-base16-colors-light span.cm-error {background: #ff4136; color: #777777;}
+.cm-s-base16-colors-light span.cm-bracket {color: #333333;}
+.cm-s-base16-colors-light span.cm-tag {color: #ff4136;}
+.cm-s-base16-colors-light span.cm-link {color: #b10dc9;}
+
+.cm-s-base16-colors-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

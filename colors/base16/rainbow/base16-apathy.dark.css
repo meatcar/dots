@@ -1,0 +1,49 @@
+/**
+ * Base16 Apathy Dark
+ *
+ * @author Jannik Siebert (https://github.com/janniks)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #031A16;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #D2E7E4;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #2B685E;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #3E9688; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #3E7996; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #3E4C96; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #883E96; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #96883E; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #4C963E; /* purple */
+}

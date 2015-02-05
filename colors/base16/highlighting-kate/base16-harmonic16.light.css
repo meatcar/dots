@@ -1,0 +1,23 @@
+/* Base16 harmonic16
+Scheme: Jannik Siebert (https://github.com/janniks) */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #f7f9fb; color: #405c79 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #e5ebf1; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #f7f9fb; }
+pre.sourceCode { background-color: #f7f9fb; line-height: 125% }
+td.nums pre { background-color: #e5ebf1; line-height: 125% }
+code.sourceCode span.kw { color: #8b56bf; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #bf568b} /* Keyword.Type */
+code.sourceCode span.dv { color: #bfbf56 } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #bfbf56 } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #bfbf56 } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #56bf8b} /* Literal.String.Char */
+code.sourceCode span.st { color: #56bf8b } /* Literal.String */
+code.sourceCode span.co { color: #627e99 } /* Comment */
+code.sourceCode span.ot { color: #bf5656 } /* Comment.Preproc */
+code.sourceCode span.al { color: #bf568b } /* Generic.Error */
+code.sourceCode span.fu { color: #8bbf56 } /* Name.Function */
+code.sourceCode span.re { color: #568bbf}
+code.sourceCode span.er { color: #bf8b56; border: 1px solid #bf568b } /* Error */

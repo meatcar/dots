@@ -1,0 +1,49 @@
+/**
+ * Base16 London Tube Dark
+ *
+ * @author Jan T. Sott
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #231f20;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #737171;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #ee2e24; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #f386a1; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #ffd204; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #00853e; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #009ddc; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #98005d; /* purple */
+}

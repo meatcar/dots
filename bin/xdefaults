@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/dots/colors/colors.sh
+xrdb -merge "$COLORSCHEME_DIR/xresources/$COLORSCHEME"'.xresources' &
+xrdb -merge ~/.Xdefaults &

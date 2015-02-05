@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 harmonic16 Light
+    Author:     Jannik Siebert (https://github.com/janniks)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-harmonic16-light.CodeMirror {background: #f7f9fb; color: #223b54;}
+.cm-s-base16-harmonic16-light div.CodeMirror-selected {background: #e5ebf1 !important;}
+.cm-s-base16-harmonic16-light .CodeMirror-gutters {background: #f7f9fb; border-right: 0px;}
+.cm-s-base16-harmonic16-light .CodeMirror-linenumber {color: #aabcce;}
+.cm-s-base16-harmonic16-light .CodeMirror-cursor {border-left: 1px solid #627e99 !important;}
+
+.cm-s-base16-harmonic16-light span.cm-comment {color: #bf5656;}
+.cm-s-base16-harmonic16-light span.cm-atom {color: #bf568b;}
+.cm-s-base16-harmonic16-light span.cm-number {color: #bf568b;}
+
+.cm-s-base16-harmonic16-light span.cm-property, .cm-s-base16-harmonic16-light span.cm-attribute {color: #56bf8b;}
+.cm-s-base16-harmonic16-light span.cm-keyword {color: #bf8b56;}
+.cm-s-base16-harmonic16-light span.cm-string {color: #8bbf56;}
+
+.cm-s-base16-harmonic16-light span.cm-variable {color: #56bf8b;}
+.cm-s-base16-harmonic16-light span.cm-variable-2 {color: #8b56bf;}
+.cm-s-base16-harmonic16-light span.cm-def {color: #bfbf56;}
+.cm-s-base16-harmonic16-light span.cm-error {background: #bf8b56; color: #627e99;}
+.cm-s-base16-harmonic16-light span.cm-bracket {color: #223b54;}
+.cm-s-base16-harmonic16-light span.cm-tag {color: #bf8b56;}
+.cm-s-base16-harmonic16-light span.cm-link {color: #bf568b;}
+
+.cm-s-base16-harmonic16-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

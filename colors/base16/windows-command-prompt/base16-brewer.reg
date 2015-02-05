@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+; Base16 Brewer (https://github.com/chriskempson/base16)
+; Scheme: Timothée Poisot (http://github.com/tpoisot)
+
+[HKEY_CURRENT_USER\Console]
+"ColorTable00"=dword:000e0d0c
+"ColorTable01"=dword:00bd8231
+"ColorTable02"=dword:0054a331
+"ColorTable03"=dword:00d3b180
+"ColorTable04"=dword:000d55e6
+"ColorTable05"=dword:00b16b75
+"ColorTable06"=dword:0060a0dc
+"ColorTable07"=dword:00979695
+"ColorTable08"=dword:00757473
+"ColorTable09"=dword:00bd8231
+"ColorTable10"=dword:0054a331
+"ColorTable11"=dword:00d3b180
+"ColorTable12"=dword:001c1ae3
+"ColorTable13"=dword:002859b1
+"ColorTable14"=dword:0060a0dc
+"ColorTable15"=dword:00fefdfc
