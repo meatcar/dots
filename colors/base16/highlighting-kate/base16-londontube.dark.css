@@ -1,0 +1,23 @@
+/* Base16 London Tube
+Scheme: Jan T. Sott */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #231f20; color: #d9d8d8 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #1c3f95; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #231f20; }
+pre.sourceCode { background-color: #231f20; line-height: 125% }
+td.nums pre { background-color: #1c3f95; line-height: 125% }
+code.sourceCode span.kw { color: #009ddc; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #98005d} /* Keyword.Type */
+code.sourceCode span.dv { color: #f386a1 } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #f386a1 } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #f386a1 } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #00853e} /* Literal.String.Char */
+code.sourceCode span.st { color: #00853e } /* Literal.String */
+code.sourceCode span.co { color: #737171 } /* Comment */
+code.sourceCode span.ot { color: #b06110 } /* Comment.Preproc */
+code.sourceCode span.al { color: #98005d } /* Generic.Error */
+code.sourceCode span.fu { color: #ffd204 } /* Name.Function */
+code.sourceCode span.re { color: #85cebc}
+code.sourceCode span.er { color: #ee2e24; border: 1px solid #98005d } /* Error */

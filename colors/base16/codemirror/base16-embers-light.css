@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Embers Light
+    Author:     Jannik Siebert (https://github.com/janniks)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-embers-light.CodeMirror {background: #DBD6D1; color: #2C2620;}
+.cm-s-base16-embers-light div.CodeMirror-selected {background: #BEB6AE !important;}
+.cm-s-base16-embers-light .CodeMirror-gutters {background: #DBD6D1; border-right: 0px;}
+.cm-s-base16-embers-light .CodeMirror-linenumber {color: #8A8075;}
+.cm-s-base16-embers-light .CodeMirror-cursor {border-left: 1px solid #5A5047 !important;}
+
+.cm-s-base16-embers-light span.cm-comment {color: #825757;}
+.cm-s-base16-embers-light span.cm-atom {color: #82576D;}
+.cm-s-base16-embers-light span.cm-number {color: #82576D;}
+
+.cm-s-base16-embers-light span.cm-property, .cm-s-base16-embers-light span.cm-attribute {color: #57826D;}
+.cm-s-base16-embers-light span.cm-keyword {color: #826D57;}
+.cm-s-base16-embers-light span.cm-string {color: #6D8257;}
+
+.cm-s-base16-embers-light span.cm-variable {color: #57826D;}
+.cm-s-base16-embers-light span.cm-variable-2 {color: #6D5782;}
+.cm-s-base16-embers-light span.cm-def {color: #828257;}
+.cm-s-base16-embers-light span.cm-error {background: #826D57; color: #5A5047;}
+.cm-s-base16-embers-light span.cm-bracket {color: #2C2620;}
+.cm-s-base16-embers-light span.cm-tag {color: #826D57;}
+.cm-s-base16-embers-light span.cm-link {color: #82576D;}
+
+.cm-s-base16-embers-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

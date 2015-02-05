@@ -1,0 +1,23 @@
+/* Base16 Twilight
+Scheme: David Hart (http://hart-dev.com) */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #1e1e1e; color: #a7a7a7 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #323537; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #1e1e1e; }
+pre.sourceCode { background-color: #1e1e1e; line-height: 125% }
+td.nums pre { background-color: #323537; line-height: 125% }
+code.sourceCode span.kw { color: #7587a6; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #9b859d} /* Keyword.Type */
+code.sourceCode span.dv { color: #cda869 } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #cda869 } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #cda869 } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #8f9d6a} /* Literal.String.Char */
+code.sourceCode span.st { color: #8f9d6a } /* Literal.String */
+code.sourceCode span.co { color: #5f5a60 } /* Comment */
+code.sourceCode span.ot { color: #9b703f } /* Comment.Preproc */
+code.sourceCode span.al { color: #9b859d } /* Generic.Error */
+code.sourceCode span.fu { color: #f9ee98 } /* Name.Function */
+code.sourceCode span.re { color: #afc4db}
+code.sourceCode span.er { color: #cf6a4c; border: 1px solid #9b859d } /* Error */

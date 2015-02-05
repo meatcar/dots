@@ -13,6 +13,9 @@ compinit
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
+source ~/dots/colors/colors.sh
+source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh
+
 #####################################################
 # Antigen Bundles
 #####################################################
@@ -70,7 +73,7 @@ export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
 export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
-export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/"
+export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/:/usr/local/lib:$LD_LIBRARY_PATH"
 # fix svn errors
 #source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go"

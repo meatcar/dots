@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Brewer Light
+    Author:     Timothée Poisot (http://github.com/tpoisot)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-brewer-light.CodeMirror {background: #fcfdfe; color: #2e2f30;}
+.cm-s-base16-brewer-light div.CodeMirror-selected {background: #dadbdc !important;}
+.cm-s-base16-brewer-light .CodeMirror-gutters {background: #fcfdfe; border-right: 0px;}
+.cm-s-base16-brewer-light .CodeMirror-linenumber {color: #959697;}
+.cm-s-base16-brewer-light .CodeMirror-cursor {border-left: 1px solid #737475 !important;}
+
+.cm-s-base16-brewer-light span.cm-comment {color: #b15928;}
+.cm-s-base16-brewer-light span.cm-atom {color: #756bb1;}
+.cm-s-base16-brewer-light span.cm-number {color: #756bb1;}
+
+.cm-s-base16-brewer-light span.cm-property, .cm-s-base16-brewer-light span.cm-attribute {color: #31a354;}
+.cm-s-base16-brewer-light span.cm-keyword {color: #e31a1c;}
+.cm-s-base16-brewer-light span.cm-string {color: #dca060;}
+
+.cm-s-base16-brewer-light span.cm-variable {color: #31a354;}
+.cm-s-base16-brewer-light span.cm-variable-2 {color: #3182bd;}
+.cm-s-base16-brewer-light span.cm-def {color: #e6550d;}
+.cm-s-base16-brewer-light span.cm-error {background: #e31a1c; color: #737475;}
+.cm-s-base16-brewer-light span.cm-bracket {color: #2e2f30;}
+.cm-s-base16-brewer-light span.cm-tag {color: #e31a1c;}
+.cm-s-base16-brewer-light span.cm-link {color: #756bb1;}
+
+.cm-s-base16-brewer-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
