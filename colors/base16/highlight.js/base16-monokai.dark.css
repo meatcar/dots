@@ -1,0 +1,97 @@
+/*
+
+    Name:       Base16 Monokai Dark
+    Author:     Wimer Hazenberg (http://www.monokai.nl)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+/* Monokai Comment */
+.hljs-comment,
+.hljs-title {
+  color: #a59f85;
+}
+
+/* Monokai Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #f92672;
+}
+
+/* Monokai Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #fd971f;
+}
+
+/* Monokai Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: #f4bf75;
+}
+
+/* Monokai Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #a6e22e;
+}
+
+/* Monokai Aqua */
+.css .hljs-hexcolor {
+  color: #a1efe4;
+}
+
+/* Monokai Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #66d9ef;
+}
+
+/* Monokai Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #ae81ff;
+}
+
+.hljs {
+  display: block;
+  background: #272822;
+  color: #f8f8f2;
+  padding: 0.5em;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

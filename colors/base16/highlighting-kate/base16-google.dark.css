@@ -1,0 +1,23 @@
+/* Base16 Google
+Scheme: Seth Wright (http://sethawright.com) */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #1d1f21; color: #c5c8c6 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #282a2e; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #1d1f21; }
+pre.sourceCode { background-color: #1d1f21; line-height: 125% }
+td.nums pre { background-color: #282a2e; line-height: 125% }
+code.sourceCode span.kw { color: #3971ED; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #A36AC7} /* Keyword.Type */
+code.sourceCode span.dv { color: #F96A38 } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #F96A38 } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #F96A38 } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #198844} /* Literal.String.Char */
+code.sourceCode span.st { color: #198844 } /* Literal.String */
+code.sourceCode span.co { color: #969896 } /* Comment */
+code.sourceCode span.ot { color: #3971ED } /* Comment.Preproc */
+code.sourceCode span.al { color: #A36AC7 } /* Generic.Error */
+code.sourceCode span.fu { color: #FBA922 } /* Name.Function */
+code.sourceCode span.re { color: #3971ED}
+code.sourceCode span.er { color: #CC342B; border: 1px solid #A36AC7 } /* Error */

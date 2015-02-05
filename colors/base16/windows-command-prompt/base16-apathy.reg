@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+; Base16 Apathy (https://github.com/chriskempson/base16)
+; Scheme: Jannik Siebert (https://github.com/janniks)
+
+[HKEY_CURRENT_USER\Console]
+"ColorTable00"=dword:00161A03
+"ColorTable01"=dword:003E8896
+"ColorTable02"=dword:00963E88
+"ColorTable03"=dword:004C3E96
+"ColorTable04"=dword:0096793E
+"ColorTable05"=dword:003E964C
+"ColorTable06"=dword:00964C3E
+"ColorTable07"=dword:00929C5F
+"ColorTable08"=dword:005E682B
+"ColorTable09"=dword:003E8896
+"ColorTable10"=dword:00963E88
+"ColorTable11"=dword:004C3E96
+"ColorTable12"=dword:0088963E
+"ColorTable13"=dword:005B963E
+"ColorTable14"=dword:00964C3E
+"ColorTable15"=dword:00E4E7D2

@@ -1,0 +1,97 @@
+/*
+
+    Name:       Base16 Twilight Light
+    Author:     David Hart (http://hart-dev.com)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+/* Twilight Comment */
+.hljs-comment,
+.hljs-title {
+  color: #5f5a60;
+}
+
+/* Twilight Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #cf6a4c;
+}
+
+/* Twilight Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #cda869;
+}
+
+/* Twilight Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: #f9ee98;
+}
+
+/* Twilight Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #8f9d6a;
+}
+
+/* Twilight Aqua */
+.css .hljs-hexcolor {
+  color: #afc4db;
+}
+
+/* Twilight Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #7587a6;
+}
+
+/* Twilight Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #9b859d;
+}
+
+.hljs {
+  display: block;
+  background: #ffffff;
+  color: #464b50;
+  padding: 0.5em;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
