@@ -14,8 +14,10 @@ DOTFILE="$DOTS/$2"
 mv -f $1 $DOTFILE
 ln -sf $DOTFILE $1
 cd $DOTS
-git add $DOTFILE
-echo "ln -rs \"$2\" ~/\"$1\"" >> "$DOTS/reinstate.sh"
+
+echo "ln -rs \"$2\" ~/\"$1\"" >> reinstate.sh
+
+git add $DOTFILE reinstate.sh
 
 git commit -m "added $1 as $DOTS/$2"
 

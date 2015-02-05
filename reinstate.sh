@@ -35,3 +35,4 @@ ln -rs "gitconfig" ~/".gitconfig"
 ln -rs "i3" ~/".i3"
 ln -rs "login" ~/".login"
 
+ln -rs "bspwm" ~/".config/bspwm"
