@@ -6,6 +6,11 @@
 ##############################################################################
 DOTS="$PWD"
 
+for i in arch_packages; do
+   sudo pacman -Syy
+   echo "$i" | awk '{ print $1 }' | sudo xargs pacman -S
+done
+
 ln -rs "bashrc" ~/".bashrc"
 ln -rs "bin" ~/"bin"
 ln -rs "dircolors" ~/".dircolors"
@@ -28,10 +33,5 @@ ln -rs "irssi" ~/".irssi"
 ln -rs "ackrc" ~/".ackrc"
 ln -rs "gitconfig" ~/".gitconfig"
 ln -rs "i3" ~/".i3"
+ln -rs "login" ~/".login"
 
-# TODO: link slim themes + rc
-
-for i in arch_packages; do
-   sudo pacman -Syy
-   echo "$i" | awk '{ print $1 }' | sudo xargs pacman -S
-done

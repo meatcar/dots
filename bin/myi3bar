@@ -244,22 +244,32 @@ class i3wsbar(object):
         for bar in self.bars:
             self.bars[bar].terminate()
 
+    def poll(self):
+        """
+        Check the status of all the bars. If one crashed, throw an exception
+        """
+        for bar in self.bars:
+            if self.bars[bar].poll() != None:
+                raise Error()
+
 def main():
     args = sys.argv[1:]
     bar = i3wsbar(bar_args=args)
-    restart = False
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print('')  # force new line
-    except:
-        restart = True
-    finally:
-        bar.quit()
 
-    if restart:
-        main()
+    restart = True
+    while restart:
+        restart = False
+        try:
+            while True:
+                bar.poll()
+                time.sleep(1)
+
+        except KeyboardInterrupt:
+            print('')  # force new line
+        except:
+            restart = True
+        finally:
+            bar.quit()
 
 
 if __name__ == '__main__':
