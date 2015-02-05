@@ -6,10 +6,11 @@ case $# in
 
         geometry="$RES_X"x"$RES_Y"
 
+        ln -sf "$1" "$2"
         convert "$1" \
             -resize "$geometry"^ -gravity Center -crop "$geometry"+0+0 +repage \
             -grayscale Rec709Luma \
-            "$2"
+            "$2"_lock
             #-modulate 100,30 \
             #-blue-shift 0.1 \
         ;;
