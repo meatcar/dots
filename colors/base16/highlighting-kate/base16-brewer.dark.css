@@ -1,0 +1,23 @@
+/* Base16 Brewer
+Scheme: Timothée Poisot (http://github.com/tpoisot) */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #0c0d0e; color: #b7b8b9 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #2e2f30; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #0c0d0e; }
+pre.sourceCode { background-color: #0c0d0e; line-height: 125% }
+td.nums pre { background-color: #2e2f30; line-height: 125% }
+code.sourceCode span.kw { color: #3182bd; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #756bb1} /* Keyword.Type */
+code.sourceCode span.dv { color: #e6550d } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #e6550d } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #e6550d } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #31a354} /* Literal.String.Char */
+code.sourceCode span.st { color: #31a354 } /* Literal.String */
+code.sourceCode span.co { color: #737475 } /* Comment */
+code.sourceCode span.ot { color: #b15928 } /* Comment.Preproc */
+code.sourceCode span.al { color: #756bb1 } /* Generic.Error */
+code.sourceCode span.fu { color: #dca060 } /* Name.Function */
+code.sourceCode span.re { color: #80b1d3}
+code.sourceCode span.er { color: #e31a1c; border: 1px solid #756bb1 } /* Error */

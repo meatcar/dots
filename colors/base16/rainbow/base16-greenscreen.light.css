@@ -1,0 +1,49 @@
+/**
+ * Base16 Green Screen Light
+ *
+ * @author Chris Kempson (http://chriskempson.com)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #00ff00;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #001100;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #009900;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #007700; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #009900; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #007700; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #00bb00; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #009900; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #00bb00; /* purple */
+}

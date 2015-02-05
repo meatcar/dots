@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+; Base16 Twilight (https://github.com/chriskempson/base16)
+; Scheme: David Hart (http://hart-dev.com)
+
+[HKEY_CURRENT_USER\Console]
+"ColorTable00"=dword:001e1e1e
+"ColorTable01"=dword:00a68775
+"ColorTable02"=dword:006a9d8f
+"ColorTable03"=dword:00dbc4af
+"ColorTable04"=dword:0069a8cd
+"ColorTable05"=dword:009d859b
+"ColorTable06"=dword:0098eef9
+"ColorTable07"=dword:00848183
+"ColorTable08"=dword:00605a5f
+"ColorTable09"=dword:00a68775
+"ColorTable10"=dword:006a9d8f
+"ColorTable11"=dword:00dbc4af
+"ColorTable12"=dword:004c6acf
+"ColorTable13"=dword:003f709b
+"ColorTable14"=dword:0098eef9
+"ColorTable15"=dword:00ffffff

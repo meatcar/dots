@@ -1,0 +1,49 @@
+/**
+ * Base16 Embers Dark
+ *
+ * @author Jannik Siebert (https://github.com/janniks)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #16130F;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #DBD6D1;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #5A5047;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #826D57; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #828257; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #6D8257; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #57826D; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #6D5782; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #82576D; /* purple */
+}

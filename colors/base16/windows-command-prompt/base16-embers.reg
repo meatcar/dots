@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+; Base16 Embers (https://github.com/chriskempson/base16)
+; Scheme: Jannik Siebert (https://github.com/janniks)
+
+[HKEY_CURRENT_USER\Console]
+"ColorTable00"=dword:000F1316
+"ColorTable01"=dword:0082576D
+"ColorTable02"=dword:006D8257
+"ColorTable03"=dword:00826D57
+"ColorTable04"=dword:00578282
+"ColorTable05"=dword:006D5782
+"ColorTable06"=dword:0057826D
+"ColorTable07"=dword:0075808A
+"ColorTable08"=dword:0047505A
+"ColorTable09"=dword:0082576D
+"ColorTable10"=dword:006D8257
+"ColorTable11"=dword:00826D57
+"ColorTable12"=dword:00576D82
+"ColorTable13"=dword:00575782
+"ColorTable14"=dword:0057826D
+"ColorTable15"=dword:00D1D6DB
