@@ -8,7 +8,7 @@ case $# in
 
         ln -sf "$1" "$2"
         convert "$1" \
-            -resize "$geometry"^ -gravity Center -crop "$geometry"+0+0 +repage \
+            -resize "$geometry" -gravity Center -crop "$geometry"+0+0 +repage \
             -grayscale Rec709Luma \
             "$2"_lock
             #-modulate 100,30 \
