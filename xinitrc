@@ -170,7 +170,7 @@ case $1 in
         ;;
     bspwm)
         sxhkd &
-        exec bspwm
+        exec bspwm-session
         ;;
     herbstluftwm)
         exec herbstluftwm

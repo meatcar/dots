@@ -3,3 +3,5 @@ if [ -d "$HOME/bin" ] ; then
 fi
 source ~/dots/colors/colors.sh
 source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh
+
+export PANEL_FIFO="/tmp/panel-fifo"
