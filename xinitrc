@@ -76,8 +76,8 @@ case `hostname` in
         xrandr --dpi 96 &
         compton --backend glx\
           --blur-background-frame --blur-kern 7x7box\
-         -c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
           -b &
+          #-c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
 
         ;;
 esac
