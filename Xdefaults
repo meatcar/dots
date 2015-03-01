@@ -17,7 +17,9 @@ Xcursor.theme: OpenZone_Black
 ! rxvt-unicode ---------------------------------------------------------------
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
+urxvt*secondaryScreen:  true
 urxvt*secondaryScroll:  true
+urxvt*secondaryWheel:  true
 
 URxvt.buffered:         true
 

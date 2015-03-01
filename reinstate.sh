@@ -34,5 +34,6 @@ ln -rs "ackrc" ~/".ackrc"
 ln -rs "gitconfig" ~/".gitconfig"
 ln -rs "i3" ~/".i3"
 ln -rs "login" ~/".login"
-
+ln -rs ~/.xsessionrc ~/".login"
 ln -rs "bspwm" ~/".config/bspwm"
+ln -rs "sxhkd" ~/".config/sxhkd"
