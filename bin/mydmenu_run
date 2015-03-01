@@ -1,3 +1,18 @@
 #!/bin/sh
 
-dmenu_run -p "exec:" -fn 'Inconsolata:size=15' -nb '#D7DCE7' -nf '#516DA8' -sf '#D7DCE7' -sb '#516DA8'
+read RES_X RES_Y <<<$(xdpyinfo | grep dimensions | awk '{print $2}' | awk -Fx '{print $1, $2}')
+font_size=20
+width=$(echo "${font_size} * 25" | bc)
+
+dmenu_run \
+    -p "run" \
+    -i \
+    -fn "Inconsolata:size=${font_size}" \
+    -nb '#D7DCE7' \
+    -nf '#516DA8' \
+    -sf '#D7DCE7' \
+    -sb '#516DA8' \
+    -x $(echo "${RES_X} / 2 - ${width} / 2" | bc) \
+    -y $(echo "${RES_Y} / 3" | bc) \
+    -w ${width} \
+    -l 9 -q
