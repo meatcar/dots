@@ -21,32 +21,17 @@ case $1 in
         ;;
 esac
 
-source ~/.xsessionrc
+#source ~/.xsessionrc
+genXdefaults
+
 
 #######################
 # host-dependent setup
 #######################
 case `hostname` in
-    targaryen)
-        #compton --config ~/.config/compton/compton.conf -b &
-        syndaemon -t -i 1 -d &
-        xrandr --dpi 165 &
-        udiskie &
-        start-pulseaudio-x11 &
-        synergyc hyperion&
-
-        if (xrandr | grep 'HDMI1 connected' && iwconfig wlp1s0 | grep 'UofT') > /dev/null
-        then
-          xrandr --output HDMI1 --mode 1680x1050 --right-of eDP1
-        fi
-        ;;
     thumbnail)
-        xrandr --dpi 120 &
+        xrandr --dpi 120 
         VBoxClient-all &
-        compton --backend glx\
-          --blur-background-frame --blur-kern 7x7box\
-          -b &
-
         ;;
     aether.denys.me)
         VBoxClient-all &
@@ -84,8 +69,6 @@ esac
 
 # set the cursor
 xsetroot -cursor_name left_ptr &
-
-xdefaults &
 
 # set keyboard repeat rate
 #xset r rate 190 40

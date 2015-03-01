@@ -306,9 +306,9 @@ endfunction
 
 " Go into directory or file under the cursor.
 "autocmd FileType vimfiler nmap  <buffer><expr> <CR> vimfiler#smart_cursor_map(
-    "\ "\<Plug>(vimfiler_expand_or_edit)") 
+    "\ "\<Plug>(vimfiler_expand_or_edit)")
 "autocmd FileType vimfiler nmap  <buffer><expr> l vimfiler#smart_cursor_map(
-    "\ "\<Plug>(vimfiler_expand_or_edit)") 
+    "\ "\<Plug>(vimfiler_expand_or_edit)")
 
 autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
 
