@@ -117,8 +117,7 @@ Plug 'ack.vim', {'on': 'Ack'}
 " filetype-dependent bundles
 Plug 'xml.vim', {'for': 'xml'}
 Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars']}
-Plug 'Markdown', {'for': 'markdown'}
-Plug 'Markdown-syntax', {'for': 'markdown'}
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'less.vim', {'for': 'less'}
 Plug 'skammer/vim-css-color', {'for': ['css', 'less']}
@@ -235,12 +234,14 @@ if has("autocmd")
 
   " Set filetypes based on extensions
   autocmd vimrc BufNewFile,BufRead *.less set filetype=less
-  autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
   autocmd vimrc BufNewFile,BufRead *.hbs set filetype=handlebars
   autocmd vimrc BufNewFile,BufRead *.glsl set filetype=glsl
   autocmd vimrc BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
   autocmd vimrc BufNewFile,BufRead *.rs set filetype=rust
   autocmd vimrc BufNewFile,BufRead *.avdl set filetype=avro-idl
+
+  autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
+  let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript', 'java', 'css', 'sass', 'handlebars', 'html=handlebars', 'sh', 'shell=sh']
 endif
 
 " Unite ------------------------------------------------------------
