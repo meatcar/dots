@@ -92,7 +92,7 @@ export GREP_COLOR="1;33"
 #
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias pacman="sudo pacmatic"
+alias pacman="sudo pacman"
 alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
