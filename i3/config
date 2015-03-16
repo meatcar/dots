@@ -48,12 +48,9 @@ bindsym $mod+d kill
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec mydmenu_run
+# start a clipboard manager
 bindsym $mod+c exec xcmenuctrl
 bindsym $mod+Shift+c exec xcmenuctrl -s
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left

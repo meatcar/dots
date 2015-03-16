@@ -21,7 +21,7 @@ case $1 in
         ;;
 esac
 
-#source ~/.xsessionrc
+source "$HOME/.login"
 genXdefaults
 
 
@@ -56,9 +56,9 @@ case `hostname` in
         udiskie &
         ;;
     littlefinger)
-        systemd --user &
-        numlockx on &
-        xrandr --dpi 96 &
+        systemd --user 
+        numlockx on 
+        xrandr --dpi 96 
         compton --backend glx\
           --blur-background-frame --blur-kern 7x7box\
           -b &
@@ -68,15 +68,15 @@ case `hostname` in
 esac
 
 # set the cursor
-xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr 
 
 # set keyboard repeat rate
 #xset r rate 190 40
 
 # set capslock to escape.
-xmodmap -e "remove lock = Caps_Lock" &
-xmodmap -e "keysym Caps_Lock = Escape" &
-xbindkeys &
+xmodmap -e "remove lock = Caps_Lock" 
+xmodmap -e "keysym Caps_Lock = Escape" 
+xbindkeys 
 
 # screensaver
 #xscreensaver  -no-splash &
@@ -92,13 +92,11 @@ urxvtd -q -f -o &
 xcmenu -dpsc &
 
 dropboxd &
+
 ## wallpaper
 eval $(cat ~/.fehbg) &
 
 xautolock  -time 10 -locker 'lock' &
-
-
-#unclutter -idle 6 -grab -root &
 
 #####################
 # WM-dependent setup
