@@ -88,7 +88,7 @@ xbindkeys
 urxvtd -q -f -o &
 
 # clipboard manager
-#parcellite -n &
+parcellite -n &
 xcmenu -dpsc &
 
 dropboxd &
