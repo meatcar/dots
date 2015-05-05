@@ -116,7 +116,7 @@ Plug 'ack.vim', {'on': 'Ack'}
 
 " filetype-dependent bundles
 Plug 'xml.vim', {'for': 'xml'}
-Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars']}
+Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars', 'markdown']}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'less.vim', {'for': 'less'}
