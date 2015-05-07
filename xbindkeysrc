@@ -48,6 +48,15 @@
 "amixer set Master toggle"
   XF86AudioMute
 
+"maim"
+  Print
+
+"maim -i $(xdotool getactivewindow)"
+  Shift + Print
+
+"maim -s"
+  Control + Print
+
 ##################################
 # End of xbindkeys configuration #
 ##################################
