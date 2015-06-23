@@ -17,13 +17,5 @@
 DISPLAY=:0
 
 PATH=/bin:/usr/bin
-
-check_gnome=$(ps -aux | awk '{print $11}' | grep ^gnome-session)
-if [[ -n $check_gnome ]]
-then
-    loginctl lock-sessions
-else
-    killall slimlock
-    slimlock
-fi
+xdotool key KP_Enter
 

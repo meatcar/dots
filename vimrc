@@ -7,6 +7,10 @@
 
 " general --------------------------------------------------------------
 
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 set t_Co=256            " enable 256-color support
 set title
 set nocompatible        " disregard vi compatibility:
@@ -43,6 +47,7 @@ set wildmode=longest,list:longest
 set hidden              " un-saved buffers in the background
 set cc=80
 set laststatus=2        " show the status bar even when editing one file.
+set foldmethod=expr
 
 set diffopt-=iwhite
 set listchars=tab:>-,trail:-
@@ -132,6 +137,9 @@ Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 
 Plug 'wting/rust.vim', {'for': 'rust'}
+Plug 'dag/vim-fish', {'for': 'fish'}
+Plug 'tpope/vim-endwise'
+Plug 'othree/yajs.vim'
 
 call plug#end()
 
@@ -201,15 +209,16 @@ let g:ctrlp_switch_buffer = 0
 
 " airline statusline config --------------------------------------------
 
+let g:airline_inactive_collapse=0
 let g:airline_powerline_fonts=1
-let g:airline_enable_syntastic=1
+let g:airline#extensions#syntastic = 1
 let g:airline#extensions#branch#enabled = 1
 
 " gvim settings --------------------------------------------------------
 
 if has ("gui_running")
     set lsp=0             "set linespacing"
-    set guifont=Inconsolata\ 12 "set the font
+    set guifont=Fantasque\ Sans\ Mono\ 10 "set the font
     set guioptions-=T      "hide the toolbar
     set guioptions-=m      "hide the manubar
 endif
@@ -242,6 +251,8 @@ if has("autocmd")
 
   autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
   let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript', 'java', 'css', 'sass', 'handlebars', 'html=handlebars', 'sh', 'shell=sh']
+
+  autocmd vimrc FileType fish compiler fish
 endif
 
 " Unite ------------------------------------------------------------
@@ -291,7 +302,7 @@ nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert -no-split -t
 nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
 " vimviki
 map <leader>w :<C-u>Unite file_rec/async file/new -buffer-name=notes -start-insert
-      \ -path=/home/meatcar/Dropbox/notes/ -toggle -default-action=split -profile-name=files <CR>
+      \ -path=/home/meatcar/Dropbox/notes/ -toggle -profile-name=files <CR>
 
 " VimFiler ------------------------------------------------------------
 let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')

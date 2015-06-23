@@ -26,11 +26,8 @@ URxvt.buffered:         true
 
 urxvt*termName:         rxvt-unicode-256color
 URxvt.depth:            32
-URxvt.font:             xft:Inconsolata:size=12, \
-                        xft:DejaVu Sans Mono for Powerline:size=12, \
-                        xft:FreeSerif, \
-                        xft:Monospace, \
-                        xft:Symbola
+URxvt.font:             xft:Fantasque Sans Mono:size=10, \
+                        xft:Symbola:size=12
 URxvt.letterSpace:      -1
 URxvt.lineSpace:        -1
 URxvt.internalBorder:   5
