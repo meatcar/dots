@@ -11,13 +11,13 @@ mpd_host = "localhost"
 
 mpd_port = "6600"
 
-mpd_music_dir = "/media/Mercury/Multimedia/Music/"
+#mpd_music_dir = "/media/Mercury/Multimedia/Music/"
 
 mpd_connection_timeout = "5"
 
 mpd_crossfade_time = "5"
 
-mpd_communication_mode = "notifications" # (polling/notifications)
+#mpd_communication_mode = "notifications" # (polling/notifications)
 #
 ##### music visualizer #####
 ##

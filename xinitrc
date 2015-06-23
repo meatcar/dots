@@ -61,6 +61,8 @@ case `hostname` in
         xrandr --dpi 96 
         compton --backend glx\
           --blur-background-frame --blur-kern 7x7box\
+          -i 0.9 -f -D 5\
+          -c -C -z -G -o 0.5 \
           -b &
           #-c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
 
@@ -93,10 +95,15 @@ xcmenu -dpsc &
 
 dropboxd &
 
+rescuetime &
+
 ## wallpaper
 eval $(cat ~/.fehbg) &
 
 xautolock  -time 10 -locker 'lock' &
+
+mopidy &
+mpDris2 &
 
 #####################
 # WM-dependent setup
