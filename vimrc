@@ -103,6 +103,7 @@ Plug 'wting/gitsessions.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/syntastic'
 Plug 'trapd00r/irc.vim' " syntax file for irc logs
+Plug 'godlygeek/tabular'
 
 Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
 Plug 'Shougo/unite.vim'
@@ -135,6 +136,8 @@ Plug 'dln/avro-vim', {'for': 'avro-idl'}
 
 Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
+
+Plug 'Matt-Deacalion/vim-systemd-syntax', {'for': 'systemd'}
 
 Plug 'wting/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
@@ -188,6 +191,11 @@ let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_browser_command = 'google-chrome %URL% &'
 
+" gissues settings ---------------------------------------------------
+
+let g:github_access_token = '6cc1702fe9b726b0c949b82c20d96ffd23ca041a'
+let g:gissues_async_omni = 0
+let g:github_upstream_issues = 1
 
 " cursorcross settings -----------------------------------------------
 let g:cursorcross_dynamic = "clw"
@@ -218,7 +226,7 @@ let g:airline#extensions#branch#enabled = 1
 
 if has ("gui_running")
     set lsp=0             "set linespacing"
-    set guifont=Fantasque\ Sans\ Mono\ 10 "set the font
+    set guifont=Fantasque\ Sans\ Mono\ 11 "set the font
     set guioptions-=T      "hide the toolbar
     set guioptions-=m      "hide the manubar
 endif
@@ -248,6 +256,7 @@ if has("autocmd")
   autocmd vimrc BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
   autocmd vimrc BufNewFile,BufRead *.rs set filetype=rust
   autocmd vimrc BufNewFile,BufRead *.avdl set filetype=avro-idl
+  autocmd vimrc BufNewFile,BufRead *.service,*.target,*.socket,*.device,*.mount,*.snapshot,*.timer,*.swap,*.path,*.slice,*.scope,*.special set filetype=systemd
 
   autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
   let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript', 'java', 'css', 'sass', 'handlebars', 'html=handlebars', 'sh', 'shell=sh']

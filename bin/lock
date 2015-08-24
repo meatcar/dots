@@ -23,7 +23,6 @@ if [[ -n $check_gnome ]]
 then
     loginctl lock-sessions
 else
-    killall slimlock
     slimlock
 fi
 

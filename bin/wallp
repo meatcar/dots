@@ -50,6 +50,11 @@ case $# in
                 echo "usage: $0 [-r|-d|-n|-p|-h|--help]" >&2
                 exit 1
                 ;;
+            *)
+                if [ -f "$1" ]; then
+                    set_wall "$1"
+                fi
+                ;;
         esac 
         ;;
     0)

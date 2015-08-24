@@ -26,7 +26,7 @@ URxvt.buffered:         true
 
 urxvt*termName:         rxvt-unicode-256color
 URxvt.depth:            32
-URxvt.font:             xft:Fantasque Sans Mono:size=10, \
+URxvt.font:             xft:Fantasque Sans Mono:size=11, \
                         xft:Symbola:size=12
 URxvt.letterSpace:      -1
 URxvt.lineSpace:        -1

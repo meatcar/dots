@@ -1,11 +1,9 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd extendedglob nomatch notify
 unsetopt beep
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
+
 zstyle :compinstall filename '/home/meatcar/.zshrc'
 
 autoload -Uz compinit
@@ -16,23 +14,6 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 source ~/dots/colors/colors.sh
 source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh
 
-#####################################################
-# Antigen Bundles
-#####################################################
-#export ADOTDIR="$HOME/.zsh"
-#source $ADOTDIR/antigen.zsh
-
-#antigen bundle zsh-users/zsh-syntax-highlighting
-#antigen bundle git
-#antigen bundle command-not-found
-#antigen bundle kennethreitz/autoenv
-
-#antigen apply
-
-# End of lines added by compinstall
-####################################################
-# The following lines were added by meatcar
-####################################################
 # Set the prompt.
 autoload -U colors && colors
 
@@ -48,6 +29,7 @@ verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
 PROMPT="%{$fg_bold[blue]%}%n%{$reset_color%} at %{$fg_bold[magenta]%}%M%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}
     ${verb} "
+
 ####################################################
 # Set Keybindings.
 bindkey -v
@@ -66,12 +48,14 @@ bindkey "\eOF" end-of-line
 # for freebsd console
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
+
 ####################################################
 # Exports
 
 export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
-export PATH="$HOME/.npm/bin:$PATH" #npm
+export PATH="$PATH:$HOME/.node/bin" #npm
 
+export TERM="rxvt-256color"
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
@@ -80,9 +64,10 @@ export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/:/usr/local/lib:$LD_L
 # fix svn errors
 #source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go"
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export JAVA_FONTS=/usr/share/fonts/TTF
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
+
 ####################################################
 # Set up colorings
 #
@@ -90,6 +75,7 @@ export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
 eval $(dircolors -b ~/.dircolors)
 # grep 
 export GREP_COLOR="1;33"
+
 ####################################################
 # Aliases
 #
@@ -115,4 +101,4 @@ alias rm="rm -i"
 
 # reconnect sshfs on discnnect.
 alias sshfs="sshfs -o reconnect -C -o workaround=all"
-
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"

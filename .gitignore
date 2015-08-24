@@ -23,6 +23,7 @@ uzbl/local/history
 pentadactyl/info/default/command-history
 vim/.netrwhist
 vim/tmp/
+vim/.gissue-cache/
 
 # i3
 i3/log
