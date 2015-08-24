@@ -1,14 +1,17 @@
 #!/bin/sh
+set -euo pipefail
+IFS=$'\n\t'
+
 ICONS="/home/meatcar/dots/status/xbm8x8"
 fg='#516DA8'
 bg='#D7DCE7'
 
 function netstatus {
-    links=`ip link | grep 'BROADCAST' | awk '{print $2}' | tr -d ':'`
+    links=$(ip link | grep 'BROADCAST' | awk '{print $2}' | tr -d ':')
     if [ -z "$links" ]; then
         echo down
     else
-        echo $links
+        echo "$links"
     fi
 }
 
@@ -22,20 +25,22 @@ function netspeed {
 
     links=""
     for link in $(netstatus); do
+        link=$(echo "$link" | sed 's/@.*//')
         if ip link show "$link" | head -n1 | grep -v 'UP' > /dev/null
         then
             net="$net ^bg($bg) ^fg(red)^i($ICONS/info_01) $link ^fg() ^bg()"
             continue
         fi
-        links="$links $link"
+        links=$(echo -e "$links\t$link")
     done
+
 
     # get the up/down speed
     old=""
     for link in $links; do
         old_state=$(cat /proc/net/dev | grep $link)
-        old_dn=`echo ${old_state/*:/} | awk -F " " '{ print $1 }'`
-        old_up=`echo ${old_state/*:/} | awk -F " " '{ print $9 }'`
+        old_dn=$(echo ${old_state/*:/} | awk -F " " '{ print $1 }')
+        old_up=$(echo ${old_state/*:/} | awk -F " " '{ print $9 }')
         old="$old $old_dn;$old_up"
     done;
 
@@ -44,8 +49,8 @@ function netspeed {
     new=""
     for link in $links; do
         new_state=$(cat /proc/net/dev | grep $link)
-        new_dn=`echo ${new_state/*:/} | awk -F " " '{ print $1 }'`
-        new_up=`echo ${new_state/*:/} | awk -F " " '{ print $9 }'`
+        new_dn=$(echo ${new_state/*:/} | awk -F " " '{ print $1 }')
+        new_up=$(echo ${new_state/*:/} | awk -F " " '{ print $9 }')
         new="$new $new_dn;$new_up"
     done
 
@@ -75,7 +80,7 @@ function netspeed {
         down="^fg()^i($ICONS/net_down_03.xbm)^fg()${d_speed}K"
         up="^fg()^i($ICONS/net_up_03.xbm)^fg()${u_speed}K"
 
-        ip=`ip addr show dev "$link"| grep 'inet '| awk '{print $2}' | sed 's;/.*$;;'`
+        ip=$(ip addr show dev "$link"| grep 'inet '| awk '{print $2}' | sed 's;/.*$;;')
 
         str="$str $ip $down $up "
         str="^ca(1,urxvtc -e wicd-curses)$str^ca()"
@@ -90,7 +95,7 @@ function netspeed {
 }
 
 function backlight() {
-    light=`xbacklight | sed 's/\.\?0*$//g'`
+    light=$(xbacklight | sed 's/\.\?0*$//g')
     light="^i($ICONS/full.xbm) $light%"
     light="^bg($bg) $light ^bg()"
 
@@ -98,9 +103,9 @@ function backlight() {
 }
 
 function batt {
-    perc=`acpi | awk '{print $4}'| tr -d ',%'`
-    state=`acpi | awk '{print $3}'`
-    time_rem=`acpi | awk '{print $5}' | cut -d':' -f1,2`
+    perc=$(acpi | awk '{print $4}'| tr -d ',%')
+    state=$(acpi | awk '{print $3}')
+    time_rem=$(acpi | awk '{print $5}' | cut -d':' -f1,2)
     if [ "$state" = "Discharging," ]; then
         if  test "( $perc -le 100 ) -a ( $perc -gt 30 )"; then
             icon="^fg()^i($ICONS/bat_full_02.xbm)"
@@ -135,12 +140,12 @@ function music {  ## Print currently playing artist
 }
 
 function volume {
-    vol_mode=`amixer|head -n6|tail -n1|awk '{print $6}' | tr -d '[]'`
+    vol_mode=$(amixer|head -n6|tail -n1|awk '{print $6}' | tr -d '[]')
     if [ "$vol_mode" == "off" ]; then
-        vol="`amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]'`"
+        vol="$(amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]')"
         vol="^i($ICONS/spkr_02.xbm) M $vol"
     else
-        vol="`amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]'`"
+        vol="$(amixer|head -n6|tail -n1|awk '{print $5}' | tr -d '[]')"
         vol="^i($ICONS/spkr_01.xbm) $vol"
     fi
     vol=" $vol "
@@ -153,7 +158,7 @@ function volume {
 }
 
 function date_time {
-    d=`date +'^fg(#4d6080)%a %d %b^fg() %l:%M%P'`
+    d=$(date +'^fg(#4d6080)%a %d %b^fg() %l:%M%P')
     echo "^bg($bg) $d ^bg()"
 }
 

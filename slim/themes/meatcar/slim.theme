@@ -31,7 +31,7 @@ passwd_feedback_x               50%
 passwd_feedback_y               58%
 
 #Message Contols
-msg_color               #333
+msg_color               #fff
 msg_font                Fira Sans:style=Light:size=17
 msg_x                   50%
 msg_y                   58%
