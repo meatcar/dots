@@ -54,7 +54,10 @@ class Identicon():
                 reverse = row.copy()
                 reverse.reverse()
                 if self.hreflections is not None:
-                    reverse = [self.hreflections[c] for c in reverse]
+                    for i in range(len(reverse)):
+                        c = reverse[i]
+                        if c in self.hreflections:
+                            reverse[i] = self.hreflections[c]
                 row += reverse
 
             icon += [row]
@@ -65,7 +68,11 @@ class Identicon():
             reverse = icon.copy()
             reverse.reverse()
             if self.vreflections is not None:
-                reverse = [[self.vreflections[c] for c in line] for line in reverse]
+                for line in reverse:
+                    for i in range(len(line)):
+                        c = line[i]
+                        if c in self.vreflections:
+                            line[i] = self.vreflections[c]
             icon += reverse
 
         self.icon = icon
