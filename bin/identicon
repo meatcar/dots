@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+from optparse import OptionParser
+import random
+import platform
+
+class Identicon():
+    '''
+    Generate an identicon.
+
+    Some nice characters to try:
+    block chars:
+      ▁▂▃▄▅▆▇█▉▊▋▌▍▎▐░▒▓▔▕▖▗▘▙▚▛▜▝▞▟▀▄
+    box chars
+      ─━│┃┄┅┆┇┈┉┊┋┌┍┎┏
+      ┐┑┒┓└┕┖┗┘┙┚┛├┝┞┟
+      ┠┡┢┣┤┥┦┧┨┩┪┫┬┭┮┯
+      ┰┱┲┳┴┵┶┷┸┹┺┻┼┽┾┿
+      ╀╁╂╃╄╅╆╇╈╉╊╋╌╍╎╏
+      ═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟
+      ╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯
+      ╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿
+    '''
+    icon = []
+
+    def __init__(self, height, width, characters, hreflections, vreflections,
+            vsym, hsym, seed):
+        random.seed(seed)
+
+        self.height = height
+        self.width = width
+        self.hsym = hsym
+        self.vsym = vsym
+        self.characters = characters
+        self.hreflections = hreflections
+        self.hreflections.update({v: k for k, v in hreflections.items()});
+        self.vreflections = vreflections
+        self.vreflections.update({v: k for k, v in vreflections.items()});
+
+        # generate symmetrical icon
+        self.__makeIcon()
+        print(self)
+
+    def __makeIcon(self):
+        icon = []
+        for i in range(self.height//2):
+            row = []
+
+            for j in range(self.width):
+                row += [random.choice(self.characters)]
+
+            # make second half
+            if self.hsym:
+                row = row[0:self.width//2]
+                reverse = row.copy()
+                reverse.reverse()
+                if self.hreflections is not None:
+                    reverse = [self.hreflections[c] for c in reverse]
+                row += reverse
+
+            icon += [row]
+
+        # todo: only works for even heights
+        if self.vsym:
+            icon = icon[0:self.height//2//2]
+            reverse = icon.copy()
+            reverse.reverse()
+            if self.vreflections is not None:
+                reverse = [[self.vreflections[c] for c in line] for line in reverse]
+            icon += reverse
+
+        self.icon = icon
+
+    def __str__(self):
+        string = "";
+
+        for line in self.icon:
+            string += "".join(line) + "\n"
+
+        return string[0:-1]
+
+
+
+if __name__ == "__main__":
+    parser = OptionParser()
+    parser.set_conflict_handler("resolve")
+    parser.set_defaults(height = 6, width = 6,
+            characters = "█▀▄ ", # "▖▗▘▙▚▛▜▝▞▟▀▄ ",
+            hreflections = {
+                " ": " ",
+                "▀": "▀",
+                "▄": "▄",
+                "█": "█"
+                #" ": " ",
+                #"▖": "▗",
+                #"▖": "▗",
+                #"▝": "▘",
+                #"▘": "▝",
+                #"▟": "▙",
+                #"▜": "▛",
+                #"▛": "▜",
+                #"▞": "▚",
+                #"▚": "▞",
+                #"▟": "▙",
+                #"▀": "▀",
+                #"▄": "▄"
+                },
+            vreflections = {
+                " ": " ",
+                "▀": "▄",
+                "▄": "▀",
+                "█": "█"
+                #" ": " ",
+                #"▗": "▝",
+                #"▘": "▖",
+                #"▙": "▛",
+                #"▚": "▞",
+                #"▛": "▙",
+                #"▜": "▟",
+                #"▝": "▗",
+                #"▞": "▚",
+                #"▟": "▜",
+                #"▀": "▄",
+                #"▄": "▀"
+                },
+            vsym = False,
+            hsym = True,
+            seed = platform.node())
+    parser.add_option("-h", "--height", type="int", help="height of identicon (2x height in characters). Defaults to 6")
+    parser.add_option("-w", "--width", type="int", help="width of identicon in characters. Defaults to 6")
+    parser.add_option("--vsym", dest="vsym", action="store_true", help="enable vertical symmetry")
+    parser.add_option("--novsym", dest="vsym", action="store_false", help="disable vertical symmetry. Default.")
+    parser.add_option("--hsym", dest="hsym", action="store_false", help="enable horizontal symmetry. Default.")
+    parser.add_option("--nohsym", dest="hsym", action="store_false", help="disable horizontal symmetry")
+    parser.add_option("--characters", type="string", help="use these characters instead")
+    parser.add_option("--hreflections", type="string", help="character horizontal reflection mapping")
+    parser.add_option("--vreflections", type="string", help="character vertical reflection mapping")
+    parser.add_option("--seed", type="string", help="a string to use as the seed to ensure consistent results. Defaults to hostname")
+
+    (options, args) = parser.parse_args()
+
+    Identicon(options.height, options.width,
+            options.characters, options.hreflections, options.vreflections,
+            options.vsym, options.hsym, options.seed)
+
+

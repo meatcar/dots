@@ -1,0 +1,35 @@
+#!/bin/bash
+
+DISPLAY=':0'
+
+tempfile="/tmp/screenshot-$(date +%F_%T).png"
+maim_opts="--nokeyboard $tempfile"
+
+if [ -n "$1" ]; then
+    case $1 in
+        --window)
+            maim_opts="-i $(xdotool getactivewindow) $maim_opts"
+            ;;
+        --select)
+            maim_opts="-s $maim_opts"
+            ;;
+        *)
+            echo "usage: $0 [--window|--select]" >/dev/stderr
+            exit 1
+            ;;
+    esac
+fi
+
+maim $maim_opts 
+delete_link=$(imgurbash "$tempfile" 2>&1 | tail -n1)
+echo delete link $delete_link
+
+notify-send \
+'Screenshot imgurd' \
+"$(xclip -o) 
+$delete_link"
+
+if [ -f "$tempfile" ]; then
+    rm -rf "$tempfile"
+fi
+
