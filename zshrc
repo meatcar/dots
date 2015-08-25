@@ -26,9 +26,15 @@ root_verb="%(!.%{$fg_bold[red]%}su.)" # elevated privilige
 exit_verb="%(?..%{$fg_bold[magenta]%}re)" # failed command
 verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
+IDENTICON=$(identicon -w 6 -h 6)
+IDENTICON_TOP=$(echo -n ${IDENTICON} | head -n 1)
+IDENTICON_MIDDLE=$(echo -n ${IDENTICON} | head -n 2 | tail -n 1)
+IDENTICON_BOTTOM=$(echo -n ${IDENTICON} | tail -n 1)
 
-PROMPT="%{$fg_bold[blue]%}%n%{$reset_color%} at %{$fg_bold[magenta]%}%M%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}
-    ${verb} "
+PROMPT="
+%{[38;5;254m%}${IDENTICON_TOP}%{$reset_color%}
+%{[38;5;254m%}${IDENTICON_MIDDLE}%{$reset_color%} %{$fg_bold[blue]%}%n%{$reset_color%} at %{$fg_bold[magenta]%}%M%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}
+%{[38;5;254m%}${IDENTICON_BOTTOM}%{$reset_color%}      ${verb} "
 
 ####################################################
 # Set Keybindings.
@@ -73,7 +79,7 @@ export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
 #
 # ls
 eval $(dircolors -b ~/.dircolors)
-# grep 
+# grep
 export GREP_COLOR="1;33"
 
 ####################################################
@@ -90,7 +96,7 @@ alias tree="tree -AF"
 
 alias t="todo.sh"
 
-# cd 
+# cd
 alias cd..="cd .."
 alias ..="cd .."
 
