@@ -1,3 +1,24 @@
+####################################################
+# Exports
+
+export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
+export PATH="$PATH:$HOME/.node/bin" #npm
+
+export TERM="rxvt-256color"
+export VTERM="urxvtc"
+export EDITOR="vim"
+#export PAGER="vimpager"
+
+export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/:/usr/local/lib:$LD_LIBRARY_PATH"
+# fix svn errors
+#source /etc/profile.d/go.sh
+export GOPATH="$HOME/dev/go"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export JAVA_FONTS=/usr/share/fonts/TTF
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
+
+############
+
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -54,25 +75,6 @@ bindkey "\eOF" end-of-line
 # for freebsd console
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
-
-####################################################
-# Exports
-
-export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
-export PATH="$PATH:$HOME/.node/bin" #npm
-
-export TERM="rxvt-256color"
-export VTERM="urxvtc"
-export EDITOR="vim"
-#export PAGER="vimpager"
-
-export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/:/usr/local/lib:$LD_LIBRARY_PATH"
-# fix svn errors
-#source /etc/profile.d/go.sh
-export GOPATH="$HOME/dev/go"
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-export JAVA_FONTS=/usr/share/fonts/TTF
-export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
 
 ####################################################
 # Set up colorings
