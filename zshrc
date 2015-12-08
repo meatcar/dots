@@ -1,21 +1,25 @@
 ####################################################
 # Exports
 
-export PATH="$JAVA_HOME:/usr/lib/surfraw:/usr/lib/ccache/bin/:${PATH}:/home/meatcar/bin:/home/meatcar/.gem/ruby/1.9.1/bin:/opt/softkinetic/DepthSenseSDK/bin:/opt/maven/bin"
-export PATH="$PATH:$HOME/.node/bin" #npm
+export PATH="$JAVA_HOME:${PATH}:/home/meatcar/bin:/opt/maven/bin"
+
+if which npm 2>&1 >/dev/null; then
+  export PATH="$PATH:$HOME/.node/bin"
+  export PATH="$PATH:$(npm bin)"
+fi
 
 export TERM="rxvt-256color"
+export TERMINAL="urxvtc"
 export VTERM="urxvtc"
 export EDITOR="vim"
 #export PAGER="vimpager"
 
-export LD_LIBRARY_PATH="/opt/softkinetic/DepthSenseSDK/lib/:/usr/local/lib:$LD_LIBRARY_PATH"
 # fix svn errors
 #source /etc/profile.d/go.sh
 export GOPATH="$HOME/dev/go"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export JAVA_FONTS=/usr/share/fonts/TTF
-export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=256m"
+export MAVEN_OPTS="-Xmx4g -XX:MaxPermSize=256m"
 
 ############
 
@@ -109,4 +113,10 @@ alias rm="rm -i"
 
 # reconnect sshfs on discnnect.
 alias sshfs="sshfs -o reconnect -C -o workaround=all"
+alias proxyhome="ssh -C2TNv -D 8080 home.denys.me"
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+eval "$(thefuck --alias)"
+
+export NVM_DIR="/home/meatcar/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
