@@ -98,7 +98,8 @@ urxvtd -q -f -o &
 parcellite -n &
 xcmenu -dpsc &
 
-dropbox &
+#dropbox &
+syncthing-gtk &
 
 #rescuetime &
 
@@ -106,8 +107,8 @@ dropbox &
 eval $(cat ~/.fehbg) &
 
 xautolock  -time 15 -locker 'lock' &
-xset dpms
-xset s 900 900
+xset -dpms 
+xset s off
 
 #####################
 # WM-dependent setup
