@@ -15,7 +15,12 @@ mv -f $1 $DOTFILE
 ln -sf $DOTFILE $1
 cd $DOTS
 
-echo "ln -rs \"$2\" ~/\"$1\"" >> reinstate.sh
+lns=`grep '^ln' reinstate.sh`
+rest=`grep -v '^ln' reinstate.sh`
+
+echo "$rest" > reinstate.sh
+new_ln=`echo ln -rs \'"$2"\' ~/\'"$1"\'`
+echo "$new_ln$lns" | sort >> reinstate.sh
 
 git add $DOTFILE reinstate.sh
 

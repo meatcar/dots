@@ -3,8 +3,8 @@ temp="/tmp/wallp"
 temp2="/tmp/wallp.$$"
 trap "rm -f $temp2" 0 1 2 15
 
-DROPBOX="$HOME/Dropbox"
-WALLFOLDER="$DROPBOX/Public/wallpapers/"
+DROPBOX="$HOME/Sync"
+WALLFOLDER="$DROPBOX/wallpapers/"
 WALLLINK="$HOME/.wallpaper"
 
 if [ ! -e $temp ]; then

@@ -14,8 +14,7 @@
     #
     # Version 1.0 Written by CodeX (m8r-qgwf5u@mailinator.com)
      
-    IFS='
-    '
+    IFS=$'\n'
     BOLD=`tput bold`
     NORM=`tput sgr0`
      
@@ -68,13 +67,21 @@
             1)
                     PAGE=`mktemp`
                     curl $SITE$1 -Ss > $PAGE
-                    ARTIST=`grep -hoP '(?<=artist : ").+?(?=",)' $PAGE`
+                    ARTIST=`grep -hoP '(?<=artist: ").+?(?=",)' $PAGE`
+                    ARTIST=`echo $ARTIST | sed 's/^.* //'`
                     YEAR=`grep -hoP '(?<=album_release_date: ").+?(?=")' $PAGE | cut -d ' ' -f 3`
-                    IDS=(`grep -hoP '(?<=e,"id":)\d+(?=,)' $PAGE`)
+                    IDS=(`grep -hoP '(?<="track_id":)\d+(?=,)' $PAGE`)
                     NAMES=(`grep -hoP '(?<="title":").+?(?=")' $PAGE`)
                     ALBUM=${NAMES[0]}
                     NAMES=("${NAMES[@]:1}")
-     
+
+                    echo ARTIST $ARTIST
+                    for i in "${NAMES[@]}"; do
+                        echo NAME "$i"
+                    done
+                    echo IDS ${IDS[@]}
+
+
                     # The link appears on free albums once a purchase (with $0) has been made
                     # It may be possible to change the ID in the link to something of equil or less value
     #               LINK=`grep -hoP "(?<=PaymentData.paymentDownloadPage = ').+?(?=',)" $PAGE`
@@ -92,7 +99,7 @@
      
             # This takes info for a song and then downloads it
             2)
-     echo "${@}"
+                    echo "${@}"
                     ID=$1
                     NAME=$2
                     FNAME=`homglyph $NAME`

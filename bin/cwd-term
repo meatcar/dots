@@ -20,10 +20,5 @@ if [ -n "$PID" ]; then
     CWD=$(readlink /proc/$PID/cwd)
   fi
 fi
-if [ -n "$CWD" ]; then
-  cd $CWD && $CMD
-else
-  #echo "ID=$ID PID=$PID" >&2
-  #exit 1
-  $CMD
-fi
+
+cd $CWD && $CMD "$@"
