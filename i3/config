@@ -41,17 +41,17 @@ smart_borders on
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec cwd-term
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal 
+bindsym $mod+Shift+Return exec --no-startup-id cwd-term
 
 # kill focused window
 bindsym $mod+d kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec mydmenu_run
+bindsym $mod+p exec --no-startup-id mydmenu_run
 # start a clipboard manager
-bindsym $mod+c exec xcmenuctrl
-bindsym $mod+Shift+c exec xcmenuctrl -s
+bindsym $mod+c exec --no-startup-id xcmenuctrl
+bindsym $mod+Shift+c exec --no-startup-id xcmenuctrl -s
 
 # change focus
 bindsym $mod+h focus left
@@ -125,7 +125,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+q restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
