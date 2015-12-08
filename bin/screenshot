@@ -21,12 +21,17 @@ if [ -n "$1" ]; then
 fi
 
 maim $maim_opts 
-delete_link=$(imgurbash "$tempfile" 2>&1 | tail -n1)
+
+img_link=$(imgurbash "$tempfile" 2>>~/screenshot_delete_links.txt)
+delete_link=$(cat ~/screenshot_delete_links.txt | tail -n1)
+echo img link $img_link
 echo delete link $delete_link
+
+echo $img_link | xclip -i
 
 notify-send \
 'Screenshot imgurd' \
-"$(xclip -o) 
+"$img_link
 $delete_link"
 
 if [ -f "$tempfile" ]; then
