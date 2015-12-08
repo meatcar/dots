@@ -16,7 +16,7 @@ set title
 set nocompatible        " disregard vi compatibility:
 set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 set dir=~/.vim/swap,/tmp     " keep swap files in one place
-set bdir=~/.vim/backup,/tmp  " keep backups in one place
+set backupdir=~/.vim/backup,/tmp  " keep backups in one place
 set undodir=~/.vim/undo,/tmp " keep undos in one place
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
@@ -28,7 +28,7 @@ set number              " show line numbers
 set numberwidth=1       " minimum num of cols to reserve for line numbers
 set nobackup            " disable backup files (filename~)
 set showmatch           " show matching brackets (),{},[]
-set ww=h,l,<,>,[,]      " whichwrap -- left/right keys can traverse up/down
+set whichwrap=h,l,<,>,[,]      " whichwrap -- left/right keys can traverse up/down
 set wrap                " wrap long lines to fit terminal width
 set ttyfast             " tell vim we're using a fast terminal for redraws
 set autoread            " reload file if vim detects it changed elsewhere
@@ -45,12 +45,16 @@ set grepprg=grep\ -nH\ $*
 set wildmenu
 set wildmode=longest,list:longest
 set hidden              " un-saved buffers in the background
-set cc=80
+set colorcolumn=80
 set laststatus=2        " show the status bar even when editing one file.
-set foldmethod=expr
 
-set diffopt-=iwhite
-set listchars=tab:>-,trail:-
+set diffopt-=iwhite     " ignore whitespace when diffing
+let &listchars='tab:⇥ ,eol:$,trail:·,extends:>,precedes:<'    " set list
+let &fillchars='vert:│,fold:' 
+
+" folds ----------------------------------------------------------------
+set foldmethod=syntax
+set viewoptions=cursor,folds,slash,unix " save folds, cursor position
 
 " tabs and indenting ---------------------------------------------------
 
@@ -62,6 +66,11 @@ set smarttab            " set <Tab>s according to shiftwidth
 set autoindent          " auto indents next new line
 set nocindent           " C style indenting off
 set formatoptions=tcqr  " recommended defaults from O'Reilly
+if exists('+breakindent') " move soft-wrapped lines to match the indent level.
+    set breakindent
+    set breakindentopt=shift:2
+    let &showbreak='↪ '
+endif
 
 " searching ------------------------------------------------------------
 
@@ -74,7 +83,7 @@ runtime macros/matchit.vim  " extend the % key
 
 " complete -------------------------------------------------------------
 
-set complete=.,b,u,]
+set complete=.,b,u,] 
 set completeopt=menu,preview
 set omnifunc=syntaxcomplete#Complete
 
@@ -84,51 +93,62 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'tpope/vim-sensible'
 
-" colorschemes
-Plug 'flazz/vim-colorschemes'
-
-Plug 'fmoralesc/vim-pad'
+" editing-related plugins
 Plug 'surround.vim'
 Plug 'repeat.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'jaxbot/github-issues.vim' " Github issue lookup in Vim
-Plug 'tpope/vim-rhubarb'
-Plug 'scrooloose/nerdcommenter'
-Plug 'bling/vim-airline'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'     " autodetect tab format
 Plug 'tpope/vim-unimpaired'
-Plug 'airblade/vim-gitgutter'
-Plug 'wting/gitsessions.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'ervandew/supertab'    " auto-completion in inser mode
+Plug 'scrooloose/nerdcommenter'     " comment/uncomment things easy
 Plug 'scrooloose/syntastic'
-Plug 'trapd00r/irc.vim' " syntax file for irc logs
-Plug 'godlygeek/tabular'
+Plug 'kopischke/vim-stay'   " save folds
+Plug 'kopischke/vim-fetch'  " parse '...:{num}' from files, jump to the line
 
-Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/vimfiler.vim'
-
-Plug 'freitass/todo.txt-vim'
-
-Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 'scss']}
-
-Plug 'WebAPI.vim'
-Plug 'Gist.vim', {'on': 'Gist'}
+Plug 'godlygeek/tabular' " align things easily
+Plug 'junegunn/goyo.vim'    " distraction-free writing
+Plug 'reedes/vim-pencil'    " make editing freetext easier
+Plug 'tpope/vim-endwise' " add `end` do function blocks
 
 Plug 'Gundo', {'on': 'GundoToggle'}
 Plug 'ack.vim', {'on': 'Ack'}
 
-" filetype-dependent bundles
+" unite 
+Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/vimfiler.vim'
+
+" pretty plugins
+Plug 'flazz/vim-colorschemes'
+Plug 'bling/vim-airline'
+
+" git plugins
+Plug 'tpope/vim-fugitive'       " tight git integration
+Plug 'airblade/vim-gitgutter'   " show git changes in the gutter
+Plug 'wting/gitsessions.vim'    " handle vim sessions based on git
+Plug 'tpope/vim-rhubarb'    " auto-complete Github in fugitive
+Plug 'jaxbot/github-issues.vim' " Github issue lookup in Vim
+
+Plug 'WebAPI.vim' " need this for gist.
+Plug 'Gist.vim', {'on': 'Gist'}
+
+" new syntaxes
+Plug 'trapd00r/irc.vim' " syntax file for irc logs
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'freitass/todo.txt-vim'
+Plug 'pearofducks/ansible-vim'
+
+Plug 'TeX-9', {'for': ['tex', 'latex']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 'scss']}
 Plug 'xml.vim', {'for': 'xml'}
 Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars', 'markdown']}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
+Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'less.vim', {'for': 'less'}
 Plug 'skammer/vim-css-color', {'for': ['css', 'less']}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
-Plug 'TeX-9', {'for': ['tex', 'latex']}
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml']} " emmet for vim: http://emmet.io/
 Plug 'beyondmarc/glsl.vim', {'for': 'glsl'} " OpenGL Shading Language (GLSL) Vim syntax highlighting
 Plug 'sealemar/vtl', {'for': 'velocity'} " velocity syntax for vim
@@ -141,48 +161,48 @@ Plug 'Matt-Deacalion/vim-systemd-syntax', {'for': 'systemd'}
 
 Plug 'wting/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'tpope/vim-endwise'
-Plug 'othree/yajs.vim'
-
+Plug 'othree/yajs.vim', {'for': 'javascript'}
 call plug#end()
 
-" Signify settings -----------------------------------------------------------
+" colorscheme settings -------------------------------------------------------
 
-let g:signify_vcs_list = [ 'git' ]
+let g:base16_shell_path=$COLORSCHEME_DIR."/shell/"
+let g:zenesque_colors=2
+let g:solarized_italic=0 " disable italics for solarized. They look ugly.
+colorscheme github
 
 " Airline settings -----------------------------------------------------------
 
 let g:airline_theme='zenburn'
+let g:airline_inactive_collapse=0
+let g:airline_powerline_fonts=1
+let g:airline#extensions#syntastic = 1
+let g:airline#extensions#branch#enabled = 1
 
 " Syntastic settings ---------------------------------------------------------
 
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=3
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+" Pencil settings ------------------------------------------------------------
+
+if has('autocmd')
+    augroup pencil
+      autocmd!
+      autocmd FileType markdown,mkd call pencil#init()
+      autocmd FileType text         call pencil#init()
+    augroup END
+endif
 
 " latex stuff. ---------------------------------------------------------
-"
-"let g:tex_flavor = 'pdflatex'
-"let g:tex_viewer = {'app': 'zathura', 'target': 'pdf'}
-"let g:Tex_ViewRule_pdf = 'zathura'
-"let g:Tex_DefaultTargetFormat = 'pdf'
-    " Old school LaTeX user
+
 let g:tex_nine_config = {
     \'compiler': 'pdflatex',
     \'viewer': {'app':'zathura', 'target':'pdf'}
 \}
-
-" colorscheme -----------------------------------------------------------
-let g:base16_shell_path=$COLORSCHEME_DIR."/shell/"
-let g:zenesque_colors=2
-let g:solarized_italic=0 " disable italics for solarized. They look ugly.
-
-"let &background = $COLORSCHEME_LIGHT
-"set background?
-
-"colorscheme meatcar
-
-colorscheme github
 
 " gist settings --------------------------------------------------------
 
@@ -197,121 +217,82 @@ let g:github_access_token = '81acbbedd0b3845ab2db8d6044df60c140239e6d'
 let g:gissues_async_omni = 0
 let g:github_upstream_issues = 1
 
-" cursorcross settings -----------------------------------------------
-let g:cursorcross_dynamic = "clw"
-
-
-" ctrl-p settings ------------------------------------------------------
-let g:ctrlp_user_command = {
-\ 'types': {
-  \ 1: ['.git/', 'cd %s && git ls-files'],
-  \ },
-\ 'fallback': ''
-\ }
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
-
-" airline statusline config --------------------------------------------
-
-let g:airline_inactive_collapse=0
-let g:airline_powerline_fonts=1
-let g:airline#extensions#syntastic = 1
-let g:airline#extensions#branch#enabled = 1
-
-" gvim settings --------------------------------------------------------
-
-if has ("gui_running")
-    set lsp=0             "set linespacing"
-    set guifont=Fantasque\ Sans\ Mono\ 11 "set the font
-    set guioptions-=T      "hide the toolbar
-    set guioptions-=m      "hide the manubar
-endif
-
-" autocmd rules --------------------------------------------------------
-
-if has("autocmd")
-  " define a group `vimrc` and initialize
-  augroup vimrc
-    autocmd!
-  augroup END
-
-  autocmd vimrc BufRead,BufNewFile PKGBUILD set ft=sh
-  " always jump to the last cursor position
-  autocmd vimrc BufReadPost *
-        \ if line("'\"")>0 && line("'\"")<=line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-
-  "remove trailing whitespace upon save
-  autocmd vimrc FileType javascript,python,tex,java autocmd BufWritePre * :%s/\s\+$//e
-
-  " Set filetypes based on extensions
-  autocmd vimrc BufNewFile,BufRead *.less set filetype=less
-  autocmd vimrc BufNewFile,BufRead *.hbs set filetype=handlebars
-  autocmd vimrc BufNewFile,BufRead *.glsl set filetype=glsl
-  autocmd vimrc BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
-  autocmd vimrc BufNewFile,BufRead *.rs set filetype=rust
-  autocmd vimrc BufNewFile,BufRead *.avdl set filetype=avro-idl
-  autocmd vimrc BufNewFile,BufRead *.service,*.target,*.socket,*.device,*.mount,*.snapshot,*.timer,*.swap,*.path,*.slice,*.scope,*.special set filetype=systemd
-
-  autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
-  let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript', 'java', 'css', 'sass', 'handlebars', 'html=handlebars', 'sh', 'shell=sh']
-
-  autocmd vimrc FileType fish compiler fish
-endif
 
 " Unite ------------------------------------------------------------
-augroup UniteAutoCmd
-    autocmd!
-augroup END
+
 " set fuzzy matcher
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'matchers', [ 'converter_relative_word',  'matcher_fuzzy'])
+      \'matchers', [ 
+          \'matcher_fuzzy'
+      \])
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'sorters', ['sorter_rank'])
-call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'converters', [ 'converter_relative_abbr' ])
+      \'sorters', [
+          \'sorter_rank'
+      \])
+
+"call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
+      "\'converters', [ 
+          "\'converter_relative_abbr'
+      "\])
 
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'ignore_pattern', 'node_modules') " ignore node modules"
+      \'ignore_pattern', join([
+          \'node_modules',
+          \'\.git',
+      \], '\|'))
 
 let g:unite_data_directory = expand('~/.vim/tmp/unite/')
 let g:unite_source_process_enable_confirm = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_enable_split_vertically = 0
 let g:unite_winheight = 20
-let g:unite_source_directory_mru_limit = 300
-let g:unite_source_file_mru_limit = 300
+let g:unite_source_directory_mru_limit = 100
+let g:unite_source_file_mru_limit = 100
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
 let g:unite_source_grep_recursive_opt = ''
+let g:unite_cursor_line_highlight = 'CursorLine'
+
 function! s:unite_settings()
-    map <buffer> <leader> <Esc><leader>
+  map <buffer> <leader> <Esc><leader>
+  nmap <buffer> q <Plug>(unite_exit)
+  nmap <buffer> <esc> <Plug>(unite_exit)
+  imap <buffer> <esc> <Plug>(unite_exit)
 endfunction
-autocmd UniteAutoCmd FileType unite call s:unite_settings()
+
+if has('autocmd')
+    augroup UniteAutoCmd
+        autocmd!
+        autocmd FileType unite call s:unite_settings()
+    augroup END
+endif
 
 " ack/grep
 nno <leader>a :<C-u>Unite grep -default-action=above<CR>
 nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
 " ctrl-p
 nno <leader>t :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
-nno <leader>cd :<C-u>Unite directory_mru directory -start-insert -buffer-name=cd -default-action=cd<CR>
+nno <C-p>     :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
+" cd
+nno <leader>cd :<C-u>Unite directory 
+            \ -start-insert
+            \ -buffer-name=cd 
+            \ -default-action=cd 
+            \<CR>
+" processes
+nno <leader>o :<C-u>:Unite outline -buffer-name=outline -vertical<CR>
 " search in file
 nno // :<C-u>:Unite line -buffer-name=lines -start-insert -direction=botright -winheight=10<CR>
 " yanks
-nno <C-p> :<C-u>:Unite history/yank -buffer-name=yanks<CR>
+nno <leader>y :<C-u>:Unite history/yank -buffer-name=yanks<CR>
 " buffers
 nno <leader>b :<C-u>Unite buffer -buffer-name=buffers -start-insert -no-split -toggle<CR>
 " processes
 nno <leader>ps :<C-u>:Unite process -buffer-name=processes -start-insert<CR>
 " vimviki
 map <leader>w :<C-u>Unite file_rec/async file/new -buffer-name=notes -start-insert
-      \ -path=/home/meatcar/Dropbox/notes/ -toggle -profile-name=files <CR>
+      \ -path=/home/meatcar/Sync/notes/ -toggle -profile-name=files <CR>
 
 " VimFiler ------------------------------------------------------------
 let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
@@ -319,26 +300,82 @@ let g:vimfiler_safe_mode_by_default = 0
 " disable netrw.vim
 let g:loaded_netrwPlugin = 1
 let g:vimfiler_as_default_expolorer = 1
-nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status -toggle<CR>
+nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status<CR>
 
 function! s:vimfiler_settings()
   nmap <buffer> ` <Plug>(vimfiler_exit)
 endfunction
 
-" Go into directory or file under the cursor.
-"autocmd FileType vimfiler nmap  <buffer><expr> <CR> vimfiler#smart_cursor_map(
-    "\ "\<Plug>(vimfiler_expand_or_edit)")
-"autocmd FileType vimfiler nmap  <buffer><expr> l vimfiler#smart_cursor_map(
-    "\ "\<Plug>(vimfiler_expand_or_edit)")
-
 autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
+
+" gvim settings --------------------------------------------------------
+
+if has ("gui_running")
+    set lsp=0             "set linespacing"
+
+    " Set the font -----------------------------------
+    if has("unix")
+        let s:uname = system("uname")
+        if s:uname == "Darwin\n" " osx
+            set guifont=Fantasque\ Sans\ Mono:h11,Monaco:h11
+        else " linux
+            set guifont=Fantasque\ Sans\ Mono\ 11,Monospace\ 11
+        endif 
+    elseif has("win32") || has("win64")
+        set guifont=Fantasque\ Sans\ Mono:h11,Consolas:h11
+    endif
+
+    set guioptions-=T      "hide the toolbar
+    set guioptions-=m      "hide the manubar
+endif
+
+" autocmd rules --------------------------------------------------------
+
+if has("autocmd")
+    " define a group `vimrc` and initialize
+    augroup vimrc
+        autocmd!
+
+        "remove trailing whitespace upon save
+        autocmd FileType javascript,python,tex,java autocmd BufWritePre * :%s/\s\+$//e
+
+        " Set filetypes based on extensions
+        autocmd BufNewFile,BufRead *.less set filetype=less
+        autocmd BufNewFile,BufRead *.hbs set filetype=handlebars
+        autocmd BufNewFile,BufRead *.glsl set filetype=glsl
+        autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
+        autocmd BufNewFile,BufRead *.rs set filetype=rust
+        autocmd BufNewFile,BufRead *.avdl set filetype=avro-idl
+        autocmd BufNewFile,BufRead 
+                    \ *.service,*.target,*.socket,*.device,*.mount,*.snapshot,*.timer,*.swap,*.path,*.slice,*.scope,*.special 
+                    \ set filetype=systemd
+
+        autocmd BufNewFile,BufRead *.md set filetype=markdown
+        let g:markdown_fenced_languages = [
+                    \'javascript',
+                    \'js=javascript',
+                    \'json=javascript',
+                    \'java',
+                    \'css',
+                    \'sass',
+                    \'handlebars',
+                    \'html=handlebars',
+                    \'sh',
+                    \'shell=sh',
+                    \]
+
+        autocmd BufRead,BufNewFile PKGBUILD set ft=sh
+        autocmd FileType fish compiler fish
+    augroup END
+endif
+
 
 " hotkeys --------------------------------------------------------------
 
 " typo corrections
 nmap q: :q<cr>
-command BW :b#|:bw#     " easier buffer closing
-command SO :so ~/.vimrc " easier buffer closing
+command! BW :b#|:bw#     " easier buffer closing
+command! SO :so ~/.vimrc " source 
 
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
