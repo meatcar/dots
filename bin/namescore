@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+(function (window) {
+    var letterscores = {
+        "0": 60,
+        "1": -74,
+        "2": 6,
+        "3": 55,
+        "4": 35,
+        "5": 74,
+        "6": 6,
+        "7": -58,
+        "8": -67,
+        "9": -37,
+        "a": -14,
+        "b": -5,
+        "c": 27,
+        "d": -21,
+        "e": -45,
+        "f": 5,
+        "g": 27,
+        "h": -44,
+        "i": -21,
+        "j": 64,
+        "k": 32,
+        "l": 12,
+        "m": 19,
+        "n": -46,
+        "o": -80,
+        "p": -27,
+        "q": 40,
+        "r": 8,
+        "s": 15,
+        "t": -18,
+        "u": -68,
+        "v": 41,
+        "w": -20,
+        "x": 126,
+        "y": -90,
+        "z": 83
+    };
+
+    /**
+     * Given a string, compute it's score according to http://xkcd.com/1571/
+     */
+    function getScore(str) {
+        str = str.toLowerCase();
+        var score = 0;
+        for (var i = str.length; i >= 0; i--) {
+            var c = str[i];
+            if (letterscores.hasOwnProperty(c)) {
+                score += letterscores[str[c]];
+            }
+        }
+        return score;
+    }
+    window.getScore = getScore;
+})(window || this);
+
