@@ -25,10 +25,6 @@ font pango:Fantasque Sans Mono 11
 # font pango:DejaVu Sans Mono 10
 
 # colors                border  backgr. text    indicator
-client.focused          #d89718 #FBCa6a #916000 #BB2B10
-client.focused_inactive #1D4290 #516Da8 #D7DCE7 #BB2B10
-client.unfocused        #FFF9EC #D7DCE7 #516DA8 #BB2B10
-client.urgent           #C11515 #FFAB19 #C11515 #BB2B10
 
 new_window pixel 5
 
@@ -128,54 +124,77 @@ bindsym $mod+q restart
 bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 bindsym $mod+r mode "resize"
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
 
-mode "gaps" {
-        bindsym k gaps inner all plus 1
-        bindsym j gaps inner all minus 1
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  bindsym Shift+h resize shrink width 100 px or 100 ppt
+  bindsym Shift+j resize grow height 100 px or 100 ppt
+  bindsym Shift+k resize shrink height 100 px or 100 ppt
+  bindsym Shift+l resize grow width 100 px or 100 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
+# change gaps sizes
 bindsym $mod+g mode "gaps"
+mode "gaps" {
+  bindsym k gaps inner all plus 1
+  bindsym j gaps inner all minus 1
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# move windows around
+bindsym $mod+m mode "move" focus floating
+mode "move" {
+  bindsym $mod+Tab focus right
+
+  bindsym h     move left
+  bindsym j     move down
+  bindsym k     move up
+  bindsym l     move right
+
+  bindsym Shift+h     move left 100
+  bindsym Shift+j     move down 100
+  bindsym Shift+k     move up 100
+  bindsym Shift+l     move right 100
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango:Fantasque Sans Mono 11
-        position top
-        #mode hide
-        #hidden_state hide
-        #modifier $mod
-        status_command dzenstatus
+  font pango:FontAwesome,Fantasque Sans Mono 11
+  position top
+  mode dock
+  #hidden_state hide
+  #modifier $mod
+  status_command i3blocks
 
-        colors {
-                background #D7DCE7
-                statusline #9E9E9E
-
-                #                  border  bg      fg
-                focused_workspace  #d89718 #FBCa6a #916000
-                active_workspace   #1D4290 #516Da8 #D7DCE7
-                inactive_workspace #FFF9EC #D7DCE7 #516DA8
-                urgent_workspace   #C11515 #FFAB19 #C11515
-        }
+  colors {
+    separator #e7e7e8
+    background #e7e7e8
+    statusline #231f20
+    focused_workspace #009ddc #009ddc #ffffff
+    active_workspace #959ca1 #959ca1 #ffffff
+    inactive_workspace #d9d8d8 #d9d8d8 #5a5758
+    urgent_workspace #ee2e24 #ee2e24 #ffffff
+  }
 }
+client.focused #009ddc #009ddc #ffffff #f386a1
+client.focused_inactive #959ca1 #959ca1 #ffffff #98005d
+client.unfocused #ffffff #e7e7e8 #737171 #98005d
+client.urgent #ee2e24 #ee2e24 #ffffff #ffd204
