@@ -1,0 +1,15 @@
+[Unit]
+Description=Unlock the screen
+BindTo=yubikey.device
+# hack. We want to RUN a service when the device is removed.
+# No "OnStop" in systemd to run a service.
+OnFailure=screenlock.service
+
+[Service]
+ExecStart=/bin/sh
+ExecStop=/bin/false
+RemainAfterExit=yes
+
+[Install]
+WantedBy=yubikey.device
+Also=screenlock.service

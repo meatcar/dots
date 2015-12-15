@@ -7,13 +7,24 @@ DROPBOX="$HOME/Sync"
 WALLFOLDER="$DROPBOX/wallpapers/"
 WALLLINK="$HOME/.wallpaper"
 
+refresh() {
+    find "$WALLFOLDER" -maxdepth 1 -type f > $temp2
+    find "$WALLFOLDER/tiling" -maxdepth 1 -type f >> $temp2
+    cat $temp2 | sort -R > $temp
+}
+
 if [ ! -e $temp ]; then
-    find "$WALLFOLDER" -type f | sort -R > $temp
+    refresh
 fi
 
 set_wall() {
-    feh --bg-fill "$1"
-    blur "$1" "$WALLLINK" &
+    if $(echo "$1" | grep 'tiling/' > /dev/null)
+    then
+        feh --bg-tile "$1"
+    else
+        feh --bg-fill "$1"
+        blur "$1" "$WALLLINK" &
+    fi
 }
 
 case $# in
@@ -29,7 +40,7 @@ case $# in
                 set_wall "$cur"
                 ;;
             -r) #refresh
-                find "$WALLFOLDER" -maxdepth 1 -type f | sort -R > $temp
+                refresh
                 ;;
             -d) #delete from rotation
                 cat $temp > $temp2

@@ -50,11 +50,33 @@ set laststatus=2        " show the status bar even when editing one file.
 
 set diffopt-=iwhite     " ignore whitespace when diffing
 let &listchars='tab:⇥ ,eol:$,trail:·,extends:>,precedes:<'    " set list
-let &fillchars='vert:│,fold:' 
+let &fillchars='vert:│,fold: '
 
 " folds ----------------------------------------------------------------
 set foldmethod=syntax
 set viewoptions=cursor,folds,slash,unix " save folds, cursor position
+
+function! NeatFoldText()
+     "get first non-blank line
+     let fs = v:foldstart
+     while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+     endwhile
+     if fs > v:foldend
+         let line = getline(v:foldstart)
+     else
+         let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+     endif
+
+     let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+     let foldSize = 1 + v:foldend - v:foldstart
+     let foldSizeStr = " " . foldSize . " lines "
+     let foldLevelStr = repeat(" ╢", v:foldlevel).' '.v:foldlevel
+     let lineCount = line("$")
+     let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+     let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+     return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endfunction
+set foldtext=NeatFoldText()
 
 " tabs and indenting ---------------------------------------------------
 
@@ -83,7 +105,7 @@ runtime macros/matchit.vim  " extend the % key
 
 " complete -------------------------------------------------------------
 
-set complete=.,b,u,] 
+set complete=.,b,u,]
 set completeopt=menu,preview
 set omnifunc=syntaxcomplete#Complete
 
@@ -112,7 +134,7 @@ Plug 'tpope/vim-endwise' " add `end` do function blocks
 Plug 'Gundo', {'on': 'GundoToggle'}
 Plug 'ack.vim', {'on': 'Ack'}
 
-" unite 
+" unite
 Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
@@ -217,12 +239,17 @@ let g:github_access_token = '81acbbedd0b3845ab2db8d6044df60c140239e6d'
 let g:gissues_async_omni = 0
 let g:github_upstream_issues = 1
 
+" gitgutter settings --------------------------------------------------------
+
+" gitgutter is a bit slow. Let's speed it up
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " Unite ------------------------------------------------------------
 
 " set fuzzy matcher
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      \'matchers', [ 
+      \'matchers', [
           \'matcher_fuzzy'
       \])
 call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
@@ -231,7 +258,7 @@ call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,
       \])
 
 "call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,directory,directory_mru',
-      "\'converters', [ 
+      "\'converters', [
           "\'converter_relative_abbr'
       "\])
 
@@ -275,10 +302,10 @@ nno <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' -default-ac
 nno <leader>t :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
 nno <C-p>     :<C-u>Unite file_rec/async -start-insert -buffer-name=files -no-split<CR>
 " cd
-nno <leader>cd :<C-u>Unite directory 
+nno <leader>cd :<C-u>Unite directory
             \ -start-insert
-            \ -buffer-name=cd 
-            \ -default-action=cd 
+            \ -buffer-name=cd
+            \ -default-action=cd
             \<CR>
 " processes
 nno <leader>o :<C-u>:Unite outline -buffer-name=outline -vertical<CR>
@@ -320,7 +347,7 @@ if has ("gui_running")
             set guifont=Fantasque\ Sans\ Mono:h11,Monaco:h11
         else " linux
             set guifont=Fantasque\ Sans\ Mono\ 11,Monospace\ 11
-        endif 
+        endif
     elseif has("win32") || has("win64")
         set guifont=Fantasque\ Sans\ Mono:h11,Consolas:h11
     endif
@@ -346,8 +373,8 @@ if has("autocmd")
         autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
         autocmd BufNewFile,BufRead *.rs set filetype=rust
         autocmd BufNewFile,BufRead *.avdl set filetype=avro-idl
-        autocmd BufNewFile,BufRead 
-                    \ *.service,*.target,*.socket,*.device,*.mount,*.snapshot,*.timer,*.swap,*.path,*.slice,*.scope,*.special 
+        autocmd BufNewFile,BufRead
+                    \ *.service,*.target,*.socket,*.device,*.mount,*.snapshot,*.timer,*.swap,*.path,*.slice,*.scope,*.special
                     \ set filetype=systemd
 
         autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -375,7 +402,7 @@ endif
 " typo corrections
 nmap q: :q<cr>
 command! BW :b#|:bw#     " easier buffer closing
-command! SO :so ~/.vimrc " source 
+command! SO :so ~/.vimrc " source
 
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k

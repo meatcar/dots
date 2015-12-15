@@ -5,14 +5,21 @@ case $# in
         read RES_X RES_Y <<<$(xdpyinfo | grep dimensions | awk '{print $2}' | awk -Fx '{print $1, $2}')
 
         geometry="$RES_X"x"$RES_Y"
+        out="$2"_lock.png
 
         ln -sf "$1" "$2"
         convert "$1" \
-            -resize "$geometry" -gravity Center -crop "$geometry"+0+0 +repage \
-            -grayscale Rec709Luma \
-            "$2"_lock
+            -resize 20% \
+            -blur 0x5 -auto-level +depth \
+            -resize ${geometry}^ -gravity Center -crop ${geometry}+0+0 +repage \
+            -fill white -font "Fantasque-Sans-Mono-Regular" -pointsize 44 \
+            -draw "text 0,0 'meatcar at littlefinger' " \
+            ${out}
+            #-scale 2% \
+            #-scale 5000% \
             #-modulate 100,30 \
             #-blue-shift 0.1 \
+            #-grayscale Rec709Luma \
         ;;
     *)
         echo "usage: $0 FROM_IMG TO_IMG" >&2
