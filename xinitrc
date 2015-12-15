@@ -56,7 +56,7 @@ case `hostname` in
         udiskie &
         ;;
     littlefinger)
-        systemd --user 
+        systemctl --user import-environment
         numlockx on 
         xrandr --dpi 96 
         #compton --backend glx\
