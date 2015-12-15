@@ -4,7 +4,7 @@
 export PATH="$JAVA_HOME:${PATH}:/home/meatcar/bin:/opt/maven/bin"
 
 if which npm 2>&1 >/dev/null; then
-  export PATH="$PATH:$HOME/.node/bin"
+  export PATH="$PATH:$HOME/.npm/bin"
   export PATH="$PATH:$(npm bin)"
 fi
 
