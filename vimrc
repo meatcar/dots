@@ -15,9 +15,11 @@ set t_Co=256            " enable 256-color support
 set title
 set nocompatible        " disregard vi compatibility:
 set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-set dir=~/.vim/swap,/tmp     " keep swap files in one place
-set backupdir=~/.vim/backup,/tmp  " keep backups in one place
-set undodir=~/.vim/undo,/tmp " keep undos in one place
+set dir=~/.vim/tmp/swap     " keep swap files in one place
+set backupdir=~/.vim/tmp/backup " keep backups in one place
+set undodir=~/.vim/tmp/undo " keep undos in one place
+set viewdir=~/.vim/tmp/view " keep views in one place
+set viminfo='100,n$HOME/.vim/tmp/viminfo
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
 set mouse=a             " allow mouse input in all modes
@@ -125,6 +127,7 @@ Plug 'scrooloose/nerdcommenter'     " comment/uncomment things easy
 Plug 'scrooloose/syntastic'
 Plug 'kopischke/vim-stay'   " save folds
 Plug 'kopischke/vim-fetch'  " parse '...:{num}' from files, jump to the line
+Plug 'moll/vim-bbye'
 
 Plug 'godlygeek/tabular' " align things easily
 Plug 'junegunn/goyo.vim'    " distraction-free writing
@@ -140,8 +143,10 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimfiler.vim'
+Plug 'romgrk/vimfiler-prompt'
 
 " pretty plugins
+Plug 'mhinz/vim-startify'
 Plug 'flazz/vim-colorschemes'
 Plug 'bling/vim-airline'
 
@@ -156,34 +161,19 @@ Plug 'WebAPI.vim' " need this for gist.
 Plug 'Gist.vim', {'on': 'Gist'}
 
 " new syntaxes
+Plug 'sheerun/vim-polyglot' " A tonne of new syntaxes.
 Plug 'trapd00r/irc.vim' " syntax file for irc logs
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'freitass/todo.txt-vim'
 Plug 'pearofducks/ansible-vim'
-
 Plug 'TeX-9', {'for': ['tex', 'latex']}
-Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 'scss']}
-Plug 'xml.vim', {'for': 'xml'}
-Plug 'nono/vim-handlebars', {'for': ['html', 'handlebars', 'markdown']}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
-Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'less.vim', {'for': 'less'}
 Plug 'skammer/vim-css-color', {'for': ['css', 'less']}
-Plug 'digitaltoad/vim-jade', {'for': 'jade'}
-Plug 'mattn/emmet-vim', {'for': ['html', 'xml']} " emmet for vim: http://emmet.io/
-Plug 'beyondmarc/glsl.vim', {'for': 'glsl'} " OpenGL Shading Language (GLSL) Vim syntax highlighting
+Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 'scss']} " emmet for vim: http://emmet.io/
 Plug 'sealemar/vtl', {'for': 'velocity'} " velocity syntax for vim
 Plug 'dln/avro-vim', {'for': 'avro-idl'}
-
 Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
-Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 
-Plug 'Matt-Deacalion/vim-systemd-syntax', {'for': 'systemd'}
-
-Plug 'wting/rust.vim', {'for': 'rust'}
-Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'othree/yajs.vim', {'for': 'javascript'}
 call plug#end()
 
 " colorscheme settings -------------------------------------------------------
@@ -193,6 +183,23 @@ let g:zenesque_colors=2
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 colorscheme github
 
+" Startify settings ----------------------------------------------------------
+
+let g:startify_session_dir = '~/.vim/tmp/session'
+let g:startify_skiplist = [
+                \ 'COMMIT_EDITMSG',
+                \ 'bundle/.*/doc',
+                \ '/data/repo/neovim/runtime/doc',
+                \ '/usr/share/vim/share/vim/vim74/doc',
+                \ ]
+let g:startify_custom_footer =
+          \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
+
+let g:startify_custom_header =
+      \ map(split(system('fortune work | cowsay -f www'), '\n'), '"   ". v:val') + ['']
+
+let g:startify_change_to_dir = 1
+
 " Airline settings -----------------------------------------------------------
 
 let g:airline_theme='zenburn'
@@ -200,6 +207,7 @@ let g:airline_inactive_collapse=0
 let g:airline_powerline_fonts=1
 let g:airline#extensions#syntastic = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Syntastic settings ---------------------------------------------------------
 
@@ -273,8 +281,9 @@ let g:unite_source_process_enable_confirm = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_enable_split_vertically = 0
 let g:unite_winheight = 20
-let g:unite_source_directory_mru_limit = 100
-let g:unite_source_file_mru_limit = 100
+let g:unite_source_rec_max_cache_files = 500
+let g:unite_source_directory_mru_limit = 200
+let g:unite_source_file_mru_limit = 500
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_grep_command = 'ack'
 let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
@@ -327,10 +336,13 @@ let g:vimfiler_safe_mode_by_default = 0
 " disable netrw.vim
 let g:loaded_netrwPlugin = 1
 let g:vimfiler_as_default_expolorer = 1
-nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status<CR>
+nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status -force-quit<CR>
 
 function! s:vimfiler_settings()
   nmap <buffer> ` <Plug>(vimfiler_exit)
+  nmap <buffer> i :VimFilerPrompt<CR>
+  nmap <buffer> H :bp<CR>
+  nmap <buffer> L :bn<CR>
 endfunction
 
 autocmd UniteAutoCmd Filetype vimfiler call s:vimfiler_settings()
@@ -401,7 +413,8 @@ endif
 
 " typo corrections
 nmap q: :q<cr>
-command! BW :b#|:bw#     " easier buffer closing
+nmap <silent> <leader>q :Bdelete<CR>
+command! BW :Bdelete     " easier buffer closing
 command! SO :so ~/.vimrc " source
 
 nmap <C-j> <C-W>j
@@ -411,6 +424,6 @@ nmap <C-l> <C-W>l
 
 nmap <silent> <leader>g :GundoToggle<CR>
 
-nmap H gT
-nmap L gt
+nmap <silent> H :bp<CR>
+nmap <silent> L :bn<CR>
 
