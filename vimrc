@@ -208,6 +208,10 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#syntastic = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_min_count = 1
+let g:airline#extensions#tabline#tab_min_count = 1
+let g:airline#extensions#tabline#close_symbol = '×'
 
 " Syntastic settings ---------------------------------------------------------
 
@@ -340,6 +344,7 @@ nno ` :<C-u>:VimFilerBufferDir -buffer-name=explorer -status -force-quit<CR>
 
 function! s:vimfiler_settings()
   nmap <buffer> ` <Plug>(vimfiler_exit)
+  nmap <buffer> <leader>q <Plug>(vimfiler_exit)
   nmap <buffer> i :VimFilerPrompt<CR>
   nmap <buffer> H :bp<CR>
   nmap <buffer> L :bn<CR>
