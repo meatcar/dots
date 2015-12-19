@@ -7,19 +7,22 @@
 
 " general --------------------------------------------------------------
 
-if &shell =~# 'fish$'
-    set shell=sh
-endif
-
 set t_Co=256            " enable 256-color support
 set title
 set nocompatible        " disregard vi compatibility:
-set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-set dir=~/.vim/tmp/swap     " keep swap files in one place
-set backupdir=~/.vim/tmp/backup " keep backups in one place
-set undodir=~/.vim/tmp/undo " keep undos in one place
-set viewdir=~/.vim/tmp/view " keep views in one place
-set viminfo='100,n$HOME/.vim/tmp/viminfo
+
+if &shell =~# 'fish$'
+    set shell=sh      " fish is messed
+elseif has('unix')
+    set shell=/bin/sh " zsh colors are messed
+endif
+
+set runtimepath+=~/dots/vim,"$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/dots/vim/after
+set dir=~/dots/vim/tmp/swap     " keep swap files in one place
+set backupdir=~/dots/vim/tmp/backup " keep backups in one place
+set undodir=~/dots/vim/tmp/undo " keep undos in one place
+set viewdir=~/dots/vim/tmp/view " keep views in one place
+let &viminfo="'100,n".expand('~/dots/vim/tmp/viminfo')
 set encoding=utf-8      " UTF-8 encoding for all new files
 set termencoding=utf-8  " force terminal encoding
 set mouse=a             " allow mouse input in all modes
@@ -38,7 +41,6 @@ set wildmenu            " enhanced tab-completion shows all matching cmds
 set splitbelow          " place the new split below the current file
 set autowrite           " write file if modified on each :next, :make, etc.
 set writebackup         " make a backup before writing a file until successful
-set shell=/bin/sh       " set default shell type
 set previewheight=9     " default height for a preview window (def:12)
 "set textwidth=79       " insert carriage return after n cols wide
 syntax on               " enable syntax highlighting
@@ -49,6 +51,7 @@ set wildmode=longest,list:longest
 set hidden              " un-saved buffers in the background
 set colorcolumn=80
 set laststatus=2        " show the status bar even when editing one file.
+set cursorline
 
 set diffopt-=iwhite     " ignore whitespace when diffing
 let &listchars='tab:⇥ ,eol:$,trail:·,extends:>,precedes:<'    " set list
@@ -147,6 +150,8 @@ Plug 'romgrk/vimfiler-prompt'
 
 " pretty plugins
 Plug 'mhinz/vim-startify'
+Plug 'xolox/vim-misc' " need this for colorscheme-switcher
+Plug 'xolox/vim-colorscheme-switcher'
 Plug 'flazz/vim-colorschemes'
 Plug 'bling/vim-airline'
 
@@ -183,6 +188,11 @@ let g:zenesque_colors=2
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 colorscheme github
 
+if has('win32') || has('win64')
+  colorscheme hornet
+else
+  colorscheme github
+endif
 " Startify settings ----------------------------------------------------------
 
 let g:startify_session_dir = '~/.vim/tmp/session'
@@ -289,10 +299,16 @@ let g:unite_source_rec_max_cache_files = 500
 let g:unite_source_directory_mru_limit = 200
 let g:unite_source_file_mru_limit = 500
 let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_grep_command = 'ack'
-let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
-let g:unite_source_grep_recursive_opt = ''
 let g:unite_cursor_line_highlight = 'CursorLine'
+
+if has('win32') || has('win64')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_rec_async_command = ['C:/ProgramData/chocolatey/bin/ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+else
+    let g:unite_source_grep_command = 'ack'
+    let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
+    let g:unite_source_grep_recursive_opt = ''
+endif
 
 function! s:unite_settings()
   map <buffer> <leader> <Esc><leader>
