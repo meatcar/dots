@@ -116,7 +116,7 @@ set omnifunc=syntaxcomplete#Complete
 
 " Vundle stuff ---------------------------------------------------------
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/dots/vim/bundle')
 
 Plug 'tpope/vim-sensible'
 
@@ -195,7 +195,7 @@ else
 endif
 " Startify settings ----------------------------------------------------------
 
-let g:startify_session_dir = '~/.vim/tmp/session'
+let g:startify_session_dir = '~/dots/vim/tmp/session'
 let g:startify_skiplist = [
                 \ 'COMMIT_EDITMSG',
                 \ 'bundle/.*/doc',
@@ -290,7 +290,7 @@ call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async,file_mru,
           \'\.git',
       \], '\|'))
 
-let g:unite_data_directory = expand('~/.vim/tmp/unite/')
+let g:unite_data_directory = expand('~/dots/vim/tmp/unite/')
 let g:unite_source_process_enable_confirm = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_enable_split_vertically = 0
@@ -303,7 +303,13 @@ let g:unite_cursor_line_highlight = 'CursorLine'
 
 if has('win32') || has('win64')
     let g:unite_source_grep_command = 'ag'
-    let g:unite_source_rec_async_command = ['C:/ProgramData/chocolatey/bin/ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+    let g:unite_source_grep_default_opts =
+          \ '-i --vimgrep --hidden --ignore ' .
+          \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_rec_async_command = [
+          \'C:/ProgramData/chocolatey/bin/ag',
+          \'--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 else
     let g:unite_source_grep_command = 'ack'
     let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
@@ -351,7 +357,7 @@ map <leader>w :<C-u>Unite file_rec/async file/new -buffer-name=notes -start-inse
       \ -path=/home/meatcar/Sync/notes/ -toggle -profile-name=files <CR>
 
 " VimFiler ------------------------------------------------------------
-let g:vimfiler_data_directory = expand('~/.vim/tmp/vimfiler/')
+let g:vimfiler_data_directory = expand('~/dots/vim/tmp/vimfiler/')
 let g:vimfiler_safe_mode_by_default = 0
 " disable netrw.vim
 let g:loaded_netrwPlugin = 1
