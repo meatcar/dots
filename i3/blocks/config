@@ -55,6 +55,7 @@ full_text=
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
+instance=mem
 color=#009ddc
 label= 
 interval=1
@@ -68,13 +69,13 @@ interval=1
 # (defaults to 10 for 10%).
 [disk 5]
 color=#009ddc
-label=    /
+label=  root:
 instance=/
 interval=30
 
 [disk 5]
 color=#009ddc
-label=/data
+label=data:
 instance=/data
 interval=30
 
@@ -127,7 +128,7 @@ signal=10
 [time]
 color=#009ddc
 label= 
-command=date '+%c'
+command=date '+%a %F %l:%M%P'
 interval=1
 
 [separator]
