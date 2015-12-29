@@ -22,6 +22,6 @@ if [[ -n $check_gnome ]]
 then
     loginctl lock-sessions
 else
-    i3lock -i ~/.wallpaper_lock.png --ignore-empty-password --show-failed-attempts
+    i3lock -i ~/.wallpaper_lock.png --ignore-empty-password --show-failed-attempts --dpms
 fi
 
