@@ -1,0 +1,52 @@
+! Base16 Monokai
+! Scheme: Wimer Hazenberg (http://www.monokai.nl)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #f9f8f5
+URxvt*foreground:                     #49483e
+URxvt*cursorColor:                    #49483e
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #f8f8f2
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #f9f8f5
+URxvt*highlightTextColor:             #f8f8f2
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #272822
+URxvt*color1:                         #f92672
+URxvt*color2:                         #a6e22e
+URxvt*color3:                         #f4bf75
+URxvt*color4:                         #66d9ef
+URxvt*color5:                         #ae81ff
+URxvt*color6:                         #a1efe4
+URxvt*color7:                         #f8f8f2
+URxvt*color8:                         #75715e
+URxvt*color9:                         #f92672
+URxvt*color10:                        #a6e22e
+URxvt*color11:                        #f4bf75
+URxvt*color12:                        #66d9ef
+URxvt*color13:                        #ae81ff
+URxvt*color14:                        #a1efe4
+URxvt*color15:                        #f9f8f5
+
+! 256 color space
+URxvt*color16:                        #fd971f
+URxvt*color17:                        #cc6633
+URxvt*color18:                        #383830
+URxvt*color19:                        #49483e
+URxvt*color20:                        #a59f85
+URxvt*color21:                        #f5f4f1

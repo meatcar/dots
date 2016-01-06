@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Yesterday Bright Light
+    Author:     FroZnShiva (https://github.com/FroZnShiva)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-yesterdaybright-light.CodeMirror {background: #ffffff; color: #4f5b66;}
+.cm-s-base16-yesterdaybright-light div.CodeMirror-selected {background: #eff1f5 !important;}
+.cm-s-base16-yesterdaybright-light .CodeMirror-gutters {background: #ffffff; border-right: 0px;}
+.cm-s-base16-yesterdaybright-light .CodeMirror-linenumber {color: #c0c5ce;}
+.cm-s-base16-yesterdaybright-light .CodeMirror-cursor {border-left: 1px solid #a7adba !important;}
+
+.cm-s-base16-yesterdaybright-light span.cm-comment {color: #9a806d;}
+.cm-s-base16-yesterdaybright-light span.cm-atom {color: #c397d8;}
+.cm-s-base16-yesterdaybright-light span.cm-number {color: #c397d8;}
+
+.cm-s-base16-yesterdaybright-light span.cm-property, .cm-s-base16-yesterdaybright-light span.cm-attribute {color: #b9ca4a;}
+.cm-s-base16-yesterdaybright-light span.cm-keyword {color: #d54e53;}
+.cm-s-base16-yesterdaybright-light span.cm-string {color: #e7c547;}
+
+.cm-s-base16-yesterdaybright-light span.cm-variable {color: #b9ca4a;}
+.cm-s-base16-yesterdaybright-light span.cm-variable-2 {color: #7aa6da;}
+.cm-s-base16-yesterdaybright-light span.cm-def {color: #e78c45;}
+.cm-s-base16-yesterdaybright-light span.cm-error {background: #d54e53; color: #a7adba;}
+.cm-s-base16-yesterdaybright-light span.cm-bracket {color: #4f5b66;}
+.cm-s-base16-yesterdaybright-light span.cm-tag {color: #d54e53;}
+.cm-s-base16-yesterdaybright-light span.cm-link {color: #c397d8;}
+
+.cm-s-base16-yesterdaybright-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

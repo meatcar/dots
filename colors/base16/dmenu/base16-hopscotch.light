@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Hopscotch Light, by Jan T. Sott
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'b9b5b8' -nf '5c545b' -sb '1290bf' -sf '433b42'

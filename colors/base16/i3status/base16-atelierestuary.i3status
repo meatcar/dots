@@ -1,0 +1,13 @@
+# ~/.i3status.conf
+# Base16 Atelier Estuary, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/estuary)
+# template by Matt Parnell, @parnmatt
+
+general {
+    colors = true
+    color_good = "#7d9726"
+    color_bad = "ba6236"
+    ## remember to add your prefered interval
+    # interval = 5
+}
+
+## remember to add the rest of your configure

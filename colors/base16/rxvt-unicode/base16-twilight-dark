@@ -1,0 +1,52 @@
+! Base16 Twilight
+! Scheme: David Hart (http://hart-dev.com)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #1e1e1e
+URxvt*foreground:                     #a7a7a7
+URxvt*cursorColor:                    #a7a7a7
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #a7a7a7
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #464b50
+URxvt*highlightTextColor:             #838184
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #1e1e1e
+URxvt*color1:                         #cf6a4c
+URxvt*color2:                         #8f9d6a
+URxvt*color3:                         #f9ee98
+URxvt*color4:                         #7587a6
+URxvt*color5:                         #9b859d
+URxvt*color6:                         #afc4db
+URxvt*color7:                         #a7a7a7
+URxvt*color8:                         #5f5a60
+URxvt*color9:                         #cf6a4c
+URxvt*color10:                        #8f9d6a
+URxvt*color11:                        #f9ee98
+URxvt*color12:                        #7587a6
+URxvt*color13:                        #9b859d
+URxvt*color14:                        #afc4db
+URxvt*color15:                        #ffffff
+
+! 256 color space
+URxvt*color16:                        #cda869
+URxvt*color17:                        #9b703f
+URxvt*color18:                        #323537
+URxvt*color19:                        #464b50
+URxvt*color20:                        #838184
+URxvt*color21:                        #c3c3c3

@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Summerfruit Dark, by Christopher Corley (http://cscorley.github.io/)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '151515' -nf '505050' -sb '3777E6' -sf '151515'

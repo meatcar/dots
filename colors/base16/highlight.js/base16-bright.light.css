@@ -9,8 +9,7 @@
 */
 
 /* Bright Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #b0b0b0;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Bright Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #fda331;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Bright Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #76c7b7;
 }
@@ -79,11 +80,29 @@
   color: #d381c3;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #000000;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #fb0120;
+}
+.diff .hljs-addition {
+  background-color: #a1c659;
+}
+.diff .hljs-change {
+  color: #6fb3d2;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #ffffff;
   color: #505050;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

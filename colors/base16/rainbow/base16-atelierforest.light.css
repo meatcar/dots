@@ -33,11 +33,11 @@ pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .key
 }
 
 pre .constant, pre .entity, pre .entity.class, pre .support {
-    color: #d5911a; /* yellow */
+    color: #c38418; /* yellow */
 }
 
 pre .constant.symbol, pre .string {
-    color: #5ab738; /* green */
+    color: #7b9726; /* green */
 }
 
 pre .entity.function, pre .support.css-property, pre .selector {

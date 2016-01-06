@@ -1,0 +1,52 @@
+! Base16 Grayscale
+! Scheme: Alexandre Gavioli (https://github.com/Alexx2/)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #f7f7f7
+URxvt*foreground:                     #464646
+URxvt*cursorColor:                    #464646
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #b9b9b9
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #f7f7f7
+URxvt*highlightTextColor:             #b9b9b9
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #101010
+URxvt*color1:                         #7c7c7c
+URxvt*color2:                         #8e8e8e
+URxvt*color3:                         #a0a0a0
+URxvt*color4:                         #686868
+URxvt*color5:                         #747474
+URxvt*color6:                         #868686
+URxvt*color7:                         #b9b9b9
+URxvt*color8:                         #525252
+URxvt*color9:                         #7c7c7c
+URxvt*color10:                        #8e8e8e
+URxvt*color11:                        #a0a0a0
+URxvt*color12:                        #686868
+URxvt*color13:                        #747474
+URxvt*color14:                        #868686
+URxvt*color15:                        #f7f7f7
+
+! 256 color space
+URxvt*color16:                        #999999
+URxvt*color17:                        #5e5e5e
+URxvt*color18:                        #252525
+URxvt*color19:                        #464646
+URxvt*color20:                        #ababab
+URxvt*color21:                        #e3e3e3

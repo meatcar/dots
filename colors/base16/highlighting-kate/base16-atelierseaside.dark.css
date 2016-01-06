@@ -18,6 +18,6 @@ code.sourceCode span.st { color: #29a329 } /* Literal.String */
 code.sourceCode span.co { color: #687d68 } /* Comment */
 code.sourceCode span.ot { color: #e619c3 } /* Comment.Preproc */
 code.sourceCode span.al { color: #ad2bee } /* Generic.Error */
-code.sourceCode span.fu { color: #c3c322 } /* Name.Function */
+code.sourceCode span.fu { color: #98981b } /* Name.Function */
 code.sourceCode span.re { color: #1999b3}
 code.sourceCode span.er { color: #e6193c; border: 1px solid #ad2bee } /* Error */

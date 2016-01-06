@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Pop Light, by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'd0d0d0' -nf '303030' -sb '0e5a94' -sf '202020'

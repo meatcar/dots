@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Grayscale Dark, by Alexandre Gavioli (https://github.com/Alexx2/)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '101010' -nf '525252' -sb '686868' -sf '101010'

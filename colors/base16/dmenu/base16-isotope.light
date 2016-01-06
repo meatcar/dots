@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Isotope Light, by Jan T. Sott
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'd0d0d0' -nf '606060' -sb '0066ff' -sf '404040'

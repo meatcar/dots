@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Paraiso Dark, by Jan T. Sott
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '2f1e2e' -nf '776e71' -sb '06b6ef' -sf '2f1e2e'

@@ -9,8 +9,7 @@
 */
 
 /* Summerfruit Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #505050;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Summerfruit Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ABA800;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Summerfruit Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #1faaaa;
 }
@@ -79,11 +80,29 @@
   color: #AD00A1;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #151515;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #FF0086;
+}
+.diff .hljs-addition {
+  background-color: #00C918;
+}
+.diff .hljs-change {
+  color: #3777E6;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #FFFFFF;
   color: #303030;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

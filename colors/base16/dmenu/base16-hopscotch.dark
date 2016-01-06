@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Hopscotch Dark, by Jan T. Sott
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '322931' -nf '797379' -sb '1290bf' -sf '322931'

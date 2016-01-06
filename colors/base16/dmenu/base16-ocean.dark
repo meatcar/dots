@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Ocean Dark, by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '2b303b' -nf '65737e' -sb '8fa1b3' -sf '2b303b'

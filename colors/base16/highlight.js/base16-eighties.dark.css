@@ -9,8 +9,7 @@
 */
 
 /* Eighties Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #a09f93;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Eighties Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ffcc66;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Eighties Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #66cccc;
 }
@@ -79,11 +80,29 @@
   color: #cc99cc;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #2d2d2d;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #f2777a;
+}
+.diff .hljs-addition {
+  background-color: #99cc99;
+}
+.diff .hljs-change {
+  color: #6699cc;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #2d2d2d;
   color: #d3d0c8;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

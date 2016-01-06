@@ -1,0 +1,52 @@
+! Base16 Summerfruit
+! Scheme: Christopher Corley (http://cscorley.github.io/)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #151515
+URxvt*foreground:                     #D0D0D0
+URxvt*cursorColor:                    #D0D0D0
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #D0D0D0
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #303030
+URxvt*highlightTextColor:             #B0B0B0
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #151515
+URxvt*color1:                         #FF0086
+URxvt*color2:                         #00C918
+URxvt*color3:                         #ABA800
+URxvt*color4:                         #3777E6
+URxvt*color5:                         #AD00A1
+URxvt*color6:                         #1faaaa
+URxvt*color7:                         #D0D0D0
+URxvt*color8:                         #505050
+URxvt*color9:                         #FF0086
+URxvt*color10:                        #00C918
+URxvt*color11:                        #ABA800
+URxvt*color12:                        #3777E6
+URxvt*color13:                        #AD00A1
+URxvt*color14:                        #1faaaa
+URxvt*color15:                        #FFFFFF
+
+! 256 color space
+URxvt*color16:                        #FD8900
+URxvt*color17:                        #cc6633
+URxvt*color18:                        #202020
+URxvt*color19:                        #303030
+URxvt*color20:                        #B0B0B0
+URxvt*color21:                        #E0E0E0

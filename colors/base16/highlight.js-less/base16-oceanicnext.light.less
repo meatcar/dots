@@ -1,0 +1,116 @@
+/*
+
+    Name:       Base16 OceanicNext Light
+    Author:     https://github.com/voronianski/oceanic-next-color-scheme
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+@base00: #1B2B34;
+@base01: #343D46;
+@base02: #4F5B66;
+@base03: #65737E;
+@base04: #A7ADBA;
+@base05: #C0C5CE;
+@base06: #CDD3DE;
+@base07: #D8DEE9;
+@base08: #EC5f67;
+@base09: #F99157;
+@base0a: #FAC863;
+@base0b: #99C794;
+@base0c: #5FB3B3;
+@base0d: #6699CC;
+@base0e: #C594C5;
+@base0f: #AB7967;
+
+// OceanicNext Comment
+.hljs-comment {
+  color: @base03;
+}
+
+// OceanicNext Red
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: @base08;
+}
+
+// OceanicNext Orange
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: @base09;
+}
+
+// OceanicNext Yellow
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: @base0A;
+}
+
+// OceanicNext Green
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: @base0B;
+}
+
+// OceanicNext Aqua
+.hljs-title,
+.css .hljs-hexcolor {
+  color: @base0C;
+}
+
+// OceanicNext Blue
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: @base0D;
+}
+
+// OceanicNext Purple
+.hljs-keyword,
+.javascript .hljs-function {
+  color: @base0E;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: @base07;
+  color: @base02;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

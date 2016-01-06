@@ -10,7 +10,7 @@
 
 /* plain text */
 .pln {
-  color: #f0fff0;
+  color: #f4fbf4;
 }
 
 @media screen {
@@ -41,17 +41,17 @@
 
   /* punctuation */
   .pun {
-    color: #f0fff0;
+    color: #f4fbf4;
   }
 
   /* lisp open bracket */
   .opn {
-    color: #f0fff0;
+    color: #f4fbf4;
   }
 
   /* lisp close bracket */
   .clo {
-    color: #f0fff0;
+    color: #f4fbf4;
   }
 
   /* a markup tag name */
@@ -129,11 +129,13 @@
 /* Style */
 pre.prettyprint {
   background: #131513;
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  color: #5e6e5e;
+  font-family: Consolas, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Monaco, monospace;
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid #f0fff0;
+  border: 1px solid #131513;
   padding: 10px;
+  border-radius: 3px;
 }
 
 /* Specify class=linenums on a pre to get line numbering */

@@ -9,8 +9,7 @@
 */
 
 /* Mocha Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #b8afad;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Mocha Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #f4bc87;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Mocha Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #7bbda4;
 }
@@ -79,11 +80,29 @@
   color: #a89bb9;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #3B3228;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #cb6077;
+}
+.diff .hljs-addition {
+  background-color: #beb55b;
+}
+.diff .hljs-change {
+  color: #8ab3b5;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #3B3228;
   color: #d0c8c6;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

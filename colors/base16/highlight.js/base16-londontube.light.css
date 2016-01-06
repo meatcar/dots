@@ -9,8 +9,7 @@
 */
 
 /* London Tube Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #737171;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* London Tube Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ffd204;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* London Tube Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #85cebc;
 }
@@ -79,11 +80,29 @@
   color: #98005d;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #231f20;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #ee2e24;
+}
+.diff .hljs-addition {
+  background-color: #00853e;
+}
+.diff .hljs-change {
+  color: #009ddc;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #ffffff;
   color: #5a5758;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

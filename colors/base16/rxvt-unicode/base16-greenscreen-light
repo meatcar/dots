@@ -1,0 +1,52 @@
+! Base16 Green Screen
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #00ff00
+URxvt*foreground:                     #005500
+URxvt*cursorColor:                    #005500
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #00bb00
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #00ff00
+URxvt*highlightTextColor:             #00bb00
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #001100
+URxvt*color1:                         #007700
+URxvt*color2:                         #00bb00
+URxvt*color3:                         #007700
+URxvt*color4:                         #009900
+URxvt*color5:                         #00bb00
+URxvt*color6:                         #005500
+URxvt*color7:                         #00bb00
+URxvt*color8:                         #007700
+URxvt*color9:                         #007700
+URxvt*color10:                        #00bb00
+URxvt*color11:                        #007700
+URxvt*color12:                        #009900
+URxvt*color13:                        #00bb00
+URxvt*color14:                        #005500
+URxvt*color15:                        #00ff00
+
+! 256 color space
+URxvt*color16:                        #009900
+URxvt*color17:                        #005500
+URxvt*color18:                        #003300
+URxvt*color19:                        #005500
+URxvt*color20:                        #009900
+URxvt*color21:                        #00dd00

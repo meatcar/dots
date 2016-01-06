@@ -9,8 +9,7 @@
 */
 
 /* Google Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #b4b7b4;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Google Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #FBA922;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Google Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #3971ED;
 }
@@ -79,11 +80,29 @@
   color: #A36AC7;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #1d1f21;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #CC342B;
+}
+.diff .hljs-addition {
+  background-color: #198844;
+}
+.diff .hljs-change {
+  color: #3971ED;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #1d1f21;
   color: #c5c8c6;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

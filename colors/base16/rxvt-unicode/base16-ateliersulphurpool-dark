@@ -1,0 +1,52 @@
+! Base16 Atelier Sulphurpool
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/sulphurpool)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #202746
+URxvt*foreground:                     #979db4
+URxvt*cursorColor:                    #979db4
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #979db4
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #5e6687
+URxvt*highlightTextColor:             #898ea4
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #202746
+URxvt*color1:                         #c94922
+URxvt*color2:                         #ac9739
+URxvt*color3:                         #c08b30
+URxvt*color4:                         #3d8fd1
+URxvt*color5:                         #6679cc
+URxvt*color6:                         #22a2c9
+URxvt*color7:                         #979db4
+URxvt*color8:                         #6b7394
+URxvt*color9:                         #c94922
+URxvt*color10:                        #ac9739
+URxvt*color11:                        #c08b30
+URxvt*color12:                        #3d8fd1
+URxvt*color13:                        #6679cc
+URxvt*color14:                        #22a2c9
+URxvt*color15:                        #f5f7ff
+
+! 256 color space
+URxvt*color16:                        #c76b29
+URxvt*color17:                        #9c637a
+URxvt*color18:                        #293256
+URxvt*color19:                        #5e6687
+URxvt*color20:                        #898ea4
+URxvt*color21:                        #dfe2f1

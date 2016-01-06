@@ -13,13 +13,13 @@
 	<key>gutterSettings</key>
 	<dict>
 		<key>background</key>
-		<string>#f0fff0</string>
+		<string>#f4fbf4</string>
 		<key>divider</key>
-		<string>#f0fff0</string>
+		<string>#f4fbf4</string>
 		<key>foreground</key>
 		<string>#5e6e5e</string>
 		<key>selectionBackground</key>
-		<string>#f0fff0</string>
+		<string>#f4fbf4</string>
 		<key>selectionForeground</key>
 		<string>#8ca68c</string>
 	</dict>
@@ -29,7 +29,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#f0fff0</string>
+				<string>#f4fbf4</string>
 				<key>caret</key>
 				<string>#5e6e5e</string>
 				<key>foreground</key>
@@ -500,7 +500,7 @@
 				<key>background</key>
 				<string>#e6193c</string>
 				<key>foreground</key>
-				<string>#f0fff0</string>
+				<string>#f4fbf4</string>
 			</dict>
 		</dict>
 		<dict>
@@ -526,7 +526,7 @@
 				<key>background</key>
 				<string>#e619c3</string>
 				<key>foreground</key>
-				<string>#f0fff0</string>
+				<string>#f4fbf4</string>
 			</dict>
 		</dict>
 		<dict>
@@ -544,6 +544,6 @@
 		</dict>
 	</array>
 	<key>uuid</key>
-	<string>1802dd81-e0b1-477e-a9c0-3088f11f9537</string>
+	<string>ba0f9ac0-50cd-495e-8e46-050cba3e6c80</string>
 </dict>
 </plist>

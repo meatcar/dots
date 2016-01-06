@@ -1,0 +1,52 @@
+! Base16 harmonic16
+! Scheme: Jannik Siebert (https://github.com/janniks)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #f7f9fb
+URxvt*foreground:                     #405c79
+URxvt*cursorColor:                    #405c79
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #cbd6e2
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #f7f9fb
+URxvt*highlightTextColor:             #cbd6e2
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #0b1c2c
+URxvt*color1:                         #bf8b56
+URxvt*color2:                         #56bf8b
+URxvt*color3:                         #8bbf56
+URxvt*color4:                         #8b56bf
+URxvt*color5:                         #bf568b
+URxvt*color6:                         #568bbf
+URxvt*color7:                         #cbd6e2
+URxvt*color8:                         #627e99
+URxvt*color9:                         #bf8b56
+URxvt*color10:                        #56bf8b
+URxvt*color11:                        #8bbf56
+URxvt*color12:                        #8b56bf
+URxvt*color13:                        #bf568b
+URxvt*color14:                        #568bbf
+URxvt*color15:                        #f7f9fb
+
+! 256 color space
+URxvt*color16:                        #bfbf56
+URxvt*color17:                        #bf5656
+URxvt*color18:                        #223b54
+URxvt*color19:                        #405c79
+URxvt*color20:                        #aabcce
+URxvt*color21:                        #e5ebf1

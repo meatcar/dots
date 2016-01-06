@@ -1,0 +1,52 @@
+! Base16 Atelier Estuary
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/estuary)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #f4f3ec
+URxvt*foreground:                     #5f5e4e
+URxvt*cursorColor:                    #5f5e4e
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #929181
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #f4f3ec
+URxvt*highlightTextColor:             #929181
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #22221b
+URxvt*color1:                         #ba6236
+URxvt*color2:                         #7d9726
+URxvt*color3:                         #a5980d
+URxvt*color4:                         #36a166
+URxvt*color5:                         #5f9182
+URxvt*color6:                         #5b9d48
+URxvt*color7:                         #929181
+URxvt*color8:                         #6c6b5a
+URxvt*color9:                         #ba6236
+URxvt*color10:                        #7d9726
+URxvt*color11:                        #a5980d
+URxvt*color12:                        #36a166
+URxvt*color13:                        #5f9182
+URxvt*color14:                        #5b9d48
+URxvt*color15:                        #f4f3ec
+
+! 256 color space
+URxvt*color16:                        #ae7313
+URxvt*color17:                        #9d6c7c
+URxvt*color18:                        #302f27
+URxvt*color19:                        #5f5e4e
+URxvt*color20:                        #878573
+URxvt*color21:                        #e7e6df

@@ -3,56 +3,57 @@
 
 @import "base16-atelierforest-light-syntax-variables.less";
 
-.editor-colors {
+atom-text-editor, // <- remove when Shadow DOM can't be disabled
+:host {
   color: @syntax-text-color;
   background-color: @syntax-background-color;
-}
+  .gutter {
+    color: @syntax-gutter-text-color;
+    background-color: @syntax-gutter-background-color;
+  }
 
-.editor .gutter {
-  color: @syntax-gutter-text-color;
-  background-color: @syntax-gutter-background-color;
-}
+  .gutter .line-number.cursor-line {
+    color: @syntax-gutter-text-color-selected;
+    background-color: @syntax-gutter-background-color-selected;
+  }
 
-.editor .gutter .line-number.cursor-line {
-  color: @syntax-gutter-text-color-selected;
-  background-color: @syntax-gutter-background-color-selected;
-}
+  .gutter .line-number.cursor-line-no-selection {
+    color: @syntax-gutter-text-color-selected;
+  }
 
-.editor .gutter .line-number.cursor-line-no-selection {
-  color: @syntax-gutter-text-color-selected;
-}
+  .wrap-guide {
+    color: @syntax-wrap-guide-color;
+  }
 
-.editor .wrap-guide {
-  color: @syntax-wrap-guide-color;
-}
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
 
-.editor .indent-guide {
-  color: @syntax-indent-guide-color;
-}
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
 
-.editor .invisible-character {
-  color: @syntax-invisible-character-color;
-}
+  .search-results .marker .region {
+    background-color: transparent;
+    border: @syntax-result-marker-color;
+  }
 
-.editor .search-results .marker .region {
-  background-color: transparent;
-  border: @syntax-result-marker-color;
-}
+  .search-results .marker.current-result .region {
+    border: @syntax-result-marker-color-selected;
+  }
 
-.editor .search-results .marker.current-result .region {
-  border: @syntax-result-marker-color-selected;
-}
+  .cursor {
+    border-color: @syntax-cursor-color;
+  }
 
-.editor.is-focused .cursor {
-  border-color: @syntax-cursor-color;
-}
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
 
-.editor.is-focused .selection .region {
-  background-color: @syntax-selection-color;
-}
+  .line-number.cursor-line-no-selection, .line.cursor-line {
+    background-color: rgba(176, 176, 176, 0.33);
+  }
 
-.editor.is-focused .line-number.cursor-line-no-selection, .editor.is-focused .line.cursor-line {
-  background-color: rgba(176, 176, 176, 0.33);
 }
 
 .variable.parameter.function {
@@ -104,11 +105,11 @@
 }
 
 .support.function {
-  color: #00ad9c;
+  color: #3d97b8;
 }
 
 .string, .constant.other.symbol, .entity.other.inherited-class {
-  color: #5ab738;
+  color: #7b9726;
 }
 
 .constant.numeric {
@@ -147,7 +148,7 @@
   color: #df5320;
 }
 
-.markup.heading .punctuation.definition.heading, .entity.name.section {
+.markup.heading, .punctuation.definition.heading, .entity.name.section {
   color: #407ee7;
 }
 
@@ -166,7 +167,7 @@
 }
 
 .markup.raw.inline {
-  color: #5ab738;
+  color: #7b9726;
 }
 
 .string.other.link {
@@ -191,7 +192,7 @@
 }
 
 .markup.inserted {
-  color: #5ab738;
+  color: #7b9726;
 }
 
 .markup.deleted {
@@ -203,15 +204,15 @@
 }
 
 .constant.other.color {
-  color: #00ad9c;
+  color: #3d97b8;
 }
 
 .string.regexp {
-  color: #00ad9c;
+  color: #3d97b8;
 }
 
 .constant.character.escape {
-  color: #00ad9c;
+  color: #3d97b8;
 }
 
 .punctuation.section.embedded, .variable.interpolation {

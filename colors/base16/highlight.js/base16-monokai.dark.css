@@ -9,8 +9,7 @@
 */
 
 /* Monokai Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #a59f85;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Monokai Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #f4bf75;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Monokai Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #a1efe4;
 }
@@ -79,11 +80,29 @@
   color: #ae81ff;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #272822;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #f92672;
+}
+.diff .hljs-addition {
+  background-color: #a6e22e;
+}
+.diff .hljs-change {
+  color: #66d9ef;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #272822;
   color: #f8f8f2;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

@@ -1,0 +1,116 @@
+/*
+
+    Name:       Base16 Grayscale Light
+    Author:     Alexandre Gavioli (https://github.com/Alexx2/)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+$base00: #101010;
+$base01: #252525;
+$base02: #464646;
+$base03: #525252;
+$base04: #ababab;
+$base05: #b9b9b9;
+$base06: #e3e3e3;
+$base07: #f7f7f7;
+$base08: #7c7c7c;
+$base09: #999999;
+$base0a: #a0a0a0;
+$base0b: #8e8e8e;
+$base0c: #868686;
+$base0d: #686868;
+$base0e: #747474;
+$base0f: #5e5e5e;
+
+// Grayscale Comment
+.hljs-comment {
+  color: $base03;
+}
+
+// Grayscale Red
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: $base08;
+}
+
+// Grayscale Orange
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: $base09;
+}
+
+// Grayscale Yellow
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: $base0A;
+}
+
+// Grayscale Green
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: $base0B;
+}
+
+// Grayscale Aqua
+.hljs-title,
+.css .hljs-hexcolor {
+  color: $base0C;
+}
+
+// Grayscale Blue
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: $base0D;
+}
+
+// Grayscale Purple
+.hljs-keyword,
+.javascript .hljs-function {
+  color: $base0E;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: $base07;
+  color: $base02;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

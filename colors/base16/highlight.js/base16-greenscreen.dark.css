@@ -9,8 +9,7 @@
 */
 
 /* Green Screen Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #009900;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Green Screen Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #007700;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Green Screen Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #005500;
 }
@@ -79,11 +80,29 @@
   color: #00bb00;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #001100;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #007700;
+}
+.diff .hljs-addition {
+  background-color: #00bb00;
+}
+.diff .hljs-change {
+  color: #009900;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #001100;
   color: #00bb00;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

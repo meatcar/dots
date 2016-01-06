@@ -1,0 +1,52 @@
+! Base16 PhD
+! Scheme: Hennig Hasemann (http://leetless.de/vim.html)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #ffffff
+URxvt*foreground:                     #4d5666
+URxvt*cursorColor:                    #4d5666
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #b8bbc2
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #ffffff
+URxvt*highlightTextColor:             #b8bbc2
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #061229
+URxvt*color1:                         #d07346
+URxvt*color2:                         #99bf52
+URxvt*color3:                         #fbd461
+URxvt*color4:                         #5299bf
+URxvt*color5:                         #9989cc
+URxvt*color6:                         #72b9bf
+URxvt*color7:                         #b8bbc2
+URxvt*color8:                         #717885
+URxvt*color9:                         #d07346
+URxvt*color10:                        #99bf52
+URxvt*color11:                        #fbd461
+URxvt*color12:                        #5299bf
+URxvt*color13:                        #9989cc
+URxvt*color14:                        #72b9bf
+URxvt*color15:                        #ffffff
+
+! 256 color space
+URxvt*color16:                        #f0a000
+URxvt*color17:                        #b08060
+URxvt*color18:                        #2a3448
+URxvt*color19:                        #4d5666
+URxvt*color20:                        #9a99a3
+URxvt*color21:                        #dbdde0

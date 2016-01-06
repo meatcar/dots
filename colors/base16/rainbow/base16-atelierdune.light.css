@@ -33,7 +33,7 @@ pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .key
 }
 
 pre .constant, pre .entity, pre .entity.class, pre .support {
-    color: #cfb017; /* yellow */
+    color: #ae9513; /* yellow */
 }
 
 pre .constant.symbol, pre .string {

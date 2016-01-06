@@ -1,0 +1,52 @@
+! Base16 Atelier Savanna
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/savanna)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #ecf4ee
+URxvt*foreground:                     #526057
+URxvt*cursorColor:                    #526057
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #87928a
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #ecf4ee
+URxvt*highlightTextColor:             #87928a
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #171c19
+URxvt*color1:                         #b16139
+URxvt*color2:                         #489963
+URxvt*color3:                         #a07e3b
+URxvt*color4:                         #478c90
+URxvt*color5:                         #55859b
+URxvt*color6:                         #1c9aa0
+URxvt*color7:                         #87928a
+URxvt*color8:                         #5f6d64
+URxvt*color9:                         #b16139
+URxvt*color10:                        #489963
+URxvt*color11:                        #a07e3b
+URxvt*color12:                        #478c90
+URxvt*color13:                        #55859b
+URxvt*color14:                        #1c9aa0
+URxvt*color15:                        #ecf4ee
+
+! 256 color space
+URxvt*color16:                        #9f713c
+URxvt*color17:                        #867469
+URxvt*color18:                        #232a25
+URxvt*color19:                        #526057
+URxvt*color20:                        #78877d
+URxvt*color21:                        #dfe7e2

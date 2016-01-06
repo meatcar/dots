@@ -9,8 +9,7 @@
 */
 
 /* Hopscotch Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #797379;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Hopscotch Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #fdcc59;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Hopscotch Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #149b93;
 }
@@ -79,11 +80,29 @@
   color: #c85e7c;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #322931;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #dd464c;
+}
+.diff .hljs-addition {
+  background-color: #8fc13e;
+}
+.diff .hljs-change {
+  color: #1290bf;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #ffffff;
   color: #5c545b;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

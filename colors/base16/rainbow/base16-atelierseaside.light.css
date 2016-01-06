@@ -7,7 +7,7 @@
  * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
  */
 pre {
-    background-color: #f0fff0;
+    background-color: #f4fbf4;
     word-wrap: break-word;
     margin: 0px;
     padding: 10px;
@@ -33,7 +33,7 @@ pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .key
 }
 
 pre .constant, pre .entity, pre .entity.class, pre .support {
-    color: #c3c322; /* yellow */
+    color: #98981b; /* yellow */
 }
 
 pre .constant.symbol, pre .string {

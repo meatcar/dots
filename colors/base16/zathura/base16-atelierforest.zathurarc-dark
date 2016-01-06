@@ -15,16 +15,16 @@ set notification-error-fg       "#1b1918"
 set notification-warning-bg     "#f22c40"
 set notification-warning-fg     "#1b1918"
 
-set highlight-color             "#d5911a"
+set highlight-color             "#c38418"
 set highlight-active-color      "#407ee7"
 
 set completion-highlight-fg     "#68615e"
-set completion-highlight-bg     "#00ad9c"
+set completion-highlight-bg     "#3d97b8"
 
 set completion-bg               "#68615e"
-set completion-fg               "#00ad9c"
+set completion-fg               "#3d97b8"
 
-set notification-bg             "#5ab738"
+set notification-bg             "#7b9726"
 set notification-fg             "#1b1918"
 
 set recolor-lightcolor          "#1b1918"

@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Atelier Plateau Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/plateau)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '1b1818' -nf '655d5d' -sb '7272ca' -sf '1b1818'

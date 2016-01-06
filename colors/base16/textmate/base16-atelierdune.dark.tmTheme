@@ -138,7 +138,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#cfb017</string>
+				<string>#ae9513</string>
 			</dict>
 		</dict>
 		<dict>
@@ -329,7 +329,7 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#cfb017</string>
+				<string>#ae9513</string>
 			</dict>
 		</dict>
 		<dict>
@@ -544,6 +544,6 @@
 		</dict>
 	</array>
 	<key>uuid</key>
-	<string>006d82ee-7f05-44c8-adbc-be88fbe58a82</string>
+	<string>e27b1860-d0ab-4500-b3c0-54443deb3486</string>
 </dict>
 </plist>

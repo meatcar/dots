@@ -21,14 +21,14 @@ case $1 in
         ;;
 esac
 
-source "$HOME/.login"
+. "$HOME/.login"
 genXdefaults
 
 
 #######################
 # host-dependent setup
 #######################
-case `hostname` in
+case $(hostname) in
     thumbnail)
         xrandr --dpi 120 
         VBoxClient-all &
@@ -104,7 +104,7 @@ syncthing-gtk &
 #rescuetime &
 
 ## wallpaper
-eval $(cat ~/.fehbg) &
+eval "$(cat ~/.fehbg)" &
 
 xautolock  -time 15 -locker 'lock' &
 xset -dpms 
@@ -173,7 +173,7 @@ case $1 in
         wmname LG3D
 
         dunst &
-        conky &
+        #conky &
         #(sleep 3 && dzenstatus &) &
         exec i3 -V > ~/.i3/log 2>&1
         ;;

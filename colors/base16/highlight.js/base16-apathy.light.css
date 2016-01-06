@@ -9,8 +9,7 @@
 */
 
 /* Apathy Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #2B685E;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Apathy Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #3E4C96;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Apathy Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #963E4C;
 }
@@ -79,11 +80,29 @@
   color: #4C963E;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #031A16;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #3E9688;
+}
+.diff .hljs-addition {
+  background-color: #883E96;
+}
+.diff .hljs-change {
+  color: #96883E;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #D2E7E4;
   color: #184E45;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

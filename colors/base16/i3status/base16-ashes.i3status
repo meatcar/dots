@@ -1,0 +1,13 @@
+# ~/.i3status.conf
+# Base16 Ashes, by Jannik Siebert (https://github.com/janniks)
+# template by Matt Parnell, @parnmatt
+
+general {
+    colors = true
+    color_good = "#95C7AE"
+    color_bad = "C7AE95"
+    ## remember to add your prefered interval
+    # interval = 5
+}
+
+## remember to add the rest of your configure

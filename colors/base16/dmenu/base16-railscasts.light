@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Railscasts Light, by Ryan Bates (http://railscasts.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'e6e1dc' -nf '3a4055' -sb '6d9cbe' -sf '272935'

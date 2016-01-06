@@ -1,0 +1,116 @@
+/*
+
+    Name:       Base16 Summerfruit Light
+    Author:     Christopher Corley (http://cscorley.github.io/)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+@base00: #151515;
+@base01: #202020;
+@base02: #303030;
+@base03: #505050;
+@base04: #B0B0B0;
+@base05: #D0D0D0;
+@base06: #E0E0E0;
+@base07: #FFFFFF;
+@base08: #FF0086;
+@base09: #FD8900;
+@base0a: #ABA800;
+@base0b: #00C918;
+@base0c: #1faaaa;
+@base0d: #3777E6;
+@base0e: #AD00A1;
+@base0f: #cc6633;
+
+// Summerfruit Comment
+.hljs-comment {
+  color: @base03;
+}
+
+// Summerfruit Red
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: @base08;
+}
+
+// Summerfruit Orange
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: @base09;
+}
+
+// Summerfruit Yellow
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: @base0A;
+}
+
+// Summerfruit Green
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: @base0B;
+}
+
+// Summerfruit Aqua
+.hljs-title,
+.css .hljs-hexcolor {
+  color: @base0C;
+}
+
+// Summerfruit Blue
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: @base0D;
+}
+
+// Summerfruit Purple
+.hljs-keyword,
+.javascript .hljs-function {
+  color: @base0E;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: @base07;
+  color: @base02;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
