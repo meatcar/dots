@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Apathy Dark, by Jannik Siebert (https://github.com/janniks)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '031A16' -nf '2B685E' -sb '96883E' -sf '031A16'

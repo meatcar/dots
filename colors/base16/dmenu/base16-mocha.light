@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Mocha Light, by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'd0c8c6' -nf '645240' -sb '8ab3b5' -sf '534636'

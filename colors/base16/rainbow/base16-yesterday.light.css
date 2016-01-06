@@ -1,0 +1,49 @@
+/**
+ * Base16 Yesterday Light
+ *
+ * @author FroZnShiva (https://github.com/FroZnShiva)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #ffffff;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #1d1f21;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #8e908c;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #c82829; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #f5871f; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #eab700; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #718c00; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #4271ae; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #8959a8; /* purple */
+}

@@ -6,17 +6,18 @@ Author:     Chris Kempson (http://chriskempson.com)
 Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
 Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
 
- */ 
+*/
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #ECF0F1;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   font-size: 14px;
   line-height: 1.375;
   direction: ltr;
   text-align: left;
+  white-space: pre;
   word-spacing: normal;
+  word-break: normal;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -25,20 +26,28 @@ pre[class*="language-"] {
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
-  hyphens: none; 
-  white-space: pre; 
-  white-space: pre-wrap; 
-  word-break: break-all;
-  word-wrap: break-word; 
-  background: #ECF0F1; 
+  hyphens: none;
+  background: #ECF0F1;
   color: #7F8C8D;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #f5f5f5;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #f5f5f5;
 }
 
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
-  overflow: auto;	
+  overflow: auto;
 }
 
 /* Inline code */
@@ -58,33 +67,32 @@ pre[class*="language-"] {
   color: #7F8C8D;
 }
 
-.namespace {
+.token.namespace {
   opacity: .7;
 }
 
-.token.null,
 .token.operator,
 .token.boolean,
 .token.number {
   color: #E67E22;
-} 
-.token.property { 
+}
+.token.property {
   color: #F1C40F;
 }
-.token.tag { 
+.token.tag {
   color: #3498DB;
-} 
+}
 .token.string {
   color: #1ABC9C;
-} 
-.token.selector { 
+}
+.token.selector {
   color: #9B59B6;
 }
-.token.attr-name { 
+.token.attr-name {
   color: #E67E22;
-} 
+}
 .token.entity,
-.token.url, 
+.token.url,
 .language-css .token.string,
 .style .token.string {
   color: #1ABC9C;
@@ -96,30 +104,46 @@ pre[class*="language-"] {
 .token.directive,
 .token.unit {
   color: #2ECC71;
-} 
+}
 
 .token.statement,
-.token.regex, 
-.token.atrule { 
+.token.regex,
+.token.atrule {
   color: #1ABC9C;
 }
 
 .token.placeholder,
 .token.variable {
   color: #3498DB;
-} 
+}
+
+.token.deleted {
+  text-decoration: line-through;
+}
+
+.token.inserted {
+  border-bottom: 1px dotted #2C3E50;
+  text-decoration: none;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
 
 .token.important {
   color: #E74C3C;
-  font-weight: bold;
-} 
+}
 
 .token.entity {
   cursor: help;
-} 
+}
 
 pre > code.highlight {
-  outline: .4em solid red;
+  outline: .4em solid #E74C3C;
   outline-offset: .4em;
-} 
-
+}

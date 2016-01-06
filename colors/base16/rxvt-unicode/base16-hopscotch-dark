@@ -1,0 +1,52 @@
+! Base16 Hopscotch
+! Scheme: Jan T. Sott
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #322931
+URxvt*foreground:                     #b9b5b8
+URxvt*cursorColor:                    #b9b5b8
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #b9b5b8
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #5c545b
+URxvt*highlightTextColor:             #989498
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #322931
+URxvt*color1:                         #dd464c
+URxvt*color2:                         #8fc13e
+URxvt*color3:                         #fdcc59
+URxvt*color4:                         #1290bf
+URxvt*color5:                         #c85e7c
+URxvt*color6:                         #149b93
+URxvt*color7:                         #b9b5b8
+URxvt*color8:                         #797379
+URxvt*color9:                         #dd464c
+URxvt*color10:                        #8fc13e
+URxvt*color11:                        #fdcc59
+URxvt*color12:                        #1290bf
+URxvt*color13:                        #c85e7c
+URxvt*color14:                        #149b93
+URxvt*color15:                        #ffffff
+
+! 256 color space
+URxvt*color16:                        #fd8b19
+URxvt*color17:                        #b33508
+URxvt*color18:                        #433b42
+URxvt*color19:                        #5c545b
+URxvt*color20:                        #989498
+URxvt*color21:                        #d5d3d5

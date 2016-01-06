@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Colors Light, by mrmrs (http://clrs.cc)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'bbbbbb' -nf '555555' -sb '0074d9' -sf '333333'

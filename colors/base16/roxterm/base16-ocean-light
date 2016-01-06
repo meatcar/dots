@@ -1,0 +1,21 @@
+[roxterm colour scheme]
+foreground=#2b2b30303b3b
+background=#efeff1f1f5f5
+palette_size = 16
+0=#2b2b30303b3b
+1=#bfbf61616a6a
+2=#a3a3bebe8c8c
+3=#ebebcbcb8b8b
+4=#8f8fa1a1b3b3
+5=#b4b48e8eadad
+6=#9696b5b5b4b4
+7=#656573737e7e
+8=#2b2b30303b3b
+9=#b0b05c5c6565
+10=#9797afaf8383
+11=#d7d7bbbb8383
+12=#85859595a7a7
+13=#a6a68484a1a1
+14=#8b8ba7a7a7a7
+15=#5f5f6c6c7777
+bold=#5f5f6c6c7777

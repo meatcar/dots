@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Codeschool">
+<style-scheme version="1.0" name="Base 16 Codeschool Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#9ea7a6" background="#232c31"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="1c3657"/>
   <style name="Parentheses" background="#2a343a" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#b5d8f6" background="#3f4944"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#3f4944"/>

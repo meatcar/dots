@@ -157,6 +157,7 @@ Comment:    Copy this style to %APPDATA%\Notepad++\themes
             <WordsStyle name="DOUBLESTRING" styleID="6" fgColor="29a329" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="SINGLESTRING" styleID="7" fgColor="ad2bee" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="TAG" styleID="1" fgColor="e6193c" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
+            <WordsStyle name="TAGEND" styleID="11" fgColor="e6193c" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="TAGUNKNOWN" styleID="2" fgColor="e6193c" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="ATTRIBUTE" styleID="3" fgColor="87711d" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="ATTRIBUTEUNKNOWN" styleID="4" fgColor="87711d" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
@@ -322,7 +323,7 @@ Comment:    Copy this style to %APPDATA%\Notepad++\themes
             <WordsStyle name="KEYWORDS" styleID="5" fgColor="8ca68c" bgColor="131513" fontName="" fontStyle="" fontSize="10" keywordClass="instre1" />
             <WordsStyle name="TRIPLE" styleID="6" fgColor="687d68" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="TRIPLEDOUBLE" styleID="7" fgColor="687d68" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
-            <WordsStyle name="CLASSNAME" styleID="8" fgColor="c3c322" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
+            <WordsStyle name="CLASSNAME" styleID="8" fgColor="98981b" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="DEFNAME" styleID="9" fgColor="3d62f5" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="OPERATOR" styleID="10" fgColor="8ca68c" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="IDENTIFIER" styleID="11" fgColor="1999b3" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
@@ -478,7 +479,7 @@ Comment:    Copy this style to %APPDATA%\Notepad++\themes
             <WordsStyle name="INSTRUCTION" styleID="5" fgColor="ad2bee" bgColor="131513" fontName="" fontStyle="" fontSize="10" keywordClass="instre1" />
             <WordsStyle name="STRING" styleID="6" fgColor="29a329" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="CHARACTER" styleID="7" fgColor="ad2bee" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
-            <WordsStyle name="CLASS NAME" styleID="8" fgColor="c3c322" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
+            <WordsStyle name="CLASS NAME" styleID="8" fgColor="98981b" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="DEF NAME" styleID="9" fgColor="3d62f5" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="OPERATOR" styleID="10" fgColor="8ca68c" bgColor="131513" fontName="" fontStyle="" fontSize="10" />
             <WordsStyle name="IDENTIFIER" styleID="11" fgColor="1999b3" bgColor="131513" fontName="" fontStyle="" fontSize="10" />

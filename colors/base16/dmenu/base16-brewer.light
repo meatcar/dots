@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Brewer Light, by Timothée Poisot (http://github.com/tpoisot)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'b7b8b9' -nf '515253' -sb '3182bd' -sf '2e2f30'

@@ -9,8 +9,7 @@
 */
 
 /* Tomorrow Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #969896;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Tomorrow Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #f0c674;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Tomorrow Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #8abeb7;
 }
@@ -79,11 +80,29 @@
   color: #b294bb;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #1d1f21;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #cc6666;
+}
+.diff .hljs-addition {
+  background-color: #b5bd68;
+}
+.diff .hljs-change {
+  color: #81a2be;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #ffffff;
   color: #373b41;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

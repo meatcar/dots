@@ -9,8 +9,7 @@
 */
 
 /* Ashes Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #ADB3BA;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Ashes Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #AEC795;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Ashes Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #95AEC7;
 }
@@ -79,11 +80,29 @@
   color: #C795AE;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #1C2023;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #C7AE95;
+}
+.diff .hljs-addition {
+  background-color: #95C7AE;
+}
+.diff .hljs-change {
+  color: #AE95C7;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #1C2023;
   color: #C7CCD1;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

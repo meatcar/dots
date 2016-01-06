@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Embers">
+<style-scheme version="1.0" name="Base 16 Embers Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#A39A90" background="#16130F"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="2C2620"/>
   <style name="Parentheses" background="#433B32" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#DBD6D1" background="#5A5047"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#5A5047"/>

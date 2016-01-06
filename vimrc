@@ -191,7 +191,13 @@ colorscheme github
 if has('win32') || has('win64')
   colorscheme hornet
 else
-  colorscheme github
+  let g:base16_shell_path='~/dots/colors/base16/shell/'
+  colorscheme meatcar
+  if $COLORSCHEME_LIGHT == 'dark'
+    set background=dark
+  else
+    set background=light
+  endif
 endif
 " Startify settings ----------------------------------------------------------
 

@@ -11,7 +11,7 @@ pre {
     word-wrap: break-word;
     margin: 0px;
     padding: 10px;
-    color: #f0fff0;
+    color: #f4fbf4;
     font-size: 14px;
     margin-bottom: 20px;
 }
@@ -33,7 +33,7 @@ pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .key
 }
 
 pre .constant, pre .entity, pre .entity.class, pre .support {
-    color: #c3c322; /* yellow */
+    color: #98981b; /* yellow */
 }
 
 pre .constant.symbol, pre .string {

@@ -51,7 +51,7 @@ div.text_cell_render, div.output_html {color: #695d69;}
 span.ansiblack {color: #292329;}
 span.ansiblue {color: #159393;}
 span.ansigray {color: #9e8f9e;}
-span.ansigreen {color: #379a37;}
+span.ansigreen {color: #918b3b;}
 span.ansipurple {color: #7b59c0;}
 span.ansired {color: #ca402b;}
 span.ansiyellow {color: #bb8a35;}
@@ -69,13 +69,13 @@ div.output_stderr pre {color: #d8cad8;}
 .cm-s-ipython span.cm-atom {color: #7b59c0;}
 .cm-s-ipython span.cm-number {color: #7b59c0;}
 
-.cm-s-ipython span.cm-property, .cm-s-ipython span.cm-attribute {color: #379a37;}
+.cm-s-ipython span.cm-property, .cm-s-ipython span.cm-attribute {color: #918b3b;}
 .cm-s-ipython span.cm-keyword {color: #ca402b;}
 .cm-s-ipython span.cm-string {color: #bb8a35;}
 .cm-s-ipython span.cm-operator {color: #cc33cc;}
 .cm-s-ipython span.cm-builtin {color: #7b59c0;}
 
-.cm-s-ipython span.cm-variable {color: #379a37;}
+.cm-s-ipython span.cm-variable {color: #918b3b;}
 .cm-s-ipython span.cm-variable-2 {color: #516aec;}
 .cm-s-ipython span.cm-def {color: #a65926;}
 .cm-s-ipython span.cm-error {background: #ca402b; color: #776977;}

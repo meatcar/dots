@@ -2,11 +2,11 @@ UPDATE colors SET scheme = '' WHERE scheme = 0;
 
 INSERT INTO COLORS (number, value, scheme) VALUES (0  , -15001320 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (1  , -906176 , 0);
-INSERT INTO COLORS (number, value, scheme) VALUES (2  , -10832072 , 0);
-INSERT INTO COLORS (number, value, scheme) VALUES (3  , -2780902 , 0);
+INSERT INTO COLORS (number, value, scheme) VALUES (2  , -8677594 , 0);
+INSERT INTO COLORS (number, value, scheme) VALUES (3  , -3963880 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (4  , -12550425 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (5  , -10066198 , 0);
-INSERT INTO COLORS (number, value, scheme) VALUES (6  , -16732772 , 0);
+INSERT INTO COLORS (number, value, scheme) VALUES (6  , -12740680 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (7  , -5725793 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (8  , -9015701 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (9  , -2141408 , 0);

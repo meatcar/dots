@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Seti UI Dark, by 
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '151718' -nf '41535B' -sb '55b5db' -sf '151718'

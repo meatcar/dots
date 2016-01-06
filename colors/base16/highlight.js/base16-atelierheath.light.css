@@ -9,8 +9,7 @@
 */
 
 /* Atelier Heath Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #776977;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Atelier Heath Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #bb8a35;
 }
 
@@ -53,10 +53,11 @@
 .hljs-header,
 .ruby .hljs-symbol,
 .xml .hljs-cdata {
-  color: #379a37;
+  color: #918b3b;
 }
 
 /* Atelier Heath Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #159393;
 }
@@ -79,11 +80,29 @@
   color: #7b59c0;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #1b181b;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #ca402b;
+}
+.diff .hljs-addition {
+  background-color: #918b3b;
+}
+.diff .hljs-change {
+  color: #516aec;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #f7f3f7;
   color: #695d69;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

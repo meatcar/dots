@@ -1,0 +1,13 @@
+# ~/.i3status.conf
+# Base16 Grayscale, by Alexandre Gavioli (https://github.com/Alexx2/)
+# template by Matt Parnell, @parnmatt
+
+general {
+    colors = true
+    color_good = "#8e8e8e"
+    color_bad = "7c7c7c"
+    ## remember to add your prefered interval
+    # interval = 5
+}
+
+## remember to add the rest of your configure

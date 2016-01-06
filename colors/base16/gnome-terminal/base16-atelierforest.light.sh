@@ -35,6 +35,9 @@ dlist_append() {
 
 # Newest versions of gnome-terminal use dconf
 if which "$DCONF" > /dev/null 2>&1; then
+    #check that uuidgen is available
+    type $UUIDGEN >/dev/null 2>&1 || { echo >&2 "Requires uuidgen but it's not installed.  Aborting!"; return 1; }
+
     [[ -z "$BASE_KEY_NEW" ]] && BASE_KEY_NEW=/org/gnome/terminal/legacy/profiles:
 
     if [[ -n "`$DCONF list $BASE_KEY_NEW/`" ]]; then
@@ -59,8 +62,8 @@ if which "$DCONF" > /dev/null 2>&1; then
 
         # update profile values with theme options
         dset visible-name "'$PROFILE_NAME'"
-        dset palette "'#1b1918:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#a8a19f:#766e6b:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#f1efee'"
-        dset palette "'#f1efee:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#a8a19f:#766e6b:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#1b1918'"
+        dset palette "'#1b1918:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#a8a19f:#766e6b:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#f1efee'"
+        dset palette "'#f1efee:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#a8a19f:#766e6b:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#1b1918'"
         dset background-color "'#f1efee'"
         dset foreground-color "'#68615e'"
         dset bold-color "'#68615e'"
@@ -72,7 +75,7 @@ if which "$DCONF" > /dev/null 2>&1; then
         unset PROFILE_SLUG
         unset DCONF
         unset UUIDGEN
-        exit 0
+        return 0
     fi
 fi
 
@@ -110,7 +113,7 @@ glist_append() {
 glist_append string /apps/gnome-terminal/global/profile_list "$PROFILE_SLUG"
 
 gset string visible_name "$PROFILE_NAME"
-gset string palette "#f1efee:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#a8a19f:#766e6b:#f22c40:#5ab738:#d5911a:#407ee7:#6666ea:#00ad9c:#1b1918"
+gset string palette "#f1efee:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#a8a19f:#766e6b:#f22c40:#7b9726:#c38418:#407ee7:#6666ea:#3d97b8:#1b1918"
 gset string background_color "#f1efee"
 gset string foreground_color "#68615e"
 gset string bold_color "#68615e"

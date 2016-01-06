@@ -24,7 +24,7 @@ set completion-highlight-bg     "#159393"
 set completion-bg               "#695d69"
 set completion-fg               "#159393"
 
-set notification-bg             "#379a37"
+set notification-bg             "#918b3b"
 set notification-fg             "#1b181b"
 
 set recolor-lightcolor          "#1b181b"

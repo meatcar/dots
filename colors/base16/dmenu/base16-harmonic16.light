@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 harmonic16 Light, by Jannik Siebert (https://github.com/janniks)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'cbd6e2' -nf '405c79' -sb '8b56bf' -sf '223b54'

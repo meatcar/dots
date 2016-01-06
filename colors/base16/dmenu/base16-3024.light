@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 3024 Light, by Jan T. Sott (http://github.com/idleberg)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'a5a2a2' -nf '4a4543' -sb '01a0e4' -sf '3a3432'

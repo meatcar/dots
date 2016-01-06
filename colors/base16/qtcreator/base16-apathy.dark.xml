@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Apathy">
+<style-scheme version="1.0" name="Base 16 Apathy Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#81B5AC" background="#031A16"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="0B342D"/>
   <style name="Parentheses" background="#184E45" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#D2E7E4" background="#2B685E"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#2B685E"/>

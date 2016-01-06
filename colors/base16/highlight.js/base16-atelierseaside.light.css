@@ -9,8 +9,7 @@
 */
 
 /* Atelier Seaside Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #687d68;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,8 +42,8 @@
 
 /* Atelier Seaside Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
-  color: #c3c322;
+.css .hljs-rule .hljs-attribute {
+  color: #98981b;
 }
 
 /* Atelier Seaside Green */
@@ -57,6 +57,7 @@
 }
 
 /* Atelier Seaside Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #1999b3;
 }
@@ -79,11 +80,29 @@
   color: #ad2bee;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #131513;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #e6193c;
+}
+.diff .hljs-addition {
+  background-color: #29a329;
+}
+.diff .hljs-change {
+  color: #3d62f5;
+}
+
 .hljs {
   display: block;
-  background: #f0fff0;
+  overflow-x: auto;
+  background: #f4fbf4;
   color: #5e6e5e;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

@@ -35,6 +35,9 @@ dlist_append() {
 
 # Newest versions of gnome-terminal use dconf
 if which "$DCONF" > /dev/null 2>&1; then
+    #check that uuidgen is available
+    type $UUIDGEN >/dev/null 2>&1 || { echo >&2 "Requires uuidgen but it's not installed.  Aborting!"; return 1; }
+
     [[ -z "$BASE_KEY_NEW" ]] && BASE_KEY_NEW=/org/gnome/terminal/legacy/profiles:
 
     if [[ -n "`$DCONF list $BASE_KEY_NEW/`" ]]; then
@@ -59,7 +62,7 @@ if which "$DCONF" > /dev/null 2>&1; then
 
         # update profile values with theme options
         dset visible-name "'$PROFILE_NAME'"
-        dset palette "['#20201d', '#d73737', '#60ac39', '#cfb017', '#6684e1', '#b854d4', '#1fad83', '#a6a28c', '#7d7a68', '#d73737', '#60ac39', '#cfb017', '#6684e1', '#b854d4', '#1fad83', '#fefbec']"
+        dset palette "['#20201d', '#d73737', '#60ac39', '#ae9513', '#6684e1', '#b854d4', '#1fad83', '#a6a28c', '#7d7a68', '#d73737', '#60ac39', '#ae9513', '#6684e1', '#b854d4', '#1fad83', '#fefbec']"
         dset background-color "'#20201d'"
         dset foreground-color "'#a6a28c'"
         dset bold-color "'#a6a28c'"
@@ -71,7 +74,7 @@ if which "$DCONF" > /dev/null 2>&1; then
         unset PROFILE_SLUG
         unset DCONF
         unset UUIDGEN
-        exit 0
+        return 0
     fi
 fi
 
@@ -109,7 +112,7 @@ glist_append() {
 glist_append string /apps/gnome-terminal/global/profile_list "$PROFILE_SLUG"
 
 gset string visible_name "$PROFILE_NAME"
-gset string palette "#20201d:#d73737:#60ac39:#cfb017:#6684e1:#b854d4:#1fad83:#a6a28c:#7d7a68:#d73737:#60ac39:#cfb017:#6684e1:#b854d4:#1fad83:#fefbec"
+gset string palette "#20201d:#d73737:#60ac39:#ae9513:#6684e1:#b854d4:#1fad83:#a6a28c:#7d7a68:#d73737:#60ac39:#ae9513:#6684e1:#b854d4:#1fad83:#fefbec"
 gset string background_color "#20201d"
 gset string foreground_color "#a6a28c"
 gset string bold_color "#a6a28c"

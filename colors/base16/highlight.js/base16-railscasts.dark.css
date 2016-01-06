@@ -9,8 +9,7 @@
 */
 
 /* Railscasts Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #d4cfc9;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Railscasts Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ffc66d;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Railscasts Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #519f50;
 }
@@ -79,11 +80,29 @@
   color: #b6b3eb;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #2b2b2b;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #da4939;
+}
+.diff .hljs-addition {
+  background-color: #a5c261;
+}
+.diff .hljs-change {
+  color: #6d9cbe;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #2b2b2b;
   color: #e6e1dc;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

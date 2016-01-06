@@ -183,18 +183,18 @@ bar {
   #hidden_state hide
   #modifier $mod
   status_command i3blocks
-
   colors {
-    separator #e7e7e8
-    background #e7e7e8
-    statusline #231f20
-    focused_workspace #009ddc #009ddc #ffffff
-    active_workspace #959ca1 #959ca1 #ffffff
-    inactive_workspace #d9d8d8 #d9d8d8 #5a5758
-    urgent_workspace #ee2e24 #ee2e24 #ffffff
+    separator #95A5A6
+    background #2C3E50
+    statusline #e0e0e0
+    focused_workspace #3498DB #3498DB #2C3E50
+    active_workspace #7F8C8D #7F8C8D #ECF0F1
+    inactive_workspace #34495E #34495E #95A5A6
+    urgent_workspace #E74C3C #E74C3C #ECF0F1
   }
 }
-client.focused #009ddc #009ddc #ffffff #f386a1
-client.focused_inactive #959ca1 #959ca1 #ffffff #98005d
-client.unfocused #ffffff #e7e7e8 #737171 #98005d
-client.urgent #ee2e24 #ee2e24 #ffffff #ffd204
+
+client.focused #3498DB #3498DB #2C3E50 #34495E
+client.focused_inactive #7F8C8D #7F8C8D #95A5A6 #34495E
+client.unfocused #34495E #34495E #95A5A6 #34495E
+client.urgent #7F8C8D #E74C3C #ECF0F1 #E74C3C

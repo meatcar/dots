@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Seti UI Light
+    Author:     
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-setiui-light.CodeMirror {background: #ffffff; color: #8ec43d;}
+.cm-s-base16-setiui-light div.CodeMirror-selected {background: #eeeeee !important;}
+.cm-s-base16-setiui-light .CodeMirror-gutters {background: #ffffff; border-right: 0px;}
+.cm-s-base16-setiui-light .CodeMirror-linenumber {color: #43a5d5;}
+.cm-s-base16-setiui-light .CodeMirror-cursor {border-left: 1px solid #41535B !important;}
+
+.cm-s-base16-setiui-light span.cm-comment {color: #8a553f;}
+.cm-s-base16-setiui-light span.cm-atom {color: #a074c4;}
+.cm-s-base16-setiui-light span.cm-number {color: #a074c4;}
+
+.cm-s-base16-setiui-light span.cm-property, .cm-s-base16-setiui-light span.cm-attribute {color: #9fca56;}
+.cm-s-base16-setiui-light span.cm-keyword {color: #Cd3f45;}
+.cm-s-base16-setiui-light span.cm-string {color: #e6cd69;}
+
+.cm-s-base16-setiui-light span.cm-variable {color: #9fca56;}
+.cm-s-base16-setiui-light span.cm-variable-2 {color: #55b5db;}
+.cm-s-base16-setiui-light span.cm-def {color: #db7b55;}
+.cm-s-base16-setiui-light span.cm-error {background: #Cd3f45; color: #41535B;}
+.cm-s-base16-setiui-light span.cm-bracket {color: #8ec43d;}
+.cm-s-base16-setiui-light span.cm-tag {color: #Cd3f45;}
+.cm-s-base16-setiui-light span.cm-link {color: #a074c4;}
+
+.cm-s-base16-setiui-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

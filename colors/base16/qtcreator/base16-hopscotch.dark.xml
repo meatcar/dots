@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Hopscotch">
+<style-scheme version="1.0" name="Base 16 Hopscotch Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#b9b5b8" background="#322931"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="433b42"/>
   <style name="Parentheses" background="#5c545b" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#ffffff" background="#797379"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#797379"/>

@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Macintosh Light, by Rebecca Bettencourt (http://www.kreativekorp.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'c0c0c0' -nf '404040' -sb '0000d3' -sf '404040'

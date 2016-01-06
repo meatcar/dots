@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 Yesterday Dark
+    Author:     FroZnShiva (https://github.com/FroZnShiva)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-yesterday-dark.CodeMirror {background: #1d1f21; color: #efefef;}
+.cm-s-base16-yesterday-dark div.CodeMirror-selected {background: #282a2e !important;}
+.cm-s-base16-yesterday-dark .CodeMirror-gutters {background: #1d1f21; border-right: 0px;}
+.cm-s-base16-yesterday-dark .CodeMirror-linenumber {color: #969896;}
+.cm-s-base16-yesterday-dark .CodeMirror-cursor {border-left: 1px solid #8e908c !important;}
+
+.cm-s-base16-yesterday-dark span.cm-comment {color: #7f2a1d;}
+.cm-s-base16-yesterday-dark span.cm-atom {color: #8959a8;}
+.cm-s-base16-yesterday-dark span.cm-number {color: #8959a8;}
+
+.cm-s-base16-yesterday-dark span.cm-property, .cm-s-base16-yesterday-dark span.cm-attribute {color: #718c00;}
+.cm-s-base16-yesterday-dark span.cm-keyword {color: #c82829;}
+.cm-s-base16-yesterday-dark span.cm-string {color: #eab700;}
+
+.cm-s-base16-yesterday-dark span.cm-variable {color: #718c00;}
+.cm-s-base16-yesterday-dark span.cm-variable-2 {color: #4271ae;}
+.cm-s-base16-yesterday-dark span.cm-def {color: #f5871f;}
+.cm-s-base16-yesterday-dark span.cm-error {background: #c82829; color: #8e908c;}
+.cm-s-base16-yesterday-dark span.cm-bracket {color: #efefef;}
+.cm-s-base16-yesterday-dark span.cm-tag {color: #c82829;}
+.cm-s-base16-yesterday-dark span.cm-link {color: #8959a8;}
+
+.cm-s-base16-yesterday-dark .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

@@ -1,0 +1,52 @@
+! Base16 Isotope
+! Scheme: Jan T. Sott
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #000000
+URxvt*foreground:                     #d0d0d0
+URxvt*cursorColor:                    #d0d0d0
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #d0d0d0
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #606060
+URxvt*highlightTextColor:             #c0c0c0
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #000000
+URxvt*color1:                         #ff0000
+URxvt*color2:                         #33ff00
+URxvt*color3:                         #ff0099
+URxvt*color4:                         #0066ff
+URxvt*color5:                         #cc00ff
+URxvt*color6:                         #00ffff
+URxvt*color7:                         #d0d0d0
+URxvt*color8:                         #808080
+URxvt*color9:                         #ff0000
+URxvt*color10:                        #33ff00
+URxvt*color11:                        #ff0099
+URxvt*color12:                        #0066ff
+URxvt*color13:                        #cc00ff
+URxvt*color14:                        #00ffff
+URxvt*color15:                        #ffffff
+
+! 256 color space
+URxvt*color16:                        #ff9900
+URxvt*color17:                        #3300ff
+URxvt*color18:                        #404040
+URxvt*color19:                        #606060
+URxvt*color20:                        #c0c0c0
+URxvt*color21:                        #e0e0e0

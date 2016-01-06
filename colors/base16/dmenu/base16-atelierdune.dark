@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Atelier Dune Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '20201d' -nf '7d7a68' -sb '6684e1' -sf '20201d'

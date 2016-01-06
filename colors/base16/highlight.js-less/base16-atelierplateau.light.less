@@ -1,0 +1,116 @@
+/*
+
+    Name:       Base16 Atelier Plateau Light
+    Author:     Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/plateau)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+@base00: #1b1818;
+@base01: #292424;
+@base02: #585050;
+@base03: #655d5d;
+@base04: #7e7777;
+@base05: #8a8585;
+@base06: #e7dfdf;
+@base07: #f4ecec;
+@base08: #ca4949;
+@base09: #b45a3c;
+@base0a: #a06e3b;
+@base0b: #4b8b8b;
+@base0c: #5485b6;
+@base0d: #7272ca;
+@base0e: #8464c4;
+@base0f: #bd5187;
+
+// Atelier Plateau Comment
+.hljs-comment {
+  color: @base03;
+}
+
+// Atelier Plateau Red
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: @base08;
+}
+
+// Atelier Plateau Orange
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: @base09;
+}
+
+// Atelier Plateau Yellow
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: @base0A;
+}
+
+// Atelier Plateau Green
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: @base0B;
+}
+
+// Atelier Plateau Aqua
+.hljs-title,
+.css .hljs-hexcolor {
+  color: @base0C;
+}
+
+// Atelier Plateau Blue
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: @base0D;
+}
+
+// Atelier Plateau Purple
+.hljs-keyword,
+.javascript .hljs-function {
+  color: @base0E;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: @base07;
+  color: @base02;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

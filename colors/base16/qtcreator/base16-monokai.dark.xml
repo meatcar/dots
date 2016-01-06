@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Monokai">
+<style-scheme version="1.0" name="Base 16 Monokai Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#f8f8f2" background="#272822"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="383830"/>
   <style name="Parentheses" background="#49483e" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#f9f8f5" background="#75715e"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#75715e"/>

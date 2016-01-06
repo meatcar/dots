@@ -9,8 +9,7 @@
 */
 
 /* Atelier Forest Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #766e6b;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,8 +42,8 @@
 
 /* Atelier Forest Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
-  color: #d5911a;
+.css .hljs-rule .hljs-attribute {
+  color: #c38418;
 }
 
 /* Atelier Forest Green */
@@ -53,12 +53,13 @@
 .hljs-header,
 .ruby .hljs-symbol,
 .xml .hljs-cdata {
-  color: #5ab738;
+  color: #7b9726;
 }
 
 /* Atelier Forest Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
-  color: #00ad9c;
+  color: #3d97b8;
 }
 
 /* Atelier Forest Blue */
@@ -79,11 +80,29 @@
   color: #6666ea;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #1b1918;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #f22c40;
+}
+.diff .hljs-addition {
+  background-color: #7b9726;
+}
+.diff .hljs-change {
+  color: #407ee7;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #f1efee;
   color: #68615e;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

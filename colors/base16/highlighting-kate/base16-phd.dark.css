@@ -1,0 +1,23 @@
+/* Base16 PhD
+Scheme: Hennig Hasemann (http://leetless.de/vim.html) */
+
+table.sourceCode, tr.sourceCode, td.sourceCode, table.sourceCode pre
+{ margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; background-color: #061229; color: #b8bbc2 }
+td.nums { text-align: right; padding-right: 5px; padding-left: 5px; background-color: #2a3448; }
+td.sourceCode { padding-left: 5px; }
+code.sourceCode { background-color: #061229; }
+pre.sourceCode { background-color: #061229; line-height: 125% }
+td.nums pre { background-color: #2a3448; line-height: 125% }
+code.sourceCode span.kw { color: #5299bf; font-weight: bold } /* Keyword */
+code.sourceCode span.dt { color: #9989cc} /* Keyword.Type */
+code.sourceCode span.dv { color: #f0a000 } /* Literal.Number.Integer */
+code.sourceCode span.bn { color: #f0a000 } /* Literal.Number.Hex */
+code.sourceCode span.fl { color: #f0a000 } /* Literal.Number.Float */
+code.sourceCode span.ch { color: #99bf52} /* Literal.String.Char */
+code.sourceCode span.st { color: #99bf52 } /* Literal.String */
+code.sourceCode span.co { color: #717885 } /* Comment */
+code.sourceCode span.ot { color: #b08060 } /* Comment.Preproc */
+code.sourceCode span.al { color: #9989cc } /* Generic.Error */
+code.sourceCode span.fu { color: #fbd461 } /* Name.Function */
+code.sourceCode span.re { color: #72b9bf}
+code.sourceCode span.er { color: #d07346; border: 1px solid #9989cc } /* Error */

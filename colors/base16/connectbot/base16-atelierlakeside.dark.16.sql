@@ -5,7 +5,7 @@ INSERT INTO COLORS (number, value, scheme) VALUES (1  , -3003022 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (2  , -11105221 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (3  , -7697905 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (4  , -14319699 , 0);
-INSERT INTO COLORS (number, value, scheme) VALUES (5  , -10658383 , 0);
+INSERT INTO COLORS (number, value, scheme) VALUES (5  , -9737288 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (6  , -13791377 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (7  , -8478028 , 0);
 INSERT INTO COLORS (number, value, scheme) VALUES (8  , -10847348 , 0);

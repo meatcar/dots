@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Marrakesh">
+<style-scheme version="1.0" name="Base 16 Marrakesh Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#948e48" background="#201602"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="302e00"/>
   <style name="Parentheses" background="#5f5b17" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#faf0a5" background="#6c6823"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#6c6823"/>

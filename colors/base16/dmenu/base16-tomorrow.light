@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Tomorrow Light, by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'c5c8c6' -nf '373b41' -sb '81a2be' -sf '282a2e'

@@ -1,0 +1,52 @@
+! Base16 Paraiso
+! Scheme: Jan T. Sott
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #2f1e2e
+URxvt*foreground:                     #a39e9b
+URxvt*cursorColor:                    #a39e9b
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #a39e9b
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #4f424c
+URxvt*highlightTextColor:             #8d8687
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #2f1e2e
+URxvt*color1:                         #ef6155
+URxvt*color2:                         #48b685
+URxvt*color3:                         #fec418
+URxvt*color4:                         #06b6ef
+URxvt*color5:                         #815ba4
+URxvt*color6:                         #5bc4bf
+URxvt*color7:                         #a39e9b
+URxvt*color8:                         #776e71
+URxvt*color9:                         #ef6155
+URxvt*color10:                        #48b685
+URxvt*color11:                        #fec418
+URxvt*color12:                        #06b6ef
+URxvt*color13:                        #815ba4
+URxvt*color14:                        #5bc4bf
+URxvt*color15:                        #e7e9db
+
+! 256 color space
+URxvt*color16:                        #f99b15
+URxvt*color17:                        #e96ba8
+URxvt*color18:                        #41323f
+URxvt*color19:                        #4f424c
+URxvt*color20:                        #8d8687
+URxvt*color21:                        #b9b6b0

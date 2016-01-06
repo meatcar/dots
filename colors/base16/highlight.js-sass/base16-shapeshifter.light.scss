@@ -1,0 +1,116 @@
+/*
+
+    Name:       Base16 shapeshifter Light
+    Author:     Tyler Benziger (http://tybenz.com)
+
+    highlight.js v8.0 template by Jan T. Sott (https://github.com/idleberg/base16-highlight.js)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+$base00: #000000;
+$base01: #040404;
+$base02: #102015;
+$base03: #343434;
+$base04: #555555;
+$base05: #ababab;
+$base06: #e0e0e0;
+$base07: #f9f9f9;
+$base08: #e92f2f;
+$base09: #e09448;
+$base0a: #dddd13;
+$base0b: #0ed839;
+$base0c: #23edda;
+$base0d: #3b48e3;
+$base0e: #f996e2;
+$base0f: #69542d;
+
+// shapeshifter Comment
+.hljs-comment {
+  color: $base03;
+}
+
+// shapeshifter Red
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: $base08;
+}
+
+// shapeshifter Orange
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: $base09;
+}
+
+// shapeshifter Yellow
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: $base0A;
+}
+
+// shapeshifter Green
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: $base0B;
+}
+
+// shapeshifter Aqua
+.hljs-title,
+.css .hljs-hexcolor {
+  color: $base0C;
+}
+
+// shapeshifter Blue
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: $base0D;
+}
+
+// shapeshifter Purple
+.hljs-keyword,
+.javascript .hljs-function {
+  color: $base0E;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: $base07;
+  color: $base02;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

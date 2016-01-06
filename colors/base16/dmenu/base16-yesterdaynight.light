@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Yesterday Night Light, by FroZnShiva (https://github.com/FroZnShiva)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'dfe1e8' -nf '65737e' -sb '81a2be' -sf '4f5b66'

@@ -9,8 +9,7 @@
 */
 
 /* Isotope Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #808080;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Isotope Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ff0099;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Isotope Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #00ffff;
 }
@@ -79,11 +80,29 @@
   color: #cc00ff;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #000000;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #ff0000;
+}
+.diff .hljs-addition {
+  background-color: #33ff00;
+}
+.diff .hljs-change {
+  color: #0066ff;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #ffffff;
   color: #606060;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

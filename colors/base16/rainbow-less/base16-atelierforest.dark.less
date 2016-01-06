@@ -1,0 +1,66 @@
+/**
+ * Base16 Atelier Forest Dark
+ *
+ * @author Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+@base00: #1b1918;
+@base01: #2c2421;
+@base02: #68615e;
+@base03: #766e6b;
+@base04: #9c9491;
+@base05: #a8a19f;
+@base06: #e6e2e0;
+@base07: #f1efee;
+@base08: #f22c40;
+@base09: #df5320;
+@base0a: #c38418;
+@base0b: #7b9726;
+@base0c: #3d97b8;
+@base0d: #407ee7;
+@base0e: #6666ea;
+@base0f: #c33ff3;
+
+pre {
+    background-color: @base00;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: @base07;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: @base03;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: @base08; // red
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: @base09; // orange
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: @base0a; // yellow
+}
+
+pre .constant.symbol, pre .string {
+    color: @base0b; // green
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: @base0d; // blue
+}
+
+pre .keyword, pre .storage {
+    color: @base0e; // purple
+}

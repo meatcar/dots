@@ -9,8 +9,7 @@
 */
 
 /* Bespin Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #666666;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Bespin Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #f9ee98;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Bespin Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #afc4db;
 }
@@ -79,11 +80,29 @@
   color: #9b859d;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #28211c;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #cf6a4c;
+}
+.diff .hljs-addition {
+  background-color: #54be0d;
+}
+.diff .hljs-change {
+  color: #5ea6ea;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #baae9e;
   color: #5e5d5c;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

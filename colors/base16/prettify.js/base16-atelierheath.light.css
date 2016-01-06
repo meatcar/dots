@@ -16,7 +16,7 @@
 @media screen {
   /* string content */
   .str {
-    color: #379a37;
+    color: #918b3b;
   }
 
   /* a keyword */
@@ -128,12 +128,14 @@
 }
 /* Style */
 pre.prettyprint {
-  background: f7f3f7;
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  background: #f7f3f7;
+  color: #ab9bab;
+  font-family: Consolas, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Monaco, monospace;
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid #1b181b;
+  border: 1px solid #d8cad8;
   padding: 10px;
+  border-radius: 3px;
 }
 
 /* Specify class=linenums on a pre to get line numbering */

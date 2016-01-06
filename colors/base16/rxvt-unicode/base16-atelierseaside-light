@@ -1,0 +1,52 @@
+! Base16 Atelier Seaside
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside/)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #f4fbf4
+URxvt*foreground:                     #5e6e5e
+URxvt*cursorColor:                    #5e6e5e
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #8ca68c
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #f4fbf4
+URxvt*highlightTextColor:             #8ca68c
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #131513
+URxvt*color1:                         #e6193c
+URxvt*color2:                         #29a329
+URxvt*color3:                         #98981b
+URxvt*color4:                         #3d62f5
+URxvt*color5:                         #ad2bee
+URxvt*color6:                         #1999b3
+URxvt*color7:                         #8ca68c
+URxvt*color8:                         #687d68
+URxvt*color9:                         #e6193c
+URxvt*color10:                        #29a329
+URxvt*color11:                        #98981b
+URxvt*color12:                        #3d62f5
+URxvt*color13:                        #ad2bee
+URxvt*color14:                        #1999b3
+URxvt*color15:                        #f4fbf4
+
+! 256 color space
+URxvt*color16:                        #87711d
+URxvt*color17:                        #e619c3
+URxvt*color18:                        #242924
+URxvt*color19:                        #5e6e5e
+URxvt*color20:                        #809980
+URxvt*color21:                        #cfe8cf

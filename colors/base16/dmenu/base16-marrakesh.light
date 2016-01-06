@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Marrakesh Light, by Alexandre Gavioli (http://github.com/Alexx2/)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '948e48' -nf '5f5b17' -sb '477ca1' -sf '302e00'

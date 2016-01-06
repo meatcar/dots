@@ -17,9 +17,9 @@
       (base07 "#f1efee")
       (base08 "#f22c40")
       (base09 "#df5320")
-      (base0A "#d5911a")
-      (base0B "#5ab738")
-      (base0C "#00ad9c")
+      (base0A "#c38418")
+      (base0B "#7b9726")
+      (base0C "#3d97b8")
       (base0D "#407ee7")
       (base0E "#6666ea")
       (base0F "#c33ff3"))
@@ -37,7 +37,6 @@
    `(highlight ((t (:background ,base01))))
    `(link ((t (:foreground ,base0D))))
    `(link-visited ((t (:foreground ,base0E))))
-   `(linum ((t (:background ,base03))))
    `(minibuffer-prompt ((t (:foreground ,base0D))))
    `(mode-line ((t (:background ,base02 :foreground ,base04 :box nil))))
    `(mode-line-buffer-id ((t (:foreground ,base0E :background nil))))
@@ -79,6 +78,16 @@
    `(isearch-lazy-highlight-face ((t (:foreground ,base0C :background ,base01 :inverse-video t))))
    `(isearch-fail ((t (:background ,base01 :inherit font-lock-warning-face :inverse-video t))))
 
+   ;; Popups
+   `(popup-face ((t (:foreground ,base05 :background ,base02))))
+   `(popup-isearch-match ((t (:foreground ,base00 :background ,base0B))))
+   `(popup-scroll-bar-background-face ((t (:background ,base03))))
+   `(popup-scroll-bar-foreground-face ((t (:background ,base05))))
+   `(popup-summary-face ((t (:foreground ,base04))))
+   `(popup-tip-face ((t (:foreground ,base00 :background ,base0A))))
+   `(popup-menu-mouse-face ((t (:foreground ,base00 :background ,base0D))))
+   `(popup-menu-selection-face ((t (:foreground ,base00 :background ,base0C))))
+
    ;; Flymake
    `(flymake-warnline ((t (:underline ,base09 :background ,base01))))
    `(flymake-errline ((t (:underline ,base08 :background ,base01))))
@@ -101,19 +110,6 @@
    `(mmm-code-submode-face ((t (:background ,base03))))
    `(mmm-comment-submode-face ((t (:inherit font-lock-comment-face))))
    `(mmm-output-submode-face ((t (:background ,base03))))
-
-
-
-   ;; org-mode
-   `(org-date ((t (:foreground ,base0E))))
-   `(org-done ((t (:foreground ,base0B))))
-   `(org-hide ((t (:foreground ,base01))))
-   `(org-link ((t (:foreground ,base0D))))
-   `(org-todo ((t (:foreground ,base08))))
-
-   ;; show-paren-mode
-   `(show-paren-match ((t (:background ,base0D :foreground ,base01))))
-   `(show-paren-mismatch ((t (:background ,base09 :foreground ,base01))))
 
    ;; rainbow-delimiters
    `(rainbow-delimiters-depth-1-face ((t (:foreground ,base0E))))
@@ -237,20 +233,6 @@
    `(term-color-blue ((t (:foreground ,base0D :background ,base0D))))
    `(term-color-magenta ((t (:foreground ,base0E :background ,base0E))))
 
-   ;; Magit (a patch is pending in magit to make these standard upstream)
-   `(magit-branch ((t (:foreground ,base0B))))
-   `(magit-header ((t (:inherit nil :weight bold))))
-   `(magit-item-highlight ((t (:inherit highlight :background nil))))
-   `(magit-log-graph ((t (:foreground ,base04))))
-   `(magit-log-sha1 ((t (:foreground ,base0E))))
-   `(magit-log-head-label-bisect-bad ((t (:foreground ,base08))))
-   `(magit-log-head-label-bisect-good ((t (:foreground ,base0B))))
-   `(magit-log-head-label-default ((t (:foreground ,base0A :box nil :weight bold))))
-   `(magit-log-head-label-local ((t (:foreground ,base0D))))
-   `(magit-log-head-label-remote ((t (:foreground ,base0B))))
-   `(magit-log-head-label-tags ((t (:foreground ,base0C :box nil :weight bold))))
-   `(magit-section-title ((t (:inherit diff-hunk-header))))
-
    `(link ((t (:foreground nil :underline t))))
    `(widget-button ((t (:underline t))))
    `(widget-field ((t (:background ,base03 :box (:line-width 1 :color ,base06)))))
@@ -271,17 +253,25 @@
 
    `(regex-tool-matched-face ((t (:foreground nil :background nil :inherit match))))
 
+   ;; Cscope
+   `(cscope-file-face ((t (:foreground ,base0B))))
+   `(cscope-function-face ((t (:foreground ,base0D))))
+   `(cscope-line-number-face ((t (:foreground ,base0A))))
+   `(cscope-mouse-face ((t (:background ,base01 :foreground ,base04))))
+   `(cscope-separator-face ((t (:foreground ,base08 :overline t :underline t :weight bold))))
+
    ;; mark-multiple
    `(mm/master-face ((t (:inherit region :foreground nil :background nil))))
    `(mm/mirror-face ((t (:inherit region :foreground nil :background nil))))
 
+   ;; org-mode
    `(org-agenda-structure ((t (:foreground ,base0E))))
    `(org-agenda-date ((t (:foreground ,base0D :underline nil))))
    `(org-agenda-done ((t (:foreground ,base0B))))
    `(org-agenda-dimmed-todo-face ((t (:foreground ,base04))))
    `(org-block ((t (:foreground ,base09))))
    `(org-code ((t (:foreground ,base0A))))
-   `(org-column ((t (:background ,base03))))
+   `(org-column ((t (:background ,base01))))
    `(org-column-title ((t (:inherit org-column :weight bold :underline t))))
    `(org-date ((t (:foreground ,base0E :underline t))))
    `(org-document-info ((t (:foreground ,base0C))))

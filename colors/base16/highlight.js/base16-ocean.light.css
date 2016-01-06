@@ -9,8 +9,7 @@
 */
 
 /* Ocean Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #65737e;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Ocean Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ebcb8b;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Ocean Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #96b5b4;
 }
@@ -79,11 +80,29 @@
   color: #b48ead;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #2b303b;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #bf616a;
+}
+.diff .hljs-addition {
+  background-color: #a3be8c;
+}
+.diff .hljs-change {
+  color: #8fa1b3;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #eff1f5;
   color: #4f5b66;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

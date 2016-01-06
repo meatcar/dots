@@ -37,7 +37,7 @@ pre .constant, pre .entity, pre .entity.class, pre .support {
 }
 
 pre .constant.symbol, pre .string {
-    color: #379a37; /* green */
+    color: #918b3b; /* green */
 }
 
 pre .entity.function, pre .support.css-property, pre .selector {

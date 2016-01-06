@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Atelier Lakeside Light, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside/)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '7ea2b4' -nf '516d7b' -sb '257fad' -sf '1f292e'

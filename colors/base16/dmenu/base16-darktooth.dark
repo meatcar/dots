@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Darktooth Dark, by Jason Milkins (https://github.com/jasonm23)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb '1D2021' -nf '665C54' -sb '0D6678' -sf '1D2021'

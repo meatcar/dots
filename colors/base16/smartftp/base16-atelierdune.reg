@@ -1,0 +1,49 @@
+Windows Registry Editor Version 5.00
+
+; Based on "shell" and "putty" versions
+
+[HKEY_CURRENT_USER\Software\SmartFTP\Client 2.0\Settings\Terminal\Settings\Terminal\Window\Colors]
+
+; Default Foreground
+"Color 0"=dword:00809599
+"Color 1"=dword:008ca2a6
+
+; Default Background
+"Color 2"=dword:001d2020
+"Color 3"=dword:00242829
+
+; Cursor
+"Color 4"=dword:001d2020
+"Color 5"=dword:00cfe4e8
+
+; Black
+"Color 6"=dword:001d2020
+"Color 7"=dword:00687a7d
+
+; Red
+"Color 8"=dword:003737d7
+"Color 9"=dword:003737d7
+
+; Green
+"Color 10"=dword:0039ac60
+"Color 11"=dword:0039ac60
+
+; Yellow
+"Color 12"=dword:001395ae
+"Color 13"=dword:001395ae
+
+; Blue
+"Color 14"=dword:00e18466
+"Color 15"=dword:00e18466
+
+; Magenta
+"Color 16"=dword:00d454b8
+"Color 17"=dword:00d454b8
+
+; Cyan
+"Color 18"=dword:0083ad1f
+"Color 19"=dword:0083ad1f
+
+; White
+"Color 20"=dword:008ca2a6
+"Color 21"=dword:00ecfbfe

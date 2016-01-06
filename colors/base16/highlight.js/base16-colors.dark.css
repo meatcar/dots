@@ -9,8 +9,7 @@
 */
 
 /* Colors Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #999999;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Colors Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #ffdc00;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Colors Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #7fdbff;
 }
@@ -79,11 +80,29 @@
   color: #b10dc9;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #111111;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #ff4136;
+}
+.diff .hljs-addition {
+  background-color: #2ecc40;
+}
+.diff .hljs-change {
+  color: #0074d9;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #111111;
   color: #bbbbbb;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

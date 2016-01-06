@@ -1,0 +1,49 @@
+/**
+ * Base16 PhD Light
+ *
+ * @author Hennig Hasemann (http://leetless.de/vim.html)
+ *
+ * Rainbow template by Jan T. Sott (https://github.com/idleberg/)
+ * Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+ */
+pre {
+    background-color: #ffffff;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #061229;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+pre, code {
+    font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+    color: #9a99a3;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+    color: #d07346; /* red */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #f0a000; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #fbd461; /* yellow */
+}
+
+pre .constant.symbol, pre .string {
+    color: #99bf52; /* green */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #5299bf; /* blue */
+}
+
+pre .keyword, pre .storage {
+    color: #9989cc; /* purple */
+}

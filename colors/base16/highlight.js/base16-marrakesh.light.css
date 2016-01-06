@@ -9,8 +9,7 @@
 */
 
 /* Marrakesh Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #6c6823;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,7 +42,7 @@
 
 /* Marrakesh Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
+.css .hljs-rule .hljs-attribute {
   color: #a88339;
 }
 
@@ -57,6 +57,7 @@
 }
 
 /* Marrakesh Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #75a738;
 }
@@ -79,11 +80,29 @@
   color: #8868b3;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #201602;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #c35359;
+}
+.diff .hljs-addition {
+  background-color: #18974e;
+}
+.diff .hljs-change {
+  color: #477ca1;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #faf0a5;
   color: #5f5b17;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,

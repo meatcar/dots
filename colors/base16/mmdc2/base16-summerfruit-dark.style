@@ -3,13 +3,13 @@
 // Name: Base16 Summerfruit
 // Author: Christopher Corley (http://cscorley.github.io/)
 // Built: By [Base16 Builder](https://github.com/chriskempson/base16-builder)
-// Build date: 2015-01-15
+// Build date: 2015-12-30
 // ---
 // Template based on [Pretentious](http://support.multimarkdown.com/discussions/extras-style-sheets-etc/4-pretentious) 1.0 by Brett Terpstra.
 // [Style syntax description](http://support.multimarkdown.com/kb/style-sheets/how-do-i-create-a-custom-style-sheet)
 // Author: [Romain X.](https://github.com/romainx)
-// Version: 1.1
-// Date: 2014-11-02
+// Version: 1.2
+// Date: 2015-01-04
 // ---
 
 {
@@ -30,16 +30,11 @@
     lineLength = 90;
 	lineHeight = 1.2;
     
-    // Font
-    defaultFontSize = 12;
-	
     // Mono
-    monoFontName = Monaco;
+    monoFontName = Menlo;
 	monoFontSize = 12;
-    
+	
     default = {
-        fontName = Menlo;
-        fontSize = 12;
         kerning = 0.15;
     };
 

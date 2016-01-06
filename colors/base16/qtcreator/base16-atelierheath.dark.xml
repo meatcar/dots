@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style-scheme version="1.0" name="Base 16 Atelier Heath">
+<style-scheme version="1.0" name="Base 16 Atelier Heath Dark">
 
   <!-- main colors, skipping one of attributes (backgroud/foreground) will use color from here -->
   <style name="Text" foreground="#ab9bab" background="#1b181b"/>
@@ -15,8 +15,8 @@
   <style name="SearchResult" background="292329"/>
   <style name="Parentheses" background="#695d69" />
 
-  <!-- ??? -->
-  <style name="SearchScope" foreground="#000000" background="#ffffff"/>
+  <!-- Selection whilst searching in it -->
+  <style name="SearchScope" foreground="#f7f3f7" background="#776977"/>
 
   <!-- word (symbol) under cursor: background - color of marking frame, foreground - ignored -->
   <style name="Occurrences" background="#776977"/>
@@ -26,7 +26,7 @@
 
   <!-- language primitives -->
   <style name="Number" foreground="#a65926"/>
-  <style name="String" foreground="#379a37"/>
+  <style name="String" foreground="#918b3b"/>
   <style name="Keyword" foreground="#7b59c0"/>
   <style name="Operator" foreground="#ab9bab"/>
   <style name="Preprocessor" foreground="#516aec"/>
@@ -69,14 +69,14 @@
   <!-- inline diff -->
   <style name="DiffFile" foreground="#7b59c0"/>
   <style name="DiffLocation" foreground="#516aec"/>
-  <style name="AddedLine" foreground="#379a37"/>
+  <style name="AddedLine" foreground="#918b3b"/>
   <style name="RemovedLine" foreground="#bb8a35"/>
 
   <!-- side-by-side diff -->
   <style name="DiffFileLine" foreground="#7b59c0"/>
   <style name="DiffContextLine" foreground="#516aec"/>
-  <style name="DiffSourceLine" foreground="#379a37"/>
+  <style name="DiffSourceLine" foreground="#918b3b"/>
   <style name="DiffSourceChar" foreground="#bb8a35" background="#292329"/>
-  <style name="DiffDestLine" foreground="#379a37"/>
+  <style name="DiffDestLine" foreground="#918b3b"/>
   <style name="DiffDestChar" foreground="#bb8a35" background="#292329"/>
 </style-scheme>

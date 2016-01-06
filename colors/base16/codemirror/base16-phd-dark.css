@@ -1,0 +1,33 @@
+/*
+
+    Name:       Base16 PhD Dark
+    Author:     Hennig Hasemann (http://leetless.de/vim.html)
+
+    CodeMirror template by Jan T. Sott (https://github.com/idleberg)
+    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+.cm-s-base16-phd-dark.CodeMirror {background: #061229; color: #dbdde0;}
+.cm-s-base16-phd-dark div.CodeMirror-selected {background: #2a3448 !important;}
+.cm-s-base16-phd-dark .CodeMirror-gutters {background: #061229; border-right: 0px;}
+.cm-s-base16-phd-dark .CodeMirror-linenumber {color: #717885;}
+.cm-s-base16-phd-dark .CodeMirror-cursor {border-left: 1px solid #9a99a3 !important;}
+
+.cm-s-base16-phd-dark span.cm-comment {color: #b08060;}
+.cm-s-base16-phd-dark span.cm-atom {color: #9989cc;}
+.cm-s-base16-phd-dark span.cm-number {color: #9989cc;}
+
+.cm-s-base16-phd-dark span.cm-property, .cm-s-base16-phd-dark span.cm-attribute {color: #99bf52;}
+.cm-s-base16-phd-dark span.cm-keyword {color: #d07346;}
+.cm-s-base16-phd-dark span.cm-string {color: #fbd461;}
+
+.cm-s-base16-phd-dark span.cm-variable {color: #99bf52;}
+.cm-s-base16-phd-dark span.cm-variable-2 {color: #5299bf;}
+.cm-s-base16-phd-dark span.cm-def {color: #f0a000;}
+.cm-s-base16-phd-dark span.cm-error {background: #d07346; color: #9a99a3;}
+.cm-s-base16-phd-dark span.cm-bracket {color: #dbdde0;}
+.cm-s-base16-phd-dark span.cm-tag {color: #d07346;}
+.cm-s-base16-phd-dark span.cm-link {color: #9989cc;}
+
+.cm-s-base16-phd-dark .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

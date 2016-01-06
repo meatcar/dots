@@ -1,0 +1,52 @@
+! Base16 Chalk
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+! URxvt*tintColor:                      color
+! URxvt*fadeColor:                      color
+
+URxvt*background:                     #151515
+URxvt*foreground:                     #d0d0d0
+URxvt*cursorColor:                    #d0d0d0
+
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorUL:                        color
+! URxvt*colorRV:                        color
+! URxvt*underlineColor:                 color
+URxvt*scrollColor:                    #d0d0d0
+! URxvt*troughColor:                    color
+URxvt*highlightColor:                 #303030
+URxvt*highlightTextColor:             #b0b0b0
+! URxvt*cursorColor2:                   color
+! URxvt*pointerColor:                   color
+! URxvt*pointerColor2:                  color
+! URxvt*borderColor:                    color
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+URxvt*color0:                         #151515
+URxvt*color1:                         #fb9fb1
+URxvt*color2:                         #acc267
+URxvt*color3:                         #ddb26f
+URxvt*color4:                         #6fc2ef
+URxvt*color5:                         #e1a3ee
+URxvt*color6:                         #12cfc0
+URxvt*color7:                         #d0d0d0
+URxvt*color8:                         #505050
+URxvt*color9:                         #fb9fb1
+URxvt*color10:                        #acc267
+URxvt*color11:                        #ddb26f
+URxvt*color12:                        #6fc2ef
+URxvt*color13:                        #e1a3ee
+URxvt*color14:                        #12cfc0
+URxvt*color15:                        #f5f5f5
+
+! 256 color space
+URxvt*color16:                        #eda987
+URxvt*color17:                        #deaf8f
+URxvt*color18:                        #202020
+URxvt*color19:                        #303030
+URxvt*color20:                        #b0b0b0
+URxvt*color21:                        #e0e0e0

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ~/dots/colors/colors.sh
-xrdb -merge "$COLORSCHEME_DIR/xresources/$COLORSCHEME"'.xresources' 
+xrdb -merge "$COLORSCHEME_DIR/xresources/$COLORSCHEME"'.256.xresources' 
 
 if [ $(hostname) == 'thumbnail' ]; then
     opts='-Ddpi120'

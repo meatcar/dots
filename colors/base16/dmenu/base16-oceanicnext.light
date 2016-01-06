@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 OceanicNext Light, by https://github.com/voronianski/oceanic-next-color-scheme
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'C0C5CE' -nf '4F5B66' -sb '6699CC' -sf '343D46'

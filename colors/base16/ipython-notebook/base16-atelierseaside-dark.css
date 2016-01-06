@@ -54,7 +54,7 @@ span.ansigray {color: #809980;}
 span.ansigreen {color: #29a329;}
 span.ansipurple {color: #ad2bee;}
 span.ansired {color: #e6193c;}
-span.ansiyellow {color: #c3c322;}
+span.ansiyellow {color: #98981b;}
 
 div.output_stderr {background-color: #e6193c;}
 div.output_stderr pre {color: #cfe8cf;}
@@ -71,7 +71,7 @@ div.output_stderr pre {color: #cfe8cf;}
 
 .cm-s-ipython span.cm-property, .cm-s-ipython span.cm-attribute {color: #29a329;}
 .cm-s-ipython span.cm-keyword {color: #e6193c;}
-.cm-s-ipython span.cm-string {color: #c3c322;}
+.cm-s-ipython span.cm-string {color: #98981b;}
 .cm-s-ipython span.cm-operator {color: #e619c3;}
 .cm-s-ipython span.cm-builtin {color: #ad2bee;}
 

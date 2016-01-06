@@ -1,0 +1,6 @@
+# dmenu template
+# Base16 Bright Light, by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
+
+# add this as an alias, or however you wish to run dmenu
+dmenu -nb 'e0e0e0' -nf '505050' -sb '6fb3d2' -sf '303030'

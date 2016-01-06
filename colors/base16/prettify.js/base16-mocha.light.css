@@ -128,12 +128,14 @@
 }
 /* Style */
 pre.prettyprint {
-  background: f5eeeb;
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  background: #f5eeeb;
+  color: #d0c8c6;
+  font-family: Consolas, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Monaco, monospace;
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid #3B3228;
+  border: 1px solid #e9e1dd;
   padding: 10px;
+  border-radius: 3px;
 }
 
 /* Specify class=linenums on a pre to get line numbering */

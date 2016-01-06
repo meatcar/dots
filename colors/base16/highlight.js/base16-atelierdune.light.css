@@ -9,8 +9,7 @@
 */
 
 /* Atelier Dune Comment */
-.hljs-comment,
-.hljs-title {
+.hljs-comment {
   color: #7d7a68;
 }
 
@@ -19,6 +18,7 @@
 .hljs-attribute,
 .hljs-tag,
 .hljs-regexp,
+.hljs-name,
 .ruby .hljs-constant,
 .xml .hljs-tag .hljs-title,
 .xml .hljs-pi,
@@ -42,8 +42,8 @@
 
 /* Atelier Dune Yellow */
 .ruby .hljs-class .hljs-title,
-.css .hljs-rules .hljs-attribute {
-  color: #cfb017;
+.css .hljs-rule .hljs-attribute {
+  color: #ae9513;
 }
 
 /* Atelier Dune Green */
@@ -57,6 +57,7 @@
 }
 
 /* Atelier Dune Aqua */
+.hljs-title,
 .css .hljs-hexcolor {
   color: #1fad83;
 }
@@ -79,11 +80,29 @@
   color: #b854d4;
 }
 
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #20201d;
+  display: inline-block;
+  width: 100%;
+}
+.diff .hljs-deletion {
+  background-color: #d73737;
+}
+.diff .hljs-addition {
+  background-color: #60ac39;
+}
+.diff .hljs-change {
+  color: #6684e1;
+}
+
 .hljs {
   display: block;
+  overflow-x: auto;
   background: #fefbec;
   color: #6e6b5e;
   padding: 0.5em;
+  -webkit-text-size-adjust: none;
 }
 
 .coffeescript .javascript,
