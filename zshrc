@@ -8,6 +8,10 @@ if which npm 2>&1 >/dev/null; then
   export PATH="$PATH:$(npm bin)"
 fi
 
+if which gem 2>&1 >/dev/null; then
+  export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
+fi
+
 export TERM="rxvt-256color"
 export TERMINAL="urxvtc"
 export VTERM="urxvtc"
@@ -20,6 +24,8 @@ export GOPATH="$HOME/dev/go"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export JAVA_FONTS=/usr/share/fonts/TTF
 export MAVEN_OPTS="-Xmx4g -XX:MaxPermSize=256m"
+
+export OG_PPID=$PPID
 
 ############
 
@@ -52,14 +58,18 @@ exit_verb="%(?..%{$fg_bold[magenta]%}re)" # failed command
 verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
 IDENTICON=$(identicon -w 6 -h 6)
-IDENTICON_TOP=$(echo -n ${IDENTICON} | head -n 1)
-IDENTICON_MIDDLE=$(echo -n ${IDENTICON} | head -n 2 | tail -n 1)
-IDENTICON_BOTTOM=$(echo -n ${IDENTICON} | tail -n 1)
+IDENTICON_TOP="%{[38;5;254m%}$(echo -n ${IDENTICON} | head -n 1)%{$reset_color%}"
+IDENTICON_MIDDLE="%{[38;5;254m%}$(echo -n ${IDENTICON} | head -n 2 | tail -n 1)%{$reset_color%}"
+IDENTICON_BOTTOM="%{[38;5;254m%}$(echo -n ${IDENTICON} | tail -n 1)%{$reset_color%}"
+
+PUSER="%{$fg_bold[blue]%}%n%{$reset_color%}"
+PHOST="%{$fg_bold[magenta]%}%M%{$reset_color%}"
+PDIR="%{$fg_bold[green]%}%~%{$reset_color%}"
 
 PROMPT="
-%{[38;5;254m%}${IDENTICON_TOP}%{$reset_color%}
-%{[38;5;254m%}${IDENTICON_MIDDLE}%{$reset_color%} %{$fg_bold[blue]%}%n%{$reset_color%} at %{$fg_bold[magenta]%}%M%{$reset_color%} in %{$fg_bold[green]%}%~%{$reset_color%}
-%{[38;5;254m%}${IDENTICON_BOTTOM}%{$reset_color%}      ${verb} "
+${IDENTICON_TOP}
+${IDENTICON_MIDDLE} ${PUSER} at ${PHOST} in ${PDIR}
+${IDENTICON_BOTTOM}      ${verb} "
 
 ####################################################
 # Set Keybindings.
