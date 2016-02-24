@@ -68,7 +68,7 @@ abstracts = {
   #line_start = "%B-|%B-%n";
   line_start = "";
   # timestamp styling, nothing by default
-  timestamp = "$*";
+  timestamp = "%K$*%n";
 
   # any kind of text that needs hilighting, default is to bold
   hilight = "%r$*%n";
@@ -106,7 +106,7 @@ abstracts = {
   chanhost_hilight = "{nickhost %K$*%n}";
 
   # nick/host is printed (parts, quits, etc.)
-  channick = "%K$*%n";
+  channick = "%K$*%n   %|";
   chanhost = "{nickhost %K$*%n}";
 
   # highlighted channel name is printed
@@ -253,13 +253,13 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%n%k";
+  sb_background = "%n";
   # normaly 1
 
   # default backround for "default" statusbar group
-  sb_default_bg = "%n";
+  sb_default_bg = "%K";
   # background for prompt / input line
-  sb_prompt_bg = "%k";
+  sb_prompt_bg = "%K";
   # background for info statusbar
   sb_info_bg = "%8";
   # background for topicbar (same default)
@@ -286,7 +286,7 @@ abstracts = {
   # ',' separator
   sb_act_sep = "  ";
   # normal text
-  sb_act_text = "%K$*";
+  sb_act_text = "%w$*";
   # public message
   sb_act_msg = "%b$*";
   # hilight
@@ -326,13 +326,14 @@ formats = {
     msg_private_query = "{privmsgnick $[-18]0}$2";
 
     servertag = "            $0";
-    quit = "{channick $0} %rquit%K - {reason $2}";
-    join = "{channick $0} %gjoined%K - {chanhost_hilight $1}";
-    part = "{channick $0} %rparted%K - {reason $2}";
+    quit = "{channick $[-16]0}%rquit%K - {reason $2}";
+    join = "{channick $[-16]0}%gjoined%K - {chanhost_hilight $1}";
+    part = "{channick $[-16]0}%rparted%K - {reason $2}";
 
-    nick_changed = "{channick $0} %Kis now %n{channick_hilight $1}";
+    nick_changed = "{channick $[-16]0}%Kis now %n{channick_hilight $1}";
 
-    timestamp = "{timestamp $Z} ";
+    #timestamp = "{timestamp $Z} ";
+    timestamp = "";
   };
 
   "fe-text" = {
