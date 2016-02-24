@@ -184,6 +184,7 @@ call plug#end()
 " colorscheme settings -------------------------------------------------------
 
 let g:base16_shell_path=$COLORSCHEME_DIR."/shell/"
+let base16colorspace=256
 let g:zenesque_colors=2
 let g:solarized_italic=0 " disable italics for solarized. They look ugly.
 colorscheme github
@@ -413,7 +414,6 @@ if has("autocmd")
 
         " Set filetypes based on extensions
         autocmd BufNewFile,BufRead *.less set filetype=less
-        autocmd BufNewFile,BufRead *.hbs set filetype=handlebars
         autocmd BufNewFile,BufRead *.glsl set filetype=glsl
         autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl set filetype=erlang
         autocmd BufNewFile,BufRead *.rs set filetype=rust
@@ -430,8 +430,8 @@ if has("autocmd")
                     \'java',
                     \'css',
                     \'sass',
-                    \'handlebars',
-                    \'html=handlebars',
+                    \'mustache',
+                    \'html=mustache',
                     \'sh',
                     \'shell=sh',
                     \]
