@@ -27,13 +27,18 @@
 command=/usr/libexec/i3blocks/$BLOCK_NAME
 markup=none
 
-full_text=
 color=#959ca1
 align=center
-separator=false
-separator_block_width=7
+separator_block_width=24
+border_top=0
+border_left=0
+border_right=0
+border_bottom=3
 
-[separator]
+[updates]
+command=checkupdates | wc -l | awk '{print $1 "\n"} $1 {print "#AAAA00"}'
+label=  
+interval=120
 
 # CPU usage
 #
@@ -42,65 +47,55 @@ separator_block_width=7
 [cpu_usage -w 80 -c 90]
 label= 
 interval=1
-min_width=: 100.00%
-full_text=
+min_width=:  100.00%
 
 #[load_average]
 #interval=10
-
-[separator]
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
+label= 
 instance=mem
-label= 
 interval=1
-
-[separator]
 
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk 5]
-label=  root:
+[disk]
+label=   /root
 instance=/
 interval=30
+separator=false
 
-[disk 5]
-label=data:
+[disk]
+label=/data
 instance=/data
 interval=30
-
-[separator]
 
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-label=enp3s0
-instance=enp3s0
+label=  
 interval=10
 separator=false
 
 [bandwidth -i  -o ]
-instance=enp3s0
 interval=1
 min_width=:99.9M :99.9M
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
-#[battery]
-#label=⚡
-#instance=1
-#interval=30
-
-[separator]
+[battery]
+label=⚡
+instance=1
+interval=30
 
 # Volume indicator
 #
@@ -109,17 +104,13 @@ min_width=:99.9M :99.9M
 # See the script for details.
 [volume]
 label= 
-instance=Master
 interval=once
-signal=10
-
-[separator]
 
 # Date Time
 #
 [time]
-label= 
+label=  
 command=date '+%a %F %l:%M%P'
 interval=1
+border=#aaaaaa
 
-[separator]
