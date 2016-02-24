@@ -29,9 +29,9 @@ font pango:Fantasque Sans Mono 11
 new_window pixel 5
 
 gaps inner 40
-gaps outer 0 
+gaps outer 0
 
-smart_borders no_gaps
+smart_borders on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -182,10 +182,7 @@ bar {
   mode dock
   #hidden_state hide
   #modifier $mod
-  height 25
   status_command i3blocks
-  i3bar_command i3bar
-  separator_symbol 
   colors {
     separator #95A5A6
     background #2C3E50
