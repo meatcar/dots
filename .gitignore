@@ -24,4 +24,7 @@ i3/log
 irssi/nickserv.auth
 vim/view
 fonts/typecatcher
+
+# weechat
 weechat/logs
+weechat/**/*.log
