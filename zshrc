@@ -12,6 +12,10 @@ if which gem 2>&1 >/dev/null; then
   export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
 fi
 
+if which ccache 2>&1 >/dev/null; then
+  export PATH="/usr/lib/ccache/bin:$PATH"
+fi
+
 export TERM="rxvt-256color"
 export TERMINAL="urxvtc"
 export VTERM="urxvtc"
@@ -39,8 +43,6 @@ zstyle :compinstall filename '/home/meatcar/.zshrc'
 
 autoload -Uz compinit
 compinit
-
-source /usr/share/doc/pkgfile/command-not-found.zsh
 
 source ~/dots/colors/colors.sh
 source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh

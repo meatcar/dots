@@ -68,6 +68,10 @@ case $(hostname) in
           #-c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
 
         ;;
+    bronn)
+        systemctl --user import-environment
+        xrandr --dpi 144
+        ;;
 esac
 
 # set the cursor
