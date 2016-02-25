@@ -6,10 +6,6 @@
 ##############################################################################
 DOTS="$PWD"
 
-for i in arch_packages; do
-   sudo pacman -Syy
-   echo "$i" | awk '{ print $1 }' | sudo xargs pacman -S
-done
 ln -rs 'bspwm' ~/'.config/bspwm'
 ln -rs 'dircolors' ~/'.dircolors'
 ln -rs 'fonts' ~/'.fonts'
@@ -25,14 +21,17 @@ ln -rs 'ncmpcpp' ~/'.ncmpcpp'
 ln -rs 'pentadactyl' ~/'.pentadactyl'
 ln -rs 'pentadactylrc' ~/'.pentadactylrc'
 ln -rs 'screenrc' ~/'.screenrc'
-ln -rs 'spacemacs' /home/meatcar/'.spacemacs'ln -rs 'ackrc' ~/'.ackrc'
+ln -rs 'spacemacs' /home/meatcar/'.spacemacs'
+ln -rs 'ackrc' ~/'.ackrc'
 ln -rs 'sxhkd' ~/'.config/sxhkd'
-ln -rs 'systemd_user' /home/meatcar/'.config/systemd'ln -rs 'bashrc' ~/'.bashrc'
+ln -rs 'systemd_user' /home/meatcar/'.config/systemd'
+ln -rs 'bashrc' ~/'.bashrc'
 ln -rs 'uzbl/config' ~/'.config/uzbl'
 ln -rs 'uzbl/local' ~/'.local/share/uzbl'
 ln -rs 'vimrc' ~/'.vimrc'
 ln -rs 'vim' ~/'.vim'
-ln -rs 'weechat' /home/meatcar/'.weechat'ln -rs 'bin' ~/'bin'
+ln -rs 'weechat' /home/meatcar/'.weechat'
+ln -rs 'bin' ~/'bin'
 ln -rs 'Xdefaults' ~/'.Xdefaults'
 ln -rs 'xinitrc' ~/'.xinitrc'
 ln -rs '~/.xsessionrc' ~/'.login'

@@ -10,10 +10,6 @@
 Xcursor.theme: OpenZone_Black
 !Xcursor.size:   22
 
-#ifdef dpi120
-Xft.dpi: 120
-#endif
-
 ! rxvt-unicode ---------------------------------------------------------------
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false

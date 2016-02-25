@@ -7,7 +7,7 @@ width=$(echo "${font_size} * 25" | bc)
 dmenu_run \
     -p ">" \
     -i \
-    -fn "Inconsolata:size=${font_size}" \
+    -fn "Fantasque Sans Mono:size=${font_size}" \
     -nb '#D7DCE7' \
     -nf '#231f20' \
     -sf '#D7DCE7' \
@@ -15,4 +15,4 @@ dmenu_run \
     -x $(echo "${RES_X} / 2 - ${width} / 2" | bc) \
     -y $(echo "${RES_Y} / 2.3" | bc) \
     -w ${width} \
-    -q
+    1>&2 2>/dev/null

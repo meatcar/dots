@@ -153,7 +153,8 @@ Plug 'mhinz/vim-startify'
 Plug 'xolox/vim-misc' " need this for colorscheme-switcher
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'flazz/vim-colorschemes'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " git plugins
 Plug 'tpope/vim-fugitive'       " tight git integration
