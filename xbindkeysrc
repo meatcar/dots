@@ -30,7 +30,7 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-"lock"
+"loginctl lock-session"
   alt+x
 
 "amixer set Master 5%+ unmute"

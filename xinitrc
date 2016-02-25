@@ -59,6 +59,7 @@ case $(hostname) in
         systemctl --user import-environment
         numlockx on 
         xrandr --dpi 96 
+        echo 'Xft.dpi: 96' | xrdb -merge
         #compton --backend glx\
           #--blur-background-frame --blur-kern 7x7box\
           #-i 0.9 -f -D 5\
@@ -109,6 +110,8 @@ eval "$(cat ~/.fehbg)" &
 xautolock  -time 15 -locker 'lock' &
 xset -dpms 
 xset s off
+
+gpg-agent
 
 #####################
 # WM-dependent setup
@@ -172,6 +175,7 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
+        xss-lock -- lock &
         dunst &
         #conky &
         #(sleep 3 && dzenstatus &) &
