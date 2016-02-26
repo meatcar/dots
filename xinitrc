@@ -71,6 +71,10 @@ case $(hostname) in
     bronn)
         systemctl --user import-environment
         xrandr --dpi 144
+        echo 'Xft.dpi: 144' | xrdb -merge
+        nm-applet &
+        # reverse scrolling
+        xmodmap -e 'pointer = 1 2 3 5 4 6 7 8 9 10' &
         ;;
 esac
 
