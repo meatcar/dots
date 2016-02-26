@@ -2,13 +2,13 @@
 ##############################################################################
 # Reinstate all the dotfiles into their functional locations.
 ##############################################################################
-
 ln -rs 'ackrc' ~/'.ackrc'
 ln -rs 'bashrc' ~/'.bashrc'
 ln -rs 'bin' ~/'bin'
 ln -rs 'bspwm' ~/'.config/bspwm'
 ln -rs 'dircolors' ~/'.dircolors'
 ln -rs 'dunst' /'.config/dunst'
+ln -rs 'fish' ~/'.config/fish'
 ln -rs 'fonts' ~/'.fonts'
 ln -rs 'gitconfig' ~/'.gitconfig'
 ln -rs 'htoprc' ~/'.htoprc'

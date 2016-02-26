@@ -179,6 +179,7 @@ Plug 'mattn/emmet-vim', {'for': ['html', 'handlebars', 'css', 'less', 'sass', 's
 Plug 'sealemar/vtl', {'for': 'velocity'} " velocity syntax for vim
 Plug 'dln/avro-vim', {'for': 'avro-idl'}
 Plug 'edkolev/erlang-motions.vim', {'for': 'erlang'}
+Plug 'dag/vim-fish', {'for': 'fish'}
 
 call plug#end()
 
