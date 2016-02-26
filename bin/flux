@@ -1,3 +1,6 @@
 #!/bin/sh
-xflux -l 43.7001100 -g -79.4163000
+IP=$(curl -s ifconfig.co)
+CMD=$(curl -s geoip.cf/api/"$IP"/latitude,longitude | sed 's/^\(.*\)|\(.*\)$/xflux -l \1 -g \2 -k 4000/')
+
+eval "$CMD"
 
