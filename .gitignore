@@ -28,3 +28,4 @@ fonts/typecatcher
 # weechat
 weechat/logs
 weechat/**/*.log
+fish/fish_history
