@@ -13,7 +13,7 @@ case $# in
             -blur 0x5 -auto-level +depth \
             -resize ${geometry}^ -gravity Center -crop ${geometry}+0+0 +repage \
             -fill white -font "Fantasque-Sans-Mono-Regular" -pointsize 44 \
-            -draw "text 0,0 'meatcar at littlefinger' " \
+            -draw "text 0,0 '$USER at $(hostname)' " \
             ${out}
             #-scale 2% \
             #-scale 5000% \

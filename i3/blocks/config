@@ -38,7 +38,7 @@ border_bottom=3
 [updates]
 command=checkupdates | wc -l | awk '{print $1 "\n"} $1 {print "#AAAA00"}'
 label=  
-interval=120
+interval=1200
 
 # CPU usage
 #
@@ -94,7 +94,6 @@ min_width=:99.9M :99.9M
 # The battery instance defaults to 0.
 [battery]
 label=⚡
-instance=1
 interval=30
 
 # Volume indicator
