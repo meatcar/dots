@@ -36,13 +36,26 @@ export OG_PPID=$PPID
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory autocd extendedglob nomatch notify
+setopt appendhistory hist_ignore_all_dups autocd extendedglob nomatch notify
 unsetopt beep
-
-zstyle :compinstall filename '/home/meatcar/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+zstyle :compinstall filename '/home/meatcar/.zshrc'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zshcache
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*' squeeze-slashes true
+
+setopt completealiases
+setopt correctall
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/dots/colors/colors.sh
 source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh
