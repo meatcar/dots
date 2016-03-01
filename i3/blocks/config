@@ -103,7 +103,7 @@ interval=30
 # See the script for details.
 [volume]
 label= 
-interval=once
+interval=1
 
 # Date Time
 #

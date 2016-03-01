@@ -4,8 +4,7 @@
 export PATH="$JAVA_HOME:${PATH}:/home/meatcar/bin:/opt/maven/bin"
 
 if which npm 2>&1 >/dev/null; then
-  export PATH="$PATH:$HOME/.npm/bin"
-  export PATH="$PATH:$(npm bin)"
+  export PATH="$PATH:$HOME/.npm/bin:./node_modules/.bin"
 fi
 
 if which gem 2>&1 >/dev/null; then
@@ -47,7 +46,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zshcache
-zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' completer _complete _match 
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*' squeeze-slashes true
