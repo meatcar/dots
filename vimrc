@@ -140,6 +140,8 @@ Plug 'tpope/vim-endwise' " add `end` do function blocks
 Plug 'Gundo', {'on': 'GundoToggle'}
 Plug 'ack.vim', {'on': 'Ack'}
 
+Plug 'ternjs/tern_for_vim', {'for': 'javascript'}
+
 " unite
 Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
 Plug 'Shougo/unite.vim'
@@ -310,20 +312,14 @@ let g:unite_source_file_mru_limit = 500
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_cursor_line_highlight = 'CursorLine'
 
-if has('win32') || has('win64')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts =
-          \ '-i --vimgrep --hidden --ignore ' .
-          \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-    let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_rec_async_command = [
-          \'C:/ProgramData/chocolatey/bin/ag',
-          \'--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-else
-    let g:unite_source_grep_command = 'ack'
-    let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
-    let g:unite_source_grep_recursive_opt = ''
-endif
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+      \ '-i --vimgrep --hidden --ignore ' .
+      \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_rec_async_command = [
+      \'ag',
+      \'--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
 function! s:unite_settings()
   map <buffer> <leader> <Esc><leader>
