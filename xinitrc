@@ -61,6 +61,7 @@ case $(hostname) in
         echo 'Xft.dpi: 144' | xrdb -merge
         nm-applet &
         blueberry-tray &
+        touchegg 2>&1 >/dev/null &
         ;;
 esac
 
@@ -101,9 +102,9 @@ syncthing-gtk -m &
 ## wallpaper
 eval "$(cat ~/.fehbg)" &
 
-xautolock  -time 15 -locker 'lock' &
-xset -dpms 
-xset s off
+xautolock  -time 10 -locker 'lock' &
+#xset -dpms 
+#xset s off
 
 gpg-agent
 
@@ -171,7 +172,7 @@ case $1 in
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
-        xss-lock -- lock &
+        xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- lock &
         dunst &
         #conky &
         #(sleep 3 && dzenstatus &) &
