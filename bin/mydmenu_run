@@ -15,4 +15,5 @@ dmenu_run \
     -x $(echo "${RES_X} / 2 - ${width} / 2" | bc) \
     -y $(echo "${RES_Y} / 2.3" | bc) \
     -w ${width} \
+    -l 8 \
     1>&2 2>/dev/null

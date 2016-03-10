@@ -174,6 +174,7 @@ Plug 'trapd00r/irc.vim' " syntax file for irc logs
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'freitass/todo.txt-vim'
 Plug 'pearofducks/ansible-vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'TeX-9', {'for': ['tex', 'latex']}
 Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
 Plug 'skammer/vim-css-color', {'for': ['css', 'less']}

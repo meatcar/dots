@@ -121,7 +121,6 @@ alias pacman="sudo pacman"
 alias mkdir="mkdir -p -v"
 alias svim="sudo vim"
 alias sudo="sudo -E"
-alias mix="alsamixer"
 alias tree="tree -AF"
 
 alias t="todo.sh"
