@@ -164,6 +164,9 @@ Plug 'airblade/vim-gitgutter'   " show git changes in the gutter
 Plug 'wting/gitsessions.vim'    " handle vim sessions based on git
 Plug 'tpope/vim-rhubarb'    " auto-complete Github in fugitive
 Plug 'jaxbot/github-issues.vim' " Github issue lookup in Vim
+Plug 'shuber/vim-promiscuous'   " links vim sessions with git branch
+Plug 'junegunn/fzf'             " for vim-promiscuous
+Plug 'junegunn/fzf.vim'         " for vim-promiscuous
 
 Plug 'WebAPI.vim' " need this for gist.
 Plug 'Gist.vim', {'on': 'Gist'}
@@ -278,6 +281,14 @@ let g:github_upstream_issues = 1
 " gitgutter is a bit slow. Let's speed it up
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" Promiscuous settings ---------------------------------------------
+
+let g:promiscuous_dir = $HOME . '/.vim/tmp/promiscuous'
+
+" FZF settings -----------------------------------------------------
+
+let g:fzf_launcher='i3-sensible-terminal -e bash -ic %s'
 
 " Unite ------------------------------------------------------------
 
