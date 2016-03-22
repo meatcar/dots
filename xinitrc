@@ -76,13 +76,7 @@ xsetroot -cursor_name left_ptr
 # set keyboard repeat rate
 #xset r rate 190 40
 
-# set capslock to escape, control when combined with another key.
-SPARE_MOD="Hyper_L"
-xmodmap -e "remove mod4 = $SPARE_MOD" # hyper_l is mod4 by default
-xmodmap -e 'remove Lock = Caps_Lock' 
-xmodmap -e "keysym Caps_Lock = $SPARE_MOD"
-xmodmap -e "add Control = $SPARE_MOD" 
-xcape -e "$SPARE_MOD=Escape"
+capslock-to-escape &
 
 xbindkeys 
 
