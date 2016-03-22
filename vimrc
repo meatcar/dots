@@ -140,7 +140,7 @@ Plug 'tpope/vim-endwise' " add `end` do function blocks
 Plug 'Gundo', {'on': 'GundoToggle'}
 Plug 'ack.vim', {'on': 'Ack'}
 
-Plug 'ternjs/tern_for_vim', {'for': 'javascript'}
+Plug 'ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 
 " unite
 Plug 'Shougo/vimproc.vim', { 'do' : 'make -f make_unix.mak' }
@@ -248,7 +248,6 @@ if has('autocmd')
     augroup pencil
       autocmd!
       autocmd FileType markdown,mkd call pencil#init()
-      autocmd FileType text         call pencil#init()
     augroup END
 endif
 
