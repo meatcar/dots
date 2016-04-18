@@ -44,9 +44,9 @@ bindsym $mod+Shift+Return exec --no-startup-id cwd-term
 bindsym $mod+d kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id mydmenu_run
+bindsym $mod+p exec --no-startup-id mydmenu dmenu_run
 # start a clipboard manager
-bindsym $mod+c exec --no-startup-id xcmenuctrl
+bindsym $mod+c exec --no-startup-id mydmenu clipmenu
 bindsym $mod+Shift+c exec --no-startup-id xcmenuctrl -s
 
 # change focus

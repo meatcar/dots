@@ -4,7 +4,7 @@ read RES_X RES_Y <<<$(xdpyinfo | grep dimensions | awk '{print $2}' | awk -Fx '{
 font_size=20
 width=$(echo "${font_size} * 25" | bc)
 
-dmenu_run \
+$1 \
     -p ">" \
     -i \
     -fn "Fantasque Sans Mono:size=${font_size}" \
