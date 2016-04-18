@@ -59,8 +59,12 @@ case $(hostname) in
         systemctl --user import-environment
         xrandr --dpi 144
         echo 'Xft.dpi: 144' | xrdb -merge
-        nm-applet &
-        blueberry-tray &
+        case $1 in
+          i3)
+            nm-applet &
+            blueberry-tray &
+            ;;
+        esac
         touchegg 2>&1 >/dev/null &
         ;;
 esac

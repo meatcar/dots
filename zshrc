@@ -61,15 +61,16 @@ source $COLORSCHEME_DIR/shell/$COLORSCHEME.sh
 
 # Set the prompt.
 autoload -U colors && colors
+autoload -Uz vcs_info
 
-function precmd() {
-  eval ${PROMPT_COMMAND}
-}
-
-# set up command verb (do, sudo, redo)
-root_verb="%(!.%{$fg_bold[red]%}su.)" # elevated privilige
-exit_verb="%(?..%{$fg_bold[magenta]%}re)" # failed command
-verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
+zstyle ':vcs_info:*' unstagedstr '●'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%f%F{red}:%f%F{yellow}%r%f'
+zstyle ':vcs_info:git*' formats " %F{yellow}%b%f%m %m%u%c"
+zstyle ':vcs_info:git*' actionformats "%b %m%u%c"
+setopt prompt_subst
 
 IDENTICON=$(identicon -w 6 -h 6)
 IDENTICON_TOP="%{[38;5;254m%}$(echo -n ${IDENTICON} | head -n 1)%{$reset_color%}"
@@ -80,14 +81,44 @@ PUSER="%{$fg_bold[blue]%}%n%{$reset_color%}"
 PHOST="%{$fg_bold[magenta]%}%M%{$reset_color%}"
 PDIR="%{$fg_bold[green]%}%~%{$reset_color%}"
 
-PROMPT="
-${IDENTICON_TOP}
-${IDENTICON_MIDDLE} ${PUSER} at ${PHOST} in ${PDIR}
-${IDENTICON_BOTTOM}      ${verb} "
+function precmd() {
+  vcs_info
+  set-prompt
+}
+
+function set-prompt () {
+  # set up command verb (do, sudo, redo)
+  root_verb="%(!.%{$fg_bold[red]%}su.)" # elevated privilige
+  exit_verb="%(?..%{$fg_bold[magenta]%}re)" # failed command
+  verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
+
+  case ${KEYMAP} in
+    (vicmd)        VI_MODE="%{$bg[blue]%}|NRML|%{$reset_color%}";;
+    (main|viins|*) VI_MODE="%{$bg[green]%}|INS|%{$reset_color%}" ;;
+  esac
+
+  PROMPT="
+  ${IDENTICON_TOP}
+  ${IDENTICON_MIDDLE} ${PUSER} at ${PHOST} in ${PDIR}
+  ${IDENTICON_BOTTOM}      ${verb} "
+
+  RPROMPT="${vcs_info_msg_0_} $VI_MODE"
+}
+
+function zle-line-init zle-keymap-select {
+  set-prompt
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 
 ####################################################
 # Set Keybindings.
 bindkey -v
+export KEYTIMEOUT=1 # quicker vi ESC
+
 bindkey "\e[1~" beginning-of-line # Home
 bindkey "\e[4~" end-of-line # End
 bindkey "\e[5~" beginning-of-history # PageUp
@@ -103,6 +134,14 @@ bindkey "\eOF" end-of-line
 # for freebsd console
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
+
+bindkey '^R' history-incremental-search-backward
+
+# for st, makes the delete key work
+function zle-line-init () { echoti smkx }
+function zle-line-finish () { echoti rmkx }
+zle -N zle-line-init
+zle -N zle-line-finish
 
 ####################################################
 # Set up colorings
