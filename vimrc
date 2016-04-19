@@ -202,11 +202,7 @@ if has('win32') || has('win64')
 else
   let g:base16_shell_path='~/dots/colors/base16/shell/'
   colorscheme meatcar
-  if $COLORSCHEME_LIGHT == 'dark'
-    set background=dark
-  else
-    set background=light
-  endif
+  set background=dark
 endif
 " Startify settings ----------------------------------------------------------
 
