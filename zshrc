@@ -65,11 +65,11 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
-zstyle ':vcs_info:*' unstagedstr '●'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%f%F{red}:%f%F{yellow}%r%f'
-zstyle ':vcs_info:git*' formats " %F{yellow}%b%f%m %m%u%c"
-zstyle ':vcs_info:git*' actionformats "%b %m%u%c"
+zstyle ':vcs_info:*' stagedstr "%{$fg_bold[green]%}+%{$reset_color%}"
+zstyle ':vcs_info:*' unstagedstr "%{$fg_bold[grey]%}…%{$reset_color%}"
+zstyle ':vcs_info:git:*' branchformat '%b%f%F{red}:%f%F{yellow}%r%f'
+zstyle ':vcs_info:git*' formats " %{$fg_bold[yellow]%}%b%{$reset_color%} %m%c%u"
+zstyle ':vcs_info:git*' actionformats " %{$fg_bold[green]%}%b%{$reset_color%} (%a) %m%c%u"
 setopt prompt_subst
 
 IDENTICON=$(identicon -w 6 -h 6)
@@ -93,8 +93,8 @@ function set-prompt () {
   verb="%{$fg_bold[green]%}${exit_verb}${root_verb}do%{$reset_color%}"
 
   case ${KEYMAP} in
-    (vicmd)        VI_MODE="%{$bg[blue]%}|NRML|%{$reset_color%}";;
-    (main|viins|*) VI_MODE="%{$bg[green]%}|INS|%{$reset_color%}" ;;
+    (vicmd)        VI_MODE="%{$bg[blue]%} N %{$reset_color%}";;
+    (main|viins|*) VI_MODE="%{$bg[green]%} I %{$reset_color%}" ;;
   esac
 
   PROMPT="
@@ -118,6 +118,8 @@ zle -N zle-keymap-select
 # Set Keybindings.
 bindkey -v
 export KEYTIMEOUT=1 # quicker vi ESC
+bindkey -sM vicmd '^[' '^G'
+bindkey -rM viins '^X'
 
 bindkey "\e[1~" beginning-of-line # Home
 bindkey "\e[4~" end-of-line # End

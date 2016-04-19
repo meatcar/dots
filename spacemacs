@@ -29,6 +29,9 @@ values."
      git
      markdown
      org
+     deft
+     dash
+     restclient
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -36,6 +39,9 @@ values."
      syntax-checking
      version-control
      javascript
+     dash
+     ranger
+     unimpaired
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -202,7 +208,9 @@ user code."
 layers configuration. You are free to put any user code."
   (setq-default
    js-indent-level 2
-   js2-basic-offset 2))
+   js2-basic-offset 2)
+  (setq deft-directory "~/Sync/notes")
+  (setq deft-recursive t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
