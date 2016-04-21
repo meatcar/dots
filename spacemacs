@@ -23,26 +23,28 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ansible
      auto-completion
      better-defaults
+     dash
+     dash
+     deft
      emacs-lisp
      git
+     github
+     javascript
+     markdown
      markdown
      org
-     deft
-     dash
+     ranger
      restclient
      shell
      spell-checking
      syntax-checking
-     version-control
-     javascript
-     markdown
-     dash
-     ranger
+     themes-megapack
      unimpaired
+     version-control
      yaml
-     ansible
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -119,7 +121,6 @@ values."
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
-   powerline-default-separator 'slant
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -211,7 +212,7 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -261,9 +262,23 @@ you should place you code here."
   (setq-default
    js-indent-level 2
    js2-basic-offset 2)
+  (setq powerline-default-separator 'slant)
   (setq ranger-show-dotfiles nil)
   (setq deft-directory "~/Sync/notes")
   (setq deft-recursive t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(paradox-github-token t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
