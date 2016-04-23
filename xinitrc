@@ -60,7 +60,9 @@ case $(hostname) in
         xrandr --dpi 144
         echo 'Xft.dpi: 144' | xrdb -merge
         case $1 in
-          i3)
+          gnome)
+            ;;
+          *)
             nm-applet &
             blueberry-tray &
             ;;

@@ -248,6 +248,7 @@ if has('autocmd')
     augroup pencil
       autocmd!
       autocmd FileType markdown,mkd call pencil#init()
+      autocmd FileType txt call PencilOff
     augroup END
 endif
 
