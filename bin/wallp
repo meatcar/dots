@@ -25,6 +25,10 @@ set_wall() {
         feh --bg-fill "$1"
         blur "$1" "$WALLLINK" &
     fi
+    if which gsettings 2>&1 >/dev/null; then 
+        gsettings set org.gnome.desktop.background picture-uri "$1"
+        gsettings set org.gnome.desktop.screensaver picture-uri "$1"
+    fi
 }
 
 case $# in

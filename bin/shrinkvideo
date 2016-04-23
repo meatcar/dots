@@ -1,0 +1,2 @@
+#!/bin/bash
+ffmpeg -i $1 -c:v libx264 -preset $2 -crf 32 -tune film -x264opts fast_pskip=0  -c:a ac3 -ab 128k ~/Videos/$1
