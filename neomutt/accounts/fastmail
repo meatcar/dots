@@ -1,0 +1,34 @@
+# vim: ft=muttrc
+set realname = "Denys Pavlov"        # who am i?
+set from      = "me@denys.me"
+set sendmail  = "/usr/bin/msmtp -a fastmail"
+set mbox      = "+fastmail/Archive"
+set postponed = "+fastmail/Drafts"
+set trash     = "+fastmail/Trash"
+
+alternates .*@denys\.me .*@dnka\.ca
+
+unmailboxes *
+mailboxes +fastmail \
+          +fastmail/inbox \
+          +fastmail/Archive \
+          +fastmail/Sent \
+          +fastmail/Drafts \
+
+color status cyan default
+
+macro index,pager A \
+    "<save-message>+zoho/Archive<enter>" \
+    "archive message"
+
+macro index,pager D \
+    "<save-message>+fastmail/Trash<enter>" \
+    "move message to the trash"
+
+macro index,pager S \
+    "<save-message>+fastmail/Spam<enter>"  \
+        "mark message as spam"
+
+macro index,pager \cf \
+    "<shell-escape>mutt-mu fastmail<enter><change-folder-readonly>+mu/search<enter>" \
+    "search mail (using mu)"
