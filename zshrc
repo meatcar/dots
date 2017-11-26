@@ -1,35 +1,3 @@
-####################################################
-# Exports
-
-export PATH="$JAVA_HOME:${PATH}:/home/meatcar/bin:/opt/maven/bin"
-
-if which npm 2>&1 >/dev/null; then
-  export PATH="$PATH:$HOME/.npm/bin:./node_modules/.bin"
-fi
-
-if which gem 2>&1 >/dev/null; then
-  export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
-fi
-
-if which ccache 2>&1 >/dev/null; then
-  export PATH="/usr/lib/ccache/bin:$PATH"
-fi
-
-export TERM="rxvt-256color"
-export TERMINAL="urxvtc"
-export VTERM="urxvtc"
-export EDITOR="vim"
-#export PAGER="vimpager"
-
-# fix svn errors
-#source /etc/profile.d/go.sh
-export GOPATH="$HOME/dev/go"
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2.xrender=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-export JAVA_FONTS=/usr/share/fonts/TTF
-export MAVEN_OPTS="-Xmx4g -XX:MaxPermSize=256m"
-
-export OG_PPID=$PPID
-
 ############
 
 HISTFILE=~/.histfile
@@ -46,13 +14,13 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zshcache
-zstyle ':completion:*' completer _complete _match 
+zstyle ':completion:*' completer _complete _match
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*' squeeze-slashes true
 
 setopt completealiases
-setopt correctall
+#setopt correctall
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -113,6 +81,10 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
 
 ####################################################
 # Set Keybindings.
@@ -140,10 +112,10 @@ bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
 # for st, makes the delete key work
-function zle-line-init () { echoti smkx }
-function zle-line-finish () { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
+#function zle-line-init () { echoti smkx }
+#function zle-line-finish () { echoti rmkx }
+#zle -N zle-line-init
+#zle -N zle-line-finish
 
 ####################################################
 # Set up colorings
@@ -178,9 +150,13 @@ alias rm="rm -i"
 # reconnect sshfs on discnnect.
 alias sshfs="sshfs -o reconnect -C -o workaround=all"
 alias proxyhome="ssh -C2TNv -D 8080 home.denys.me"
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-eval "$(thefuck --alias)"
 
-export NVM_DIR="/home/meatcar/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if which npm 2>&1 >/dev/null; then
+  BASEPATH="$PATH"
+  function chpwd {
+    PATH="$BASEPATH:`npm bin`"
+  }
+  chpwd
+fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

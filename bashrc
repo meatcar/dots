@@ -60,7 +60,6 @@ export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[0;36m")
 
 ## core-git
-export PATH=/usr/share/perl5/vendor_perl/auto/share/dist/Cope:$PATH:/home/meatcar/.bin/
 export EDITOR=vim
 
 ## Faster Completion
@@ -75,3 +74,5 @@ paste() {
    echo $FLAGS $URI
 }
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

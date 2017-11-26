@@ -1,0 +1,35 @@
+# vim: ft=muttrc
+set realname  = "Denys Pavlov"        # who am i?
+set from      = "denys.pavlov@gmail.com"
+set sendmail  = "/usr/bin/msmtp -a gmail"
+set mbox      = "+gmail/archive"
+set postponed = "+gmail/drafts"
+set trash     = "+gmail/Trash"
+
+alternates denys\.pavlo(v|v\+.+)@gmail\.com shagydo(g|g\+.*)@gmail\.com
+
+unmailboxes *
+mailboxes +gmail \
+          +gmail/inbox \
+          +gmail/archive \
+          +gmail/sent \
+          +gmail/drafts \
+
+color status green default
+
+macro index,pager A \
+    "<save-message>+zoho/archive<enter>" \
+    "archive message"
+
+macro index,pager D \
+    "<save-message>+gmail/trash<enter>" \
+    "move message to the trash"
+
+macro index,pager S \
+    "<save-message>+gmail/spam<enter>"  \
+        "mark message as spam"
+
+macro index,pager \cf \
+    "<shell-escape>mutt-mu gmail<enter><change-folder-readonly>+mu/search<enter>" \
+    "search mail (using mu)"
+

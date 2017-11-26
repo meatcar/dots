@@ -29,3 +29,7 @@ fonts/typecatcher
 weechat/logs
 weechat/**/*.log
 fish/fish_history
+
+# mutt
+neomutt/tmp/*
+neomutt/cache/*

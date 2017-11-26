@@ -1,0 +1,188 @@
+# From http://stevelosh.com/blog/2012/10/the-homely-mutt/
+# Paths ----------------------------------------------
+set alias_file       = ~/.config/neomutt/alias         # where to store aliases
+set header_cache     = ~/.config/neomutt/cache/headers # where to store headers
+set message_cachedir = ~/.config/neomutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.config/neomutt/certificates  # where to store certs
+set mailcap_path     = ~/.config/neomutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.config/neomutt/tmp          # where to keep temp files
+set signature        = ~/.config/neomutt/sig           # my signature file
+
+# Colorscheme
+source ~/.config/neomutt/vombatidae.mutt
+
+# Basic Options --------------------------------------
+set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+#unset mark_old           # read/new is good enough for me
+set beep
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+set text_flowed          # don't wrap text
+set sleep_time = 0       # speed up folder switch
+set mail_check_stats
+
+# Sidebar Patch --------------------------------------
+set sidebar_divider_char   = '│'
+set sidebar_folder_indent = yes
+set sidebar_short_path = no
+set sidebar_visible = yes
+set sidebar_width   = 24
+set sidebar_short_path                  # Shorten mailbox names
+set sidebar_delim_chars="/"             # Delete everything up to the last / character
+set sidebar_folder_indent               # Indent folders whose names we've shortened
+set sidebar_indent_string="  "          # Indent with two spaces
+set sidebar_format = " %B%* %?F? %!?%?N? %N&   ? "
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# Header Options -------------------------------------
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+
+# Account Settings -----------------------------------
+set folder  = ~/mail # mailbox location
+set spoolfile = "+gmail/inbox"
+
+source ~/.config/neomutt/accounts/gmail
+folder-hook gmail/.* source ~/.config/neomutt/accounts/gmail
+
+source ~/.config/neomutt/accounts/fastmail
+folder-hook fastmail/.* source ~/.config/neomutt/accounts/fastmail
+
+source ~/.config/neomutt/accounts/zoho
+folder-hook zoho/.* source ~/.config/neomutt/accounts/zoho
+
+# default
+source ~/.config/neomutt/accounts/gmail
+
+# Mailboxes to always show in the sidebar.
+folder-hook .* mailboxes "+_" \
+          +gmail \
+          +gmail/inbox \
+          +fastmail \
+          +fastmail/inbox \
+          +zoho \
+          +zoho/inbox \
+
+# Index View Options ---------------------------------
+set date_format = "%m/%d"
+set index_format = "[%Z]  %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>  %-20.20F  %s"
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Index Key Bindings ---------------------------------
+bind index g        noop
+bind index gg       first-entry
+bind index G        last-entry
+
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+
+bind index p recall-message
+
+# Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+# Sync email
+macro index,pager O "<shell-escape>mbsync -a<enter>"           "run offlineimap to sync all mail"
+macro index,pager o "<shell-escape>mbsync quick<enter>"           "run offlineimap to sync all mail"
+
+# Saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+bind index,pager \\ noop
+macro index,pager \\g "<change-folder>+gmail/inbox<enter>" "change accounts gmail"
+macro index,pager \\f "<change-folder>+fastmail/inbox<enter>" "change accounts fastmail"
+macro index,pager \\z "<change-folder>+zoho/inbox<enter>" "change accounts to zoho"
+
+
+# Sidebar Navigation ---------------------------------
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
+
+# Pager View Options ---------------------------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+auto_view text/html      # atuomatically show html
+alternative_order text/plain text/enriched text/html
+
+# Pager Key Bindings ---------------------------------
+bind pager k  previous-line
+bind pager j  next-line
+bind pager g  noop
+bind pager gg top
+bind pager G  bottom
+
+bind pager R  group-reply
+
+bind compose p postpone-message
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+# Compose View Options -------------------------------
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+set abort_noattach = "ask-yes"
+set attach_keyword = "\\<attach(|ed|ments?)\\>"
+
+set send_charset="us-ascii:utf-8"
+set editor = "vim"        # Use Vim to compose email.
+bind compose p postpone-message
+bind index p recall-message
+
+set sendmail_wait = 0
+
+bind index N search-opposite
+bind pager N search-opposite
+
+# Links
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# Contacts
+set query_command = "mu cfind --format=mutt-ab %s"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# Search
+macro index \cf "<enter-command>source '/home/meatcar/.config/neomutt/mutt-mu |'<enter>" "search mail (using notmuch)"
+
+# Speedup -------------------------------------
+folder-hook . 'set read_inc=1000'
