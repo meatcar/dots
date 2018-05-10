@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     nginx
+     csv
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -40,8 +42,8 @@ values."
      auto-completion
      better-defaults
      dash
-     dash
      deft
+     docker
      colors
      emacs-lisp
      emoji
@@ -49,16 +51,19 @@ values."
      github
      helm
      html
+     imenu-list
      javascript
      markdown
+     mu4e
      org
      ranger
+     react
      restclient
      shell
+     shell-scripts
      spell-checking
      syntax-checking
      themes-megapack
-     unimpaired
      version-control
      yaml
      )
@@ -66,7 +71,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      add-node-modules-path
+                                      nvm
+                                      eslint-fix
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -78,7 +87,8 @@ values."
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-only)
+  )
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -142,6 +152,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         dracula
                          spacemacs-dark
                          spacemacs-light
                          )
@@ -149,13 +160,18 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fantasque Sans Mono"
-                               :size 21
-                               :weight normal
+   dotspacemacs-default-font '("Iosevka Nerd Font"
+                               :size 19
+                               :weight light
                                :width normal
                                :powerline-scale 1.3)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -163,11 +179,8 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -261,8 +274,18 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -285,7 +308,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -295,7 +318,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup t
    ))
 
 (defun dotspacemacs/user-init ()
@@ -305,6 +328,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+   ;; disable warning to not set PATH in .zshrc
+   (setq exec-path-from-shell-check-startup-files nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -313,7 +339,9 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
-you should place you code here."
+you should place your code here."
+  (set-mouse-color "white")
+
   (setq-default
    js-indent-level 2
    js2-basic-offset 2)
@@ -321,14 +349,206 @@ you should place you code here."
   (setq ranger-show-dotfiles nil)
   (setq deft-directory "~/Sync/notes")
   (setq deft-recursive t)
+  (setq mouse-wheel-scroll-amount '(3 ((shift) . 1))) ;; two lines at a time
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
   ;; magic window movement
   (define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
+  (define-key evil-normal-state-map (kbd "`") #'deer)
+  (define-key evil-normal-state-map (kbd "C-p") #'helm-projectile-find-file)
+  (define-key evil-normal-state-map (kbd "C-S-p") #'helm-descbinds)
 
   (setq vc-follow-symlinks t) ;; skip "follow symoblic link to a git directory?" message
+
+  (setq browse-url-browser-function 'browse-url-generic
+        engine/browser-function 'browse-url-generic
+        browse-url-generic-program "mybrowser")
+
+
+  ;;; Set up some common mu4e variables
+  (setq mu4e-maildir "~/mail"
+        mu4e-get-mail-command t
+        mu4e-update-interval 15
+        mu4e-index-cleanup nil
+        mu4e-index-lazy-check t
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-images t
+        mu4e-use-fancy-chars t
+        mu4e-compose-format-flowed t
+        message-kill-buffer-on-exit t
+        ;; mu4e-html-renderer 'w3m
+        ;; mu4e-html2text-command "html2text -b 0 --mark-code --reference-links --no-wrap-links"
+        mu4e-html2text-command "w3m -dump -T text/html -o display_link_number=1"
+        mu4e-view-show-addresses t
+        mu4e-context-policy 'pick-first
+        mu4e-compose-context-policy nil
+
+        send-mail-function 'sendmail-send-it 
+        mail-specify-envelope-from t
+        mail-envelope-from 'header
+        message-sendmail-envelope-from 'header
+        message-send-mail-function 'message-send-mail-with-sendmail
+        message-sendmail-f-is-evil 't
+        sendmail-program "mymsmtp"
+
+        mu4e-change-filenames-when-moving t ;play nicely with mbsync, prevent UID errors
+        )
+
+  ;; use imagemagick, if available
+  (when (fboundp 'imagemagick-register-types)
+    (imagemagick-register-types))
+
+  (setq mu4e-sent-folder "/gmail/sent"
+        mu4e-drafts-folder "/gmail/drafts"
+        mu4e-refile-folder "/gmail/archive"
+        mu4e-trash-folder "/gmail/trash"
+        )
+
+  ;; Mail directory shortcuts
+  (setq mu4e-maildir-shortcuts
+        '(("/gmail/inbox"    . ?g)
+          ("/fastmail/inbox" . ?f)
+          ("/zoho/inbox"     . ?z)
+          ))
+
+  (setq mu4e-enable-notifications t)
+  (with-eval-after-load 'mu4e-alert
+    (mu4e-alert-set-default-style 'libnotify))
+
+  (with-eval-after-load 'mu4e
+    (add-to-list 'mu4e-marks
+      '(spam
+        :char ("s" . "_")
+        :prompt "Spam"
+        :dyn-target (lambda (target msg) (concat "/" (mu4e-context-name (mu4e-context-determine msg)) "/Spam"))
+        :action      (lambda (docid msg target)
+                      (mu4e~proc-move docid (mu4e~mark-check-target target) "-N"))))
+    (mu4e~headers-defun-mark-for spam)
+    (define-key mu4e-headers-mode-map (kbd "!") 'mu4e-headers-mark-for-spam)
+
+    (setq mu4e-bookmarks
+          (list
+           (make-mu4e-bookmark
+            :name "Inbox"
+            :query '(concat "maildir:/" (mu4e-context-name (mu4e-context-current)) "/inbox")
+            :key ?i
+            )
+           (make-mu4e-bookmark
+            :name "Archive"
+            :query '(concat "maildir:/" (mu4e-context-name (mu4e-context-current)) "/Archive")
+            :key ?a
+            )
+           (make-mu4e-bookmark
+            :name "Trash"
+            :query '(concat "maildir:/" (mu4e-context-name (mu4e-context-current)) "/Trash")
+            :key ?t
+            )
+           (make-mu4e-bookmark
+            :name "Sent"
+            :query '(concat "maildir:/" (mu4e-context-name (mu4e-context-current)) "/Sent")
+            :key ?s
+            )
+           (make-mu4e-bookmark
+            :name "Drafts"
+            :query '(concat "maildir:/" (mu4e-context-name (mu4e-context-current)) "/Drafts")
+            :key ?d
+            )
+           (make-mu4e-bookmark
+            :name "Unread messages"
+            :query "flag:unread AND NOT flag:trashed"
+            :key ?u
+            )
+           (make-mu4e-bookmark
+            :name "Today's messages"
+            :query "date:today..now"
+            :key ?1
+            )
+           (make-mu4e-bookmark
+            :name "Last 3 days"
+            :query "date:3d..now"
+            :key ?3
+            )
+           (make-mu4e-bookmark
+            :name "Last 7 days"
+            :query "date:7d..now"
+            :key ?7
+            )
+           (make-mu4e-bookmark
+            :name "With attachments"
+            :query "flag:attach"
+            :key ?A
+            )
+           ))
+
+    (setq mu4e-contexts
+          `(
+            ,(make-mu4e-context
+              :name "gmail"
+              ;; :enter-func (lambda () (mu4e/mail-account-reset))
+              :match-func (lambda (msg)
+                            (when msg
+                              (string-match-p "^/gmail" (mu4e-message-field msg :maildir))))
+              :vars '((message-sendmail-extra-arguments . ("-a" "gmail"))
+                      (mu4e-sent-folder       . "/gmail/Sent")
+                      (mu4e-drafts-folder     . "/gmail/Drafts")
+                      (mu4e-refile-folder     . "/gmail/Archive")
+                      (mu4e-trash-folder      . "/gmail/Trash")
+                      (user-mail-address      . "denys.pavlov@gmail.com")
+                      (user-full-name         . "Denys Pavlov")
+                      ))
+            ,(make-mu4e-context
+              :name "fastmail"
+              ;; :enter-func (lambda () (mu4e/mail-account-reset))
+              :match-func (lambda (msg)
+                            (when msg
+                              (string-match-p "^/fastmail" (mu4e-message-field msg :maildir))))
+              :vars '((message-sendmail-extra-arguments . ("-a" "fastmail"))
+                      (mu4e-sent-folder       . "/fastmail/Sent")
+                      (mu4e-drafts-folder     . "/fastmail/Drafts")
+                      (mu4e-refile-folder     . "/fastmail/Archive")
+                      (mu4e-trash-folder      . "/fastmail/Trash")
+                      (user-mail-address      . "me@denys.me")
+                      (user-full-name         . "Denys Pavlov")))
+            ,(make-mu4e-context
+              :name "zoho"
+              ;; :enter-func (lambda () (mu4e/mail-account-reset))
+              :match-func (lambda (msg)
+                            (when msg
+                              (string-match-p "^/zoho" (mu4e-message-field msg :maildir))))
+              :vars '((message-sendmail-extra-arguments . ("-a" "zoho"))
+                      (mu4e-sent-folder       . "/zoho/Sent")
+                      (mu4e-drafts-folder     . "/zoho/Drafts")
+                      (mu4e-refile-folder     . "/zoho/Archive")
+                      (mu4e-trash-folder      . "/zoho/Trash")
+                      (user-mail-address      . "denys@dnka.ca")
+                      (user-full-name         . "Denys" )))
+            ))
+    )
+
+  ;; (mu4e/mail-account-reset)
+
+  ;; (nvm-use "stable")
+
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook #'add-node-modules-path))
+
+  (eval-after-load 'js2-mode
+    '(add-hook 'js2-mode-hook #'add-node-modules-path))
+
+  (eval-after-load 'json-mode
+    '(add-hook 'json-mode-hook #'add-node-modules-path))
+
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
+  (eval-after-load 'js2-mode
+    '(add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
+  (eval-after-load 'json-mode
+    '(add-hook 'json-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -338,11 +558,36 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-eslint-rules-directories nil)
+ '(package-selected-packages
+   (quote
+    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic mu4e-maildirs-extension mu4e-alert insert-shebang fish-mode company-shell imenu-list dockerfile-mode docker tablist docker-tramp eslint-fix org-mime white-sand-theme rebecca-theme exotica-theme ghub let-alist winum unfill solarized-theme restclient-helm org-category-capture ob-restclient madhat2r-theme fuzzy company-restclient know-your-http-well company-ansible autothemer nginx-mode nvm markdown-mode simple-httpd json-snatcher json-reformat parent-mode gitignore-mode fringe-helper git-gutter+ marshal logito pcache pos-tip pkg-info epl flx evil goto-chg diminish dash-functional tern bind-key packed s avy popup package-build add-node-modules-path alert log4e gntp powerline spinner hydra bind-map request skewer-mode org highlight company csv-mode devdocs gh auto-complete iedit git-gutter multiple-cursors hide-comnt anzu undo-tree flyspell-correct ht dash smartparens f flycheck yasnippet helm helm-core projectile magit magit-popup git-commit with-editor async js2-mode pug-mode sass-mode company-web web-mode tagedit slim-mode scss-mode rainbow-mode rainbow-identifiers less-css-mode jade-mode helm-css-scss haml-mode emoji-cheat-sheet-plus emmet-mode web-completion-data company-emoji color-identifiers-mode zonokai-theme zenburn-theme zen-and-art-theme zeal-at-point yaml-mode xterm-color ws-butler window-numbering which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme reverse-theme restclient restart-emacs ranger rainbow-delimiters railscasts-theme quelpa purple-haze-theme professional-theme popwin planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme ob-http noctilux-theme niflheim-theme neotree naquadah-theme mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow magit-gh-pulls macrostep lush-theme lorem-ipsum livid-mode linum-relative link-hint light-soap-theme json-mode js2-refactor js-doc jinja2-mode jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme flyspell-correct-helm flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump dracula-theme django-theme diff-hl deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-tern company-statistics column-enforce-mode colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ansible-doc ansible ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(paradox-github-token t)
+ '(send-mail-function nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((type nil)) (:background "#000000" :foreground "#f8f8f2")) (((class color) (min-colors 89)) (:background "#282a36" :foreground "#f8f8f2")))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (white-sand-theme symon string-inflection rebecca-theme password-generator overseer org-brain nameless impatient-mode helm-purpose window-purpose imenu-list exotica-theme evil-org evil-lion evil-cleverparens paredit emojify editorconfig browse-at-remote ghub let-alist winum unfill solarized-theme restclient-helm org-category-capture ob-restclient madhat2r-theme fuzzy company-restclient know-your-http-well company-ansible autothemer nginx-mode nvm markdown-mode simple-httpd json-snatcher json-reformat parent-mode gitignore-mode fringe-helper git-gutter+ marshal logito pcache pos-tip pkg-info epl flx evil goto-chg diminish dash-functional tern bind-key packed s avy popup package-build add-node-modules-path alert log4e gntp powerline spinner hydra bind-map request skewer-mode org highlight company csv-mode devdocs gh auto-complete iedit git-gutter multiple-cursors hide-comnt anzu undo-tree flyspell-correct ht dash smartparens f flycheck yasnippet helm helm-core projectile magit magit-popup git-commit with-editor async js2-mode pug-mode sass-mode company-web web-mode tagedit slim-mode scss-mode rainbow-mode rainbow-identifiers less-css-mode jade-mode helm-css-scss haml-mode emoji-cheat-sheet-plus emmet-mode web-completion-data company-emoji color-identifiers-mode zonokai-theme zenburn-theme zen-and-art-theme zeal-at-point yaml-mode xterm-color ws-butler window-numbering which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme reverse-theme restclient restart-emacs ranger rainbow-delimiters railscasts-theme quelpa purple-haze-theme professional-theme popwin planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme ob-http noctilux-theme niflheim-theme neotree naquadah-theme mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow magit-gh-pulls macrostep lush-theme lorem-ipsum livid-mode linum-relative link-hint light-soap-theme json-mode js2-refactor js-doc jinja2-mode jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme flyspell-correct-helm flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump dracula-theme django-theme diff-hl deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-tern company-statistics column-enforce-mode colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ansible-doc ansible ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )
+)

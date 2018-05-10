@@ -1,27 +1,35 @@
 # vim: ft=muttrc
 set realname  = "Tech Happy"        # who am i?
-set from      = "info@dnka.ca"
-set sendmail  = "/usr/bin/msmtp -a zoho"
-set mbox      = "+zoho/Archives"
+set from      = "denys@dnka.ca"
+set sendmail  = "mymsmtp -a zoho"
+set mbox      = "+zoho/Archive"
 set postponed = "+zoho/Drafts"
 set trash     = "+zoho/Trash"
 
-alternates denys@dnka\.ca denys\.pavlov@zoho\.com
+unalternates *
+alternates denys\.pavlov@zoho\.com info@dnka.ca
 
 unmailboxes *
 mailboxes +zoho \
           +zoho/inbox \
-          +zoho/Archives \
+          +zoho/Archive \
           +zoho/Sent \
           +zoho/Drafts \
 
 color status red default
 
 macro index,pager A \
-    "<save-message>+zoho/Archives<enter>" \
+    "<save-message>+zoho/Archive<enter>" \
     "archive message"
 
+macro index,pager d \
+    "<save-message>+zoho/Archive<enter>" \
+    "archive message"
 macro index,pager D \
+    "<save-message>+zoho/Archive<enter>" \
+    "archive message"
+
+macro index,pager \cD \
     "<save-message>+zoho/Trash<enter>" \
     "move message to the trash"
 
@@ -30,5 +38,5 @@ macro index,pager S \
         "mark message as spam"
 
 macro index,pager \cf \
-    "<shell-escape>mutt-mu zoho<enter><change-folder-readonly>+mu/search<enter>" \
+    "<shell-escape>~/.config/neomutt/mutt-mu zoho<enter><change-folder-readonly>~/.cache/mu/search<enter>" \
     "search mail (using mu)"
