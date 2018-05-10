@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Terminate already running bar instances
+killall polybar
+
+# Launch bars
+polybar -r full &
+
+status-panel &
+
+echo "Bars launched..."

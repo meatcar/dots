@@ -384,7 +384,6 @@ let g:gist_browser_command = 'google-chrome %URL% &'
 "----------------------------------------------------------------------
 " gissues settings
 
-let g:github_access_token = '81acbbedd0b3845ab2db8d6044df60c140239e6d'
 let g:gissues_async_omni = 0
 let g:github_upstream_issues = 1
 

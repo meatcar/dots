@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# wrapper around dunst to set colors dynamically
+
+source "${HOME}/.cache/wal/colors.sh"
+
+dunst \
+    -frame_color "$color0" \
+    -lf "$foreground" \
+    -lb "$color0"  \
+    -nf "$foreground"  \
+    -nb "$color1"  \
+    -cf "$foreground" \
+    -cb "$color17"

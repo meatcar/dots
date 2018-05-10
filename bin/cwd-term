@@ -1,24 +1,26 @@
 #!/bin/bash
 # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
-CMD=urxvtc
-CWD=''
+TERMINAL=term
 
-# Get window ID
-ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
+# Get window ID (hexadecimal only)
+ID=$(xdpyinfo | grep focus | cut -f4 -d " " | sed 's/[^0-9a-fx]//')
+echo "WID $ID" >&2
 
 # Get PID of process whose window this is
-PID=$(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3)
+PID=$(xprop -id "$ID" | grep -m 1 PID | cut -d " " -f 3)
+echo "PID $PID" >&2
 
 # Get last child process (shell, vim, etc)
 if [ -n "$PID" ]; then
-  TREE=$(pstree -lpA $PID | tail -n 1)
-  PID=$(echo $TREE | awk -F'---' '{print $NF}' | sed -re 's/[^0-9]//g')
+  CPID=$(pgrep -P "$PID" | tail -n1)
+  echo "CPID $PID" >&2
+  if [ -z "$CPID" ]; then
+	CPID="$PID"
+  fi
 
   # If we find the working directory, run the command in that directory
-  if [ -e "/proc/$PID/cwd" ]; then
-    CWD=$(readlink /proc/$PID/cwd)
-  fi
+  cd "$(readlink /proc/"$CPID"/cwd)" || return
 fi
 
-cd $CWD && $CMD "$@"
+$TERMINAL "$@"

@@ -33,13 +33,13 @@
 "loginctl lock-session"
   alt+x
 
-"amixer set Master 5%+ unmute"
+"pulseaudio-ctl up"
   XF86AudioRaiseVolume
 
-"amixer set Master 5%- unmute"
+"pulseaudio-ctl down"
   XF86AudioLowerVolume
 
-"amixer set Master toggle"
+"pulseaudio-ctl mute"
   XF86AudioMute
 
 "xbacklight -inc 5% -time 100"
@@ -47,6 +47,9 @@
 
 "xbacklight -dec 5% -time 100"
   XF86MonBrightnessDown
+
+"playerctl play-pause"
+  XF86AudioPlay
 
 "screenshot"
   Print
@@ -56,4 +59,3 @@
 
 "screenshot --select"
   Control + Print
-

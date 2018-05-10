@@ -1,0 +1,6 @@
+#!/bin/sh
+
+firefox "$@"
+#term w3m "$@"
+#qutebrowser "$@"
+#google-chrome-stable "$@"

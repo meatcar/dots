@@ -1,69 +1,122 @@
 #!/bin/bash
-temp="/tmp/wallp"
-temp2="/tmp/wallp.$$"
-trap "rm -f $temp2" 0 1 2 15
+usage=$(cat <<EOF
+usage: $0 [OPTIONS]
 
-DROPBOX="$HOME/Sync"
-WALLFOLDER="$DROPBOX/wallpapers/"
-WALLLINK="$HOME/.wallpaper"
+OPTIONS:
+    
+    -n --next       set next random wallpaper
+    -p --prev       set previous random wallpaper
+    -d --delete     remove this wallpaper from rotation
+    -r --refresh    refresh the list of wallpapers
+
+    -h --help   Print this usage
+EOF
+)
+
+list=${XDG_CACHE_HOME}/wallp/list
+temp="/tmp/wallp.$$"
+trap 'rm -f $temp' QUIT HUP INT TERM
+
+DROPBOX=$HOME/Sync
+WALLFOLDER=$DROPBOX/wallpapers/
+WALLLINK=$HOME/.wallpaper
+WAL_BLUR=$WALLLINK-blur.png
 
 refresh() {
-    find "$WALLFOLDER" -maxdepth 1 -type f > $temp2
-    find "$WALLFOLDER/tiling" -maxdepth 1 -type f >> $temp2
-    cat $temp2 | sort -R > $temp
+    mkdir -p "$(dirname "$list")"
+    find "$WALLFOLDER" -maxdepth 1 -type f > $temp
+    find "$WALLFOLDER/tiling" -maxdepth 1 -type f >> $temp
+    sort -R <$temp >"$list"
 }
 
-if [ ! -e $temp ]; then
+gvcci-wal() {
+    echo "running gvcci to generate colors"
+    gvcci "$1" --template ~/.gvcci/templates/wal.json \
+        --background dark \
+        --print-output \
+        --symlink-wallpaper \
+        > "$XDG_CACHE_HOME/wal/gvcci.json"
+    echo "running pywal to generate templates"
+    wal -n -f "$XDG_CACHE_HOME/wal/gvcci.json" -q
+}
+
+just-wal() {
+    echo "running wal to generate colors & templates"
+    wal -n -i "$1" -q --backend colorz
+}
+
+if [ ! -e "$list" ]; then
     refresh
 fi
 
 set_wall() {
-    if $(echo "$1" | grep 'tiling/' > /dev/null)
-    then
-        feh --bg-tile "$1"
+    echo 'generating colorscheme' 
+    just-wal "$1" &
+    WALPID=$!
+
+    echo 'generating lock image'
+    blur "$1" "$WAL_BLUR" 4 &
+    BLURPID=$!
+
+    if echo "$1" | grep 'tiling/' >/dev/null; then
+        echo 'setting wallpaper (tile)'
+        feh -q --bg-tile "$1"
     else
+        echo 'setting wallpaper (fill)'
         feh --bg-fill "$1"
-        blur "$1" "$WALLLINK" &
     fi
-    if which gsettings 2>&1 >/dev/null; then 
+    ln -sf "$1" "$WALLLINK"
+
+    if which gsettings >/dev/null 2>&1; then 
+        echo 'setting gnome background';
         gsettings set org.gnome.desktop.background picture-uri "$1"
-        gsettings set org.gnome.desktop.screensaver picture-uri "$1"
+        gsettings set org.gnome.desktop.screensaver picture-uri "$WALLLINK"
     fi
+
+    echo waiting on colorscheme...
+    wait $WALPID
+    if pgrep i3 >/dev/null; then
+        i3-msg exec set-wal >/dev/null
+    fi
+    echo waiting on blur...
+    wait $BLURPID
+
+    list-colors
 }
 
 case $# in
     1)
         case $1 in
-            -p) #previous
-                cur=`tail -1 $temp`
-                cat $temp > $temp2
-                echo "$cur" > $temp
-                cat $temp2 >> $temp
-                sed -i '$d' $temp
-                cur=`tail -1 $temp`
+            -p | --prev) #previous
+                cur=$(tail -1 "$list")
+                cat "$list" > "$temp"
+                echo "$cur" > "$list"
+                cat "$temp" >> "$list"
+                sed -i '$d' "$list"
+                cur=$(tail -1 "$list")
                 set_wall "$cur"
                 ;;
-            -r) #refresh
+            -r | --refersh ) #refresh
                 refresh
                 ;;
-            -d) #delete from rotation
-                cat $temp > $temp2
-                sed -i 1d $temp2
-                cat $temp2 > $temp
-                cur=`head -1 $temp`
+            -d | --delete ) #delete from rotation
+                cat "$list" > "$temp"
+                sed -i 1d $temp
+                cat "$temp" > "$list"
+                cur=$(head -1 "$list")
                 set_wall "$cur"
                 ;;
-            -n) #next
-                cur=`head -1 $temp`
+            -n | --next ) #next
+                cur=$(head -1 "$list")
                 set_wall "$cur"
-                cat $temp > $temp2
-                sed -i 1d $temp2
-                echo "$cur" >> $temp2
-                cat $temp2 > $temp
+                cat "$list" > "$temp"
+                sed -i 1d "$temp"
+                echo "$cur" >> "$temp"
+                cat "$temp" > "$list"
                 ;;
             -h|--help)
-                echo "usage: $0 [-r|-d|-n|-p|-h|--help]" >&2
-                exit 1
+                echo "$usage"
+                exit 0
                 ;;
             *)
                 if [ -f "$1" ]; then
@@ -73,10 +126,10 @@ case $# in
         esac 
         ;;
     0)
-        tail -n1 "$temp"
+        readlink -f "$WALLLINK"
         ;;
     *)
-        echo "usage: $0 -(p|r|n|d)" >&2
+        echo "$usage" >&2
         exit 1
         ;;
 esac

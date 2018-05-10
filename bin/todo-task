@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+zparseopts -- h=help -help=help a=add -add=add e:=edit -edit:=edit
+
+function dialog() {
+	Xdialog --wmclass "dialog" --screen-center --title "$1" \
+		--inputbox "$1" 10 100 "$2" 2>&1
+}
+
+if [[ -n "$add" ]]; then
+	task=$(dialog "Add Task")
+	if [[ -n "$task" ]]; then
+		todo.sh -t add "$task"
+	fi
+fi
+
+if [[ -n "$edit" ]]; then
+	n=$(echo "$edit" | cut -f2 -d' ')
+	task=$(todo.sh -N -p ls | grep -E "^$n " | sed -E "s/^[0-9]+ //")
+
+	todo.sh replace "$n" $(dialog "Edit Task" "$task")
+
+fi
+

@@ -5,11 +5,6 @@
 ! vim:ft=xdefaults:
 ! ----------------------------------------------------------------------------
 
-! Xcursor --------------------------------------------------------------------
-
-Xcursor.theme: OpenZone_Black
-!Xcursor.size:   22
-
 ! rxvt-unicode ---------------------------------------------------------------
 urxvt*scrollTtyKeypress: true
 urxvt*scrollTtyOutput: false
@@ -17,44 +12,52 @@ urxvt*secondaryScreen:  true
 urxvt*secondaryScroll:  true
 urxvt*secondaryWheel:  true
 
-URxvt.buffered:         true
-
+urxvt.buffered:         true
 
 urxvt*termName:         rxvt-unicode-256color
-URxvt.depth:            32
-URxvt.font:             xft:Fantasque Sans Mono:size=11, \
-                        xft:Symbola:size=12
-URxvt.letterSpace:      -1
-URxvt.lineSpace:        -1
-URxvt.internalBorder:   5
-URxvt.externalBorder:   0
-URxvt.colorUL:          #86a2be
-URxvt.urgentOnBell:     true
-URxvt.scrollBar:        false
-URxvt.scrollstyle:      plain
-URxvt.saveLines:        65535
-URxvt.pastableTabs:     true
-URxvt.perl-lib:         /usr/lib/urxvt/perl/
-URxvt.perl-ext-common:  default,matcher,font-size
-URxvt.matcher.button:   1
-URxvt.url-launcher:     /usr/bin/firefox
-URxvt.keysym.C-minus:   perl:font-size:decrease
-URxvt.keysym.C-plus:    perl:font-size:increase
-URxvt.keysym.C-0:       perl:font-size:reset
+urxvt*depth:            32
+urxvt*font:             xft:Iosevka Nerd Font:size=9, \
+                        xft:DejaVu Sans Mono:size=9, \
+                        xft:Unifont:size=9, \
+                        xft:FreeSerif:size=9, \
+                        xft:EmojiOne Color:kize=9, \
+                        xft:Symbola:size=9
+urxvt*boldFont:         xft:Iosevka:size=9:Bold, \
+                        xft:DejaVu Sans Mono:size=9:Bold, \
+                        xft:Unifont:size=9:Bold, \
+                        xft:FreeSerif:size=9:Bold, \
+                        xft:EmojiOne Color:size=9, \
+                        xft:Symbola:size=9:Bold
+urxvt*letterSpace:      0
+urxvt*lineSpace:        0
+urxvt*internalBorder:   40
+urxvt*externalBorder:   0
+urxvt*colorUL:          #86a2be
+urxvt*urgentOnBell:     true
+urxvt*scrollBar:        false
+urxvt*scrollstyle:      plain
+urxvt*saveLines:        65535
+urxvt*pastableTabs:     true
+urxvt*tripleclickwords:     true
+urxvt*perl-lib:         /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:  default,matcher,clipboard,font-size
+urxvt*matcher.button:   1
+urxvt*url-launcher:     /home/meatcar/bin/mybrowser
+urxvt.keysym.C-C:       perl:clipboard:copy
+urxvt.keysym.C-V:       perl:clipboard:paste
+urxvt.keysym.M-V:       perl:clipboard:paste_escaped
+urxvt*keysym.C-minus:   perl:font-size:decrease
+urxvt*keysym.C-plus:    perl:font-size:increase
+urxvt*keysym.C-0:       perl:font-size:reset
 
 !Disables the insanely annoying Ctrl+Shift shortcut that enters ISO14755 mode
-URxvt.iso14755:         False
+urxvt*iso14755:         False
 
+Xcursor.theme: breeze_cursors
+dzen2.font:             Iosevka:size=6
 
-! xchoyce ---------------------------------------------
-XChoyce.mod:                    mod4
-XChoyce.action:                 Tab
-XChoyce.focusedalpha:           0.75
-XChoyce.focusedcolor:           #daa520
-XChoyce.unfocusedalpha:         0.5
-XChoyce.unfocusedcolor:         #404040
-XChoyce.titlebgcolor:           #292929
-XChoyce.titlebgalpha:           0.25
-XChoyce.titlefgcolor:           #616161
-XChoyce.titlefont:              Ubuntu:bold:pixelsize=28:antialias=true
-XChoyce.subtitlefont:           Ubuntu Condensed:bold:pixelsize=18:antialias=true
+! Fix home/end
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~

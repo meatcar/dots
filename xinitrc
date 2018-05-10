@@ -17,7 +17,7 @@ genXdefaults
 #######################
 case $(hostname) in
     thumbnail)
-        xrandr --dpi 120 
+        xrandr --dpi 120
         VBoxClient-all &
         ;;
     aether.denys.me)
@@ -38,83 +38,45 @@ case $(hostname) in
         # Model M has no super.
         xmodmap -e "keysym Alt_R = Super_L"
         xrandr --output VGA-0 --left-of DVI-I-1 --primary &
-        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many &>/dev/null &
+        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many >/dev/null 2>&1 &
         systemd --user &
         udiskie &
         ;;
     littlefinger)
-        systemctl --user import-environment
-        numlockx on 
-        xrandr --dpi 96 
+        numlockx on
+        xrandr --dpi 96
         echo 'Xft.dpi: 96' | xrdb -merge
-        #compton --backend glx\
-          #--blur-background-frame --blur-kern 7x7box\
-          #-i 0.9 -f -D 5\
-          #-c -C -z -G -o 0.5 \
-          #-b &
-          #-c --shadow-red 1 --shadow-green 1 --shadow-blue 1 \
+        blueman-applet
 
         ;;
+        
     bronn)
-        systemctl --user import-environment
-        xrandr --dpi 144
+        xrandr --dpi 144 
         echo 'Xft.dpi: 144' | xrdb -merge
-        case $1 in
-          gnome)
-            ;;
-          *)
-            nm-applet &
-            blueberry-tray &
-            ;;
-        esac
-        touchegg 2>&1 >/dev/null &
+        #touchegg >/dev/null 2>&1 &
+        xkbcomp \
+          -i "$(xinput | grep 'Surface Pro 3/4 Buttons' | sed 's/\s/\n/g' | grep id | sed 's/id=//')" \
+          .config/sp3buttons.xkb "$DISPLAY" &
         ;;
 esac
 
-
-# set the cursor
-xsetroot -cursor_name left_ptr 
-
-# set keyboard repeat rate
-#xset r rate 190 40
+systemctl --user import-environment
 
 capslock-to-escape &
 
-xbindkeys 
-
-# screensaver
-#xscreensaver  -no-splash &
-
-# start mpd, and make sure it's not blaring music
-#(mpd /home/meatcar/.config/mpd/mpd.conf && mpc pause) &
-
-# rxvt-unicode daemon
-urxvtd -q -f -o &
-
-# clipboard manager
-parcellite -n &
-xcmenu -dpsc &
-
-syncthing-gtk -m &
-
-#rescuetime &
+xbindkeys &
 
 ## wallpaper
-eval "$(cat ~/.fehbg)" &
+#eval "$(cat ~/.fehbg)" &
+wallp $(wallp)
 
 xautolock  -time 10 -locker 'lock' &
-#xset -dpms 
-#xset s off
-
-gpg-agent
 
 #####################
 # WM-dependent setup
 #####################
-case $1 in
-    kde)
-        exec startkde
-        ;;
+echo "$@" > ~/xinit-args
+case $(basename "$1") in
     xmonad)
         dzconky &
         trayer --edge bottom --align right --widthtype pixel --width 200 \
@@ -122,60 +84,64 @@ case $1 in
             --SetDockType true --SetPartialStrut true &
         xmonad
         ;;
-    openbox)
-        wicd-gtk --tray >/dev/null 2>&1 &
-        xcompmgr -c -C&
+    openbox|openbox-session)
         tint2 &
-        exec openbox-session
+        exec openbox
         ;;
     dwm)
         xcompmgr -c -C &
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-
-        #dwm-status &
-        dzenstatus &
-        dunst &
         startdwm
         ;;
     scrollwm)
-        xcompmgr -c -C &
         wmname LG3D
-        dunst &
         exec scrollwm
         ;;
     subtle)
-        dunst &
         exec subtle
         ;;
     wmii)
         # Set the wm name to somethign Java recognizes.
         wmname LG3D
-        dunst &
-
         exec wmii
         ;;
     gnome-session|gnome)
-        gnome-session
+        exec gnome-session
         ;;
-    budgie|budgie-session)
-        budgie-session
+    budgie|budgie-session|budgie-desktop)
+        #export XDG_CURRENT_DESKTOP=Budgie:GNOME
+        exec budgie-desktop
         ;;
     bspwm)
-        sxhkd &
-        exec bspwm-session
-        ;;
-    herbstluftwm)
-        exec herbstluftwm
-        ;;
-    i3|*)
-        # Set the wm name to somethign Java recognizes.
         wmname LG3D
 
-        xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- lock &
-        dunst &
-        #conky &
-        #(sleep 3 && dzenstatus &) &
+        exec bspwm
+        ;;
+    herbstluftwm)
+        wmname LG3D
+
+        exec herbstluftwm --locked
+        ;;
+    i3)
+        # Set the wm name to something Java recognizes.
+        wmname LG3D
+
         exec i3 -V > ~/.i3/log 2>&1
+        ;;
+    wmaker|windowmaker)
+        exec wmaker
+        ;;
+    /usr/bin/startkde|kde|plasma)
+        exec startkde
+        ;;
+    compiz)
+        fusion-icon &
+        exec cairo-dock
+        ;;
+    lxde)
+        wmname LG3D
+
+        exec startlxd
         ;;
 esac
