@@ -21,27 +21,31 @@ Channel gmail-default
 Master :gmail-remote:
 Slave :gmail-local:
 # Select some mailboxes to sync
-Patterns * ![Gmail]* !sent !flagged !drafts !archive
+Patterns * ![Gmail]* !Sent !Starred !Drafts !Archive !Spam !Trash
 
 Channel gmail-sent
 Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Slave :gmail-local:Sent
 
 Channel gmail-starred
 Master :gmail-remote:"[Gmail]/Starred"
-Slave :gmail-local:flagged
+Slave :gmail-local:Starred
 
 Channel gmail-drafts
 Master :gmail-remote:"[Gmail]/Drafts"
-Slave :gmail-local:drafts
+Slave :gmail-local:Drafts
 
 Channel gmail-trash
 Master :gmail-remote:"[Gmail]/Trash"
-Slave :gmail-local:trash
+Slave :gmail-local:Trash
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Spam"
+Slave :gmail-local:Spam
 
 Channel gmail-archive
 Master :gmail-remote:"[Gmail]/All Mail"
-Slave :gmail-local:archive
+Slave :gmail-local:Archive
 
 Channel gmail-inbox
 Master :gmail-remote:INBOX
@@ -129,7 +133,11 @@ SubFolders Verbatim
 Channel zoho
 Master :zoho-remote:
 Slave :zoho-local:
-Patterns *
+Patterns * !Archive*
+
+Channel zoho-archive
+Master :zoho-remote:Archives
+Slave :zoho-local:Archive
 
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
@@ -146,3 +154,4 @@ Channel gmail-drafts
 Channel gmail-trash
 Channel fastmail
 Channel zoho
+Channel zoho-archive

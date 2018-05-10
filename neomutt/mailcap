@@ -1,19 +1,20 @@
 # MS Word documents
-application/msword; ~/.mutt/view_attachment.sh %s "-" 'docx2txt'
+application/msword; ~/.config/neomutt/view_attachment.sh %s "-" 'docx2txt'
 
 # Images
-image/jpg; ~/.mutt/view_attachment.sh %s jpg
-image/jpeg; ~/.mutt/view_attachment.sh %s jpg
-image/pjpeg; ~/.mutt/view_attachment.sh %s jpg
-image/png; ~/.mutt/view_attachment.sh %s png
-image/gif; ~/.mutt/view_attachment.sh %s gif
+image/jpg; ~/.config/neomutt/view_attachment.sh %s jpg
+image/jpeg; ~/.config/neomutt/view_attachment.sh %s jpg
+image/pjpeg; ~/.config/neomutt/view_attachment.sh %s jpg
+image/png; ~/.config/neomutt/view_attachment.sh %s png
+image/gif; ~/.config/neomutt/view_attachment.sh %s gif
 
 # PDFs
-application/pdf; ~/.mutt/view_attachment.sh %s pdf
+application/pdf; ~/.config/neomutt/view_attachment.sh %s pdf
 
 # HTML
-text/html; ~/.mutt/view_attachment.sh %s html; needsterminal;
+#text/html; ~/.config/neomutt/view_attachment.sh %s html; needsterminal;
+text/html; viewhtmlmail %s; test=test -n "$DISPLAY"; nametemplate=%s.html; needsterminal;
 text/html; w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
 
 # Unidentified files
-application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
+application/octet-stream; ~/.config/neomutt/view_attachment.sh %s "-"
