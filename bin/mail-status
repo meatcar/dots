@@ -1,0 +1,27 @@
+#!/bin/sh
+
+gmail=$(ls ~/mail/gmail/inbox/new | wc -l)
+fastmail=$(ls ~/mail/fastmail/inbox/new | wc -l)
+zoho=$(ls ~/mail/zoho/inbox/new | wc -l)
+
+total=$(expr $gmail + $fastmail + $zoho)
+
+syncing_time=$(systemctl --user status 'mbsync@*.service' | grep 'Active: activating')
+if [ -n "$syncing_time" ]; then
+    echo -n ""
+elif [ $total -eq 0 ]; then
+    echo -n ''
+else
+    echo -n ''
+fi
+
+if [ $gmail -gt 0 ]; then
+    echo -n " :$gmail"
+fi
+if [ $fastmail -gt 0 ]; then
+    echo -n " F:$fastmail"
+fi
+if [ $zoho -gt 0 ]; then
+    echo -n " Z:$zoho"
+fi
+echo
