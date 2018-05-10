@@ -1,4 +1,3 @@
-bundle/*
-!bundle/
+pack/bundle/start*
 .netrwhist
 tmp/*

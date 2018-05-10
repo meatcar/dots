@@ -1,1 +1,0 @@
-/home/meatcar/.vim/bundle/molokai/colors/molokai.vim

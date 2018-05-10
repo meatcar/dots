@@ -1,1 +1,1 @@
-/home/meatcar/dots/colors/base16//vim/base16-flat.vim
+/home/meatcar/dots/colors/templates//vim/colors/base16-dracula.vim
