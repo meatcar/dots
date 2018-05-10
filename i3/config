@@ -15,8 +15,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 #font pango:Terminus 5
-#font pango:Fira Sans 5.3
-font pango:Fantasque Sans Mono 11
+font pango:Iosevka Medium 12
+#font pango:Fantasque Sans Mono 18
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
@@ -24,30 +24,48 @@ font pango:Fantasque Sans Mono 11
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
-# colors                border  backgr. text    indicator
+set $border 4
 
-new_window pixel 5
+#new_window normal $border px
+default_border pixel $border
+default_floating_border normal $border px
 
-gaps inner 40
-gaps outer 0 
+gaps inner 30
+gaps outer 10
 
-smart_borders no_gaps
+smart_borders on
+smart_gaps on
+
+hide_edge_borders smart
+
+for_window [class=".*"] title_format "<span font='Iosevka 9'>%class: %title</span>"
+for_window [class="Google-chrome"] border pixel $border px
+for_window [class="Chromium"] border pixel $border px
+for_window [class="Firefox"] border pixel $border px
+for_window [class="Code"] border pixel $border px
+for_window [class="Opera"] border pixel $border px
+for_window [class="Alacritty"] border none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal 
-bindsym $mod+Shift+Return exec --no-startup-id cwd-term
+bindsym $mod+Return exec term
+bindsym $mod+Shift+Return exec cwd-term
 
 # kill focused window
 bindsym $mod+d kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id mydmenu dmenu_run
-# start a clipboard manager
-bindsym $mod+c exec --no-startup-id mydmenu clipmenu
-bindsym $mod+Shift+c exec --no-startup-id xcmenuctrl -s
+#bindsym $mod+p exec --no-startup-id "zsh -c 'rofi -show combi -combi-modi window,run,drun,ssh -sidebar-mode -lines 0 -modi combi,window,run,drun,ssh'"
+bindsym $mod++p exec --no-startup-id albert show
+bindsym $mod+Shift+p exec --no-startup-id zsh -c 'rofi-pass'
+bindsym $mod+e exec pcmanfm
+bindsym $mod+Shift+c exec --no-startup-id clipster -s
+bindsym $mod+g exec gvim
+
+# turn of ctrlq in firefox
+bindsym Ctrl+q exec --no-startup-id noctrlq.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -61,6 +79,8 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+bindsym $mod+u [urgent=latest] focus
+
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
 
@@ -71,9 +91,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+bindsym $mod+Shift+t layout stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -84,13 +104,24 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+grave fullscreen disable, \
+          floating enable, \
+          border pixel $border, \
+          resize set 400 300, \
+          sticky enable, \
+          move window to position 0 0
+bindsym $mod+x sticky toggle
 
 # show/hide scratchpad
 bindsym $mod+z scratchpad show
 # move window to scratchpad
 bindsym $mod+Shift+z move scratchpad
+
+# conky
+for_window [instance="Conky"] move scratchpad, \
+                              scratchpad show
+bindsym $mod+c [instance="Conky"] scratchpad show
+
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -117,6 +148,24 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+Shift+r exec rename-workspace
+
+assign [class="(?i)google-chrome"]  1
+assign [class="(?i)emacs"]          2
+assign [class="(?i)chromium"]       9
+assign [class="(?i)firefox"]        1
+
+no_focus   [window_role="pop-up"]
+for_window [window_role="pop-up"] floating enable
+for_window [class="Gloobus-preview"] floating enable, \
+                              border pixel 1, \
+                              move window to position center
+for_window [class="Nemo-preview-start"] floating enable, \
+                              border pixel 1, \
+                              move window to position center
+                              #move position center
+for_window [class="Keybase" instance="keybase"] floating enable, \
+                              move window to position mouse
+for_window [class="dialog"] floating enable
 
 # reload the configuration file
 #bindsym $mod+Shift+c reload
@@ -146,7 +195,7 @@ mode "resize" {
 }
 
 # change gaps sizes
-bindsym $mod+g mode "gaps"
+bindsym $mod+Shift+g mode "gaps"
 mode "gaps" {
   bindsym k gaps inner all plus 1
   bindsym j gaps inner all minus 1
@@ -178,28 +227,30 @@ mode "move" {
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  font pango:FontAwesome, Fantasque Sans Mono 11
-  position top
-  mode dock
-  #hidden_state hide
-  #modifier $mod
-  height 25
-  status_command i3blocks -c ~/.i3/blocks/config
-  i3bar_command i3bar
-  separator_symbol 
-  colors {
-    separator #95A5A6
-    background #2C3E50
-    statusline #e0e0e0
-    focused_workspace #3498DB #3498DB #2C3E50
-    active_workspace #7F8C8D #7F8C8D #ECF0F1
-    inactive_workspace #34495E #34495E #95A5A6
-    urgent_workspace #E74C3C #E74C3C #ECF0F1
-  }
-}
+#bar {
+  #i3bar_command bars
+#}
 
-client.focused #3498DB #3498DB #2C3E50 #34495E
-client.focused_inactive #7F8C8D #7F8C8D #95A5A6 #34495E
-client.unfocused #34495E #34495E #95A5A6 #34495E
-client.urgent #7F8C8D #E74C3C #ECF0F1 #E74C3C
+# Set colors from Xresources as per
+# https://github.com/dylanaraps/pywal/wiki/Customization#i3
+set_from_resource $fg           XTerm.foreground  #3498DB
+set_from_resource $bg           XTerm.background  #ffffff
+set_from_resource $focus        color7      #34495E
+set_from_resource $focusi       color8      #7F8C8D
+set_from_resource $urgent       color10     #E74C3C
+
+# class                 border  backgr. text indicator child_border
+client.focused          $focus  $focus  $bg  $bg       $focus
+client.focused_inactive $focusi $focusi $fg  $fg       $focusi
+client.unfocused        $bg     $bg     $fg  $fg       $bg
+client.urgent           $urgent $urgent $bg  $fg       $urgent
+client.placeholder      $bg     $bg     $fg  $fg       $bg
+
+client.background       $bg
+
+## Autostart
+
+exec_always --no-startup-id bars
+exec_always --no-startup-id set-wal
+exec --no-startup-id mydunst
+exec --no-startup-id dex -ae i3

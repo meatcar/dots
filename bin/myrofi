@@ -1,0 +1,12 @@
+#!/bin/sh
+
+rofi \
+    -font "Fantasque Sans Mono 20" \
+    -color-enabled \
+    -color-window '#D7DCE7' '#231f20' \
+
+    -nb '#D7DCE7' \
+    -nf '#231f20' \
+    -sf '#D7DCE7' \
+    -sb '#009ddc' \
+    "$@" 

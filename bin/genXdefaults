@@ -2,6 +2,6 @@
 
 source ~/dots/colors/colors.sh
 
-xrdb -merge "$COLORSCHEME_DIR/xresources/$COLORSCHEME"'.256.xresources' 
+xrdb -load "$COLORSCHEME_DIR/xresources/xresources/${COLORSCHEME}-256.Xresources" 
 xrdb -merge ~/dots/Xdefaults 
 

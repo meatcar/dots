@@ -1,28 +1,40 @@
 #!/bin/bash
 
-case $# in
-    2)
-        read RES_X RES_Y <<<$(xdpyinfo | grep dimensions | awk '{print $2}' | awk -Fx '{print $1, $2}')
+usage="usage: $0 src dest [blurlevel]"
+BLUR_LEVEL=${3:-1}
 
-        geometry="$RES_X"x"$RES_Y"
-        out="$2"_lock.png
+if [ $# -lt 2 ] || [ $# -gt 3 ]; then
+    echo "$usage" >&2
+    exit 1
+fi
 
-        ln -sf "$1" "$2"
-        convert "$1" \
-            -resize 20% \
-            -blur 0x5 -auto-level +depth \
-            -resize ${geometry}^ -gravity Center -crop ${geometry}+0+0 +repage \
-            -fill white -font "Fantasque-Sans-Mono-Regular" -pointsize 44 \
-            -draw "text 0,0 '$USER at $(hostname)' " \
-            ${out}
-            #-scale 2% \
-            #-scale 5000% \
-            #-modulate 100,30 \
-            #-blue-shift 0.1 \
-            #-grayscale Rec709Luma \
-        ;;
-    *)
-        echo "usage: $0 FROM_IMG TO_IMG" >&2
-        exit 1
-        ;;
+case $1 in 
+    -h | --help )
+        echo "$usage"
+        exit
 esac
+
+read -r RES_X RES_Y <<<"$(xdpyinfo \
+    | grep dimensions \
+    | awk '{print $2}' \
+    | awk -Fx '{print $1, $2}')"
+
+geometry="$RES_X"x"$RES_Y"
+
+shrink=$(echo "scale=2; 20 / $BLUR_LEVEL" | bc)
+sigma=$(echo "scale=2; 0.6 * $BLUR_LEVEL" | bc)
+convert "$1" \
+    -filter Gaussian \
+    -resize "$shrink%" \
+    -define "filter:sigma=$sigma" \
+    -resize "${geometry}^" -gravity Center \
+    -crop "${geometry}+0+0" +repage \
+    -ordered-dither o8x8,16 \
+    "$2"
+
+#convert "$1" \
+    #-colorspace sRGB \
+    #-resize "10%" \
+    #-scale "${geometry}^" -gravity Center \
+    #-crop "${geometry}+0+0" +repage \
+    #"$2"

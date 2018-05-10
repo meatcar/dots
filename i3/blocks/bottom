@@ -29,7 +29,7 @@ markup=none
 
 color=#ffffff
 align=center
-separator_block_width=40
+separator_block_width=60
 border_top=0
 border_left=0
 border_right=0
@@ -65,7 +65,7 @@ interval=1
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-label=  
+label=  
 interval=10
 separator=false
 
@@ -76,30 +76,6 @@ interval=1
 #
 # The battery instance defaults to 0.
 [battery]
-label=⚡
+label=
 interval=30
-
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-label= 
-interval=1
-
-# Date Time
-#
-[time]
-label=  
-command=sh -c 'TZ="America/Toronto" date "+%R %Z"'
-interval=1
-border=#666666
-separator=false
-
-[time]
-label=  
-command=date '+%a %F %R'
-interval=1
-border=#aaaaaa
 
