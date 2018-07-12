@@ -1,0 +1,4 @@
+#!/bin/bash
+emacsclient --create-frame \
+            --frame-parameters='(quote (name . "capture"))' \
+            "$@"
