@@ -2,7 +2,7 @@
 
 ## Open ffmpeg and take a webcam pic
 
-FOLDER="$HOME/Sync/webcam"
+FOLDER="$HOME/Pictures/Webcam"
 
 cd $FOLDER
 
