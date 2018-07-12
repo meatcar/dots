@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync mail on zoho maildir modification
+
+[Path]
+PathChanged=%h/mail/zoho/
+Unit=mbsync@zoho.service
+
+
+[Install]
+WantedBy=default.target

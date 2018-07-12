@@ -1,0 +1,10 @@
+[Unit]
+Description=Check mailbox %i every minute
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+Unit=mbsync@%i.service
+
+[Install]
+WantedBy=timers.target

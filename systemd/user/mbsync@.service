@@ -1,0 +1,9 @@
+[Unit]
+Description=Mailbox synchronization service for group %I
+After=network.target network-online.target dbus.socket
+
+[Service]
+Type=oneshot
+ExecStartPre=%h/bin/msmtp-runqueue.sh
+ExecStart=/usr/bin/mbsync %i
+ExecStartPost=/usr/bin/mu index --maildir=%h/mail

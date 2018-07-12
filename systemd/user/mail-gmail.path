@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync mail on gmail maildir modification
+
+[Path]
+PathChanged=%h/mail/gmail/
+Unit=mbsync@gmail-quick.service
+
+
+[Install]
+WantedBy=default.target
