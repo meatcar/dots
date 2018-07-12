@@ -1,5 +1,7 @@
 #!/bin/bash
-# i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
+
+# based on i3 thread
+# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
 TERMINAL=term
 
@@ -13,14 +15,24 @@ echo "PID $PID" >&2
 
 # Get last child process (shell, vim, etc)
 if [ -n "$PID" ]; then
-  CPID=$(pgrep -P "$PID" | tail -n1)
-  echo "CPID $PID" >&2
-  if [ -z "$CPID" ]; then
-	CPID="$PID"
-  fi
+    CPID=$(pgrep -P "$PID" | tail -n1)
+    echo "CPID $CPID" >&2
+    if [ -z "$CPID" ]; then
+        CPID="$PID"
+    fi
 
-  # If we find the working directory, run the command in that directory
-  cd "$(readlink /proc/"$CPID"/cwd)" || return
+    if grep -Ea '^emacs' "/proc/$PID/cmdline"; then
+        echo "EMACS"
+        DIR=$(emacsclient --eval \
+                          '(with-current-buffer (window-buffer (selected-window)) (projectile-project-root))' \
+                  | sed 's/^"//' | sed 's/"$//')
+
+    else
+        # If we find the working directory, run the command in that directory
+        DIR=$(readlink /proc/"$CPID"/cwd)
+    fi
+    echo "DIR $DIR"
+    cd "$DIR" || return
 fi
 
 $TERMINAL "$@"
