@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Compton
+Comment=Compton Compositing Daemon
+Icon=compiz
+Exec=compton -b
+Terminal=false
+Type=Application
+NotShownIn=GNOME;KDE;Unity;
+X-GNOME-Autostart-enabled=false

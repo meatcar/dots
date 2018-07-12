@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XSS-Lock
+Comment=Send xdg-compliant lock on inactivity
+Icon=lock
+Exec=xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- lock
+Terminal=false
+Type=Application
+NotShownIn=GNOME;KDE;Unity;
+X-GNOME-Autostart-enabled=false
