@@ -57,12 +57,13 @@ bindsym $mod+Shift+Return exec cwd-term
 bindsym $mod+d kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+p exec --no-startup-id "zsh -c 'rofi -show combi -combi-modi window,run,drun,ssh -sidebar-mode -lines 0 -modi combi,window,run,drun,ssh'"
-bindsym $mod++p exec --no-startup-id albert show
+bindsym $mod+p exec --no-startup-id "zsh -c 'rofi -show combi -combi-modi window,run,drun,ssh -sidebar-mode -lines 0 -modi combi,window,run,drun,ssh'"
+# bindsym $mod++p exec --no-startup-id albert show
 bindsym $mod+Shift+p exec --no-startup-id zsh -c 'rofi-pass'
 bindsym $mod+e exec pcmanfm
-bindsym $mod+Shift+c exec --no-startup-id clipster -s
+bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji
 bindsym $mod+g exec gvim
+bindsym $mod+Shift+c exec emacsclient -nc
 
 # turn of ctrlq in firefox
 bindsym Ctrl+q exec --no-startup-id noctrlq.sh
@@ -110,6 +111,7 @@ bindsym $mod+grave fullscreen disable, \
           resize set 400 300, \
           sticky enable, \
           move window to position 0 0
+bindsym $mod+y exec xclip -o | xargs mpv
 bindsym $mod+x sticky toggle
 
 # show/hide scratchpad
@@ -149,10 +151,10 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+Shift+r exec rename-workspace
 
-assign [class="(?i)google-chrome"]  1
-assign [class="(?i)emacs"]          2
-assign [class="(?i)chromium"]       9
-assign [class="(?i)firefox"]        1
+assign [class="(?i)emacs" title="^(?!capture)"]  2
+assign [class="(?i)google-chrome"]               1
+assign [class="(?i)firefox"]                     1
+#assign [class="(?i)chromium"]                    1
 
 no_focus   [window_role="pop-up"]
 for_window [window_role="pop-up"] floating enable
@@ -166,6 +168,7 @@ for_window [class="Nemo-preview-start"] floating enable, \
 for_window [class="Keybase" instance="keybase"] floating enable, \
                               move window to position mouse
 for_window [class="dialog"] floating enable
+for_window [class="(?i)emacs" title="^capture"] floating enable
 
 # reload the configuration file
 #bindsym $mod+Shift+c reload
@@ -253,4 +256,4 @@ client.background       $bg
 exec_always --no-startup-id bars
 exec_always --no-startup-id set-wal
 exec --no-startup-id mydunst
-exec --no-startup-id dex -ae i3
+exec --no-startup-id sleep 3 && dex -ae i3
