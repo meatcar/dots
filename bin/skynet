@@ -1,0 +1,5 @@
+#!/bin/sh
+TRACKING="$1"
+curl -d "hawbNoList=$TRACKING&x=25&y=22" http://track.skynetexpressict.com/ -s \
+	| pup "#tr4$TRACKING" \
+	| w3m -dump -T text/html

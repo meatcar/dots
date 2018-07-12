@@ -1,0 +1,31 @@
+#!/bin/bash
+
+case "$1" in
+	ls)
+		cd ~/notes
+		git ls-files
+		;;
+	find)
+		git ls-files | grep "$@"
+		;;
+	search|grep)
+		git grep "$@"
+		;;
+	edit)
+		cd ~/notes
+		if [ -f "$2" ]; then # existing file
+			$EDITOR $2 
+			if git add $2; then
+				git commit -m "modified $2"
+			fi
+		else # new file
+			touch "$2"
+			$EDITOR $2 
+			if [ $(wc -c | awk '{print $1}') -eq 0 ]; then
+				rm "$2"
+				exit 
+			fi
+			git add $2
+			git commit -m "created $2"
+		fi
+esac

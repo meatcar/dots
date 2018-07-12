@@ -1,0 +1,56 @@
+#!/bin/sh
+# Ping several servers and display Latency, Jitter and Packet Loss 
+#
+# First, create a text file with all servers you want to ping - one host name per line. 
+# The list of voip.ms servers is available at http://wiki.voip.ms/article/Choosing_Server
+myHF="voip_ping_hosts.txt"
+# Sample file:
+#    toronto.voip.ms
+#    montreal.voip.ms
+#    seattle.voip.ms
+#    chicago.voip.ms
+#    newyork.voip.ms
+#
+echo "============================================"
+printf "%-20s %7s %8s %6s\n" "VoIP Server" "Latency" "Jitter" "Loss"
+echo "============================================"
+servers=$(cat <<END
+toronto.voip.ms
+toronto2.voip.ms
+toronto3.voip.ms
+toronto4.voip.ms
+toronto5.voip.ms
+toronto6.voip.ms
+toronto7.voip.ms
+toronto8.voip.ms
+montreal.voip.ms
+montreal2.voip.ms
+montreal3.voip.ms
+montreal4.voip.ms
+montreal5.voip.ms
+montreal6.voip.ms
+montreal7.voip.ms
+montreal8.voip.ms
+vancouver.voip.ms
+vancouver2.voip.ms
+seattle.voip.ms
+seattle2.voip.ms
+seattle3.voip.ms
+chicago.voip.ms
+newyork.voip.ms
+london.voip.ms
+paris.voip.ms
+amsterdam.voip.ms
+END
+)
+
+echo "$servers" | while read myLn; do
+ ping -c 3 -i 5 -q $myLn |\
+ awk '/^PING / {myH=$2}
+      /packet loss/ {myPL=$6}
+      /min\/avg\/max/ {
+         split($4,myS,"/")
+         printf( "%-20s    %3.1f    %1.3f   %4s\n", myH, myS[2], myS[4], myPL)
+     }' 
+done
+echo "============================================"

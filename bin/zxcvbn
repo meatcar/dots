@@ -1,0 +1,4 @@
+#!/bin/sh 
+# Pass stdin to zxcvbn
+
+python2 -m zxcvbn.__init__
