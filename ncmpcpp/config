@@ -148,7 +148,7 @@ song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
 #
 song_library_format = "{%n - }{%t}|{%f}"
 #
-tag_editor_album_format = "{(%y) }%b"
+#tag_editor_album_format = "{(%y) }%b"
 #
 ##
 ## Note: Below variables are for alternative version of user's interface.
@@ -239,9 +239,9 @@ tag_editor_album_format = "{(%y) }%b"
 ##
 #execute_on_song_change = ""
 #
-#playlist_show_remaining_time = "no"
+playlist_show_remaining_time = "yes"
 #
-#playlist_shorten_total_times = "no"
+playlist_shorten_total_times = "yes"
 #
 #playlist_separate_albums = "no"
 #
@@ -257,19 +257,19 @@ browser_display_mode = "columns" # (classic/columns)
 #
 #seek_time = "1"
 #
-#autocenter_mode = "no"
+autocenter_mode = "yes"
 #
-#centered_cursor = "no"
+centered_cursor = "yes"
 #
 ##
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = "-> "
+progressbar_look = "─┨ "
 #
 #default_place_to_search_in = "database" (database/playlist)
 #
-x#user_interface = "alternative" # (classic/alternative)
+user_interface = "alternative" # (classic/alternative)
 #
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
 #
@@ -376,7 +376,7 @@ x#user_interface = "alternative" # (classic/alternative)
 #
 #tag_editor_extended_numeration = "no"
 #
-#media_library_display_date = "yes"
+#media_library_display_date = "no"
 #
 #media_library_display_empty_tag = "yes"
 #
