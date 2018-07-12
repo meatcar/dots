@@ -1,11 +1,14 @@
 [user]
-	email = denys.pavlov@gmail.com
-	name = Denys Pavlov
+  email = denys.pavlov@gmail.com
+  name = Denys Pavlov
+  #signingkey = B62B215F735C62909B69EF8AF4584A744A42E48E
 
 [alias]
-	s = status -sb
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ignore = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
+  s = status -sb
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+  change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+
 
 [color]
   branch = auto
@@ -28,10 +31,16 @@
   changed = green
   untracked = cyan
 [merge]
-	tool = meld
+  tool = meld
 [push]
-	default = simple
+  default = simple
 [github]
-	user = meatcar
+  user = meatcar
+  password = 
 [mergetool]
-	keepBackup = false
+  keepBackup = false
+[commit]
+	#gpgsign = true
+  
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
