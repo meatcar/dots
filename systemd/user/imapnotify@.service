@@ -1,0 +1,12 @@
+[Unit]
+Description=Mailbox synchronization service for group %I
+After=network.target network-online.target dbus.socket
+
+[Service]
+Type=simple
+ExecStart=%h/dev/github.com/a-sk/node-imapnotify/bin/imapnotify -c %h/.config/imapnotify/%i.js
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
