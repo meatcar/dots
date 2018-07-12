@@ -33,3 +33,5 @@ fish/fish_history
 # mutt
 neomutt/tmp/*
 neomutt/cache/*
+uzbl/local/cookies.txt
+uzbl/local/session-cookies.txt
