@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+zparseopts -- -user=user
+
+list=$( pip list "$user" --outdated)
+
+echo ${list} | tee | tail -n +3 | cut -f1 -d' ' | xargs pip install "$user" -U
+
