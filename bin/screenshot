@@ -2,39 +2,65 @@
 
 DISPLAY=':0'
 
-tempfile="/tmp/screenshot-$(date +%F_%T).png"
-maim_opts="--nokeyboard $tempfile"
+SCREENDIR=~/Pictures/screenshots
+SCREENFILE="$SCREENDIR/$(date +%F_%T).png"
+
+maim_opts="--nokeyboard $SCREENFILE"
 
 if [ -n "$1" ]; then
     case $1 in
         --window)
             maim_opts="-i $(xdotool getactivewindow) $maim_opts"
+            shift
             ;;
         --select)
             maim_opts="-s $maim_opts"
+            shift
+            ;;
+        --upload)
+            UPLOAD="true"
+            shift
             ;;
         *)
-            echo "usage: $0 [--window|--select]" >/dev/stderr
+            echo "usage: $0 [--window|--select] [--upload]" >/dev/stderr
             exit 1
             ;;
     esac
 fi
 
-maim $maim_opts 
-
-img_link=$(imgurbash "$tempfile" 2>>~/screenshot_delete_links.txt)
-delete_link=$(cat ~/screenshot_delete_links.txt | tail -n1)
-echo img link $img_link
-echo delete link $delete_link
-
-echo $img_link | xclip -i
-
-notify-send \
-'Screenshot imgurd' \
-"$img_link
-$delete_link"
-
-if [ -f "$tempfile" ]; then
-    rm -rf "$tempfile"
+if [[ ! -d "$SCREENDIR" ]]; then
+    mkdir -p "$SCREENDIR"
 fi
 
+maim $maim_opts
+
+if [[ -n "$UPLOAD" ]]
+then
+    if command -v imgurbash2 >/dev/null 2>&1
+    then
+        out=$(imgur.sh "$SCREENFILE" 2>&1)
+        img_link=$(echo "$out" | head -n1)
+        delete_link=$(cat | tail -n1)
+        echo "$SCREENFILE $out" >> "$SCREENDIR/delete_hashes.txt" 
+        echo img link "$img_link"
+        echo delete link "$delete_link"
+
+        echo "$img_link" | xclip -i
+
+        notify-send \
+        'Screenshot imgurd' \
+        "$img_link
+        $delete_link"
+        exit 0
+    fi
+fi
+
+
+TYPE=$(file -b --mime-type "$SCREENFILE")
+
+echo "$SCREENFILE ($TYPE)"
+
+xclip -selection clipboard -t "$TYPE" -i "$SCREENFILE"
+xclip -selection clipboard -t "$TYPE" -i "$SCREENFILE"
+
+notify-send "$SCREENFILE" 
