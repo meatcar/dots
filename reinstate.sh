@@ -2,7 +2,9 @@
 ##############################################################################
 # Reinstate all the dotfiles into their functional locations.
 ##############################################################################
+mkdir ~/.emacs.d
 ln -rs 'ackrc' ~/'.ackrc'
+ln -rs 'autostart' ~/'.config/autostart'
 ln -rs 'bash_profile' ~/'.bash_profile'
 ln -rs 'bashrc' ~/'.bashrc'
 ln -rs 'bin' ~/'bin'
@@ -29,9 +31,8 @@ ln -rs 'pandoc' ~/'.pandoc'
 ln -rs 'pentadactyl' ~/'.pentadactyl'
 ln -rs 'pentadactylrc' ~/'.pentadactylrc'
 ln -rs 'screenrc' ~/'.screenrc'
-ln -rs 'spacemacs/spacemacs' ~/'.spacemacs'
-mkdir ~/.emacs.d
 ln -rs 'spacemacs/private' ~/'.emacs.d/private'
+ln -rs 'spacemacs/spacemacs' ~/'.spacemacs'
 ln -rs 'sxhkd' ~/'.config/sxhkd'
 ln -rs 'systemd_user' ~/'.config/systemd'
 ln -rs 'twmn' ~/'.config/twmn'

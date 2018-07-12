@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dunst
+Comment=Dunst notification daemon
+Icon=xfce4-notifyd
+Exec=mydunst
+Terminal=false
+Type=Application
+NotShownIn=GNOME;KDE;Unity;
+X-GNOME-Autostart-enabled=false
