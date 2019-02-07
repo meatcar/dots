@@ -18,12 +18,12 @@ elseif has('unix')
     set shell=/bin/sh " zsh colors are messed
 endif
 
-set runtimepath+=~/dots/vim,"$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/dots/vim/after
-set directory=~/dots/vim/tmp/swap         " keep swap files in one place
-set backupdir=~/dots/vim/tmp/backup " keep backups in one place
-set undodir=~/dots/vim/tmp/undo     " keep undos in one place
-set viewdir=~/dots/vim/tmp/view     " keep views in one place
-let &viminfo="'100,n".expand('~/dots/vim/tmp/viminfo')
+set runtimepath+=~/.vim,"$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set directory=~/.vim/tmp/swap         " keep swap files in one place
+set backupdir=~/.vim/tmp/backup " keep backups in one place
+set undodir=~/.vim/tmp/undo     " keep undos in one place
+set viewdir=~/.vim/tmp/view     " keep views in one place
+let &viminfo="'100,n".expand('~/.vim/tmp/viminfo')
 set encoding=utf-8        " UTF-8 encoding for all new files
 scriptencoding 'utf-8'
 set termencoding=utf-8    " force terminal encoding
@@ -37,6 +37,7 @@ set nonumber              " show line numbers
 set norelativenumber      " show line numbers
 set numberwidth=1         " minimum num of cols to reserve for line numbers
 set nobackup              " disable backup files (filename~)
+set writebackup         " make a backup before writing a file until successful
 set showmatch             " show matching brackets (),{},[]
 set whichwrap=h,l,<,>,[,] " whichwrap -- left/right keys can traverse up/down
 set wrap                  " wrap long lines to fit terminal width
@@ -46,7 +47,6 @@ set autoread              " reload file if vim detects it changed elsewhere
 set wildmenu              " enhanced tab-completion shows all matching cmds
 set splitbelow            " place the new split below the current file
 set autowrite             " write file if modified on each :next, :make, etc.
-set writebackup           " make a backup before writing a file until successful
 set previewheight=9       " default height for a preview window (def:12)
 syntax on                 " enable syntax highlighting
 filetype plugin indent on " enable filetype-sensitive plugins and indenting
@@ -128,7 +128,7 @@ runtime macros/matchit.vim  " extend the % key
 "----------------------------------------------------------------------
 " Plugins
 
-call plug#begin('~/dots/vim/pack/bundle/start')
+call plug#begin('~/.vim/pack/bundle/start')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-eunuch'
@@ -691,3 +691,4 @@ endfunction
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+"
