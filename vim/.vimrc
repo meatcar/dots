@@ -140,7 +140,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'         " autodetect tab format
 Plug 'tpope/vim-unimpaired'
-Plug 'scrooloose/nerdcommenter' " comment/uncomment things easy
+Plug 'tpope/vim-commentary' " comment/uncomment things easy
 Plug 'w0rp/ale'
 Plug 'kopischke/vim-stay'       " save folds
 Plug 'Konfekt/FastFold'         " speed up fold handling
@@ -207,6 +207,7 @@ Plug 'freitass/todo.txt-vim'
 Plug 'zirrostig/vim-shbed'
 Plug 'vim-scripts/TeX-9', {'for': ['tex', 'latex']}
 Plug 'tomtom/foldtext_vim', {'for': 'markdown'}
+" Plug 'masukomi/vim-markdown-folding', {'for': 'markdown'}
 Plug 'skammer/vim-css-color', {'for': ['css', 'less', 'scss', 'sass']}
 Plug 'KabbAmine/vCoolor.vim', {'for': ['css', 'less', 'scss', 'sass']}
 Plug 'mattn/emmet-vim', {
@@ -219,6 +220,8 @@ Plug 'rhysd/open-pdf.vim', {'for': 'pdf'}
 Plug 'neomutt/neomutt.vim', {'for': 'mail'}
 "Plug 'ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'saltstack/salt-vim', {'for': 'sls'}
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'guns/vim-clojure-static', {'for': 'clojure'}
 
 call plug#end()
 

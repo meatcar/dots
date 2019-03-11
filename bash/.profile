@@ -4,3 +4,4 @@ if [[ $TERMINIX_ID ]]; then
   source /etc/profile.d/vte.sh
 fi
 
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
