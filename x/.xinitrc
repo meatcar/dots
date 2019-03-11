@@ -15,50 +15,12 @@ genXdefaults
 #######################
 # host-dependent setup
 #######################
-case $(hostname) in
-    thumbnail)
-        xrandr --dpi 120
-        VBoxClient-all &
-        ;;
-    aether.denys.me)
-        VBoxClient-all &
-		sleep 3
-        # set resolution of first screen.
-        xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
-        xrandr --addmode VBOX0 1920x1080_60.00
-        xrandr --output VBOX0 --mode 1920x1080_60.00
-        # set resolutions of second screen
-        xrandr --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync
-        xrandr --addmode VBOX1 1280x1024_60.00
-        xrandr --output VBOX1 --mode 1280x1024_60.00
-        # move screen over
-        xrandr --output VBOX1 --right-of VBOX0
-        ;;
-    viafoura.denys.me)
-        # Model M has no super.
-        xmodmap -e "keysym Alt_R = Super_L"
-        xrandr --output VGA-0 --left-of DVI-I-1 --primary &
-        x11vnc -display :0 -rfbauth ~/.x11vnc/passwd -many >/dev/null 2>&1 &
-        systemd --user &
-        udiskie &
-        ;;
-    littlefinger)
-        numlockx on
-        xrandr --dpi 96
-        echo 'Xft.dpi: 96' | xrdb -merge
-        blueman-applet
-
-        ;;
-        
-    bronn)
-        xrandr --dpi 144 
-        echo 'Xft.dpi: 144' | xrdb -merge
-        #touchegg >/dev/null 2>&1 &
-        xkbcomp \
-          -i "$(xinput | grep 'Surface Pro 3/4 Buttons' | sed 's/\s/\n/g' | grep id | sed 's/id=//')" \
-          .config/sp3buttons.xkb "$DISPLAY" &
-        ;;
-esac
+if [ -d $XDG_CONFIG_HOME/xinit/xinitrc.d ]; then
+  for f in $XDG_CONFIG_HOME/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
 
 systemctl --user import-environment
 
