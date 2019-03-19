@@ -15,6 +15,14 @@ end
 
 set fish_greeting # Disable fish greeting
 
-set PATH $PATH $HOME/.emacs.d/bin # DOOM Emacs
+set -a PATH $HOME/.emacs.d/bin # DOOM Emacs
+
+if which yarn >/dev/null
+    set -a PATH (yarn global bin)
+end
+
+if which npm >/dev/null
+    set -a PATH (npm bin -g)
+end
 
 source ~/.asdf/asdf.fish
