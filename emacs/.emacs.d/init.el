@@ -189,7 +189,6 @@
   (setq mu4e-maildir "~/mail")
 
   ;; Set up default folders
-  ;; TODO: OPTIONAL?
   (setq mu4e-sent-folder "/gmail/sent"
 	mu4e-drafts-folder "/gmail/drafts"
 	mu4e-refile-folder "/gmail/archive"

@@ -163,8 +163,6 @@ eval $(dircolors -b ~/.dircolors)
 export GREP_COLOR="1;33"
 
 # less colors & man
-# TODO: remove. Fixed man bug
-export MAN_DISABLE_SECCOMP=1
 export MANPAGER='less -s -M +Gg'
 export LESS="--RAW-CONTROL-CHARS"
 lesscolors=$HOME/.less_termcap
