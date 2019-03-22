@@ -17,12 +17,20 @@ set fish_greeting # Disable fish greeting
 
 set -a PATH $HOME/.emacs.d/bin # DOOM Emacs
 
-if which yarn >/dev/null
+if which yarn >/dev/null 2>/dev/null 
     set -a PATH (yarn global bin)
 end
 
-if which npm >/dev/null
+if which npm >/dev/null 2>/dev/null
     set -a PATH (npm bin -g)
 end
 
-source ~/.asdf/asdf.fish
+if [ -d ~/.asdf ]
+    source ~/.asdf/asdf.fish
+end
+
+# Launch Sway
+if [ -z $DISPLAY ] && [ (tty) = /dev/tty1 ]
+    systemctl --user import-environment
+    exec sway
+end
