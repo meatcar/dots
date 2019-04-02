@@ -15,7 +15,7 @@
        company           ; the ultimate code completion backend
        ;;helm             ; the *other* search engine for love and life
        ;;ido              ; the other *other* search engine...
-       ivy              ; a search engine for love and life
+       (ivy +fuzzy)      ; a search engine for love and life
 
        :ui
        deft              ; notational velocity for Emacs
@@ -49,7 +49,7 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-        +ranger         ; bringing the goodness of ranger to dired
+        ;; +ranger         ; bringing the goodness of ranger to dired
         +icons          ; colorful icons for dired-mode
         )
        electric          ; smarter, keyword-based electric-indent
@@ -139,9 +139,9 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-       ;;(write            ; emacs as a word processor (latex + org + markdown)
-       ;; +wordnut         ; wordnet (wn) search
-       ;; +langtool)       ; a proofreader (grammar/style check) for Emacs
+       (write            ; emacs as a word processor (latex + org + markdown)
+       +wordnut         ; wordnet (wn) search
+       +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :collab
        ;;floobits          ; peer programming for a price
