@@ -1,0 +1,4 @@
+font=Noto Sans 9
+default-timeout=5000
+anchor=bottom-right
+# TODO: color urgent
