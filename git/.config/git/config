@@ -6,7 +6,7 @@
 [alias]
   s = status -sb
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
 
@@ -31,7 +31,7 @@
   changed = green
   untracked = cyan
 [merge]
-  tool = meld
+  tool = kompare
 [push]
   default = simple
 [github]
@@ -43,4 +43,4 @@
 	#gpgsign = true
   
 [credential]
-	helper = /usr/lib/git-core/git-credential-gnome-keyring
+	helper = /usr/lib/git-core/git-credential-libsecret
