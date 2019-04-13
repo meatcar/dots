@@ -1,4 +1,4 @@
-pack/bundle/start*
+pack/packager
 .netrwhist
 tmp/*
 autoload/env.vim
