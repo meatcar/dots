@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Green Screen Dark, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '001100' -nf '007700' -sb '009900' -sf '001100'

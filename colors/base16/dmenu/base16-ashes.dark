@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Ashes Dark, by Jannik Siebert (https://github.com/janniks)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '1C2023' -nf '747C84' -sb 'AE95C7' -sf '1C2023'

@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 IR Black Dark, by Timothée Poisot (http://timotheepoisot.fr)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '000000' -nf '6c6c66' -sb '96cbfe' -sf '000000'

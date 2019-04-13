@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Yesterday Bright Dark, by FroZnShiva (https://github.com/FroZnShiva)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '343d46' -nf 'a7adba' -sb '7aa6da' -sf '343d46'

@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Eighties Light, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'd3d0c8' -nf '515151' -sb '6699cc' -sf '393939'

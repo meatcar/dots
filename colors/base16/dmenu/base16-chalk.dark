@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Chalk Dark, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '151515' -nf '505050' -sb '6fc2ef' -sf '151515'

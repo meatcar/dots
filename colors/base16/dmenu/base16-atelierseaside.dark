@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Seaside Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside/)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '131513' -nf '687d68' -sb '3d62f5' -sf '131513'

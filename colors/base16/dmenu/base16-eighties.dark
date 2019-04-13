@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Eighties Dark, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '2d2d2d' -nf '747369' -sb '6699cc' -sf '2d2d2d'

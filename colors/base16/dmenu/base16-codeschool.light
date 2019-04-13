@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Codeschool Light, by brettof86
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '9ea7a6' -nf '2a343a' -sb '484d79' -sf '1c3657'

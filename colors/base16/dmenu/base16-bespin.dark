@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Bespin Dark, by Jan T. Sott
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '28211c' -nf '666666' -sb '5ea6ea' -sf '28211c'

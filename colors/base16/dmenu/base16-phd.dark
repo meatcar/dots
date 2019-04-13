@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 PhD Dark, by Hennig Hasemann (http://leetless.de/vim.html)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '061229' -nf '717885' -sb '5299bf' -sf '061229'

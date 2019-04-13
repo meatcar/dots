@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Savanna Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/savanna)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '171c19' -nf '5f6d64' -sb '478c90' -sf '171c19'

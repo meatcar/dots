@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Macintosh Dark, by Rebecca Bettencourt (http://www.kreativekorp.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '000000' -nf '808080' -sb '0000d3' -sf '000000'

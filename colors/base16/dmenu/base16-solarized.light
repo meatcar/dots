@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Solarized Light, by Ethan Schoonover (http://ethanschoonover.com/solarized)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '93a1a1' -nf '586e75' -sb '268bd2' -sf '073642'

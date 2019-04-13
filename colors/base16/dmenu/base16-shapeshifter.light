@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 shapeshifter Light, by Tyler Benziger (http://tybenz.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'ababab' -nf '102015' -sb '3b48e3' -sf '040404'

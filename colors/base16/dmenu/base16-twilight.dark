@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Twilight Dark, by David Hart (http://hart-dev.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '1e1e1e' -nf '5f5a60' -sb '7587a6' -sf '1e1e1e'

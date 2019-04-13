@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Forest Light, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'a8a19f' -nf '68615e' -sb '407ee7' -sf '2c2421'

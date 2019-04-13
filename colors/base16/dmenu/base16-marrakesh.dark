@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Marrakesh Dark, by Alexandre Gavioli (http://github.com/Alexx2/)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '201602' -nf '6c6823' -sb '477ca1' -sf '201602'

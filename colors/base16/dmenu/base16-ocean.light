@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Ocean Light, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'c0c5ce' -nf '4f5b66' -sb '8fa1b3' -sf '343d46'

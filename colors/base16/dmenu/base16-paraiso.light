@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Paraiso Light, by Jan T. Sott
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'a39e9b' -nf '4f424c' -sb '06b6ef' -sf '41323f'

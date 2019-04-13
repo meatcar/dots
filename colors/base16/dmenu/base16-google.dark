@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Google Dark, by Seth Wright (http://sethawright.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '1d1f21' -nf '969896' -sb '3971ED' -sf '1d1f21'

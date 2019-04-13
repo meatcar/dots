@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 shapeshifter Dark, by Tyler Benziger (http://tybenz.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '000000' -nf '343434' -sb '3b48e3' -sf '000000'

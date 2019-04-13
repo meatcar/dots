@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Brewer Dark, by Timothée Poisot (http://github.com/tpoisot)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '0c0d0e' -nf '737475' -sb '3182bd' -sf '0c0d0e'

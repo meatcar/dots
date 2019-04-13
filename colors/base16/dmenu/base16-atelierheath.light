@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Heath Light, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/heath)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'ab9bab' -nf '695d69' -sb '516aec' -sf '292329'

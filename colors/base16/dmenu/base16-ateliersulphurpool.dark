@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Sulphurpool Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/sulphurpool)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '202746' -nf '6b7394' -sb '3d8fd1' -sf '202746'

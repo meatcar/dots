@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Cave Dark, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/cave)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '19171c' -nf '655f6d' -sb '576ddb' -sf '19171c'

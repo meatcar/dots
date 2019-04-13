@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Default Light, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'd8d8d8' -nf '383838' -sb '7cafc2' -sf '282828'

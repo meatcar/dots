@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 IR Black Light, by Timothée Poisot (http://timotheepoisot.fr)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'b5b3aa' -nf '484844' -sb '96cbfe' -sf '242422'

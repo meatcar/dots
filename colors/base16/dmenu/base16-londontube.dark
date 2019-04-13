@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 London Tube Dark, by Jan T. Sott
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '231f20' -nf '737171' -sb '009ddc' -sf '231f20'

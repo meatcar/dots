@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Monokai Dark, by Wimer Hazenberg (http://www.monokai.nl)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '272822' -nf '75715e' -sb '66d9ef' -sf '272822'

@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 London Tube Light, by Jan T. Sott
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'd9d8d8' -nf '5a5758' -sb '009ddc' -sf '1c3f95'

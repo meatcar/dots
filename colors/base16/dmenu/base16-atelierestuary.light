@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Atelier Estuary Light, by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/estuary)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '929181' -nf '5f5e4e' -sb '36a166' -sf '302f27'

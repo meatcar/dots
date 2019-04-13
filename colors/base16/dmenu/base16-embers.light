@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Embers Light, by Jannik Siebert (https://github.com/janniks)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb 'A39A90' -nf '433B32' -sb '6D5782' -sf '2C2620'

@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Bright Dark, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '000000' -nf 'b0b0b0' -sb '6fb3d2' -sf '000000'

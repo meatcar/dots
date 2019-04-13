@@ -1,6 +1,0 @@
-# dmenu template
-# Base16 Default Dark, by Chris Kempson (http://chriskempson.com)
-# template by Matt Parnell, @parnmatt
-
-# add this as an alias, or however you wish to run dmenu
-dmenu -nb '181818' -nf '585858' -sb '7cafc2' -sf '181818'
