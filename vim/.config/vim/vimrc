@@ -98,7 +98,7 @@ if has ('gui_running')
       set guifont=Fantasque\ Sans\ Mono:h10,Monaco:h10
     else " linux
       set linespace=0
-      set guifont=Fantasque\ Sans\ Mono\ 11,Monospace\ 11,FontAwesome\ 11,EmojiOne\ Color\ 11
+      set guifont=Fantasque\ Sans\ Mono\ 12,Monospace\ 12,FontAwesome\ 12,EmojiOne\ Color\ 12
     endif
   elseif has('win32') || has('win64')
     set guifont=Fantasque\ Sans\ Mono:h10,Consolas:h10
@@ -148,6 +148,7 @@ if exists('*packager#init')
   Pack 'Konfekt/FoldText'         " Fancy fold texts
   Pack 'Konfekt/FastFold'         " lazy-folds because folding is heavy
   Pack 'aymericbeaumet/symlink.vim' " edit the actual file when opening symlinks
+  Pack 'yuttie/comfortable-motion.vim' " smooth scrolling
 
   "}}}
 
@@ -166,17 +167,19 @@ if exists('*packager#init')
   Pack 'w0rp/ale'                 " async error checking
   Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'which fzf && yes \| ./install'}
   Pack 'junegunn/fzf.vim'         " fuzzy completion of all the things
-  Pack 'tpope/vim-vinegar'        " netrw sanity
-  Pack 'reedes/vim-pencil' " make editing freetext easier
-  Pack 'reedes/vim-colors-pencil'
+  " Pack 'tpope/vim-vinegar'        " netrw sanity
+  Pack 'justinmk/vim-dirvish'
   " Pack 'thinca/vim-fontzoom' " zoom fontsize
   Pack 'mattn/gist-vim', {'on': 'Gist'} " post to gist.github.com
   Pack 'mattn/webapi-vim' " need this for gist.
+  Pack 'AndrewRadev/splitjoin.vim'  " single <> multi line code conversion
+  Pack 'kshenoy/vim-signature'
   "}}}
 
   " Pretty Plugins {{{
   Pack 'mhinz/vim-startify'       " startup screen
   Pack 'flazz/vim-colorschemes'   " all the colorschemes
+  Pack 'rainglow/vim'             " more colorschemes
   Pack 'vim-airline/vim-airline-themes'
   Pack 'vim-airline/vim-airline'  " pretty status-line
   Pack 'liuchengxu/vim-which-key' " popup ui for obscure keys
@@ -184,6 +187,9 @@ if exists('*packager#init')
 
   " Syntaxes {{{
   Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
+  Pack 'tpope/vim-markdown', {'type': 'opt'}
+  Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
+  Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
 
   Pack 'zirrostig/vim-shbed', {'type': 'opt' }    " highlight awk in shell scripts
   Pack 'vim-scripts/TeX-9', {'type': 'opt'}       " latex
@@ -199,16 +205,26 @@ endif
 
 " Plugin Settings {{{
 
+" Whichkey {{{
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nmap <silent> <leader>          :<c-u>WhichKey         '<leader>'<CR>
+vmap <silent> <leader>          :<c-u>WhichKeyVisual   '<leader>'<CR>
+nnoremap <silent> <localleader>     :<c-u>WhichKey         '<localleader>'<CR>
+vnoremap <silent> <localleader>     :<c-u>WhichKeyVisual   '<localleader>'<CR>
+inoremap <silent> <C-,>   <c-\><c-o>:<c-u>WhichKey '<localleader>'<CR>
+" }}}
+
 " vim-signify {{{
 let g:signify_vcs_list        = [ 'git' ]
 let g:signify_sign_change     = '~'
 let g:signify_sign_show_count = 1
 
-highlight SignifySignAdd    ctermbg=none ctermfg=2 guibg=bg guifg=green
-highlight SignifySignDelete ctermbg=none ctermfg=1 guibg=bg guifg=#ff3333
-highlight SignifySignChange ctermbg=none ctermfg=3 guibg=bg guifg=yellow
-highlight link SignifySignChangeDelete    SignifySignChange
-highlight link SignifySignDeleteFirstLine SignifySignDelete
+autocmd vimrc FileType * highlight SignifySignAdd    ctermbg=none ctermfg=2 guibg=bg guifg=green
+autocmd vimrc FileType * highlight SignifySignDelete ctermbg=none ctermfg=1 guibg=bg guifg=#ff3333
+autocmd vimrc FileType * highlight SignifySignChange ctermbg=none ctermfg=3 guibg=bg guifg=yellow
+autocmd vimrc FileType * highlight link SignifySignChangeDelete    SignifySignChange
+autocmd vimrc FileType * highlight link SignifySignDeleteFirstLine SignifySignDelete
 "}}}
 
 " Editorconfig {{{
@@ -216,8 +232,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 "}}}
 
 " ALE {{{
-let g:ale_javascript_eslint_exectuable = 'eslint_d'
-let g:ale_javascript_eslint_use_global = 1
+" let g:ale_javascript_eslint_executable = 'eslint_d'
+" let g:ale_javascript_eslint_use_global = 1
 let g:ale_linter_aliases = {
       \'vimwiki': 'markdown',
       \}
@@ -279,7 +295,7 @@ let g:netrw_localrmdir='rm -r'
 
 " vim-pencil {{{
 let g:pencil_gutter_color = 1
-let g:airline_section_x = '%{PencilMode()}'
+" let g:airline_section_x = '%{PencilMode()}'
 "}}}
 
 " gist-vim {{{
@@ -294,6 +310,7 @@ let g:gist_browser_command = 'xdg-open %URL% &'
 "}}}
 
 " vim-startify {{{
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)') " start with 1
 let g:startify_session_dir = $XDG_CACHE_HOME.'/vim/session'
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
@@ -316,35 +333,114 @@ autocmd vimrc User Startified setlocal buftype=nofile
 "}}}
 
 " vim-airline {{{
-let g:airline_inactive_collapse=1
+let g:airline_inactive_collapse=0
+let g:airline_inactive_alt_sep=0
 let g:airline_powerline_fonts=1
 let g:airline_detect_spell=1
 let g:airline_mode_map = {}
 
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#vimagit#enabled = 1
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffers_label = 'buf'
 let g:airline#extensions#tabline#tabs_label = 'tab'
-let g:airline#extensions#tabline#buffer_min_count = 1
-let g:airline#extensions#tabline#tab_min_count = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#close_symbol = '×'
-let g:airline_extensions = ['branch', 'ale']
 "}}}
+
+" comfortable motion {{{
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+" }}}
+
+" polyglot {{{
+let g:polyglot_disabled = ['markdown']
+" }}}
+
+" mkdx {{{
+let g:mkdx#settings = {
+      \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
+      \ 'restore_visual':          1,
+      \ 'enter':                   { 'enable': 1, 'shift': 0, 'o': 1,
+      \                              'shifto': 1, 'malformed': 1 },
+      \ 'map':                     { 'prefix': '<localleader>', 'enable': 0 },
+      \ 'tokens':                  { 'enter':  ['-', '*', '>'],
+      \                              'bold':   '**', 'italic': '*',
+      \                              'strike': '',
+      \                              'list':   '-',  'fence':  '',
+      \                              'header': '#' },
+      \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
+      \                              'update_tree': 2,
+      \                              'initial_state': ' ' },
+      \ 'toc':                     { 'text':       "TOC",
+      \                              'list_token': '-',
+      \                              'position':   0,
+      \                              'update_on_write':   0,
+      \                              'details':    {
+      \                                 'enable':  0,
+      \                                 'summary': '{{toc.text}}',
+      \                                 'nesting_level': -1,
+      \                                 'child_count': 5,
+      \                                 'child_summary': 'show {{count}} items'
+      \                              }
+      \                            },
+      \ 'table':                   { 'divider': '|',
+      \                              'header_divider': '-',
+      \                              'align': {
+      \                                 'left':    [],
+      \                                 'right':   [],
+      \                                 'center':  [],
+      \                                 'default': 'center'
+      \                              }
+      \                            },
+      \ 'links':                   { 'external': {
+      \                                 'enable':     0,
+      \                                 'timeout':    3,
+      \                                 'host':       '',
+      \                                 'relative':   1,
+      \                                 'user_agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.0'
+      \                              },
+      \                              'fragment': {
+      \                                 'jumplist': 1,
+      \                                 'complete': 1
+      \                              }
+      \                            },
+      \ 'highlight':               { 'enable': 0 },
+      \ 'auto_update':             { 'enable': 1 },
+      \ 'fold':                    { 'enable': 0, 'components': ['toc', 'fence'] }
+      \ }
+
+" }}}
+
+" Emmet {{{
+let g:user_emmet_leader_key = '<localleader>'
+let g:user_emmet_install_global = 0
+" }}}
+
+" Dirvish {{{
+autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _
+" }}}
 "}}}
 
 " Colors {{{
-let g:airline_theme='pencil'
+set background=dark
+let ayucolor="dark"
+let g:airline_theme='hybridline'
 if has('gui_running')
-  set background=dark
-  colorscheme PaperColor
+  colorscheme ayu
 else
-  colorscheme colorsbox-stbright
-endif
-"}}}
+  colorscheme ir_black
 
+  " Fix old themes colouring SignColumn an ugly grey:
+  autocmd vimrc VimEnter * highlight clear SignColumn
+  hi! link SignColumn LineNr
+endif
+
+"}}}
 
 " Filetypes, Syntaxes, and AutoCMDs {{{
 
@@ -358,7 +454,7 @@ let g:tex_nine_config = {
       \}
 autocmd vimrc FileType tex,latex packadd 'TeX-9'
 
-autocmd vimrc FileType html,handlebars,css,less,sass,scss packadd emmet-vim
+autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx* packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
 autocmd vimrc FileType clojure packadd vim-fireplace
 autocmd vimrc FileType clojure packadd vim-clojure-static
@@ -377,7 +473,12 @@ autocmd vimrc FileType md,markdown,mail setlocal spell
 autocmd vimrc BufRead,BufNewFile mail set tw=0
 autocmd vimrc BufRead,BufNewFile mail set wrapmargin=3
 
+autocmd vimrc FileType md,markdown,text,mail packadd vim-pencil
+
 autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
+autocmd vimrc FileType markdown packadd vim-markdown
+autocmd vimrc FileType markdown packadd mkdx
+let g:vim_markdown_folding_disabled = 1
 let g:markdown_fenced_languages = [
       \'javascript',
       \'js=javascript',
@@ -421,16 +522,6 @@ function! SetProjectRoot()
   endif
 endfunction
 
-" " follow symlink
-" autocmd vimrc BufRead *
-"       \ call FollowSymlink()
-
-" " short circuit for non-netrw files
-" autocmd vimrc CursorMoved silent *
-"       \ if &filetype == 'netrw' |
-"       \   call FollowSymlink()
-"       \ endif
-
 " RG + FZF
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
@@ -443,33 +534,26 @@ command! -bang -nargs=* Rg
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
 
-let g:mapleader = ' '     " leader is SPACE
-let g:maplocalleader = ','
-
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
-
 " buffers
 nnoremap <leader>b :<C-u>Buffers<CR>
 " buffers
-nnoremap <leader>r :<C-u>History<CR>
+nnoremap <leader>fr :<C-u>History<CR>
 " ack/grep
-nnoremap <leader>f :<C-u>Rg<space>
+nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
-nnoremap <leader>F :<C-u>execute 'Rg ' . expand("<cword>")<CR>
+nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
 " ctrl-p
-nnoremap <leader>t :<C-u>Files<CR>
-nnoremap <C-p>     :<C-u>Files<CR>
-nnoremap <leader>pf :<C-u>Files<CR>
+nnoremap <C-p>      :<C-u>Files<CR>
+nnoremap <leader>ff :<C-u>Files<CR>
 
-nnoremap <leader>gf :<C-u>GFiles<CR>
-nnoremap <leader>gF :<C-u>GFiles?<CR>
+nnoremap <leader>pf :<C-u>GFiles<CR>
+nnoremap <leader>pF :<C-u>GFiles?<CR>
 
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
 nnoremap // :<C-u>BLines<CR>
 " vimviki
-map <leader>w :<C-u>FZF /home/meatcar/Sync/notes/ <CR>
+map <leader>n :<C-u>FZF /home/meatcar/Sync/notes/ <CR>
 " filetypes
 nnoremap <leader>ft :<C-u>Filetypes<CR>
 
@@ -487,7 +571,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 " typo corrections
 nmap q: :q<cr>
 nmap <silent> <leader>bd :Bdelete<CR>
-command! SO :source ~/.vimrc " source
+command! Source :source ~/.vimrc " source
 " vertical split help
 command! -nargs=* -complete=help Vhelp :vert bo help <args>
 
@@ -498,7 +582,7 @@ nmap <C-l> <C-W>l
 
 nmap <silent> <leader>u :GundoToggle<CR>
 
-nmap <silent> <leader>gs :Magit<CR>
+nmap <silent> <leader>gg :Magit<CR>
 nmap <silent> <leader>c :Color<CR>
 
 nmap <silent> H :bp<CR>
@@ -515,17 +599,21 @@ nmap <silent> <C-ScrollWheelDown>	<Plug>(fontzoom-smaller)
 nmap <silent> <leader>-	<Plug>(fontzoom-smaller)
 nmap <silent> <leader>0 :Fontzoom!<cr>
 
-nmap ` <Plug>VinegarUp
-
 autocmd vimrc FileType netrw call s:filer_settings()
 
 function! s:filer_settings()
-  nmap <buffer> ` <C-^>
   nmap <buffer> q <C-^>
   nmap <buffer> h -
   nmap <buffer> l <CR>
   nmap <buffer> t i
   setlocal bufhidden=wipe
+endfunction
+
+autocmd vimrc FileType markdown call s:markdown_mappings()
+
+function! s:markdown_mappings()
+  nmap <localleader>t <Plug>(mkdx-toggle-checkbox-n)
+  vmap <localleader>t <Plug>(mkdx-toggle-checkbox-v)
 endfunction
 
 "}}}
