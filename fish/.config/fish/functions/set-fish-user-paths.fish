@@ -7,6 +7,8 @@ function set-fish-user-paths \
 
     set -e fish_user_paths 
 
+    addpath $HOME/.local/bin 
+
     addpath $HOME/.emacs.d/bin # DOOM EMACS
 
     if [ -d ~/.local/bin ]

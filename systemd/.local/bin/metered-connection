@@ -22,7 +22,7 @@ conpath() {
 }
 
 state() {
-   if [ $(connected) = 'disconnected' ]; then
+   if [ "$(connected)" = 'disconnected' ]; then
       echo 'disconnected'
       return
    fi
