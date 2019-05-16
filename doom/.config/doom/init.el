@@ -13,8 +13,8 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ;; (ivy +fuzzy)      ; a search engine for love and life
-       helm             ; the *other* search engine for love and life
+       (ivy +fuzzy)      ; a search engine for love and life
+       ;; helm             ; the *other* search engine for love and life
        ;; ido              ; the other *other* search engine...
 
        :ui
@@ -112,6 +112,7 @@
         +attach          ; custom attachment system
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
+        +protocol        ; support org-protocl links
         +export          ; Exporting org to whatever you want
         +present)        ; Emacs for presentations
        ;;perl              ; write code no one else can comprehend

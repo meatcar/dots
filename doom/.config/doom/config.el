@@ -9,8 +9,8 @@
 
 (setq frame-resize-pixelwise t)
 
-(setq doom-theme 'base16-chalk
-      doom-font (font-spec :family "Fantasque Sans Mono" :size 15)
+(setq doom-theme 'doom-tomorrow-night
+      doom-font (font-spec :family "Fantasque Sans Mono" :size 16)
       doom-serif-font (font-spec :family "Go Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
       doom-big-font (font-spec :family "Fantasque Sans Mono" :size 20)
@@ -46,17 +46,16 @@
 
 (after! emojify (add-hook 'after-init-hook #'global-emojify-mode))
 
-(add-hook 'js2-mode-hook 'eslintd-fix-mode)
+(add-hook 'js2-mode-hook #'add-node-modules-path)
+(add-hook 'js2-mode-hook #'eslintd-fix-mode)
 
-(require 'org-protocol)
-(setq org-capture-templates `(
-                              ("p" "Protocol" entry (file+headline ,(concat org-directory "aardvark.org") "Inbox")
-                               "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-                              ("L" "Protocol Link" entry (file+headline ,(concat org-directory "aardvark.org") "Inbox")
-                               "* %? [[%:link][%:description]] \nCaptured On: %U")
-                              ))
-
-(require 'org-projectile)
-(org-projectile-per-project)
-(setq org-projectile-per-project-filepath "todo.org")
-(setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+(setq +org-capture-todo-file (concat org-directory "aardvark.org"))
+(after! org
+  (setq org-capture-templates '(("p" "Protocol" entry (file+headline +org-capture-todo-file "Inbox")
+                                  "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+                                 ("L" "Protocol Link" entry (file+headline +org-capture-todo-file "Inbox")
+                                  "* %? [[%:link][%:description]] \nCaptured On: %U")))
+  (require 'org-projectile)
+  (org-projectile-per-project)
+  (setq org-projectile-per-project-filepath "todo.org")
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
