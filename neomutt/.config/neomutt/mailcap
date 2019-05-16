@@ -14,7 +14,15 @@ application/pdf; ~/.config/neomutt/view_attachment.sh %s pdf
 # HTML
 #text/html; ~/.config/neomutt/view_attachment.sh %s html; needsterminal;
 text/html; viewhtmlmail %s; test=test -n "$DISPLAY"; nametemplate=%s.html; needsterminal;
-text/html; w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+# text/html; w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+# text/html; elinks -dump '%s'; nametemplate=%s.html; copiousoutput
+# text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+# text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; html2text --ignore-links --reference-links --ignore-tables; copiousoutput;
+# text/html; pandoc -f html -t gfm; copiousoutput;
+# text/html; pandoc -f html -t markdown-raw_attribute-raw_html-link_attributes-fenced_code_attributes-header_attributes-inline_code_attributes; copiousoutput;
+
+text/plain; cat; copiousoutput;
 
 # Unidentified files
 application/octet-stream; ~/.config/neomutt/view_attachment.sh %s "-"
