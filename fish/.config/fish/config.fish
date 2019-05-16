@@ -1,5 +1,5 @@
 # Get env from systemd
-which systemctl 2>/dev/null >/dev/null && systemctl --user show-environment | fishify -x | source -
+command -qs systemctl && systemctl --user show-environment | fishify -x | source -
 
 if not functions -q fisher # Install fisher if not installed
     set -q XDG_CONFIG_HOME || set -x XDG_CONFIG_HOME "$HOME/.config"
@@ -15,22 +15,21 @@ if uname -a | grep -q Microsoft # Running in WSL
     export DISPLAY
 end
 
-set fish_greeting # Disable fish greeting
-fish_vi_key_bindings
+# Customize prompt
+set pure_symbol_prompt '$'
+set pure_symbol_reverse_prompt ':'
+set pure_color_success (set_color green)
+set pure_color_prompt_on_success (set_color green)
 
-set -ax PATH $HOME/.emacs.d/bin # DOOM Emacs
+set fish_greeting # Disable fish greeting
+fish_vi_key_bindings >/dev/null 2>&1 # pipe error away, fish struggles when Emacs sets TERM=dumb
 
 if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
 end
 
-if which yarn >/dev/null 2>/dev/null 
-    set -ax PATH (yarn global bin)
-end
-
-if which npm >/dev/null 2>/dev/null
-    set -ax PATH (npm bin -g)
-end
+systemctl --user import-environment PATH GOPATH
+systemctl --user unset-environment SHLVL PWD # not sure why these get set
 
 # alias ls
 alias ls 'ls --group-directories-first --color --classify'
@@ -48,9 +47,7 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")
 set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
-
-
-if status is-login && [ -z $DISPLAY ] && [ (tty) = /dev/tty1 ]
-    systemctl --user import-environment
+if [ -z $SSH_AUTH_SOCK ]
+    /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source - 
+    systemctl --user import-environment SSH_AUTH_SOCK
 end
-
