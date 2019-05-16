@@ -1,8 +1,9 @@
+#IDLE: mu index -m ~/mail
 IMAPAccount gmail
 # Address to connect to
 Host imap.gmail.com
 User denys.pavlov@gmail.com
-PassCmd "pass email/offlineimap/gmail"
+PassCmd "1pass -p gmail"
 # Use SSL
 SSLType IMAPS
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
@@ -79,7 +80,7 @@ IMAPAccount fastmail
 # Address to connect to
 Host imap.fastmail.com
 User denys@fastmail.com
-PassCmd "pass email/offlineimap/fastmail"
+PassCmd "1pass -p fastmail"
 # To store the password in an encrypted file use PassCmd instead of Pass
 #
 # Use SSL
@@ -113,7 +114,7 @@ IMAPAccount zoho
 # Address to connect to
 Host imap.zoho.com
 User denys.pavlov@gmail.com
-PassCmd "pass email/offlineimap/zoho"
+PassCmd "1pass -p zoho"
 # To store the password in an encrypted file use PassCmd instead of Pass
 #
 # Use SSL

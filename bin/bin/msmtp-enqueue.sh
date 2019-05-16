@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-QUEUEDIR=$HOME/.msmtpqueue
+QUEUEDIR=${QUEUEDIR:-$HOME/.msmtpqueue}
 
 # Set secure permissions on created directories and files
 umask 077
@@ -36,9 +36,9 @@ cat > "$MAILFILE" || exit 1
 
 # If we are online, run the queue immediately.
 # Replace the test with something suitable for your site.
-#ping -c 1 -w 2 SOME-IP-ADDRESS > /dev/null 
-#if [ $? -eq 0 ]; then
-#	msmtp-runqueue.sh > /dev/null &
-#fi
+ping -c 1 -w 2 google.com > /dev/null 
+if [ $? -eq 0 ]; then
+	msmtp-runqueue.sh > /dev/null &
+fi
 
 exit 0

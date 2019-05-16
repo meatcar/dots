@@ -1,0 +1,7 @@
+[Unit]
+Description=Send any queued mail
+After=network.target network-online.target dbus.socket
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/msmtp-runqueue.sh

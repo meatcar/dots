@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync mail on %I maildir modification
+
+[Path]
+PathChanged=%h/mail/%i/
+Unit=mbsync@%i.service
+
+[Install]
+WantedBy=default.target
