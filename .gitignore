@@ -1,9 +1,3 @@
-# mpd
-mpd/log
-mpd/state
-mpd/pid
-mpd/db
-
 # wmii
 wmii/history.actions
 wmii/history.progs
@@ -12,10 +6,9 @@ irssi/*.autosave
 
 # uzbl
 uzbl/local/history
+uzbl/local/cookies.txt
+uzbl/local/session-cookies.txt
 pentadactyl/info/default/command-history
-vim/.netrwhist
-vim/tmp/
-vim/.gissue-cache/
 
 # i3
 i3/log
@@ -25,13 +18,3 @@ irssi/nickserv.auth
 vim/view
 fonts/typecatcher
 
-# weechat
-weechat/logs
-weechat/**/*.log
-fish/fish_history
-
-# mutt
-neomutt/tmp/*
-neomutt/cache/*
-uzbl/local/cookies.txt
-uzbl/local/session-cookies.txt

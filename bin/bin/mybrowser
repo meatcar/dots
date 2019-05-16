@@ -4,4 +4,9 @@
 #term w3m "$@"
 #qutebrowser "$@"
 #google-chrome-stable "$@"
-chromium "$@"
+
+if [ -n "$BROWSER" ]; then
+	"$BROWSER" "$@"
+else
+	firefox "$@"
+fi

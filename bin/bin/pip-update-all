@@ -1,8 +1,12 @@
-#!/bin/zsh
+#!/bin/sh
 
-zparseopts -- -user=user
+case "$1" in 
+    -u|--user)
+        ARGS='--user'
+        ;;
+esac
 
-list=$( pip list "$user" --outdated)
-
-echo ${list} | tee | tail -n +3 | cut -f1 -d' ' | xargs pip install "$user" -U
+pip list "$ARGS" --outdated | tee \
+    | tail -n +3 | cut -f1 -d' ' \
+    | xargs pip install "$ARGS" -U
 

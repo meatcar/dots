@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setwallpaper -- "$1" && ln -sf $(readlink -f "$1") ~/.wallpaper
