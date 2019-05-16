@@ -5,7 +5,7 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/lxpolki
+ExecStart=/usr/bin/lxpolkit
 
 [Install]
 WantedBy=sway-session.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=Flexget RSS Fetcher
+PartOf=graphical-session.target
+After=transmission-daemon.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/flexget daemon start
+ExecStop=%h/.local/bin/flexget daemon stop
+ExecReload=%h/.local/bin/flexget daemon reload
+
+[Install]
+WantedBy=sway-session.target

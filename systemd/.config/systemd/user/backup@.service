@@ -1,8 +1,0 @@
-[Unit]
-Description=Backup Sync using tarsnap
-After=network-online.target
-
-[Service]
-ExecStart=/bin/sh -c 'backup %I'
-KillSignal=SIGQUIT
-#Also=tarsnap-clean.service

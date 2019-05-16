@@ -4,7 +4,7 @@ After=network.target network-online.target dbus.socket
 
 [Service]
 Type=simple
-ExecStart=%h/dev/github.com/a-sk/node-imapnotify/bin/imapnotify -c %h/.config/imapnotify/%i.js
+ExecStart=sh -c 'source %h/.asdf/asdf.sh && imapnotify -c %h/.config/imapnotify/%i.js'
 Restart=always
 RestartSec=3
 

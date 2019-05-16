@@ -1,7 +1,0 @@
-[Unit]
-Description=clean tarsnap backups
-After=network-online.target
-
-[Service]
-ExecStart=/bin/sh -c tsar
-KillSignal=SIGQUIT

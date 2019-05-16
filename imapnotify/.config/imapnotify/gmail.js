@@ -5,18 +5,16 @@ function getStdout(cmd) {
   return stdout.toString().trim();
 }
 
-const options = module.exports = {};
-
-options.host = "imap.gmail.com";
-options.port = 993;
-options.tls = true;
-options.tlsOptions = { "rejectUnauthorized": false };
-options.username = "denys.pavlov@gmail.com";
-options.password = getStdout("pass show email/offlineimap/gmail | head -n1");
-options.onNewMail = "/usr/bin/systemctl --user start mbsync@gmail-quick";
-options.onNewMailPost = {
-    "mail": "/usr/bin/mu index --maildir=/home/meatcar/mail && notify-send -a mail 'gmail: new in %s'",
-    "update": "/usr/bin/mu index --maildir=/home/meatcar/mail && notify-send -a mail -u low 'gmail: update %s'",
-    "expunge": "/usr/bin/mu index --maildir=/home/meatcar/mail && notify-send -a mail -u low 'gmail: expunge %s'"
+exports.host = "imap.gmail.com";
+exports.port = 993;
+exports.tls = true;
+exports.tlsOptions = { "rejectUnauthorized": false };
+exports.username = "denys.pavlov@gmail.com";
+exports.password = getStdout("1pass -p gmail | head -n1");
+exports.onNotify = "systemctl --user start mbsync@gmail-quick";
+exports.onNotifyPost = {
+    "mail": "mu index --maildir=/home/meatcar/mail && notify-send -a mail 'gmail: new in %s'",
+    "update": "mu index --maildir=/home/meatcar/mail && notify-send -a mail -u low 'gmail: update %s'",
+    "expunge": "mu index --maildir=/home/meatcar/mail && notify-send -a mail -u low 'gmail: expunge %s'"
 }
-options.boxes = [ "inbox" ];
+exports.boxes = [ "inbox" ];

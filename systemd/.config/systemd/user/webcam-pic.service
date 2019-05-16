@@ -1,5 +1,0 @@
-[Unit]
-Description=Take a pic with the webcam
-
-[Service]
-ExecStart=/home/meatcar/bin/webcam-pic

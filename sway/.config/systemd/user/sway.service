@@ -7,8 +7,7 @@ After=graphical-session-pre.target
 
 [Service]
 Type=simple
-EnvironmentFile=-%h/.config/sway/env
 ExecStart=/usr/bin/sway
-Restart=on-failure
+Restart=no
 RestartSec=1
 TimeoutStopSec=10
