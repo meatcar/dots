@@ -1,27 +1,21 @@
 {
     "layer": "bottom", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 30, // Waybar height
+    "height": 30, // Waybar height
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
+        "modules-left": ["sway/workspaces", "sway/mode", "custom/scratch", "custom/spotify"],
     "modules-center": [],
-    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "temperature", "backlight", "battery", "pulseaudio", "clock", "tray"],
+        "modules-right": ["idle_inhibitor", "network", "custom/dnscrypt", "custom/net-metered", "temperature", "backlight", "battery", "pulseaudio", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
-        "disable-scroll": true
+        "disable-scroll": true,
         // "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
+        "format": "{name}{icon}",
+        "format-icons": {
+            "urgent": "!!!",
+            "default": ""
+        }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -29,8 +23,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
@@ -38,6 +32,7 @@
         "spacing": 10
     },
     "clock": {
+        "format": "{:%k:%M}",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -49,19 +44,19 @@
     },
     "temperature": {
         "thermal-zone": 10,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        // "hwmon-path": "/sys/class/hwmon/hwmon3/temp2_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
+        "format": "  {temperatureC}°C"
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""],
+        "format": "{icon} {percent}%",
+        "format-icons": [" ", " ", " "],
         "on-click": "brightnessctl -q set 100%",
         "on-click-right": "brightnessctl -q set 1%",
-        "on-scroll-up": "brightnessctl -q set +5%",
-        "on-scroll-down": "brightnessctl -q set 5%-"
+        "on-scroll-up": "brightnessctl -q set +2%",
+        "on-scroll-down": "brightnessctl -q set 2%-"
     },
     "battery": {
         "states": {
@@ -69,22 +64,25 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "  {capacity}%",
+        "format-discharging": "{icon}  {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname} {ipaddr}/{cidr}",
+        "on-click": "$TERMINAL -e nmtui"
     },
     "pulseaudio": {
-        //"scroll-step": 1,
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+        "scroll-step": 4,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": "  ",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -94,11 +92,38 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
     },
     "custom/spotify": {
         "format": " {}",
-        "max-length": 40,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        "max-length": 45,
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+        "exec-if": "pgrep spotify",
+        "on-click": "playerctl play-pause"
+    },
+    "custom/scratch": {
+        "format": "",
+        "tooltip": "Scratchpad Windows",
+        "exec": "echo z",
+        "on-click": "swaymsg scratchpad show"
+    },
+    "custom/dnscrypt": {
+        "format": "{icon}",
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/systemd-status dnscrypt-proxy.service 2>/dev/null",
+        "exec-if": "which systemctl",
+        "interval": 5,
+        "on-click": "$HOME/.config/waybar/systemd-status dnscrypt-proxy.service toggle 2>/dev/null",
+        "format-icons": [ "", "" ]
+    },
+    "custom/net-metered": {
+        "format": "{icon}",
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/net-metered 2>/dev/null",
+        "exec-if": "which nmcli",
+        "on-click": "$HOME/.local/bin/metered-connection toggle",
+        "format-icons": [ "", "" ]
     }
 }

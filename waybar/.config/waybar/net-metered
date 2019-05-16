@@ -1,0 +1,42 @@
+#!/bin/sh
+main() {
+   line="$@"
+   case "$line" in
+      *"disconnected") echo 'hide';;
+      *"connected"|*"connection profile changed"|"")
+         STATUS=$(metered-connection status)
+         case "$STATUS" in
+            disconnected) echo 'hide'; return;;
+            yes) PERCENTAGE=100;;
+            no) PERCENTAGE=0;;
+         esac
+
+         echo -n '{'
+         echo -n '"text":"'$STATUS'",'
+         echo -n '"tooltip":"metered connection: '$STATUS'",'
+         echo -n '"percentage":'$PERCENTAGE','
+         echo -n '"class":"'$STATUS'"'
+         echo '}'
+         ;;
+   esac
+}
+
+loop() {
+   main
+   nmcli monitor | \
+      while read line; do
+         main $line
+      done
+}
+
+case "$1" in
+   "") loop ;;
+   -h|--help)
+      usage
+      exit
+      ;;
+   *)
+      usage >&2
+      exit 1
+      ;;
+esac

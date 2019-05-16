@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Iosevka", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "SF Pro Display", Roboto, Helvetica, Arial, sans-serif;
     font-size: 10pt;
     min-height: 0;
 }
@@ -14,7 +14,7 @@ window#waybar {
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 6px;
     background: rgba(0, 0, 0, 0.2);
     color: #ffffff;
     border-bottom: 3px solid transparent;
@@ -30,7 +30,21 @@ window#waybar {
     border-bottom: 3px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-scratch, 
+#custom-dnscrypt,
+#custom-net-metered {
     background: rgba(0, 0, 0, 0.2);
     border-bottom: 3px solid #ffffff;
     padding: 0 10px;
@@ -39,6 +53,7 @@ window#waybar {
 
 #clock {
     border-color: #64727D;
+    font-weight: bold;
 }
 
 #battery {
@@ -100,8 +115,8 @@ window#waybar {
 }
 
 #custom-spotify {
-    border-color: #66cc99;
-    color: #2a5c45;
+    border-color: #2acc45;
+    color: #2acc45;
 }
 
 #temperature {
@@ -123,4 +138,24 @@ window#waybar {
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
+}
+
+#custom-dnscrypt.active {
+    border-color: #55cc55;
+}
+#custom-dnscrypt.inactive {
+    background-color: #ff5555;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#custom-net-metered.no {
+    border-color: #55cc55;
+}
+#custom-net-metered.yes {
+    color: #ff5555;
+    border-color: #ff5555;
 }
