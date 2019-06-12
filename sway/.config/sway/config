@@ -55,10 +55,12 @@ title_align left
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec swayidle -w \
-         timeout 300 "/usr/lib/kscreenlocker_greet" \
+         timeout 300 "swaylock -f" \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep "/usr/lib/kscreenlocker_greet"
+         before-sleep "swaylock -f"
+
+for_window [window_role="browser"] inhibit_idle fullscreen
 
 ### Input configuration
 #
@@ -92,12 +94,12 @@ input "2131:308:LEOPOLD_Mini_Keyboard" {
 gaps inner 10
 smart_gaps on
 
-set $border 5
+set $border 3
 smart_borders on
 hide_edge_borders smart
 default_border pixel $border
 default_floating_border normal $border px
-titlebar_border_thickness 2
+titlebar_border_thickness 1
 
 focus_follows_mouse yes
 
