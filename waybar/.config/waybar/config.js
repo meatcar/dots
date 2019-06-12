@@ -18,6 +18,7 @@
         }
     },
     "sway/mode": {
+        "rotate": 270,
         "format": "<span style=\"italic\">{}</span>"
     },
     "idle_inhibitor": {
