@@ -184,7 +184,7 @@ if exists('*packager#init')
   Pack 'vim-airline/vim-airline-themes'
   Pack 'vim-airline/vim-airline'  " pretty status-line
   Pack 'liuchengxu/vim-which-key' " popup ui for obscure keys
-  Pack 'vorillaz/devicons'        " pretty icons
+  Pack 'ryanoasis/vim-devicons'   " pretty icons
   "}}}
 
   " Syntaxes {{{
