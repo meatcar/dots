@@ -107,7 +107,7 @@ if has ('gui_running')
 endif
 "}}}
 
-" Plugins {{{
+" Packages {{{
 " auto-install packager {{{
 if empty(glob($XDG_CONFIG_HOME."/vim/pack/packager/opt/packager"))
   silent !git clone 'https://github.com/kristijanhusak/vim-packager'
@@ -115,7 +115,7 @@ if empty(glob($XDG_CONFIG_HOME."/vim/pack/packager/opt/packager"))
 endif
 "}}}
 
-" Plugin commands {{{
+" Package commands {{{
 command! -bar -nargs=+ Pack call packager#add(<args>)
 command! PackInstall packadd packager | source $MYVIMRC | call packager#install()
 command! -bang PackInstall packadd packager | source $MYVIMRC | call packager#update({ 'force_hooks': '<bang>' })
@@ -127,7 +127,7 @@ if exists('*packager#init')
   " only work with packages if packager is loaded
   call packager#init()
 
-  " Simple Sane QoL Plugins {{{
+  " Simple Sane QoL Packages {{{
   Pack 'kristijanhusak/vim-packager', { 'type': 'opt', 'name': 'packager' }
   Pack 'tpope/vim-sensible'       " sane defaults
   Pack 'tpope/vim-sleuth'         " auto-detect tabs
@@ -174,7 +174,13 @@ if exists('*packager#init')
   Pack 'kshenoy/vim-signature'
   "}}}
 
-  " Pretty Plugins {{{
+  " Tmux {{{
+  Pack 'tmux-plugins/vim-tmux-focus-events'  " focus events in tmux
+  Pack 'christoomey/vim-tmux-navigator'      " <C-hjkl> to switch vim & tmux panes
+  Pack 'roxma/vim-tmux-clipboard'            " sync vim + tmux clipboards
+  "}}}
+
+  " Pretty Packages {{{
   Pack 'mhinz/vim-startify'       " startup screen
   Pack 'flazz/vim-colorschemes'   " all the colorschemes
   Pack 'rainglow/vim'             " more colorschemes
@@ -201,7 +207,7 @@ if exists('*packager#init')
 endif
 "}}}
 
-" Plugin Settings {{{
+" Package Settings {{{
 
 " Whichkey {{{
 let g:mapleader = "\<Space>"
