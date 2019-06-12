@@ -129,49 +129,46 @@ if exists('*packager#init')
 
   " Simple Sane QoL Packages {{{
   Pack 'kristijanhusak/vim-packager', { 'type': 'opt', 'name': 'packager' }
-  Pack 'tpope/vim-sensible'       " sane defaults
-  Pack 'tpope/vim-sleuth'         " auto-detect tabs
-  Pack 'tpope/vim-eunuch'         " helpful Unix commands (:Rename, etc)
-  Pack 'tpope/vim-commentary'     " easy commenting with `gcc`
-  Pack 'tpope/vim-surround'       " surround stuff!
-  Pack 'tpope/vim-repeat'         " repeat all the things
-  Pack 'tpope/vim-endwise'        " add `end` do function blocks
-  Pack 'tpope/vim-unimpaired'     " complimentary mapping pairs ([b, ]b)
-  Pack 'pbrisbin/vim-mkdir'       " mkdir of current file if it doesn't exist
-  Pack 'kopischke/vim-stay'       " save folds
-  Pack 'kopischke/vim-fetch'      " parse '...:{num}' from files, jump to line
-  Pack 'moll/vim-bbye'            " :Bdelete, kill current buffer, not window
-  Pack 'xtal8/traces.vim'         " preview ex commands like :s///
-  Pack 'airblade/vim-rooter'      " auto-cd to vcs root
-  Pack 'Konfekt/FoldText'         " Fancy fold texts
-  Pack 'Konfekt/FastFold'         " lazy-folds because folding is heavy
-  Pack 'aymericbeaumet/symlink.vim' " edit the actual file when opening symlinks
+  Pack 'tpope/vim-sensible'            " sane defaults
+  Pack 'tpope/vim-sleuth'              " auto-detect tabs
+  Pack 'tpope/vim-eunuch'              " helpful Unix commands (:Rename, etc)
+  Pack 'tpope/vim-commentary'          " easy commenting with `gcc`
+  Pack 'tpope/vim-surround'            " surround stuff!
+  Pack 'tpope/vim-repeat'              " repeat all the things
+  Pack 'tpope/vim-endwise'             " add `end` do function blocks
+  Pack 'tpope/vim-unimpaired'          " complimentary mapping pairs ([b, ]b)
+  Pack 'pbrisbin/vim-mkdir'            " mkdir of current file if it doesn't exist
+  Pack 'kopischke/vim-stay'            " save folds
+  Pack 'kopischke/vim-fetch'           " parse '...:{num}' from files, jump to line
+  Pack 'moll/vim-bbye'                 " :Bdelete, kill current buffer, not window
+  Pack 'xtal8/traces.vim'              " preview ex commands like :s///
+  Pack 'airblade/vim-rooter'           " auto-cd to vcs root
+  Pack 'Konfekt/FoldText'              " Fancy fold texts
+  Pack 'Konfekt/FastFold'              " lazy-folds because folding is heavy
+  Pack 'aymericbeaumet/symlink.vim'    " edit the actual file when opening symlinks
   Pack 'yuttie/comfortable-motion.vim' " smooth scrolling
-
   "}}}
 
   " Git {{{
-  Pack 'tpope/vim-rhubarb'        " auto-complete Github issues in fugitive
-  Pack 'jreybert/vimagit'         " git UI like emacs magit
-  Pack 'tpope/vim-fugitive'       " tight git integration
-  Pack 'mhinz/vim-signify'        " show git changes in the gutter
+  Pack 'tpope/vim-rhubarb'  " auto-complete Github issues in fugitive
+  Pack 'jreybert/vimagit'   " git UI like emacs magit
+  Pack 'tpope/vim-fugitive' " tight git integration
+  Pack 'mhinz/vim-signify'  " show git changes in the gutter
   "}}}
 
   " Nice Utilities {{{
-  Pack 'sjl/gundo.vim'            " undo tree
-  Pack 'godlygeek/tabular'        " align things easily
-  Pack 'Olical/vim-enmasse'       " mass edit every line in a quickfix
+  Pack 'sjl/gundo.vim'                  " undo tree
+  Pack 'junegunn/vim-easy-align'        " align things easily
+  Pack 'Olical/vim-enmasse'             " mass edit every line in a quickfix
   Pack 'editorconfig/editorconfig-vim'
-  Pack 'w0rp/ale'                 " async error checking
+  Pack 'w0rp/ale'                       " async error checking
   Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'which fzf && yes \| ./install'}
-  Pack 'junegunn/fzf.vim'         " fuzzy completion of all the things
-  " Pack 'tpope/vim-vinegar'        " netrw sanity
-  Pack 'justinmk/vim-dirvish'
-  " Pack 'thinca/vim-fontzoom' " zoom fontsize
+  Pack 'junegunn/fzf.vim'               " fuzzy completion of all the things
+  Pack 'justinmk/vim-dirvish'           " nice simple file browser
   Pack 'mattn/gist-vim', {'on': 'Gist'} " post to gist.github.com
-  Pack 'mattn/webapi-vim' " need this for gist.
-  Pack 'AndrewRadev/splitjoin.vim'  " single <> multi line code conversion
-  Pack 'kshenoy/vim-signature'
+  Pack 'mattn/webapi-vim'               " need this for gist.
+  Pack 'AndrewRadev/splitjoin.vim'      " single <> multi line code conversion
+  Pack 'kshenoy/vim-signature'          " show marks in the SignColumn
   "}}}
 
   " Tmux {{{
@@ -187,17 +184,18 @@ if exists('*packager#init')
   Pack 'vim-airline/vim-airline-themes'
   Pack 'vim-airline/vim-airline'  " pretty status-line
   Pack 'liuchengxu/vim-which-key' " popup ui for obscure keys
+  Pack 'vorillaz/devicons'        " pretty icons
   "}}}
 
   " Syntaxes {{{
-  Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
+  Pack 'sheerun/vim-polyglot'                  " A tonne of new syntaxes.
   Pack 'tpope/vim-markdown', {'type': 'opt'}
-  Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
-  Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
+  Pack 'SidOfc/mkdx', {'type': 'opt'}          " Fancy markdown extras
+  Pack 'reedes/vim-pencil', { 'type': 'opt' }  " make editing freetext easier
 
-  Pack 'zirrostig/vim-shbed', {'type': 'opt' }    " highlight awk in shell scripts
-  Pack 'vim-scripts/TeX-9', {'type': 'opt'}       " latex
-  Pack 'mattn/emmet-vim', {'type': 'opt'}         " fast html editing
+  Pack 'zirrostig/vim-shbed', {'type': 'opt' } " highlight awk in shell scripts
+  Pack 'vim-scripts/TeX-9', {'type': 'opt'}    " latex
+  Pack 'mattn/emmet-vim', {'type': 'opt'}      " fast html editing
 
   Pack 'neomutt/neomutt.vim', {'type': 'opt'}
 
@@ -332,8 +330,14 @@ let g:startify_custom_header = [
       \ '      \_/ |_|_| |_| |_|'
       \ ]
 
-let g:startify_change_to_dir = 1
+let g:startify_session_persistence = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
 autocmd vimrc User Startified setlocal buftype=nofile
+" devicons
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
 "}}}
 
 " vim-airline {{{
@@ -619,5 +623,10 @@ function! s:markdown_mappings()
   nmap <localleader>t <Plug>(mkdx-toggle-checkbox-n)
   vmap <localleader>t <Plug>(mkdx-toggle-checkbox-v)
 endfunction
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "}}}
