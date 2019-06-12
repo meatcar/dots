@@ -7,10 +7,8 @@ augroup END
 
 set t_Co=256              " enable 256-color support
 set termguicolors         " enable true colors support
-if &term =~# '^screen'    " in tmux too
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set title
 
@@ -113,7 +111,7 @@ endif
 " auto-install packager {{{
 if empty(glob($XDG_CONFIG_HOME."/vim/pack/packager/opt/packager"))
   silent !git clone 'https://github.com/kristijanhusak/vim-packager'
-        \ $XDG_CONFIG_HOME."/vim/pack/packager/opt/packager"
+        \ $XDG_CONFIG_HOME"/vim/pack/packager/opt/packager"
 endif
 "}}}
 
@@ -429,11 +427,11 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
 " Colors {{{
 set background=dark
 let ayucolor="dark"
-let g:airline_theme='hybridline'
+let g:airline_theme='ayu_dark'
 if has('gui_running')
   colorscheme ayu
 else
-  colorscheme ir_black
+  colorscheme ayu
 
   " Fix old themes colouring SignColumn an ugly grey:
   autocmd vimrc VimEnter * highlight clear SignColumn
