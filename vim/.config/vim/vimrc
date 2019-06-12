@@ -147,6 +147,7 @@ if exists('*packager#init')
   Pack 'Konfekt/FastFold'              " lazy-folds because folding is heavy
   Pack 'aymericbeaumet/symlink.vim'    " edit the actual file when opening symlinks
   Pack 'yuttie/comfortable-motion.vim' " smooth scrolling
+  Pack 'thinca/vim-fontzoom', {'type': 'opt'}  " zoom font in gvim
   "}}}
 
   " Git {{{
@@ -546,13 +547,12 @@ set grepformat^=%f:%l:%c:%m
 " buffers
 nnoremap <leader>bb :<C-u>Buffers<CR>
 nnoremap <leader>bd :<C-u>Bdelete<CR>
-" buffers
-nnoremap <leader>fr :<C-u>History<CR>
 " ack/grep
 nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
 nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
-" ctrl-p
+" files
+nnoremap <leader>fr :<C-u>History<CR>
 nnoremap <C-p>      :<C-u>Files<CR>
 nnoremap <leader>ff :<C-u>Files<CR>
 
@@ -563,7 +563,7 @@ nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
 nnoremap // :<C-u>BLines<CR>
 " vimviki
-map <leader>n :<C-u>FZF /home/meatcar/Sync/notes/ <CR>
+map <leader>n :<C-u>FZF $HOME/Sync/notes/ <CR>
 
 nmap <silent> <leader>s :Snippets<CR>
 
@@ -578,7 +578,6 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " typo corrections
 nmap q: :q<cr>
-nmap <silent> <leader>bd :Bdelete<CR>
 command! Source :source ~/.vimrc " source
 " vertical split help
 command! -nargs=* -complete=help Vhelp :vert bo help <args>
@@ -588,7 +587,7 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nmap <silent> <leader>gg :Magit<CR>
+nmap <silent> <leader>gg :Gstatus<CR>
 
 nmap <silent> <leader>tt :NERDTreeToggle<CR>
 nmap <silent> <leader>tc :Color<CR>
@@ -601,13 +600,16 @@ nmap <silent> L :bn<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-let g:fontzoom_no_default_key_mappings = 1
-nmap <silent> <C-ScrollWheelUp>	<Plug>(fontzoom-larger)
-nmap <silent> <leader>+	<Plug>(fontzoom-larger)
-nmap <silent> <leader>=	<Plug>(fontzoom-larger)
-nmap <silent> <C-ScrollWheelDown>	<Plug>(fontzoom-smaller)
-nmap <silent> <leader>-	<Plug>(fontzoom-smaller)
-nmap <silent> <leader>0 :Fontzoom!<cr>
+if has('gui_running')
+  packadd fontzoom
+  let g:fontzoom_no_default_key_mappings = 1
+  nmap <silent> <C-ScrollWheelUp>	<Plug>(fontzoom-larger)
+  nmap <silent> <leader>+	<Plug>(fontzoom-larger)
+  nmap <silent> <leader>=	<Plug>(fontzoom-larger)
+  nmap <silent> <C-ScrollWheelDown>	<Plug>(fontzoom-smaller)
+  nmap <silent> <leader>-	<Plug>(fontzoom-smaller)
+  nmap <silent> <leader>0 :Fontzoom!<cr>
+endif
 
 autocmd vimrc FileType netrw call s:filer_settings()
 
