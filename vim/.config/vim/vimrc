@@ -169,6 +169,7 @@ if exists('*packager#init')
   Pack 'mattn/webapi-vim'               " need this for gist.
   Pack 'AndrewRadev/splitjoin.vim'      " single <> multi line code conversion
   Pack 'kshenoy/vim-signature'          " show marks in the SignColumn
+  Pack 'scrooloose/nerdtree'            " tree sidebar
   "}}}
 
   " Tmux {{{
@@ -543,7 +544,8 @@ set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
 
 " buffers
-nnoremap <leader>b :<C-u>Buffers<CR>
+nnoremap <leader>bb :<C-u>Buffers<CR>
+nnoremap <leader>bd :<C-u>Bdelete<CR>
 " buffers
 nnoremap <leader>fr :<C-u>History<CR>
 " ack/grep
@@ -562,8 +564,6 @@ nnoremap <leader>: :<C-u>Commands<CR>
 nnoremap // :<C-u>BLines<CR>
 " vimviki
 map <leader>n :<C-u>FZF /home/meatcar/Sync/notes/ <CR>
-" filetypes
-nnoremap <leader>ft :<C-u>Filetypes<CR>
 
 nmap <silent> <leader>s :Snippets<CR>
 
@@ -588,10 +588,12 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nmap <silent> <leader>u :GundoToggle<CR>
-
 nmap <silent> <leader>gg :Magit<CR>
-nmap <silent> <leader>c :Color<CR>
+
+nmap <silent> <leader>tt :NERDTreeToggle<CR>
+nmap <silent> <leader>tc :Color<CR>
+nmap <silent> <leader>tf :<C-u>Filetypes<CR>
+nmap <silent> <leader>tu :GundoToggle<CR>
 
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
@@ -620,8 +622,14 @@ endfunction
 autocmd vimrc FileType markdown call s:markdown_mappings()
 
 function! s:markdown_mappings()
-  nmap <localleader>t <Plug>(mkdx-toggle-checkbox-n)
-  vmap <localleader>t <Plug>(mkdx-toggle-checkbox-v)
+  nmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>
+  vmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
+  nmap <localleader>tT :call mkdx#ToggleCheckboxState(1)<Cr>
+  vmap <localleader>tT :call mkdx#ToggleCheckboxState(1)<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
+  nmap <localleader>tc :call mkdx#ToggleCheckboxTask()<Cr>
+  vmap <localleader>tc :call mkdx#ToggleCheckboxTask()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
+  nmap <localleader>tl :call mkdx#ToggleChecklist()<Cr>
+  vmap <localleader>tl :call mkdx#ToggleChecklist()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
 endfunction
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
