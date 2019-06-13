@@ -20,6 +20,11 @@ set ttyfast               " tell vim we're using a fast terminal for redraws
 set lazyredraw            " don't redraw while running commands
 
 set mouse=a               " allow mouse input in all modes
+if has("mouse_sgr")       " fix mouse in tmux
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+endif
 
 set autowrite             " write file if modified on each :next, :make, etc.
 set hidden                " un-saved buffers in the background
