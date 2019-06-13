@@ -4,9 +4,9 @@
     // "height": 30, // Waybar height
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-        "modules-left": ["sway/workspaces", "sway/mode", "custom/scratch", "custom/spotify"],
+        "modules-left": ["sway/workspaces", "sway/mode", "custom/scratch", "idle_inhibitor", "custom/spotify"],
     "modules-center": [],
-        "modules-right": ["idle_inhibitor", "network#icon", "custom/dnscrypt", "custom/net-metered", "network", "temperature", "backlight", "battery", "pulseaudio", "tray", "clock"],
+        "modules-right": ["network#icon", "custom/dnscrypt", "custom/net-metered", "network", "temperature", "backlight", "battery", "pulseaudio", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
