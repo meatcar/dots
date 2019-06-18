@@ -1,5 +1,11 @@
+set IS_WSL (uname -a | grep Microsoft)
+
 # Get env from systemd
-command -qs systemctl && systemctl --user show-environment | fishify -x | source -
+if [ -z "$IS_WSL" ] && command -qs systemctl 
+    systemctl --user show-environment | fishify -x | source -
+    systemctl --user import-environment PATH GOPATH
+    systemctl --user unset-environment SHLVL PWD # not sure why these get set
+end
 
 if not functions -q fisher # Install fisher if not installed
     set -q XDG_CONFIG_HOME || set -x XDG_CONFIG_HOME "$HOME/.config"
@@ -7,7 +13,7 @@ if not functions -q fisher # Install fisher if not installed
     fish -c fisher
 end
 
-if uname -a | grep -q Microsoft # Running in WSL
+if [ -n "$IS_WSL" ] # Running in WSL
     umask 002 # Fix new file/dir permissions
 
     # enable x11 apps
@@ -28,8 +34,10 @@ if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
 end
 
-systemctl --user import-environment PATH GOPATH
-systemctl --user unset-environment SHLVL PWD # not sure why these get set
+if [ -z "$IS_WSL" ] && command -qs systemctl 
+    systemctl --user import-environment PATH GOPATH
+    systemctl --user unset-environment SHLVL PWD # not sure why these get set
+end
 
 # alias ls
 alias ls 'ls --group-directories-first --color --classify'
@@ -47,7 +55,7 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")
 set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
-if [ -z $SSH_AUTH_SOCK ]
+if [ -z $SSH_AUTH_SOCK ] && [ -z "$IS_WSL" ]
     /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source - 
     systemctl --user import-environment SSH_AUTH_SOCK
 end
