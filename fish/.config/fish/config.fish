@@ -13,6 +13,10 @@ if not functions -q fisher # Install fisher if not installed
     fish -c fisher
 end
 
+if [ -n "$fish_user_paths" ]
+    set-fish-user-paths
+end
+
 if [ -n "$IS_WSL" ] # Running in WSL
     umask 002 # Fix new file/dir permissions
 
@@ -32,11 +36,6 @@ fish_vi_key_bindings >/dev/null 2>&1 # pipe error away, fish struggles when Emac
 
 if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
-end
-
-if [ -z "$IS_WSL" ] && command -qs systemctl 
-    systemctl --user import-environment PATH GOPATH
-    systemctl --user unset-environment SHLVL PWD # not sure why these get set
 end
 
 # alias ls
