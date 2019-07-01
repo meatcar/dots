@@ -9,11 +9,11 @@
 
 (setq frame-resize-pixelwise t)
 
-(setq doom-theme 'doom-tomorrow-night
-      doom-font (font-spec :family "Fantasque Sans Mono" :size 16)
+(setq doom-theme 'doom-dracula
+      doom-font (font-spec :family "Dina" :size 12)
       doom-serif-font (font-spec :family "Go Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
-      doom-big-font (font-spec :family "Fantasque Sans Mono" :size 20)
+      doom-big-font (font-spec :family "Dina" :size 18)
       display-line-numbers-type nil)
 
 ;; Smoother scrolling with touchpad
@@ -44,6 +44,11 @@
 (add-hook 'yaml-mode-hook (lambda () (mixed-pitch-mode -1)))
 (add-hook 'git-commit-mode-hook (lambda () (mixed-pitch-mode -1)))
 
+;; window margins
+(setq-default left-margin-width 2 right-margin-width 2) ; Define new widths.
+(set-window-buffer nil (current-buffer)) ; Use them now.
+(set-frame-parameter (selected-frame) 'internal-border-width 10)
+
 (after! emojify (add-hook 'after-init-hook #'global-emojify-mode))
 
 (add-hook 'js2-mode-hook #'add-node-modules-path)
@@ -55,6 +60,18 @@
                                   "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
                                  ("L" "Protocol Link" entry (file+headline +org-capture-todo-file "Inbox")
                                   "* %? [[%:link][%:description]] \nCaptured On: %U")))
+
+  (setq org-startup-indented t
+        org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
+        org-ellipsis "" ;; folding symbol
+        org-pretty-entities t
+        org-hide-emphasis-markers t
+        ;; show actually italicized text instead of /italicized text/
+        org-agenda-block-separator ""
+        org-startup-truncated nil
+        org-fontify-quote-and-verse-blocks t)
+
+
   (require 'org-projectile)
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org")
