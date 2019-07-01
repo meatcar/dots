@@ -1,0 +1,6 @@
+
+[Desktop Entry]
+Exec=/usr/bin/redshift
+Name=redshift
+Comment=RedShift
+Type=Application

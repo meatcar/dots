@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term konsole
 # hack to stop popups when using wl-clipboard-x11 with alacritty
 for_window [title="^wl-clipboard$"] floating enable
 for_window [app_id="org.kde.kdesu"] floating enable
@@ -60,7 +60,9 @@ exec swayidle -w \
               resume 'swaymsg "output * dpms on"' \
          before-sleep "swaylock -f"
 
-for_window [window_role="browser"] inhibit_idle fullscreen
+# inhibit idle for any fullscreen window.
+for_window [class="^.*"] inhibit_idle fullscreen 
+for_window [app_id="^.*"] inhibit_idle fullscreen
 
 ### Input configuration
 #
