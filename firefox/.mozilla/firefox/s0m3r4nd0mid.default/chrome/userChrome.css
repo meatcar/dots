@@ -1,0 +1,211 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* vim: set foldmethod=marker : */
+
+/** kill white flash on page loads */
+.browserContainer { background-color: #000000 !important; }
+
+/** Hide horizontal tabs at the top of the window {{{*/
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+  visibility: collapse !important;
+}
+/* }}} */
+
+/** Hide sidebar header {{{ */
+#sidebar-header {
+  visibility: collapse;
+}
+/* }}} */
+
+/** Autohide sidebar {{{*/
+
+/*
+ * Description: Auto-hide sidebar.
+ *
+ * Contributor(s): img2tab
+ */
+
+/* To right-align the sidebar, replace all occurrences of "left" with "right", and "margin-right" with "margin-left" */
+
+:root {
+    --thin-tab-width: 64px;
+    --wide-tab-width: 300px;
+}
+#sidebar-box {
+  position: relative !important;
+  overflow-x: hidden !important;
+  transition: all 0.2s var(--animation-easing-function);
+  min-width: var(--thin-tab-width) !important;
+  max-width: var(--thin-tab-width) !important;
+  z-index: 2;
+}
+#sidebar-box:hover {
+  min-width: var(--wide-tab-width) !important;
+  max-width: var(--wide-tab-width) !important;
+
+  /* Negative right-margin to keep page from being pushed to the side. */
+  margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+  display: none;
+}
+/* }}} */
+
+/** Hide toolbar buttons when not hovered {{{ */
+:root:not([customizing]) #nav-bar toolbarbutton
+{
+  opacity: 0.1 !important;
+  pointer-events: none !important;
+  transition: all 200ms var(--animation-easing-function) !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar toolbarbutton,
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar toolbarbutton,
+:root:not([customizing]) :hover > #titlebar toolbarbutton {
+  opacity:1 !important;
+  margin-left:0 !important;
+  pointer-events: auto !important;
+}
+/* }}} */
+
+/** Remove unescessary borders {{{*/
+:root:not([uidensity="compact"]):not([chromehidden~="toolbar"]) #PanelUI-button {
+  border-inline-start: none !important;
+}
+
+#page-action-buttons > :not([hidden]) ~ #pageActionSeparator {
+  visibility: hidden !important;
+}
+/* }}} */
+
+/* Better Find Dialog {{{ */
+/* Source: https://gist.github.com/RavinduL/e5695cc9e26c2ee9eac2cc8e78778b88 */
+@keyframes scale-in {
+	0% {
+		transform: scaleY(0);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+
+@keyframes scale-out {
+	0% {
+		transform: scaleY(1);
+	}
+	100% {
+		transform: scaleY(0);
+	}
+}
+
+.browserContainer {
+	position: relative;
+}
+
+findbar {
+	animation: 0.2s scale-in;
+	transform-origin: top center;
+	background: var(--toolbar-bgcolor) !important;
+	padding: 4px 6px 6px 6px;
+	border: 1px solid var(--toolbox-border-bottom-color);
+	border-top-width: 0;
+	border-radius: 0 0 var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius);
+	position: absolute;
+	top: -2px;
+	right: 38px;
+}
+
+findbar[hidden="true"] {
+	animation: 0.2s scale-out;
+}
+
+findbar .findbar-container {
+	padding: 0 !important;
+	padding-inline-start: 0 !important;
+	padding-inline-end: 0 !important;
+}
+
+findbar .findbar-container .findbar-textbox {
+	padding: 6px 8px !important;
+	background-color: var(--url-and-searchbar-background-color) !important;
+	border-color: var(--backbutton-border-color) !important;
+}
+
+findbar .findbar-container .findbar-textbox[status="notfound"] {
+	background-color: #E74C3C !important;
+	color: white !important;
+}
+
+findbar .findbar-container .findbar-find-previous,
+findbar .findbar-container .findbar-find-next {
+	background: transparent !important;
+	border-color: var(--backbutton-border-color) !important;
+}
+
+findbar .findbar-container .findbar-find-previous:hover, findbar .findbar-container .findbar-find-previous:focus,
+findbar .findbar-container .findbar-find-next:hover,
+findbar .findbar-container .findbar-find-next:focus {
+	background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+findbar .findbar-button {
+	border: 1px solid var(--backbutton-border-color);
+	border-radius: var(--toolbarbutton-border-radius) !important;
+}
+
+findbar .findbar-closebutton {
+	margin-right: 4px !important;
+	padding-inline-end: 0 !important;
+	position: relative;
+	top: 6px;
+}
+
+window[lwtheme="true"] findbar {
+	background: var(--lwt-header-image) !important;
+	background-attachment: fixed !important;
+	background-position: top right !important;
+	top: -1px;
+}
+
+window[lwtheme="true"] findbar:before {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--toolbar-bgcolor);
+}
+
+window[lwtheme="true"] findbar .findbar-container,
+window[lwtheme="true"] findbar .findbar-closebutton {
+	position: relative;
+	z-index: 1;
+}
+
+window[lwtheme="true"] findbar .findbar-textbox {
+	color: var(--lwt-text-color) !important;
+	background-color: var(--toolbar-bgcolor) !important;
+}
+
+window[lwtheme="true"] findbar .findbar-textbox[status="notfound"] {
+	background-color: #E74C3C !important;
+	color: white !important;
+}
+
+window[lwtheme="true"] findbar .findbar-button[checked="true"] {
+	font-weight: bold;
+	background-color: var(--toolbar-bgcolor) !important;
+}
+
+window[lwtheme="true"] findbar .findbar-find-status, window[lwtheme="true"] findbar .found-matches {
+	color: var(--lwt-text-color) !important;
+}
+/* }}} */
