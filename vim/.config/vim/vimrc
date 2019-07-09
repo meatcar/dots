@@ -185,13 +185,14 @@ if exists('*packager#init')
   "}}}
 
   " Pretty Packages {{{
-  Pack 'mhinz/vim-startify'       " startup screen
-  Pack 'flazz/vim-colorschemes'   " all the colorschemes
-  Pack 'rainglow/vim'             " more colorschemes
+  Pack 'mhinz/vim-startify'           " startup screen
+  Pack 'flazz/vim-colorschemes'       " all the colorschemes
+  Pack 'rainglow/vim'                 " more colorschemes
   Pack 'vim-airline/vim-airline-themes'
-  Pack 'vim-airline/vim-airline'  " pretty status-line
-  Pack 'liuchengxu/vim-which-key' " popup ui for obscure keys
-  Pack 'ryanoasis/vim-devicons'   " pretty icons
+  Pack 'vim-airline/vim-airline'      " pretty status-line
+  Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
+  Pack 'ryanoasis/vim-devicons'       " pretty icons
+  Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
   "}}}
 
   " Syntaxes {{{
@@ -206,8 +207,11 @@ if exists('*packager#init')
 
   Pack 'neomutt/neomutt.vim', {'type': 'opt'}
 
-  Pack 'tpope/vim-fireplace', {'type': 'opt'}
-  Pack 'guns/vim-clojure-static', {'type': 'opt'}
+  Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
+  Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
+  Pack 'tpope/vim-fireplace', {'type': 'opt'}     " clojure editing on drugs
+  Pack 'venantius/vim-cljfmt', {'type': 'opt'}    " formatting
+  Pack 'vim-scripts/paredit.vim', {'type': 'opt'} " fling brackets around
   "}}}
 endif
 "}}}
@@ -439,16 +443,21 @@ let g:user_emmet_install_global = 0
 " Dirvish {{{
 autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _
 " }}}
+
+  " Paredit {{{
+  let g:paredit_leader=","
+  let g:paredit_smartjump=1
+  "}}}
 "}}}
 
 " Colors {{{
 set background=dark
 let ayucolor="dark"
-let g:airline_theme='ayu_dark'
+let g:airline_theme='deus'
 if has('gui_running')
-  colorscheme ayu
+  colorscheme gruvbox
 else
-  colorscheme ayu
+  colorscheme gruvbox
 
   " Fix old themes colouring SignColumn an ugly grey:
   autocmd vimrc VimEnter * highlight clear SignColumn
@@ -471,8 +480,7 @@ autocmd vimrc FileType tex,latex packadd 'TeX-9'
 
 autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx* packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
-autocmd vimrc FileType clojure packadd vim-fireplace
-autocmd vimrc FileType clojure packadd vim-clojure-static
+autocmd vimrc FileType clojure packadd vim-classpath | packadd vim-salve | packadd vim-cljfmt | packadd vim-fireplace | packadd paredit.vim
 
 " Javascript
 autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
@@ -480,7 +488,16 @@ autocmd vimrc BufNewFile,BufRead *.vue set filetype=vue.html.javascript.css
 let g:vue_disable_pre_processors=1
 
 "remove trailing whitespace upon save
-autocmd vimrc FileType javascript,python,tex,java,vim autocmd BufWritePre * :%s/\s\+$//e
+fun! EnableStripTrailingWhitespace()
+  " Only strip if the b:noStripeWhitespace variable isn't set
+  if exists('b:noStripWhitespace')
+    return
+  endif
+  autocmd BufWritePre * :%s/\s\+$//e
+endfun
+
+autocmd FileType markdown let b:noStripWhitespace=1
+autocmd Filetype * call EnableStripTrailingWhitespace()
 
 " Pack 'tomtom/foldtext_vim'
 " autocmd vimrc FileType org,tex,latex,markdown,asciidoc packadd foldtext_vim
@@ -598,6 +615,7 @@ nmap <silent> <leader>tt :NERDTreeToggle<CR>
 nmap <silent> <leader>tc :Color<CR>
 nmap <silent> <leader>tf :<C-u>Filetypes<CR>
 nmap <silent> <leader>tu :GundoToggle<CR>
+nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
 
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
