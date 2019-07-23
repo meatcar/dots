@@ -7,6 +7,9 @@
 ;;   (global-hl-line-mode 0)
 ;;   )
 
+;; run with fat garbage heap
+(setq doom-gc-cons-threshold #x20000000) ; 500mb
+
 (setq frame-resize-pixelwise t)
 
 (defvar me/windows-wsl?
