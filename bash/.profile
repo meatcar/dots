@@ -5,3 +5,4 @@ if [[ $TERMINIX_ID ]]; then
 fi
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if [ -e /home/meatcar/.nix-profile/etc/profile.d/nix.sh ]; then . /home/meatcar/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
