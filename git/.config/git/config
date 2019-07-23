@@ -6,9 +6,11 @@
 [alias]
   s = status -sb
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+  ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
+[diff]
+  algorithm = patience
 
 [color]
   branch = auto
@@ -23,8 +25,9 @@
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red bold
-  new = green bold
+  old = red
+  new = green
+  commit = yellow bold
 
 [color "status"]
   added = yellow
@@ -36,11 +39,18 @@
   default = simple
 [github]
   user = meatcar
-  password = 
+  password =
 [mergetool]
   keepBackup = false
 [commit]
-	#gpgsign = true
-  
+  #gpgsign = true
+
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+  helper = /usr/lib/git-core/git-credential-libsecret
+[core]
+  pager = (diff-so-fancy || cat) | less --tabs=4 -RFX
+[color "diff-highlight"]
+  newNormal = green
+  newHighlight = green bold 22
+  oldNormal = red
+  oldHighlight = red bold 52
