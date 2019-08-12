@@ -19,3 +19,4 @@
 ;; (package! poly-ansible)
 ;;
 (package! add-node-modules-path)
+(package! fast-scroll :recipe (:fetcher github :repo "ahungry/fast-scroll"))

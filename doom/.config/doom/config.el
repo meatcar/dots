@@ -9,12 +9,50 @@
 
 (setq frame-resize-pixelwise t)
 
-(setq doom-theme 'doom-dracula
-      doom-font (font-spec :family "Dina" :size 12)
-      doom-serif-font (font-spec :family "Go Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
-      doom-big-font (font-spec :family "Dina" :size 18)
-      display-line-numbers-type nil)
+(defvar me/windows-wsl?
+  (string-match "Microsoft" operating-system-release)
+  "Is Windows Subsystem for Linux?")
+(defvar me/windows?
+  (eq system-type 'windows-nt)
+  "Is Windows?")
+
+;; Theme
+(defun me/windows-dark-theme-p ()
+  "Is Windows running a dark theme"
+  (equal
+   "0\\n"
+   (shell-command-to-string "powershell.exe '(Get-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize).AppsUseLightTheme'")))
+
+(defun me/env-dark-theme-p ()
+  "Is DARK_THEME env var set"
+  t) ;TODO
+
+(defun me/dark-theme-p ()
+  "Should we show a dark theme?"
+  (cond ((or me/windows-wsl? me/windows?) (me/windows-dark-theme-p))
+        (:else (me/env-dark-theme-p))))
+
+(defun me/set-theme ()
+  "Set the theme according to system env"
+  (interactive)
+  (setq doom-theme (if (me/dark-theme-p) 'doom-dracula 'doom-one-light)))
+
+(me/set-theme)
+
+;; Fonts
+(cond
+ (me/windows-wsl?
+  (setq doom-font (font-spec :family "Iosevka SS07" :size 13)
+        doom-serif-font (font-spec :family "Go Mono" :size 14)
+        doom-variable-pitch-font (font-spec :family "Serif" :size 15)
+        doom-big-font (font-spec :family "Iosevka SS07" :size 18)))
+ (:else
+  (setq doom-font (font-spec :family "Dina" :size 12)
+        doom-serif-font (font-spec :family "Go Mono" :size 15)
+        doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
+        doom-big-font (font-spec :family "Dina" :size 18))))
+
+(setq display-line-numbers-type nil)
 
 ;; Smoother scrolling with touchpad
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))))
@@ -22,6 +60,9 @@
 (mouse-wheel-mode nil)
 (mwheel-install)
 (pixel-scroll-mode t)
+;; fast scroll
+(fast-scroll-config)
+(fast-scroll-advice-scroll-functions)
 
 ;; don't dim non-editor windows
 (solaire-global-mode -1)
@@ -63,7 +104,7 @@
 
   (setq org-startup-indented t
         org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
-        org-ellipsis "" ;; folding symbol
+        org-ellipsis "⤵" ;; folding symbol
         org-pretty-entities t
         org-hide-emphasis-markers t
         ;; show actually italicized text instead of /italicized text/
