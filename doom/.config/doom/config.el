@@ -17,14 +17,17 @@
   "Is Windows?")
 
 ;; Theme
-(defun me/windows-dark-theme-p ()
-  "Is Windows running a dark theme"
-  (equal
-   "0\\n"
+(defun me/windows-apps-use-light-theme ()
+  "Value of AppsUseLightTheme in Registry."
+  (string-to-number
    (shell-command-to-string "powershell.exe '(Get-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize).AppsUseLightTheme'")))
 
+(defun me/windows-dark-theme-p ()
+  "Is Windows running a dark theme."
+  (zerop (me/windows-apps-use-light-theme)))
+
 (defun me/env-dark-theme-p ()
-  "Is DARK_THEME env var set"
+  "Is DARK_THEME env var set."
   t) ;TODO
 
 (defun me/dark-theme-p ()
@@ -32,17 +35,19 @@
   (cond ((or me/windows-wsl? me/windows?) (me/windows-dark-theme-p))
         (:else (me/env-dark-theme-p))))
 
-(defun me/set-theme ()
-  "Set the theme according to system env"
-  (interactive)
-  (setq doom-theme (if (me/dark-theme-p) 'doom-dracula 'doom-one-light)))
+(defun me/get-theme ()
+  "Get the theme according to system env."
+  (if (me/dark-theme-p) 'doom-dracula 'doom-one-light))
 
-(me/set-theme)
+(defun me/set-theme ()
+  "Set the theme."
+  (interactive)
+  (load-theme (me/get-theme) t))
 
 ;; Fonts
 (cond
  (me/windows-wsl?
-  (setq doom-font (font-spec :family "Iosevka SS07" :size 13)
+  (setq doom-font (font-spec :family "Iosevka SS07" :size 14)
         doom-serif-font (font-spec :family "Go Mono" :size 14)
         doom-variable-pitch-font (font-spec :family "Serif" :size 15)
         doom-big-font (font-spec :family "Iosevka SS07" :size 18)))
@@ -52,7 +57,9 @@
         doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
         doom-big-font (font-spec :family "Dina" :size 18))))
 
-(setq display-line-numbers-type nil)
+(setq
+ doom-theme (me/get-theme)
+ display-line-numbers-type nil)
 
 ;; Smoother scrolling with touchpad
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))))
