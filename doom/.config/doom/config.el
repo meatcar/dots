@@ -30,19 +30,22 @@
   "Is DARK_THEME env var set."
   t) ;TODO
 
-(defun me/dark-theme-p ()
-  "Should we show a dark theme?"
-  (cond ((or me/windows-wsl? me/windows?) (me/windows-dark-theme-p))
-        (:else (me/env-dark-theme-p))))
+(defun me/dark-theme-p (&optional dark)
+  "Should we show a dark theme? If arg dark is present and 'dark, return t, nil
+  otherwise. If arg dark is absent, return the system theme setting."
+  (cond
+   (dark (eq dark 'dark))
+   ((or me/windows-wsl? me/windows?) (me/windows-dark-theme-p))
+   (:else (me/env-dark-theme-p))))
 
-(defun me/get-theme ()
+(defun me/get-theme (&optional dark)
   "Get the theme according to system env."
-  (if (me/dark-theme-p) 'doom-dracula 'doom-one-light))
+  (if (me/dark-theme-p dark) 'doom-dracula 'doom-one-light))
 
-(defun me/set-theme ()
+(defun me/set-theme (&optional dark)
   "Set the theme."
   (interactive)
-  (load-theme (me/get-theme) t))
+  (load-theme (me/get-theme dark) t))
 
 ;; Fonts
 (cond
