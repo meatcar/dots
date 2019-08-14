@@ -53,6 +53,9 @@ set previewheight=9       " default height for a preview window (def:12)
 
 set wildmode=longest,list:longest
 
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
 set diffopt-=iwhite       " ignore whitespace when diffing
 let &listchars='tab:⇥ ,eol:$,trail:·,extends:>,precedes:<' " set list
 let &fillchars='vert:│,fold: '
@@ -101,7 +104,7 @@ if has ('gui_running')
       set guifont=Fantasque\ Sans\ Mono:h10,Monaco:h10
     else " linux
       set linespace=0
-      set guifont=Fantasque\ Sans\ Mono\ 12,Monospace\ 12,FontAwesome\ 12,EmojiOne\ Color\ 12
+      set guifont=Iosevka\ SS07\ 11,Iosevka\ 11,Monospace\ 11,FontAwesome\ 11,EmojiOne\ Color\ 11
     endif
   elseif has('win32') || has('win64')
     set guifont=Fantasque\ Sans\ Mono:h10,Consolas:h10

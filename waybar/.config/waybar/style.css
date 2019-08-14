@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "xos4 Terminus", 'Font Awesome', Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Inconsolata", 'Font Awesome', Roboto, Helvetica, Arial, sans-serif;
     font-size: 9pt;
     min-height: 0;
 }
@@ -90,6 +90,7 @@ window#waybar {
 }
 
 #network {
+    font-size: 10pt;
     border-color: #2980b9;
 }
 

@@ -35,7 +35,7 @@
     "clock": {
         "format": "{:%k\n%M}",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:%Y\n%m\n%d}"
+        "format-alt": "{:20\n%y\n%m\n%d}"
     },
     "cpu": {
         "format": "{usage}% "
@@ -48,11 +48,11 @@
         // "hwmon-path": "/sys/class/hwmon/hwmon3/temp2_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C ",
-        "format": "  \n{temperatureC}C"
+        "format": "  \n{temperatureC}"
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": " {icon} \n{percent}%",
+        "format": " {icon} \n{percent}",
         "format-icons": [" ", " ", " "],
         "on-click": "brightnessctl -q set 100%",
         "on-click-right": "brightnessctl -q set 1%",
@@ -65,8 +65,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "  \n{capacity}%",
-        "format-discharging": "{icon} \n{capacity}%",
+        "format": "  \n{capacity}",
+        "format-discharging": "{icon} \n{capacity}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -89,8 +89,8 @@
     },
     "pulseaudio": {
         "scroll-step": 4,
-        "format": " {icon}\n{volume}%",
-        "format-bluetooth": " {icon}\n{volume}%",
+        "format": " {icon}\n{volume}",
+        "format-bluetooth": " {icon}\n{volume}",
         "format-muted": "  ",
         "format-icons": {
             "headphones": "",
