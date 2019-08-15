@@ -54,14 +54,19 @@
 (cond
  (me/windows-wsl?
   (setq doom-font (font-spec :family "Iosevka SS07" :size 14)
-        doom-serif-font (font-spec :family "Go Mono" :size 14)
-        doom-variable-pitch-font (font-spec :family "Serif" :size 15)
+        doom-serif-font (font-spec :family "Go Mono")
+        doom-variable-pitch-font (font-spec :family "DejaVu Sans")
         doom-big-font (font-spec :family "Iosevka SS07" :size 18)))
  (:else
   (setq doom-font (font-spec :family "Dina" :size 12)
-        doom-serif-font (font-spec :family "Go Mono" :size 15)
-        doom-variable-pitch-font (font-spec :family "Bitter" :size 15)
-        doom-big-font (font-spec :family "Dina" :size 18))))
+        doom-serif-font (font-spec :family "Go Mono")
+        doom-variable-pitch-font (font-spec :family "SF Pro Text" :size 14)
+        doom-big-font (font-spec :family "Iosevka SS07" :size 20))))
+
+(set-face-attribute 'variable-pitch nil :font doom-variable-pitch-font)
+;; custom iosevka with the ligatures in a custom use area
+;; source: https://github.com/hlissner/doom-emacs/issues/695#issuecomment-402446573
+;; (set-fontset-font t '(#Xe100 . #Xe16f) "Iosevka")
 
 (setq
  doom-theme (me/get-theme)
@@ -130,3 +135,10 @@
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org")
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+
+;; Utility functions
+(defun what-face (pos)
+    (interactive "d")
+        (let ((face (or (get-char-property (point) 'read-face-name)
+            (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
