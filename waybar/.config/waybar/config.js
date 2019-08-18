@@ -4,7 +4,7 @@
     // "height": 30, // Waybar height
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-        "modules-left": ["sway/workspaces", "sway/mode", "custom/scratch", "idle_inhibitor", "custom/spotify"],
+        "modules-left": ["sway/workspaces", "sway/mode", "custom/mail", "custom/spotify"],
     "modules-center": [],
         "modules-right": ["network#icon", "custom/dnscrypt", "custom/net-metered", "network", "temperature", "backlight", "battery", "pulseaudio", "tray", "clock"],
     // Modules configuration
@@ -35,7 +35,7 @@
     "clock": {
         "format": "{:%k\n%M}",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:20\n%y\n%m\n%d}"
+        "format-alt": "{:<small>-%u</small>\n20\n%y\n%m\n%d}"
     },
     "cpu": {
         "format": "{usage}% "
@@ -135,5 +135,12 @@
         "exec-if": "which nmcli",
         "on-click": "$HOME/.local/bin/metered-connection toggle",
         "format-icons": [ "", "" ]
+    },
+    "custom/mail": {
+        "format": "{icon}\n{}",
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/new-mail 2>/dev/null",
+        "exec-if": "test -d $HOME/mail",
+        "format-icons": [ "", "" ]
     }
 }

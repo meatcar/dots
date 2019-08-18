@@ -1,0 +1,57 @@
+#!/bin/sh
+# requires mblaze
+
+MAILDIR=$HOME/mail
+
+mboxicon() {
+    case "$1" in
+        "gmail")    echo -n "";; #"";;
+        "fastmail") echo -n "F";;
+        "zoho")     echo -n "Z";;
+    esac
+}
+
+
+main() {
+    STATUS=""
+    for box in *; do
+        count=$(mlist -N $box/inbox | wc -l)
+        if [[ "$count" -gt 0 ]]; then
+            icon=$(mboxicon $box)
+            STATUS="$STATUS<small>${icon}</small>$count\n"
+        fi
+    done
+    CLASS="read"
+    PERCENTAGE="0"
+    if [[ -n $STATUS ]]; then
+        CLASS="new"
+        PERCENTAGE="100"
+    fi
+    echo -n '{'
+    echo -n '"text":"'$STATUS'",'
+    echo -n '"tooltip":"mail: '$CLASS'",'
+    echo -n '"percentage":'$PERCENTAGE','
+    echo -n '"class":"'$CLASS'"'
+    echo '}'
+}
+
+loop() {
+   cd $MAILDIR
+   main
+   while true; do
+       main
+       sleep 1
+   done
+}
+
+case "$1" in
+   "") loop ;;
+   -h|--help)
+      usage
+      exit
+      ;;
+   *)
+      usage >&2
+      exit 1
+      ;;
+esac

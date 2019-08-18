@@ -40,9 +40,10 @@ window#waybar {
 #idle_inhibitor,
 #custom-scratch,
 #custom-dnscrypt,
-#custom-net-metered {
+#custom-net-metered,
+#custom-mail {
     background: rgba(0, 0, 0, 0.2);
-    padding: 10px 3px;
+    padding: 5px 3px;
     margin: 5px 0;
 }
 
@@ -152,4 +153,11 @@ window#waybar {
 #custom-net-metered.yes {
     color: #ff5555;
     border-color: #ff5555;
+}
+
+#custom-mail.read {
+    color: #777;
+}
+#custom-mail.new {
+    color: #f94;
 }
