@@ -86,11 +86,12 @@
 (solaire-global-mode -1)
 
 (map! :leader
-      :desc "M-x" "SPC" #'execute-extended-command
       (:prefix ("b" . "buffer")
         :desc "Kill buffer" "d" #'kill-this-buffer)
       (:prefix ("t" . "toggle")
         :desc "Theme" "t" #'load-theme))
+
+(setq projectile-project-search-path '("~/git"))
 
 (setq deft-directory "~/Sync/notes"
       deft-recursive t
