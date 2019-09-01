@@ -84,6 +84,7 @@ folder-hook .* mailboxes "+_" \
 set date_format = "%m/%d"
 set index_format = "%S%?X?📎&  ? %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>  %-20.20F  %s"
 set sort = threads                         # like gmail
+set strict_threads = yes
 set sort_aux = reverse-last-date-received  # like gmail
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
@@ -105,7 +106,6 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 
 # Sync email
 macro index,pager O "<shell-escape>mbsync -a<enter>"           "run offlineimap to sync all mail"
-macro index,pager o "<shell-escape>mbsync quick<enter>"           "run offlineimap to sync all mail"
 
 # Saner copy/move dialogs
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"

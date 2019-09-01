@@ -16,7 +16,9 @@ mailboxes +fastmail \
           +fastmail/Sent \
           +fastmail/Drafts \
 
-color status cyan default
+color status blue default
+
+macro index,pager o "<shell-escape>mbsync fastmail<enter>" "run offlineimap to sync mail"
 
 macro index,pager A \
     "<save-message>+fastmail/Archive<enter>" \

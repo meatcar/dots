@@ -12,11 +12,14 @@ alternates denys\.pavlov@zoho\.com info@dnka.ca
 unmailboxes *
 mailboxes +zoho \
           +zoho/inbox \
+          +zoho/Info \
           +zoho/Archive \
           +zoho/Sent \
           +zoho/Drafts \
 
 color status red default
+
+macro index,pager o "<shell-escape>mbsync zoho<enter>" "run offlineimap to sync mail"
 
 macro index,pager A \
     "<save-message>+zoho/Archive<enter>" \

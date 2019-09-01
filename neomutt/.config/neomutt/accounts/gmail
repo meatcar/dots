@@ -16,7 +16,9 @@ mailboxes +gmail \
           +gmail/Sent \
           +gmail/Drafts \
 
-color status green default
+color status white default
+
+macro index,pager o "<shell-escape>mbsync gmail-quick<enter>" "run offlineimap to sync mail"
 
 macro index,pager A \
     "<save-message>+gmail/Archive<enter>" \
