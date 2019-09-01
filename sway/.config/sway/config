@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term konsole
+set $term alacritty
 # hack to stop popups when using wl-clipboard-x11 with alacritty
 for_window [title="^wl-clipboard$"] floating enable
 for_window [app_id="org.kde.kdesu"] floating enable
