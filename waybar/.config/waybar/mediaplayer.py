@@ -39,13 +39,13 @@ def on_metadata(player, metadata, manager):
         track_info = '{artist} - {title}'.format(artist=player.get_artist(),
                                                  title=player.get_title())
 
-    if player.props.status != 'Playing':
+    if player.props.status != 'Playing' and track_info:
         track_info = ' ' + track_info
     write_output(track_info, player)
 
 
 def on_player_appeared(manager, player, selected_player=None):
-    if player is not None and player.name == selected_player:
+    if player is not None and (selected_player is None or player.name == selected_player):
         init_player(manager, player)
     else:
         logger.debug("New player appeared, but it's not the selected player, skipping")

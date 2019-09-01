@@ -1,5 +1,6 @@
 #!/bin/sh
 # requires mblaze
+set -euo pipefail
 
 MAILDIR=$HOME/mail
 
@@ -44,7 +45,7 @@ loop() {
    done
 }
 
-case "$1" in
+case "${1-}" in
    "") loop ;;
    -h|--help)
       usage

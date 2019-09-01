@@ -1,4 +1,6 @@
 #!/bin/sh
+set -euo pipefail
+
 main() {
    line="$@"
    case "$line" in
@@ -29,7 +31,7 @@ loop() {
       done
 }
 
-case "$1" in
+case "${1-}" in
    "") loop ;;
    -h|--help)
       usage
