@@ -9,9 +9,9 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
+set $left  h
+set $down  j
+set $up    k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
@@ -21,8 +21,9 @@ for_window [app_id="org.kde.kdesu"] floating enable
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $bemenu bemenu --fn 'Iosevka 16' --prompt run --ignorecase -b
-set $menu dmenu_path | $bemenu | xargs swaymsg exec
+set $bemenu bemenu-run --fn 'Iosevka 16' --prompt run --ignorecase --bottom --prefix '>'
+set $wofi dmenu_path | wofi --show dmenu -W 300 | xargs swaymsg exec
+set $menu $wofi
 
 ### Output configuration
 #
@@ -123,8 +124,9 @@ default_orientation auto
     # start your launcher
     bindsym $mod+p exec $menu
 
-    # exec wl-clipboard-history -t
-    bindsym $mod+c exec wl-clipboard-history -l 20 | $bemenu | cut -d ',' -f1 | xargs wl-clipboard-history -p | wl-copy
+    # Clipboard History (clear on start)
+    exec rm $HOME/.clipboard.sqlite && wl-clipboard-history -t
+    bindsym $mod+c exec wl-clipboard-history -l 20 | wofi --dmenu --cache /dev/null | cut -d ',' -f1 | xargs wl-clipboard-history -p | wl-copy
 
     # bindsym $mod+Shift+e exec emacsclient -nc
     bindsym $mod+Shift+e exec emacs
@@ -285,7 +287,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command i3status
-    swaybar_command waybar -c ~/.config/waybar/config.js
+    swaybar_command echo
 }
 
 #                         border  bg      text    split   child
@@ -308,3 +310,4 @@ exec systemctl --user import-environment
 exec systemctl --user start sway-session.target
 
 exec dex -a -s "$XDG_CONFIG_HOME"/autostart
+exec waybar --config ~/.config/waybar/config.js
