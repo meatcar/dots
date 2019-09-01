@@ -4,7 +4,7 @@ After=network.target network-online.target dbus.socket
 
 [Service]
 Type=simple
-ExecStart=sh -c 'source %h/.asdf/asdf.sh && imapnotify -c %h/.config/imapnotify/%i.js'
+ExecStart=sh -c 'source %h/.asdf/asdf.sh && $(yarn global bin)/imapnotify -c %h/.config/imapnotify/%i.js'
 Restart=always
 RestartSec=3
 
