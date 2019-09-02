@@ -4,6 +4,7 @@
     font-family: "Inconsolata", 'Font Awesome', Roboto, Helvetica, Arial, sans-serif;
     font-size: 9pt;
     min-height: 0;
+    min-width: 0;
 }
 
 window#waybar {
@@ -160,4 +161,5 @@ window#waybar {
 }
 #custom-mail.new {
     color: #f94;
+    transition-property: color;
 }
