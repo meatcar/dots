@@ -5,6 +5,15 @@ if echo "$@" | grep -Eqv -- '(-f|--from) '; then
 	args='--read-envelope-from'
 fi
 
-MIMEmbellish | tee /tmp/mymsmtp.tmp | msmtp-enqueue.sh "$args" "$@"
+if echo "$@" | grep -Eq -- '--plain'; then
+	PLAIN='TRUE'
+fi
+
+COMMAND="tee /tmp/mymsmtp.tmp"
+if [ -z "$PLAIN" ]; then
+	COMMAND="MIMEmbellish | $COMMAND"
+fi
+
+$COMMAND | msmtp-enqueue.sh "$args" $(echo "$@" | sed 's/--plain//')
 
 echo "$@" > /tmp/mymsmtp.args
