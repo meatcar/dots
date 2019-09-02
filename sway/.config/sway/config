@@ -287,7 +287,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command i3status
-    swaybar_command echo
+    swaybar_command waybar
 }
 
 #                         border  bg      text    split   child
@@ -310,4 +310,3 @@ exec systemctl --user import-environment
 exec systemctl --user start sway-session.target
 
 exec dex -a -s "$XDG_CONFIG_HOME"/autostart
-exec waybar --config ~/.config/waybar/config.js
