@@ -41,6 +41,10 @@ end
 # alias ls
 alias ls 'ls --group-directories-first --color --classify'
 
+if command -qs bat
+    set -x MANPAGER "sh -c 'col -b | bat -l man -p'"
+end
+
 # color man
 set -x LESS_TERMCAP_md (printf "\e[01;31m")
 set -x LESS_TERMCAP_me (printf "\e[0m")
