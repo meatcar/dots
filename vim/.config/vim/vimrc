@@ -49,6 +49,7 @@ if exists('+breakindent') " move soft-wrapped lines to match the indent level.
 endif
 
 set splitbelow            " place the new split below the current file
+set splitright            " place the new split to the right of the current file
 set previewheight=9       " default height for a preview window (def:12)
 
 set wildmode=longest,list:longest
@@ -104,7 +105,7 @@ if has ('gui_running')
       set guifont=Fantasque\ Sans\ Mono:h10,Monaco:h10
     else " linux
       set linespace=0
-      set guifont=Iosevka\ SS07\ 11,Iosevka\ 11,Monospace\ 11,FontAwesome\ 11,EmojiOne\ Color\ 11
+      set guifont=Iosevka\ SS07\ 10,Iosevka\ 10,Monospace\ 10,FontAwesome\ 10,EmojiOne\ Color\ 10
     endif
   elseif has('win32') || has('win64')
     set guifont=Fantasque\ Sans\ Mono:h10,Consolas:h10
@@ -159,6 +160,9 @@ if exists('*packager#init')
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   "}}}
 
+  " Completion {{{
+  " }}}
+
   " Git {{{
   Pack 'tpope/vim-rhubarb'  " auto-complete Github issues in fugitive
   Pack 'jreybert/vimagit'   " git UI like emacs magit
@@ -171,7 +175,7 @@ if exists('*packager#init')
   Pack 'junegunn/vim-easy-align'                       " align things easily
   Pack 'Olical/vim-enmasse'                            " mass edit every line in a quickfix
   Pack 'editorconfig/editorconfig-vim'
-  Pack 'w0rp/ale'                                      " async error checking
+  Pack 'dense-analysis/ale'                            " async error checking
   Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'which fzf && yes \| ./install'}
   Pack 'junegunn/fzf.vim'                              " fuzzy completion of all the things
   Pack 'justinmk/vim-dirvish'                          " nice simple file browser
@@ -181,6 +185,7 @@ if exists('*packager#init')
   Pack 'kshenoy/vim-signature'                         " show marks in the SignColumn
   Pack 'scrooloose/nerdtree'                           " tree sidebar
   Pack 'janko/vim-test'                                " run tests easily
+  Pack 'https://git.danielmoch.com/vim-smartsplit.git' " Split smartly based on terminal width
   "}}}
 
   " Tmux {{{
@@ -194,8 +199,9 @@ if exists('*packager#init')
   Pack 'mhinz/vim-startify'           " startup screen
   Pack 'flazz/vim-colorschemes'       " all the colorschemes
   Pack 'rainglow/vim'                 " more colorschemes
-  Pack 'vim-airline/vim-airline-themes'
-  Pack 'vim-airline/vim-airline'      " pretty status-line
+  " Pack 'vim-airline/vim-airline-themes'
+  " Pack 'vim-airline/vim-airline'      " pretty status-line
+  Pack 'rbong/vim-crystalline'        " pretty and fast status-line
   Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
   Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
@@ -228,6 +234,7 @@ endif
 " Package Settings {{{
 
 " Whichkey {{{
+set timeoutlen=500     " speed up whichkey
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 nmap <silent> <leader>          :<c-u>WhichKey         '<leader>'<CR>
@@ -380,9 +387,101 @@ let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#close_symbol = '×'
 "}}}
 
+" vim-crystalline {{{
+let g:crystalline_enable_sep = has('gui_running')?1:0
+let g:crystalline_separators = ['', '']
+let g:crystalline_tab_separator = ''
+let g:crystalline_tab_mod = '+'
+let g:crystalline_mode_labels = {
+      \ 'n': ' NORMAL ',
+      \ 'i': ' INSERT ',
+      \ 'v': ' VISUAL ',
+      \ 'R': ' REPLACE ',
+      \ '':  '',
+      \ }
+function! StatusEncoding()
+  let l:enc = &fenc!=#"" ? &fenc : &enc
+  return l:enc == "utf-8" ? "" : " ".l:enc
+endfunction
+
+function! StatusFileType()
+  if &filetype == ""
+    return "no ft"
+  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
+    return WebDevIconsGetFileTypeSymbol()
+  else
+    return &filetype
+  endif
+endfunction
+
+function! StatusFileFormat()
+  if &fileformat == "unix"
+    return ""
+  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
+    return " ".WebDevIconsGetFileFormatSymbol()
+  else
+    return " ".&fileformat
+  endif
+endfunction
+
+function! StatusLine(current, width)
+  let l:rsep = g:crystalline_enable_sep>0?'':'|'
+  let l:lsep = g:crystalline_enable_sep>0?'':'|'
+  let l:s = ''
+
+  if a:current
+    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+  else
+    let l:s .= '        '. l:rsep
+  endif
+  let l:s .= ' %f '
+  let l:s .= '%{&modified?"+ ":""}'
+  let l:s .= '%{&buftype!=""?"'.l:rsep.' ".&buftype." ":""}'
+  let l:s .= '%w'
+  let l:s .= '%{&readonly?"'.l:rsep.' ro ":""}'
+
+  if a:current
+    let l:s .= crystalline#right_sep('', 'Fill')
+    let l:s .= '%{fugitive#head()!=""?"  ".fugitive#head()." '.l:rsep.'":""}'
+  else
+    let l:s .= l:rsep
+  endif
+
+  let l:s .= '%='
+  if a:current
+    let l:s .= crystalline#left_sep('', 'Fill') . '%{&paste?" PASTE ":""}%{&spell?" SPELL ":""}'
+    let l:s .= crystalline#left_mode_sep('')
+  else
+    let l:s .= l:lsep
+  endif
+  if a:width > 80
+    let l:s .= ' %{StatusFileType()}'
+    let l:s .= '%{StatusEncoding()}'
+    let l:s .= '%{StatusFileFormat()}'
+    let l:s .= ' L%l %P '
+  else
+    let l:s .= ' '
+  endif
+
+  return l:s
+endfunction
+
+function! TabLine()
+  return crystalline#bufferline(0, 0, 1)
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+" let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'papercolor'
+
+set laststatus=2
+" set showtabline=2
+" set guioptions-=e    " show tabline in gvim too
+" }}}
+
 " comfortable motion {{{
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
 " }}}
 
 " polyglot {{{
@@ -460,19 +559,21 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
 "}}}
 
 " Colors {{{
-set background=dark
+" set background=dark
 let ayucolor="dark"
-let g:airline_theme='deus'
 if has('gui_running')
-  colorscheme github-contrast
+  set background=light
+  colorscheme PaperColor
+  let g:airline_theme='papercolor'
 else
+  set background=dark
   colorscheme github-contrast
-
-  " Fix old themes colouring SignColumn an ugly grey:
-  autocmd vimrc VimEnter * highlight clear SignColumn
-  hi! link SignColumn LineNr
+  let g:airline_theme='deus'
 endif
 
+" Fix old themes colouring SignColumn an ugly grey:
+autocmd vimrc VimEnter * highlight clear SignColumn
+hi! link SignColumn LineNr
 "}}}
 
 " Filetypes, Syntaxes, and AutoCMDs {{{
@@ -581,7 +682,13 @@ nnoremap <leader><Space> :<C-U>
 
 nnoremap <leader>vi :<C-U>PackInstall<CR>
 nnoremap <leader>vc :<C-U>PackClean<CR>
-nnoremap <leader>vr :<C-U>Source<CR>
+nnoremap <leader>vr :<C-U>source ~/.vimrc<CR>
+nnoremap <leader>ve :<C-U>e $XDG_CONFIG_HOME/vim/vimrc<CR>
+
+" help mappings from doom-emacs
+nnoremap <leader>hf :Help<Space>
+nnoremap <leader>hv :Help<Space>
+nnoremap <leader>hh :Help<Space>
 
 nnoremap <leader>qq :<C-U>q<CR>
 nnoremap <leader>qw :<C-U>wq<CR>
@@ -623,16 +730,13 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " typo corrections
 nmap q: :q<cr>
-command! Source :source ~/.vimrc " source
-" vertical split help
-command! -nargs=* -complete=help Vhelp :vert bo help <args>
 
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nmap <silent> <leader>gg :Gstatus<CR>
+nmap <silent> <leader>gg :CmdSplit Gstatus<CR>
 
 nmap <silent> <leader>tt :NERDTreeToggle<CR>
 nmap <silent> <leader>tc :Color<CR>
@@ -646,6 +750,16 @@ nmap <silent> <leader>rts :TestSuite<CR>
 nmap <silent> <leader>rtr :TestLast<CR>
 nmap <silent> <leader>rtv :TestVisit<CR>
 
+nmap <silent> <leader>wq :hide<CR>
+nmap <silent> <leader>wd :hide<CR>
+nmap <silent> <leader>wj <C-j>j
+nmap <silent> <leader>wk <C-k>k
+nmap <silent> <leader>wl <C-w>l
+nmap <silent> <leader>wh <C-w>h
+nmap <silent> <leader>ws :split<CR>
+nmap <silent> <leader>wv :vsplit<CR>
+nmap <silent> <leader>wz <C-w><T>
+
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
 
@@ -653,8 +767,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has('gui_running')
-  packadd fontzoom
   let g:fontzoom_no_default_key_mappings = 1
+  packadd vim-fontzoom
   nmap <silent> <C-ScrollWheelUp>	<Plug>(fontzoom-larger)
   nmap <silent> <leader>+	<Plug>(fontzoom-larger)
   nmap <silent> <leader>=	<Plug>(fontzoom-larger)
