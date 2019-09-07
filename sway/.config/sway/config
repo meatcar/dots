@@ -18,12 +18,17 @@ set $term alacritty
 # hack to stop popups when using wl-clipboard-x11 with alacritty
 for_window [title="^wl-clipboard$"] floating enable
 for_window [app_id="org.kde.kdesu"] floating enable
+for_window [title="Farge"] floating enable
+
+# Colors
+set $hlcolor '#FF8888'
+set $bgcolor '#888888'
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $bemenu bemenu-run --fn 'Iosevka 16' --prompt run --ignorecase --bottom --prefix '>'
+set $bemenu bemenu-run --fn 'Iosevka 16' --prompt run --ignorecase --bottom --prefix '>' --tf $hlcolor --ff $hlcolor --hf $hlcolor
 set $wofi dmenu_path | wofi --show dmenu -W 300 | xargs swaymsg exec
-set $menu $wofi
+set $menu $bemenu
 
 ### Output configuration
 #
@@ -116,6 +121,7 @@ default_orientation auto
 #
     # start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec cwd-term $term
     bindsym $mod+e exec nemo
 
     # kill focused window
@@ -125,11 +131,16 @@ default_orientation auto
     bindsym $mod+p exec $menu
 
     # Clipboard History (clear on start)
-    exec rm $HOME/.clipboard.sqlite && wl-clipboard-history -t
-    bindsym $mod+c exec wl-clipboard-history -l 20 | wofi --dmenu --cache /dev/null | cut -d ',' -f1 | xargs wl-clipboard-history -p | wl-copy
+    # exec rm $HOME/.clipboard.sqlite && wl-clipboard-history -t
+    # bindsym $mod+c exec wl-clipboard-history -l 20 | wofi --dmenu --cache /dev/null | cut -d ',' -f1 | xargs wl-clipboard-history -p | wl-copy
 
-    # bindsym $mod+Shift+e exec emacsclient -nc
-    bindsym $mod+Shift+e exec emacs
+    # Color Picker
+    bindsym $mod+Shift+c exec farge
+    # Editor
+    bindsym $mod+g exec gvim
+    bindsym $mod+Shift+g exec emacs
+    # bindsym $mod+Shift+g exec emacsclient -nc
+
     bindsym $mod+Shift+s exec slurp | xargs -i grim -g {} - | wl-copy
 
     bindsym $mod+n exec makoctl dismiss
@@ -147,12 +158,15 @@ default_orientation auto
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    bindsym XF86AudioRaiseVolume exec volumectl raise
+    bindsym XF86AudioLowerVolume exec volumectl lower
+    bindsym XF86AudioMute exec volumectl mute
+    bindsym XF86MonBrightnessUp exec lightctl raise
+    bindsym XF86MonBrightnessDown exec lightctl lower
+
+    for_window [title="avizo"] border pixel 0
+    for_window [title="avizo"] sticky toggle
+    no_focus [title="avizo"]
 
 #
 # Moving around:
@@ -283,25 +297,24 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command i3status
-    swaybar_command waybar
-}
+# bar {
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     # status_command i3status
+# }
 
-#                         border  bg      text    split   child
+#                         border   bg       text     split    child
 ## Colors (Light Borders)
-# client.focused          #f3f3f3 #f3f3f3 #000000 #f3f3f3 #f3f3f3
-# client.focused_inactive #888899 #888899 #ffffff #888899 #888899
-# client.unfocused        #888888 #888888 #000000 #888888 #888888
-# client.urgent           #ffaa55 #ffaa55 #ffffff #ffaa55 #ffaa55
+# client.focused          #f3f3f3  #f3f3f3  #000000  #f3f3f3  #f3f3f3
+# client.focused_inactive #888899  #888899  #ffffff  #888899  #888899
+# client.unfocused        #888888  #888888  #000000  #888888  #888888
+# client.urgent           #ffaa55  #ffaa55  #ffffff  #ffaa55  #ffaa55
 
 ## Colors (Dark Borders)
-client.focused            #000000 #888888 #000000 #884488 #888888
-client.focused_inactive   #000000 #323232 #ffffff #442244 #323232
-client.unfocused          #000000 #101010 #f3f3f3 #000000 #101010
-client.urgent             #ffaa55 #ffaa55 #ffffff #ffaa55 #ffaa55
+client.focused            $hlcolor $hlcolor #000000  #884488  $hlcolor
+client.focused_inactive   #000000  #323232  #ffffff  #442244  #323232
+client.unfocused          #000000  #101010  #f3f3f3  #000000  #101010
+client.urgent             #ffaa55  #ffaa55  #ffffff  #ffaa55  #ffaa55
 
 # misc config
 include /etc/sway/config.d/*
@@ -309,4 +322,5 @@ include /etc/sway/config.d/*
 exec systemctl --user import-environment
 exec systemctl --user start sway-session.target
 
+exec waybar
 exec dex -a -s "$XDG_CONFIG_HOME"/autostart
