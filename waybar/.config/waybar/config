@@ -1,5 +1,4 @@
-{
-    "layer": "bottom",
+{ "layer": "top",
     "position": "right",
     "modules-left": ["sway/workspaces", "sway/mode", "custom/mail", "custom/spotify"],
     "modules-center": [],

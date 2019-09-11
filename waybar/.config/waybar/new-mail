@@ -19,9 +19,15 @@ main() {
         count=$(mlist -N $box/inbox | wc -l)
         if [[ "$count" -gt 0 ]]; then
             icon=$(mboxicon $box)
-            STATUS="$STATUS<small>${icon}</small>$count\n"
+            text="<small>${icon}</small>$count"
+            if [[ -n "$STATUS" ]]; then
+               STATUS="$STATUS\n$text"
+            else
+               STATUS="$text"
+            fi
         fi
     done
+    # STATUS=$(echo -n "$STATUS" | tail -n+2)
     CLASS="read"
     PERCENTAGE="0"
     if [[ -n $STATUS ]]; then
