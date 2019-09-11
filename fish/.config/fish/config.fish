@@ -1,7 +1,7 @@
 set IS_WSL (uname -a | grep Microsoft)
 
 # Get env from systemd
-if [ -z "$IS_WSL" ] && command -qs systemctl 
+if [ -z "$IS_WSL" ] && command -qs systemctl
     systemctl --user show-environment | fishify -x | source -
     systemctl --user import-environment PATH GOPATH
     systemctl --user unset-environment SHLVL PWD # not sure why these get set
@@ -59,6 +59,6 @@ set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
 if [ -z $SSH_AUTH_SOCK ] && [ -z "$IS_WSL" ]
-    /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source - 
+    /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
     systemctl --user import-environment SSH_AUTH_SOCK
 end
