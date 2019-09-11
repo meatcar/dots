@@ -142,7 +142,9 @@ if exists('*packager#init')
   Pack 'tpope/vim-sleuth'              " auto-detect tabs
   Pack 'tpope/vim-eunuch'              " helpful Unix commands (:Rename, etc)
   Pack 'tpope/vim-commentary'          " easy commenting with `gcc`
-  Pack 'tpope/vim-surround'            " surround stuff!
+  " Pack 'tpope/vim-surround'            " surround stuff!
+  Pack 'machakann/vim-sandwich'        " better surround
+  Pack 'wellle/targets.vim'
   Pack 'tpope/vim-repeat'              " repeat all the things
   Pack 'tpope/vim-endwise'             " add `end` do function blocks
   Pack 'tpope/vim-unimpaired'          " complimentary mapping pairs ([b, ]b)
