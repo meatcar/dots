@@ -3,7 +3,7 @@ usage=$(cat <<EOF
 usage: $0 [OPTIONS]
 
 OPTIONS:
-    
+
     -n --next       set next random wallpaper
     -p --prev       set previous random wallpaper
     -d --delete     remove this wallpaper from rotation
@@ -17,10 +17,9 @@ list=${XDG_CACHE_HOME}/wallp/list
 temp="/tmp/wallp.$$"
 trap 'rm -f $temp' QUIT HUP INT TERM
 
-DROPBOX=$HOME/Sync
-WALLFOLDER=$DROPBOX/wallpapers/
+WALLFOLDER=$HOME/Sync/wallpapers/
 WALLLINK=$HOME/.wallpaper
-WAL_BLUR=$WALLLINK-blur.png
+WAL_BLUR=$WALLLINK-lock
 
 refresh() {
     mkdir -p "$(dirname "$list")"
@@ -30,19 +29,23 @@ refresh() {
 }
 
 gvcci-wal() {
-    echo "running gvcci to generate colors"
-    gvcci "$1" --template ~/.gvcci/templates/wal.json \
-        --background dark \
-        --print-output \
-        --symlink-wallpaper \
-        > "$XDG_CACHE_HOME/wal/gvcci.json"
-    echo "running pywal to generate templates"
-    wal -n -f "$XDG_CACHE_HOME/wal/gvcci.json" -q
+    if which gvcci >/dev/null 2>&1; then
+        echo "running gvcci to generate colors"
+        gvcci "$1" --template ~/.gvcci/templates/wal.json \
+            --background dark \
+            --print-output \
+            --symlink-wallpaper \
+            > "$XDG_CACHE_HOME/wal/gvcci.json"
+        echo "running pywal to generate templates"
+        wal -n -f "$XDG_CACHE_HOME/wal/gvcci.json" -q
+    fi
 }
 
 just-wal() {
-    echo "running wal to generate colors & templates"
-    wal -n -i "$1" -q --backend colorz
+    if which wal >/dev/null 2>&1; then
+        echo "running wal to generate colors & templates"
+        wal -n -i "$1" -q --backend colorz
+    fi
 }
 
 if [ ! -e "$list" ]; then
@@ -50,27 +53,35 @@ if [ ! -e "$list" ]; then
 fi
 
 set_wall() {
-    echo 'generating colorscheme' 
+    echo 'generating colorscheme'
     just-wal "$1" &
     WALPID=$!
 
     echo 'generating lock image'
-    blur "$1" "$WAL_BLUR" 4 &
+    blur "$1" "$WAL_BLUR" &
     BLURPID=$!
 
     if echo "$1" | grep 'tiling/' >/dev/null; then
         echo 'setting wallpaper (tile)'
-        feh -q --bg-tile "$1"
+        if [ -z "$WAYLAND_DISPLAY" ]; then
+            feh -q --bg-tile "$1"
+        fi
     else
         echo 'setting wallpaper (fill)'
-        feh --bg-fill "$1"
+        if [ -z "$WAYLAND_DISPLAY" ]; then
+            feh --bg-fill "$1"
+        fi
     fi
     ln -sf "$1" "$WALLLINK"
 
-    if which gsettings >/dev/null 2>&1; then 
+    if which gsettings >/dev/null 2>&1; then
         echo 'setting gnome background';
         gsettings set org.gnome.desktop.background picture-uri "$1"
         gsettings set org.gnome.desktop.screensaver picture-uri "$WALLLINK"
+    fi
+
+    if pgrep sway >/dev/null 2>&1; then
+        swaymsg reload
     fi
 
     echo waiting on colorscheme...
@@ -123,7 +134,7 @@ case $# in
                     set_wall "$1"
                 fi
                 ;;
-        esac 
+        esac
         ;;
     0)
         readlink -f "$WALLLINK"

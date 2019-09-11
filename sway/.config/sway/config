@@ -21,21 +21,24 @@ for_window [app_id="org.kde.kdesu"] floating enable
 for_window [title="Farge"] floating enable
 
 # Colors
-set $hlcolor '#FF8888'
+set $hlcolor '#BA5E50'
 set $bgcolor '#888888'
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $bemenu bemenu-run --fn 'Iosevka 16' --prompt run --ignorecase --bottom --prefix '>' --tf $hlcolor --ff $hlcolor --hf $hlcolor
 set $wofi dmenu_path | wofi --show dmenu -W 300 | xargs swaymsg exec
-set $menu $bemenu
+set $fzf_opts --multi --reverse --border --cycle
+set $fzf fzf-wrap-exec "dmenu_path | fzf $fzf_opts --history=$HOME/.cache/sway/launch-hist"
+for_window [app_id="fzf"] floating enable, border none
+set $menu $fzf
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $HOME/.wallpaper fill
 
-font pango:SF Pro Display Light 11
+font pango:Roboto 9
 titlebar_padding 12 6
 title_align left
 
@@ -126,6 +129,7 @@ default_orientation auto
 
     # kill focused window
     bindsym $mod+d kill
+    bindsym $mod+Shift+d exec fzf-wrap-exec "ps -f -U $USER | sed 1d | fzf $fzf_opts | awk '{print \$2}' | xargs kill"
 
     # start your launcher
     bindsym $mod+p exec $menu
@@ -133,6 +137,8 @@ default_orientation auto
     # Clipboard History (clear on start)
     # exec rm $HOME/.clipboard.sqlite && wl-clipboard-history -t
     # bindsym $mod+c exec wl-clipboard-history -l 20 | wofi --dmenu --cache /dev/null | cut -d ',' -f1 | xargs wl-clipboard-history -p | wl-copy
+    exec clipman -d 2>&1 >/dev/null
+    bindsym $mod+v exec clipman -s
 
     # Color Picker
     bindsym $mod+Shift+c exec farge
@@ -164,6 +170,9 @@ default_orientation auto
     bindsym XF86MonBrightnessUp exec lightctl raise
     bindsym XF86MonBrightnessDown exec lightctl lower
 
+    bindsym $mod+x exec swaylock
+
+    exec avizo-service
     for_window [title="avizo"] border pixel 0
     for_window [title="avizo"] sticky toggle
     no_focus [title="avizo"]
@@ -222,11 +231,7 @@ default_orientation auto
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+v splitv
-    bindsym $mod+Shift+v splith
+    bindsym $mod+Shift+v split toggle
 
     # Switch the current container between different layout styles
     bindsym $mod+Shift+t layout stacking
@@ -249,13 +254,12 @@ default_orientation auto
     bindsym $mod+grave fullscreen disable, \
         floating enable, \
         border pixel $border, \
-        resize set 400 300, \
+        resize set height 400, \
         sticky enable, \
         move window to position 0 0
 
     # mnemonic: youtube
     bindsym $mod+y exec safestream
-    bindsym $mod+x sticky toggle
 #
 # Scratchpad:
 #
@@ -293,15 +297,23 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "wallpaper [p|n|r|d]" {
+    bindsym n exec wallp -n, mode default
+    bindsym p exec wallp -p, mode default
+    bindsym r exec wallp -r, mode default
+    bindsym d exec wallp -d, mode default
+}
+bindsym $mod+w mode "wallpaper [p|n|r|d]"
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-# bar {
+bar {
 #     # When the status_command prints a new line to stdout, swaybar updates.
 #     # The default just shows the current date and time.
-#     # status_command i3status
-# }
+    # status_command i3status
+}
 
 #                         border   bg       text     split    child
 ## Colors (Light Borders)
