@@ -1,0 +1,70 @@
+---
+outputMode: active
+scale: 1
+background:
+  red: 0.0
+  green: 0.0
+  blue: 0.0
+  opacity: 0.8
+widget:
+  margin:
+    margins:
+      - 40
+      - 40
+      - 40
+      - 40
+    widget:
+      verticalLayout:
+        - launcher:
+            font_size: 32.0
+            length: 1050
+            app_opener: ""
+            term_opener: "alacritty"
+            url_opener: "browser"
+        - horizontalLayout:
+            - margin:
+                margins:
+                  - 0
+                  - 188
+                  - 32
+                  - 32
+                widget:
+                  verticalLayout:
+                    - date:
+                        font_size: 32.0
+                    - clock:
+                        font_size: 128.0
+            - verticalLayout:
+                - margin:
+                    margins:
+                      - 0
+                      - 0
+                      - 86
+                      - 8
+                    widget:
+                      battery:
+                        font_size: 26.0
+                        length: 600
+                - margin:
+                    margins:
+                      - 0
+                      - 0
+                      - 0
+                      - 8
+                    widget:
+                      backlight:
+                        font_size: 26.0
+                        length: 600
+                - margin:
+                    margins:
+                      - 0
+                      - 0
+                      - 0
+                      - 8
+                    widget:
+                      pulseAudio:
+                        font_size: 26.0
+                        length: 600
+        - calendar:
+            font_size: 14.0
+            sections: 3

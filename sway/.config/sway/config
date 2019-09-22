@@ -132,7 +132,8 @@ default_orientation auto
     bindsym $mod+Shift+d exec fzf-wrap-exec "ps -f -U $USER | sed 1d | fzf $fzf_opts | awk '{print \$2}' | xargs kill"
 
     # start your launcher
-    bindsym $mod+p exec $menu
+    bindsym $mod+p exec wldash
+    bindsym $mod+Shift+p exec $menu
 
     # Clipboard History (clear on start)
     # exec rm $HOME/.clipboard.sqlite && wl-clipboard-history -t
