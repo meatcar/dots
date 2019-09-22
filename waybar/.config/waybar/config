@@ -122,7 +122,7 @@
         "format-icons": [ "", "" ]
     },
     "custom/mail": {
-        "format": "{icon}\n{}",
+        "format": "{icon}{}",
         "return-type": "json",
         "exec": "$HOME/.config/waybar/new-mail 2>/dev/null",
         "exec-if": "test -d $HOME/mail",

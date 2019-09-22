@@ -20,11 +20,7 @@ main() {
         if [[ "$count" -gt 0 ]]; then
             icon=$(mboxicon $box)
             text="<small>${icon}</small>$count"
-            if [[ -n "$STATUS" ]]; then
-               STATUS="$STATUS\n$text"
-            else
-               STATUS="$text"
-            fi
+            STATUS="$STATUS\n$text"
         fi
     done
     # STATUS=$(echo -n "$STATUS" | tail -n+2)
