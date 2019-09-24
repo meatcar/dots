@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    neovim
     kakoune
     htop
     mosh
@@ -21,5 +20,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [./pkgs/git];
+  imports = [
+    ./pkgs/git
+    ./pkgs/neovim
+  ];
 }

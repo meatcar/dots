@@ -12,6 +12,17 @@ set directory=$XDG_CACHE_HOME/nvim/swap
 set backupdir=$XDG_CACHE_HOME/nvim/backup
 set viewdir=$XDG_CACHE_HOME/nvim/view
 set runtimepath+=$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after
-set packpath=$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after
+set packpath=$XDG_DATA_HOME/nvim,$VIMRUNTIME
 
-source $XDG_CONFIG_HOME/nvim/config.vim
+if empty(glob($XDG_CACHE_HOME."/nvim/"))
+  silent !mkdir -p &undodir
+  silent !mkdir -p &directory
+  silent !mkdir -p &backupdir
+  silent !mkdir -p &viewdir
+endif
+
+if empty(glob($XDG_DATA_HOME."/nvim/"))
+  silent !mkdir -p $XDG_DATA_HOME/nvim
+endif
+
+runtime config.vim

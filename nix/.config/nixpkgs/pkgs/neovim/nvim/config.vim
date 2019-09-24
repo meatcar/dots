@@ -123,9 +123,9 @@ endif
 
 " Packages {{{
 " auto-install packager {{{
-if empty(glob($XDG_CONFIG_HOME."/nvim/pack/packager/opt/packager"))
+if empty(glob($XDG_DATA_HOME."/nvim/pack/packager/opt/packager"))
   silent !git clone 'https://github.com/kristijanhusak/vim-packager'
-        \ $XDG_CONFIG_HOME"/nvim/pack/packager/opt/packager"
+        \ $XDG_DATA_HOME"/nvim/pack/packager/opt/packager"
 endif
 "}}}
 
@@ -574,7 +574,7 @@ if has('gui_running')
   let g:airline_theme='papercolor'
 else
   set background=dark
-  colorscheme github-contrast
+  colorscheme dracula
   let g:airline_theme='deus'
 endif
 
