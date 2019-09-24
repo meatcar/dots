@@ -1,4 +1,4 @@
-set IS_WSL (uname -a | grep Microsoft)
+set IS_WSL (uname -a | grep -i microsoft)
 
 # Get env from systemd
 if [ -z "$IS_WSL" ] && command -qs systemctl
@@ -7,14 +7,17 @@ if [ -z "$IS_WSL" ] && command -qs systemctl
     systemctl --user unset-environment SHLVL PWD # not sure why these get set
 end
 
+if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
+    fenv source ~/.nix-profile/etc/profile.d/nix.sh
+end
+if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] # home-manager
+    fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+end
+
 if not functions -q fisher # Install fisher if not installed
     set -q XDG_CONFIG_HOME || set -x XDG_CONFIG_HOME "$HOME/.config"
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
-end
-
-if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]
-    fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 end
 
 if [ -n "$fish_user_paths" ]
@@ -22,11 +25,10 @@ if [ -n "$fish_user_paths" ]
 end
 
 if [ -n "$IS_WSL" ] # Running in WSL
-    umask 002 # Fix new file/dir permissions
+    # umask 002 # Fix new file/dir permissions
 
     # enable x11 apps
-    set DISPLAY ':0'
-    export DISPLAY
+    # set -x DISPLAY ':0'
 end
 
 # Customize prompt

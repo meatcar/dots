@@ -5,7 +5,6 @@
     kakoune
     htop
     mosh
-    fish
     tmux
     fzf
     broot
@@ -23,5 +22,6 @@
   imports = [
     ./pkgs/git
     ./pkgs/neovim
+    ./pkgs/fish
   ];
 }
