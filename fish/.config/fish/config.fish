@@ -13,6 +13,10 @@ if not functions -q fisher # Install fisher if not installed
     fish -c fisher
 end
 
+if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]
+    fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+end
+
 if [ -n "$fish_user_paths" ]
     set-fish-user-paths
 end

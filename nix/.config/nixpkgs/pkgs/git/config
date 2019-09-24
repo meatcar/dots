@@ -1,8 +1,4 @@
-[user]
-  email = denys.pavlov@gmail.com
-  name = Denys Pavlov
-  #signingkey = B62B215F735C62909B69EF8AF4584A744A42E48E
-
+# vim: set ft=gitconfig :
 [sendemail]
   smtpserver=/home/meatcar/bin/mymsmtp
   smtpserveroption = --plain
@@ -38,8 +34,6 @@
   added = yellow
   changed = green
   untracked = cyan
-[merge]
-  tool = kompare
 [push]
   default = simple
 [github]
