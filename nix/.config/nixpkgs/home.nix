@@ -5,8 +5,6 @@
     kakoune
     htop
     mosh
-    tmux
-    fzf
     broot
     weechat
     neomutt
@@ -14,14 +12,15 @@
     msmtp
     ripgrep
   ];
+  home.sessionVariables.XDG_RUNTIME_DIR = "/var/run/user/$UID";
   xdg.enable = true;
-  home.sessionVariables.XDG_RUNTIME_DIR = "/run/user/$UID";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   imports = [
     ./pkgs/git
-    ./pkgs/neovim
     ./pkgs/fish
+    ./pkgs/tmux
+    ./pkgs/neovim
   ];
 }
