@@ -2,7 +2,13 @@
 {
   programs.fish = {
     enable = true;
-    shellInit = builtins.readFile ./config.fish;
+    promptInit = ''
+      any-nix-shell fish --info-right | source
+    '';
+    shellInit = ''
+      ${builtins.readFile ./config.fish}
+      eval (starship init fish)
+    '';
   };
 
   xdg.configFile."fish/fishfile".source = ./fishfile;
@@ -10,9 +16,12 @@
     source = ./functions;
     recursive = true;
   };
+  xdg.configFile."starship.toml".source = ./starship.toml;
 
   home.packages = [
+    pkgs.starship
     pkgs.fzf
     pkgs.bat
+    pkgs.any-nix-shell
   ];
 }

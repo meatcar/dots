@@ -31,12 +31,6 @@ if [ -n "$IS_WSL" ] # Running in WSL
     # set -x DISPLAY ':0'
 end
 
-# Customize prompt
-set pure_symbol_prompt '$'
-set pure_symbol_reverse_prompt ':'
-set pure_color_success (set_color green)
-set pure_color_prompt_on_success (set_color green)
-
 set fish_greeting # Disable fish greeting
 fish_vi_key_bindings >/dev/null 2>&1 # pipe error away, fish struggles when Emacs sets TERM=dumb
 
