@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.fish = {
     enable = true;
     promptInit = ''
@@ -18,10 +17,5 @@
   };
   xdg.configFile."starship.toml".source = ./starship.toml;
 
-  home.packages = [
-    pkgs.starship
-    pkgs.fzf
-    pkgs.bat
-    pkgs.any-nix-shell
-  ];
+  home.packages = [ pkgs.starship pkgs.fzf pkgs.bat pkgs.any-nix-shell ];
 }
