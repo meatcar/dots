@@ -1,22 +1,22 @@
 # meatcar's dot files
 
-Supports on Linux and WSL.
+Supports Linux and WSL.
 
-## How to use
+## Installation
 
 1. Install GNU Stow via your favourite package manager.
 2. Run `stow stow`
 3. Run `stow`, followed by any directory in this repo.
 
-Enjoy!
-
-## How to use Nix
+I'm slowly moving my configuration over to Nix. Here's how to use that:
 
 1. Install [Nix](https://nixos.org/nix/download.html)
 1. Install [Nixpkgs](https://nixos.org/nixpkgs/download.html)
-2. Install [Home Manager](https://github.com/rycee/home-manager)
-3. Run `stow nix`
-4. Run `home-manager switch`
+1. Install [Home Manager](https://github.com/rycee/home-manager)
+1. Run `stow nix`
+1. Run `home-manager switch`
+
+Enjoy!
 
 ## What does it look like?
 
