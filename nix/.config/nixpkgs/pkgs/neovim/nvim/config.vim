@@ -281,6 +281,7 @@ let g:ale_fixers = {
       \   'css':        ['stylelint'],
       \   'scss':       ['stylelint'],
       \   'python':     ['autopep8'],
+      \   'nix':        ['nixfmt'],
       \}
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1

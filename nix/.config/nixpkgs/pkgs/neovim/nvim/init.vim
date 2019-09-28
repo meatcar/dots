@@ -15,10 +15,10 @@ set runtimepath+=$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after
 set packpath=$XDG_DATA_HOME/nvim,$VIMRUNTIME
 
 if empty(glob($XDG_CACHE_HOME."/nvim/"))
-  silent !mkdir -p &undodir
-  silent !mkdir -p &directory
-  silent !mkdir -p &backupdir
-  silent !mkdir -p &viewdir
+  call mkdir($XDG_CACHE_HOME."/nvim/undo", "p")
+  call mkdir($XDG_CACHE_HOME."/nvim/swap", "p")
+  call mkdir($XDG_CACHE_HOME."/nvim/backup", "p")
+  call mkdir($XDG_CACHE_HOME."/nvim/view", "p")
 endif
 
 if empty(glob($XDG_DATA_HOME."/nvim/"))

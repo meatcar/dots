@@ -10,6 +10,9 @@ end
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
     fenv source ~/.nix-profile/etc/profile.d/nix.sh
 end
+if [ $NIX_PATH[1] != "$HOME/.nix-defexpr/channels" ]
+    set -ax NIX_PATH $HOME/.nix-defexpr/channels
+end
 if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] # home-manager
     fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 end
