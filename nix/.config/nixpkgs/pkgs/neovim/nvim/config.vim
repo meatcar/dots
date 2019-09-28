@@ -184,6 +184,7 @@ if exists('*packager#init')
   Pack 'junegunn/vim-easy-align'                       " align things easily
   Pack 'Olical/vim-enmasse'                            " mass edit every line in a quickfix
   Pack 'editorconfig/editorconfig-vim'
+  Pack 'desmap/ale-sensible'                           " sensible ALE defaults
   Pack 'dense-analysis/ale'                            " async error checking
   Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'which fzf && yes \| ./install'}
   Pack 'junegunn/fzf.vim'                              " fuzzy completion of all the things
@@ -284,8 +285,8 @@ let g:ale_fixers = {
       \   'nix':        ['nixfmt'],
       \}
 let g:ale_fix_on_save = 1
-let g:ale_open_list = 1
-let g:ale_list_window_size = 3
+" let g:ale_open_list = 1
+" let g:ale_list_window_size = 3
 "}}}
 
 " FZF {{{
