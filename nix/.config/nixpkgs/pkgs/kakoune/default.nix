@@ -26,11 +26,13 @@
   };
 
   nixpkgs.overlays = [
-    (self: super: {
-      kakoune = super.kakoune.override {
-        configure = { plugins = [ pkgs.kakounePlugins.parinfer-rust ]; };
-      };
-    })
+    (
+      self: super: {
+        kakoune = super.kakoune.override {
+          configure = { plugins = [ pkgs.kakounePlugins.parinfer-rust ]; };
+        };
+      }
+    )
   ];
 
   home.packages = with pkgs; [ fzf ];

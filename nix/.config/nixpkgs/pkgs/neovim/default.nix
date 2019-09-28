@@ -3,10 +3,10 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
 
-    plugins = with pkgs; [ ];
+    plugins = with pkgs; [];
   };
 
   xdg.configFile."nvim".source = ./nvim;
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [];
 }

@@ -3,7 +3,7 @@
     enable = true;
     userEmail = "me@denys.me";
     userName = "Denys Pavlov";
-    includes = [{ path = ./config; }];
+    includes = [ { path = ./config; } ];
   };
 
   home.packages = [ pkgs.gitAndTools.diff-so-fancy ];

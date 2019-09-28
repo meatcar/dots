@@ -5,5 +5,5 @@
     secureSocket = false;
   };
 
-  home.packages = [ ];
+  home.packages = [];
 }
