@@ -4,7 +4,8 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       htop mosh broot neomutt isync msmtp ripgrep jq rootlesskit docker
-      docker-compose entr weechat nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig;
+      docker-compose entr leiningen weechat nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
+      ;
   };
 
   home.sessionVariables.XDG_RUNTIME_DIR = "/var/run/user/$UID";
@@ -22,10 +23,14 @@
       configure = { availablePlugins, ... }: {
         plugins = builtins.attrValues {
           inherit (availablePlugins) perl tcl ruby guile lua;
-          python = (availablePlugins.python.withPackages (packages:
-            [
-              packages.websocket_client # needed for slack.py
-            ]));
+          python = (
+            availablePlugins.python.withPackages (
+              packages:
+                [
+                  packages.websocket_client # needed for slack.py
+                ]
+            )
+          );
         };
       };
     };
