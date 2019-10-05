@@ -13,6 +13,9 @@
 [diff]
   algorithm = patience
 
+[merge]
+  conflictStyle = diff3
+
 [color]
   branch = auto
   diff = auto

@@ -173,10 +173,11 @@ if exists('*packager#init')
   " }}}
 
   " Git {{{
-  Pack 'tpope/vim-rhubarb'  " auto-complete Github issues in fugitive
-  Pack 'jreybert/vimagit'   " git UI like emacs magit
-  Pack 'tpope/vim-fugitive' " tight git integration
-  Pack 'mhinz/vim-signify'  " show git changes in the gutter
+  Pack 'tpope/vim-rhubarb'       " auto-complete Github issues in fugitive
+  Pack 'jreybert/vimagit'        " git UI like emacs magit
+  Pack 'tpope/vim-fugitive'      " tight git integration
+  Pack 'mhinz/vim-signify'       " show git changes in the gutter
+  Pack 'samoshkin/vim-mergetool' " Better merging (3-way becomes 2-way)
   "}}}
 
   " Nice Utilities {{{
