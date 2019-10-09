@@ -6,5 +6,5 @@
     includes = [ { path = ./config; } ];
   };
 
-  home.packages = [ pkgs.gitAndTools.diff-so-fancy ];
+  home.packages = [ pkgs.gitAndTools.diff-so-fancy pkgs.gitAndTools.lab pkgs.gitAndTools.hub ];
 }
