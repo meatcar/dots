@@ -1,7 +1,8 @@
-set IS_WSL (uname -a | grep -i microsoft)
+set IS_WSL   (uname -a | grep -i microsoft)
+set IS_NIXOS (uname -a | grep NixOS )
 
 # Get env from systemd
-if [ -z "$IS_WSL" ] && command -qs systemctl
+if [ -z "$IS_WSL" ] && [ -z "$IS_NIXOS" ] && command -qs systemctl
     systemctl --user show-environment | fishify -x | source -
     systemctl --user import-environment PATH GOPATH
     systemctl --user unset-environment SHLVL PWD # not sure why these get set
@@ -10,8 +11,8 @@ end
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
     fenv source ~/.nix-profile/etc/profile.d/nix.sh
 end
-if [ $NIX_PATH[1] != "$HOME/.nix-defexpr/channels" ]
-    set -ax NIX_PATH $HOME/.nix-defexpr/channels
+if [ "$NIX_PATH[1]" != "$HOME/.nix-defexpr/channels" ]
+    set -x NIX_PATH "$HOME/.nix-defexpr/channels:$NIX_PATH"
 end
 if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] # home-manager
     fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
@@ -44,9 +45,6 @@ end
 # alias ls
 alias ls 'ls --group-directories-first --color --classify'
 
-if command -qs bat
-    set -x MANPAGER "sh -c 'col -b | bat -l man -p'"
-end
 
 # color man
 set -x LESS_TERMCAP_md (printf "\e[01;31m")
@@ -56,12 +54,14 @@ set -x LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\e[0m")
 set -x LESS_TERMCAP_us (printf "\e[01;32m")
 
+set -x MANPAGER "less -R"
+
 # make less behave with XDG
 [ -d "$XDG_CACHE_HOME"/less ] || mkdir -p "$XDG_CACHE_HOME"/less
 set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
-if [ -z $SSH_AUTH_SOCK ] && [ -z "$IS_WSL" ]
-    /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
+if [ -z $SSH_AUTH_SOCK ] && [ -z "$IS_WSL" ] && command -qs gnome-keyring-daemon
+    gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
     systemctl --user import-environment SSH_AUTH_SOCK
 end
