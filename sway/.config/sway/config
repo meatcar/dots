@@ -125,7 +125,7 @@ default_orientation auto
     # start a terminal
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+Return exec cwd-term $term
-    bindsym $mod+e exec pcmanfm
+    bindsym $mod+e exec thunar
 
     # kill focused window
     bindsym $mod+d kill
@@ -142,10 +142,10 @@ default_orientation auto
     bindsym $mod+v exec clipman -s
 
     # Color Picker
-    bindsym $mod+Shift+c exec farge
+    # bindsym $mod+Shift+c exec farge
     # Editor
-    bindsym $mod+g exec gvim
-    bindsym $mod+Shift+g exec emacs
+    # bindsym $mod+g exec gvim
+    # bindsym $mod+Shift+g exec emacs
     # bindsym $mod+Shift+g exec emacsclient -nc
 
     bindsym $mod+Shift+s exec slurp | xargs -i grim -g {} - | wl-copy
@@ -228,12 +228,12 @@ default_orientation auto
 #
 # Layout stuff:
 #
-    bindsym $mod+Shift+v split toggle
+    bindsym $mod+s split toggle
 
     # Switch the current container between different layout styles
     bindsym $mod+Shift+t layout stacking
     bindsym $mod+t layout tabbed
-    bindsym $mod+s layout toggle split
+    bindsym $mod+Tab layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -331,6 +331,7 @@ include /etc/sway/config.d/*
 exec systemctl --user import-environment
 exec systemctl --user start sway-session.target
 
+exec udiskie --automount --notify --smart-tray --appindicator --menu flat
 exec redshift
 exec mako
 exec waybar

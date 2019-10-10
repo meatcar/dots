@@ -13,7 +13,7 @@ let
     url = "https://github.com/colemickens/nixpkgs-wayland.git";
     ref = "master";
   };
-  waylandPkgs = (import waylandOverlay) pkgs pkgs;
+  waylandPkgs = (import waylandOverlay) {} pkgs;
 in
 {
   system.stateVersion = "19.09";
@@ -23,7 +23,11 @@ in
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 14d";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "daily" ];
     };
 
   };
@@ -58,7 +62,9 @@ in
     opengl = {
       enable = true;
       extraPackages = builtins.attrValues {
-        inherit (pkgs) vaapiIntel vaapiVdpau libvdpau-va-gl intel-media-driver;
+        inherit (pkgs) vaapiIntel vaapiVdpau
+          libvdpau-va-gl intel-media-driver
+          ;
       };
     };
     pulseaudio = {
@@ -101,10 +107,11 @@ in
       extraConfig = ''
         USB_BLACKLIST_PHONE=1
         DISK_DEVICES="nvme0n1"
-        CPU_SCALING_GOVERNOR_ON_BAT=powersave
-        ENERGY_PERF_POLICY_ON_BAT=power
+        TLP_DEFAULT_MODE=BAT
+        TLP_PERSISTENT_DEFAULT=1
       '';
     };
+    gnome3.gnome-settings-daemon.enable = true;
   };
 
   powerManagement = {
@@ -113,15 +120,16 @@ in
 
   fonts = {
     fontconfig.enable = true;
-    fontconfig.penultimate.enable = true;
+    fontconfig.ultimate.enable = true;
     enableDefaultFonts = true;
     enableFontDir = true;
-    fonts = [ pkgs.font-awesome pkgs.dina-font pkgs.iosevka ];
+    fonts = [ pkgs.font-awesome pkgs.dina-font pkgs.iosevka pkgs.nerdfonts ];
   };
   gtk.iconCache.enable = true;
 
   virtualisation.docker = {
     enable = true;
+    enableOnBoot = false;
     autoPrune.enable = true;
   };
 
@@ -134,7 +142,6 @@ in
       pkgs.xdg-desktop-portal-gtk
       waylandPkgs.xdg-desktop-portal-wlr
     ];
-    portal.gtkUsePortal = true;
     sounds.enable = true;
   };
 
@@ -149,13 +156,22 @@ in
         grim slurp
         wl-clipboard
         light
+        gtk2fontsel
+
+        # File Management
         xdg_utils
-        imv
-        pcmanfm
+        udiskie
         fuse_exfat
+        exfat-utils
+        ntfs3g
+        imv
+        hicolor-icon-theme
+        breeze-icons
         ;
+      inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (waylandPkgs) redshift-wayland wldash;
-      inherit (pkgs.gnome3) nautilus;
+      inherit (pkgs.gnome2) gnome_icon_theme;
+      inherit (pkgs.gnome3) adwaita-icon-theme;
     };
     sway.extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -219,27 +235,16 @@ in
       syncthing.enable = true;
       keybase.enable = true;
       kbfs.enable = true;
-      udiskie.enable = true;
     };
 
     gtk = {
       enable = true;
       iconTheme.package = pkgs.papirus-icon-theme;
-      iconTheme.name = "Papirus";
+      iconTheme.name = "Papirus-Dark";
       theme.package = pkgs.plata-theme;
       theme.name = "Plata-Noir-Compact";
-      gtk2.extraConfig = ''
-        gtk-xft-antialias=1
-        gtk-xft-hinting=1
-        gtk-xft-hintstyle="hintslight"
-        gtk-xft-rgba="rgb"
-      '';
-      gtk3.extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
-      };
+      font.package = pkgs.roboto;
+      font.name = "Roboto 9";
     };
 
     imports = [
