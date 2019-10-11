@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchGit {
@@ -17,6 +17,7 @@ let
 in
 {
   system.stateVersion = "19.09";
+  nixpkgs.config.allowUnfree = true;
 
   nix = {
     autoOptimiseStore = true;
@@ -29,7 +30,6 @@ in
       automatic = true;
       dates = [ "daily" ];
     };
-
   };
 
   imports =
@@ -39,23 +39,57 @@ in
     ];
 
   boot = {
+    initrd.kernelModules = [ "i915" ];
+    kernelModules = [ "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "resume" "resume_offset=267520" ];
+    extraModulePackages = [
+      config.boot.kernelPackages.acpi_call
+      config.boot.kernelPackages.nvidia_x11
+    ];
+    kernelParams = [
+      "resume"
+      "resume_offset=267520"
+      "mem_sleep_default=deep"
+      "nouveau.blacklist=0"
+      "acpi_osi=!"
+      "acpi_osi=\"Windows 2015\""
+      "acpi_backlight=vendor"
+      "i915.fastboot=1"
+      "i915.enable_fbc=1"
+      "i915.enable_psr=1"
+      "i915.enable_guc=2"
+    ];
     resumeDevice = "/dev/mapper/cryptroot";
-    blacklistedKernelModules = [ "nouveau" "nvidia" ];
-    kernelModules = [ "coretemp" ];
+    blacklistedKernelModules = [
+      "nouveau"
+      "nvidia"
+      "rivafb"
+      "nvidiafb"
+      "rivatv"
+      "nv"
+      "nvidia_modeset"
+      "nvidia_drm"
+    ];
+    kernel.sysctl = {
+      "vm.swappiness" = lib.mkDefault 1;
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
-        configurationLimit = 3;
+        configurationLimit = 10;
         consoleMode = "auto";
+        editor = false;
       };
     };
   };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
   hardware = {
+    enableRedistributableFirmware = true;
     bluetooth.enable = true;
     brightnessctl.enable = true;
     cpu.intel.updateMicrocode = true;
@@ -73,6 +107,11 @@ in
     };
   };
 
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = null; # managed by tlp
+  };
+
   networking = {
     hostName = "tormund.denys.me";
     wireless.iwd.enable = true;
@@ -81,7 +120,7 @@ in
   time.timeZone = "Asia/Singapore";
   location.provider = "geoclue2";
 
-  environment.systemPackages = [ pkgs.vim pkgs.git ];
+  environment.systemPackages = [ pkgs.vim pkgs.git pkgs.powertop ];
 
   services = {
     fwupd.enable = true;
@@ -91,7 +130,12 @@ in
       enable = true;
       fileSystems = [ "/" ];
     };
-    logind.lidSwitch = "hybrid-sleep";
+    logind = {
+      lidSwitch = "hybrid-sleep";
+      extraConfig = ''
+        HandlePowerKey=hybrid-sleep
+      '';
+    };
     upower.enable = true;
     undervolt = {
       enable = true;
@@ -109,13 +153,11 @@ in
         DISK_DEVICES="nvme0n1"
         TLP_DEFAULT_MODE=BAT
         TLP_PERSISTENT_DEFAULT=1
+        CPU_SCALING_GOVERNOR_ON_AC=powersave
+        CPU_SCALING_GOVERNOR_ON_BAT=powersave
       '';
     };
     gnome3.gnome-settings-daemon.enable = true;
-  };
-
-  powerManagement = {
-    enable = true;
   };
 
   fonts = {
@@ -167,6 +209,10 @@ in
         imv
         hicolor-icon-theme
         breeze-icons
+
+        # audio
+        pavucontrol
+        ncpamixer
         ;
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (waylandPkgs) redshift-wayland wldash;
