@@ -170,7 +170,16 @@ if exists('*packager#init')
   "}}}
 
   " Completion {{{
+  Pack 'ncm2/ncm2'
+  Pack 'roxma/nvim-yarp'
+  Pack 'ncm2/ncm2-bufword'
+  Pack 'ncm2/ncm2-path'
   " }}}
+
+  " Snippets {{{
+  Pack 'SirVer/ultisnips'
+  Pack 'honza/vim-snippets'
+  " "}}}
 
   " Git {{{
   Pack 'tpope/vim-rhubarb'       " auto-complete Github issues in fugitive
