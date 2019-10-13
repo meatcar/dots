@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  imports = [ ../starship ../fzf ];
+  home.packages = [ pkgs.bat pkgs.any-nix-shell ];
+
   programs.fish = {
     enable = true;
     promptInit = ''
@@ -15,7 +18,4 @@
     source = ./functions;
     recursive = true;
   };
-  xdg.configFile."starship.toml".source = ./starship.toml;
-
-  home.packages = [ pkgs.starship pkgs.fzf pkgs.bat pkgs.any-nix-shell ];
 }

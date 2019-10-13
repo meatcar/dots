@@ -4,7 +4,7 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       curl htop mosh broot neomutt isync msmtp ripgrep jq rootlesskit docker
-      docker-compose entr leiningen weechat nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
+      docker-compose entr weechat nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
       ;
   };
 
@@ -17,7 +17,15 @@
   programs.bash.enable = true;
   programs.fzf.enable = true;
 
-  imports = [ ./pkgs/git ./pkgs/fish ./pkgs/tmux ./pkgs/neovim ./pkgs/kakoune ];
+  imports = [
+    ./pkgs/git
+    ./pkgs/fish
+    ./pkgs/zsh
+    ./pkgs/tmux
+    ./pkgs/neovim
+    ./pkgs/kakoune
+    ./pkgs/leiningen
+  ];
 
   nixpkgs.config.packageOverrides = pkgs: {
 

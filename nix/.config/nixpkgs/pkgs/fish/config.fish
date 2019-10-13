@@ -1,21 +1,17 @@
 set IS_WSL   (uname -a | grep -i microsoft)
-set IS_NIXOS (uname -a | grep NixOS )
 
-# Get env from systemd
-if [ -z "$IS_WSL" ] && [ -z "$IS_NIXOS" ] && command -qs systemctl
-    systemctl --user show-environment | fishify -x | source -
-    systemctl --user import-environment PATH GOPATH
-    systemctl --user unset-environment SHLVL PWD # not sure why these get set
-end
+set fish_greeting # Disable fish greeting
+# fish struggles when Emacs sets TERM=dumb
+fish_vi_key_bindings >/dev/null 2>&1
 
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
-    fenv source ~/.nix-profile/etc/profile.d/nix.sh
+    bass source ~/.nix-profile/etc/profile.d/nix.sh
 end
-if [ "$NIX_PATH[1]" != "$HOME/.nix-defexpr/channels" ]
+
+if [ -f ~/.nix-defexpr/channels ] \
+    && [ "$NIX_PATH[1]" != "$HOME/.nix-defexpr/channels" ]
+
     set -x NIX_PATH "$HOME/.nix-defexpr/channels:$NIX_PATH"
-end
-if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] # home-manager
-    fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 end
 
 if not functions -q fisher # Install fisher if not installed
@@ -35,16 +31,9 @@ if [ -n "$IS_WSL" ] # Running in WSL
     # set -x DISPLAY ':0'
 end
 
-set fish_greeting # Disable fish greeting
-fish_vi_key_bindings >/dev/null 2>&1 # pipe error away, fish struggles when Emacs sets TERM=dumb
-
 if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
 end
-
-# alias ls
-alias ls 'ls --group-directories-first --color --classify'
-
 
 # color man
 set -x LESS_TERMCAP_md (printf "\e[01;31m")
@@ -57,11 +46,12 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")
 set -x MANPAGER "less -R"
 
 # make less behave with XDG
-[ -d "$XDG_CACHE_HOME"/less ] || mkdir -p "$XDG_CACHE_HOME"/less
+if [ ! -d "$XDG_CACHE_HOME"/less ]
+    mkdir -p "$XDG_CACHE_HOME"/less
+end
 set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
-if [ -z $SSH_AUTH_SOCK ] && [ -z "$IS_WSL" ] && command -qs gnome-keyring-daemon
+if [ -z $SSH_AUTH_SOCK ] && command -qs gnome-keyring-daemon
     gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
-    systemctl --user import-environment SSH_AUTH_SOCK
 end
