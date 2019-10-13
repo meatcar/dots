@@ -114,7 +114,8 @@ in
 
   networking = {
     hostName = "tormund.denys.me";
-    wireless.iwd.enable = true;
+    # wireless.iwd.enable = true;
+    networkmanager.enable = true;
   };
 
   time.timeZone = "Asia/Singapore";
@@ -149,6 +150,7 @@ in
     tlp = {
       enable = true;
       extraConfig = ''
+        DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
         USB_BLACKLIST_PHONE=1
         DISK_DEVICES="nvme0n1"
         TLP_DEFAULT_MODE=BAT
@@ -165,7 +167,7 @@ in
     fontconfig.ultimate.enable = true;
     enableDefaultFonts = true;
     enableFontDir = true;
-    fonts = [ pkgs.font-awesome pkgs.dina-font pkgs.iosevka pkgs.nerdfonts ];
+    fonts = [ pkgs.font-awesome_4 pkgs.dina-font pkgs.iosevka pkgs.nerdfonts ];
   };
   gtk.iconCache.enable = true;
 
@@ -199,6 +201,7 @@ in
         wl-clipboard
         light
         gtk2fontsel
+        libnotify
 
         # File Management
         xdg_utils
@@ -232,6 +235,7 @@ in
     gnome-disks.enable = true;
 
     fish.enable = true;
+    zsh.enable = true;
   };
 
   systemd.services = {
@@ -259,7 +263,7 @@ in
     shell = "/run/current-system/sw/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "$6$d60LJzot5J$PeWx9sU6rPNEy39uSewpJiV5CfOh9McENT5Crl4WCFyvwL/5jyH7Jn2pENG6pEWPNNFl2Xnp4WGEJEMAU2Mym0";
-    extraGroups = [ "wheel" "video" "docker" ];
+    extraGroups = [ "wheel" "video" "docker" "networkmanager" ];
   };
 
   home-manager.users.meatcar = { pkgs, ... }: {

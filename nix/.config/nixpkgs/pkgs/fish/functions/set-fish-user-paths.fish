@@ -1,19 +1,23 @@
-function addpath 
+function addpath
     set -aU fish_user_paths $argv[1]
 end
 
 function set-fish-user-paths \
     --description "Set fish_user_paths"
 
-    set -eU fish_user_paths 
-    
+    set -eU fish_user_paths
+
     if [ -d $HOME/bin ]
         addpath ~/bin
     end
 
-    addpath $HOME/.local/bin 
+    if [ -d $HOME/.local/bin]
+        addpath $HOME/.local/bin
+    end
 
-    addpath $HOME/.emacs.d/bin # DOOM EMACS
+    if command -qs emacs
+        addpath $HOME/.emacs.d/bin # DOOM EMACS
+    end
 
     if [ -d $HOME/.local/bin ]
         addpath $HOME/.local/bin
