@@ -103,9 +103,10 @@ in
     };
     pulseaudio = {
       enable = true;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
     };
   };
+  nixpkgs.config.pulseaudio = true;
 
   powerManagement = {
     enable = true;
@@ -195,7 +196,6 @@ in
       inherit (pkgs)
         glib
         xwayland swaybg swayidle swaylock
-        waybar
         mako
         grim slurp
         wl-clipboard
@@ -218,7 +218,7 @@ in
         ncpamixer
         ;
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
-      inherit (waylandPkgs) redshift-wayland wldash;
+      inherit (waylandPkgs) redshift-wayland wldash waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
       inherit (pkgs.gnome3) adwaita-icon-theme;
     };
