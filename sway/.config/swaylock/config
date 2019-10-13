@@ -1,7 +1,7 @@
 image=~/.wallpaper-lock
 show-failed-attempts
 
-font=Iosevka SS07 Light
+font=monospace
 line-uses-inside
 
 ring-color=#000000cc

@@ -26,7 +26,7 @@ set $bgcolor '#888888'
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $bemenu bemenu-run --fn 'Iosevka 16' --prompt run --ignorecase --bottom --prefix '>' --tf $hlcolor --ff $hlcolor --hf $hlcolor
+set $bemenu bemenu-run --fn 'monospace 16' --prompt run --ignorecase --bottom --prefix '>' --tf $hlcolor --ff $hlcolor --hf $hlcolor
 set $wofi dmenu_path | wofi --show dmenu -W 300 | xargs swaymsg exec
 set $fzf_opts --multi --reverse --border --cycle
 set $fzf fzf-wrap-exec "dmenu_path | fzf $fzf_opts --history=$HOME/.cache/sway/launch-hist"
@@ -38,7 +38,7 @@ set $menu $fzf
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $HOME/.wallpaper fill
 
-font pango:Roboto 9
+font pango:sansSerif 10
 titlebar_padding 12 6
 title_align left
 
@@ -112,7 +112,7 @@ smart_borders on
 hide_edge_borders smart
 default_border pixel $border
 default_floating_border normal $border px
-titlebar_border_thickness 1
+titlebar_border_thickness $border
 
 focus_follows_mouse yes
 
@@ -320,9 +320,9 @@ bar {
 # client.urgent           #ffaa55  #ffaa55  #ffffff  #ffaa55  #ffaa55
 
 ## Colors (Dark Borders)
-client.focused            $hlcolor $hlcolor #000000  #884488  $hlcolor
-client.focused_inactive   #000000  #323232  #ffffff  #442244  #323232
-client.unfocused          #000000  #101010  #f3f3f3  #000000  #101010
+client.focused            $hlcolor #323232  #ffffff  #884488  $hlcolor
+client.focused_inactive   #323232  #323232  #ffffff  #442244  #323232
+client.unfocused          #101010  #101010  #cccccc  #000000  #101010
 client.urgent             #ffaa55  #ffaa55  #ffffff  #ffaa55  #ffaa55
 
 # misc config

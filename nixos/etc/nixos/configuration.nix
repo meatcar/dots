@@ -164,11 +164,18 @@ in
   };
 
   fonts = {
-    fontconfig.enable = true;
-    fontconfig.ultimate.enable = true;
+    fontconfig = {
+      enable = true;
+      ultimate.enable = true;
+      defaultFonts = {
+        monospace = [ "Dina" "FuraCode Nerd Font" ];
+        sansSerif = [ "Roboto" ];
+        serif = [ "Liberation Serif" ];
+      };
+    };
     enableDefaultFonts = true;
     enableFontDir = true;
-    fonts = [ pkgs.font-awesome_4 pkgs.dina-font pkgs.iosevka pkgs.nerdfonts ];
+    fonts = [ pkgs.font-awesome_4 pkgs.dina-font pkgs.iosevka pkgs.nerdfonts pkgs.roboto ];
   };
   gtk.iconCache.enable = true;
 
