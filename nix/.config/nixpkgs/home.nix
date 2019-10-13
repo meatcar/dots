@@ -10,7 +10,7 @@
 
   xdg.enable = true;
   home.sessionVariables.XDG_RUNTIME_DIR = "/run/user/$UID";
-  #fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.man.enable = true;
