@@ -14,6 +14,7 @@ let
     ref = "master";
   };
   waylandPkgs = (import waylandOverlay) {} pkgs;
+  unstable = import <nixos-unstable> {};
 in
 {
   system.stateVersion = "19.09";
@@ -310,5 +311,6 @@ in
       ./home-manager/modules/alacritty
       ./home-manager/modules/firefox
     ];
+    programs.neovim.package = lib.mkForce unstable.neovim-unwrapped;
   };
 }
