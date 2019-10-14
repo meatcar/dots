@@ -486,7 +486,36 @@ schemes:
       cyan:    '0x00ffff'
       white:   '0xFFFFFF'
 
-colors: *hyper
+  hyper: &moonfly
+    # Default colors
+    primary:
+      background: '0x080808'
+      foreground: '0xb2b2b2'
+    cursor:
+      text: '0x080808'
+      cursor: '0x9e9e9e'
+    # Normal colors
+    normal:
+      black:   '0x373c40'
+      red:     '0xff5454'
+      green:   '0x8cc85f'
+      yellow:  '0xe3c78a'
+      blue:    '0x80a0ff'
+      magenta: '0xce76e8'
+      cyan:    '0x7ee0ce'
+      white:   '0xb2b2b2'
+    # Bright colors
+    bright:
+      black:   '0x9e9e9e'
+      red:     '0xf74782'
+      green:   '0x42cf89'
+      yellow:  '0xcfcfb0'
+      blue:    '0x78c2ff'
+      magenta: '0xae81ff'
+      cyan:    '0x85dc85'
+      white:   '0xeeeeee'
+
+colors: *neon
 
 
   # Dim colors
