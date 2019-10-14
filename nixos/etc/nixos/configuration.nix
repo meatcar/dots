@@ -177,7 +177,9 @@ in
     };
     enableDefaultFonts = true;
     enableFontDir = true;
-    fonts = [ pkgs.font-awesome_4 pkgs.dina-font pkgs.iosevka pkgs.nerdfonts pkgs.roboto ];
+    fonts = builtins.attrValues {
+      inherit (pkgs) font-awesome_4 dina-font iosevka nerdfonts roboto ibm-plex;
+    };
   };
   gtk.iconCache.enable = true;
 
@@ -281,8 +283,17 @@ in
     nixpkgs.config = import ./home-manager/config.nix;
     xdg.configFile."nixpkgs/config.nix".source = ./home-manager/config.nix;
 
+    imports = [
+      ./home-manager/home.nix
+      ./home-manager/pkgs/alacritty
+      ./home-manager/pkgs/firefox
+    ];
+
     xdg.configFile = {
-      "sway".source = ./dots/sway/.config/sway;
+      "sway" = {
+        source = ./dots/sway/.config/sway;
+        onChange = "swaymsg -qt send_tick && swaymsg reload";
+      };
       "swaylock".source = ./dots/sway/.config/swaylock;
       "wldash".source = ./dots/sway/.config/wldash;
       "waybar".source = ./dots/waybar/.config/waybar;
@@ -306,11 +317,6 @@ in
       font.name = "Roboto 9";
     };
 
-    imports = [
-      ./home-manager/home.nix
-      ./home-manager/modules/alacritty
-      ./home-manager/modules/firefox
-    ];
     programs.neovim.package = lib.mkForce unstable.neovim-unwrapped;
   };
 }
