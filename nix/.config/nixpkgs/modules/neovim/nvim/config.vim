@@ -56,6 +56,11 @@ set previewheight=9       " default height for a preview window (def:12)
 
 set wildmode=longest,list:longest
 
+if has('nvim-0.4.0')
+  set pumblend=50           " neovim popup window blend
+  set wildoptions=pum       " use popup window for wildmenu
+endif
+
 if has('nvim-0.3.2') || has("patch-8.1.0360")
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
@@ -67,13 +72,7 @@ let &fillchars='vert:│,fold: '
 " Completion {{{
 set noshowmode shortmess+=c
 set noinfercase
-set completeopt-=longest
-set completeopt+=menuone
-set completeopt-=menu
-if &completeopt !~# 'noinsert\|noselect'
-  set completeopt+=noselect
-endif
-set completeopt-=preview
+set completeopt=noinsert,menuone,noselect
 "}}}
 
 " Folds {{{
@@ -99,13 +98,12 @@ set wrapscan            " searches wrap back to the top of file
 "}}}
 
 " gVIM settings {{{
-if has ('gui_running')
+if has('gui_running')
   " Set the font
   if has('unix')
     let s:uname = system('uname')
     if s:uname ==? 'Darwin\n' " osx
       set guifont=Fantasque\ Sans\ Mono:h10,Monaco:h10
-    elseif has('nvim')
     else " linux
       set linespace=0
       set guifont=Iosevka\ SS07\ 10,Iosevka\ 10,Monospace\ 10,FontAwesome\ 10,EmojiOne\ Color\ 10
@@ -119,7 +117,7 @@ if has ('gui_running')
 endif
 
 if exists('g:GuiLoaded')
-  GuiFont Dina:h9
+  GuiFont monospace:h9
 endif
 "}}}
 
@@ -179,7 +177,12 @@ if exists('*packager#init')
   Pack 'roxma/nvim-yarp'
   Pack 'ncm2/ncm2-bufword'
   Pack 'ncm2/ncm2-path'
+  Pack 'ncm2/ncm2-github'
   Pack 'ncm2/ncm2-ultisnips'
+  Pack 'wellle/tmux-complete.vim'
+  Pack 'ncm2/ncm2-markdown-subscope'
+  Pack 'ncm2/ncm2-html-subscope'
+  Pack 'ncm2/float-preview.nvim'
   " }}}
 
   " Git {{{
@@ -189,6 +192,7 @@ if exists('*packager#init')
   Pack 'mhinz/vim-signify'       " show git changes in the gutter
   Pack 'samoshkin/vim-mergetool' " Better merging (3-way becomes 2-way)
   Pack 'shumphrey/fugitive-gitlab.vim'  " Gitlab support for fugitive
+  Pack 'rhysd/git-messenger.vim'            " pop-up window of git commit under cursor
   "}}}
 
   " Nice Utilities {{{
@@ -217,12 +221,22 @@ if exists('*packager#init')
   Pack 'benmills/vimux'                      " programatically open tmux panes from vim
   "}}}
 
+  " Colorschemes {{{
+  " Pack 'flazz/vim-colorschemes'       " all the colorschemes
+  Pack 'gruvbox-community/gruvbox'    " a theme to keep coming back to.
+  Pack 'danilo-augusto/vim-afterglow'
+  Pack 'ayu-theme/ayu-vim'
+  Pack 'dracula/vim'
+  Pack 'NLKNguyen/papercolor-theme'
+  Pack 'cseelus/vim-colors-lucid'
+  Pack 'owickstrom/vim-colors-paramount'
+  Pack 'liuchengxu/space-vim-theme'
+  Pack 'rakr/vim-two-firewatch'
+  Pack 'atelierbram/Base2Tone-vim'
+  "}}}
+
   " Pretty Packages {{{
   Pack 'mhinz/vim-startify'           " startup screen
-  Pack 'flazz/vim-colorschemes'       " all the colorschemes
-  Pack 'rainglow/vim'                 " more colorschemes
-  " Pack 'vim-airline/vim-airline-themes'
-  " Pack 'vim-airline/vim-airline'      " pretty status-line
   Pack 'rbong/vim-crystalline'        " pretty and fast status-line
   Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
@@ -347,7 +361,6 @@ let g:netrw_localrmdir='rm -r'
 
 " vim-pencil {{{
 let g:pencil_gutter_color = 1
-" let g:airline_section_x = '%{PencilMode()}'
 "}}}
 
 " gist-vim {{{
@@ -390,36 +403,17 @@ function! StartifyEntryFormat()
 endfunction
 "}}}
 
-" vim-airline {{{
-let g:airline_inactive_collapse=0
-let g:airline_inactive_alt_sep=0
-let g:airline_powerline_fonts=1
-let g:airline_detect_spell=1
-let g:airline_mode_map = {}
-
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#vimagit#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#buffers_label = 'buf'
-let g:airline#extensions#tabline#tabs_label = 'tab'
-let g:airline#extensions#tabline#buffer_min_count = 2
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#close_symbol = '×'
-"}}}
-
 " vim-crystalline {{{
-let g:crystalline_enable_sep = has('gui_running')?1:0
+let g:crystalline_enable_sep = 1
+"let g:crystalline_enable_sep = has('gui_running')?1:0
 let g:crystalline_separators = ['', '']
 let g:crystalline_tab_separator = ''
 let g:crystalline_tab_mod = '+'
 let g:crystalline_mode_labels = {
-      \ 'n': ' NORMAL ',
-      \ 'i': ' INSERT ',
-      \ 'v': ' VISUAL ',
-      \ 'R': ' REPLACE ',
+      \ 'n': ' NOR ',
+      \ 'i': ' INS ',
+      \ 'v': ' VIS ',
+      \ 'R': ' RPL ',
       \ '':  '',
       \ }
 function! StatusEncoding()
@@ -472,7 +466,8 @@ function! StatusLine(current, width)
 
   let l:s .= '%='
   if a:current
-    let l:s .= crystalline#left_sep('', 'Fill') . '%{&paste?" PASTE ":""}%{&spell?" SPELL ":""}'
+    let l:s .= crystalline#left_sep('', 'Fill')
+          \. '%{&paste?" PASTE ":""}%{&spell?" SPELL ":""}'
     let l:s .= crystalline#left_mode_sep('')
   else
     let l:s .= l:lsep
@@ -495,7 +490,7 @@ endfunction
 
 let g:crystalline_statusline_fn = 'StatusLine'
 " let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'papercolor'
+let g:crystalline_theme = 'gruvbox'
 
 set laststatus=2
 " set showtabline=2
@@ -580,6 +575,12 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
   let g:paredit_smartjump=1
   "}}}
 
+  " peekaboo {{{
+  " let g:peekaboo_window = "vert bo 30new"
+  let g:peekaboo_delay = 300
+  let g:peekaboo_compact = 1
+  " "}}}
+
   " ncm2 {{{
   autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
 
@@ -604,19 +605,51 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
 " Colors {{{
 " set background=dark
 let ayucolor="dark"
-if has('gui_running')
-  set background=light
-  colorscheme PaperColor
-  let g:airline_theme='papercolor'
-else
-  set background=dark
-  colorscheme dracula
-  let g:airline_theme='deus'
-endif
+let g:gruvbox_italic = 1
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_color_column = 'bg0'
+let g:afterglow_blackout = 1
+let g:afterglow_italic_comments = 1
+let g:afterglow_inherit_background = 1
+let g:dracula_bold = 1
+let g:dracula_italic = 1
+let g:dracula_colorterm = 0
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+let g:two_firewatch_italics = 1
+let g:space_vim_italic = 1
+
+fun! MaybeTransparentBackground()
+  " Make background transparent if background=dark
+  if &background == 'dark'
+    hi Normal       ctermbg=NONE guibg=NONE
+    hi LineNr       ctermbg=NONE guibg=NONE
+    hi SignColumn   ctermbg=NONE guibg=NONE
+    hi FoldColumn   ctermbg=NONE guibg=NONE
+    hi CursorLineNr ctermbg=NONE guibg=NONE
+    hi VertSplit    ctermbg=NONE guibg=NONE
+  endif
+endfun
 
 " Fix old themes colouring SignColumn an ugly grey:
-autocmd vimrc VimEnter * highlight clear SignColumn
-hi! link SignColumn LineNr
+autocmd vimrc ColorScheme * hi clear SignColumn
+      \| hi! link SignColumn LineNr
+      \| call MaybeTransparentBackground()
+
+if has('gui_running')
+  set background=light
+  colorscheme gruvbox
+else
+  set background=dark
+  colorscheme afterglow
+endif
 "}}}
 
 " Filetypes, Syntaxes, and AutoCMDs {{{
@@ -631,11 +664,14 @@ let g:tex_nine_config = {
       \}
 autocmd vimrc FileType tex,latex packadd 'TeX-9'
 
-autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx* packadd emmet-vim | EmmetInstall
+autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx*
+      \ packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
 autocmd vimrc FileType clojure packadd vim-classpath
-      \| packadd vim-salve | packadd vim-cljfmt | packadd vim-fireplace | packadd paredit.vim
-      \| packadd vim-parinfer | packadd vim-sexp | packadd vim-sexp-mappings-for-regular-people
+      \| packadd vim-salve | packadd vim-cljfmt
+      \| packadd vim-fireplace | packadd paredit.vim
+      \| packadd vim-parinfer | packadd vim-sexp
+      \| packadd vim-sexp-mappings-for-regular-people
 
 " Javascript
 autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
@@ -681,7 +717,8 @@ let g:markdown_fenced_languages = [
 "}}}
 
 " Commands and Mappings {{{
-" auto-cd based on file (from http://inlehmansterms.net/2014/09/04/sane-vim-working-directories/)
+" auto-cd based on file from
+" http://inlehmansterms.net/2014/09/04/sane-vim-working-directories/
 
 " follow symlinked file
 function! FollowSymlink()

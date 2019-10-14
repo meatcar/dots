@@ -18,13 +18,14 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       curl htop mosh broot neomutt isync msmtp ripgrep jq rootlesskit docker
-      docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
+      docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl
+      pkgconfig imgcat
       ;
   };
 
   xdg.enable = true;
   home.sessionVariables = lib.mkDefault { XDG_RUNTIME_DIR = "/run/user/$UID"; };
-  fonts.fontconfig.enable = true;
+  home.sessionVariables.EDITOR = "nvim";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.bash.enable = true;
