@@ -169,17 +169,18 @@ if exists('*packager#init')
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   "}}}
 
+  " Snippets {{{
+  Pack 'SirVer/ultisnips'
+  Pack 'honza/vim-snippets'
+  " "}}}
+
   " Completion {{{
   Pack 'ncm2/ncm2'
   Pack 'roxma/nvim-yarp'
   Pack 'ncm2/ncm2-bufword'
   Pack 'ncm2/ncm2-path'
+  Pack 'ncm2/ncm2-ultisnips'
   " }}}
-
-  " Snippets {{{
-  Pack 'SirVer/ultisnips'
-  Pack 'honza/vim-snippets'
-  " "}}}
 
   " Git {{{
   Pack 'tpope/vim-rhubarb'       " auto-complete Github issues in fugitive
@@ -578,6 +579,26 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
   let g:paredit_leader=","
   let g:paredit_smartjump=1
   "}}}
+
+  " ncm2 {{{
+  autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
+
+  " When the <Enter> key is pressed while the popup menu is visible, it only
+  " hides the menu. Use this mapping to close the menu and also start a new
+  " line.
+  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+  " Use <TAB> to select the popup menu:
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+  " UltiSnips integration
+  autocmd vimrc BufNewFile,BufRead * inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
+  let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+  let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+  let g:UltiSnipsRemoveSelectModeMappings = 0
+  " "}}}
 "}}}
 
 " Colors {{{
