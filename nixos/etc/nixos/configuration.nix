@@ -115,6 +115,7 @@ in
 
   networking = {
     hostName = "tormund.denys.me";
+    nameservers = [ "127.0.0.1" ];
     # wireless.iwd.enable = true;
     networkmanager.enable = true;
   };
