@@ -4,7 +4,7 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       curl htop mosh broot neomutt isync msmtp ripgrep jq rootlesskit docker
-      docker-compose entr weechat nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
+      docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl pkgconfig
       ;
   };
 
@@ -21,29 +21,11 @@
     ./pkgs/git
     ./pkgs/fish
     ./pkgs/zsh
+    ./pkgs/ssh
     ./pkgs/tmux
     ./pkgs/neovim
     ./pkgs/kakoune
+    ./pkgs/weechat
     ./pkgs/leiningen
   ];
-
-  nixpkgs.config.packageOverrides = pkgs: {
-
-    weechat = pkgs.weechat.override {
-      configure = { availablePlugins, ... }: {
-        plugins = builtins.attrValues {
-          inherit (availablePlugins) perl tcl ruby guile lua;
-          python = (
-            availablePlugins.python.withPackages (
-              packages:
-                [
-                  packages.websocket_client # needed for slack.py
-                ]
-            )
-          );
-        };
-      };
-    };
-
-  };
 }
