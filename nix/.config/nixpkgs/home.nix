@@ -18,14 +18,14 @@
   programs.fzf.enable = true;
 
   imports = [
-    ./pkgs/git
-    ./pkgs/fish
-    ./pkgs/zsh
-    ./pkgs/ssh
-    ./pkgs/tmux
-    ./pkgs/neovim
-    ./pkgs/kakoune
-    ./pkgs/weechat
-    ./pkgs/leiningen
+    ./modules/git
+    ./modules/fish
+    ./modules/zsh
+    ./modules/ssh
+    ./modules/tmux
+    ./modules/neovim
+    ./modules/kakoune
+    ./modules/weechat
+    ./modules/leiningen
   ];
 }
