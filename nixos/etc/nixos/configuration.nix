@@ -14,11 +14,23 @@ let
     ref = "master";
   };
   waylandPkgs = (import waylandOverlay) {} pkgs;
-  unstable = import <nixos-unstable> {};
+  unstablePkgs = builtins.fetchGit {
+    url = "https://github.com/NixOS/nixpkgs-channels";
+    ref = "nixos-unstable";
+  };
 in
 {
   system.stateVersion = "19.09";
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    pulseaudio = true;
+    packageOverrides = pkgs: {
+      unstable = import unstablePkgs {
+        config = config.nixpkgs.config;
+      };
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+    };
+  };
 
   nix = {
     autoOptimiseStore = true;
@@ -33,11 +45,10 @@ in
     };
   };
 
-  imports =
-    [
-      "${home-manager}/nixos"
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    "${home-manager}/nixos"
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     initrd.kernelModules = [ "i915" ];
@@ -86,9 +97,6 @@ in
     };
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
   hardware = {
     enableRedistributableFirmware = true;
     bluetooth.enable = true;
@@ -107,7 +115,6 @@ in
       package = pkgs.pulseaudioFull;
     };
   };
-  nixpkgs.config.pulseaudio = true;
 
   powerManagement = {
     enable = true;
@@ -220,9 +227,11 @@ in
         fuse_exfat
         exfat-utils
         ntfs3g
-        imv
         hicolor-icon-theme
         breeze-icons
+        imv
+        zathura
+        mpv
 
         # audio
         pavucontrol
@@ -232,15 +241,21 @@ in
       inherit (waylandPkgs) redshift-wayland wldash waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
       inherit (pkgs.gnome3) adwaita-icon-theme;
+      python3 = pkgs.python3.withPackages (
+        packages: [
+          packages.mps-youtube
+          packages.youtube-dl
+        ]
+      );
     };
     sway.extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
+        export SDL_VIDEODRIVER=wayland
       # needs qt5.qtwayland in systemPackages
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
       # Fix for some Java AWT applications (e.g. Android Studio),
       # use this if they aren't displayed properly:
-      export _JAVA_AWT_WM_NONREPARENTING=1
+        export _JAVA_AWT_WM_NONREPARENTING=1
     '';
 
     gnome-disks.enable = true;
@@ -280,13 +295,13 @@ in
   home-manager.users.meatcar = { pkgs, ... }: {
     home.stateVersion = "19.09";
 
-    nixpkgs.config = import ./home-manager/config.nix;
+    nixpkgs.config = config.nixpkgs.config // import ./home-manager/config.nix;
     xdg.configFile."nixpkgs/config.nix".source = ./home-manager/config.nix;
 
     imports = [
       ./home-manager/home.nix
-      ./home-manager/pkgs/alacritty
-      ./home-manager/pkgs/firefox
+      ./home-manager/modules/alacritty
+      ./home-manager/modules/firefox
     ];
 
     xdg.configFile = {
@@ -317,6 +332,6 @@ in
       font.name = "Roboto 9";
     };
 
-    programs.neovim.package = lib.mkForce unstable.neovim-unwrapped;
+    programs.neovim.package = lib.mkForce pkgs.unstable.neovim-unwrapped;
   };
 }
