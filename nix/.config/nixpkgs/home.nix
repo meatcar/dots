@@ -18,6 +18,7 @@
   programs.fzf.enable = true;
 
   imports = [
+    ./system.nix
     ./modules/git
     ./modules/fish
     ./modules/zsh
