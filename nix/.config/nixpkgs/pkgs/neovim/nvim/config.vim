@@ -187,6 +187,7 @@ if exists('*packager#init')
   Pack 'tpope/vim-fugitive'      " tight git integration
   Pack 'mhinz/vim-signify'       " show git changes in the gutter
   Pack 'samoshkin/vim-mergetool' " Better merging (3-way becomes 2-way)
+  Pack 'shumphrey/fugitive-gitlab.vim'  " Gitlab support for fugitive
   "}}}
 
   " Nice Utilities {{{
