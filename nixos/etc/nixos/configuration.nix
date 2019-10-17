@@ -306,8 +306,8 @@ in
 
     imports = [
       ./home-manager/home.nix
-      ./home-manager/pkgs/alacritty
-      ./home-manager/pkgs/firefox
+      ./home-manager/modules/alacritty
+      ./home-manager/modules/firefox
     ];
   };
 }

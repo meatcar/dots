@@ -5,7 +5,7 @@ set fish_greeting # Disable fish greeting
 fish_vi_key_bindings >/dev/null 2>&1
 
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
-    bass source ~/.nix-profile/etc/profile.d/nix.sh
+    fenv source ~/.nix-profile/etc/profile.d/nix.sh
 end
 
 if [ -f ~/.nix-defexpr/channels ] \
