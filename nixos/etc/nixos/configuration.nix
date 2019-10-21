@@ -95,6 +95,8 @@ in
         editor = false;
       };
     };
+
+    cleanTmpDir = true;
   };
 
   hardware = {
@@ -123,7 +125,7 @@ in
 
   networking = {
     hostName = "tormund.denys.me";
-    nameservers = [ "127.0.0.1" ];
+    nameservers = [ "127.0.0.1" "8.8.8.8" ];
     # wireless.iwd.enable = true;
     networkmanager.enable = true;
   };
@@ -170,6 +172,7 @@ in
       '';
     };
     gnome3.gnome-settings-daemon.enable = true;
+    gnome3.gnome-keyring.enable = true;
   };
 
   fonts = {
@@ -177,7 +180,7 @@ in
       enable = true;
       ultimate.enable = true;
       defaultFonts = {
-        monospace = [ "Dina" "FuraCode Nerd Font" ];
+        monospace = [ "Input Mono Narrow" "RobotoMono Nerd Font" ];
         sansSerif = [ "Roboto" ];
         serif = [ "Liberation Serif" ];
       };
@@ -185,7 +188,15 @@ in
     enableDefaultFonts = true;
     enableFontDir = true;
     fonts = builtins.attrValues {
-      inherit (pkgs) font-awesome_4 dina-font iosevka nerdfonts roboto ibm-plex;
+      inherit (pkgs)
+        # icons
+        font-awesome_4 nerdfonts
+        # proportional
+        roboto
+        # monospace
+        dina-font fira-code-symbols
+        iosevka ibm-plex go-font fira-code fantasque-sans-mono monoid input-fonts
+        ;
     };
   };
   gtk.iconCache.enable = true;
@@ -232,6 +243,7 @@ in
         imv
         zathura
         mpv
+        chromium
 
         # audio
         pavucontrol
@@ -240,7 +252,9 @@ in
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (waylandPkgs) redshift-wayland wldash waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
-      inherit (pkgs.gnome3) adwaita-icon-theme;
+      inherit (pkgs.gnome3)
+        adwaita-icon-theme gnome-keyring seahorse
+        ;
       python3 = pkgs.python3.withPackages (
         packages: [
           packages.mps-youtube
@@ -259,6 +273,7 @@ in
     '';
 
     gnome-disks.enable = true;
+    seahorse.enable = true;
 
     fish.enable = true;
     zsh.enable = true;
@@ -280,6 +295,10 @@ in
         TTYVHangup = "yes";
       };
     };
+  };
+
+  security.pam.services.login = {
+    enableGnomeKeyring = true;
   };
 
   users.mutableUsers = false;

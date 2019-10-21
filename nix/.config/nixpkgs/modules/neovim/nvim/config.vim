@@ -762,8 +762,8 @@ nnoremap <leader><Space> :<C-U>
 
 nnoremap <leader>vi :<C-U>PackInstall<CR>
 nnoremap <leader>vc :<C-U>PackClean<CR>
-nnoremap <leader>vr :<C-U>source ~/.vimrc<CR>
-nnoremap <leader>ve :<C-U>e $XDG_CONFIG_HOME/vim/vimrc<CR>
+nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
+nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
 
 " help mappings from doom-emacs
 nnoremap <leader>hf :Help<Space>
