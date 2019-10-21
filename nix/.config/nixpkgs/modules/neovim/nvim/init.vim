@@ -25,4 +25,5 @@ if empty(glob($XDG_DATA_HOME."/nvim/"))
   silent !mkdir -p $XDG_DATA_HOME/nvim
 endif
 
+" $XDG_CONFIG_HOME/nvim/config.vim
 runtime config.vim

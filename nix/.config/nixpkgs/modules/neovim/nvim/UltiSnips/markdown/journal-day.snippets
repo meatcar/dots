@@ -1,34 +1,34 @@
-snippet journal-day "New Journal Page (SELF)"
+snippet journal-day-start "New Journal Page (SELF)"
 _Created `date`_
 
-# Night Report
+## Sleep Report
 
-* I woke up at ${1:8am}.
+* I woke up at ${1:`date +"%l%P"`}.
 * I slept ${2:gloriously}.
 * I thought/dreamt of ${3:unspeakable magic}
 
 ## Morning Gratitude
 _This morning I am grateful for..._
 
-1. ${4}
+1. $4
 
-# Goals of mine that are on my mind.
+## Goals of mine that are on my mind.
 
-1. ${5}
+1. $5
 
-# Today's Targets
+## Today's Targets
 _(Tasks that will move you closer to your goals)_
 
-1. ${6}
+1. $6
 
-# Day's Schedule
+## Day's Schedule
 
 \`\`\`
- ${1} - wakeup, shower, weigh-in, coffee
- `date +"%l%P"` - ${10}
+ $1 - wakeup, shower, weigh-in, coffee
+ `date +"%l"` - $7
    9 - gym (weights -> run; track it)
   10 - start pomodoro
-  11 - starcraft
+  11 - sc2
   12 - food
    1 - pomodoro
    5 - walk
@@ -38,7 +38,7 @@ _(Tasks that will move you closer to your goals)_
    9 - eod review
 \`\`\`
 
-Behind normal by: ${11}
+Behind normal by: $8
 
 **GO GET 'EM, TIGER!**
 
@@ -49,22 +49,27 @@ Behind normal by: ${11}
 
 \`\`\`
 ----
+endsnippet
 
-# Wins
+
+snippet journal-day-end "New Journal Page (SELF)"
+# End-of-day Review
+_Created `date`_
+
+## Wins
 _(Brag)_
 
-* ${12}
+* $1
 
-# Lessons Learned
+## Lessons Learned
 _(Opportunities for Improvement)_
 
-* ${13}
+* $2
 
 ## Evening Gratitude
 _This evening I am grateful for..._
 
-1. ${14}
+1. $3
 
 **Sweet Dreams, see you tomorrow!**
-
 endsnippet
