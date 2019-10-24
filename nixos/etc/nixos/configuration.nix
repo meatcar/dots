@@ -180,7 +180,7 @@ in
       enable = true;
       ultimate.enable = true;
       defaultFonts = {
-        monospace = [ "Input Mono Narrow" "RobotoMono Nerd Font" ];
+        monospace = [ "GoMono Nerd Font" ];
         sansSerif = [ "Roboto" ];
         serif = [ "Liberation Serif" ];
       };
