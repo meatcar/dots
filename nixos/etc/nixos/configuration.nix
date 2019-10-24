@@ -261,6 +261,9 @@ in
           packages.youtube-dl
         ]
       );
+      # spotify
+      inherit (pkgs) spotifyd;
+      inherit (pkgs.unstable) spotify-tui;
     };
     sway.extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
