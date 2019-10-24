@@ -145,6 +145,7 @@ in
     };
     logind = {
       lidSwitch = "hybrid-sleep";
+      lidSwitchDocked = "hybrid-sleep";
       extraConfig = ''
         HandlePowerKey=hybrid-sleep
       '';
