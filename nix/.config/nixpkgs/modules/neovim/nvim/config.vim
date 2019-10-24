@@ -237,7 +237,6 @@ if exists('*packager#init')
 
   " Pretty Packages {{{
   Pack 'mhinz/vim-startify'           " startup screen
-  Pack 'rbong/vim-crystalline'        " pretty and fast status-line
   Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
   Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
@@ -403,100 +402,6 @@ function! StartifyEntryFormat()
 endfunction
 "}}}
 
-" vim-crystalline {{{
-let g:crystalline_enable_sep = 1
-"let g:crystalline_enable_sep = has('gui_running')?1:0
-let g:crystalline_separators = ['', '']
-let g:crystalline_tab_separator = ''
-let g:crystalline_tab_mod = '+'
-let g:crystalline_mode_labels = {
-      \ 'n': ' NOR ',
-      \ 'i': ' INS ',
-      \ 'v': ' VIS ',
-      \ 'R': ' RPL ',
-      \ '':  '',
-      \ }
-function! StatusEncoding()
-  let l:enc = &fenc!=#"" ? &fenc : &enc
-  return l:enc == "utf-8" ? "" : " ".l:enc
-endfunction
-
-function! StatusFileType()
-  if &filetype == ""
-    return "no ft"
-  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
-    return WebDevIconsGetFileTypeSymbol()
-  else
-    return &filetype
-  endif
-endfunction
-
-function! StatusFileFormat()
-  if &fileformat == "unix"
-    return ""
-  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
-    return " ".WebDevIconsGetFileFormatSymbol()
-  else
-    return " ".&fileformat
-  endif
-endfunction
-
-function! StatusLine(current, width)
-  let l:rsep = g:crystalline_enable_sep>0?'':'|'
-  let l:lsep = g:crystalline_enable_sep>0?'':'|'
-  let l:s = ''
-
-  if a:current
-    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
-  else
-    let l:s .= '        '. l:rsep
-  endif
-  let l:s .= ' %f '
-  let l:s .= '%{&modified?"+ ":""}'
-  let l:s .= '%{&buftype!=""?"'.l:rsep.' ".&buftype." ":""}'
-  let l:s .= '%w'
-  let l:s .= '%{&readonly?"'.l:rsep.' ro ":""}'
-
-  if a:current
-    let l:s .= crystalline#right_sep('', 'Fill')
-    let l:s .= '%{fugitive#head()!=""?"  ".fugitive#head()." '.l:rsep.'":""}'
-  else
-    let l:s .= l:rsep
-  endif
-
-  let l:s .= '%='
-  if a:current
-    let l:s .= crystalline#left_sep('', 'Fill')
-          \. '%{&paste?" PASTE ":""}%{&spell?" SPELL ":""}'
-    let l:s .= crystalline#left_mode_sep('')
-  else
-    let l:s .= l:lsep
-  endif
-  if a:width > 80
-    let l:s .= ' %{StatusFileType()}'
-    let l:s .= '%{StatusEncoding()}'
-    let l:s .= '%{StatusFileFormat()}'
-    let l:s .= ' L%l %P '
-  else
-    let l:s .= ' '
-  endif
-
-  return l:s
-endfunction
-
-function! TabLine()
-  return crystalline#bufferline(0, 0, 1)
-endfunction
-
-let g:crystalline_statusline_fn = 'StatusLine'
-" let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'gruvbox'
-
-set laststatus=2
-" set showtabline=2
-" set guioptions-=e    " show tabline in gvim too
-" }}}
-
 " comfortable motion {{{
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
@@ -603,7 +508,6 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
 "}}}
 
 " Colors {{{
-" set background=dark
 let ayucolor="dark"
 let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
@@ -638,18 +542,28 @@ fun! MaybeTransparentBackground()
   endif
 endfun
 
+fun! SetTheme()
+  if &background == 'dark'
+    colorscheme gruvbox
+  else
+    colorscheme gruvbox
+  endif
+endfun
+
+autocmd vimrc OptionSet background call SetTheme()
+
 " Fix old themes colouring SignColumn an ugly grey:
-autocmd vimrc ColorScheme * hi clear SignColumn
+autocmd vimrc ColorScheme *
+      \  hi clear SignColumn
       \| hi! link SignColumn LineNr
       \| call MaybeTransparentBackground()
 
 if has('gui_running')
   set background=light
-  colorscheme gruvbox
 else
   set background=dark
-  colorscheme afterglow
 endif
+call SetTheme()
 "}}}
 
 " Filetypes, Syntaxes, and AutoCMDs {{{
