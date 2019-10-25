@@ -701,9 +701,15 @@ nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
 nnoremap <leader>fr :<C-u>History<CR>
 nnoremap <C-p>      :<C-u>Files<CR>
 nnoremap <leader>ff :<C-u>Files<CR>
+nnoremap <leader>ftt :NERDTreeToggle<CR>
+nnoremap <leader>ftr :NERDTreeRefreshRoot<CR>
+nnoremap <leader>ftf :NERDTreeFind<CR>:wincmd p<CR>
+nnoremap <leader>ftp :NERDTreeVCS<CR>
+nnoremap <leader>ftd :NERDTreeCWD<CR>
 
-nnoremap <leader>pf :<C-u>GFiles<CR>
-nnoremap <leader>pF :<C-u>GFiles?<CR>
+nnoremap <leader>gf :<C-u>GFiles<CR>
+nnoremap <leader>gF :<C-u>GFiles?<CR>
+nnoremap <leader>gtt :NERDTreeVCS<CR>
 
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
@@ -732,7 +738,6 @@ nmap <C-l> <C-W>l
 
 nmap <silent> <leader>gg :CmdSplit Gstatus<CR>
 
-nmap <silent> <leader>tt :NERDTreeToggle<CR>
 nmap <silent> <leader>tc :Color<CR>
 nmap <silent> <leader>tf :<C-u>Filetypes<CR>
 nmap <silent> <leader>tu :MundoToggle<CR>
