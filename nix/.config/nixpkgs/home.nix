@@ -24,8 +24,7 @@
   };
 
   xdg.enable = true;
-  home.sessionVariables = lib.mkDefault {
-    XDG_RUNTIME_DIR = "/run/user/$UID";
+  home.sessionVariables = {
     EDITOR = "nvim";
   };
   # Let Home Manager install and manage itself.
