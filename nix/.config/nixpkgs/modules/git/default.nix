@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
     userEmail = "me@denys.me";
     userName = "Denys Pavlov";
     includes = [ { path = ./config; } ];

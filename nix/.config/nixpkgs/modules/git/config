@@ -50,7 +50,7 @@
   #gpgsign = true
 
 [credential]
-  helper = /usr/lib/git-core/git-credential-libsecret
+  helper = git-credential-libsecret
 [core]
   pager = (diff-so-fancy || cat) | less --tabs=4 -RFX
 [color "diff-highlight"]
