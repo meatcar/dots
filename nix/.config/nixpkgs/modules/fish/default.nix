@@ -13,7 +13,7 @@
     '';
   };
 
-  xdg.configFile."fish/fishfile".source = ./fishfile;
+  xdg.configFile."fish/fishfile".text = builtins.readFile ./fishfile;
   xdg.configFile."fish/functions" = {
     source = ./functions;
     recursive = true;
