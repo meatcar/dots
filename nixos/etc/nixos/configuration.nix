@@ -48,6 +48,7 @@ in
   imports = [
     "${home-manager}/nixos"
     ./hardware-configuration.nix
+    ./modules/networking.nix
   ];
 
   boot = {
@@ -123,17 +124,14 @@ in
     cpuFreqGovernor = null; # managed by tlp
   };
 
-  networking = {
-    hostName = "tormund.denys.me";
-    nameservers = [ "127.0.0.1" "8.8.8.8" ];
-    # wireless.iwd.enable = true;
-    networkmanager.enable = true;
-  };
+  networking.hostName = "tormund.denys.me";
 
   time.timeZone = "Asia/Singapore";
   location.provider = "geoclue2";
 
-  environment.systemPackages = [ pkgs.vim pkgs.git pkgs.powertop ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) vim git powertop pciutils usbutils bind;
+  };
 
   services = {
     fwupd.enable = true;
@@ -158,7 +156,6 @@ in
       uncoreOffset = "-110";
       gpuOffset = "-70";
     };
-    dnscrypt-proxy.enable = true;
     printing.enable = true;
     tlp = {
       enable = true;
