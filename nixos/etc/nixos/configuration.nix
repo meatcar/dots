@@ -31,6 +31,7 @@ in
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
   };
+  documentation.dev.enable = true;
 
   nix = {
     autoOptimiseStore = true;
