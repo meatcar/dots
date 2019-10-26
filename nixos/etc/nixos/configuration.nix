@@ -50,6 +50,7 @@ in
     "${home-manager}/nixos"
     ./hardware-configuration.nix
     ./modules/networking.nix
+    ./modules/keyring.nix
   ];
 
   boot = {
@@ -171,7 +172,6 @@ in
       '';
     };
     gnome3.gnome-settings-daemon.enable = true;
-    gnome3.gnome-keyring.enable = true;
   };
 
   fonts = {
@@ -251,9 +251,7 @@ in
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (waylandPkgs) redshift-wayland wldash waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
-      inherit (pkgs.gnome3)
-        adwaita-icon-theme gnome-keyring seahorse
-        ;
+      inherit (pkgs.gnome3) adwaita-icon-theme;
       python3 = pkgs.python3.withPackages (
         packages: [
           packages.mps-youtube
@@ -275,7 +273,6 @@ in
     '';
 
     gnome-disks.enable = true;
-    seahorse.enable = true;
 
     fish.enable = true;
     zsh.enable = true;
@@ -299,10 +296,6 @@ in
     };
   };
 
-  security.pam.services.login = {
-    enableGnomeKeyring = true;
-  };
-
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;
@@ -321,6 +314,7 @@ in
 
     imports = [
       ./home-manager/home.nix
+      ./home-manager/modules/gnome-keyring.nix
       ./home-manager/modules/alacritty
       ./home-manager/modules/firefox
     ];

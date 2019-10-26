@@ -5,4 +5,9 @@
   home.packages = builtins.attrValues {
     inherit (pkgs) keybase kbfs;
   };
+
+  xdg.configFile."fish/fishfile".text = config.xdg.configFile."fish/fishfile".text + ''
+    # WSL Only:
+    danhper/fish-ssh-agent
+  '';
 }
