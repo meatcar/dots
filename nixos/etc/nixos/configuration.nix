@@ -51,6 +51,7 @@ in
     ./hardware-configuration.nix
     ./modules/networking.nix
     ./modules/keyring.nix
+    # ./modules/ly.nix
   ];
 
   boot = {
@@ -132,7 +133,7 @@ in
   location.provider = "geoclue2";
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) vim git powertop pciutils usbutils bind;
+    inherit (pkgs) vim git powertop pciutils usbutils bind nix-prefetch-git;
   };
 
   services = {
@@ -277,24 +278,6 @@ in
 
     fish.enable = true;
     zsh.enable = true;
-  };
-
-  systemd.services = {
-    ly = {
-      enable = true;
-      description = "TUI display manager";
-      documentation = [ "https://github.com/cylgom/ly" ];
-      after = [ "systemd-user-sessions.service" "plymouth-quit-wait.service" "getty@tty2.service" ];
-      aliases = [ "display-manager.service" ];
-      serviceConfig = {
-        Type = "idle";
-        ExecStart = "${pkgs.ly}/bin/ly";
-        StandadInput = "tty";
-        TTYPath = "/dev/tty2";
-        TTYReset = "yes";
-        TTYVHangup = "yes";
-      };
-    };
   };
 
   users.mutableUsers = false;
