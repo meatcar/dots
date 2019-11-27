@@ -242,6 +242,7 @@ in
         imv
         zathura
         mpv
+        streamlink
         chromium
 
         # audio
