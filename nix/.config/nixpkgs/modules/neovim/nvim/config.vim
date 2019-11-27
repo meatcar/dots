@@ -5,6 +5,8 @@ augroup vimrc
   autocmd!
 augroup END
 
+set shell=sh              " fastest shell!
+
 set t_Co=256              " enable 256-color support
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -162,7 +164,6 @@ if exists('*packager#init')
   Pack 'Konfekt/FoldText'              " Fancy fold texts
   Pack 'Konfekt/FastFold'              " lazy-folds because folding is heavy
   Pack 'aymericbeaumet/symlink.vim'    " edit the actual file when opening symlinks
-  Pack 'yuttie/comfortable-motion.vim' " smooth scrolling
   Pack 'thinca/vim-fontzoom', {'type': 'opt'}  " zoom font in gvim
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   "}}}
@@ -187,12 +188,12 @@ if exists('*packager#init')
 
   " Git {{{
   Pack 'tpope/vim-rhubarb'       " auto-complete Github issues in fugitive
-  Pack 'jreybert/vimagit'        " git UI like emacs magit
-  Pack 'tpope/vim-fugitive'      " tight git integration
-  Pack 'mhinz/vim-signify'       " show git changes in the gutter
-  Pack 'samoshkin/vim-mergetool' " Better merging (3-way becomes 2-way)
-  Pack 'shumphrey/fugitive-gitlab.vim'  " Gitlab support for fugitive
-  Pack 'rhysd/git-messenger.vim'            " pop-up window of git commit under cursor
+  Pack 'tpope/vim-fugitive'            " tight git integration
+  Pack 'mhinz/vim-signify'             " show git changes in the gutter
+  Pack 'samoshkin/vim-mergetool'       " Better merging (3-way becomes 2-way)
+  Pack 'shumphrey/fugitive-gitlab.vim' " Gitlab support for fugitive
+  Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
+  Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
   "}}}
 
   " Nice Utilities {{{
@@ -401,11 +402,6 @@ function! StartifyEntryFormat()
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 "}}}
-
-" comfortable motion {{{
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
-" }}}
 
 " polyglot {{{
 let g:polyglot_disabled = ['markdown']
