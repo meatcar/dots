@@ -2,9 +2,10 @@
 
 url=$(wl-paste)
 echo "$0: trying streamlink"
-streamlink "$url" best --player mpv 2>&1 | tee | grep 'This plugin does not support protected videos'
-if [ $? -eq 0 ]; then
+if streamlink "$url" best --player mpv; then
+	echo "$0: bye"
+else
 	echo "$0: streamlink failed, going for straight mpv"
 	mpv "$url"
+	echo "$0: bye"
 fi
-echo "$0: bye"
