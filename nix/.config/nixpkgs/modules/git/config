@@ -12,6 +12,17 @@
 
 [diff]
   algorithm = patience
+  tool = nvimdiff
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = true
+[mergetool "nvimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [merge]
   conflictStyle = diff3
