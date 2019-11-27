@@ -10,7 +10,8 @@
                   [jonase/eastwood "0.3.6"]
                   [lein-try "0.4.3"]
                   [lein-cloverage "1.1.2"]
-                  [lein-autoreload "0.1.1"]]
+                  [lein-autoreload "0.1.1"]
+                  [venantius/ultra "0.6.0"]]
         :middleware [cider-nrepl.plugin/middleware
                      refactor-nrepl.plugin/middleware]
         :dependencies [[nrepl "0.6.0"]
