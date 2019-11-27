@@ -10,7 +10,6 @@
     ./modules/ssh
     ./modules/tmux
     ./modules/neovim
-    ./modules/kakoune
     ./modules/weechat
     ./modules/leiningen
   ];
