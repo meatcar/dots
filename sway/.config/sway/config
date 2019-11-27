@@ -166,12 +166,12 @@ default_orientation auto
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pamixer --get-volume > /tmp/wobpipe
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pamixer --get-volume > /tmp/wobpipe
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && echo 0 > /tmp/wobpipe
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && echo 0 >> /tmp/wobpipe
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && light -G | cut -d'.' -f1 >> /tmp/wobpipe
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5% && light -G | cut -d'.' -f1 >> /tmp/wobpipe
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
     bindsym $mod+x exec swaylock
 
@@ -338,5 +338,4 @@ exec udiskie --automount --notify --smart-tray --appindicator --menu flat
 exec redshift
 exec mako
 exec waybar
-exec mkfifo /tmp/wobpipe && tail -f /tmp/wobpipe | wob
 exec dex -a -s "$XDG_CONFIG_HOME"/autostart
