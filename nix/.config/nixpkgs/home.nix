@@ -18,7 +18,7 @@
     inherit (pkgs)
       curl htop mosh broot neomutt isync msmtp ripgrep jq rootlesskit docker
       docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl
-      pkgconfig imgcat
+      pkgconfig imgcat direnv
       ;
   };
 
