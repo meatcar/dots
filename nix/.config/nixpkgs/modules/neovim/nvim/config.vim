@@ -727,6 +727,10 @@ omap <leader><tab> <plug>(fzf-maps-o)
 " typo corrections
 nmap q: :q<cr>
 
+" unmap s, which can easily be replaces by cl
+nmap s <Nop>
+xmap s <Nop>
+
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
