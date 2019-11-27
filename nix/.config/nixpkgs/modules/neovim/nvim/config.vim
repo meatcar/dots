@@ -546,13 +546,13 @@ fun! SetTheme()
   endif
 endfun
 
-autocmd vimrc OptionSet background call SetTheme()
+" autocmd vimrc OptionSet background call SetTheme()
 
 " Fix old themes colouring SignColumn an ugly grey:
 autocmd vimrc ColorScheme *
       \  hi clear SignColumn
       \| hi! link SignColumn LineNr
-      \| call MaybeTransparentBackground()
+      " \| call MaybeTransparentBackground()
 
 if has('gui_running')
   set background=light
@@ -706,6 +706,7 @@ nnoremap <leader>ftd :NERDTreeCWD<CR>
 nnoremap <leader>gf :<C-u>GFiles<CR>
 nnoremap <leader>gF :<C-u>GFiles?<CR>
 nnoremap <leader>gtt :NERDTreeVCS<CR>
+nnoremap <leader>gb :<C-u>Twiggy<CR>
 
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
