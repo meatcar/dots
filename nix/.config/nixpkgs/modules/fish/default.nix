@@ -13,7 +13,10 @@
     '';
   };
 
-  xdg.configFile."fish/fishfile".text = builtins.readFile ./fishfile;
+  xdg.configFile."fish/fishfile" = {
+    text = builtins.readFile ./fishfile;
+    onChange = "fish -l -c fisher";
+  };
   xdg.configFile."fish/functions" = {
     source = ./functions;
     recursive = true;
