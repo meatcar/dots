@@ -3,7 +3,8 @@
   networking = {
     # wireless.iwd.enable = true;
     networkmanager.enable = true;
-    nameservers = [ "127.0.0.1" "8.8.8.8" ];
+    networkmanager.appendNameservers = [ "8.8.8.8" ];
+    nameservers = [ "127.0.0.1" ];
   };
 
   services.dnscrypt-proxy.enable = false;
