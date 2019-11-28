@@ -1,5 +1,8 @@
 set laststatus=2
 
+" for vim-line-no-indicator
+let g:line_no_indicator_chars = ['⎺', '⎻', '─', '⎼', '⎽']
+
 function! StatusBranchName()
    if fugitive#head() != ""
       return " ".fugitive#head()
@@ -91,7 +94,7 @@ function! Statusline(active) abort
     let l:line.='%( %{StatusBranchName()}%)'
     let l:line.='%( %{StatusEncoding()}%)'
     let l:line.='%( %{StatusFileFormat()}%)'
-    let l:line.=' %l/%L'
+    let l:line.=' %l/%L %{LineNoIndicator()}'
     let l:line.=' '
     return l:line
 endfunction
