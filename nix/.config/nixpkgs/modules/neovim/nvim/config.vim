@@ -241,6 +241,9 @@ if exists('*packager#init')
   Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
   Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
+  Pack 'psliwka/vim-smoothie'         " smooth scrolling
+  Pack 'drzel/vim-line-no-indicator'  " pretty position-in-file indicator
+  Pack 'drzel/vim-scrolloff-fraction' " scrolloff as a fraction of window height
   "}}}
 
   " Syntaxes {{{
