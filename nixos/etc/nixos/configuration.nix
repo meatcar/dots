@@ -178,7 +178,6 @@ in
   fonts = {
     fontconfig = {
       enable = true;
-      ultimate.enable = true;
       defaultFonts = {
         monospace = [ "GoMono Nerd Font" ];
         sansSerif = [ "Roboto" ];
