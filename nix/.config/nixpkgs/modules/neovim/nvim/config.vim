@@ -187,13 +187,14 @@ if exists('*packager#init')
   " }}}
 
   " Git {{{
-  Pack 'tpope/vim-rhubarb'       " auto-complete Github issues in fugitive
+  Pack 'tpope/vim-rhubarb'             " auto-complete Github issues in fugitive
   Pack 'tpope/vim-fugitive'            " tight git integration
   Pack 'mhinz/vim-signify'             " show git changes in the gutter
   Pack 'samoshkin/vim-mergetool'       " Better merging (3-way becomes 2-way)
   Pack 'shumphrey/fugitive-gitlab.vim' " Gitlab support for fugitive
   Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
   Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
+  Pack 'rbong/vim-flog'                " pretty git log
   "}}}
 
   " Nice Utilities {{{
@@ -706,10 +707,14 @@ nnoremap <leader>ftf :NERDTreeFind<CR>:wincmd p<CR>
 nnoremap <leader>ftp :NERDTreeVCS<CR>
 nnoremap <leader>ftd :NERDTreeCWD<CR>
 
+
 nnoremap <leader>gf :<C-u>GFiles<CR>
 nnoremap <leader>gF :<C-u>GFiles?<CR>
-nnoremap <leader>gtt :NERDTreeVCS<CR>
+nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
+nnoremap <leader>gl :<C-u>Flog<CR>
+nnoremap <leader>gs :<C-u>CmdSplit Gstatus<CR>
+nnoremap <leader>gg :<C-u>Git<Space>
 
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
@@ -739,8 +744,6 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-
-nmap <silent> <leader>gg :CmdSplit Gstatus<CR>
 
 nmap <silent> <leader>tc :Color<CR>
 nmap <silent> <leader>tf :<C-u>Filetypes<CR>
