@@ -177,6 +177,7 @@ if exists('*packager#init')
   Pack 'ncm2/ncm2'
   Pack 'roxma/nvim-yarp'
   Pack 'ncm2/ncm2-bufword'
+  Pack 'fgrsnau/ncm2-otherbuf'
   Pack 'ncm2/ncm2-path'
   Pack 'ncm2/ncm2-github'
   Pack 'ncm2/ncm2-ultisnips'
@@ -184,6 +185,8 @@ if exists('*packager#init')
   Pack 'ncm2/ncm2-markdown-subscope'
   Pack 'ncm2/ncm2-html-subscope'
   Pack 'ncm2/float-preview.nvim'
+  Pack 'clojure-vim/async-clj-omni'
+
   " }}}
 
   " Git {{{
@@ -261,12 +264,11 @@ if exists('*packager#init')
 
   Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
   Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
+  Pack 'tpope/vim-projectionist', {'type': 'opt'}         " static support for Leiningen
   Pack 'tpope/vim-fireplace', {'type': 'opt'}     " clojure editing on drugs
   Pack 'venantius/vim-cljfmt', {'type': 'opt'}    " formatting
   Pack 'vim-scripts/paredit.vim', {'type': 'opt'} " fling brackets around
   Pack 'bhurlow/vim-parinfer', {'type': 'opt'}
-  Pack 'guns/vim-sexp', {'type': 'opt'}
-  Pack 'tpope/vim-sexp-mappings-for-regular-people', {'type': 'opt'}
   "}}}
 endif
 "}}}
@@ -582,10 +584,10 @@ autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx*
       \ packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
 autocmd vimrc FileType clojure packadd vim-classpath
-      \| packadd vim-salve | packadd vim-cljfmt
+      \| packadd vim-projectionist | packadd vim-salve
+      \| packadd vim-cljfmt
       \| packadd vim-fireplace | packadd paredit.vim
-      \| packadd vim-parinfer | packadd vim-sexp
-      \| packadd vim-sexp-mappings-for-regular-people
+      \| packadd vim-parinfer
 
 " Javascript
 autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
