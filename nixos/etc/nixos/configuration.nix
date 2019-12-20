@@ -248,6 +248,9 @@ in
         # audio
         pavucontrol
         ncpamixer
+
+        # power
+        s-tui
         ;
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (waylandPkgs) redshift-wayland wldash waybar;
