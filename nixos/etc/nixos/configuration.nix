@@ -194,7 +194,7 @@ in
         roboto
         # monospace
         dina-font fira-code-symbols
-        iosevka ibm-plex go-font fira-code fantasque-sans-mono monoid input-fonts
+        iosevka ibm-plex go-font fira-code
         ;
     };
   };
