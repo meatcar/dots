@@ -8,7 +8,7 @@
     };
 
     env_var = {
-      variable = "SHELL";
+      variable = "STARSHIP_SHELL";
     };
   };
 }
