@@ -94,7 +94,10 @@ function! Statusline(active) abort
     let l:line.='%( %{StatusBranchName()}%)'
     let l:line.='%( %{StatusEncoding()}%)'
     let l:line.='%( %{StatusFileFormat()}%)'
-    let l:line.=' %l/%L %{LineNoIndicator()}'
+    let l:line.=' %l/%L'
+    if exists('*LineNoIndicator')
+      let l:line.=' %{LineNoIndicator()}'
+    endif
     let l:line.=' '
     return l:line
 endfunction
