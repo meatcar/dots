@@ -264,11 +264,10 @@ if exists('*packager#init')
 
   Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
   Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
-  Pack 'tpope/vim-projectionist', {'type': 'opt'}         " static support for Leiningen
+  Pack 'tpope/vim-projectionist', {'type': 'opt'} " for vim-salve, quick-switch between src and test
   Pack 'tpope/vim-fireplace', {'type': 'opt'}     " clojure editing on drugs
   Pack 'venantius/vim-cljfmt', {'type': 'opt'}    " formatting
-  Pack 'vim-scripts/paredit.vim', {'type': 'opt'} " fling brackets around
-  Pack 'bhurlow/vim-parinfer', {'type': 'opt'}
+  Pack 'eraserhd/parinfer-rust', {'type': 'opt'}  " infer parens from indentation
   "}}}
 endif
 "}}}
@@ -497,8 +496,8 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
   inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
   " Use <TAB> to select the popup menu:
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
   " UltiSnips integration
   autocmd vimrc BufNewFile,BufRead * inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
@@ -584,10 +583,10 @@ autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx*
       \ packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
 autocmd vimrc FileType clojure packadd vim-classpath
+      \| packadd vim-fireplace
       \| packadd vim-projectionist | packadd vim-salve
       \| packadd vim-cljfmt
-      \| packadd vim-fireplace | packadd paredit.vim
-      \| packadd vim-parinfer
+      \| packadd parinfer-rust
 
 " Javascript
 autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
