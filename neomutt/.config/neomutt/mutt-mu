@@ -1,7 +1,0 @@
-#!/bin/sh
-
-echo -n "Search:" >&2
-read -r query
-mu find --clearlinks --format=links --linksdir=~/.cache/mu/search \
-    maildir:"/$1/"\* \
-    "$query"

@@ -1,0 +1,43 @@
+color normal     none default default
+color indicator  bold default default
+color status     reverse default default
+color tree       none default default
+color signature  none default default
+color message    none default default
+color attachment none default default
+color error      bold default default
+color tilde      none default default
+
+color search     none default default
+color markers    none default default
+
+## quoted text
+color quoted     none blue default
+color quoted1    none green default
+color quoted2    none blue default
+color quoted3    none green default
+color quoted4    none blue default
+color quoted5    none green default
+color quoted6    none blue default
+color quoted7    none green default
+color quoted8    none blue default
+color quoted9    none green default
+
+color index      bold red default ~F # Flagged
+color index      none blue default ~N # New
+color index      none blue default ~O
+color index      none green default ~T # Tagged
+color index      none red default ~D # Deleted
+
+# --- header ---
+
+color hdrdefault none blue default
+color header     none blue default '^date:'
+color header     bold default default '^(to|cc|bcc):'
+color header     bold default default '^from:'
+color header     bold default default '^subject:'
+color header     none blue default '^user-agent:'
+color header     none blue default '^reply-to:'
+
+color sidebar_new       bold blue default
+color sidebar_highlight bold default default

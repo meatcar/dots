@@ -1,0 +1,66 @@
+#!/bin/sh
+# requires mblaze, jq, inotifywait
+set -eu
+
+MAILDIR=$HOME/Maildir
+BOX=""
+
+mboxicon() {
+    case "$1" in
+        "gmail")    printf %s "G";;
+        "fastmail") printf %s "F";;
+        "zoho")     printf %s "Z";;
+    esac
+}
+mboxcolor() {
+    case "$1" in
+        "gmail")    printf %s "white";;
+        "fastmail") printf %s "lightblue";;
+        "zoho")     printf %s "red";;
+    esac
+}
+
+main() {
+    STATUS=""
+    for BOX in *; do
+       count=$(mlist -N "$BOX"/Inbox | wc -l)
+       icon=" "
+       if [ "$count" -gt 0 ]; then
+          icon=$(mboxicon "$BOX")
+          color=$(mboxcolor "$BOX")
+          text="<span foreground=\"$color\">$icon</span>"
+          STATUS="$STATUS$text"
+       fi
+    done
+    CLASS="read"
+    PERCENTAGE="0"
+    if [ -n "$STATUS" ]; then
+        CLASS="new"
+        PERCENTAGE="100"
+    fi
+
+    jq -n --unbuffered --compact-output\
+       --arg text "$STATUS" \
+       --arg tooltip "mail: $CLASS" \
+       --arg percentage "$PERCENTAGE" \
+       --arg class "$CLASS" \
+       '{"text": $text, "tooltip": $tooltip, "percentage": $percentage, "class": $class}'
+}
+
+loop() {
+   cd "$MAILDIR"
+   while true; do
+       main
+       find "$MAILDIR" -type d -exec inotifywait -qq -e modify,create,delete {} +
+   done
+}
+
+case "${1-}" in
+   -h|--help)
+      usage
+      exit
+      ;;
+   *)
+      loop
+      ;;
+esac
