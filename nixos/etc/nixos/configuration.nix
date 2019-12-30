@@ -14,21 +14,17 @@ let
     ref = "master";
   };
   waylandPkgs = (import waylandOverlay) {} pkgs;
-  unstablePkgs = builtins.fetchGit {
-    url = "https://github.com/NixOS/nixpkgs-channels";
-    ref = "nixos-unstable";
-  };
 in
 {
   system.stateVersion = "19.09";
-  nixpkgs.config = {
-    allowUnfree = true;
-    pulseaudio = true;
-    packageOverrides = pkgs: {
-      unstable = import unstablePkgs {
-        config = config.nixpkgs.config;
+  nixpkgs = {
+    overlays = [ (import waylandOverlay) ];
+    config = {
+      allowUnfree = true;
+      pulseaudio = true;
+      packageOverrides = pkgs: {
+        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
       };
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
   };
   documentation.dev.enable = true;
@@ -263,8 +259,7 @@ in
         ]
       );
       # spotify
-      inherit (pkgs) spotifyd;
-      inherit (pkgs.unstable) spotify-tui;
+      inherit (pkgs) spotifyd spotify-tui;
     };
     sway.extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
