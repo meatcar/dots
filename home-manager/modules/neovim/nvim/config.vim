@@ -352,6 +352,30 @@ let g:fzf_colors =
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
+
+" Float it if possible
+if has('nvim')
+  let $FZF_DEFAULT_OPTS .= ' --color=dark --layout=reverse --margin 0,1 --border'
+
+  function! FloatingFZF()
+    let height = &lines / 2
+    let width = float2nr(max([&columns / 2, 80]))
+    let offset = float2nr((&columns - width) / 2)
+    let opts = {
+          \ 'relative': 'editor',
+          \ 'row': 0,
+          \ 'col': offset,
+          \ 'width': width,
+          \ 'height': height,
+          \ 'style': 'minimal'
+          \ }
+    let buf = nvim_create_buf(v:false, v:true)
+    let win = nvim_open_win(buf, v:true, opts)
+    call setwinvar(win, '&winhl', 'NormalFloat:TabLine')
+  endfunction
+
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
 "}}}
 
 " vim-vinegar {{{
