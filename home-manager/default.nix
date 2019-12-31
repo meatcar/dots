@@ -13,7 +13,7 @@
     ./modules/weechat
     ./modules/leiningen
   ];
-  config = {
+  config = rec {
     sources = import ../nix/sources.nix;
     home.stateVersion = "19.09";
     home.packages = builtins.attrValues {
@@ -32,5 +32,14 @@
     programs.home-manager.enable = true;
     programs.bash.enable = true;
     programs.fzf.enable = true;
+
+    themes =
+      let
+        base16 = config.sources.base16-alacritty;
+      in
+        {
+          light = { alacritty = "${base16}/colors/base16-summerfruit-light-256.yml"; };
+          dark = { alacritty = "${base16}/colors/base16-summerfruit-dark-256.yml"; };
+        };
   };
 }
