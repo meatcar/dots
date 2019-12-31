@@ -229,15 +229,9 @@ if exists('*packager#init')
   " Colorschemes {{{
   " Pack 'flazz/vim-colorschemes'       " all the colorschemes
   Pack 'gruvbox-community/gruvbox'    " a theme to keep coming back to.
-  Pack 'danilo-augusto/vim-afterglow'
-  Pack 'ayu-theme/ayu-vim'
-  Pack 'dracula/vim'
   Pack 'NLKNguyen/papercolor-theme'
-  Pack 'cseelus/vim-colors-lucid'
-  Pack 'owickstrom/vim-colors-paramount'
   Pack 'liuchengxu/space-vim-theme'
-  Pack 'rakr/vim-two-firewatch'
-  Pack 'atelierbram/Base2Tone-vim'
+  Pack 'chriskempson/base16-vim'
   "}}}
 
   " Pretty Packages {{{
