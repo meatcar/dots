@@ -21,7 +21,7 @@
     '';
   };
 
-  xdg.configFile."kak/plugins/plug.kak".source = config.sources."plug.kak";
+  xdg.configFile."kak/plugins/plug.kak".source = config.niv."plug.kak";
 
   nixpkgs.overlays = [
     (

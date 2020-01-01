@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    ./config.nix
+    ./modules/niv.nix
+    ./modules/pin-nixpkgs.nix
     ./system
   ];
 }

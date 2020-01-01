@@ -349,26 +349,33 @@ let g:fzf_colors =
 
 " Float it if possible
 if has('nvim')
-  let $FZF_DEFAULT_OPTS .= ' --color=dark --layout=reverse --margin 0,1 --border'
+  let $FZF_DEFAULT_OPTS .= ' --layout=reverse' " --margin 0,1 --border'
+  function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns / 2])])
+    let height = min([&lines - 4, max([5, &lines / 3])])
+    let top = 0 "((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-  function! FloatingFZF()
-    let height = &lines / 2
-    let width = float2nr(max([&columns / 2, 80]))
-    let offset = float2nr((&columns - width) / 2)
-    let opts = {
-          \ 'relative': 'editor',
-          \ 'row': 0,
-          \ 'col': offset,
-          \ 'width': width,
-          \ 'height': height,
-          \ 'style': 'minimal'
-          \ }
-    let buf = nvim_create_buf(v:false, v:true)
-    let win = nvim_open_win(buf, v:true, opts)
-    call setwinvar(win, '&winhl', 'NormalFloat:TabLine')
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    " let lines = [top] + repeat([mid], height - 2) + [bot]
+    let lines = repeat([mid], height - 1) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
   endfunction
 
-  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+  let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+
 endif
 "}}}
 
