@@ -29,10 +29,22 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "f66cc1b85136aecf43c38ab768d6f13f90142935",
-        "sha256": "1hwsqk246gqvxpafwfmhm9s04aywb9yw8z483vr73y3z8scnpzwp",
+        "rev": "df4db5063238f391352b2d334ac3e72f6fb7ade4",
+        "sha256": "1fpz2l5jfhp4pwhv5ipn4c666nw3sqwgx6agjhafpsis0whq232q",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/f66cc1b85136aecf43c38ab768d6f13f90142935.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/df4db5063238f391352b2d334ac3e72f6fb7ade4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "musnix": {
+        "branch": "master",
+        "description": "Real-time audio in NixOS",
+        "homepage": "",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "ec088e16dee5103b41bb422000e518a8f95926c4",
+        "sha256": "196zpyk3ngaglx2hmpzg285r8lqhw74bbs5c6m77gg4mq6ai9fdn",
+        "type": "tarball",
+        "url": "https://github.com/musnix/musnix/archive/ec088e16dee5103b41bb422000e518a8f95926c4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -53,10 +65,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "e5fc11f2b9438e2769a4e6b6ffa109b7f323603c",
-        "sha256": "0d3fpx0281524ifwnl35y0rnxbhly0miqazdv0fhfqqmqdpn6p54",
+        "rev": "1465cce7ccfb0a657959d6b678bfbec0d71b5619",
+        "sha256": "096nabm6bpvzljf1aq19640l8djgbb6ihmi00mm1y9gwgw53y87n",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/e5fc11f2b9438e2769a4e6b6ffa109b7f323603c.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/1465cce7ccfb0a657959d6b678bfbec0d71b5619.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
