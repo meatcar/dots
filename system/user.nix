@@ -3,7 +3,7 @@ let
   sources = import ../nix/sources.nix;
 in
 {
-  imports = [ "${sources."home-manager"}/nixos" ];
+  imports = [ "${sources.home-manager}/nixos" ];
 
   users.mutableUsers = false;
   users.users.meatcar = {

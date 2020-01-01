@@ -1,8 +1,4 @@
 { config, pkgs, lib, ... }:
-
-let
-  nixpkgs-wayland = import config.sources.nixpkgs-wayland;
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,7 +10,11 @@ in
   ];
 
   # TODO: pull out into modules
-  nixpkgs.overlays = [ nixpkgs-wayland ];
+  nixpkgs.overlays =
+    let
+      nixpkgs-wayland = import config.niv.nixpkgs-wayland;
+    in
+      [ nixpkgs-wayland ];
   nixpkgs.config = {
     packageOverrides = pkgs: {
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
@@ -253,5 +253,4 @@ in
     fish.enable = true;
     zsh.enable = true;
   };
-
 }

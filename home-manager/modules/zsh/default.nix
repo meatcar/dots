@@ -16,11 +16,11 @@
     plugins = [
       {
         name = "zsh-auto-notify";
-        src = config.sources.zsh-auto-notify;
+        src = config.niv.zsh-auto-notify;
       }
       {
         name = "zsh-syntax-highlighting";
-        src = config.sources.zsh-syntax-highlighting;
+        src = config.niv.zsh-syntax-highlighting;
       }
     ];
   };

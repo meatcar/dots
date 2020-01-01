@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./config.nix
+    ./modules/niv.nix
     ./home-manager
   ];
 }

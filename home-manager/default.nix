@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  options = (import ../options) { inherit lib; };
   imports = [
+    ../modules/niv.nix
     ./system.nix
     ./modules/man
     ./modules/git
@@ -13,8 +13,25 @@
     ./modules/weechat
     ./modules/leiningen
   ];
+
+  options =
+    let
+      inherit (lib) mkOption types;
+      theme = {
+        alacritty = mkOption {
+          description = "Alacritty theme YAML";
+          type = types.path;
+        };
+      };
+    in
+      {
+        themes = {
+          light = theme;
+          dark = theme;
+        };
+      };
+
   config = rec {
-    sources = import ../nix/sources.nix;
     home.stateVersion = "19.09";
     home.packages = builtins.attrValues {
       inherit (pkgs)
@@ -36,7 +53,7 @@
 
     themes =
       let
-        base16 = config.sources.base16-alacritty;
+        base16 = config.niv.base16-alacritty;
       in
         {
           light = { alacritty = "${base16}/colors/base16-summerfruit-light-256.yml"; };
