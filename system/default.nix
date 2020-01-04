@@ -5,6 +5,7 @@
     ../modules/networking.nix
     ../modules/keyring.nix
     ../modules/nix.nix
+    ../modules/intel.nix
     # ../modules/ly.nix
     ./user.nix
   ];
@@ -15,14 +16,8 @@
       nixpkgs-wayland = import config.niv.nixpkgs-wayland;
     in
       [ nixpkgs-wayland ];
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    };
-  };
 
   boot = {
-    initrd.kernelModules = [ "i915" ];
     kernelModules = [ "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [
@@ -37,10 +32,6 @@
       "acpi_osi=!"
       "acpi_osi=\"Windows 2015\""
       "acpi_backlight=vendor"
-      "i915.fastboot=1"
-      "i915.enable_fbc=1"
-      "i915.enable_psr=1"
-      "i915.enable_guc=2"
     ];
     resumeDevice = "/dev/mapper/cryptroot";
     blacklistedKernelModules = [
@@ -74,15 +65,7 @@
     enableRedistributableFirmware = true;
     bluetooth.enable = true;
     brightnessctl.enable = true;
-    cpu.intel.updateMicrocode = true;
-    opengl = {
-      enable = true;
-      extraPackages = builtins.attrValues {
-        inherit (pkgs) vaapiIntel vaapiVdpau
-          libvdpau-va-gl intel-media-driver
-          ;
-      };
-    };
+    opengl.enable = true;
     pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;
