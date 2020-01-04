@@ -406,7 +406,7 @@ let g:gist_browser_command = 'xdg-open %URL% &'
 
 " vim-startify {{{
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)') " start with 1
-let g:startify_session_dir = $XDG_CACHE_HOME.'/vim/session'
+let g:startify_session_dir = $XDG_CACHE_HOME.'/nvim/session'
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
       \ 'pack/.*/doc',
