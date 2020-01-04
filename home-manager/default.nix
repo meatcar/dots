@@ -27,6 +27,7 @@
     xdg.enable = true;
     home.sessionVariables = {
       EDITOR = "nvim";
+      NOTES_DIR = "~/Sync/notes";
     };
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;

@@ -698,10 +698,9 @@ nnoremap <leader>vc :<C-U>PackClean<CR>
 nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
 nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
 
-" help mappings from doom-emacs
-nnoremap <leader>hf :Help<Space>
-nnoremap <leader>hv :Help<Space>
-nnoremap <leader>hh :Help<Space>
+nnoremap <leader>hh :Helptags<CR>
+nnoremap <leader>hk :Maps<CR>
+nnoremap <leader>hc :Commands<CR>
 
 nnoremap <leader>qq :<C-U>q<CR>
 nnoremap <leader>qw :<C-U>wq<CR>
@@ -710,8 +709,8 @@ nnoremap <leader>qx :<C-U>x<CR>
 " buffers
 nnoremap <leader>bb :<C-u>Buffers<CR>
 nnoremap <leader>bd :<C-u>Bdelete<CR>
-nnoremap <leader>bn :<C-u>bnext<CR>
-nnoremap <leader>bp :<C-u>bprev<CR>
+nnoremap <leader>bn ]b
+nnoremap <leader>bp [b
 " ack/grep
 nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
@@ -738,8 +737,6 @@ nnoremap <leader>gg :<C-u>Git<Space>
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
 nnoremap // :<C-u>BLines<CR>
-" vimviki
-map <leader>n :<C-u>FZF $HOME/Sync/notes/ <CR>
 
 nmap <silent> <leader>s :Snippets<CR>
 
