@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "eendroroy",
         "repo": "alacritty-theme",
-        "rev": "6b4c27b78fa59bd3786bddba2a40c12b01dc6c8a",
-        "sha256": "1byi9nsya48hzd70iss4gqgysab11hd2c6himpsvz1w0v0v95fha",
+        "rev": "c4886068901e0e807a235f7282c889f6b92fcb31",
+        "sha256": "1jkms5cgp6zxkvjjlxfwr9qxns3fyp4izivzxkz86na40ymf1ckv",
         "type": "tarball",
-        "url": "https://github.com/eendroroy/alacritty-theme/archive/6b4c27b78fa59bd3786bddba2a40c12b01dc6c8a.tar.gz",
+        "url": "https://github.com/eendroroy/alacritty-theme/archive/c4886068901e0e807a235f7282c889f6b92fcb31.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "df4db5063238f391352b2d334ac3e72f6fb7ade4",
-        "sha256": "1fpz2l5jfhp4pwhv5ipn4c666nw3sqwgx6agjhafpsis0whq232q",
+        "rev": "0bb2d87cfd7967f8d0314c81c0743c7a34a536f8",
+        "sha256": "0ifvz6cg4bn2isf4zhp0zv0p0dhvjldrpzz5wn8i8mbxw96s2wpr",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/df4db5063238f391352b2d334ac3e72f6fb7ade4.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/0bb2d87cfd7967f8d0314c81c0743c7a34a536f8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "musnix": {
@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "1465cce7ccfb0a657959d6b678bfbec0d71b5619",
-        "sha256": "096nabm6bpvzljf1aq19640l8djgbb6ihmi00mm1y9gwgw53y87n",
+        "rev": "7132562dd82a5b2eaadd5d37f257d4ee5bc8db61",
+        "sha256": "0gsln02pi65ifw30lrl0h8y600dh4nbhba466gcl62prih55fwz2",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/1465cce7ccfb0a657959d6b678bfbec0d71b5619.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/7132562dd82a5b2eaadd5d37f257d4ee5bc8db61.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
