@@ -90,6 +90,7 @@
       lidSwitchDocked = "hybrid-sleep";
       extraConfig = ''
         HandlePowerKey=hybrid-sleep
+        RuntimeDirectorySize=3G
       '';
     };
     upower.enable = true;
