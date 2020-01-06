@@ -58,8 +58,10 @@
         base16 = config.niv.base16-alacritty;
       in
         {
-          light = { alacritty = "${base16}/colors/base16-summerfruit-light-256.yml"; };
-          dark = { alacritty = "${base16}/colors/base16-summerfruit-dark-256.yml"; };
+          light.alacritty =
+            "${base16}/colors/base16-summerfruit-light-256.yml";
+          dark.alacritty =
+            "${base16}/colors/base16-summerfruit-dark-256.yml";
         };
   };
 }
