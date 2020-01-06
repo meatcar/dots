@@ -29,6 +29,7 @@
           light = theme;
           dark = theme;
         };
+        theme = theme;
       };
 
   config = rec {
@@ -53,6 +54,7 @@
     programs.lsd.enable = true;
     programs.lsd.enableAliases = true;
 
+    theme = config.themes.dark;
     themes =
       let
         base16 = config.niv.base16-alacritty;
