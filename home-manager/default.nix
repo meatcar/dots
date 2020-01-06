@@ -50,6 +50,8 @@
     programs.home-manager.enable = true;
     programs.bash.enable = true;
     programs.fzf.enable = true;
+    programs.lsd.enable = true;
+    programs.lsd.enableAliases = true;
 
     themes =
       let
