@@ -11,7 +11,7 @@
     shell = "/run/current-system/sw/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "***REDACTED***";
-    extraGroups = [ "wheel" "video" "docker" "networkmanager" ];
+    extraGroups = [ "wheel" "video" "docker" "networkmanager" "power" ];
   };
 
   home-manager.users.meatcar = { pkgs, ... }: {

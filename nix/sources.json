@@ -1,4 +1,16 @@
 {
+    "Bumblebee": {
+        "branch": "develop",
+        "description": "Bumblebee daemon and client rewritten in C",
+        "homepage": "http://www.bumblebee-project.org/",
+        "owner": "Bumblebee-Project",
+        "repo": "Bumblebee",
+        "rev": "7aa457fe7b4fffc3b175ad36fdae00d7777065dc",
+        "sha256": "1d9wcan4dgp5x93aahyf56n0z4d8zfwqjng3i64b5zk29061dwl7",
+        "type": "tarball",
+        "url": "https://github.com/Bumblebee-Project/Bumblebee/archive/7aa457fe7b4fffc3b175ad36fdae00d7777065dc.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "alacritty-theme": {
         "branch": "master",
         "description": "Collection of Alacritty color schemes",
