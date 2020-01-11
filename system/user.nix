@@ -21,6 +21,7 @@ in
       ../home-manager/modules/gnome-keyring.nix
       ../home-manager/modules/alacritty
       ../home-manager/modules/firefox
+      ../home-manager/modules/redshift.nix
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
     ];
