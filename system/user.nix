@@ -1,9 +1,8 @@
 { config, pkgs, lib, ... }:
-let
-  sources = import ../nix/sources.nix;
-in
 {
-  imports = [ "${sources.home-manager}/nixos" ];
+  imports = [
+    <home-manager/nixos>
+  ];
 
   users.mutableUsers = false;
   users.users.meatcar = {

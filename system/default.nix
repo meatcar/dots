@@ -2,9 +2,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../modules/nix.nix
     ../modules/networking.nix
     ../modules/keyring.nix
-    ../modules/nix.nix
     ../modules/intel.nix
     # ../modules/ly.nix
     ./user.nix
