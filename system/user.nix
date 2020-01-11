@@ -21,6 +21,8 @@ in
       ../home-manager/modules/gnome-keyring.nix
       ../home-manager/modules/alacritty
       ../home-manager/modules/firefox
+      ../home-manager/modules/mpv.nix
+      ../home-manager/modules/spotifyd.nix
       ../home-manager/modules/redshift.nix
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
@@ -35,13 +37,13 @@ in
       "wldash".source = ../conf/sway/.config/wldash;
       "waybar".source = ../conf/waybar/.config/waybar;
       "mako".source = ../conf/mako/.config/mako;
-      "redshift".source = ../conf/redshift/.config/redshift;
     };
 
     services = {
       syncthing.enable = true;
       keybase.enable = true;
       kbfs.enable = true;
+      udiskie.enable = true;
     };
 
     gtk = {
