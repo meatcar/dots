@@ -245,14 +245,14 @@ if exists('*packager#init')
   "}}}
 
   " Syntaxes {{{
-  Pack 'sheerun/vim-polyglot'                  " A tonne of new syntaxes.
+  Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
   Pack 'tpope/vim-markdown', {'type': 'opt'}
-  Pack 'SidOfc/mkdx', {'type': 'opt'}          " Fancy markdown extras
-  Pack 'reedes/vim-pencil', { 'type': 'opt' }  " make editing freetext easier
+  Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
+  Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
 
-  Pack 'zirrostig/vim-shbed', {'type': 'opt' } " highlight awk in shell scripts
-  Pack 'vim-scripts/TeX-9', {'type': 'opt'}    " latex
-  Pack 'mattn/emmet-vim', {'type': 'opt'}      " fast html editing
+  Pack 'zirrostig/vim-shbed', {'type': 'opt' }    " highlight awk in shell scripts
+  Pack 'vim-scripts/TeX-9', {'type': 'opt'}       " latex
+  Pack 'mattn/emmet-vim', {'type': 'opt'}         " fast html editing
 
   Pack 'neomutt/neomutt.vim', {'type': 'opt'}
 
@@ -261,7 +261,9 @@ if exists('*packager#init')
   Pack 'tpope/vim-projectionist', {'type': 'opt'} " for vim-salve, quick-switch between src and test
   Pack 'tpope/vim-fireplace', {'type': 'opt'}     " clojure editing on drugs
   Pack 'venantius/vim-cljfmt', {'type': 'opt'}    " formatting
-  Pack 'eraserhd/parinfer-rust', {'type': 'opt'}  " infer parens from indentation
+  Pack 'eraserhd/parinfer-rust',
+        \ {'type': 'opt', 'do': 'nix-shell --run \"cargo build --release \"'}
+                                                  " infer parens from indentation
   "}}}
 endif
 "}}}
@@ -572,11 +574,11 @@ fun! SetTheme()
   if &background == 'dark'
     colorscheme gruvbox
   else
-    colorscheme gruvbox
+    colorscheme base16-summerfruit-light
   endif
 endfun
 
-" autocmd vimrc OptionSet background call SetTheme()
+autocmd vimrc OptionSet background call SetTheme()
 
 " Fix old themes colouring SignColumn an ugly grey:
 autocmd vimrc ColorScheme *
