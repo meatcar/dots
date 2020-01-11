@@ -47,6 +47,7 @@
       EDITOR = "nvim";
       NOTES_DIR = "~/Sync/notes";
     };
+    xdg.configFile."nixpkgs/config.nix".source = ./config.nix;
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
     programs.bash.enable = true;

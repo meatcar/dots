@@ -19,6 +19,11 @@
   };
 
   hardware.opengl.extraPackages = builtins.attrValues {
-    inherit (pkgs) vaapiIntel vaapiVdpau libvdpau-va-gl intel-media-driver;
+    inherit (pkgs)
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
+      ;
   };
 }

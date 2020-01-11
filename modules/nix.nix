@@ -9,6 +9,7 @@
   documentation.dev.enable = true;
 
   nix = {
+    nixPath = import ../nix-path.nix;
     autoOptimiseStore = true;
     gc = {
       automatic = true;
