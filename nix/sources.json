@@ -36,27 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
-        "branch": "master",
+        "branch": "spotifyd-config",
         "description": "Manage a user environment using Nix",
         "homepage": "",
-        "owner": "rycee",
+        "owner": "meatcar",
         "repo": "home-manager",
-        "rev": "ef6674d1d1550bbe151f8570c974beb5eba88f24",
-        "sha256": "0n40bb958i2m02bx9rjz5h6mdkr0klny1cpjvy6p8w9138vhc9jp",
+        "rev": "1833b76dd99ba2b7fe68cc27c02b2b25a94b0377",
+        "sha256": "17kdp4vflyvqiq1phy7x5mfrcgy5c02c0a0p0n5yjf8yilvcldr4",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/ef6674d1d1550bbe151f8570c974beb5eba88f24.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "musnix": {
-        "branch": "master",
-        "description": "Real-time audio in NixOS",
-        "homepage": "",
-        "owner": "musnix",
-        "repo": "musnix",
-        "rev": "ec088e16dee5103b41bb422000e518a8f95926c4",
-        "sha256": "196zpyk3ngaglx2hmpzg285r8lqhw74bbs5c6m77gg4mq6ai9fdn",
-        "type": "tarball",
-        "url": "https://github.com/musnix/musnix/archive/ec088e16dee5103b41bb422000e518a8f95926c4.tar.gz",
+        "url": "https://github.com/meatcar/home-manager/archive/1833b76dd99ba2b7fe68cc27c02b2b25a94b0377.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -66,10 +54,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "2e8fc97dbfacc1178ae846ab31210539f7a958f0",
-        "sha256": "1api5vypvw5pihz3kjps8q5hxf02ncgxg6axnpr2lcbc6m14s40q",
+        "rev": "e1eedf29e5d22e6824e614d75449b75a2e3455d6",
+        "sha256": "1v237cgfkd8sb5f1r08sms1rxygjav8a1i1jjjxyqgiszzpiwdx7",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/2e8fc97dbfacc1178ae846ab31210539f7a958f0.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/e1eedf29e5d22e6824e614d75449b75a2e3455d6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-wayland": {
@@ -78,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "a727c8545a7e0d72d5ef1e26f59042baf3d0a5e5",
-        "sha256": "0w0xjl8yrgv6laflq5lqli27xyxrh17ssxvwiymbi8xm4n1bsdda",
+        "rev": "c770e4a4fe5091861fb133f44e4ddc663cde24bf",
+        "sha256": "0qpkwg8j89ip57pibjr27c3qpi427kmcbhnll0ha8l6a7iakhza7",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/a727c8545a7e0d72d5ef1e26f59042baf3d0a5e5.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/c770e4a4fe5091861fb133f44e4ddc663cde24bf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -114,10 +102,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "de95d50bce6f16fad7e20e9bf1fb7bff710dbcfd",
-        "sha256": "142c031fqkjjmcj9yg6n1026km6h19nmg2nfkjpwipnliimi92qv",
+        "rev": "6f1f595e3ecd7c11cb096995bd32361ef624f7ac",
+        "sha256": "1b00fgd4n23s2kjgvls9izdvzf44b3s0dnszv64cvncd7d8py1sp",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/de95d50bce6f16fad7e20e9bf1fb7bff710dbcfd.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/6f1f595e3ecd7c11cb096995bd32361ef624f7ac.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
