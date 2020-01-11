@@ -332,8 +332,5 @@ include /etc/sway/config.d/*
 exec env -0 | grep -z -Z -v '[[:cntrl:]]' | xargs -0 systemctl --user set-environment
 exec systemctl --user start sway-session.target
 
-exec udiskie --automount --notify --smart-tray --appindicator --menu flat
-exec redshift
 exec mako
 exec waybar
-exec dex -a -s "$XDG_CONFIG_HOME"/autostart
