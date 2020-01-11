@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../modules/nix.nix
     ../modules/networking.nix
+    ../modules/bluetooth.nix
     ../modules/keyring.nix
     ../modules/intel.nix
     ../modules/nvidia
@@ -46,13 +47,8 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    bluetooth.enable = true;
     brightnessctl.enable = true;
     opengl.enable = true;
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-    };
     pulseaudio.enable = true;
   };
 
