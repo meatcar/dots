@@ -62,7 +62,7 @@ in
     builtins.attrValues {
       inherit (pkgs)
         # YUUUGE! DL on Wifi
-        nvtop
+        # nvtop
         glxinfo primus
         ;
     }
