@@ -8,6 +8,7 @@
     ./modules/git
     ./modules/fish
     ./modules/ssh
+    ./modules/direnv
     ./modules/tmux
     ./modules/neovim
     ./modules/weechat
@@ -38,7 +39,7 @@
       inherit (pkgs)
         curl htop mosh neomutt isync msmtp ripgrep jq rootlesskit docker
         docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl
-        pkgconfig imgcat direnv
+        pkgconfig imgcat
         ;
     };
 
