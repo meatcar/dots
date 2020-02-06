@@ -34,7 +34,7 @@ in
 
   boot = {
     extraModulePackages = [
-      config.boot.kernelPackages.nvidia_x11.bin
+      # config.boot.kernelPackages.nvidia_x11.bin
     ];
     kernelParams = [
       # https://wiki.archlinux.org/index.php/Dell_XPS_15_9570#Lock-ups_when_resuming_from_suspend_with_nvidia_module
@@ -54,7 +54,7 @@ in
   };
 
   hardware.bumblebee = {
-    enable = true;
+    enable = false;
     pmMethod = "bbswitch";
   };
 
@@ -63,7 +63,7 @@ in
       inherit (pkgs)
         # YUUUGE! DL on Wifi
         # nvtop
-        glxinfo primus
+        glxinfo #primus
         ;
     }
   ) ++ [ gpu-on gpu-off ];
