@@ -47,7 +47,6 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    brightnessctl.enable = true;
     opengl.enable = true;
     pulseaudio.enable = true;
   };
@@ -76,7 +75,7 @@
   location.provider = "geoclue2";
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) vim git pciutils usbutils bind nix-prefetch-git;
+    inherit (pkgs) vim git pciutils usbutils bind nix-prefetch-git brightnessctl;
   };
 
   services = {
@@ -121,7 +120,6 @@
     portal.enable = true;
     portal.extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-wlr
     ];
     sounds.enable = true;
   };
@@ -155,6 +153,8 @@
         # audio
         pavucontrol
         ncpamixer
+        mps-youtube
+        youtube-dl
         ;
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (pkgs) redshift-wayland wldash waybar;
@@ -162,7 +162,6 @@
       inherit (pkgs.gnome3) adwaita-icon-theme;
       python3 = pkgs.python3.withPackages (
         pkgs: [
-          pkgs.mps-youtube
           pkgs.youtube-dl
         ]
       );
