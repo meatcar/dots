@@ -15,9 +15,11 @@
 (package! emojify)
 (package! olivetti)
 (package! org-projectile)
-;; (package! polymode)
-;; (package! poly-ansible)
-;;
+
+(package! nix-mode)
+
 (package! add-node-modules-path)
 (package! fast-scroll :recipe (:host github :repo "ahungry/fast-scroll"))
 (package! org-projectile)
+(package! mixed-pitch :recipe (:host gitlab :repo "jabranham/mixed-pitch"))
+(package! org-superstar)

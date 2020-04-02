@@ -99,9 +99,11 @@
         font-awesome_4 nerdfonts
         # proportional
         roboto
+        google-fonts
         # monospace
         dina-font fira-code-symbols
         iosevka ibm-plex go-font fira-code
+        emacs-all-the-icons-fonts
         ;
     };
   };
@@ -149,6 +151,7 @@
         zathura
         streamlink
         chromium
+        qbittorrent
 
         # audio
         pavucontrol

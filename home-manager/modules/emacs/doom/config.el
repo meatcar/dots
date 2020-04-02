@@ -2,6 +2,7 @@
 
 ;; Place your private configuration here
 
+;;; Code:
 ;; make emacs useable in terminal (for the rare occasion)
 (when (not (display-graphic-p))
   (xterm-mouse-mode 1)
@@ -34,8 +35,10 @@
   (getenv "DARK_THEME")) ;TODO
 
 (defun me/dark-theme-p (&optional dark)
-  "Should we show a dark theme? If arg dark is present and 'dark, return t, nil
-  otherwise. If arg dark is absent, return the system theme setting."
+  "Should we show a dark theme?
+
+  If DARK is present and 'dark, return t, nil otherwise. If arg dark is absent,
+  return the system theme setting."
   (cond
    (dark (eq dark 'dark))
    ((or IS-WINDOWS IS-WINDOWS-WSL) (me/windows-dark-theme-p))
@@ -110,9 +113,9 @@
 (setq +org-capture-todo-file (concat org-directory "aardvark.org"))
 (after! org
   (setq org-capture-templates '(("p" "Protocol" entry (file+headline +org-capture-todo-file "Inbox")
-                                  "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+                                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
                                 ("L" "Protocol Link" entry (file+headline +org-capture-todo-file "Inbox")
-                                  "* %? [[%:link][%:description]] \nCaptured On: %U")))
+                                 "* %? [[%:link][%:description]] \nCaptured On: %U")))
 
   (setq org-startup-indented t
         org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
