@@ -25,6 +25,7 @@
       ../home-manager/modules/redshift.nix
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
+      ../home-manager/modules/emacs
     ];
 
     xdg.configFile = {
