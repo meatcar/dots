@@ -71,7 +71,7 @@
 
   system.stateVersion = "19.09";
   networking.hostName = "tormund.denys.me";
-  time.timeZone = "Asia/Singapore";
+  time.timeZone = "America/Toronto";
   location.provider = "geoclue2";
 
   environment.systemPackages = builtins.attrValues {
