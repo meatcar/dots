@@ -13,6 +13,7 @@
     ./modules/neovim
     ./modules/weechat
     ./modules/leiningen
+    ./modules/emacs
   ];
 
   options =
