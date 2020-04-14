@@ -727,7 +727,10 @@ nnoremap <leader>/ :<C-u>Rg<space>
 nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
 " files
 nnoremap <leader>fr :<C-u>History<CR>
-nnoremap <C-p>      :<C-u>Files<CR>
+
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles --exclude-standard --others --cached' : 'Files'
+nnoremap <C-p>      :<C-u>Ctrlp<CR>
+
 nnoremap <leader>ff :<C-u>Files<CR>
 nnoremap <leader>ftt :NERDTreeToggle<CR>
 nnoremap <leader>ftr :NERDTreeRefreshRoot<CR>
