@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "3f39b3801a01a0d88bf7d9966e4a6f7bd8e7a724",
-        "sha256": "0y35v2p10h75zly8px7k1iypx7c2nf0b8hx909nq091rd3qf69z7",
+        "rev": "b1ee293356667fa419dfba0b484df46459a48222",
+        "sha256": "12hiycwmn92nwrhh8v78n7afbwl0k5zcg7y0a43cy0smk93ggd1m",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/3f39b3801a01a0d88bf7d9966e4a6f7bd8e7a724.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/b1ee293356667fa419dfba0b484df46459a48222.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -83,6 +83,12 @@
         "type": "tarball",
         "url": "https://github.com/andreyorst/plug.kak/archive/069ecad1e09196be6b53afb8ffa9c22cdd611bf7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "wsl-open": {
+        "ref": "master",
+        "repo": "https://gitlab.com/4U6U57/wsl-open.git",
+        "rev": "ffc8c75cd77ff7f6bb68bd6297845f4e9c00cfc0",
+        "type": "git"
     },
     "zsh-auto-notify": {
         "branch": "master",
@@ -102,10 +108,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "90fec4d65862da6d1ed5dfe2447f680a1387e57c",
-        "sha256": "05kcmgx1c7g430dz1qlzm7pik846z409awyjmbqxn32gxc6f13d8",
+        "rev": "ccb1da4ae8935f5b40ac7dbcdd6eeb694403c97f",
+        "sha256": "0zncyqsqxy6wfrfnlb2zrx1ygj472jqlwf7j29n9bqbcg20mrlqy",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/90fec4d65862da6d1ed5dfe2447f680a1387e57c.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/ccb1da4ae8935f5b40ac7dbcdd6eeb694403c97f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
