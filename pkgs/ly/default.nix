@@ -12,7 +12,6 @@
 #
 # - explore packaging each dependency, and pulling them in to skip the submodule step. That would explode the number of packages to maintain.
 # - try to convince the maintainer to imp
-
 { stdenv, lib, fetchgit, linux-pam, xorg }:
 
 let
