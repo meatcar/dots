@@ -1,5 +1,18 @@
 # TODO: don't use builtins.fetchGit, @infinisil says its not allowed in nixpkgs
 # TODO: @infinisil says add a meta.platforms attribute for nixpkgs
+
+# NOTE: I never got this to build. I got stuck with ly requiring a command to
+# be run between cloning and checking out submodules.
+#
+# Keeping this around to be tackled later, and for other's reference.
+#
+# The maintainer seems unwilling to change the current structure
+# (see https://github.com/cylgom/ly/issues/147), so next steps perhaps would
+# be to:
+#
+# - explore packaging each dependency, and pulling them in to skip the submodule step. That would explode the number of packages to maintain.
+# - try to convince the maintainer to imp
+
 { stdenv, lib, fetchgit, linux-pam, xorg }:
 
 let
