@@ -18,6 +18,7 @@
     imports = [
       ../home-manager
       ../home-manager/modules/gnome-keyring.nix
+      ../home-manager/modules/sway
       ../home-manager/modules/alacritty
       ../home-manager/modules/firefox
       ../home-manager/modules/mpv.nix
@@ -28,11 +29,10 @@
       ../home-manager/modules/emacs
     ];
 
+    nixpkgs.config = config.nixpkgs.config;
+    nixpkgs.overlays = config.nixpkgs.overlays;
+
     xdg.configFile = {
-      "sway" = {
-        source = ../conf/sway/.config/sway;
-        onChange = "swaymsg -qt send_tick && swaymsg reload";
-      };
       "swaylock".source = ../conf/sway/.config/swaylock;
       "wldash".source = ../conf/sway/.config/wldash;
       "waybar".source = ../conf/waybar/.config/waybar;
