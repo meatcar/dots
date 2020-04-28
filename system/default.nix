@@ -160,7 +160,7 @@
         youtube-dl
         ;
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
-      inherit (pkgs) redshift-wayland wldash waybar;
+      inherit (pkgs) redshift-wayland waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
       inherit (pkgs.gnome3) adwaita-icon-theme;
       python3 = pkgs.python3.withPackages (
