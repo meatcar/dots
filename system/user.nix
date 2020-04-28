@@ -19,6 +19,7 @@
       ../home-manager
       ../home-manager/modules/gnome-keyring.nix
       ../home-manager/modules/sway
+      ../home-manager/modules/kanshi
       ../home-manager/modules/alacritty
       ../home-manager/modules/firefox
       ../home-manager/modules/mpv.nix
