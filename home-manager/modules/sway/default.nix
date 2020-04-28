@@ -133,7 +133,10 @@
             '';
           }
           { command = "${pkgs.mako}/bin/mako"; }
-          { command = "${pkgs.waybar}/bin/waybar"; }
+          {
+            always = true;
+            command = "pkill -9 waybar && ${pkgs.waybar}/bin/waybar";
+          }
         ];
 
         keybindings =
