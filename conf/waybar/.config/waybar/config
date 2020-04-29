@@ -26,7 +26,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%k\n%M}",
+        "format": "{:%H\n%M}",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
         "format-alt": "{:<small>-%u</small>\n20\n%y\n%m\n%d}"
     },
