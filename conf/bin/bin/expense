@@ -21,7 +21,7 @@ $1 ~ symbol {
 }
 
 # Dereference Symbol for Explicit Calculations
-($2 == "*" || $2 == "/") && $3 ~ symbol { 
+($2 == "*" || $2 == "/") && $3 ~ symbol {
 	if (sums[$3] == "") {
 		print("Symbol undefined:", $3) > "/dev/stderr"
 	} else {
@@ -29,7 +29,7 @@ $1 ~ symbol {
 	}
 }
 	                            # Pretty Print
-$1 ~ /^-?[0-9]+\.?[0-9]*/ {$1 = sprintf("    %+7.2f", $1)}
+$1 ~ /^-?[0-9]+\.?[0-9]*/ {$1 = sprintf("    %7.2f", $1)}
 		{print}
 
 $2 == "*"	{$1 *= $3}			# Explicit Calculations
