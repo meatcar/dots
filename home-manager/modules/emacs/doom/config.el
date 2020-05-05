@@ -58,7 +58,7 @@
 (setq doom-theme (me/get-theme)
       doom-font (font-spec :family "Go Mono" :size 12)
       doom-serif-font (font-spec :family "Go Mono")
-      doom-variable-pitch-font (font-spec :family (if IS-WINDOWS-WSL "Inter" "Bitter") :size 14)
+      doom-variable-pitch-font (font-spec :family "Bitter" :size 14)
       doom-big-font (font-spec :family "Go Mono" :size 20))
 
 (setq custom-file (concat doom-private-dir "custom.el")
