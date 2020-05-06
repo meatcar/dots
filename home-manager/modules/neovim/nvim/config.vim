@@ -518,22 +518,20 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
   " ncm2 {{{
   autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
 
-  " When the <Enter> key is pressed while the popup menu is visible, it only
-  " hides the menu. Use this mapping to close the menu and also start a new
-  " line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-  " Use <TAB> to select the popup menu:
-  " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  func! config#expand_snippet()
+    if ncm2_ultisnips#completed_is_snippet()
+      call feedkeys("\<Plug>(ncm2_ultisnips_expand_completed)", "m")
+    endif
+    return ''
+  endfunc
 
   " UltiSnips integration
-  autocmd vimrc BufNewFile,BufRead * inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
-  let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-  let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+  autocmd vimrc BufNewFile,BufRead *
+        \ inoremap <silent> <expr> <cr> pumvisible() ? "\<c-y>\<c-r>=config#expand_snippet()\<cr>" : "\<cr>"
+  let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
+  let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
   let g:UltiSnipsRemoveSelectModeMappings = 0
-  " "}}}
 "}}}
 
 " Colors {{{
