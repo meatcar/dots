@@ -1,5 +1,11 @@
 { config, pkgs, lib, ... }:
 {
+  programs.fish.loginShellInit = ''
+    if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
+      exec sway
+    end
+  '';
+
   wayland.windowManager.sway =
     let
       border = 3;
@@ -134,8 +140,9 @@
           }
           { command = "${pkgs.mako}/bin/mako"; }
           {
+            # kill waybar with -9 (SIGKILL) because it doesn't propagate SIGTERM to children
             always = true;
-            command = "pkill -9 waybar && ${pkgs.waybar}/bin/waybar";
+            command = "pkill -9 waybar; ${pkgs.waybar}/bin/waybar";
           }
         ];
 
