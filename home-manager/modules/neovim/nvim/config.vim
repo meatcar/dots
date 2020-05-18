@@ -198,6 +198,7 @@ if exists('*packager#init')
   Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
   Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
   Pack 'rbong/vim-flog'                " pretty git log
+  Pack 'lambdalisue/gina.vim'          " fast git
   "}}}
 
   " Nice Utilities {{{
