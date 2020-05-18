@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "eendroroy",
         "repo": "alacritty-theme",
-        "rev": "f5ae7728f935193ba7cae39b3e0a161aeb9c9090",
-        "sha256": "1pjn992d11a02axnr73w8rkdrx3inkg1dfribpcrix2bil2amrbf",
+        "rev": "2cfaa351e4165961c780b0127ecb22a790d9f57a",
+        "sha256": "1wwarppdnzw07mr2swcwjhbzgr79fp9098q2zr3m0i322gz1sdcj",
         "type": "tarball",
-        "url": "https://github.com/eendroroy/alacritty-theme/archive/f5ae7728f935193ba7cae39b3e0a161aeb9c9090.tar.gz",
+        "url": "https://github.com/eendroroy/alacritty-theme/archive/2cfaa351e4165961c780b0127ecb22a790d9f57a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "a7cdfaa32585fce404cf8890bae099348e53e0ad",
-        "sha256": "0z3pmzdw6hwr72b00bn5j6l3xhwwd8jadwmz4cjb6af9x8jgdxpq",
+        "rev": "6c7a0313673687368a33197e58bc28f4290ec244",
+        "sha256": "129lf4j9gsza7f40v76aywqdcqbrx9lvhbnsr8y53wv95x2bjg9r",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/a7cdfaa32585fce404cf8890bae099348e53e0ad.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/6c7a0313673687368a33197e58bc28f4290ec244.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -54,10 +54,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "7c399a4ee080f33cc500a3fda33af6fccfd617bd",
-        "sha256": "0vqljvz5yrc8i3nj3d5xiiv475yydscckfc9z0hpran9q2rh4md1",
+        "rev": "b47873026c7e356a340d0e1de7789d4e8428ac66",
+        "sha256": "0wlhlmghfdvqqw2k7nyiiz4p9762aqbb2q88p6sswmlv499x5hb3",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/7c399a4ee080f33cc500a3fda33af6fccfd617bd.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/b47873026c7e356a340d0e1de7789d4e8428ac66.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-wayland": {
@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "cf1a1ad2cb1af310f16c20bc6c0080083d3c560b",
-        "sha256": "04p1qd7wgh630k7xqbm5prai4b0z4xrdkbwhfdywgh6335l7l8mz",
+        "rev": "a0d7c24a7318fee0dbec92d8207e3feddd81d8db",
+        "sha256": "1fzrh844wxf54qbrlp6dp34b6igk9728g5d51l7x337z8l8616ky",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/cf1a1ad2cb1af310f16c20bc6c0080083d3c560b.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/a0d7c24a7318fee0dbec92d8207e3feddd81d8db.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -78,10 +78,10 @@
         "homepage": "",
         "owner": "andreyorst",
         "repo": "plug.kak",
-        "rev": "069ecad1e09196be6b53afb8ffa9c22cdd611bf7",
-        "sha256": "01sp3k6ywq0sx4hpm3v50nz3fbhdd0zy1da0bn0qgm7y5wdan64s",
+        "rev": "926f66a0d0657cd5971cf5d6be7da2fab034361b",
+        "sha256": "0am2ympz6a2syr0yfd5ryjccsv9pdbwz6gshhrzhl8yynygm2gw0",
         "type": "tarball",
-        "url": "https://github.com/andreyorst/plug.kak/archive/069ecad1e09196be6b53afb8ffa9c22cdd611bf7.tar.gz",
+        "url": "https://github.com/andreyorst/plug.kak/archive/926f66a0d0657cd5971cf5d6be7da2fab034361b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "wsl-open": {
@@ -108,10 +108,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "f1b9fbbaf0123fb7b14b4a11bc18c86fd4b2305b",
-        "sha256": "0vdcj07b568piil7ix7kd3xdxv9g3r0c0gl1rfrn1lbcspw31a6b",
+        "rev": "ea3ae74164bdc1f38b23f6b4c339ac637bfb923b",
+        "sha256": "1qs6ghm21mff0pxs33iy7vaqfm7hiqdfg47q23vdr9xr6l1vfr3i",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/f1b9fbbaf0123fb7b14b4a11bc18c86fd4b2305b.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/ea3ae74164bdc1f38b23f6b4c339ac637bfb923b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
