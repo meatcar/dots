@@ -17,6 +17,7 @@
 (package! org-projectile)
 
 (package! nix-mode)
+(package! nixpkgs-fmt)
 
 (package! add-node-modules-path)
 (package! fast-scroll :recipe (:host github :repo "ahungry/fast-scroll"))
