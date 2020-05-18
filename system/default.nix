@@ -18,7 +18,7 @@
     let
       nixpkgs-wayland = import config.niv.nixpkgs-wayland;
     in
-      [ nixpkgs-wayland ];
+    [ nixpkgs-wayland ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -84,7 +84,7 @@
 
   fonts = {
     fontconfig = {
-      enable = true;
+      enable = lib.mkOptionDefault true;
       defaultFonts = {
         monospace = [ "GoMono Nerd Font" ];
         sansSerif = [ "Roboto" ];
@@ -98,7 +98,6 @@
         # icons
         font-awesome_4 nerdfonts
         # proportional
-        roboto
         google-fonts
         # monospace
         dina-font fira-code-symbols
@@ -138,7 +137,7 @@
         light
         gtk2fontsel
         libnotify
-        inotify-tools # for waybar
+        inotify-tools# for waybar
 
         # File Management
         xdg_utils
@@ -163,11 +162,12 @@
       inherit (pkgs) redshift-wayland waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
       inherit (pkgs.gnome3) adwaita-icon-theme;
-      python3 = pkgs.python3.withPackages (
-        pkgs: [
-          pkgs.youtube-dl
-        ]
-      );
+      python3 = pkgs.python3.withPackages
+        (
+          pkgs: [
+            pkgs.youtube-dl
+          ]
+        );
       # spotify
       inherit (pkgs) spotifyd spotify-tui;
     };

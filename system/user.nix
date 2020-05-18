@@ -28,6 +28,7 @@
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
       ../home-manager/modules/emacs
+      ../home-manager/modules/qutebrowser
     ];
 
     nixpkgs.config = config.nixpkgs.config;
@@ -53,7 +54,7 @@
       iconTheme.name = "Papirus-Dark";
       theme.package = pkgs.plata-theme;
       theme.name = "Plata-Noir-Compact";
-      font.package = pkgs.roboto;
+      font.package = pkgs.google-fonts;
       font.name = "Roboto 9";
     };
 
