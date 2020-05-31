@@ -199,6 +199,7 @@ if exists('*packager#init')
   Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
   Pack 'rbong/vim-flog'                " pretty git log
   Pack 'lambdalisue/gina.vim'          " fast git
+  Pack 'lambdalisue/vim-gista'         " post to gist.github.com
   "}}}
 
   " Nice Utilities {{{
@@ -211,8 +212,6 @@ if exists('*packager#init')
   Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'which fzf && yes \| ./install'}
   Pack 'junegunn/fzf.vim'                              " fuzzy completion of all the things
   Pack 'justinmk/vim-dirvish'                          " nice simple file browser
-  Pack 'mattn/gist-vim', {'on': 'Gist'}                " post to gist.github.com
-  Pack 'mattn/webapi-vim'                              " need this for gist.
   Pack 'AndrewRadev/splitjoin.vim'                     " single <> multi line code conversion
   Pack 'kshenoy/vim-signature'                         " show marks in the SignColumn
   Pack 'scrooloose/nerdtree'                           " tree sidebar
@@ -743,8 +742,8 @@ nnoremap <leader>gF :<C-u>GFiles?<CR>
 nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>CmdSplit Gstatus<CR>
-nnoremap <leader>gg :<C-u>Git<Space>
+nnoremap <leader>gs :<C-u>Gina status<CR>
+nnoremap <leader>gg :<C-u>Gina<Space>
 
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
