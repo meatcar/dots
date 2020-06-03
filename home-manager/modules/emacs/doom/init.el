@@ -37,7 +37,8 @@
        ;;fill-column        ; a `fill-column' indicator
        hl-todo              ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       ;;indent-guides      ; highlighted indent columns
+       indent-guides        ; highlighted indent columns
+       minimap
        modeline             ; snazzy, Atom-inspired modeline, plus API
        nav-flash            ; blink the current line after jumping
        ;;neotree            ; a project drawer, like NERDTree for vim

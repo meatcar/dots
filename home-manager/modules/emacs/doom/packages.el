@@ -11,6 +11,7 @@
 (package! soothe-theme)
 (package! sublime-themes)
 (package! base16-theme)
+(package! berrys-theme)
 
 (package! emojify)
 (package! olivetti)
@@ -18,6 +19,13 @@
 
 (package! nix-mode)
 (package! nixpkgs-fmt)
+(package! pretty-sha-path)
+
+(package! xterm-color)
+(package! eterm-256color)
+(package! magit-delta :recipe (:host github :repo "dandavison/magit-delta"))
+
+(package! forge)
 
 (package! add-node-modules-path)
 (package! fast-scroll :recipe (:host github :repo "ahungry/fast-scroll"))
