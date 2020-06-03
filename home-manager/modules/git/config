@@ -4,6 +4,16 @@
   smtpserveroption = --plain
   confirm = auto
 
+[pull]
+  ff = only
+[push]
+  default = simple
+
+[credential]
+  helper = git-credential-libsecret
+[commit]
+  #gpgsign = true
+
 [alias]
   s = status -sb
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -14,9 +24,9 @@
   algorithm = patience
   tool = nvimdiff
 [difftool]
-    prompt = true
+  prompt = true
 [difftool "nvimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE
+  cmd = nvim -d $LOCAL $REMOTE
 [merge]
   tool = nvimdiff
 [mergetool]
@@ -26,6 +36,8 @@
 
 [merge]
   conflictStyle = diff3
+[mergetool]
+  keepBackup = false
 
 [color]
   branch = auto
@@ -37,35 +49,12 @@
   local = yellow
   remote = green
 
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red
-  new = green
-  commit = yellow bold
-
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
-[pull]
-  ff = only
-[push]
-  default = simple
-[github]
-  user = meatcar
-  password =
-[mergetool]
-  keepBackup = false
-[commit]
-  #gpgsign = true
 
-[credential]
-  helper = git-credential-libsecret
 [core]
-  pager = (diff-so-fancy || cat) | less --tabs=4 -RFX
-[color "diff-highlight"]
-  newNormal = green
-  newHighlight = green bold 22
-  oldNormal = red
-  oldHighlight = red bold 52
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
