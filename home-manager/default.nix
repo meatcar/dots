@@ -26,22 +26,21 @@
         };
       };
     in
-      {
-        themes = {
-          light = theme;
-          dark = theme;
-        };
-        theme = theme;
+    {
+      themes = {
+        light = theme;
+        dark = theme;
       };
+      theme = theme;
+    };
 
   config = rec {
     home.stateVersion = "19.09";
     home.packages = builtins.attrValues {
       inherit (pkgs)
         curl htop mosh neomutt isync msmtp ripgrep jq rootlesskit docker
-        docker-compose entr nox nixpkgs-fmt binutils gcc gnumake openssl
-        pkgconfig imgcat
-        ;
+        docker-compose entr nox nixpkgs-fmt nixfmt binutils gcc gnumake openssl
+        pkgconfig imgcat;
     };
 
     xdg.enable = true;
@@ -59,14 +58,11 @@
 
     theme = config.themes.dark;
     themes =
-      let
-        base16 = config.niv.base16-alacritty;
+      let base16 = config.niv.base16-alacritty;
       in
-        {
-          light.alacritty =
-            "${base16}/colors/base16-summerfruit-light-256.yml";
-          dark.alacritty =
-            "${base16}/colors/base16-summerfruit-dark-256.yml";
-        };
+      {
+        light.alacritty = "${base16}/colors/base16-summerfruit-light-256.yml";
+        dark.alacritty = "${base16}/colors/base16-summerfruit-dark-256.yml";
+      };
   };
 }
