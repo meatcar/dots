@@ -20,6 +20,8 @@
     danhper/fish-ssh-agent
   '';
 
+  # crontab contents:
+  # */2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
   programs.fish.shellInit = ''
     # start cron daemon
     [ -z (pgrep cron) ] || sudo /etc/init.d/cron start 2>&1 >/dev/null
