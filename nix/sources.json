@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "6c7a0313673687368a33197e58bc28f4290ec244",
-        "sha256": "129lf4j9gsza7f40v76aywqdcqbrx9lvhbnsr8y53wv95x2bjg9r",
+        "rev": "dd50dc4c13b5676b45f40a286199fcad71ad211d",
+        "sha256": "0w7zakqqq80bqhy6dki0v25a6kcjc52bch40cdq1396bv7acn0ja",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/6c7a0313673687368a33197e58bc28f4290ec244.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/dd50dc4c13b5676b45f40a286199fcad71ad211d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -54,10 +54,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "b47873026c7e356a340d0e1de7789d4e8428ac66",
-        "sha256": "0wlhlmghfdvqqw2k7nyiiz4p9762aqbb2q88p6sswmlv499x5hb3",
+        "rev": "467ce5a9f45aaf96110b41eb863a56866e1c2c3c",
+        "sha256": "0qz7wgi61pdb335n18xm8rfwddckwv0vg8n7fii5abrrx47vnqcj",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/b47873026c7e356a340d0e1de7789d4e8428ac66.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/467ce5a9f45aaf96110b41eb863a56866e1c2c3c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-wayland": {
@@ -66,10 +66,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "a0d7c24a7318fee0dbec92d8207e3feddd81d8db",
-        "sha256": "1fzrh844wxf54qbrlp6dp34b6igk9728g5d51l7x337z8l8616ky",
+        "rev": "03243bdebb97fe6a0f7fd08ec4b6ca44ae5fdf63",
+        "sha256": "0l7ph5daqd9vibhv8z7n2pfk98mlhqa7sxyvacw94bgygf0vm5ga",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/a0d7c24a7318fee0dbec92d8207e3feddd81d8db.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/03243bdebb97fe6a0f7fd08ec4b6ca44ae5fdf63.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -87,7 +87,7 @@
     "wsl-open": {
         "ref": "master",
         "repo": "https://gitlab.com/4U6U57/wsl-open.git",
-        "rev": "ffc8c75cd77ff7f6bb68bd6297845f4e9c00cfc0",
+        "rev": "98f766bac95381150b4aac8125245a5dbbfae2f5",
         "type": "git"
     },
     "zsh-auto-notify": {
@@ -108,10 +108,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "ea3ae74164bdc1f38b23f6b4c339ac637bfb923b",
-        "sha256": "1qs6ghm21mff0pxs33iy7vaqfm7hiqdfg47q23vdr9xr6l1vfr3i",
+        "rev": "00c0c765509538de207173fc787d364eedd48d6b",
+        "sha256": "07carys84ap0s4l7klvnnqaqjfabr281fsbx760hfm6w2x0y1bvm",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/ea3ae74164bdc1f38b23f6b4c339ac637bfb923b.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/00c0c765509538de207173fc787d364eedd48d6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
