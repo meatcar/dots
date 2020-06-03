@@ -305,7 +305,7 @@ let g:ale_linter_aliases = {
       \}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fixers = {
-      \   'javascript': ['eslint'],
+      \   'javascript': ['eslint', 'prettier'],
       \   'css':        ['stylelint'],
       \   'scss':       ['stylelint'],
       \   'python':     ['autopep8'],
