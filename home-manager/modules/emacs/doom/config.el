@@ -123,8 +123,18 @@
 
 ;; (add-hook 'after-init-hook #'global-emojify-mode)
 
+(setq flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+(add-hook 'magit-mode-hook #'magit-delta-mode)
+
+(add-hook 'term-mode-hook #'eterm-256color-mode)
+
 (add-hook 'js2-mode-hook #'add-node-modules-path)
 (add-hook 'js2-mode-hook #'eslintd-fix-mode)
+
+(add-hook 'nix-mode-hook #'nixpkgs-fmt-on-save-mode)
+(add-hook 'shell-mode-hook #'pretty-sha-path-mode)
+(add-hook 'dired-mode-hook #'pretty-sha-path-mode)
 
 (setq +org-capture-todo-file (concat org-directory "aardvark.org"))
 (after! org
@@ -141,8 +151,21 @@
         ;; show actually italicized text instead of /italicized text/
         org-agenda-block-separator ""
         org-startup-truncated nil
-        org-fontify-quote-and-verse-blocks t)
+        org-fontify-quote-and-verse-blocks t
+        ;; clock
+        org-clock-persist t
+        org-clock-in-resume t
+        org-clock-out-remove-zero-time-clocks t
+        org-clock-out-when-done t
+        org-clock-report-include-clocking-task t
+        org-clock-auto-clock-resolution (quote when-no-clock-is-running))
+
+  (org-persistenct-insinuate)
 
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org")
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars)
+;; End:
