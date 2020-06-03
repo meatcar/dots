@@ -9,7 +9,7 @@
   (global-hl-line-mode 0))
 
 (defconst IS-WINDOWS-WSL
-  (string-match "Microsoft" operating-system-release)
+  (when (string-match-p "microsoft" operating-system-release) t)
   "Is Windows Subsystem for Linux?")
 
 ;; Add padding inside buffer windows
@@ -34,26 +34,42 @@
   "Is DARK_THEME env var set."
   (getenv "DARK_THEME")) ;TODO
 
-(defun me/dark-theme-p (&optional dark)
-  "Should we show a dark theme?
-
-  If DARK is present and 'dark, return t, nil otherwise. If arg dark is absent,
-  return the system theme setting."
+(defun me/dark-theme-p ()
+  "Should we show a dark theme?"
   (cond
-   (dark (eq dark 'dark))
    ((or IS-WINDOWS IS-WINDOWS-WSL) (me/windows-dark-theme-p))
    (:else (me/env-dark-theme-p))))
 
-(defun me/get-theme (&optional dark)
-  "Get the theme according to system env."
+(defun me/get-system-theme ()
+  "Return either 'light or 'dark, depending on the system settings."
   (cond
-   ((me/dark-theme-p dark) 'doom-dracula)
-   (:else                  'doom-one-light)))
+   ((or IS-WINDOWS IS-WINDOWS-WSL)
+    (if (me/windows-dark-theme-p) 'dark 'light))
+   (:else (if (me/dark-theme-p) 'dark 'light))))
 
-(defun me/set-theme (&optional dark)
-  "Set the theme."
+(defun me/get-theme (&optional color)
+  "Get the theme according to system env.
+
+  Force a selection with COLOR, either 'light or 'dark"
+  (if color color
+    (pcase (me/get-system-theme)
+      ('light me/doom-light-theme)
+      ('dark me/doom-dark-theme))))
+
+(defun me/set-theme (&optional color)
+  "Set the theme.
+
+  Force a selection with COLOR, either 'light or 'dark"
   (interactive)
-  (load-theme (me/get-theme dark) t))
+  (load-theme (me/get-theme color) t))
+
+(defvar me/doom-light-theme 'doom-one-light
+  "Light theme")
+(defvar me/doom-dark-theme 'doom-dracula
+  "Dark theme")
+
+(setq magit-delta-default-dark-theme "Dracula"
+      magit-delta-default-light-theme "OneHalfLight")
 
 (setq doom-theme (me/get-theme)
       doom-font (font-spec :family "Go Mono" :size 12)
