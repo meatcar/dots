@@ -231,7 +231,8 @@ if exists('*packager#init')
   Pack 'gruvbox-community/gruvbox'    " a theme to keep coming back to.
   Pack 'NLKNguyen/papercolor-theme'
   Pack 'liuchengxu/space-vim-theme'
-  Pack 'chriskempson/base16-vim'
+  " Pack 'chriskempson/base16-vim'
+  Pack 'https://gitlab.com/protesilaos/tempus-themes-vim' " accessible themes
   "}}}
 
   " Pretty Packages {{{
