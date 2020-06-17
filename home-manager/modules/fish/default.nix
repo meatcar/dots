@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [ ../starship ../fzf ];
-  home.packages = [ pkgs.bat pkgs.any-nix-shell ];
+  home.packages = [ pkgs.bat pkgs.any-nix-shell pkgs.fasd ];
   home.sessionVariables = { BAT_THEME = "base16"; };
 
   programs.fish = {

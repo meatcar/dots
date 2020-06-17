@@ -1,7 +1,6 @@
 # vim: set ft=sh
 
 # source: https://github.com/Mic92/dotfiles/blob/a0a9b7e358fa70a85cd468f8ca1fbb02ae0a91df/home/.direnvrc
-
 use_nix() {
   local path="$(nix-instantiate --find-file nixpkgs)"
 
@@ -65,4 +64,9 @@ use_nix() {
     watch_file default.nix
     watch_file shell.nix
   fi
+}
+
+# source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
+session_name(){
+  export TMUX_SESSION_NAME="${*:?session_name needs a name as argument}"
 }
