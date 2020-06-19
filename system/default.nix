@@ -9,6 +9,7 @@
     ../modules/intel.nix
     ../modules/nvidia
     ../modules/power
+    ../modules/egpu
     # ../modules/ly.nix
     ./user.nix
   ];
@@ -67,7 +68,6 @@
       '';
     };
     printing.enable = true;
-    hardware.bolt.enable = true;
   };
 
   system.stateVersion = "19.09";

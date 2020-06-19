@@ -18,6 +18,7 @@
     imports = [
       ../home-manager
       ../home-manager/modules/gnome-keyring.nix
+      ../home-manager/modules/egpu.nix
       ../home-manager/modules/sway
       ../home-manager/modules/kanshi
       ../home-manager/modules/alacritty
