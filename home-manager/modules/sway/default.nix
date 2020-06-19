@@ -140,9 +140,18 @@
           }
           { command = "${pkgs.mako}/bin/mako"; }
           {
-            # kill waybar with -9 (SIGKILL) because it doesn't propagate SIGTERM to children
             always = true;
-            command = "pkill -9 waybar; ${pkgs.waybar}/bin/waybar";
+            command =
+              let
+                waybarWrapper =
+                  pkgs.writeShellScript "waybarWrapper" ''
+                    # kill waybar with -9 (SIGKILL) because it doesn't propagate SIGTERM to children
+                    pkill -9 waybar
+                    ${pkgs.waybar}/bin/waybar
+                  '';
+              in
+              "${waybarWrapper}";
+
           }
         ];
 
