@@ -67,6 +67,7 @@
       '';
     };
     printing.enable = true;
+    hardware.bolt.enable = true;
   };
 
   system.stateVersion = "19.09";
@@ -162,12 +163,11 @@
       inherit (pkgs) redshift-wayland waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
       inherit (pkgs.gnome3) adwaita-icon-theme;
-      python3 = pkgs.python3.withPackages
-        (
-          pkgs: [
-            pkgs.youtube-dl
-          ]
-        );
+      python3 = pkgs.python3.withPackages (
+        pkgs: [
+          pkgs.youtube-dl
+        ]
+      );
       # spotify
       inherit (pkgs) spotifyd spotify-tui;
     };
