@@ -22,8 +22,8 @@
     undervolt = {
       enable = true;
       analogioOffset = "0";
-      coreOffset = "-110";
-      uncoreOffset = "-110";
+      coreOffset = "-125";
+      uncoreOffset = "-125";
       gpuOffset = "-70";
     };
     tlp = {
