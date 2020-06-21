@@ -69,5 +69,4 @@ in
     ''
     )
   ];
-  home.packages = [ ];
 }

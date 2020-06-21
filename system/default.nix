@@ -71,7 +71,7 @@
   };
 
   system.stateVersion = "19.09";
-  networking.hostName = "tormund.denys.me";
+  networking.hostName = "tormund";
   time.timeZone = "America/Toronto";
   location.provider = "geoclue2";
 
