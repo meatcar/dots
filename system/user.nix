@@ -53,8 +53,8 @@
       enable = true;
       iconTheme.package = pkgs.papirus-icon-theme;
       iconTheme.name = "Papirus-Dark";
-      theme.package = pkgs.plata-theme;
-      theme.name = "Plata-Noir-Compact";
+      theme.package = pkgs.pop-gtk-theme;
+      theme.name = "Pop-dark";
       font.package = pkgs.google-fonts;
       font.name = "Roboto 9";
     };
