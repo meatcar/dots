@@ -26,4 +26,12 @@
       intel-media-driver
       ;
   };
+
+  # source: https://nixos.wiki/wiki/Intel_Graphics
+  environment.variables = {
+    MESA_LOADER_DRIVER_OVERRIDE = "iris";
+  };
+  hardware.opengl.package = (pkgs.mesa.override {
+    galliumDrivers = [ "nouveau" "virgl" "swrast" "iris" ];
+  }).drivers;
 }
