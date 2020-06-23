@@ -287,6 +287,9 @@ in
 
       tabs.show = "multiple";
       tabs.title.format = "{audio}{private} {current_title}";
+      tabs.background = true;
+
+      colors.webpage.prefers_color_scheme_dark = true;
     };
     extraConfig = ''
       c.tabs.padding['top'] = ${toString padding.top}
@@ -297,6 +300,6 @@ in
       c.statusbar.padding['bottom'] = ${toString padding.bottom}
       c.statusbar.padding['right'] = ${toString padding.right}
       c.statusbar.padding['left'] = ${toString padding.left}
-      '';
+    '';
   };
 }
