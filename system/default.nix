@@ -75,13 +75,11 @@
   time.timeZone = "America/Toronto";
   location.provider = "geoclue2";
 
-  environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) vim git pciutils usbutils bind nix-prefetch-git brightnessctl;
-  };
-
   services = {
     gnome3.gnome-settings-daemon.enable = true;
   };
+
+  services.dbus.packages = [ pkgs.gnome3.dconf ];
 
   fonts = {
     fontconfig = {
@@ -129,65 +127,57 @@
     ];
     sounds.enable = true;
   };
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) vim git pciutils usbutils bind nix-prefetch-git brightnessctl;
+    inherit (pkgs)
+      glib
+      xwayland swaybg swayidle swaylock
+      mako
+      grim slurp
+      wl-clipboard
+      light
+      gtk2fontsel
+      libnotify
+      inotify-tools# for waybar
+
+      # File Management
+      xdg_utils
+      fuse_exfat
+      exfat-utils
+      ntfs3g
+      hicolor-icon-theme
+      breeze-icons
+      imv
+      zathura
+      streamlink
+      chromium
+      qbittorrent
+
+      # audio
+      pavucontrol
+      ncpamixer
+      mps-youtube
+      youtube-dl
+      ;
+    dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
+      enableTextMode = true;
+      theme = "cla";
+    });
+    inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
+    inherit (pkgs) redshift-wayland waybar;
+    inherit (pkgs.gnome2) gnome_icon_theme;
+    inherit (pkgs.gnome3) adwaita-icon-theme;
+    python3 = pkgs.python3.withPackages (
+      pkgs: [
+        pkgs.youtube-dl
+      ]
+    );
+    # spotify
+    inherit (pkgs) spotifyd spotify-tui;
+  };
 
   programs = {
-    sway.enable = true;
-    sway.extraPackages = builtins.attrValues {
-      inherit (pkgs)
-        glib
-        xwayland swaybg swayidle swaylock
-        mako
-        grim slurp
-        wl-clipboard
-        light
-        gtk2fontsel
-        libnotify
-        inotify-tools# for waybar
-
-        # File Management
-        xdg_utils
-        fuse_exfat
-        exfat-utils
-        ntfs3g
-        hicolor-icon-theme
-        breeze-icons
-        imv
-        zathura
-        streamlink
-        chromium
-        qbittorrent
-
-        # audio
-        pavucontrol
-        ncpamixer
-        mps-youtube
-        youtube-dl
-        ;
-      dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
-        enableTextMode = true;
-        theme = "cla";
-      });
-      inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
-      inherit (pkgs) redshift-wayland waybar;
-      inherit (pkgs.gnome2) gnome_icon_theme;
-      inherit (pkgs.gnome3) adwaita-icon-theme;
-      python3 = pkgs.python3.withPackages (
-        pkgs: [
-          pkgs.youtube-dl
-        ]
-      );
-      # spotify
-      inherit (pkgs) spotifyd spotify-tui;
-    };
-    sway.extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-      # needs qt5.qtwayland in systemPackages
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      # Fix for some Java AWT applications (e.g. Android Studio),
-      # use this if they aren't displayed properly:
-        export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
+    sway.enable = false;
 
     gnome-disks.enable = true;
 
