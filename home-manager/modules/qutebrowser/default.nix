@@ -30,7 +30,7 @@ let
 in
 {
   programs.qutebrowser = {
-    enable = true;
+    enable = false;
     settings = {
       ## Background color of the completion widget category headers.
       colors.completion.category.bg = palette.background;
@@ -287,9 +287,6 @@ in
 
       tabs.show = "multiple";
       tabs.title.format = "{audio}{private} {current_title}";
-      tabs.background = true;
-
-      colors.webpage.prefers_color_scheme_dark = true;
     };
     extraConfig = ''
       c.tabs.padding['top'] = ${toString padding.top}
