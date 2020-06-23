@@ -11,7 +11,7 @@ pkgs.stdenv.mkDerivation {
     pkgs.niv
     (pkgs.writeShellScriptBin "nixos-rebuild-pretty" ''
       # prettier than nixos-rebuild switch
-      sudo -E sh -c "nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && nixos-rebuild switch"
+      sudo -E sh -c "nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && nixos-rebuild $@"
     ''
     )
   ];
