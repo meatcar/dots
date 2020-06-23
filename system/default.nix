@@ -163,6 +163,10 @@
         mps-youtube
         youtube-dl
         ;
+      dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
+        enableTextMode = true;
+        theme = "cla";
+      });
       inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
       inherit (pkgs) redshift-wayland waybar;
       inherit (pkgs.gnome2) gnome_icon_theme;
