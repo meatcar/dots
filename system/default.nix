@@ -9,6 +9,7 @@
     ../modules/intel.nix
     ../modules/nvidia
     ../modules/power
+    ../modules/steam.nix
     ../modules/egpu
     # ../modules/ly.nix
     ./user.nix
