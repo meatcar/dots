@@ -20,5 +20,9 @@
       automatic = true;
       dates = [ "daily" ];
     };
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
   };
 }
