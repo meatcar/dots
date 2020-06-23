@@ -8,47 +8,54 @@
     stdlib = ''
       # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
       session_name(){
-        export TMUX_SESSION_NAME="$${*:?session_name needs a name as argument}"
+        if [ -z "$*" ]; then
+          echo session_name needs a name as argument >&2
+          exit 1
+        else
+          export TMUX_SESSION_NAME="$*"
+        fi
       }
     '';
   };
 
-  programs.fish.functions = {
-    autotmux = {
-      onVariable = "TMUX_SESSION_NAME";
-      body = ''
-        if test -n "$TMUX_SESSION_NAME" && \
-           test -z $TMUX && \
-           command -s tmux >/dev/null
-          if not tmux has-session -t $TMUX_SESSION_NAME
-            tmux new-session -d -s "$TMUX_SESSION_NAME"
+  programs.fish = {
+    shellInit = ''
+      function autotmux --on-variable TMUX_SESSION_NAME --description "autostart tmux when session gets set"
+          if test -n "$TMUX_SESSION_NAME" && \
+              test -z $TMUX && \
+              command -s tmux >/dev/null
+            if not tmux has-session -t $TMUX_SESSION_NAME
+              tmux new-session -d -s "$TMUX_SESSION_NAME"
+            end
+            tmux new-session -t "$TMUX_SESSION_NAME"
           end
-          tmux new-session -t "$TMUX_SESSION_NAME"
+      end
+    '';
+
+    functions = {
+      nix-init = ''
+        if [ -e ./.envrc ]
+          echo ".envrc already exists, skipping." >&2
+        else
+          echo session_name (basename "$PWD") >> .envrc
+          echo use nix >> .envrc
+          direnv allow
+        end
+
+        if [ -e shell.nix ]
+          echo "shell.nix already exists, skipping." >&2
+        else
+          echo >shell.nix "\
+        {pkgs ? import <nixpkgs> {}}:
+        pkgs.mkShell {
+          name = \"env\";
+          buildInputs = [];
+        }
+        "
+          $EDITOR default.nix
         end
       '';
     };
-    nix-init = ''
-      if [ -e ./.envrc ]
-        echo ".envrc already exists, skipping." >&2
-      else
-        echo session_name (pwd | basename) >> .envrc
-        echo use nix >> .envrc
-        direnv allow
-      end
-
-      if [ -e shell.nix ]
-        echo "shell.nix already exists, skipping." >&2
-      else
-        echo >shell.nix "\
-      {pkgs ? import <nixpkgs> {}}:
-      pkgs.mkShell {
-        name = \"env\";
-        buildInputs = [];
-      }
-      "
-        $EDITOR default.nix
-      end
-    '';
   };
 
 }
