@@ -21,4 +21,10 @@
       require_nofilter = true;
     };
   };
+  services.udev = {
+    extraRules = ''
+      SUBSYSTEM=="misc", ACTION=="add|remove", DEVNAME=="/dev/rfkill",RUN+="${pkgs.acl}/bin/setfacl -m u:meatcar:rw /dev/rfkill"
+    '';
+  };
+
 }
