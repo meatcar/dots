@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 usage=$(cat <<EOF
 usage: $0 [OPTIONS]
 
@@ -28,7 +28,7 @@ refresh() {
     sort -R <$temp >"$list"
 }
 
-gvcci-wal() {
+gvcci_wal() {
     if which gvcci >/dev/null 2>&1; then
         echo "running gvcci to generate colors"
         gvcci "$1" --template ~/.gvcci/templates/wal.json \
@@ -41,7 +41,7 @@ gvcci-wal() {
     fi
 }
 
-just-wal() {
+just_wal() {
     if which wal >/dev/null 2>&1; then
         echo "running wal to generate colors & templates"
         wal -n -i "$1" -q --backend colorz
@@ -54,21 +54,19 @@ fi
 
 set_wall() {
     echo 'generating colorscheme'
-    just-wal "$1" &
+    just_wal "$1" &
     WALPID=$!
 
     echo 'generating lock image'
     blur "$1" "$WAL_BLUR" &
     BLURPID=$!
 
-    if echo "$1" | grep 'tiling/' >/dev/null; then
-        echo 'setting wallpaper (tile)'
-        if [ -z "$WAYLAND_DISPLAY" ]; then
+    if [ -z "$WAYLAND_DISPLAY" ]; then
+        if echo "$1" | grep 'tiling/' >/dev/null; then
+            echo 'setting wallpaper (tile)'
             feh -q --bg-tile "$1"
-        fi
-    else
-        echo 'setting wallpaper (fill)'
-        if [ -z "$WAYLAND_DISPLAY" ]; then
+        else
+            echo 'setting wallpaper (fill)'
             feh --bg-fill "$1"
         fi
     fi
