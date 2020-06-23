@@ -139,6 +139,7 @@
             '';
           }
           { command = "${pkgs.mako}/bin/mako"; }
+          { command = "${pkgs.gebaar-libinput}/bin/gebaard -b"; }
           {
             always = true;
             command =
@@ -240,4 +241,26 @@
 
       };
     };
+
+  xdg.configFile."gebaar/gebaard.toml".text = ''
+    [commands.swipe.three]
+    left_up = ""
+    right_up = ""
+    up = "swaymsg focus up"
+    left_down = ""
+    right_down = ""
+    down = "swaymsg focus down"
+    left = "swaymsg focus left"
+    right = "swaymsg focus right"
+
+    [commands.swipe.four]
+    left_up = ""
+    right_up = ""
+    up = "${config.wayland.windowManager.sway.config.menu}"
+    left_down = ""
+    right_down = ""
+    down = ""
+    left = "swaymsg workspace prev"
+    right = "swaymsg workspace next"
+  '';
 }
