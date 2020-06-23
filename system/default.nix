@@ -97,14 +97,18 @@
     fonts = builtins.attrValues {
       inherit (pkgs)
         # icons
-        font-awesome_4 nerdfonts
+        font-awesome_4
         # proportional
         google-fonts
         # monospace
-        dina-font fira-code-symbols
-        iosevka ibm-plex go-font fira-code
+        #dina-font fira-code-symbols
+        #iosevka ibm-plex go-font fira-code
+        go-font
         emacs-all-the-icons-fonts
         ;
+      nerdfonts = pkgs.nerdfonts.override {
+        fonts = [ "Go-Mono" ];
+      };
     };
   };
   gtk.iconCache.enable = true;
