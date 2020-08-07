@@ -1,6 +1,9 @@
 # vim: set ft=gitconfig :
+[init]
+  defaultBranch = main
+
 [sendemail]
-  smtpserver=/home/meatcar/bin/mymsmtp
+  smtpserver=mymsmtp
   smtpserveroption = --plain
   confirm = auto
 
