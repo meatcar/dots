@@ -13,6 +13,7 @@
     ./modules/neovim
     ./modules/weechat
     ./modules/leiningen
+    ./modules/clojure
     ./modules/emacs
   ];
 
@@ -48,6 +49,7 @@
       EDITOR = "nvim";
       NOTES_DIR = "~/Sync/notes";
     };
+    nixpkgs.config = import ./config.nix;
     xdg.configFile."nixpkgs/config.nix".source = ./config.nix;
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
