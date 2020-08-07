@@ -1,0 +1,15 @@
+{:deps {refactor-nrepl/refactor-nrepl {:mvn/version "2.5.0"}
+        cider/cider-nrepl {:mvn/version "0.25.2"},
+        iced-nrepl/iced-nrepl {:mvn/version "1.0.4"}}
+
+ :aliases
+ {:new {:extra-deps {seancorfield/clj-new {:mvn/version "1.0.211"}}
+        :main-opts ["-m" "clj-new.create"]}
+  :outdated {:extra-deps {antq {:mvn/version "RELEASE"}}
+             :main-opts ["-m" "antq.core"]}
+  :find-deps {:extra-deps
+                {find-deps {:git/url "https://github.com/holyjak/find-deps"
+                            :sha "88d60faf0db23cf4e2f8155ca82ae49fc6dea164"}
+                 org.clojure/core.async {:mvn/version "1.1.587"}
+                 cheshire {:mvn/version "5.10.0"}}
+              :main-opts ["-m" "find-deps.core"]}}}
