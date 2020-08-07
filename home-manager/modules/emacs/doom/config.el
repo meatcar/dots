@@ -160,7 +160,7 @@
         org-clock-report-include-clocking-task t
         org-clock-auto-clock-resolution (quote when-no-clock-is-running))
 
-  (org-persistent-insinuate)
+  (org-clock-persistence-insinuate)
 
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org")

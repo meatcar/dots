@@ -48,7 +48,7 @@
         +defaults)          ; default popup rules
        ;; (pretty-code
        ;;  +iosevka)        ; replace bits of code with pretty symbols
-                                        ;tabs                ; an tab bar for Emacs
+       tabs                ; an tab bar for Emacs
        vc-gutter            ; vcs diff in the fringe
        vi-tilde-fringe      ; fringe tildes to mark beyond EOB
        ;window-select       ; visually switch windows
