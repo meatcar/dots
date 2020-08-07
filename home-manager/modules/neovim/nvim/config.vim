@@ -742,7 +742,7 @@ nnoremap <leader>gF :<C-u>GFiles?<CR>
 nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>Gina status<CR>
+nnoremap <leader>gs :<C-u>Gstatus<CR>
 nnoremap <leader>gg :<C-u>Gina<Space>
 
 nnoremap <leader>: :<C-u>Commands<CR>
