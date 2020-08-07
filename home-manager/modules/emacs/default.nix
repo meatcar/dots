@@ -19,5 +19,9 @@ in
   xdg.configFile."doom" = {
     source = ./doom;
     recursive = true;
+    onChange = "$HOME/.emacs.d/bin/doom sync";
   };
+  programs.fish.shellInit = ''
+    set -ax PATH $HOME/.emacs.d/bin
+  '';
 }

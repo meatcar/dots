@@ -12,6 +12,7 @@
 (package! sublime-themes)
 (package! base16-theme)
 (package! berrys-theme)
+(package! moe-theme)
 
 (package! emojify)
 (package! olivetti)
