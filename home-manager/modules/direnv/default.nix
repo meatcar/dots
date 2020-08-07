@@ -37,7 +37,8 @@
         if [ -e ./.envrc ]
           echo ".envrc already exists, skipping." >&2
         else
-          echo session_name (basename "$PWD") >> .envrc
+          # tmux doesn't like dots in session names
+          echo session_name (basename "$PWD" | tr '.' '-') >> .envrc
           echo use nix >> .envrc
           direnv allow
         end
@@ -52,7 +53,6 @@
           buildInputs = [];
         }
         "
-          $EDITOR default.nix
         end
       '';
     };
