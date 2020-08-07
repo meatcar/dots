@@ -185,7 +185,6 @@ if exists('*packager#init')
   Pack 'ncm2/ncm2-markdown-subscope'
   Pack 'ncm2/ncm2-html-subscope'
   Pack 'ncm2/float-preview.nvim'
-  Pack 'clojure-vim/async-clj-omni'
 
   " }}}
 
@@ -260,11 +259,10 @@ if exists('*packager#init')
   Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
   Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
   Pack 'tpope/vim-projectionist', {'type': 'opt'} " for vim-salve, quick-switch between src and test
-  Pack 'tpope/vim-fireplace', {'type': 'opt'}     " clojure editing on drugs
-  Pack 'venantius/vim-cljfmt', {'type': 'opt'}    " formatting
   Pack 'eraserhd/parinfer-rust',
         \ {'type': 'opt', 'do': 'nix-shell --run \"cargo build --release \"'}
                                                   " infer parens from indentation
+  Pack 'liquidz/vim-iced', {'type': 'opt'}        " Clojure Interactive Development Environment
   "}}}
 endif
 "}}}
@@ -610,10 +608,11 @@ autocmd vimrc FileType *html*,*handlebars*,*css*,*less*,*sass*,*scss*,*jsx*
       \ packadd emmet-vim | EmmetInstall
 autocmd vimrc FileType mail packadd 'neomutt.vim'
 autocmd vimrc FileType clojure packadd vim-classpath
-      \| packadd vim-fireplace
       \| packadd vim-projectionist | packadd vim-salve
-      \| packadd vim-cljfmt
       \| packadd parinfer-rust
+      \| packadd vim-iced
+      " \| packadd vim-cljfmt
+      " \| packadd vim-fireplace
 
 " Javascript
 autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
