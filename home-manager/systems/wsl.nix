@@ -10,8 +10,8 @@
       # Get DISPLAY for WSL2
       echo $(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     '';
-    emacs-x = pkgs.writeShellScriptBin "emacs-x" ''
-      env DISPLAY=$(get-wsl-display) emacs & disown
+    emacs-x = pkgs.writeShellScriptBin "with-x" ''
+      env DISPLAY=$(get-wsl-display) "$@" & disown
     '';
   };
 
