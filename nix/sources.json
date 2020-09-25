@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "eendroroy",
         "repo": "alacritty-theme",
-        "rev": "2cfaa351e4165961c780b0127ecb22a790d9f57a",
-        "sha256": "1wwarppdnzw07mr2swcwjhbzgr79fp9098q2zr3m0i322gz1sdcj",
+        "rev": "c1a8c5a9d492957433df48d7fc2251ab628dd223",
+        "sha256": "0fq26r9d4qb7akgsh47wr7iqnyxzih4vrmx52nhasz19fwj1659b",
         "type": "tarball",
-        "url": "https://github.com/eendroroy/alacritty-theme/archive/2cfaa351e4165961c780b0127ecb22a790d9f57a.tar.gz",
+        "url": "https://github.com/eendroroy/alacritty-theme/archive/c1a8c5a9d492957433df48d7fc2251ab628dd223.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "base16-alacritty": {
@@ -35,16 +35,28 @@
         "url": "https://github.com/aaron-williamson/base16-alacritty/archive/5166b25c65545333de29763efe8c2b62ba37ed6a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "f67749a1f79c4fed044b84d538ead9c394ce0ec2",
+        "sha256": "1f821xjy7vc5zjghk67i1dg67g2qddni2hx7c2g4kmby7v8nr3f8",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/f67749a1f79c4fed044b84d538ead9c394ce0ec2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
         "homepage": "",
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8ab113989126d738691ad70394ad5d0a57dab462",
-        "sha256": "0c58s69f9bjygrm7jdjmnrm1yixydnrg5157nj8l1vqzqsp4ry60",
+        "rev": "abfb4cde51856dbee909f373b59cd941f51c2170",
+        "sha256": "0vm304vcvp5p0bcqj9rapzkchvdbs2alssg5m8a590vz41r2bp33",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/8ab113989126d738691ad70394ad5d0a57dab462.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/abfb4cde51856dbee909f373b59cd941f51c2170.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -54,10 +66,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "4cdd64d9078181e8fcb6132909dc2835059a09bd",
-        "sha256": "19y554crjgh4g6gpcdrhhrqhpinbrzd5s6v45rpnh2f4in3s8fw7",
+        "rev": "1179840f9a88b8a548f4b11d1a03aa25a790c379",
+        "sha256": "00jy37wj04bvh299xgal2iik2my9l0nq6cw50r1b2kdfrji8d563",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/4cdd64d9078181e8fcb6132909dc2835059a09bd.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/1179840f9a88b8a548f4b11d1a03aa25a790c379.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-wayland": {
@@ -66,10 +78,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "c37595d0771f51c79e0727d41cfd2ff23b98fbd6",
-        "sha256": "1lmid3xzgqk593q7i4zi2y57z6f956iqf589r239vcpi77zvq26k",
+        "rev": "ca10bf093356b8610783a56baad834a4c1a9d094",
+        "sha256": "1bg14bcf4ln58jrc5lndi7nb1x4v2cdgn43ya8bhmj6jmrckvkb5",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/c37595d0771f51c79e0727d41cfd2ff23b98fbd6.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/ca10bf093356b8610783a56baad834a4c1a9d094.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -78,16 +90,16 @@
         "homepage": "",
         "owner": "andreyorst",
         "repo": "plug.kak",
-        "rev": "926f66a0d0657cd5971cf5d6be7da2fab034361b",
-        "sha256": "0am2ympz6a2syr0yfd5ryjccsv9pdbwz6gshhrzhl8yynygm2gw0",
+        "rev": "8a9dba51a3ca32e27526538e75ec7e4e3b09c94a",
+        "sha256": "0rxnl63ygsgr6z0h95fxdx99wqp46pg0yi5x28gs750w0jhj4rjc",
         "type": "tarball",
-        "url": "https://github.com/andreyorst/plug.kak/archive/926f66a0d0657cd5971cf5d6be7da2fab034361b.tar.gz",
+        "url": "https://github.com/andreyorst/plug.kak/archive/8a9dba51a3ca32e27526538e75ec7e4e3b09c94a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "wsl-open": {
-        "ref": "master",
+        "branch": "develop",
         "repo": "https://gitlab.com/4U6U57/wsl-open.git",
-        "rev": "98f766bac95381150b4aac8125245a5dbbfae2f5",
+        "rev": "9e1f7159df3dbbd6d9ec2ab90c0349c409d3a3ab",
         "type": "git"
     },
     "zsh-auto-notify": {
@@ -108,10 +120,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "91d2eeaf23c47341e8dc7ad66dbf85e38c2674de",
-        "sha256": "1160bbhpd2p6qlw1b5k86z243iv0yhv6x7pf414sr8q4cm59x2h0",
+        "rev": "62c5575848f1f0a96161243d18497c247c9f52df",
+        "sha256": "0s1cjm8psjwmrg8qdhdg48qyvp8nqk7bdgvqivgc5v9m27m7h5cg",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/91d2eeaf23c47341e8dc7ad66dbf85e38c2674de.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/62c5575848f1f0a96161243d18497c247c9f52df.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
