@@ -263,6 +263,8 @@ if exists('*packager#init')
         \ {'type': 'opt', 'do': 'nix-shell --run \"cargo build --release \"'}
                                                   " infer parens from indentation
   Pack 'liquidz/vim-iced', {'type': 'opt'}        " Clojure Interactive Development Environment
+  Pack 'jceb/vim-orgmode', {'type': 'opt'}        " orgmode
+  Pack 'inkarkat/vim-SyntaxRange', {'type': 'opt'} " for orgmode
   "}}}
 endif
 "}}}
@@ -656,6 +658,10 @@ let g:markdown_fenced_languages = [
       \'sh',
       \'shell=sh',
       \]
+
+autocmd vimrc BufNewFile,BufRead *.org set filetype=org
+autocmd vimrc FileType org packadd vim-SyntaxRange
+autocmd vimrc FileType org packadd vim-orgmode
 "}}}
 
 " Commands and Mappings {{{

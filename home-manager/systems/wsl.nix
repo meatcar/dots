@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }: {
-  home.sessionVariables = { XDG_RUNTIME_DIR = "$HOME/.cache/runtime"; };
+  home.sessionVariables = {
+    XDG_RUNTIME_DIR = "$HOME/.cache/runtime";
+    BROWSER = "${pkgs.wsl-open}/bin/wsl-open";
+  };
 
   nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
 
