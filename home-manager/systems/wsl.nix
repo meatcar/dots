@@ -16,6 +16,9 @@
     emacs-x = pkgs.writeShellScriptBin "with-x" ''
       env DISPLAY=$(get-wsl-display) "$@" & disown
     '';
+    powershell = pkgs.writeShellScriptBin "powershell.exe" ''
+      /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive –ExecutionPolicy Bypass "$@"
+    '';
   };
 
   xdg.configFile."fish/fishfile".text = ''
