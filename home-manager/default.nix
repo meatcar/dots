@@ -50,7 +50,12 @@
       NOTES_DIR = "~/Sync/notes";
     };
     nixpkgs.config = import ./config.nix;
-    xdg.configFile."nixpkgs/config.nix".source = ./config.nix;
+    xdg.configFile."nixpkgs/config.nix".text =
+      let
+        seqToString = lib.generators.toPretty { };
+        nixpkgsConfig = lib.filterAttrs (n: v: n != "packageOverrides") config.nixpkgs.config;
+      in
+      seqToString nixpkgsConfig;
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
     programs.bash.enable = true;
