@@ -5,6 +5,33 @@
     userEmail = "me@denys.me";
     userName = "Denys Pavlov";
     includes = [{ path = ./config; }];
+    attributes = [
+      "*.c     diff=cpp"
+      "*.h     diff=cpp"
+      "*.c++   diff=cpp"
+      "*.h++   diff=cpp"
+      "*.cpp   diff=cpp"
+      "*.hpp   diff=cpp"
+      "*.cc    diff=cpp"
+      "*.hh    diff=cpp"
+      "*.cs    diff=csharp"
+      "*.css   diff=css"
+      "*.html  diff=html"
+      "*.xhtml diff=html"
+      "*.ex    diff=elixir"
+      "*.exs   diff=elixir"
+      "*.go    diff=golang"
+      "*.php   diff=php"
+      "*.pl    diff=perl"
+      "*.py    diff=python"
+      "*.md    diff=markdown"
+      "*.rb    diff=ruby"
+      "*.rake  diff=ruby"
+      "*.rs    diff=rust"
+      "*.java  diff=java"
+      "*.m     diff=objc"
+      "*.mm    diff=objc"
+    ];
   };
 
   home.packages = builtins.attrValues {
@@ -19,6 +46,8 @@
     git:
       paging:
         colorArg: always
-        pager: ${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never
+        # broken, see https://github.com/jesseduffield/lazygit/issues/893
+        # pager: ${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never
+        pager: ${pkgs.gitAndTools.diff-so-fancy}/bin/diff-so-fancy
   '';
 }
