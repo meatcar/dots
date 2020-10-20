@@ -21,13 +21,14 @@
   programs.fish = {
     shellInit = ''
       function autotmux --on-variable TMUX_SESSION_NAME --description "autostart tmux when session gets set"
-          if test -n "$TMUX_SESSION_NAME" && \
-              test -z $TMUX && \
+          set -l name (echo "$TMUX_SESSION_NAME" | tr '.' '-')
+          if test -n "$name" && \
+              test -z "$TMUX" && \
               command -s tmux >/dev/null
-            if not tmux has-session -t $TMUX_SESSION_NAME
-              tmux new-session -d -s "$TMUX_SESSION_NAME"
+            if not tmux has-session -t "$name"
+              tmux new-session -d -s "$name"
             end
-            tmux new-session -t "$TMUX_SESSION_NAME"
+            tmux new-session -t "$name"
           end
       end
     '';
@@ -38,7 +39,7 @@
           echo ".envrc already exists, skipping." >&2
         else
           # tmux doesn't like dots in session names
-          echo session_name (basename "$PWD" | tr '.' '-') >> .envrc
+          echo session_name (basename "$PWD") >> .envrc
           echo use nix >> .envrc
           direnv allow
         end
