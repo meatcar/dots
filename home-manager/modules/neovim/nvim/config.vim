@@ -265,6 +265,7 @@ if exists('*packager#init')
   Pack 'liquidz/vim-iced', {'type': 'opt'}        " Clojure Interactive Development Environment
   Pack 'jceb/vim-orgmode', {'type': 'opt'}        " orgmode
   Pack 'inkarkat/vim-SyntaxRange', {'type': 'opt'} " for orgmode
+  Pack 'nathangrigg/vim-beancount', {'type': 'opt'} " for orgmode
   "}}}
 endif
 "}}}
@@ -662,6 +663,9 @@ let g:markdown_fenced_languages = [
 autocmd vimrc BufNewFile,BufRead *.org set filetype=org
 autocmd vimrc FileType org packadd vim-SyntaxRange
 autocmd vimrc FileType org packadd vim-orgmode
+
+autocmd vimrc BufNewFile,BufRead *.beancount set filetype=beancount
+autocmd vimrc FileType beancount packadd vim-beancount
 "}}}
 
 " Commands and Mappings {{{
