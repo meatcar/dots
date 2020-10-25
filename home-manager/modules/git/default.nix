@@ -48,8 +48,6 @@
     git:
       paging:
         colorArg: always
-        # broken, see https://github.com/jesseduffield/lazygit/issues/893
-        # pager: ${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never
-        pager: ${pkgs.gitAndTools.diff-so-fancy}/bin/diff-so-fancy
+        pager: ${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never
   '';
 }
