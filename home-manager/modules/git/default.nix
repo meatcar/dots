@@ -34,8 +34,10 @@
     ];
   };
 
+  programs.gh.enable = true;
+
   home.packages = builtins.attrValues {
-    inherit (pkgs.gitAndTools) lab hub delta gh;
+    inherit (pkgs.gitAndTools) lab hub delta;
     inherit (pkgs) lazygit mr;
     inherit (pkgs.perl530Packages) PodPerldoc;# for mr
   };
