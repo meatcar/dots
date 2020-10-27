@@ -9,10 +9,15 @@
     weechat = pkgs.weechat.override {
       configure = { availablePlugins, ... }: {
         plugins = builtins.attrValues {
-          inherit (availablePlugins) perl tcl ruby guile lua;
+          inherit (availablePlugins) tcl ruby guile lua;
           python = (
             availablePlugins.python.withPackages (
-              packages: [ packages.websocket_client ] # needed for slack.py
+              p: [ p.websocket_client ] # needed for slack.py
+            )
+          );
+          perl = (
+            availablePlugins.perl.withPackages (
+              p: [ p.PodParser ] # needed for multiline.pl
             )
           );
         };
