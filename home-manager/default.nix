@@ -15,6 +15,7 @@
     ./modules/leiningen
     ./modules/clojure
     ./modules/emacs
+    ./modules/nnn
   ];
 
   options =
@@ -40,7 +41,7 @@
     home.packages = builtins.attrValues {
       inherit (pkgs)
         curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq
-        nnn docker docker-compose entr nox nixpkgs-fmt nixfmt binutils
+        docker docker-compose entr nox nixpkgs-fmt nixfmt binutils
         gcc gnumake openssl pkgconfig imgcat;
     };
 
