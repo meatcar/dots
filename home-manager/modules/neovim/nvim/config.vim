@@ -312,6 +312,7 @@ let g:ale_fixers = {
       \   'scss':       ['stylelint'],
       \   'python':     ['autopep8'],
       \   'nix':        ['nixpkgs-fmt'],
+      \   'sh':         ['shfmt'],
       \}
 let g:ale_fix_on_save = 1
 let g:ale_linters = {'clojure': ['clj-kondo', 'joker']}
