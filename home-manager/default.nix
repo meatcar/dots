@@ -39,9 +39,9 @@
     home.stateVersion = "19.09";
     home.packages = builtins.attrValues {
       inherit (pkgs)
-        curl htop mosh neomutt isync msmtp ripgrep jq rootlesskit docker
-        docker-compose entr nox nixpkgs-fmt nixfmt binutils gcc gnumake openssl
-        pkgconfig imgcat;
+        curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq
+        rootlesskit docker docker-compose entr nox nixpkgs-fmt nixfmt binutils
+        gcc gnumake openssl pkgconfig imgcat;
     };
 
     xdg.enable = true;
