@@ -40,12 +40,4 @@
     source = ./functions;
     recursive = true;
   };
-
-  programs.broot.enable = true;
-  programs.broot.verbs = {
-    "rm" = { execution = "rm -rf {file}"; leave_broot = false; };
-    "mv" = { execution = "mv {file} {newpath:path-from-parent}"; leave_broot = false; };
-    "cp" = { execution = "cp {file} {newpath:path-from-parent}"; leave_broot = false; };
-    "mkdir" = { execution = "mkdir -p {subpath:path-from-directory}"; leave_broot = false; };
-  };
 }
