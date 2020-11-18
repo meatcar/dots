@@ -8,5 +8,5 @@
 
   xdg.configFile."nvim".source = ./nvim;
 
-  home.packages = with pkgs; [ fortune shellcheck ];
+  home.packages = with pkgs; [ fortune shellcheck shfmt ];
 }
