@@ -35,11 +35,12 @@
 
     functions = {
       nix-init = ''
+        set session_name (basename "$PWD" | tr '.' '-')
         if [ -e ./.envrc ]
           echo ".envrc already exists, skipping." >&2
         else
           # tmux doesn't like dots in session names
-          echo session_name (basename "$PWD") >> .envrc
+          echo session_name $session_name >> .envrc
           echo use nix >> .envrc
           direnv allow
         end
@@ -50,7 +51,7 @@
           echo >shell.nix "\
         {pkgs ? import <nixpkgs> {}}:
         pkgs.mkShell {
-          name = \"env\";
+          name = \"$session_name\";
           buildInputs = [];
         }
         "
