@@ -35,6 +35,7 @@ endfunction
 
 command! -nargs=* NoteNew call notes#edit(<f-args>)
 command! -bang NoteRg call RipgrepNotes(<q-args>, <bang>0)
+let g:leader_keymap.n = {'name': '+notes'}
 " mnemonic Note Create
 map <silent> <leader>nc :NoteNew<space>
 " mnemonic Note Notes
