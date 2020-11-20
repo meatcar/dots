@@ -274,13 +274,22 @@ endif
 
 " Whichkey {{{
 set timeoutlen=500     " speed up whichkey
-let g:mapleader = "\<Space>"
+let g:mapleader = '<Space>'
+let g:leader_keymap = {}
+call which_key#register(g:mapleader, "g:leader_keymap")
+
 let g:maplocalleader = ','
+let g:localleader_keymap = {}
+call which_key#register(g:maplocalleader, "g:localleader_keymap")
+
 nmap <silent> <leader>          :<c-u>WhichKey         '<leader>'<CR>
 vmap <silent> <leader>          :<c-u>WhichKeyVisual   '<leader>'<CR>
 nnoremap <silent> <localleader>     :<c-u>WhichKey         '<localleader>'<CR>
 vnoremap <silent> <localleader>     :<c-u>WhichKeyVisual   '<localleader>'<CR>
-inoremap <silent> <C-,>   <c-\><c-o>:<c-u>WhichKey '<localleader>'<CR>
+inoremap <silent> <C-,>   <c-\><c-o>:<c-u>WhichKey         '<localleader>'<CR>
+let g:leader_keymap.m = '+localleader'
+nnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
+vnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
 " }}}
 
 " vim-signify {{{
@@ -711,37 +720,50 @@ command! -bang -nargs=* Rg
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
 
+let g:leader_keymap[' '] = 'command'
 nnoremap <leader><Space> :<C-U>
 
+let g:leader_keymap.v = {'name': '+vim'}
 nnoremap <leader>vi :<C-U>PackInstall<CR>
 nnoremap <leader>vc :<C-U>PackClean<CR>
 nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
 nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
 
+let g:leader_keymap.h = {'name': '+help'}
 nnoremap <leader>hh :Helptags<CR>
 nnoremap <leader>hk :Maps<CR>
 nnoremap <leader>hc :Commands<CR>
 
+let g:leader_keymap.q = {'name': '+quit'}
 nnoremap <leader>qq :<C-U>q<CR>
 nnoremap <leader>qw :<C-U>wq<CR>
 nnoremap <leader>qx :<C-U>x<CR>
 
 " buffers
+let g:leader_keymap.b = {'name': '+buffers'}
 nnoremap <leader>bb :<C-u>Buffers<CR>
 nnoremap <leader>bd :<C-u>Bdelete<CR>
+let g:leader_keymap.b.n = 'next'
 nnoremap <leader>bn ]b
+let g:leader_keymap.b.p = 'prev'
 nnoremap <leader>bp [b
 " ack/grep
+let g:leader_keymap['/'] = 'search'
 nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
+let g:leader_keymap['*'] = 'search-cur-word'
 nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
+
 " files
+let g:leader_keymap.f = {'name': '+files'}
+let g:leader_keymap.f.r = 'recent'
 nnoremap <leader>fr :<C-u>History<CR>
 
 command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles --exclude-standard --others --cached' : 'Files'
 nnoremap <C-p>      :<C-u>Ctrlp<CR>
 
 nnoremap <leader>ff :<C-u>Files<CR>
+let g:leader_keymap.f.t = {'name': '+toggle'}
 nnoremap <leader>ftt :NERDTreeToggle<CR>
 nnoremap <leader>ftr :NERDTreeRefreshRoot<CR>
 nnoremap <leader>ftf :NERDTreeFind<CR>:wincmd p<CR>
@@ -749,6 +771,8 @@ nnoremap <leader>ftp :NERDTreeVCS<CR>
 nnoremap <leader>ftd :NERDTreeCWD<CR>
 
 
+let g:leader_keymap.g = {'name': '+git'}
+let g:leader_keymap.g.t = {'name': '+toggle'}
 nnoremap <leader>gf :<C-u>GFiles<CR>
 nnoremap <leader>gF :<C-u>GFiles?<CR>
 nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
@@ -784,17 +808,21 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
+let g:leader_keymap.t = {'name': '+toggle'}
 nmap <silent> <leader>tc :Color<CR>
 nmap <silent> <leader>tf :<C-u>Filetypes<CR>
 nmap <silent> <leader>tu :MundoToggle<CR>
 nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
 
+let g:leader_keymap.r = {'name': '+run'}
+let g:leader_keymap.r.t = {'name': '+test'}
 nmap <silent> <leader>rtt :TestNearest<CR>
 nmap <silent> <leader>rtf :TestFile<CR>
 nmap <silent> <leader>rts :TestSuite<CR>
 nmap <silent> <leader>rtr :TestLast<CR>
 nmap <silent> <leader>rtv :TestVisit<CR>
 
+let g:leader_keymap.w = {'name': '+window'}
 nmap <silent> <leader>wq :hide<CR>
 nmap <silent> <leader>wd :hide<CR>
 nmap <silent> <leader>wj <C-j>j
@@ -835,6 +863,7 @@ endfunction
 autocmd vimrc FileType markdown call s:markdown_mappings()
 
 function! s:markdown_mappings()
+  let g:localleader_keymap.t = {'name': '+window'}
   nmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>
   vmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
   nmap <localleader>tT :call mkdx#ToggleCheckboxState(1)<Cr>
