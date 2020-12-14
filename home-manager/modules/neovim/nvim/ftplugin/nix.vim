@@ -7,12 +7,5 @@ function! UpdateNixFetcher()
   call winrestview(w)
 endfunction
 
-function! s:bind_nix_keys()
-  nmap <buffer><nowait> <localleader>u :call UpdateNixFetcher()<CR>
-  vmap <buffer><nowait> <localleader>u :call UpdateNixFetcher()<CR>
-endfunction
-
-augroup filetype_nix
-  autocmd!
-  autocmd FileType nix call s:bind_nix_keys()
-augroup END
+nmap <buffer> <localleader>u :call UpdateNixFetcher()<CR>
+vmap <buffer> <localleader>u :call UpdateNixFetcher()<CR>
