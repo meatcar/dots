@@ -168,6 +168,7 @@ function! PackagerInit() abort
   Pack 'aymericbeaumet/symlink.vim'    " edit the actual file when opening symlinks
   Pack 'thinca/vim-fontzoom', {'type': 'opt'}  " zoom font in gvim
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
+  Pack 'ConradIrwin/vim-bracketed-paste' " auto-toggle ':set paste' when pasting in terminal
   "}}}
 
   " Snippets {{{
