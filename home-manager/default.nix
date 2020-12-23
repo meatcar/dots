@@ -42,7 +42,7 @@
       inherit (pkgs)
         curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq
         docker docker-compose entr nox nixpkgs-fmt nixfmt binutils
-        gcc gnumake openssl pkgconfig imgcat;
+        gcc gnumake openssl pkgconfig imgcat hydra-check;
     };
 
     xdg.enable = true;
