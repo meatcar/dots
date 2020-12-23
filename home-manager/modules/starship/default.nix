@@ -3,8 +3,14 @@
   # xdg.configFile."starship.toml".source = ./starship.toml;
   programs.starship.settings = {
     character = {
-      symbol = "$";
-      vicmd_symbol = ":";
+      success_symbol = "[\\$](bold green)";
+      error_symbol = "[\\$](bold red)";
+      vicmd_symbol = "[](bold green)";
+    };
+
+    status = {
+      disabled = false;
+      symbol = "!";
     };
 
     env_var = {
@@ -36,5 +42,6 @@
     python.symbol = " ";
     ruby.symbol = " ";
     rust.symbol = " ";
+    zig.symbol = " ";
   };
 }
