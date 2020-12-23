@@ -590,7 +590,7 @@ fun! SetTheme()
   if &background == 'dark'
     colorscheme gruvbox
   else
-    colorscheme base16-summerfruit-light
+    colorscheme PaperColor
   endif
 endfun
 
