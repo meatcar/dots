@@ -17,18 +17,6 @@ in
       tmuxPlugins.yank
       tmuxPlugins.pain-control
       tmuxPlugins.ctrlw
-      # {
-      #   plugin = tmuxPlugins.resurrect;
-      #   extraConfig = ''
-      #     set -g @resurrect-process "mosh-client neomutt nvim weechat"
-      #   '';
-      # }
-      # {
-      #   plugin = tmuxPlugins.continuum;
-      #   extraConfig = ''
-      #     set -g @continuum-restore "on"
-      #   '';
-      # }
       {
         plugin = tmuxPlugins.prefix-highlight;
         extraConfig = ''
