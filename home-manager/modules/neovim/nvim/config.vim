@@ -452,16 +452,12 @@ endfunction
 "}}}
 
 " polyglot {{{
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['yaml', 'markdown']
 " }}}
 
 " mkdx {{{
 let g:mkdx#settings = {
-      \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
-      \ 'restore_visual':          1,
-      \ 'enter':                   { 'enable': 1, 'shift': 0, 'o': 1,
-      \                              'shifto': 1, 'malformed': 1 },
-      \ 'map':                     { 'prefix': '<localleader>', 'enable': 0 },
+      \ 'map':                     { 'prefix': ',', 'enable': 1 },
       \ 'tokens':                  { 'enter':  ['-', '*', '>'],
       \                              'bold':   '**', 'italic': '*',
       \                              'strike': '',
@@ -470,42 +466,9 @@ let g:mkdx#settings = {
       \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
       \                              'update_tree': 2,
       \                              'initial_state': ' ' },
-      \ 'toc':                     { 'text':       "TOC",
-      \                              'list_token': '-',
-      \                              'position':   0,
-      \                              'update_on_write':   0,
-      \                              'details':    {
-      \                                 'enable':  0,
-      \                                 'summary': '{{toc.text}}',
-      \                                 'nesting_level': -1,
-      \                                 'child_count': 5,
-      \                                 'child_summary': 'show {{count}} items'
-      \                              }
-      \                            },
-      \ 'table':                   { 'divider': '|',
-      \                              'header_divider': '-',
-      \                              'align': {
-      \                                 'left':    [],
-      \                                 'right':   [],
-      \                                 'center':  [],
-      \                                 'default': 'center'
-      \                              }
-      \                            },
-      \ 'links':                   { 'external': {
-      \                                 'enable':     0,
-      \                                 'timeout':    3,
-      \                                 'host':       '',
-      \                                 'relative':   1,
-      \                                 'user_agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.0'
-      \                              },
-      \                              'fragment': {
-      \                                 'jumplist': 1,
-      \                                 'complete': 1
-      \                              }
-      \                            },
-      \ 'highlight':               { 'enable': 0 },
+      \ 'highlight':               { 'enable': 1 },
       \ 'auto_update':             { 'enable': 1 },
-      \ 'fold':                    { 'enable': 0, 'components': ['toc', 'fence'] }
+      \ 'fold':                    { 'enable': 1 }
       \ }
 
 " }}}
@@ -644,8 +607,8 @@ fun! EnableStripTrailingWhitespace()
   autocmd BufWritePre * :%s/\s\+$//e
 endfun
 
-autocmd FileType markdown let b:noStripWhitespace=1
-autocmd Filetype * call EnableStripTrailingWhitespace()
+autocmd vimrc FileType markdown let b:noStripWhitespace=1
+autocmd vimrc Filetype * call EnableStripTrailingWhitespace()
 
 " Pack 'tomtom/foldtext_vim'
 " autocmd vimrc FileType org,tex,latex,markdown,asciidoc packadd foldtext_vim
@@ -656,10 +619,7 @@ autocmd vimrc BufRead,BufNewFile mail set wrapmargin=3
 autocmd vimrc FileType md,markdown,text,mail packadd vim-pencil
 
 autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
-autocmd vimrc FileType markdown packadd vim-markdown
-autocmd vimrc FileType markdown packadd mkdx
-let g:vim_markdown_folding_disabled = 1
-let g:markdown_fenced_languages = [
+let g:vim_markdown_fenced_languages = [
       \'javascript',
       \'js=javascript',
       \'json=javascript',
@@ -860,20 +820,6 @@ function! s:filer_settings()
   nmap <buffer> l <CR>
   nmap <buffer> t i
   setlocal bufhidden=wipe
-endfunction
-
-autocmd vimrc FileType markdown call s:markdown_mappings()
-
-function! s:markdown_mappings()
-  let g:localleader_map.t = {'name': '+window'}
-  nmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>
-  vmap <localleader>tt :call mkdx#ToggleCheckboxState()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
-  nmap <localleader>tT :call mkdx#ToggleCheckboxState(1)<Cr>
-  vmap <localleader>tT :call mkdx#ToggleCheckboxState(1)<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
-  nmap <localleader>tc :call mkdx#ToggleCheckboxTask()<Cr>
-  vmap <localleader>tc :call mkdx#ToggleCheckboxTask()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
-  nmap <localleader>tl :call mkdx#ToggleChecklist()<Cr>
-  vmap <localleader>tl :call mkdx#ToggleChecklist()<Cr>:call mkdx#MaybeRestoreVisual()<Cr>
 endfunction
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
