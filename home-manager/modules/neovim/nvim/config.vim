@@ -147,8 +147,6 @@ function! PackagerInit() abort
 
   " Simple Sane QoL Packages {{{
   Pack 'kristijanhusak/vim-packager', { 'type': 'opt', 'name': 'packager' }
-  Pack 'tpope/vim-sensible'            " sane defaults
-  Pack 'tpope/vim-sleuth'              " auto-detect tabs
   Pack 'tpope/vim-eunuch'              " helpful Unix commands (:Rename, etc)
   Pack 'tpope/vim-commentary'          " easy commenting with `gcc`
   " Pack 'tpope/vim-surround'            " surround stuff!
