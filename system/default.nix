@@ -92,7 +92,7 @@
       };
     };
     enableDefaultFonts = true;
-    enableFontDir = true;
+    fontDir.enable = true;
     fonts = builtins.attrValues {
       inherit (pkgs)
         # icons
