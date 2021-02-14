@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 15
-    y: 15
+    x: 16
+    y: 16
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -131,7 +131,7 @@ font:
 # persistent_logging: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+# draw_bold_text_with_bright_colors: true
 
 # Visual Bell
 #
@@ -154,7 +154,7 @@ draw_bold_text_with_bright_colors: true
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: Linear
   duration: 300
   color: '0x111155'
@@ -163,7 +163,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.80
 
 # Mouse bindings
 #
@@ -354,12 +354,12 @@ alt_send_esc: true
 #   - AppKeypad
 key_bindings:
   # (Windows/Linux only)
-  - { key: V,        mods: Control|Shift, action: Paste            }
-  - { key: C,        mods: Control|Shift, action: Copy             }
-  - { key: S,        mods: Control|Shift, action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: V,      mods: Control|Shift, action: Paste            }
+  - { key: C,      mods: Control|Shift, action: Copy             }
+  - { key: S,      mods: Control|Shift, action: PasteSelection   }
+  - { key: Key0,   mods: Control,       action: ResetFontSize    }
+  - { key: Equals, mods: Control,       action: IncreaseFontSize }
+  - { key: Minus , mods: Control,       action: DecreaseFontSize }
 
   # (macOS only)
   #- { key: Key0,   mods: Command, action: ResetFontSize    }
