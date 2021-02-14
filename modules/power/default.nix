@@ -28,14 +28,11 @@
     };
     tlp = {
       enable = true;
-      extraConfig = ''
-        DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
-        USB_BLACKLIST_PHONE=1
-        # TLP_DEFAULT_MODE=BAT
-        # TLP_PERSISTENT_DEFAULT=1
-        # CPU_SCALING_GOVERNOR_ON_AC=powersave
-        # CPU_SCALING_GOVERNOR_ON_BAT=powersave
-      '';
+      settings = {
+        TLP_ENABLE = 1;
+        DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
+        USB_BLACKLIST_PHONE = 1;
+      };
     };
   };
 
