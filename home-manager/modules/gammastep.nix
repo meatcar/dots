@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
-  services.redshift = {
+  services.gammastep = {
     enable = true;
-    package = pkgs.redshift-wlr;
     provider = "geoclue2";
     temperature = {
       day = 6500;
       night = 4200;
     };
+    tray = true;
   };
 }

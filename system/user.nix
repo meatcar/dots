@@ -14,6 +14,12 @@
     extraGroups = [ "wheel" "video" "docker" "networkmanager" "power" ];
   };
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   home-manager.users.meatcar = { pkgs, ... }: {
     imports = [
       ../home-manager
@@ -25,41 +31,49 @@
       ../home-manager/modules/firefox
       ../home-manager/modules/mpv.nix
       ../home-manager/modules/spotifyd.nix
-      ../home-manager/modules/redshift.nix
+      ../home-manager/modules/gammastep.nix
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
       ../home-manager/modules/emacs
       ../home-manager/modules/qutebrowser
     ];
 
-    nixpkgs.config = config.nixpkgs.config;
-    nixpkgs.overlays = config.nixpkgs.overlays;
+    config = {
 
-    xdg.configFile = {
-      "swaylock".source = ../conf/sway/.config/swaylock;
-      "wldash".source = ../conf/sway/.config/wldash;
-      "waybar".source = ../conf/waybar/.config/waybar;
-      "mako".source = ../conf/mako/.config/mako;
+      nixpkgs.config = config.nixpkgs.config;
+      nixpkgs.overlays = config.nixpkgs.overlays;
+
+      home = {
+        username = "meatcar";
+        homeDirectory = "/home/meatcar";
+      };
+
+      xdg.configFile = {
+        "swaylock".source = ../conf/sway/.config/swaylock;
+        "wldash".source = ../conf/sway/.config/wldash;
+        "waybar".source = ../conf/waybar/.config/waybar;
+        "mako".source = ../conf/mako/.config/mako;
+      };
+
+      services = {
+        syncthing.enable = true;
+        keybase.enable = true;
+        kbfs.enable = true;
+        udiskie.enable = true;
+      };
+
+      gtk = {
+        enable = true;
+        iconTheme.package = pkgs.papirus-icon-theme;
+        iconTheme.name = "Papirus-Dark";
+        theme.package = pkgs.pop-gtk-theme;
+        theme.name = "Pop-dark";
+        font.package = pkgs.inter;
+        font.name = "Inter 9";
+      };
+
+      programs.neovim.package = lib.mkForce pkgs.neovim-unwrapped;
+      programs.zathura.enable = true;
     };
-
-    services = {
-      syncthing.enable = true;
-      keybase.enable = true;
-      kbfs.enable = true;
-      udiskie.enable = true;
-    };
-
-    gtk = {
-      enable = true;
-      iconTheme.package = pkgs.papirus-icon-theme;
-      iconTheme.name = "Papirus-Dark";
-      theme.package = pkgs.pop-gtk-theme;
-      theme.name = "Pop-dark";
-      font.package = pkgs.google-fonts;
-      font.name = "Roboto 9";
-    };
-
-    programs.neovim.package = lib.mkForce pkgs.neovim-unwrapped;
-    programs.zathura.enable = true;
   };
 }
