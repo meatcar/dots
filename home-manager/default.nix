@@ -37,7 +37,7 @@
     };
 
   config = rec {
-    home.stateVersion = "19.09";
+    home.stateVersion = "20.09";
     home.packages = builtins.attrValues {
       inherit (pkgs)
         curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq
