@@ -26,11 +26,14 @@
     danhper/fish-ssh-agent
   '';
 
-  # Occasionally drop caches to minimize WSL2 ram usages
-  # root crontab contents:
-  # */2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
   programs.fish.shellInit = ''
+    # Occasionally drop caches to minimize WSL2 ram usages
+    # root crontab contents:
+    # */2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
     # start cron daemon
     [ -z (pgrep cron) ] && sudo /etc/init.d/cron start 2>&1 >/dev/null
+
+    # WSL thinks the shell is bash, even when running fish. Let's change it's mind.
+    set -x SHELL ${pkgs.fish}/bin/fish
   '';
 }
