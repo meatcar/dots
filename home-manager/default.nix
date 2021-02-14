@@ -66,11 +66,12 @@
 
     theme = config.themes.dark;
     themes =
-      let base16 = config.niv.base16-alacritty;
+      let
+        theme = config.niv.alacritty-theme;
       in
       {
-        light.alacritty = "${base16}/colors/base16-summerfruit-light-256.yml";
-        dark.alacritty = "${base16}/colors/base16-summerfruit-dark-256.yml";
+        light.alacritty = "${theme}/themes/pencil_light.yaml";
+        dark.alacritty = "${theme}/themes/hyper.yaml";
       };
   };
 }
