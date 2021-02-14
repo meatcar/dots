@@ -71,7 +71,7 @@
     printing.enable = true;
   };
 
-  system.stateVersion = "19.09";
+  system.stateVersion = "20.03";
   networking.hostName = "tormund";
   time.timeZone = "America/Toronto";
   location.provider = "geoclue2";
@@ -87,7 +87,7 @@
       enable = lib.mkOptionDefault true;
       defaultFonts = {
         monospace = [ "GoMono Nerd Font" ];
-        sansSerif = [ "Roboto" ];
+        sansSerif = [ "Inter" ];
         serif = [ "Liberation Serif" ];
       };
     };
@@ -99,6 +99,7 @@
         font-awesome_4
         # proportional
         google-fonts
+        inter
         # monospace
         #dina-font fira-code-symbols
         #iosevka ibm-plex go-font fira-code
@@ -165,13 +166,11 @@
       theme = "cla";
     });
     inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
-    inherit (pkgs) redshift-wayland waybar;
+    inherit (pkgs) waybar;
     inherit (pkgs.gnome2) gnome_icon_theme;
     inherit (pkgs.gnome3) adwaita-icon-theme;
     python3 = pkgs.python3.withPackages (
-      pkgs: [
-        pkgs.youtube-dl
-      ]
+      pkgs: [ pkgs.youtube-dl ]
     );
     # spotify
     inherit (pkgs) spotifyd spotify-tui;
