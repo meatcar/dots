@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [ ../starship ../fzf ];
-  home.packages = [ pkgs.bat pkgs.fasd ];
+  home.packages = [ pkgs.bat pkgs.fasd pkgs.fd ];
   home.sessionVariables = { BAT_THEME = "base16"; };
 
   programs.fish = {
@@ -32,9 +32,9 @@
     '';
   };
 
-  xdg.configFile."fish/fishfile" = {
-    text = builtins.readFile ./fishfile;
-    onChange = "fish -l -c fisher";
+  xdg.configFile."fish/fish_plugins" = {
+    text = builtins.readFile ./fish_plugins;
+    onChange = "fish -il -c 'fisher update'";
   };
   xdg.configFile."fish/functions" = {
     source = ./functions;
