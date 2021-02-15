@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  home.username = "meatcar";
+  home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";
