@@ -1,4 +1,6 @@
 { config, lib, pkgs, ... }: {
+  home.username = "meatcar";
+  home.homeDirectory = "/home/${config.home.username}";
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";
     BROWSER = "${pkgs.wsl-open}/bin/wsl-open";
