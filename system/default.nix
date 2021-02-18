@@ -11,6 +11,7 @@
     ../modules/power
     ../modules/steam.nix
     ../modules/egpu
+    ../modules/dualboot.nix
     # ../modules/ly.nix
     ./user.nix
   ];
