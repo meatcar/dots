@@ -24,13 +24,6 @@ if [ -n "$fish_user_paths" ]
     set-fish-user-paths
 end
 
-if [ -n "$IS_WSL" ] # Running in WSL
-    # umask 002 # Fix new file/dir permissions
-
-    # enable x11 apps
-    # set -x DISPLAY ':0'
-end
-
 if [ -d ~/.asdf ]
     source ~/.asdf/asdf.fish
 end
@@ -56,8 +49,4 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 
 if [ -z "$SSH_AUTH_SOCK" ] && command -qs gnome-keyring-daemon
     gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
-end
-
-if command -qs direnv
-    direnv hook fish | source
 end
