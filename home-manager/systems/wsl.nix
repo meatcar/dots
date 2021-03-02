@@ -29,11 +29,19 @@
   '';
 
   programs.fish.shellInit = ''
-    # Occasionally drop caches to minimize WSL2 ram usages
-    # root crontab contents:
-    # */2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
-    # start cron daemon
-    [ -z (pgrep cron) ] && sudo /etc/init.d/cron start 2>&1 >/dev/null
+    # Detect startup
+    if [ -z (pgrep cron) ]
+      # Since this branch is executed once, let's clean /tmp and mount
+      sudo rm -rf /tmp/*
+      sudo mount -t tmpfs tmpfs /tmp || true
+
+      # Occasionally drop caches to minimize WSL2 ram usages
+      # root crontab contents:
+      # */2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
+      # start cron daemon
+      sudo /etc/init.d/cron start 2>&1 >/dev/null
+
+    end
 
     # WSL thinks the shell is bash, even when running fish. Let's change it's mind.
     set -x SHELL ${pkgs.fish}/bin/fish
