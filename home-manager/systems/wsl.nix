@@ -23,7 +23,7 @@
     '';
   };
 
-  xdg.configFile."fish/fishfile".text = ''
+  xdg.configFile."fish/fish_plugins".text = ''
     # WSL Only:
     danhper/fish-ssh-agent
   '';
