@@ -480,16 +480,16 @@ let g:user_emmet_install_global = 0
 autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _
 " }}}
 
-  " Paredit {{{
-  let g:paredit_leader=","
-  let g:paredit_smartjump=1
-  "}}}
+" Paredit {{{
+let g:paredit_leader=","
+let g:paredit_smartjump=1
+"}}}
 
-  " peekaboo {{{
-  " let g:peekaboo_window = "vert bo 30new"
-  let g:peekaboo_delay = 300
-  let g:peekaboo_compact = 1
-  " "}}}
+" peekaboo {{{
+" let g:peekaboo_window = "vert bo 30new"
+let g:peekaboo_delay = 300
+let g:peekaboo_compact = 1
+" "}}}
 
 " ncm2 {{{
 " autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
@@ -704,34 +704,6 @@ autocmd vimrc FileType beancount packadd vim-beancount
 "}}}
 
 " Commands and Mappings {{{
-" auto-cd based on file from
-" http://inlehmansterms.net/2014/09/04/sane-vim-working-directories/
-
-" follow symlinked file
-function! FollowSymlink()
-  let l:current_file = expand('%:p')
-  " check if file type is a symlink
-  if getftype(l:current_file) ==? 'link'
-    " if it is a symlink resolve to the actual file path
-    "   and open the actual file
-    let l:actual_file = resolve(l:current_file)
-    silent! execute 'file ' . l:actual_file
-  end
-endfunction
-
-" set working directory to git project root
-" or directory of current file if not git project
-function! SetProjectRoot()
-  " default to the current file's directory
-  cd %:p:h
-  let l:git_dir = system('git rev-parse --show-toplevel')
-  " See if the command output starts with 'fatal' (if it does, not in a git repo)
-  let l:is_not_git_dir = matchstr(l:git_dir, '^fatal:.*')
-  " if git project, change local directory to git project root
-  if empty(l:is_not_git_dir)
-    cd `=l:git_dir`
-  endif
-endfunction
 
 " RG + FZF
 command! -bang -nargs=* Rg
@@ -745,26 +717,30 @@ command! -bang -nargs=* Rg
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
 
-let g:leader_map[' '] = 'command'
-nnoremap <leader><Space> :<C-U>
-
+" <leader {{{
+" <leader>v (vim) {{{
 let g:leader_map.v = {'name': '+vim'}
 nnoremap <leader>vi :<C-U>PackInstall<CR>
 nnoremap <leader>vc :<C-U>PackClean<CR>
 nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
 nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
+" }}}
 
+" <leader>h (help) {{{
 let g:leader_map.h = {'name': '+help'}
 nnoremap <leader>hh :Helptags<CR>
 nnoremap <leader>hk :Maps<CR>
 nnoremap <leader>hc :Commands<CR>
+" }}}
 
+" <leader>q (quit) {{{
 let g:leader_map.q = {'name': '+quit'}
 nnoremap <leader>qq :<C-U>q<CR>
 nnoremap <leader>qw :<C-U>wq<CR>
 nnoremap <leader>qx :<C-U>x<CR>
+" }}}
 
-" buffers
+" <leader>b (buffers) {{{
 let g:leader_map.b = {'name': '+buffers'}
 nnoremap <leader>bb :<C-u>Buffers<CR>
 nnoremap <leader>bd :<C-u>Bdelete<CR>
@@ -772,24 +748,24 @@ let g:leader_map.b.n = 'next'
 nnoremap <leader>bn ]b
 let g:leader_map.b.p = 'prev'
 nnoremap <leader>bp [b
-" ack/grep
 let g:leader_map.b.N = 'move-next'
 nnoremap <leader>bN :<C-u>BufferLineMoveNext<CR>
 let g:leader_map.b.P = 'move-prev'
 nnoremap <leader>bP :<C-u>BufferLineMovePrev<CR>
+"}}}
+
+" <leader>/ (grep) {{{
 let g:leader_map['/'] = 'search'
 nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
 let g:leader_map['*'] = 'search-cur-word'
 nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
+" }}}
 
-" files
+" <leader>f (files) {{{
 let g:leader_map.f = {'name': '+files'}
 let g:leader_map.f.r = 'recent'
 nnoremap <leader>fr :<C-u>History<CR>
-
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles --exclude-standard --others --cached' : 'Files'
-nnoremap <C-p>      :<C-u>Ctrlp<CR>
 
 nnoremap <leader>ff :<C-u>Files<CR>
 let g:leader_map.f.t = {'name': '+toggle'}
@@ -798,8 +774,9 @@ nnoremap <leader>ftr :NERDTreeRefreshRoot<CR>
 nnoremap <leader>ftf :NERDTreeFind<CR>:wincmd p<CR>
 nnoremap <leader>ftp :NERDTreeVCS<CR>
 nnoremap <leader>ftd :NERDTreeCWD<CR>
+" }}}
 
-
+" <leader>g (git) {{{
 let g:leader_map.g = {'name': '+git'}
 let g:leader_map.g.t = {'name': '+toggle'}
 nnoremap <leader>gf :<C-u>GFiles<CR>
@@ -809,21 +786,68 @@ nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
 nnoremap <leader>gs :<C-u>Gstatus<CR>
 nnoremap <leader>gg :<C-u>Gina<Space>
+" }}}
 
+" <leader>t (toggle)) {{{
+let g:leader_map.t = {'name': '+toggle'}
+nmap <silent> <leader>tc :Color<CR>
+nmap <silent> <leader>tf :<C-u>Filetypes<CR>
+nmap <silent> <leader>tu :MundoToggle<CR>
+nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
+" }}}
+
+" <leader>r (run) {{{
+let g:leader_map.r = {'name': '+run'}
+let g:leader_map.r.t = {'name': '+test'}
+nmap <silent> <leader>rtt :TestNearest<CR>
+nmap <silent> <leader>rtf :TestFile<CR>
+nmap <silent> <leader>rts :TestSuite<CR>
+nmap <silent> <leader>rtr :TestLast<CR>
+nmap <silent> <leader>rtv :TestVisit<CR>
+" }}}
+
+" <leader>w (window) {{{
+let g:leader_map.w = {'name': '+window'}
+nmap <silent> <leader>wq :hide<CR>
+nmap <silent> <leader>wd :hide<CR>
+nmap <silent> <leader>wj <C-j>j
+nmap <silent> <leader>wk <C-k>k
+nmap <silent> <leader>wl <C-w>l
+nmap <silent> <leader>wh <C-w>h
+nmap <silent> <leader>ws :split<CR>
+nmap <silent> <leader>wv :vsplit<CR>
+nmap <silent> <leader>wz <C-w><T>
+"}}}
+
+" <leader>*** (misc) {{{
+let g:leader_map[' '] = 'command'
+nnoremap <leader><Space> :<C-U>
 nnoremap <leader>: :<C-u>Commands<CR>
 " search in file
 nnoremap // :<C-u>BLines<CR>
 
 nmap <silent> <leader>s :Snippets<CR>
 
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" }}}
+" }}}
+
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles --exclude-standard --others --cached' : 'Files'
+nnoremap <C-p>      :<C-u>Ctrlp<CR>
+
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+let g:endwise_no_mappings = 'plz stahp'
+inoremap <silent><expr><C-Space> compe#complete()
+inoremap <silent><expr><CR> compe#confirm('<CR>')
+inoremap <silent><expr><C-e> compe#close('<C-e>')
+inoremap <silent><expr><C-f> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr><C-d> compe#scroll({ 'delta': -4 })
 
 " typo corrections
 nmap q: :q<cr>
@@ -836,37 +860,6 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-
-let g:leader_map.t = {'name': '+toggle'}
-nmap <silent> <leader>tc :Color<CR>
-nmap <silent> <leader>tf :<C-u>Filetypes<CR>
-nmap <silent> <leader>tu :MundoToggle<CR>
-nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
-
-let g:leader_map.r = {'name': '+run'}
-let g:leader_map.r.t = {'name': '+test'}
-nmap <silent> <leader>rtt :TestNearest<CR>
-nmap <silent> <leader>rtf :TestFile<CR>
-nmap <silent> <leader>rts :TestSuite<CR>
-nmap <silent> <leader>rtr :TestLast<CR>
-nmap <silent> <leader>rtv :TestVisit<CR>
-
-let g:leader_map.w = {'name': '+window'}
-nmap <silent> <leader>wq :hide<CR>
-nmap <silent> <leader>wd :hide<CR>
-nmap <silent> <leader>wj <C-j>j
-nmap <silent> <leader>wk <C-k>k
-nmap <silent> <leader>wl <C-w>l
-nmap <silent> <leader>wh <C-w>h
-nmap <silent> <leader>ws :split<CR>
-nmap <silent> <leader>wv :vsplit<CR>
-nmap <silent> <leader>wz <C-w><T>
-let g:endwise_no_mappings = 'plz stahp'
-inoremap <silent><expr><C-Space> compe#complete()
-inoremap <silent><expr><CR> compe#confirm('<CR>')
-inoremap <silent><expr><C-e> compe#close('<C-e>')
-inoremap <silent><expr><C-f> compe#scroll({ 'delta': +4 })
-inoremap <silent><expr><C-d> compe#scroll({ 'delta': -4 })
 
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
