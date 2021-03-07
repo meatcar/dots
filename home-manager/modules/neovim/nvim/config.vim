@@ -74,7 +74,7 @@ let &fillchars='vert:│,fold: '
 " Completion {{{
 set noshowmode shortmess+=c
 set noinfercase
-set completeopt=noinsert,menuone,noselect
+set completeopt=menuone,noselect
 "}}}
 
 " Folds {{{
@@ -176,17 +176,9 @@ function! PackagerInit() abort
   " "}}}
 
   " Completion {{{
-  Pack 'ncm2/ncm2'
-  Pack 'roxma/nvim-yarp'
-  Pack 'ncm2/ncm2-bufword'
-  Pack 'fgrsnau/ncm2-otherbuf'
-  Pack 'ncm2/ncm2-path'
-  Pack 'ncm2/ncm2-github'
-  Pack 'ncm2/ncm2-ultisnips'
-  Pack 'wellle/tmux-complete.vim'
-  Pack 'ncm2/ncm2-markdown-subscope'
-  Pack 'ncm2/ncm2-html-subscope'
-  Pack 'ncm2/float-preview.nvim'
+  Pack 'neovim/nvim-lspconfig'
+  Pack 'hrsh7th/nvim-compe'
+  Pack 'nvim-treesitter/nvim-treesitter'
 
   " }}}
 
@@ -494,23 +486,56 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
   let g:peekaboo_compact = 1
   " "}}}
 
-  " ncm2 {{{
-  autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
+" ncm2 {{{
+" autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
 
-  func! config#expand_snippet()
-    if ncm2_ultisnips#completed_is_snippet()
-      call feedkeys("\<Plug>(ncm2_ultisnips_expand_completed)", "m")
-    endif
-    return ''
-  endfunc
+" func! config#expand_snippet()
+"   if ncm2_ultisnips#completed_is_snippet()
+"     call feedkeys("\<Plug>(ncm2_ultisnips_expand_completed)", "m")
+"   endif
+"   return ''
+" endfunc
+"}}}
 
-  " UltiSnips integration
-  autocmd vimrc BufNewFile,BufRead *
-        \ inoremap <silent> <expr> <cr> pumvisible() ? "\<c-y>\<c-r>=config#expand_snippet()\<cr>" : "\<cr>"
-  let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
-  let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
-  let g:UltiSnipsRemoveSelectModeMappings = 0
+" nvim-compe {{{
+let g:compe = {}
+let g:compe.enabled = v:true
+
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.spell = v:true
+let g:compe.source.tags = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.treesitter = v:true
+let g:compe.source.vim_dadbod_completion = v:true
+let g:compe.source.omni = v:true
+
+call compe#setup(g:compe)
+" }}}
+
+" UltiSnips {{{
+let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 "}}}
 
 " Colors {{{
@@ -795,6 +820,12 @@ nmap <silent> <leader>wh <C-w>h
 nmap <silent> <leader>ws :split<CR>
 nmap <silent> <leader>wv :vsplit<CR>
 nmap <silent> <leader>wz <C-w><T>
+let g:endwise_no_mappings = 'plz stahp'
+inoremap <silent><expr><C-Space> compe#complete()
+inoremap <silent><expr><CR> compe#confirm('<CR>')
+inoremap <silent><expr><C-e> compe#close('<C-e>')
+inoremap <silent><expr><C-f> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr><C-d> compe#scroll({ 'delta': -4 })
 
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
