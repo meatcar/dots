@@ -276,6 +276,7 @@ endfunction
 set timeoutlen=500     " speed up whichkey
 let g:mapleader = "\<Space>"
 let g:leader_map = {}
+let g:which_key_fallback_to_native_key = 1
 autocmd vimrc VimEnter * call which_key#register(g:mapleader, "g:leader_map")
 nmap <silent> <leader>          :<c-u>WhichKey         '<leader>'<CR>
 vmap <silent> <leader>          :<c-u>WhichKeyVisual   '<leader>'<CR>
@@ -722,6 +723,7 @@ set grepformat^=%f:%l:%c:%m
 let g:leader_map.v = {'name': '+vim'}
 nnoremap <leader>vi :<C-U>PackInstall<CR>
 nnoremap <leader>vc :<C-U>PackClean<CR>
+nnoremap <leader>vu :<C-U>PackUpdate<CR>
 nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
 nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
 " }}}
@@ -889,6 +891,8 @@ function! s:filer_settings()
   nmap <buffer> t i
   setlocal bufhidden=wipe
 endfunction
+
+autocmd vimrc FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
