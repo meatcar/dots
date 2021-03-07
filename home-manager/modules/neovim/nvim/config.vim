@@ -167,6 +167,7 @@ function! PackagerInit() abort
   Pack 'thinca/vim-fontzoom', {'type': 'opt'}  " zoom font in gvim
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   Pack 'ConradIrwin/vim-bracketed-paste' " auto-toggle ':set paste' when pasting in terminal
+  Pack 'romainl/vim-cool'              " smart :nohl after searching
   "}}}
 
   " Snippets {{{
