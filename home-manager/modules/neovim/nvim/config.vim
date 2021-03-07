@@ -239,6 +239,8 @@ function! PackagerInit() abort
   Pack 'psliwka/vim-smoothie'         " smooth scrolling
   Pack 'drzel/vim-line-no-indicator'  " pretty position-in-file indicator
   Pack 'drzel/vim-scrolloff-fraction' " scrolloff as a fraction of window height
+  Pack 'kyazdani42/nvim-web-devicons' " nerdfont lua api
+  Pack 'akinsho/nvim-bufferline.lua'  " a pretty bufferline
   "}}}
 
   " Syntaxes {{{
@@ -541,6 +543,38 @@ let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 "}}}
 
+" nvim-bufferline.lua {{{
+lua <<EOF
+require'bufferline'.setup{
+  options = {
+    view = "multiwindow",
+    numbers = "none",
+    number_style = "",
+    mappings = false,
+    buffer_close_icon= '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    max_name_length = 18,
+    max_prefix_length = 15,
+    tab_size = 18,
+    diagnostics = "nvim_lsp",
+    diagnostics_indicator = function(count, level)
+      local icon = level:match("error") and " " or ""
+      return " " .. icon .. count
+    end,
+    show_buffer_close_icons = true,
+    persist_buffer_sort = true,
+    separator_style = "thick",
+    enforce_regular_tabs = true,
+    always_show_bufferline = false,
+    sort_by = "directory"
+  }
+}
+EOF
+" }}}
+
 " Colors {{{
 let ayucolor="dark"
 let g:gruvbox_italic = 1
@@ -739,6 +773,10 @@ nnoremap <leader>bn ]b
 let g:leader_map.b.p = 'prev'
 nnoremap <leader>bp [b
 " ack/grep
+let g:leader_map.b.N = 'move-next'
+nnoremap <leader>bN :<C-u>BufferLineMoveNext<CR>
+let g:leader_map.b.P = 'move-prev'
+nnoremap <leader>bP :<C-u>BufferLineMovePrev<CR>
 let g:leader_map['/'] = 'search'
 nnoremap <leader>/ :<C-u>Rg<space>
 " grep word under cursor
@@ -832,6 +870,8 @@ inoremap <silent><expr><C-d> compe#scroll({ 'delta': -4 })
 
 nmap <silent> H :bp<CR>
 nmap <silent> L :bn<CR>
+nmap <silent> [b :BufferLineCyclePrev<CR>
+nmap <silent> ]b :BufferLineCycleNext<CR>
 
 vnoremap < <gv
 vnoremap > >gv
