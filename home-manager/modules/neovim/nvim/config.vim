@@ -179,6 +179,7 @@ function! PackagerInit() abort
   Pack 'neovim/nvim-lspconfig'
   Pack 'hrsh7th/nvim-compe'
   Pack 'nvim-treesitter/nvim-treesitter'
+  Pack 'kristijanhusak/vim-dadbod-completion'
 
   " }}}
 
@@ -210,6 +211,8 @@ function! PackagerInit() abort
   Pack 'scrooloose/nerdtree'                           " tree sidebar
   Pack 'janko/vim-test'                                " run tests easily
   Pack 'https://git.danielmoch.com/vim-smartsplit.git' " Split smartly based on terminal width
+  Pack 'tpope/vim-dadbod'                              " Modern database interface for Vim
+  Pack 'kristijanhusak/vim-dadbod-ui'                  " UI for dadbod
   "}}}
 
   " Tmux {{{
