@@ -24,5 +24,5 @@
   xdg.configFile."nvim/init.vim".target =
     "${config.xdg.dataHome}/home-manager/diverted/init.vim";
 
-  home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit ];
+  home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit vim-vint ];
 }
