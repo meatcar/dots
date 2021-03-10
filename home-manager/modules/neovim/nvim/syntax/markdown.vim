@@ -1,4 +1,5 @@
 " Custom conceal
+scriptencoding utf-8
 syntax match todoCheckbox "\[\ \]" conceal cchar=
 syntax match todoCheckbox "\[x\]" conceal cchar=
 syntax match todoCheckbox "\[-\]" conceal cchar=

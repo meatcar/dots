@@ -14,20 +14,20 @@ set viewdir=$XDG_CACHE_HOME/nvim/view
 set runtimepath+=$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after
 set packpath=$XDG_DATA_HOME/nvim,$VIMRUNTIME
 
-if empty(glob($XDG_CACHE_HOME."/nvim/"))
-  call mkdir($XDG_CACHE_HOME."/nvim/undo", "p")
-  call mkdir($XDG_CACHE_HOME."/nvim/swap", "p")
-  call mkdir($XDG_CACHE_HOME."/nvim/backup", "p")
-  call mkdir($XDG_CACHE_HOME."/nvim/view", "p")
+if empty(glob($XDG_CACHE_HOME.'/nvim/'))
+  call mkdir($XDG_CACHE_HOME.'/nvim/undo', 'p')
+  call mkdir($XDG_CACHE_HOME.'/nvim/swap', 'p')
+  call mkdir($XDG_CACHE_HOME.'/nvim/backup', 'p')
+  call mkdir($XDG_CACHE_HOME.'/nvim/view', 'p')
 endif
 
-if empty(glob($XDG_DATA_HOME."/nvim/"))
+if empty(glob($XDG_DATA_HOME.'/nvim/'))
   silent !mkdir -p $XDG_DATA_HOME/nvim
 endif
 
 if exists('g:vscode')
   " VSCode extension
-  echomsg "vscode"
+  echomsg 'vscode' g:vscode
 else
   " ordinary neovim
   runtime config.vim

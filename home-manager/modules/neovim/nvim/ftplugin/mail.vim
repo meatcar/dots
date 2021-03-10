@@ -1,4 +1,4 @@
-setlocal tw=0
+setlocal textwidth=0
 setlocal wrap  " wrap long lines to fit terminal width
 setlocal wrapmargin=0  " wrap long lines to fit terminal width
 setlocal linebreak

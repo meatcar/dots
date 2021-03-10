@@ -24,7 +24,7 @@ set ttyfast               " tell vim we're using a fast terminal for redraws
 set lazyredraw            " don't redraw while running commands
 
 set mouse=a               " allow mouse input in all modes
-if has("mouse_sgr")       " fix mouse in tmux
+if has('mouse_sgr')       " fix mouse in tmux
   set ttymouse=sgr
 elseif !has('nvim')
   set ttymouse=xterm2
@@ -63,7 +63,7 @@ if has('nvim-0.4.0')
   set wildoptions=pum       " use popup window for wildmenu
 endif
 
-if has('nvim-0.3.2') || has("patch-8.1.0360")
+if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
 set diffopt-=iwhite       " ignore whitespace when diffing
@@ -125,7 +125,7 @@ endif
 
 " Packages {{{
 " auto-install packager {{{
-if empty(glob($XDG_DATA_HOME."/nvim/pack/packager/opt/packager"))
+if empty(glob($XDG_DATA_HOME.'/nvim/pack/packager/opt/packager'))
   silent !git clone 'https://github.com/kristijanhusak/vim-packager'
         \ $XDG_DATA_HOME"/nvim/pack/packager/opt/packager"
 endif
@@ -373,9 +373,9 @@ if has('nvim')
     let left = (&columns - width) / 2
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let top = '╭' . repeat('─', width - 2) . '╮'
+    let mid = '│' . repeat(' ', width - 2) . '│'
+    let bot = '╰' . repeat('─', width - 2) . '╯'
     " let lines = [top] + repeat([mid], height - 2) + [bot]
     let lines = repeat([mid], height - 1) + [bot]
     let s:buf = nvim_create_buf(v:false, v:true)
@@ -387,7 +387,7 @@ if has('nvim')
     let opts.col += 2
     let opts.width -= 4
     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
+    au vimrc BufWipeout <buffer> exe 'bw '.s:buf
   endfunction
 
   let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
@@ -482,7 +482,7 @@ autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]
 " }}}
 
 " Paredit {{{
-let g:paredit_leader=","
+let g:paredit_leader=','
 let g:paredit_smartjump=1
 "}}}
 
@@ -538,9 +538,9 @@ call compe#setup(g:compe)
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
+let g:UltiSnipsExpandTrigger            = '<Plug>(ultisnips_expand)'
+let g:UltiSnipsJumpForwardTrigger       = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger      = '<c-k>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 "}}}
 
@@ -577,7 +577,7 @@ EOF
 " }}}
 
 " Colors {{{
-let ayucolor="dark"
+let ayucolor='dark'
 let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_contrast_dark = 'hard'
@@ -601,7 +601,7 @@ let g:space_vim_italic = 1
 
 fun! MaybeTransparentBackground()
   " Make background transparent if background=dark
-  if &background == 'dark'
+  if &background ==? 'dark'
     hi Normal       ctermbg=NONE guibg=NONE
     hi LineNr       ctermbg=NONE guibg=NONE
     hi SignColumn   ctermbg=NONE guibg=NONE
@@ -612,7 +612,7 @@ fun! MaybeTransparentBackground()
 endfun
 
 fun! SetTheme()
-  if &background == 'dark'
+  if &background ==? 'dark'
     colorscheme gruvbox
   else
     colorscheme PaperColor
@@ -668,7 +668,7 @@ fun! EnableStripTrailingWhitespace()
   if exists('b:noStripWhitespace')
     return
   endif
-  autocmd BufWritePre * :%s/\s\+$//e
+  autocmd vimrc BufWritePre * :%s/\s\+$//e
 endfun
 
 autocmd vimrc FileType markdown let b:noStripWhitespace=1

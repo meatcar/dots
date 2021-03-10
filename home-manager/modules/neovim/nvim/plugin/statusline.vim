@@ -1,27 +1,28 @@
+scriptencoding utf-8
 set laststatus=2
 
 " for vim-line-no-indicator
 let g:line_no_indicator_chars = ['⎺', '⎻', '─', '⎼', '⎽']
 
 function! StatusBranchName()
-   if fugitive#head() != ""
-      return " ".fugitive#head()
+   if len(fugitive#head()) > 0
+      return ' '.fugitive#head()
    else
-      return ""
+      return ''
    endif
 endfunction
 
 function! StatusEncoding()
-  let l:enc = &fenc!=#"" ? &fenc : &enc
-  return l:enc == "utf-8" ? "" : l:enc
+  let l:enc = len(&fileencoding) > 0 ? &fileencoding : &encoding
+  return l:enc ==? 'utf-8' ? '' : l:enc
 endfunction
 
 function! StatusFileType()
-  if &filetype == ""
-    return "no ft"
-  elseif &filetype == "help"
-    return ":h"
-  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
+  if len(&filetype) == 0
+    return 'no ft'
+  elseif &filetype ==? 'help'
+    return ':h'
+  elseif exists('g:webdevicons_enable') && g:webdevicons_enable == 1
     return WebDevIconsGetFileTypeSymbol()
   else
     return &filetype
@@ -29,9 +30,9 @@ function! StatusFileType()
 endfunction
 
 function! StatusFileFormat()
-  if &fileformat == "unix"
-    return ""
-  elseif exists("g:webdevicons_enable") && g:webdevicons_enable == 1
+  if &fileformat ==? 'unix'
+    return ''
+  elseif exists('g:webdevicons_enable') && g:webdevicons_enable == 1
     return WebDevIconsGetFileFormatSymbol()
   else
     return &fileformat
@@ -43,12 +44,12 @@ function! StatusModified()
 endfunction
 
 function! StatusReadonly()
-  if &readonly && exists("g:webdevicons_enable") && g:webdevicons_enable == 1
-    return ""
+  if &readonly && exists('g:webdevicons_enable') && g:webdevicons_enable == 1
+    return ''
   elseif &readonly
-    return "RO"
+    return 'RO'
   else
-    return ""
+    return ''
   endif
 endfunction
 
