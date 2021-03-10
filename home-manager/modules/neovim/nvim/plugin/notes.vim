@@ -5,7 +5,7 @@ let s:actions = extend(get(g:, 'fzf_action', {}),
 function! s:ag_to_qf(line, has_column)
   let parts = matchlist(a:line, '\(.\{-}\)\s*:\s*\(\d\+\)\%(\s*:\s*\(\d\+\)\)\?\%(\s*:\(.*\)\)\?')
   let dict = {
-        \ 'filename': &acd ? fnamemodify(parts[1], ':p') : parts[1],
+        \ 'filename': &autochdir ? fnamemodify(parts[1], ':p') : parts[1],
         \ 'lnum': parts[2],
         \ 'text': parts[4]}
 
@@ -18,7 +18,7 @@ endfunction
 
 " Add a header to a note, made of an optional title, and a date stamp
 func! notes#header(title)
-  let l:wrap = "_"
+  let l:wrap = '_'
   let l:title = ''
   if len(a:title) > 0
     let l:title = '# '. a:title
@@ -44,7 +44,7 @@ func! notes#new_note_sink(lines) dict
   echom 'cmd: ' cmd
 
   if key ==? 'ctrl-e'
-    let filepath = self.dir . '/' . strftime("%F-%H%M")
+    let filepath = self.dir . '/' . strftime('%F-%H%M')
     if len(query) > 0
       let filepath = filepath.'-'. substitute(query, ' ', '-', 'g')
     endif

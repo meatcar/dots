@@ -3,7 +3,7 @@
 function! UpdateNixFetcher()
   " preserve the cursor location with filters
   let w = winsaveview()
-  execute "%!update-nix-fetchgit --location=" . line(".") . ":" . col(".")
+  execute '%!update-nix-fetchgit --location=' . line('.') . ':' . col('.')
   call winrestview(w)
 endfunction
 
