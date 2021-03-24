@@ -209,11 +209,12 @@ function! PackagerInit() abort
   Pack 'justinmk/vim-dirvish'                          " nice simple file browser
   Pack 'AndrewRadev/splitjoin.vim'                     " single <> multi line code conversion
   Pack 'kshenoy/vim-signature'                         " show marks in the SignColumn
-  Pack 'scrooloose/nerdtree'                           " tree sidebar
   Pack 'janko/vim-test'                                " run tests easily
   Pack 'https://git.danielmoch.com/vim-smartsplit.git' " Split smartly based on terminal width
   Pack 'tpope/vim-dadbod'                              " Modern database interface for Vim
   Pack 'kristijanhusak/vim-dadbod-ui'                  " UI for dadbod
+  Pack 'lambdalisue/suda.vim'                          " :SudaWrite
+  Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
   "}}}
 
   " Tmux {{{
@@ -583,6 +584,11 @@ require'bufferline'.setup{
 EOF
 " }}}
 
+" nvim-tree.lua {{{
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_add_trailing = 1
+" }}}
+
 " Colors {{{
 let ayucolor='dark'
 let g:gruvbox_italic = 1
@@ -778,11 +784,9 @@ nnoremap <leader>fr :<C-u>History<CR>
 
 nnoremap <leader>ff :<C-u>Files<CR>
 let g:leader_map.f.t = {'name': '+toggle'}
-nnoremap <leader>ftt :NERDTreeToggle<CR>
-nnoremap <leader>ftr :NERDTreeRefreshRoot<CR>
-nnoremap <leader>ftf :NERDTreeFind<CR>:wincmd p<CR>
-nnoremap <leader>ftp :NERDTreeVCS<CR>
-nnoremap <leader>ftd :NERDTreeCWD<CR>
+nnoremap <leader>ftt :NvimTreeToggle<CR>
+nnoremap <leader>ftr :NvimTreeRefresh<CR>
+nnoremap <leader>ftf :NvimTreeFindFile<CR>
 " }}}
 
 " <leader>g (git) {{{
@@ -790,7 +794,6 @@ let g:leader_map.g = {'name': '+git'}
 let g:leader_map.g.t = {'name': '+toggle'}
 nnoremap <leader>gf :<C-u>GFiles<CR>
 nnoremap <leader>gF :<C-u>GFiles?<CR>
-nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
 nnoremap <leader>gs :<C-u>Neogit<CR>
