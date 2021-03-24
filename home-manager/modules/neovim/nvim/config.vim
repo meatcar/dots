@@ -192,8 +192,9 @@ function! PackagerInit() abort
   Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
   Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
   Pack 'rbong/vim-flog'                " pretty git log
-  Pack 'lambdalisue/gina.vim'          " fast git
-  Pack 'lambdalisue/vim-gista'         " post to gist.github.com
+  Pack 'TimUntersberger/neogit'        " magit-like git ui
+  Pack 'mattn/webapi-vim'              " for vim-gist
+  Pack 'mattn/vim-gist'                " Gist support
   "}}}
 
   " Nice Utilities {{{
@@ -565,6 +566,12 @@ require'bufferline'.setup{
       local icon = level:match("error") and " " or ""
       return " " .. icon .. count
     end,
+    -- NOTE: this will be called a lot so don't do any heavy processing here
+    custom_filter = function(buf_number)
+      if vim.bo[buf_number].filetype ~= "NeogitStatus" then
+        return true
+      end
+    end,
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
     separator_style = "thick",
@@ -786,8 +793,8 @@ nnoremap <leader>gF :<C-u>GFiles?<CR>
 nnoremap <leader>gtt :<C-u>NERDTreeVCS<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>Gstatus<CR>
-nnoremap <leader>gg :<C-u>Gina<Space>
+nnoremap <leader>gs :<C-u>Neogit<CR>
+nnoremap <leader>gg :<C-u>Git<Space>
 " }}}
 
 " <leader>t (toggle)) {{{
