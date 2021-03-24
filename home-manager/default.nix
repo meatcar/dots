@@ -63,6 +63,7 @@
     programs.fzf.enable = true;
     programs.lsd.enable = true;
     programs.lsd.enableAliases = true;
+    programs.dircolors.enable = true;
 
     theme = config.themes.dark;
     themes =
