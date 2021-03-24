@@ -11,6 +11,18 @@
         "url": "https://github.com/Bumblebee-Project/Bumblebee/archive/8f3d307b6aabbc2cd8444c6e5a4360f3bf2915ec.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "alacritty": {
+        "branch": "master",
+        "description": "A cross-platform, OpenGL terminal emulator.",
+        "homepage": "",
+        "owner": "alacritty",
+        "repo": "alacritty",
+        "rev": "17923efccfb7e6bbcdeb5f748796d9ee1ea70149",
+        "sha256": "106qbz6y4nv7n5222b83wfbg2fn4pjf1wb6f0hljzhzd1w1mscng",
+        "type": "tarball",
+        "url": "https://github.com/alacritty/alacritty/archive/17923efccfb7e6bbcdeb5f748796d9ee1ea70149.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "alacritty-theme": {
         "branch": "master",
         "description": "Collection of Alacritty color schemes",
@@ -41,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "aa92b52e6691d08634aed01b208ca1e853d8c5f5",
-        "sha256": "0v3jf5r9da85qipvmvhds25fj74i1vl0fvpzdmcnnbp9f7m6jrqa",
+        "rev": "daa4b15755f6cccb462efed696abceee0994bb96",
+        "sha256": "1qdqha57abm51bvf8bb4vimnk9j8n1fdi31ksflc55ljlb69cn78",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/aa92b52e6691d08634aed01b208ca1e853d8c5f5.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/daa4b15755f6cccb462efed696abceee0994bb96.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -53,10 +65,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2e795f3efd6265e3d538d4ee78bba773e1044340",
-        "sha256": "1insfnkly8gz56zlblm0qs5wrcflfgbz6lc9zk7h9scyywvx3r15",
+        "rev": "040ea28e448a93d24540b7cf2eda4b25300c5ab1",
+        "sha256": "0llviiyi3crf3giq95d1xa6zjvrf6rndjr36r4mqcyh6qk903v7r",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/2e795f3efd6265e3d538d4ee78bba773e1044340.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/040ea28e448a93d24540b7cf2eda4b25300c5ab1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "neovim": {
@@ -65,10 +77,10 @@
         "homepage": "https://neovim.io",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "7d82aaa6f5a6403f3c4e330dcaba9bb36ecbef28",
-        "sha256": "1m8c5jym8k73q890nsnn2dmpx5mkj3midk9hm8dh72pwyg1xpgd7",
+        "rev": "d38508d88ab78415368bce350072f9f0f73c15d2",
+        "sha256": "0b7q6i774rjaj7gxk60dla1b8mhdm35na7wd038abzb9mf1mrp0d",
         "type": "tarball",
-        "url": "https://github.com/neovim/neovim/archive/7d82aaa6f5a6403f3c4e330dcaba9bb36ecbef28.tar.gz",
+        "url": "https://github.com/neovim/neovim/archive/d38508d88ab78415368bce350072f9f0f73c15d2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -78,10 +90,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6b1057b452c55bb3b463f0d7055bc4ec3fd1f381",
-        "sha256": "10qfg11g8m0q2k3ibcm0ivjq494gqynshm3smjl1rfn5ifjf5fz8",
+        "rev": "916ee862e87ac5ee2439f2fb7856386b4dc906ae",
+        "sha256": "165byy4hgg44w4ks1l289yx98bifqwyk6amil9rq7z7978d5lsj9",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/6b1057b452c55bb3b463f0d7055bc4ec3fd1f381.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/916ee862e87ac5ee2439f2fb7856386b4dc906ae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-wayland": {
@@ -90,10 +102,10 @@
         "homepage": "",
         "owner": "colemickens",
         "repo": "nixpkgs-wayland",
-        "rev": "c2bf18c492c57ca36105c95a1771ed83b207a20d",
-        "sha256": "1xy21l0r8w5csrcr6mr9ckgw3k46q94j1lk2vgswr1ccixaq09fl",
+        "rev": "8c63e6ee0f05eeace26612fc18b4260cccab5e1e",
+        "sha256": "16rbwm4yand8q5r8c8s3jrm0g1k9ddj7gyvpzb5v74w8nvxz3rj1",
         "type": "tarball",
-        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/c2bf18c492c57ca36105c95a1771ed83b207a20d.tar.gz",
+        "url": "https://github.com/colemickens/nixpkgs-wayland/archive/8c63e6ee0f05eeace26612fc18b4260cccab5e1e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "plug.kak": {
@@ -102,10 +114,10 @@
         "homepage": "",
         "owner": "andreyorst",
         "repo": "plug.kak",
-        "rev": "8a9dba51a3ca32e27526538e75ec7e4e3b09c94a",
-        "sha256": "0rxnl63ygsgr6z0h95fxdx99wqp46pg0yi5x28gs750w0jhj4rjc",
+        "rev": "d2162d4deba8ec071148f35d666b7675243bcd6b",
+        "sha256": "06kz66m77c9sd8jb2x1wq4bki70a1xcmq1x4yh2fmrj7pwxdcqvy",
         "type": "tarball",
-        "url": "https://github.com/andreyorst/plug.kak/archive/8a9dba51a3ca32e27526538e75ec7e4e3b09c94a.tar.gz",
+        "url": "https://github.com/andreyorst/plug.kak/archive/d2162d4deba8ec071148f35d666b7675243bcd6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "wsl-open": {
@@ -132,10 +144,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0",
-        "sha256": "03vszkmm09smbzpbnk6c5f5sx1y9vh0j91xvgqfv6m4gldxrj37j",
+        "rev": "e8517244f7d2ae4f9d979faf94608d6e4a74a73e",
+        "sha256": "1dd1l4g5hkx1pnl1dw4h8ignjhigrvkkcravfkifdl2zf3slyny7",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/e8517244f7d2ae4f9d979faf94608d6e4a74a73e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
