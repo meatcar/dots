@@ -192,7 +192,8 @@ function! PackagerInit() abort
   Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
   Pack 'sodapopcan/vim-twiggy'         " pop-up git branches
   Pack 'rbong/vim-flog'                " pretty git log
-  Pack 'TimUntersberger/neogit'        " magit-like git ui
+  "Pack 'TimUntersberger/neogit'        " magit-like git ui
+  Pack 'Odie/gitabra'                  " magit-like git ui
   Pack 'mattn/webapi-vim'              " for vim-gist
   Pack 'mattn/vim-gist'                " Gist support
   "}}}
@@ -592,7 +593,7 @@ require'bufferline'.setup{
     end,
     -- NOTE: this will be called a lot so don't do any heavy processing here
     custom_filter = function(buf_number)
-      if vim.bo[buf_number].filetype ~= "NeogitStatus" then
+      if vim.bo[buf_number].filetype ~= "GitabraStatus" then
         return true
       end
     end,
@@ -819,7 +820,7 @@ nnoremap <leader>gf :<C-u>Telescope git_files<CR>
 nnoremap <leader>gF :<C-u>Telescope git_status<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>Neogit<CR>
+nnoremap <leader>gs :<C-u>Gitabra<CR>
 nnoremap <leader>gg :<C-u>Git<Space>
 " }}}
 
