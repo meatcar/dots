@@ -216,6 +216,7 @@ function! PackagerInit() abort
   Pack 'kristijanhusak/vim-dadbod-ui'                  " UI for dadbod
   Pack 'lambdalisue/suda.vim'                          " :SudaWrite
   Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
+  Pack 'kosayoda/nvim-lightbulb'                       " show a lightbulb for lsp actions
   "}}}
 
   " telescope.nvim {{{
@@ -611,6 +612,10 @@ EOF
 " nvim-tree.lua {{{
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_add_trailing = 1
+" }}}
+
+" nvim-lightbulb {{{
+autocmd vimrc CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 " }}}
 
 " Colors {{{
