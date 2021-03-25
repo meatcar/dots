@@ -217,6 +217,13 @@ function! PackagerInit() abort
   Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
   "}}}
 
+  " telescope.nvim {{{
+  " a fuzzy-completion engine
+  Pack 'nvim-lua/popup.nvim'
+  Pack 'nvim-lua/plenary.nvim'
+  Pack 'nvim-telescope/telescope.nvim'
+  "}}}
+
   " Tmux {{{
   Pack 'tmux-plugins/vim-tmux-focus-events'  " focus events in tmux
   Pack 'christoomey/vim-tmux-navigator'      " <C-hjkl> to switch vim & tmux panes
@@ -406,6 +413,22 @@ let g:netrw_special_syntax = 'true'
 let g:netrw_sort_options = 'i'
 let g:netrw_localrmdir='rm -r'
 "}}}
+" telescope.nvim {{{
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    prompt_position = 'top',
+    sorting_strategy = 'ascending',
+    layout_strategy = 'flex',
+    layout_defaults = {
+      vertical = {
+        mirror = true
+      }
+    }
+  }
+}
+EOF
+" }}}
 
 " vim-pencil {{{
 let g:pencil_gutter_color = 1
@@ -743,9 +766,9 @@ nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
 
 " <leader>h (help) {{{
 let g:leader_map.h = {'name': '+help'}
-nnoremap <leader>hh :Helptags<CR>
-nnoremap <leader>hk :Maps<CR>
-nnoremap <leader>hc :Commands<CR>
+nnoremap <leader>hh :<C-U>Telescope help_tags<CR>
+nnoremap <leader>hk :<C-U>Telescope keymaps<CR>
+nnoremap <leader>hc :<C-U>Telescope commands<CR>
 " }}}
 
 " <leader>q (quit) {{{
@@ -757,7 +780,7 @@ nnoremap <leader>qx :<C-U>x<CR>
 
 " <leader>b (buffers) {{{
 let g:leader_map.b = {'name': '+buffers'}
-nnoremap <leader>bb :<C-u>Buffers<CR>
+nnoremap <leader>bb :<C-u>Telescope buffers<CR>
 nnoremap <leader>bd :<C-u>Bdelete<CR>
 let g:leader_map.b.n = 'next'
 nnoremap <leader>bn ]b
@@ -771,18 +794,18 @@ nnoremap <leader>bP :<C-u>BufferLineMovePrev<CR>
 
 " <leader>/ (grep) {{{
 let g:leader_map['/'] = 'search'
-nnoremap <leader>/ :<C-u>Rg<space>
+nnoremap <leader>/ :<C-u>Telescope live_grep<CR>
 " grep word under cursor
 let g:leader_map['*'] = 'search-cur-word'
-nnoremap <leader>* :<C-u>execute 'Rg ' . expand("<cword>")<CR>
+nnoremap <leader>* :<C-u>Telescope grep_string<cword>")<CR>
 " }}}
 
 " <leader>f (files) {{{
 let g:leader_map.f = {'name': '+files'}
 let g:leader_map.f.r = 'recent'
-nnoremap <leader>fr :<C-u>History<CR>
+nnoremap <leader>fr :<C-u>Telescope oldfiles<CR>
 
-nnoremap <leader>ff :<C-u>Files<CR>
+nnoremap <leader>ff :<C-u>Telescope find_files<CR>
 let g:leader_map.f.t = {'name': '+toggle'}
 nnoremap <leader>ftt :NvimTreeToggle<CR>
 nnoremap <leader>ftr :NvimTreeRefresh<CR>
@@ -792,8 +815,8 @@ nnoremap <leader>ftf :NvimTreeFindFile<CR>
 " <leader>g (git) {{{
 let g:leader_map.g = {'name': '+git'}
 let g:leader_map.g.t = {'name': '+toggle'}
-nnoremap <leader>gf :<C-u>GFiles<CR>
-nnoremap <leader>gF :<C-u>GFiles?<CR>
+nnoremap <leader>gf :<C-u>Telescope git_files<CR>
+nnoremap <leader>gF :<C-u>Telescope git_status<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
 nnoremap <leader>gs :<C-u>Neogit<CR>
@@ -802,8 +825,8 @@ nnoremap <leader>gg :<C-u>Git<Space>
 
 " <leader>t (toggle)) {{{
 let g:leader_map.t = {'name': '+toggle'}
-nmap <silent> <leader>tc :Color<CR>
-nmap <silent> <leader>tf :<C-u>Filetypes<CR>
+nmap <silent> <leader>tc :<C-u>Telescope colorscheme<CR>
+nmap <silent> <leader>tf :<C-u>Telescope filetypes<CR>
 nmap <silent> <leader>tu :MundoToggle<CR>
 nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
 " }}}
@@ -834,25 +857,17 @@ nmap <silent> <leader>wz <C-w><T>
 " <leader>*** (misc) {{{
 let g:leader_map[' '] = 'command'
 nnoremap <leader><Space> :<C-U>
-nnoremap <leader>: :<C-u>Commands<CR>
+nnoremap <leader>: :<C-u>Telescope commands<CR>
 " search in file
-nnoremap // :<C-u>BLines<CR>
+nnoremap // :<C-u>Telescope current_buffer_fuzzy_find<CR>
 
+"TODO: switch from FZF to Telescope snippets
 nmap <silent> <leader>s :Snippets<CR>
-
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
 " }}}
 " }}}
 
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'GFiles --exclude-standard --others --cached' : 'Files'
+command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files' : 'Telescope find_files'
 nnoremap <C-p>      :<C-u>Ctrlp<CR>
-
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
 
 let g:endwise_no_mappings = 'plz stahp'
 inoremap <silent><expr><C-Space> compe#complete()
