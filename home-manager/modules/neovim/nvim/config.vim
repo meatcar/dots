@@ -147,6 +147,7 @@ function! PackagerInit() abort
 
   " Simple Sane QoL Packages {{{
   Pack 'kristijanhusak/vim-packager', { 'type': 'opt', 'name': 'packager' }
+  Pack 'nvim-lua/plenary.nvim'         " requirement for a bunch of neovim packages
   Pack 'tpope/vim-eunuch'              " helpful Unix commands (:Rename, etc)
   Pack 'tpope/vim-commentary'          " easy commenting with `gcc`
   " Pack 'tpope/vim-surround'            " surround stuff!
@@ -180,7 +181,6 @@ function! PackagerInit() abort
   Pack 'hrsh7th/nvim-compe'
   Pack 'nvim-treesitter/nvim-treesitter'
   Pack 'kristijanhusak/vim-dadbod-completion'
-
   " }}}
 
   " Git {{{
@@ -211,7 +211,6 @@ function! PackagerInit() abort
   Pack 'AndrewRadev/splitjoin.vim'                     " single <> multi line code conversion
   Pack 'kshenoy/vim-signature'                         " show marks in the SignColumn
   Pack 'janko/vim-test'                                " run tests easily
-  Pack 'https://git.danielmoch.com/vim-smartsplit.git' " Split smartly based on terminal width
   Pack 'tpope/vim-dadbod'                              " Modern database interface for Vim
   Pack 'kristijanhusak/vim-dadbod-ui'                  " UI for dadbod
   Pack 'lambdalisue/suda.vim'                          " :SudaWrite
@@ -222,7 +221,6 @@ function! PackagerInit() abort
   " telescope.nvim {{{
   " a fuzzy-completion engine
   Pack 'nvim-lua/popup.nvim'
-  Pack 'nvim-lua/plenary.nvim'
   Pack 'nvim-telescope/telescope.nvim'
   "}}}
 
@@ -398,15 +396,6 @@ if has('nvim')
 endif
 "}}}
 
-" vim-vinegar {{{
-let g:netrw_altfile = 1
-let g:netrw_keepdir = 0
-let g:netrw_liststyle = 1
-let g:netrw_hide = 1
-let g:netrw_special_syntax = 'true'
-let g:netrw_sort_options = 'i'
-let g:netrw_localrmdir='rm -r'
-"}}}
 " telescope.nvim {{{
 lua << EOF
 require('telescope').setup{
@@ -583,12 +572,6 @@ require'bufferline'.setup{
     diagnostics_indicator = function(count, level)
       local icon = level:match("error") and " " or ""
       return " " .. icon .. count
-    end,
-    -- NOTE: this will be called a lot so don't do any heavy processing here
-    custom_filter = function(buf_number)
-      if vim.bo[buf_number].filetype ~= "GitabraStatus" then
-        return true
-      end
     end,
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
@@ -817,7 +800,7 @@ nnoremap <leader>gf :<C-u>Telescope git_files<CR>
 nnoremap <leader>gF :<C-u>Telescope git_status<CR>
 nnoremap <leader>gb :<C-u>Twiggy<CR>
 nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>Gitabra<CR>
+nnoremap <leader>gs :<C-u>Git<CR>
 nnoremap <leader>gg :<C-u>Git<Space>
 " }}}
 
