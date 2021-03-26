@@ -216,6 +216,7 @@ function! PackagerInit() abort
   Pack 'lambdalisue/suda.vim'                          " :SudaWrite
   Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
   Pack 'kosayoda/nvim-lightbulb'                       " show a lightbulb for lsp actions
+  Pack 'zegervdv/nrpattern.nvim'                       " ctrl-[ax] on drugs
   "}}}
 
   " telescope.nvim {{{
@@ -591,6 +592,20 @@ let g:nvim_tree_add_trailing = 1
 
 " nvim-lightbulb {{{
 autocmd vimrc CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+" }}}
+
+" nrpattern.nvim {{{
+lua << EOF
+-- Get the default dict of patterns
+local patterns = require"nrpattern.default"
+
+-- Add a cyclic pattern (toggles between yes and no)
+patterns[{"yes", "no"}] = {priority = 10}
+patterns[{"True", "False"}] = {priority = 10}
+
+-- Call the setup to enable the patterns
+require"nrpattern".setup(patterns)
+EOF
 " }}}
 
 " Colors {{{
