@@ -186,7 +186,7 @@ function! PackagerInit() abort
   " Git {{{
   Pack 'tpope/vim-rhubarb'             " auto-complete Github issues in fugitive
   Pack 'tpope/vim-fugitive'            " tight git integration
-  Pack 'mhinz/vim-signify'             " show git changes in the gutter
+  Pack 'lewis6991/gitsigns.nvim'       " show git changes in the gutter
   Pack 'samoshkin/vim-mergetool'       " Better merging (3-way becomes 2-way)
   Pack 'shumphrey/fugitive-gitlab.vim' " Gitlab support for fugitive
   Pack 'rhysd/git-messenger.vim'       " pop-up window of git commit under cursor
@@ -304,17 +304,9 @@ nnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
 vnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
 " }}}
 
-" vim-signify {{{
-let g:signify_vcs_list        = [ 'git' ]
-let g:signify_sign_change     = '~'
-let g:signify_sign_show_count = 1
-
-autocmd vimrc FileType * highlight SignifySignAdd    ctermbg=none ctermfg=2 guibg=bg guifg=green
-autocmd vimrc FileType * highlight SignifySignDelete ctermbg=none ctermfg=1 guibg=bg guifg=#ff3333
-autocmd vimrc FileType * highlight SignifySignChange ctermbg=none ctermfg=3 guibg=bg guifg=yellow
-autocmd vimrc FileType * highlight link SignifySignChangeDelete    SignifySignChange
-autocmd vimrc FileType * highlight link SignifySignDeleteFirstLine SignifySignDelete
-"}}}
+" gitsigns.nvim {{{
+lua require('gitsigns').setup()
+" }}}
 
 " Editorconfig {{{
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
