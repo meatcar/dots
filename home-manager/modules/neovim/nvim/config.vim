@@ -275,6 +275,7 @@ function! PackagerInit() abort
   Pack 'jceb/vim-orgmode', {'type': 'opt'}        " orgmode
   Pack 'inkarkat/vim-SyntaxRange', {'type': 'opt'} " for orgmode
   Pack 'nathangrigg/vim-beancount', {'type': 'opt'} " for orgmode
+  Pack 'teal-language/vim-teal', {'type': 'opt'}   " for teal
   "}}}
 endfunction
 
@@ -734,6 +735,9 @@ autocmd vimrc FileType org packadd vim-orgmode
 
 autocmd vimrc BufNewFile,BufRead *.beancount set filetype=beancount
 autocmd vimrc FileType beancount packadd vim-beancount
+
+autocmd vimrc BufRead,BufNewFile *.tl set filetype=teal
+autocmd vimrc FileType teal packadd vim-teal
 "}}}
 
 " Commands and Mappings {{{
