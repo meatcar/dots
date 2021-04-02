@@ -29,5 +29,5 @@
     };
   };
 
-  home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit vim-vint ];
+  home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit vim-vint tree-sitter ];
 }

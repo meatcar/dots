@@ -78,7 +78,6 @@ set completeopt=menuone,noselect
 "}}}
 
 " Folds {{{
-set foldmethod=syntax
 set viewoptions=cursor,folds,slash,unix " save folds, cursor position
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 "}}}
@@ -179,7 +178,7 @@ function! PackagerInit() abort
   " Completion {{{
   Pack 'neovim/nvim-lspconfig'
   Pack 'hrsh7th/nvim-compe'
-  Pack 'nvim-treesitter/nvim-treesitter'
+  Pack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Pack 'kristijanhusak/vim-dadbod-completion'
   " }}}
 
@@ -234,7 +233,8 @@ function! PackagerInit() abort
 
   " Colorschemes {{{
   " Pack 'flazz/vim-colorschemes'       " all the colorschemes
-  Pack 'gruvbox-community/gruvbox'    " a theme to keep coming back to.
+  Pack 'rktjmp/lush.nvim'
+  Pack 'npxbr/gruvbox.nvim'
   Pack 'NLKNguyen/papercolor-theme'
   Pack 'liuchengxu/space-vim-theme'
   " Pack 'chriskempson/base16-vim'
@@ -254,10 +254,7 @@ function! PackagerInit() abort
   "}}}
 
   " Syntaxes {{{
-  Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
-  Pack 'tpope/vim-markdown', {'type': 'opt'}
-  Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
-  Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
+  " Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
 
   Pack 'zirrostig/vim-shbed', {'type': 'opt' }    " highlight awk in shell scripts
   Pack 'vim-scripts/TeX-9', {'type': 'opt'}       " latex
@@ -265,6 +262,13 @@ function! PackagerInit() abort
 
   Pack 'neomutt/neomutt.vim', {'type': 'opt'}
 
+  " Markdown {{{
+  Pack 'tpope/vim-markdown', {'type': 'opt'}
+  Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
+  Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
+  " }}}
+
+  " Clojure {{{
   Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
   Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
   Pack 'tpope/vim-projectionist', {'type': 'opt'} " for vim-salve, quick-switch between src and test
@@ -272,10 +276,13 @@ function! PackagerInit() abort
         \ {'type': 'opt', 'do': 'nix-shell --run \"cargo build --release \"'}
                                                   " infer parens from indentation
   Pack 'liquidz/vim-iced', {'type': 'opt'}        " Clojure Interactive Development Environment
+  " }}}
+
+  " Orgmode {{{
   Pack 'jceb/vim-orgmode', {'type': 'opt'}        " orgmode
   Pack 'inkarkat/vim-SyntaxRange', {'type': 'opt'} " for orgmode
   Pack 'nathangrigg/vim-beancount', {'type': 'opt'} " for orgmode
-  Pack 'teal-language/vim-teal', {'type': 'opt'}   " for teal
+  "}}}
   "}}}
 endfunction
 
@@ -555,6 +562,17 @@ let g:UltiSnipsJumpBackwardTrigger      = '<c-k>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 "}}}
 
+" nvim-treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" }}}
 " nvim-bufferline.lua {{{
 lua <<EOF
 require'bufferline'.setup{
@@ -649,11 +667,11 @@ fun! SetTheme()
   if &background ==? 'dark'
     colorscheme gruvbox
   else
-    colorscheme PaperColor
+    colorscheme gruvbox
   endif
 endfun
 
-autocmd vimrc OptionSet background call SetTheme()
+" autocmd vimrc OptionSet background call SetTheme()
 
 " Fix old themes colouring SignColumn an ugly grey:
 autocmd vimrc ColorScheme *
@@ -673,7 +691,7 @@ call SetTheme()
 
 autocmd vimrc FileType shell,fish packadd vim-shbed
 autocmd vimrc FileType fish compiler fish
-autocmd vimrc BufRead,BufNewFile PKGBUILD set ft=sh
+autocmd vimrc BufRead,BufNewFile PKGBUILD set filetype=sh
 
 let g:tex_nine_config = {
       \'compiler': 'pdflatex',
@@ -738,7 +756,8 @@ autocmd vimrc BufNewFile,BufRead *.beancount set filetype=beancount
 autocmd vimrc FileType beancount packadd vim-beancount
 
 autocmd vimrc BufRead,BufNewFile *.tl set filetype=teal
-autocmd vimrc FileType teal packadd vim-teal
+
+autocmd vimrc BufRead,BufNewFile *.nix set filetype=nix
 "}}}
 
 " Commands and Mappings {{{
