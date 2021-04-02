@@ -950,6 +950,7 @@ function! s:filer_settings()
 endfunction
 
 autocmd vimrc FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)
+autocmd vimrc FileType fugitive nmap <buffer> q gq
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
