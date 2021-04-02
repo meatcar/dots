@@ -15,14 +15,19 @@
         "-DUSE_BUNDLED=OFF"
       ];
     });
+    withNodeJs = true;
 
     plugins = with pkgs; [ ];
+
+    extraConfig = builtins.readFile ./init.vim;
   };
 
-  xdg.configFile."nvim".source = ./nvim;
-  # HACK: prevent HM from dropping its own Neovim config
-  xdg.configFile."nvim/init.vim".target =
-    "${config.xdg.dataHome}/home-manager/diverted/init.vim";
+  xdg.configFile = {
+    "nvim" = {
+      recursive = true;
+      source = ./nvim;
+    };
+  };
 
   home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit vim-vint ];
 }
