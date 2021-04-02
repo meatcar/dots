@@ -217,6 +217,8 @@ function! PackagerInit() abort
   Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
   Pack 'kosayoda/nvim-lightbulb'                       " show a lightbulb for lsp actions
   Pack 'zegervdv/nrpattern.nvim'                       " ctrl-[ax] on drugs
+  Pack 'lukas-reineke/indent-blankline.nvim',
+        \ {'branch': 'lua'}                            " show lines for indents on blank lines
   "}}}
 
   " telescope.nvim {{{
@@ -510,6 +512,14 @@ let g:paredit_smartjump=1
 let g:peekaboo_delay = 300
 let g:peekaboo_compact = 1
 " "}}}
+
+" indent-blankline.nvim {{{
+let g:indent_blankline_char = '▏'
+let g:indent_blankline_space_char_blankline = ' '
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_show_current_context = v:true
+let g:indent_blankline_filetype_exclude = ['startify']
+" }}}
 
 " ncm2 {{{
 " autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
@@ -848,8 +858,9 @@ nnoremap <leader>gg :<C-u>Git<Space>
 let g:leader_map.t = {'name': '+toggle'}
 nmap <silent> <leader>tc :<C-u>Telescope colorscheme<CR>
 nmap <silent> <leader>tf :<C-u>Telescope filetypes<CR>
-nmap <silent> <leader>tu :MundoToggle<CR>
-nmap <silent> <leader>tr :RainbowParenthesesToggle<CR>
+nmap <silent> <leader>tu :<C-u>MundoToggle<CR>
+nmap <silent> <leader>tr :<C-u>RainbowParenthesesToggle<CR>
+nnoremap <leader>ti      :<C-u>IndentBlanklineToggle<CR>
 " }}}
 
 " <leader>r (run) {{{
