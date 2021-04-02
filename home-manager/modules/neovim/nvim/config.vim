@@ -250,7 +250,7 @@ function! PackagerInit() abort
   Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
   Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
-  Pack 'psliwka/vim-smoothie'         " smooth scrolling
+  Pack 'karb94/neoscroll.nvim'        " smooth scrolling
   Pack 'drzel/vim-line-no-indicator'  " pretty position-in-file indicator
   Pack 'drzel/vim-scrolloff-fraction' " scrolloff as a fraction of window height
   Pack 'kyazdani42/nvim-web-devicons' " nerdfont lua api
