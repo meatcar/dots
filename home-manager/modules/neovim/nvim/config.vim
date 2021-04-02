@@ -168,6 +168,7 @@ function! PackagerInit() abort
   Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   Pack 'ConradIrwin/vim-bracketed-paste' " auto-toggle ':set paste' when pasting in terminal
   Pack 'romainl/vim-cool'              " smart :nohl after searching
+  Pack 'tweekmonster/startuptime.vim'  " debug slow vim startup times
   "}}}
 
   " Snippets {{{
