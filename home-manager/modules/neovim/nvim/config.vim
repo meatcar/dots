@@ -181,6 +181,7 @@ function! PackagerInit() abort
   Pack 'hrsh7th/nvim-compe'
   Pack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Pack 'kristijanhusak/vim-dadbod-completion'
+  Pack 'kabouzeid/nvim-lspinstall'
   " }}}
 
   " Git {{{
@@ -584,6 +585,28 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 " }}}
+
+" nvim-lspinstall {{{
+lua <<EOF
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+
+    require'lspconfig'[server].setup{}
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+EOF
+" }}}
+
 " nvim-bufferline.lua {{{
 lua <<EOF
 require'bufferline'.setup{
