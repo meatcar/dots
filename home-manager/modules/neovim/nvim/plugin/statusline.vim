@@ -118,8 +118,8 @@ endfunction
 
 augroup statusline
   autocmd!
-  autocmd WinEnter,BufEnter,SessionLoadPost * call AssignStatuslines()
+  " autocmd WinEnter,BufEnter,SessionLoadPost * call AssignStatuslines()
 augroup END
 
-call AssignStatuslines()
+" call AssignStatuslines()
 
