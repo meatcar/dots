@@ -255,11 +255,11 @@ function! PackagerInit() abort
   Pack 'drzel/vim-scrolloff-fraction' " scrolloff as a fraction of window height
   Pack 'kyazdani42/nvim-web-devicons' " nerdfont lua api
   Pack 'akinsho/nvim-bufferline.lua'  " a pretty bufferline
+  Pack 'glepnir/galaxyline.nvim' , {'branch': 'main'} " status line
   "}}}
 
   " Syntaxes {{{
   " Pack 'sheerun/vim-polyglot'                     " A tonne of new syntaxes.
-
   Pack 'zirrostig/vim-shbed', {'type': 'opt' }    " highlight awk in shell scripts
   Pack 'vim-scripts/TeX-9', {'type': 'opt'}       " latex
   Pack 'mattn/emmet-vim', {'type': 'opt'}         " fast html editing
@@ -981,3 +981,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "}}}
+" Lua {{{
+lua require('init')
+" }}}
