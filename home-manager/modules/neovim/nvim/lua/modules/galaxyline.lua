@@ -102,17 +102,19 @@ gls.left = {
         }
     },
     {
-        FileStatus = {
+        FileReadonly = {
             provider = function()
-                if vim.bo.readonly then
-                    return '   '
-                end
-                if vim.bo.modified then
-                    return '   '
-                end
-                return ''
+                if vim.bo.readonly then return '   ' end
             end,
-            highlight = { fileinfo.get_file_icon_color, TRANSPARENT },
+            highlight = 'DiffDelete',
+        }
+    },
+    {
+        FileModified = {
+            provider = function()
+                if vim.bo.modified then return '   ' end
+            end,
+            highlight = 'DiffAdd',
         }
     },
 }
