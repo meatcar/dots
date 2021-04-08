@@ -270,6 +270,7 @@ function! PackagerInit() abort
   Pack 'tpope/vim-markdown', {'type': 'opt'}
   Pack 'SidOfc/mkdx', {'type': 'opt'}             " Fancy markdown extras
   Pack 'reedes/vim-pencil', { 'type': 'opt' }     " make editing freetext easier
+  Pack 'npxbr/glow.nvim'                          " preview markdown
   " }}}
 
   " Clojure {{{
