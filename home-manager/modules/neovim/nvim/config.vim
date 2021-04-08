@@ -277,9 +277,7 @@ function! PackagerInit() abort
   Pack 'tpope/vim-classpath', {'type': 'opt'}     " figure out the Java classpath
   Pack 'tpope/vim-salve', {'type': 'opt'}         " static support for Leiningen
   Pack 'tpope/vim-projectionist', {'type': 'opt'} " for vim-salve, quick-switch between src and test
-  Pack 'eraserhd/parinfer-rust',
-        \ {'type': 'opt', 'do': 'nix-shell --run \"cargo build --release \"'}
-                                                  " infer parens from indentation
+  Pack 'eraserhd/parinfer-rust', {'type': 'opt' } " infer parens from indentation
   Pack 'liquidz/vim-iced', {'type': 'opt'}        " Clojure Interactive Development Environment
   " }}}
 
