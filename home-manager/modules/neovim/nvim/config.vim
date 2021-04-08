@@ -793,6 +793,8 @@ autocmd vimrc BufRead,BufNewFile mail set wrapmargin=3
 autocmd vimrc FileType md,markdown,text,mail packadd vim-pencil
 
 autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
+autocmd vimrc FileType markdown
+      \ nnoremap <buffer> <localleader>p :<C-U>Glow<CR>
 let g:vim_markdown_fenced_languages = [
       \'javascript',
       \'js=javascript',
