@@ -172,9 +172,9 @@ function! PackagerInit() abort
   "}}}
 
   " Snippets {{{
-  Pack 'SirVer/ultisnips'
-  Pack 'honza/vim-snippets'
-  " "}}}
+  Pack 'rafamadriz/friendly-snippets'
+  Pack 'hrsh7th/vim-vsnip'
+  " }}}
 
   " Completion {{{
   Pack 'neovim/nvim-lspconfig'
@@ -559,7 +559,7 @@ let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
 let g:compe.source.spell = v:true
 let g:compe.source.tags = v:true
-let g:compe.source.ultisnips = v:true
+let g:compe.source.vsnip = v:true
 let g:compe.source.treesitter = v:false " slow
 let g:compe.source.vim_dadbod_completion = v:true
 let g:compe.source.omni = v:true
@@ -579,6 +579,22 @@ let g:UltiSnipsJumpForwardTrigger       = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger      = '<c-k>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 "}}}
+
+" vim-vsnip {{{
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+" }}}
 
 " nvim-treesitter {{{
 lua <<EOF
