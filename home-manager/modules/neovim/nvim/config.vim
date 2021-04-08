@@ -182,6 +182,7 @@ function! PackagerInit() abort
   Pack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Pack 'kristijanhusak/vim-dadbod-completion'
   Pack 'kabouzeid/nvim-lspinstall'
+  Pack 'andersevenrud/compe-tmux'      " Sources words from adjacent tmux panes.
   " }}}
 
   " Git {{{
@@ -229,7 +230,6 @@ function! PackagerInit() abort
   "}}}
 
   " Tmux {{{
-  Pack 'tmux-plugins/vim-tmux-focus-events'  " focus events in tmux
   Pack 'christoomey/vim-tmux-navigator'      " <C-hjkl> to switch vim & tmux panes
   Pack 'roxma/vim-tmux-clipboard'            " sync vim + tmux clipboards
   Pack 'benmills/vimux'                      " programatically open tmux panes from vim
@@ -563,6 +563,7 @@ let g:compe.source.vsnip = v:true
 let g:compe.source.treesitter = v:false " slow
 let g:compe.source.vim_dadbod_completion = v:true
 let g:compe.source.omni = v:true
+let g:compe.source.tmux = v:true
 
 " Improve performance for big files
 autocmd vimrc BufEnter * call s:on_buf_enter()
