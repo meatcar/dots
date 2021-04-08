@@ -27,7 +27,21 @@
       recursive = true;
       source = ./nvim;
     };
+    "luacheck/.luacheckrc".text = ''
+      globals = {
+          "vim",
+      }
+    '';
   };
 
-  home.packages = with pkgs; [ fortune shellcheck shfmt update-nix-fetchgit vim-vint tree-sitter ];
+  home.packages = with pkgs; [
+    fortune
+    shellcheck
+    shfmt
+    update-nix-fetchgit
+    parinfer-rust
+    vim-vint
+    tree-sitter
+    glow
+  ];
 }
