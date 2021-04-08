@@ -176,12 +176,16 @@ function! PackagerInit() abort
   Pack 'hrsh7th/vim-vsnip'
   " }}}
 
+  " Language Servers {{{
+  Pack 'neovim/nvim-lspconfig'         " configurations for the Nvim LSP client
+  Pack 'kabouzeid/nvim-lspinstall'     " easily install new lsp servers
+  Pack 'kosayoda/nvim-lightbulb'       " show a lightbulb for lsp actions
+  " }}}
+
   " Completion {{{
-  Pack 'neovim/nvim-lspconfig'
   Pack 'hrsh7th/nvim-compe'
   Pack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Pack 'kristijanhusak/vim-dadbod-completion'
-  Pack 'kabouzeid/nvim-lspinstall'
   Pack 'andersevenrud/compe-tmux'      " Sources words from adjacent tmux panes.
   " }}}
 
@@ -217,7 +221,6 @@ function! PackagerInit() abort
   Pack 'kristijanhusak/vim-dadbod-ui'                  " UI for dadbod
   Pack 'lambdalisue/suda.vim'                          " :SudaWrite
   Pack 'kyazdani42/nvim-tree.lua'                      " fast file tree
-  Pack 'kosayoda/nvim-lightbulb'                       " show a lightbulb for lsp actions
   Pack 'zegervdv/nrpattern.nvim'                       " ctrl-[ax] on drugs
   Pack 'lukas-reineke/indent-blankline.nvim',
         \ {'branch': 'lua'}                            " show lines for indents on blank lines
@@ -241,7 +244,6 @@ function! PackagerInit() abort
   Pack 'npxbr/gruvbox.nvim'
   Pack 'NLKNguyen/papercolor-theme'
   Pack 'liuchengxu/space-vim-theme'
-  " Pack 'chriskempson/base16-vim'
   Pack 'https://gitlab.com/protesilaos/tempus-themes-vim' " accessible themes
   "}}}
 
@@ -1003,6 +1005,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "}}}
+
 " Lua {{{
 lua require('init')
 " }}}
