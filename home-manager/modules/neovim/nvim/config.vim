@@ -560,11 +560,17 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.spell = v:true
 let g:compe.source.tags = v:true
 let g:compe.source.ultisnips = v:true
-let g:compe.source.treesitter = v:true
+let g:compe.source.treesitter = v:false " slow
 let g:compe.source.vim_dadbod_completion = v:true
 let g:compe.source.omni = v:true
 
-call compe#setup(g:compe)
+" Improve performance for big files
+autocmd vimrc BufEnter * call s:on_buf_enter()
+function! s:on_buf_enter() abort
+  if nvim_buf_line_count(0) < 2000
+    call compe#setup(g:compe, 0)
+  endif
+endfunction
 " }}}
 
 " UltiSnips {{{
