@@ -202,6 +202,7 @@ function! PackagerInit() abort
   Pack 'Odie/gitabra'                  " magit-like git ui
   Pack 'mattn/webapi-vim'              " for vim-gist
   Pack 'mattn/vim-gist'                " Gist support
+  Pack 'ruifm/gitlinker.nvim'          " generate a link to file on git remote site
   "}}}
 
   " Nice Utilities {{{
