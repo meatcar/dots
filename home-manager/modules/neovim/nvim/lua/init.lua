@@ -1,1 +1,1 @@
-require('modules/galaxyline')
+require('modules/lualine')
