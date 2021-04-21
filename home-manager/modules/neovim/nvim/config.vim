@@ -225,6 +225,7 @@ function! PackagerInit() abort
   Pack 'zegervdv/nrpattern.nvim'                       " ctrl-[ax] on drugs
   Pack 'lukas-reineke/indent-blankline.nvim',
         \ {'branch': 'lua'}                            " show lines for indents on blank lines
+  Pack 'rmagatti/auto-session'                         " associate sessions with cwd
   "}}}
 
   " telescope.nvim {{{
