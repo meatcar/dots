@@ -754,6 +754,8 @@ call SetTheme()
 autocmd vimrc FileType shell,fish packadd vim-shbed
 autocmd vimrc FileType fish compiler fish
 autocmd vimrc BufRead,BufNewFile PKGBUILD set filetype=sh
+autocmd vimrc BufRead,BufNewFile .envrc set filetype=sh
+autocmd vimrc BufRead,BufNewFile .env set filetype=sh
 
 let g:tex_nine_config = {
       \'compiler': 'pdflatex',
