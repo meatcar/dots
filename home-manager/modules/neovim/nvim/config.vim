@@ -773,6 +773,8 @@ autocmd vimrc BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd vimrc BufNewFile,BufRead *.vue set filetype=vue.html.javascript.css
 let g:vue_disable_pre_processors=1
 
+autocmd vimrc BufRead,BufNewFile *.prisma packadd vim-prisma | set filetype=prisma
+
 "remove trailing whitespace upon save
 fun! EnableStripTrailingWhitespace()
   " Only strip if the b:noStripeWhitespace variable isn't set
