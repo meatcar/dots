@@ -521,7 +521,7 @@ let g:peekaboo_compact = 1
 " indent-blankline.nvim {{{
 let g:indent_blankline_char = '▏'
 let g:indent_blankline_space_char_blankline = ' '
-let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_use_treesitter = v:false
 let g:indent_blankline_show_current_context = v:true
 let g:indent_blankline_filetype_exclude = ['startify']
 " }}}
@@ -602,15 +602,16 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 " }}}
 
 " nvim-treesitter {{{
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = { enable = true },
-  indent = { enable = true }
-}
-EOF
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+"" Using vim-polyglot instead
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = "all",
+"   highlight = { enable = false },
+"   indent = { enable = false }
+" }
+" EOF
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 
 " nvim-lspinstall {{{
