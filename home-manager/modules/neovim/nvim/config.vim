@@ -658,11 +658,49 @@ require'bufferline'.setup{
     end,
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
-    separator_style = "thick",
+    separator_style = "slant",
     enforce_regular_tabs = true,
     always_show_bufferline = false,
     sort_by = "directory"
-  }
+  },
+  highlights = {
+      buffer_selected = {
+        gui = "bold",
+      },
+      diagnostic_selected = {
+        gui = "bold",
+      },
+      info_selected = {
+        gui = "bold",
+      },
+      info_diagnostic_selected = {
+        gui = "bold",
+      },
+      warning_selected = {
+        gui = "bold",
+      },
+      warning_diagnostic_selected = {
+        gui = "bold",
+      },
+      error_selected = {
+        gui = "bold",
+      },
+      error_diagnostic_selected = {
+        gui = "bold",
+      },
+      pick_selected = {
+        gui = "bold",
+      },
+      pick_visible = {
+        gui = "bold",
+      },
+      pick = {
+        gui = "bold",
+      },
+    },
+}
+EOF
+" }}}
 }
 EOF
 " }}}
