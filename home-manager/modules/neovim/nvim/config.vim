@@ -180,6 +180,7 @@ function! PackagerInit() abort
   Pack 'neovim/nvim-lspconfig'         " configurations for the Nvim LSP client
   Pack 'kabouzeid/nvim-lspinstall'     " easily install new lsp servers
   Pack 'kosayoda/nvim-lightbulb'       " show a lightbulb for lsp actions
+  Pack 'glepnir/lspsaga.nvim'          " pretty LSP popups
   " }}}
 
   " Completion {{{
