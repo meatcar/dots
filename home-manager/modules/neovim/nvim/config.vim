@@ -245,6 +245,8 @@ function! PackagerInit() abort
   " Pack 'flazz/vim-colorschemes'       " all the colorschemes
   Pack 'rktjmp/lush.nvim'
   Pack 'npxbr/gruvbox.nvim'
+  Pack 'marko-cerovac/material.nvim'
+  Pack 'folke/tokyonight.nvim'
   Pack 'NLKNguyen/papercolor-theme'
   Pack 'liuchengxu/space-vim-theme'
   Pack 'https://gitlab.com/protesilaos/tempus-themes-vim' " accessible themes
@@ -771,6 +773,17 @@ let g:PaperColor_Theme_Options = {
   \ }
 let g:two_firewatch_italics = 1
 let g:space_vim_italic = 1
+
+let g:material_style = 'deep ocean'
+let g:material_italic_comments = 0
+let g:material_italic_keywords = 0
+let g:material_italic_functions = 0
+let g:material_italic_variables = 0
+let g:material_contrast = 1
+let g:material_borders = 0
+let g:material_disable_background = 0
+
+let g:tokyonight_style = 'night'
 
 fun! MaybeTransparentBackground()
   " Make background transparent if background=dark
