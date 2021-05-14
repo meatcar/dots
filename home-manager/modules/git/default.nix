@@ -42,12 +42,22 @@
     inherit (pkgs.perl530Packages) PodPerldoc; # for mr
   };
 
-  xdg.configFile."jesseduffield/lazygit/config.yml".text = ''
-    reporting: "off"
-    startuppopupversion: 1
-    git:
-      paging:
-        colorArg: always
-        pager: ${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never
-  '';
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      reporting = "off";
+      disableStartupPopups = true;
+      gui = {
+        showFileTree = true;
+        theme = {
+          selectedLineBgColor = [ "reverse" ];
+          selectedRangeBgColor = [ "reverse" ];
+        };
+      };
+      git.paging = {
+        colorArg = "always";
+        pager = "${pkgs.gitAndTools.delta}/bin/delta --dark --paging=never --24-bit-color=never";
+      };
+    };
+  };
 }
