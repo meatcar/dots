@@ -5,10 +5,6 @@
     extraModulePackages = [
       config.boot.kernelPackages.acpi_call
     ];
-    # TODO: undo powertop --auto-tune for logitech mouse
-    # postBootCommands = ''
-    #   echo on > /sys/bus/usb/devices/1-2.2/power/control
-    # '';
   };
   powerManagement.enable = true;
 

@@ -1,7 +1,7 @@
 local vim = vim
 local TRANSPARENT = 'NONE'
 local function get_hl_color(hl_name)
-    -- TODO: this only works with `set termguicolors`
+    -- this only works with `set termguicolors`
     local exists, hl = pcall(vim.api.nvim_get_hl_by_name, hl_name, true)
     local color = hl.foreground or hl.background
 
