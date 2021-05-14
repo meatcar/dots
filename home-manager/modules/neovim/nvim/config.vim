@@ -234,6 +234,7 @@ function! PackagerInit() abort
   Pack 'lukas-reineke/indent-blankline.nvim',
         \ {'branch': 'lua'}                            " show lines for indents on blank lines
   Pack 'rmagatti/auto-session'                         " associate sessions with cwd
+  Pack 'folke/todo-comments.nvim'                      " highlight and add UI for TODO comments
   "}}}
 
   " telescope.nvim {{{
@@ -542,6 +543,14 @@ let g:indent_blankline_show_current_context = v:true
 let g:indent_blankline_filetype_exclude = ['startify']
 " }}}
 
+" todo-comments.nvim {{{
+lua << EOF
+require("todo-comments").setup({
+  signs = false
+})
+EOF
+" }}}
+
 " ncm2 {{{
 " autocmd vimrc BufEnter * call ncm2#enable_for_buffer()
 
@@ -636,7 +645,6 @@ local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-
     require'lspconfig'[server].setup{}
   end
 end
@@ -886,6 +894,7 @@ autocmd vimrc BufRead,BufNewFile mail set wrapmargin=3
 autocmd vimrc FileType md,markdown,text,mail packadd vim-pencil
 
 autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
+
 autocmd vimrc FileType markdown
       \ nnoremap <buffer> <localleader>p :<C-U>Glow<CR>
 let g:vim_markdown_fenced_languages = [
