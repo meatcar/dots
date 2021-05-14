@@ -103,6 +103,13 @@ autocmd vimrc WinEnter,BufEnter * setlocal cursorline
 autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
 " }}}
 
+" Leader Keys {{{
+set timeoutlen=500     " speed up whichkey
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+inoremap <silent> <C-m>   <c-\><c-o><CMD>call feedkeys(g:maplocalleader)<CR>
+" }}}
+
 " gVIM settings {{{
 if has('gui_running')
   " Set the font
@@ -170,7 +177,6 @@ function! PackagerInit() abort
   Pack 'Konfekt/FastFold'              " lazy-folds because folding is heavy
   Pack 'aymericbeaumet/symlink.vim'    " edit the actual file when opening symlinks
   Pack 'thinca/vim-fontzoom', {'type': 'opt'}  " zoom font in gvim
-  Pack 'junegunn/vim-peekaboo'         " show a popup of vim registers
   Pack 'ConradIrwin/vim-bracketed-paste' " auto-toggle ':set paste' when pasting in terminal
   Pack 'romainl/vim-cool'              " smart :nohl after searching
   Pack 'tweekmonster/startuptime.vim'  " debug slow vim startup times
@@ -262,7 +268,7 @@ function! PackagerInit() abort
 
   " Pretty Packages {{{
   Pack 'mhinz/vim-startify'           " startup screen
-  Pack 'liuchengxu/vim-which-key'     " popup ui for obscure keys
+  Pack 'folke/which-key.nvim'         " popup ui for obscure keys
   Pack 'ryanoasis/vim-devicons'       " pretty icons
   Pack 'kien/rainbow_parentheses.vim' " rainbow parentheses
   Pack 'karb94/neoscroll.nvim'        " smooth scrolling
@@ -310,27 +316,6 @@ endfunction
 "}}}
 
 " Package Settings {{{
-
-" Whichkey {{{
-set timeoutlen=500     " speed up whichkey
-let g:mapleader = "\<Space>"
-let g:leader_map = {}
-let g:which_key_fallback_to_native_key = 1
-autocmd vimrc VimEnter * call which_key#register(g:mapleader, "g:leader_map")
-nmap <silent> <leader>          :<c-u>WhichKey         '<leader>'<CR>
-vmap <silent> <leader>          :<c-u>WhichKeyVisual   '<leader>'<CR>
-
-let g:maplocalleader = ','
-let g:localleader_map = {}
-autocmd vimrc VimEnter * call which_key#register(g:maplocalleader, "g:localleader_map")
-nnoremap <silent> <localleader>     :<c-u>WhichKey         '<localleader>'<CR>
-vnoremap <silent> <localleader>     :<c-u>WhichKeyVisual   '<localleader>'<CR>
-inoremap <silent> <C-,>   <c-\><c-o>:<c-u>WhichKey         '<localleader>'<CR>
-
-let g:leader_map.m = '+localleader'
-nnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
-vnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
-" }}}
 
 " gitsigns.nvim {{{
 lua require('gitsigns').setup()
@@ -939,139 +924,6 @@ command! -bang -nargs=* Rg
 
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
-
-" <leader {{{
-" <leader>v (vim) {{{
-let g:leader_map.v = {'name': '+vim'}
-nnoremap <leader>vi :<C-U>PackInstall<CR>
-nnoremap <leader>vc :<C-U>PackClean<CR>
-nnoremap <leader>vu :<C-U>PackUpdate<CR>
-nnoremap <leader>vr :<C-U>source $MYVIMRC<CR>
-nnoremap <leader>ve :<C-U>e $MYVIMRC<CR>
-" }}}
-
-" <leader>h (help) {{{
-let g:leader_map.h = {'name': '+help'}
-nnoremap <leader>hh :<C-U>Telescope help_tags<CR>
-nnoremap <leader>hk :<C-U>Telescope keymaps<CR>
-nnoremap <leader>hc :<C-U>Telescope commands<CR>
-" }}}
-
-" <leader>q (quit) {{{
-let g:leader_map.q = {'name': '+quit'}
-nnoremap <leader>qq :<C-U>q<CR>
-nnoremap <leader>qw :<C-U>wq<CR>
-nnoremap <leader>qx :<C-U>x<CR>
-" }}}
-
-" <leader>b (buffers) {{{
-let g:leader_map.b = {'name': '+buffers'}
-nnoremap <leader>bb :<C-u>Telescope buffers<CR>
-nnoremap <leader>bd :<C-u>Bdelete<CR>
-let g:leader_map.b.n = 'next'
-nnoremap <leader>bn ]b
-let g:leader_map.b.p = 'prev'
-nnoremap <leader>bp [b
-let g:leader_map.b.N = 'move-next'
-nnoremap <leader>bN :<C-u>BufferLineMoveNext<CR>
-let g:leader_map.b.P = 'move-prev'
-nnoremap <leader>bP :<C-u>BufferLineMovePrev<CR>
-"}}}
-
-" <leader>/ (grep) {{{
-let g:leader_map['/'] = 'search'
-nnoremap <leader>/ :<C-u>Telescope live_grep<CR>
-" grep word under cursor
-let g:leader_map['*'] = 'search-cur-word'
-nnoremap <leader>* :<C-u>Telescope grep_string<cword>")<CR>
-" }}}
-
-" <leader>f (files) {{{
-let g:leader_map.f = {'name': '+files'}
-let g:leader_map.f.r = 'recent'
-nnoremap <leader>fr :<C-u>Telescope oldfiles<CR>
-
-nnoremap <leader>ff :<C-u>Telescope find_files<CR>
-let g:leader_map.f.t = {'name': '+toggle'}
-nnoremap <leader>ftt :NvimTreeToggle<CR>
-nnoremap <leader>ftr :NvimTreeRefresh<CR>
-nnoremap <leader>ftf :NvimTreeFindFile<CR>
-" }}}
-
-" <leader>g (git) {{{
-let g:leader_map.g = {'name': '+git'}
-let g:leader_map.g.t = {'name': '+toggle'}
-nnoremap <leader>gf :<C-u>Telescope git_files<CR>
-nnoremap <leader>gF :<C-u>Telescope git_status<CR>
-nnoremap <leader>gb :<C-u>Twiggy<CR>
-nnoremap <leader>gl :<C-u>Flog<CR>
-nnoremap <leader>gs :<C-u>Git<CR>
-nnoremap <leader>gg :<C-u>Git<Space>
-" }}}
-
-" <leader>t (toggle)) {{{
-let g:leader_map.t = {'name': '+toggle'}
-nmap <silent> <leader>tc :<C-u>Telescope colorscheme<CR>
-nmap <silent> <leader>tf :<C-u>Telescope filetypes<CR>
-nmap <silent> <leader>tu :<C-u>MundoToggle<CR>
-nmap <silent> <leader>tr :<C-u>RainbowParenthesesToggle<CR>
-nnoremap <leader>ti      :<C-u>IndentBlanklineToggle<CR>
-" }}}
-
-" <leader>r (run) {{{
-let g:leader_map.r = {'name': '+run'}
-let g:leader_map.r.t = {'name': '+test'}
-nmap <silent> <leader>rtt :TestNearest<CR>
-nmap <silent> <leader>rtf :TestFile<CR>
-nmap <silent> <leader>rts :TestSuite<CR>
-nmap <silent> <leader>rtr :TestLast<CR>
-nmap <silent> <leader>rtv :TestVisit<CR>
-" }}}
-
-" <leader>w (window) {{{
-let g:leader_map.w = {'name': '+window'}
-nmap <silent> <leader>wq :hide<CR>
-nmap <silent> <leader>wd :hide<CR>
-nmap <silent> <leader>wj <C-j>j
-nmap <silent> <leader>wk <C-k>k
-nmap <silent> <leader>wl <C-w>l
-nmap <silent> <leader>wh <C-w>h
-nmap <silent> <leader>ws :split<CR>
-nmap <silent> <leader>wv :vsplit<CR>
-nmap <silent> <leader>wz <C-w><T>
-"}}}
-
-" <leader>l (lsp) {{{
-let g:leader_map.l = {'name': '+lsp'}
-nmap <silent> <leader>tl <cmd>LspTroubleToggle<cr>
-nmap <silent> <leader>lr <cmd>LspTroubleToggle lsp_references<cr>
-nnoremap <silent> <leader>la :Lspsaga code_action<cr>
-vnoremap <silent> <leader>la :<C-U>Lspsaga range_code_action<cr>
-nnoremap <silent> <leader>lh :Lspsaga hover_doc<cr>
-nnoremap <silent> <leader>ls :Lspsaga signature_help<CR>
-nnoremap <silent> <leader>lm :Lspsaga rename<CR>
-nnoremap <silent> <leader>lp :Lspsaga preview_definition<CR>
-nnoremap <silent> <leader>ll :Lspsaga show_line_diagnostics<CR>
-nnoremap <silent> <leader>lc :Lspsaga show_cursor_diagnostics<CR>
-
-nnoremap <silent> <leader>tt :Lspsaga open_floaterm<CR>
-tnoremap <silent> <leader>tt <C-\><C-n>:Lspsaga close_floaterm<CR>
-
-nnoremap <silent> ]l :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> [l :Lspsaga diagnostic_jump_next<CR>
-" }}}
-
-" <leader>*** (misc) {{{
-let g:leader_map[' '] = 'command'
-nnoremap <leader><Space> :<C-U>
-nnoremap <leader>: :<C-u>Telescope commands<CR>
-" search in file
-nnoremap // :<C-u>Telescope current_buffer_fuzzy_find<CR>
-
-"TODO: switch from FZF to Telescope snippets
-nmap <silent> <leader>s :Snippets<CR>
-" }}}
-" }}}
 
 command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files' : 'Telescope find_files'
 nnoremap <C-p>      :<C-u>Ctrlp<CR>
