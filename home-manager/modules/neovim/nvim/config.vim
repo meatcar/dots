@@ -680,6 +680,10 @@ require'bufferline'.setup{
       local icon = level:match("error") and " " or ""
       return " " .. icon .. count
     end,
+    offsets = {
+      {filetype = "NvimTree", text = "File Explorer"},
+      {filetype = "packager", text = "Packager"},
+    },
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
     separator_style = "slant",
