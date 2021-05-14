@@ -795,6 +795,7 @@ let g:material_borders = 0
 let g:material_disable_background = 0
 
 let g:tokyonight_style = 'night'
+let g:tokyonight_sidebars = ['NvimTree', 'packager']
 
 fun! MaybeTransparentBackground()
   " Make background transparent if background=dark
@@ -810,9 +811,9 @@ endfun
 
 fun! SetTheme()
   if &background ==? 'dark'
-    colorscheme gruvbox
+    colorscheme tokyonight
   else
-    colorscheme gruvbox
+    colorscheme tokyonight
   endif
 endfun
 
