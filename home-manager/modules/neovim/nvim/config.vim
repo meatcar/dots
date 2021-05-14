@@ -1030,6 +1030,20 @@ nmap <silent> <leader>wz <C-w><T>
 let g:leader_map.l = {'name': '+lsp'}
 nmap <silent> <leader>tl <cmd>LspTroubleToggle<cr>
 nmap <silent> <leader>lr <cmd>LspTroubleToggle lsp_references<cr>
+nnoremap <silent> <leader>la :Lspsaga code_action<cr>
+vnoremap <silent> <leader>la :<C-U>Lspsaga range_code_action<cr>
+nnoremap <silent> <leader>lh :Lspsaga hover_doc<cr>
+nnoremap <silent> <leader>ls :Lspsaga signature_help<CR>
+nnoremap <silent> <leader>lm :Lspsaga rename<CR>
+nnoremap <silent> <leader>lp :Lspsaga preview_definition<CR>
+nnoremap <silent> <leader>ll :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent> <leader>lc :Lspsaga show_cursor_diagnostics<CR>
+
+nnoremap <silent> <leader>tt :Lspsaga open_floaterm<CR>
+tnoremap <silent> <leader>tt <C-\><C-n>:Lspsaga close_floaterm<CR>
+
+nnoremap <silent> ]l :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> [l :Lspsaga diagnostic_jump_next<CR>
 " }}}
 
 " <leader>*** (misc) {{{
