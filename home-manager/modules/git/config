@@ -30,16 +30,14 @@
   prompt = true
 [difftool "nvimdiff"]
   cmd = nvim -d $LOCAL $REMOTE
-[merge]
-  tool = nvimdiff
-[mergetool]
-  prompt = true
-[mergetool "nvimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [merge]
+  tool = nvim_mergetool
   conflictStyle = diff3
-[mergetool]
+[mergetool "nvim_mergetool"]
+  prompt = true
+  cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+  trustExitCode = true
   keepBackup = false
 
 [color]
