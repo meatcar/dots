@@ -98,6 +98,11 @@ set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
 "}}}
 
+" Cursorline Toggling {{{
+autocmd vimrc WinEnter,BufEnter * setlocal cursorline
+autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
+" }}}
+
 " gVIM settings {{{
 if has('gui_running')
   " Set the font
