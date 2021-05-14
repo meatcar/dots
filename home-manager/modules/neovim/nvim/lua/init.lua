@@ -1,2 +1,2 @@
 require('modules/lualine')
-require('modules/lspsaga')
+require('modules/lsp')
