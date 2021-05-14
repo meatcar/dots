@@ -123,6 +123,13 @@ wk.register({
     ['[d'] = {'<Cmd>Lspsaga diagnostic_jump_prev<CR>', 'Previous LSP diagnostic'},
   }) -- }}}
 
+leadermap.n = { name = "notes", -- {{{
+  c = {':<C-u>NoteNew<Space>', 'Create new note'},
+  n = {':<C-u>NoteFind<Space>', 'Find a note'},
+  ['/'] = {':<C-u>NoteRg<Space>', 'Search in notes'},
+  j = {'<Cmd>NoteJournal<CR>', 'Journal'},
+} -- }}}
+
 wk.register(leadermap, {prefix = '<leader>'})
 wk.register(leadermap_v, {prefix = '<leader>', mode = 'v'})
 wk.register(leadermap_t, {prefix = '<leader>', mode = 't'})

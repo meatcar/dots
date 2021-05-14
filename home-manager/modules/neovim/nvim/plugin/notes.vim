@@ -1,3 +1,5 @@
+" TODO: switch to Telescope.nvim from FZF
+
 let s:actions = extend(get(g:, 'fzf_action', {}),
       \ {'ctrl-e': 'edit'})
 
@@ -138,13 +140,4 @@ endfunc
 command! -nargs=* NoteNew call notes#edit(<f-args>)
 command! -nargs=* -bang NoteFind call notes#find(<q-args>, <bang>0)
 command! -nargs=* -bang NoteRg call notes#grep(<q-args>, <bang>0)
-
-let g:leader_map.n = {'name': '+notes'}
-" mnemonic Note Create
-map <silent> <leader>nc :<C-u>NoteNew<space>
-" mnemonic Note Notes
-map <silent> <leader>nn :<C-u>NoteFind<space>
-" mnemonic Note /search
-map <silent> <leader>n/ :<C-u>NoteRg<space>
-" mnemonic Note journal
-map <silent> <leader>nj :<C-u>call notes#journal()<cr>
+command! NoteJournal call notes#journal()
