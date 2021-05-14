@@ -271,6 +271,7 @@ function! PackagerInit() abort
   Pack 'akinsho/nvim-bufferline.lua'  " a pretty bufferline
   Pack 'hoob3rt/lualine.nvim'         " status line
   Pack 'edluffy/specs.nvim'           " flash cursor sometimes
+  Pack 'RRethy/vim-illuminate'        " highlight word under cursor
   "}}}
 
   " Syntaxes {{{
