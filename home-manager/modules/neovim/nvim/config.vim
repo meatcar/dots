@@ -153,7 +153,7 @@ function! PackagerInit() abort
   Pack 'kristijanhusak/vim-packager', { 'type': 'opt', 'name': 'packager' }
   Pack 'nvim-lua/plenary.nvim'         " requirement for a bunch of neovim packages
   Pack 'tpope/vim-eunuch'              " helpful Unix commands (:Rename, etc)
-  Pack 'tpope/vim-commentary'          " easy commenting with `gcc`
+  Pack 'terrortylor/nvim-comment'      " easy commenting with gcc
   " Pack 'tpope/vim-surround'            " surround stuff!
   Pack 'machakann/vim-sandwich'        " better surround
   Pack 'wellle/targets.vim'
@@ -330,6 +330,10 @@ vnoremap <leader>m        :call feedkeys(g:maplocalleader)<CR>
 
 " gitsigns.nvim {{{
 lua require('gitsigns').setup()
+" }}}
+
+" nvim-comment {{{
+lua require('nvim_comment').setup()
 " }}}
 
 " Editorconfig {{{
