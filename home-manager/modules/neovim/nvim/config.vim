@@ -107,7 +107,7 @@ autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
 set timeoutlen=500     " speed up whichkey
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-inoremap <silent> <C-m>   <c-\><c-o><CMD>call feedkeys(g:maplocalleader)<CR>
+inoremap <silent> <C-m>   <c-\><c-o><Cmd>call feedkeys(g:maplocalleader)<CR>
 " }}}
 
 " gVIM settings {{{
@@ -885,7 +885,7 @@ autocmd vimrc FileType md,markdown,text,mail packadd vim-pencil
 autocmd vimrc BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd vimrc FileType markdown
-      \ nnoremap <buffer> <localleader>p <CMD>Glow<CR>
+      \ nnoremap <buffer> <localleader>p <Cmd>Glow<CR>
 let g:vim_markdown_fenced_languages = [
       \'javascript',
       \'js=javascript',
@@ -926,7 +926,7 @@ set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
 
 command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files' : 'Telescope find_files'
-nnoremap <C-p>      <CMD>Ctrlp<CR>
+nnoremap <C-p>      <Cmd>Ctrlp<CR>
 
 let g:endwise_no_mappings = 'plz stahp'
 inoremap <silent><expr><C-Space> compe#complete()
@@ -936,7 +936,7 @@ inoremap <silent><expr><C-f> compe#scroll({ 'delta': +4 })
 inoremap <silent><expr><C-d> compe#scroll({ 'delta': -4 })
 
 " typo corrections
-nmap q: <CMD>q<cr>
+nmap q: <Cmd>q<cr>
 
 " unmap s, which can easily be replaces by cl
 nmap s <Nop>
@@ -947,10 +947,10 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nmap <silent> H <CMD>bp<CR>
-nmap <silent> L <CMD>bn<CR>
-nmap <silent> [b <CMD>BufferLineCyclePrev<CR>
-nmap <silent> ]b <CMD>BufferLineCycleNext<CR>
+nmap <silent> H <Cmd>bp<CR>
+nmap <silent> L <Cmd>bn<CR>
+nmap <silent> [b <Cmd>BufferLineCyclePrev<CR>
+nmap <silent> ]b <Cmd>BufferLineCycleNext<CR>
 
 vnoremap < <gv
 vnoremap > >gv

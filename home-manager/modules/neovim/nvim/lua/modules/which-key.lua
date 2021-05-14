@@ -6,121 +6,121 @@ wk.setup({
   })
 
 local leadermap = {
-  m = { '<CMD>call feedkeys(g:maplocalleader)<CR>', '+localleader' },
-  [' '] = {':', 'command'},
-  ['/'] = {'<CMD>Telescope live_grep<CR>', 'search'},
-  ['*'] = {'<CMD>Telescope grep_string search=<cword><CR>', 'search-cur-word'},
-  [':'] = {'<CMD>Telescope commands<CR>', 'commands'},
-  s = {'<CMD>Snippets<CR>', 'snippets'}
+  m = { '<Cmd>call feedkeys(g:maplocalleader)<CR>', '+localleader' },
+  [' '] = {':', 'Command'},
+  ['/'] = {'<Cmd>Telescope live_grep<CR>', 'Search'},
+  ['*'] = {'<Cmd>Telescope grep_string search=<cword><CR>', 'Search current word'},
+  [':'] = {'<Cmd>Telescope commands<CR>', 'Commands'},
+  s = {'<Cmd>Snippets<CR>', 'Snippets'}
 }
 wk.register({
-    ['//'] = {'<CMD>Telescope current_buffer_fuzzy_find<CR>', 'buffer-lines'},
+    ['//'] = {'<Cmd>Telescope current_buffer_fuzzy_find<CR>', 'Buffer lines'},
   })
 
 local leadermap_v = {}
 local leadermap_t = {}
 
 leadermap.v = { name = 'vim', -- {{{
-  i = { '<CMD>PackInstall<CR>', 'pack-install' },
-  c = { '<CMD>PackClean<CR>', 'pack-clean'},
-  u = { '<CMD>PackUpdate<CR>', 'pack-update' },
+  i = { '<Cmd>PackInstall<CR>', 'Pack install' },
+  c = { '<Cmd>PackClean<CR>', 'Pack clean'},
+  u = { '<Cmd>PackUpdate<CR>', 'Pack update' },
 } -- }}}
 
 leadermap.h = { name = 'help', -- {{{
-  h = { '<CMD>Telescope help_tags<CR>', 'help' },
-  k = { '<CMD>Telescope keymaps<CR>', 'keymaps' },
-  c = { '<CMD>Telescope commands<CR>', 'commands' },
+  h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
+  k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
+  c = { '<Cmd>Telescope commands<CR>', 'Commands' },
 } -- }}}
 
 leadermap.q = { name = 'quit', -- {{{
-  q = { '<CMD>q<CR>', 'quit' },
-  w = { '<CMD>wq<CR>', 'save and quit' },
-  x = { '<CMD>x<CR>', 'save and exit' },
+  q = { '<Cmd>q<CR>', 'Quit' },
+  w = { '<Cmd>wq<CR>', 'Save and quit' },
+  x = { '<Cmd>x<CR>', 'Save and exit' },
 } -- }}}
 
 leadermap.b = { name = 'buffers', -- {{{
-  b = { '<CMD>Telescope buffers<CR>', 'buffers' },
-  d = { '<CMD>Bdelete<CR>', 'buffer-delete' },
-  n = { ']b', 'next'},
-  p = { '[b', 'prev'},
-  N = { '<CMD>BufferLineMoveNext<CR>', 'move-next' },
-  P = { '<CMD>BufferLineMovePrev<CR>', 'move-prev' },
+  b = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
+  d = { '<Cmd>Bdelete<CR>', 'Delete buffer' },
+  n = { ']b', 'Next'},
+  p = { '[b', 'Prev'},
+  N = { '<Cmd>BufferLineMoveNext<CR>', 'Move left' },
+  P = { '<Cmd>BufferLineMovePrev<CR>', 'Move prev' },
 } -- }}}
 
 leadermap.f = { name = 'files', -- {{{
-  r = {'<CMD>Telescope oldfiles<CR>', 'recent'},
-  f =  {'<CMD>Telescope find_files<CR>', 'files'},
+  r = {'<Cmd>Telescope oldfiles<CR>', 'Recent'},
+  f =  {'<Cmd>Telescope find_files<CR>', 'Files'},
   t = {
     name = 'file-tree',
-    t = {'<CMD>NvimTreeToggle<CR>', 'toggle'},
-    r = {'<CMD>NvimTreeRefresh<CR>', 'refresh'},
-    f = {'<CMD>NvimTreeFindFile<CR>', 'find-file'},
+    t = {'<Cmd>NvimTreeToggle<CR>', 'Toggle'},
+    r = {'<Cmd>NvimTreeRefresh<CR>', 'Refresh'},
+    f = {'<Cmd>NvimTreeFindFile<CR>', 'Find file'},
   },
 } -- }}}
 
 leadermap.g = { name = 'git', -- {{{
-  f = {'<CMD>Telescope git_files<CR>', 'files'},
-  F = {'<CMD>Telescope git_status<CR>', 'status'},
-  b = {'<CMD>Twiggy<CR>', 'branches'},
-  l = {'<CMD>Flog<CR>', 'log'},
-  s = {'<CMD>Git<CR>', 'status'},
-  g = {':<C-u>Git<Space>', 'Git...'},
+  f = {'<Cmd>Telescope git_files<CR>', 'Files'},
+  F = {'<Cmd>Telescope git_status<CR>', 'Status'},
+  b = {'<Cmd>Twiggy<CR>', 'Branches'},
+  l = {'<Cmd>Flog<CR>', 'Log'},
+  s = {'<Cmd>Git<CR>', 'Status'},
+  g = {':<C-u>Git<Space>', ':Git'},
 } -- }}}
 
 leadermap.t = { name = 'toggle', -- {{{
-  c = {'<CMD>Telescope colorscheme<CR>', 'colorscheme'},
-  f = {'<CMD>Telescope filetypes<CR>', 'filetype'},
-  u = {'<CMD>MundoToggle<CR>', 'undo'},
-  r = {'<CMD>RainbowParenthesesToggle<CR>', 'rainbow-parens'},
-  i = {'<CMD>IndentBlanklineToggle<CR>', 'indent-highlight'},
-  l = {'<CMD>LspTroubleToggle<CR>', 'lsp'},
-  t = {'<CMD>Lspsaga open_floaterm<CR>', 'terminal'},
+  c = {'<Cmd>Telescope colorscheme<CR>', 'Colorscheme'},
+  f = {'<Cmd>Telescope filetypes<CR>', 'Filetype'},
+  u = {'<Cmd>MundoToggle<CR>', 'Undo'},
+  r = {'<Cmd>RainbowParenthesesToggle<CR>', 'Rainbow parens'},
+  i = {'<Cmd>IndentBlanklineToggle<CR>', 'Indent highlight'},
+  l = {'<Cmd>LspTroubleToggle<CR>', 'LSP'},
+  t = {'<Cmd>Lspsaga open_floaterm<CR>', 'Terminal'},
 }
 leadermap_t.t = {
   name = leadermap.t.name,
-  t = {'<CMD>LspSaga close_floaterm<CR>', 'terminal'},
+  t = {'<Cmd>LspSaga close_floaterm<CR>', 'Terminal'},
 } -- }}}
 
 leadermap.r = { name = 'run', -- {{{
   t = {
     name = 'test',
-    t = {'<CMD>TestNearest<CR>', 'nearest'},
-    f = {'<CMD>TestFile<CR>', 'file'},
-    s = {'<CMD>TestSuite<CR>', 'suite'},
-    r = {'<CMD>TestLast<CR>', 'recent'},
-    g = {'<CMD>TestVisit<CR>', 'goto'},
+    t = {'<Cmd>TestNearest<CR>', 'Nearest'},
+    f = {'<Cmd>TestFile<CR>', 'File'},
+    s = {'<Cmd>TestSuite<CR>', 'Suite'},
+    r = {'<Cmd>TestLast<CR>', 'Recent'},
+    g = {'<Cmd>TestVisit<CR>', 'Goto'},
   }
 } -- }}}
 
 leadermap.w = { name = 'window', -- {{{
-  q = {'<CMD>hide<CR>', 'close'},
-  d = {'<CMD>hide<CR>', 'close'},
-  j = {'<C-w>j', 'focus-down'},
-  k = {'<C-w>k', 'focus-up'},
-  l = {'<C-w>l', 'focus-left'},
-  h = {'<C-w>h', 'focus-right'},
-  s = {'<CMD>split<CR>', 'split'},
-  v = {'<CMD>vsplit<CR>', 'vertical-split'},
-  z = {'<C-w><T>', 'zoom'},
+  q = {'<Cmd>hide<CR>', 'Close'},
+  d = {'<Cmd>hide<CR>', 'Close'},
+  j = {'<C-w>j', 'Focus down'},
+  k = {'<C-w>k', 'Focus up'},
+  l = {'<C-w>l', 'Focus left'},
+  h = {'<C-w>h', 'Focus right'},
+  s = {'<Cmd>split<CR>', 'Split'},
+  v = {'<Cmd>vsplit<CR>', 'Vertical split'},
+  z = {'<C-w><T>', 'Zoom'},
 } -- }}}
 
 leadermap.l = { name = 'lsp', -- {{{
-  r = {'<CMD>LspTroubleToggle lsp_references<CR>', 'references'},
-  a = {'<CMD>Lspsaga code_action<CR>', 'action'},
-  h = {'<CMD>Lspsaga hover_doc<CR>', 'hover-doc'},
-  s = {'<CMD>Lspsaga signature_help<CR>', 'signature'},
-  m = {'<CMD>Lspsaga rename<CR>', 'rename'},
-  d = {'<CMD>Lspsaga preview_definition<CR>', 'definition'},
-  l = {'<CMD>Lspsaga show_line_diagnostics<CR>', 'line-info'},
-  c = {'<CMD>Lspsaga show_cursor_diagnostics<CR>', 'cursor-info'},
+  r = {'<Cmd>LspTroubleToggle lsp_references<CR>', 'References'},
+  a = {'<Cmd>Lspsaga code_action<CR>', 'Action'},
+  h = {'<Cmd>Lspsaga hover_doc<CR>', 'Hover Doc'},
+  s = {'<Cmd>Lspsaga signature_help<CR>', 'Signature'},
+  m = {'<Cmd>Lspsaga rename<CR>', 'Rename'},
+  d = {'<Cmd>Lspsaga preview_definition<CR>', 'Definition'},
+  l = {'<Cmd>Lspsaga show_line_diagnostics<CR>', 'Line info'},
+  c = {'<Cmd>Lspsaga show_cursor_diagnostics<CR>', 'Cursor info'},
 }
 leadermap_v.l = {
   name = leadermap.l.name,
-  a = {'<CMD>Lspsaga range_code_action<CR>', 'action'},
+  a = {'<Cmd>Lspsaga range_code_action<CR>', 'Action'},
 }
 wk.register({
-    [']d'] = {'<CMD>Lspsaga diagnostic_jump_next<CR>', 'Next Lsp Diagnostic'},
-    ['[d'] = {'<CMD>Lspsaga diagnostic_jump_prev<CR>', 'Prev Lsp Diagnostic'},
+    [']d'] = {'<Cmd>Lspsaga diagnostic_jump_next<CR>', 'Next LSP diagnostic'},
+    ['[d'] = {'<Cmd>Lspsaga diagnostic_jump_prev<CR>', 'Previous LSP diagnostic'},
   }) -- }}}
 
 wk.register(leadermap, {prefix = '<leader>'})
