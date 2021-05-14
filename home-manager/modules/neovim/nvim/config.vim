@@ -186,6 +186,8 @@ function! PackagerInit() abort
   Pack 'kabouzeid/nvim-lspinstall'     " easily install new lsp servers
   Pack 'kosayoda/nvim-lightbulb'       " show a lightbulb for lsp actions
   Pack 'glepnir/lspsaga.nvim'          " pretty LSP popups
+  Pack 'folke/lsp-colors.nvim'         " improve LSP colors in all themes
+  Pack 'folke/lsp-trouble.nvim'        " show all LSP errors
   " }}}
 
   " Completion {{{
@@ -1023,6 +1025,12 @@ nmap <silent> <leader>ws :split<CR>
 nmap <silent> <leader>wv :vsplit<CR>
 nmap <silent> <leader>wz <C-w><T>
 "}}}
+
+" <leader>l (lsp) {{{
+let g:leader_map.l = {'name': '+lsp'}
+nmap <silent> <leader>tl <cmd>LspTroubleToggle<cr>
+nmap <silent> <leader>lr <cmd>LspTroubleToggle lsp_references<cr>
+" }}}
 
 " <leader>*** (misc) {{{
 let g:leader_map[' '] = 'command'
