@@ -612,16 +612,15 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 " }}}
 
 " nvim-treesitter {{{
-"" Using vim-polyglot instead
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   ensure_installed = "all",
-"   highlight = { enable = false },
-"   indent = { enable = false }
-" }
-" EOF
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 
 " nvim-lspinstall {{{
