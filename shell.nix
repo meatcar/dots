@@ -7,6 +7,7 @@ pkgs.stdenv.mkDerivation {
   name = "dots";
   NIX_PATH = builtins.concatStringsSep ":" nixPath;
   buildInputs = [
+    pkgs.nixUnstable
     pkgs.stow
     pkgs.niv
     (pkgs.writeShellScriptBin "nixos-rebuild-pretty" ''

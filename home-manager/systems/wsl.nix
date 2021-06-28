@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+{
+  imports = [ ../modules/nix-flakes.nix ];
+
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
   home.sessionVariables = {
@@ -23,12 +26,17 @@
     '';
   };
 
-  xdg.configFile."fish/fish_plugins".text = ''
-    # WSL Only:
-    danhper/fish-ssh-agent
-  '';
+  xdg.configFile = {
+    "fish/fish_plugins".text = ''
+      # WSL Only:
+      danhper/fish-ssh-agent
+    '';
+  };
 
   programs.fish.shellInit = ''
+    # WSL thinks the shell is bash, even when running fish. Let's change it's mind.
+    set -x SHELL ${pkgs.fish}/bin/fish
+
     # Detect startup
     if not pgrep cron >/dev/null
       if not mount | grep -q /tmp
@@ -49,8 +57,5 @@
       end
       sudo /etc/init.d/cron start 2>&1 >/dev/null
     end
-
-    # WSL thinks the shell is bash, even when running fish. Let's change it's mind.
-    set -x SHELL ${pkgs.fish}/bin/fish
   '';
 }
