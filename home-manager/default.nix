@@ -4,6 +4,7 @@
   imports = [
     ../modules/niv.nix
     ./system.nix
+    ./modules/cachix.nix
     ./modules/man
     ./modules/git
     ./modules/fish

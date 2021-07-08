@@ -4,7 +4,7 @@
 
   programs.direnv = {
     enable = true;
-    enableNixDirenvIntegration = true;
+    nix-direnv.enable = true;
     stdlib = ''
       # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
       session_name(){
