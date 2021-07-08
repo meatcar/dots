@@ -19,23 +19,6 @@
     ./modules/nnn
   ];
 
-  options =
-    let
-      inherit (lib) mkOption types;
-      theme = {
-        alacritty = mkOption {
-          description = "Alacritty theme YAML";
-          type = types.path;
-        };
-      };
-    in
-    {
-      themes = {
-        light = theme;
-        dark = theme;
-      };
-      theme = theme;
-    };
 
   config = rec {
     home.stateVersion = "20.09";
@@ -65,15 +48,5 @@
     programs.lsd.enable = true;
     programs.lsd.enableAliases = true;
     programs.dircolors.enable = true;
-
-    theme = config.themes.dark;
-    themes =
-      let
-        theme = config.niv.alacritty-theme;
-      in
-      {
-        light.alacritty = "${theme}/themes/pencil_light.yaml";
-        dark.alacritty = "${theme}/themes/hyper.yaml";
-      };
   };
 }
