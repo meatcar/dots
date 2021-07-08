@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
   home.packages = [ pkgs.nixUnstable ];
-  xdg.configFile = {
-    "nix/nix.conf".text = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+
+  home.file.nixConf.text = ''
+    experimental-features = nix-command flakes
+  '';
+
   programs.direnv = {
     stdlib = ''
       use_flake() {
