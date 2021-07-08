@@ -1,14 +1,13 @@
 -- vim: set foldmethod=marker
--- Bootstrap {{{
+-- Bootstrap
 _G.vim = vim
-_G.fn = vim.fn
+local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.api.nvim_command 'packadd packer.nvim'
 end
--- }}}
 
 local function base(use)
   use 'wbthomason/packer.nvim' -- manage self
@@ -30,8 +29,8 @@ local function base(use)
     'machakann/vim-sandwich', -- work with surrounding text
     config = function()
       -- unmap s, which can easily be replaces by cl
-      vim.api.nvim_set_keymap('n', 's', '<Nop>')
-      vim.api.nvim_set_keymap('x', 's', '<Nop>')
+      vim.api.nvim_set_keymap('n', 's', '<Nop>', {})
+      vim.api.nvim_set_keymap('x', 's', '<Nop>', {})
     end,
   }
   use {
@@ -156,21 +155,12 @@ local function completion(use)
       }
 
       -- https://github.com/hrsh7th/nvim-compe#mappings
-      vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', { noremap = true, silent = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<CR>', [[compe#confirm('<CR>')]], { noremap = true, silent = true, expr = true })
-      vim.api.nvim_set_keymap('i', '<C-e>', [[compe#close('<C-e>')]], { noremap = true, silent = true, expr = true })
-      vim.api.nvim_set_keymap(
-        'i',
-        '<C-f>',
-        [[compe#scroll({'delta': +4})]],
-        { noremap = true, silent = true, expr = true }
-      )
-      vim.api.nvim_set_keymap(
-        'i',
-        '<C-d>',
-        [[compe#scroll({'delta': -4})]],
-        { noremap = true, silent = true, expr = true }
-      )
+      local opts = { noremap = true, silent = true, expr = true }
+      vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', opts)
+      vim.api.nvim_set_keymap('i', '<CR>', [[compe#confirm('<CR>')]], opts)
+      vim.api.nvim_set_keymap('i', '<C-e>', [[compe#close('<C-e>')]], opts)
+      vim.api.nvim_set_keymap('i', '<C-f>', [[compe#scroll({'delta': +4})]], opts)
+      vim.api.nvim_set_keymap('i', '<C-d>', [[compe#scroll({'delta': -4})]], opts)
     end,
   }
 
@@ -247,9 +237,9 @@ local function utilities(use)
     'junegunn/vim-easy-align',
     config = function()
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
-      vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)')
+      vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
-      vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)')
+      vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
     end,
   }
 
@@ -379,6 +369,7 @@ local function pretty(use)
     'mhinz/vim-startify', -- startup screen
     requires = 'ryanoasis/vim-devicons', -- pretty icons
     config = function()
+      local fn = vim.fn
       vim.g.startify_custom_indices = fn.map(fn.range(1, 100), 'string(v:val)') -- start with 1
       vim.g.startify_session_dir = fn.stdpath 'cache' .. '/session'
       vim.g.startify_skiplist = {
