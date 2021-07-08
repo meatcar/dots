@@ -22,10 +22,11 @@ local leadermap_t = {}
 
 leadermap.v = {
   name = 'vim', -- {{{
-  i = { '<Cmd>PackerSync<CR>', 'Packer install' },
-  c = { '<Cmd>PackerClean<CR>', 'Packer clean' },
-  u = { '<Cmd>PackerUpdate<CR>', 'Packer update' },
-  p = { '<Cmd>PackerProfile<CR>', 'Packer profile' },
+  s = { '<Cmd>PackerSync<CR>', 'PackerSync' },
+  c = { '<Cmd>PackerClean<CR>', 'PackerClean' },
+  u = { '<Cmd>PackerUpdate<CR>', 'PackerUpdate' },
+  p = { '<Cmd>PackerProfile<CR>', 'PackerProfile' },
+  S = { '<Cmd>PackerStatus<CR>', 'PackerStatus' },
 } -- }}}
 
 leadermap.h = {
