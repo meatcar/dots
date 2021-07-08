@@ -14,6 +14,10 @@ if exists('+termguicolors')
   set termguicolors       " enable true colors support
 endif
 
+" enable undercurls
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
 set title
 
 set encoding=utf-8        " UTF-8 encoding for all new files
@@ -188,9 +192,6 @@ command! -bang -nargs=* Rg
 
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
-
-command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
-nnoremap <C-p>      <Cmd>Ctrlp<CR>
 
 " typo corrections
 nmap q: <Cmd>q<cr>
