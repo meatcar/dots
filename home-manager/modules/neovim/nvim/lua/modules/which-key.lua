@@ -46,7 +46,7 @@ leadermap.q = {
 leadermap.b = {
   name = 'buffers', -- {{{
   b = { '<Cmd>Telescope buffers show_all_buffers=true<CR>', 'Buffers' },
-  d = { '<Cmd>Bdelete<CR>', 'Delete buffer' },
+  d = { '<Cmd>BDelete this<CR>', 'Delete buffer' },
   n = { ']b', 'Next' },
   p = { '[b', 'Prev' },
   N = { '<Cmd>BufferLineMoveNext<CR>', 'Move left' },
