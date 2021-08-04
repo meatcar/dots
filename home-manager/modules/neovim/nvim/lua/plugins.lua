@@ -19,7 +19,6 @@ local function base(use)
   use 'pbrisbin/vim-mkdir' -- create directory when :e unknown/paths
   use 'kopischke/vim-stay' -- save fold states
   use 'kopischke/vim-fetch' -- handle line and column numbers in file names
-  use 'moll/vim-bbye' -- :BDelete without messing up window layouts
   use 'airblade/vim-rooter' -- auto-cd to root directory
   use 'Konfekt/FastFold' -- speed up folding for big files
   use 'aymericbeaumet/symlink.vim' -- follow symlinks
@@ -43,6 +42,23 @@ local function base(use)
     'tpope/vim-endwise', -- add  to function blocks
     config = function()
       vim.g.endwise_no_mappings = true
+    end,
+  }
+  use {
+    'kazhala/close-buffers.nvim', -- quickly delete multiple buffers based on the conditions provided
+    config = function()
+      require('close_buffers').setup {
+        filetype_ignore = {}, -- Filetype to ignore when running deletions
+        preserve_window_layout = { 'this' }, -- Types of deletion that should preserve the window layout
+        next_buffer_cmd = function(windows)
+          require('bufferline').cycle(1)
+          local bufnr = vim.api.nvim_get_current_buf()
+
+          for _, window in ipairs(windows) do
+            vim.api.nvim_win_set_buf(window, bufnr)
+          end
+        end,
+      }
     end,
   }
 end
