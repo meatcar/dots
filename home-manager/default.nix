@@ -17,6 +17,7 @@
     ./modules/clojure
     ./modules/emacs
     ./modules/nnn
+    ./modules/kakoune
   ];
 
 

@@ -1,9 +1,6 @@
+colorscheme kaleidoscope-dark
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" ensure
-jsdf
-plug "alexherbo2/kakoune-dracula-theme" ensure theme config %{
-    colorscheme dracula
-}
 
 plug "andreyorst/fzf.kak" ensure config %{
     map global normal <c-p> ': fzf-mode<ret>'
@@ -12,13 +9,12 @@ plug "andreyorst/fzf.kak" ensure config %{
     set-option global fzf_highlight_command 'bat'
 }
 
-plug "alexherbo2/auto-pairs.kak" ensure config %{
+plug "topisani/auto-pairs.kak" ensure config %{
     hook global WinCreate .* %{
         auto-pairs-enable
     }
 
-    map global user s -docstring 'Surround' ': auto-pairs-surround <lt> <gt><ret>'
-    map global user S -docstring 'Surround++' ': auto-pairs-surround <lt> <gt> _ _ * *<ret>'
+    map global user s -docstring 'Surround' ':auto-pairs-surround<ret>'
 }
 
 plug "TeddyDD/kakoune-edit-or-dir" ensure config %{
