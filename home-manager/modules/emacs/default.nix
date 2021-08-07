@@ -14,7 +14,6 @@
     pkgs.pandoc
     pkgs.xdg_utils
   ];
-  nixpkgs.overlays = [ (import config.niv.emacs-overlay) ];
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGcc;

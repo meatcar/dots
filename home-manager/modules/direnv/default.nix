@@ -5,6 +5,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    nix-direnv.enableFlakes = true;
     stdlib = ''
       # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
       session_name(){
@@ -15,8 +16,24 @@
           export TMUX_SESSION_NAME="$*"
         fi
       }
+
+      # store .direnv outside project dir
+      # source: https://github.com/nix-community/nix-direnv/blob/master/README.md#storing-direnv-outside-the-project-directory
+      : ''${XDG_CACHE_HOME:=$HOME/.cache}
+      declare -A direnv_layout_dirs
+      direnv_layout_dir() {
+          echo "''${direnv_layout_dirs[$PWD]:=$(
+              echo -n "$XDG_CACHE_HOME"/direnv/layouts/
+              echo -n "$PWD" | shasum | cut -d ' ' -f 1
+          )}"
+      }
     '';
   };
+
+  home.file.nixConf.text = ''
+    keep-derivations = true
+    keep-outputs = true
+  '';
 
   programs.fish = {
     shellInit = ''

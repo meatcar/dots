@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../modules/niv.nix
     ./system.nix
+    ./modules/nix-flakes.nix
     ./modules/cachix.nix
     ./modules/man
     ./modules/git

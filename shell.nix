@@ -1,21 +1,13 @@
-let
-  sources = import ./nix/sources.nix;
-  nixPath = import ./nix-path.nix;
-in
-{ pkgs ? import sources.nixpkgs { } }:
-pkgs.stdenv.mkDerivation {
-  name = "dots";
-  NIX_PATH = builtins.concatStringsSep ":" nixPath;
-  buildInputs = [
-    pkgs.nixUnstable
-    pkgs.stow
-    pkgs.niv
-    (pkgs.writeShellScriptBin "nixos-rebuild-pretty" ''
-      # prettier than nixos-rebuild switch
-      sudo -E sh -c "nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && nixos-rebuild $@"
-    '')
-    (pkgs.writeShellScriptBin "hm" ''
-      home-manager -I ${builtins.concatStringsSep " -I " nixPath} "$@"
-    '')
-  ];
-}
+(import
+  (
+    let
+      lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+    in
+    fetchTarball {
+      url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+      sha256 = lock.nodes.flake-compat.locked.narHash;
+    }
+  )
+  {
+    src = ./.;
+  }).shellNix
