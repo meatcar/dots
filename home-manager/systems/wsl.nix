@@ -45,6 +45,9 @@
         sudo mount -t tmpfs tmpfs /tmp || true
       end
 
+      sudo chgrp kvm /dev/kvm
+      sudo chmod g+rw /dev/kvm
+
       # recreate symlinks for wslg
       if not test -e /tmp/.X11-unix
         sudo ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix
