@@ -16,13 +16,6 @@
     ./user.nix
   ];
 
-  # TODO: pull out into modules
-  nixpkgs.overlays =
-    let
-      nixpkgs-wayland = import config.niv.nixpkgs-wayland;
-    in
-    [ nixpkgs-wayland ];
-
   nix = {
     package = pkgs.nixUnstable;
   };

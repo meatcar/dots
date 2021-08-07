@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, specialArgs, ... }:
 {
   programs.kakoune = {
     enable = true;
@@ -15,23 +15,14 @@
         word = true;
       };
     };
+    plugins = [ pkgs.kakounePlugins.parinfer-rust ];
     extraConfig = ''
 
       ${builtins.readFile ./kakrc}
     '';
   };
 
-  xdg.configFile."kak/plugins/plug.kak".source = config.niv."plug.kak";
-
-  nixpkgs.overlays = [
-    (
-      self: super: {
-        kakoune = super.kakoune.override {
-          configure = { plugins = [ pkgs.kakounePlugins.parinfer-rust ]; };
-        };
-      }
-    )
-  ];
+  xdg.configFile."kak/plugins/plug.kak".source = specialArgs.inputs.plug-kak;
 
   home.packages = with pkgs; [ fzf ];
 }

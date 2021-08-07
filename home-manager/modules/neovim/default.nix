@@ -1,13 +1,8 @@
 { pkgs, config, ... }:
-let
-  overlay = (import config.niv.neovim-nightly-overlay { }) pkgs;
-in
 {
   programs.neovim = {
     enable = true;
-    # from https://github.com/neovim/neovim/blob/master/contrib/flake.nix
-    # TODO: move to flakes
-    package = overlay.neovim-nightly;
+    package = pkgs.neovim-nightly;
     withNodeJs = true;
 
     plugins = with pkgs; [ ];

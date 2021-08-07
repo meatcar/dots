@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, specialArgs, ... }:
 {
   options =
     let
@@ -21,7 +21,7 @@
   config = {
     themes =
       let
-        theme = config.niv.alacritty-theme;
+        theme = specialArgs.inputs.alacritty-theme;
       in
       {
         light.alacritty = "${theme}/themes/pencil_light.yaml";
