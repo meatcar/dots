@@ -1,9 +1,23 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ ../modules/nix-flakes.nix ];
+  imports = [
+    ../modules/nix-flakes.nix
+    ../modules/cachix.nix
+    ../modules/man
+    ../modules/git
+    ../modules/fish
+    ../modules/ssh
+    ../modules/direnv
+    ../modules/tmux
+    ../modules/neovim
+    ../modules/weechat
+    ../modules/leiningen
+    ../modules/clojure
+    ../modules/emacs
+    ../modules/nnn
+    ../modules/kakoune
+  ];
 
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = "/home/${config.home.username}";
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";
     BROWSER = "${pkgs.wsl-open}/bin/wsl-open";
