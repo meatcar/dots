@@ -22,6 +22,10 @@
       url = "github:eendroroy/alacritty-theme";
       flake = false;
     };
+    wsl-open = {
+      url = "gitlab:4U6U57/wsl-open";
+      flake = false;
+    };
   };
 
 

@@ -265,7 +265,24 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "plug-kak": "plug-kak"
+        "plug-kak": "plug-kak",
+        "wsl-open": "wsl-open"
+      }
+    },
+    "wsl-open": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627967948,
+        "narHash": "sha256-+w8ZGa8C7jlBK6fWKaKqPlGqYLR8e6L6l9YdtZVf5R8=",
+        "owner": "4U6U57",
+        "repo": "wsl-open",
+        "rev": "8de2d1d0bda9b5358e10900cfc70822aeee51dc3",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "4U6U57",
+        "repo": "wsl-open",
+        "type": "gitlab"
       }
     }
   },
