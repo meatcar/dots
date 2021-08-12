@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ../modules/base.nix
     ../modules/nix-flakes.nix
     ../modules/cachix.nix
     ../modules/man
