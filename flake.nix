@@ -89,6 +89,13 @@
             };
           };
         };
+        templates = {
+          project = {
+            path = ./templates/project;
+            description = "A basic dev environment with direnv and nix";
+          };
+          defaultTemplate = self.templates.project;
+        };
       }
     );
 
