@@ -13,7 +13,7 @@
     EDITOR = "nvim";
     NOTES_DIR = "~/Sync/notes";
   };
-  nixpkgs.config = import ./config.nix;
+  nixpkgs.config = import ../config.nix;
   xdg.configFile."nixpkgs/config.nix".text =
     let
       seqToString = lib.generators.toPretty { };
