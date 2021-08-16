@@ -365,7 +365,19 @@ local function utilities(use)
     'nvim-telescope/telescope.nvim', -- a fuzzy completion engine
     requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
     config = function()
-      require('telescope').setup { defaults = { layout_strategy = 'flex' } }
+      require('telescope').setup {
+        defaults = {
+          -- TODO: Borken, see https://github.com/nvim-telescope/telescope.nvim/issues/840
+          -- sorting_strategy = 'ascending',
+          layout_strategy = 'vertical',
+          layout_config = {
+            vertical = {
+              -- TODO: set to true once sorting_strategy = ascending is fixed
+              mirror = false,
+            },
+          },
+        },
+      }
       vim.cmd [[
         command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
         nnoremap <C-p>      <Cmd>Ctrlp<CR>
