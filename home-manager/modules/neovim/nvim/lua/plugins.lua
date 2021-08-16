@@ -398,6 +398,15 @@ local function utilities(use)
       }
     end,
   }
+
+  use {
+    'folke/zen-mode.nvim', -- fullscreen current buffer
+    config = function()
+      require('zen-mode').setup {}
+      vim.api.nvim_set_keymap('n', '<C-w>z', '<Cmd>ZenMode<CR>', {})
+      vim.api.nvim_set_keymap('n', '<Leader>wz', '<Cmd>ZenMode<CR>', {})
+    end,
+  }
 end
 
 local function pretty(use)
