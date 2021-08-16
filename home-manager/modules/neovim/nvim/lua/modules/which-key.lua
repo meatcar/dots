@@ -87,7 +87,7 @@ leadermap.t = {
 }
 leadermap_t.t = {
   name = leadermap.t.name,
-  t = { '<Cmd>LspSaga close_floaterm<CR>', 'Terminal' },
+  t = { [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], 'Close Terminal' },
 } -- }}}
 
 leadermap.r = {
