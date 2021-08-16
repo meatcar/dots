@@ -122,7 +122,7 @@ local function lsp(use)
   use {
     'kosayoda/nvim-lightbulb', -- show a lightbulb for lsp actions
     config = function()
-      vim.cmd [[autocmd vimrc CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+      vim.cmd [[autocmd packer CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
     end,
   }
 
@@ -216,7 +216,7 @@ local function git(use)
   use {
     'tpope/vim-fugitive', -- tight git integration
     config = function()
-      vim.cmd [[autocmd vimrc FileType fugitive nmap <buffer> q gq]]
+      vim.cmd [[autocmd packer FileType fugitive nmap <buffer> q gq]]
     end,
   }
 
@@ -308,8 +308,8 @@ local function utilities(use)
   use {
     'justinmk/vim-dirvish', -- nice simple file browser
     config = function()
-      vim.cmd [[autocmd vimrc FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _]]
-      vim.cmd [[autocmd vimrc FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)]]
+      vim.cmd [[autocmd packer FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _]]
+      vim.cmd [[autocmd packer FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)]]
     end,
   }
 
@@ -412,7 +412,7 @@ local function pretty(use)
       vim.g.startify_session_persistence = true
       vim.g.startify_session_delete_buffers = true
       vim.g.startify_change_to_vcs_root = true
-      vim.cmd [[autocmd vimrc User Startified setlocal buftype=nofile]]
+      vim.cmd [[autocmd packer User Startified setlocal buftype=nofile]]
       -- devicons
       vim.cmd [[
         function! StartifyEntryFormat()
