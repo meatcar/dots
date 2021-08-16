@@ -1,2 +1,2 @@
-require('plugins')
-require('modules/lualine')
+require 'plugins'
+require 'modules/lualine'

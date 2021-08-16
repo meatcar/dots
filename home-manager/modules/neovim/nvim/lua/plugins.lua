@@ -450,14 +450,6 @@ local function pretty(use)
   }
 
   use {
-    'hoob3rt/lualine.nvim', -- status line
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require 'modules/lualine'
-    end,
-  }
-
-  use {
     'edluffy/specs.nvim', -- flash cursor sometimes
     config = function()
       require('specs').setup {
@@ -669,6 +661,18 @@ local function load_plugins(use)
 
   for _, f in ipairs(plugins) do
     f(use)
+  end
+
+  local modules = {
+    'lualine',
+  }
+  for _, mod in ipairs(modules) do
+    local M = require('modules/' .. mod)
+    if M.package == nil then
+      -- TODO: ERROR
+      vim.cmd([[echoerr "Module ]] .. mod .. [[ doesn't have a field 'package', can't use with packer."]])
+    end
+    use(M.package)
   end
 end
 
