@@ -3,6 +3,7 @@
 _G.vim = vim
 local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/pack/packer/start/packer.nvim'
+local sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer' }
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
@@ -337,7 +338,7 @@ local function utilities(use)
       vim.g.indent_blankline_space_char_blankline = ' '
       vim.g.indent_blankline_use_treesitter = false
       vim.g.indent_blankline_show_current_context = true
-      vim.g.indent_blankline_filetype_exclude = { 'startify' }
+      vim.g.indent_blankline_filetype_exclude = sidebars
     end,
   }
 
@@ -517,8 +518,8 @@ local function colorscheme(use)
   use {
     'folke/tokyonight.nvim',
     config = function()
+      vim.g.tokyonight_sidebars = sidebars
       vim.g.tokyonight_style = 'night'
-      vim.g.tokyonight_sidebars = { 'NvimTree', 'packager' }
       vim.cmd [[colorscheme tokyonight]]
     end,
   }
