@@ -9,6 +9,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.api.nvim_command 'packadd packer.nvim'
 end
+vim.cmd [[
+  augroup packer
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup END
+]]
 
 local function base(use)
   use 'wbthomason/packer.nvim' -- manage self
