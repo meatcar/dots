@@ -523,6 +523,15 @@ local function pretty(use)
 end
 
 local function colorscheme(use)
+  _G.colorscheme = {}
+  use 'liuchengxu/space-vim-theme'
+  use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
+  use {
+    'NLKNguyen/papercolor-theme',
+    config = function()
+      require('modules/lualine').themes.papercolor = 'papercolor'
+    end,
+  }
   use {
     'npxbr/gruvbox.nvim',
     requires = 'rktjmp/lush.nvim',
@@ -532,27 +541,65 @@ local function colorscheme(use)
       vim.g.gruvbox_contrast_dark = 'hard'
       vim.g.gruvbox_sign_column = 'bg0'
       vim.g.gruvbox_color_column = 'bg0'
+      require('modules/lualine').themes.gruvbox = 'gruvbox'
     end,
   }
+
   use {
     'marko-cerovac/material.nvim',
     config = function()
-      vim.g.material_style = 'deep ocean'
       vim.g.material_italic_comments = false
       vim.g.material_italic_keywords = false
+      require('modules/lualine').themes.material = 'material'
     end,
   }
+  _G.colorscheme.material = function()
+    if vim.o.background == 'dark' then
+      vim.g.material_style = 'deep ocean'
+    else
+      vim.g.material_style = 'lighter'
+    end
+  end
+
   use {
     'folke/tokyonight.nvim',
     config = function()
       vim.g.tokyonight_sidebars = sidebars
-      vim.g.tokyonight_style = 'night'
-      vim.cmd [[colorscheme tokyonight]]
+      require('modules/lualine').themes.tokyonight = 'tokyonight'
     end,
   }
-  use 'NLKNguyen/papercolor-theme'
-  use 'liuchengxu/space-vim-theme'
-  use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
+  _G.colorscheme.tokyonight = function()
+    if vim.o.background == 'dark' then
+      vim.g.tokyonight_style = 'night'
+    else
+      vim.g.tokyonight_style = 'day'
+    end
+  end
+
+  use {
+    'projekt0n/github-nvim-theme',
+    config = function()
+      require('github-theme').setup { sidebars = sidebars }
+    end,
+  }
+  _G.colorscheme.github = function()
+    require('github-theme').setup {
+      themeStyle = vim.o.background,
+      sidebars = sidebars,
+    }
+    require('modules/lualine').themes.github = 'github'
+  end
+
+  _G.colorscheme_setup = function()
+    local setupfn = _G.colorscheme[vim.g.colors_name]
+    if setupfn ~= nil then
+      setupfn()
+    end
+  end
+
+  vim.cmd [[autocmd packer ColorSchemePre * lua colorscheme_setup()]]
+  vim.cmd [[autocmd packer ColorScheme * lua colorscheme_setup()]]
+  vim.cmd [[autocmd packer VimEnter * colorscheme tokyonight]]
 end
 
 local function syntax(use)
