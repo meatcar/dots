@@ -155,7 +155,12 @@ local function completion(use)
     'hrsh7th/nvim-compe',
     requires = {
       'kristijanhusak/vim-dadbod-completion',
-      'andersevenrud/compe-tmux', -- Sources words from adjacent tmux panes.
+      {
+        'andersevenrud/compe-tmux', -- Sources words from adjacent tmux panes.
+        cond = function()
+          return vim.env.TMUX ~= nil
+        end,
+      },
     },
     -- Improve performance for big files
     event = 'InsertEnter',
@@ -173,7 +178,7 @@ local function completion(use)
           vsnip = true,
           ultisnips = true,
           luasnip = true,
-          tmux = true,
+          tmux = vim.env.TMUX ~= nil,
         },
       }
 
@@ -370,6 +375,9 @@ local function utilities(use)
 
   use {
     'aserowy/tmux.nvim',
+    cond = function()
+      return vim.env.TMUX ~= nil
+    end,
     config = function()
       require('tmux').setup {
         copy_sync = { enable = true },
