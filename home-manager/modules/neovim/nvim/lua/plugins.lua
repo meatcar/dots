@@ -3,7 +3,9 @@
 _G.vim = vim
 local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/pack/packer/start/packer.nvim'
-local sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer' }
+_G.me = {}
+_G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer' }
+local sidebars = _G.me.sidebars
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
@@ -526,80 +528,63 @@ local function colorscheme(use)
   _G.colorscheme = {}
   use 'liuchengxu/space-vim-theme'
   use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
-  use {
-    'NLKNguyen/papercolor-theme',
-    config = function()
-      require('modules/lualine').themes.papercolor = 'papercolor'
-    end,
-  }
+  use 'NLKNguyen/papercolor-theme'
   use {
     'npxbr/gruvbox.nvim',
     requires = 'rktjmp/lush.nvim',
-    config = function()
-      vim.g.gruvbox_italic = true
-      vim.g.gruvbox_invert_selection = false
-      vim.g.gruvbox_contrast_dark = 'hard'
-      vim.g.gruvbox_sign_column = 'bg0'
-      vim.g.gruvbox_color_column = 'bg0'
-      require('modules/lualine').themes.gruvbox = 'gruvbox'
-    end,
   }
+  vim.g.gruvbox_italic = true
+  vim.g.gruvbox_invert_selection = false
+  vim.g.gruvbox_contrast_dark = 'hard'
+  vim.g.gruvbox_sign_column = 'bg0'
+  vim.g.gruvbox_color_column = 'bg0'
 
   use {
     'marko-cerovac/material.nvim',
     config = function()
-      vim.g.material_italic_comments = false
-      vim.g.material_italic_keywords = false
-      require('modules/lualine').themes.material = 'material'
+      _G.me.material = {}
+      vim.cmd [[autocmd packer ColorSchemePre material lua me.material.onColorSchemePre()]]
+      function _G.me.material.onColorSchemePre()
+        _G.me.material.onOptionSetBackground()
+        vim.cmd [[augroup MaterialNvim]]
+        vim.cmd [[  autocmd!]]
+        vim.cmd [[  autocmd OptionSet background lua me.material.onOptionSetBackground()]]
+        vim.cmd [[  autocmd ColorSchemePre * au! MaterialNvim]]
+        vim.cmd [[augroup END]]
+      end
+      function _G.me.material.onOptionSetBackground()
+        local background = vim.o.background
+        if background == 'dark' then
+          vim.g.material_style = 'deep ocean'
+        else
+          vim.g.material_style = 'lighter'
+        end
+        vim.cmd [[colorscheme material]]
+        vim.o.background = background -- restore background, since the theme always sets it to dark
+      end
     end,
   }
-  _G.colorscheme.material = function()
-    if vim.o.background == 'dark' then
-      vim.g.material_style = 'deep ocean'
-    else
-      vim.g.material_style = 'lighter'
-    end
-  end
+  vim.g.material_lighter_contrast = true
 
   use {
     'folke/tokyonight.nvim',
     config = function()
-      vim.g.tokyonight_sidebars = sidebars
-      require('modules/lualine').themes.tokyonight = 'tokyonight'
+      vim.cmd [[colorscheme tokyonight]]
     end,
   }
-  _G.colorscheme.tokyonight = function()
-    if vim.o.background == 'dark' then
-      vim.g.tokyonight_style = 'night'
-    else
-      vim.g.tokyonight_style = 'day'
-    end
+  if vim.o.background == 'dark' then
+    vim.g.tokyonight_style = 'night'
   end
 
-  use {
-    'projekt0n/github-nvim-theme',
-    config = function()
-      require('github-theme').setup { sidebars = sidebars }
-    end,
-  }
-  _G.colorscheme.github = function()
+  use 'projekt0n/github-nvim-theme'
+  function _G.colorscheme.github()
+    vim.g.colors_name = 'github'
     require('github-theme').setup {
       themeStyle = vim.o.background,
       sidebars = sidebars,
     }
-    require('modules/lualine').themes.github = 'github'
   end
-
-  _G.colorscheme_setup = function()
-    local setupfn = _G.colorscheme[vim.g.colors_name]
-    if setupfn ~= nil then
-      setupfn()
-    end
-  end
-
-  vim.cmd [[autocmd packer ColorSchemePre * lua colorscheme_setup()]]
-  vim.cmd [[autocmd packer ColorScheme * lua colorscheme_setup()]]
-  vim.cmd [[autocmd packer VimEnter * colorscheme tokyonight]]
+  vim.cmd [[autocmd packer ColorScheme github lua colorscheme.github()]]
 end
 
 local function syntax(use)
