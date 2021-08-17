@@ -1,23 +1,9 @@
 local M = {
-  theme = 'auto',
-  themes = {},
   package = {
     'shadmansaleh/lualine.nvim', -- status line
     requires = 'kyazdani42/nvim-web-devicons',
   },
 }
-
-M.set_theme = function()
-  local M = require 'modules/lualine'
-  local colors_name = vim.g.colors_name
-  local theme = M.themes[colors_name]
-  if theme == nil then
-    theme = 'auto'
-  end
-  M.theme = theme
-  package.loaded['lualine.themes.' .. M.theme] = nil
-  M.config()
-end
 
 function M.get_hl_color(hl_name)
   -- this only works with
@@ -39,10 +25,6 @@ function M.config()
   if M == nil then
     M = require 'modules/lualine'
   end
-  -- vim.cmd('echomsg "lualine loaded with theme ' .. M.theme .. '"')
-
-  -- unload theme
-  package.loaded['lualine.themes.' .. M.theme] = nil
 
   local sections = {
     lualine_a = { 'mode' },
@@ -84,16 +66,9 @@ function M.config()
     lualine_z = { 'location' },
   }
 
-  vim.cmd [[
-    augroup mod_lualine
-      autocmd!
-      autocmd ColorScheme * lua require('modules/lualine').set_theme()
-    augroup END
-  ]]
-
   return require('lualine').setup {
     options = {
-      theme = M.theme,
+      theme = 'auto',
       section_separators = '',
       component_separators = '',
     },
