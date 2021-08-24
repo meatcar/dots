@@ -212,7 +212,6 @@ end
 local function git(use)
   use 'tpope/vim-rhubarb' -- auto-complete Github issues in fugitive
   use 'samoshkin/vim-mergetool' -- Better merging (3-way becomes 2-way)
-  use 'shumphrey/fugitive-gitlab.vim' -- Gitlab support for fugitive
   use 'rhysd/git-messenger.vim' -- pop-up window of git commit under cursor
   use 'sodapopcan/vim-twiggy' -- pop-up git branches
   use 'rbong/vim-flog' -- pretty git log
