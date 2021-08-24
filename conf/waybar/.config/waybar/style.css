@@ -1,78 +1,81 @@
+window#waybar {
+    background: rgba(0, 0, 0, 0.8);
+    color: @theme_fg_color;
+}
+
 * {
     border: none;
-    font-family: 'Font Awesome', sans-serif;
-    font-size: 9pt;
+    font-family: sans-serif, 'Font Awesome';
+    font-size: 11pt;
     min-height: 0;
     min-width: 0;
     outline-width: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 0;
 }
 
-window#waybar {
-    background: rgba(43, 48, 59, 0);
-    color: #ffffff;
+window > box > box > widget > * {
+    background: @theme_bg_color;
+    padding: 8px 2px 8px 4px;
+    margin-bottom: 4px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-left: 4px;
+}
+
+.modules-left widget:first-child > * {
+    border-top-left-radius: 0px;
+}
+.modules-right widget:last-child > * {
+    border-bottom-left-radius: 0px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces {
-    background: #000;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    padding: 0;
 }
 #workspaces button {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
     padding: 6px 0 6px 2px;
-    background: #000;
-    color: #ffffff;
+}
+#workspaces button:last-child {
+    border-bottom-left-radius: 8px;
 }
 
 #workspaces button.focused {
-    background: #64727D;
-    /* border-radius: 0px; */
+    background: @theme_fg_color;
+    color: @theme_bg_color;
+}
+
+#workspaces button.urgent {
+    background: @error_color;
+    color: @theme_selected_fg_color;
 }
 
 #mode {
-    background: #64727D;
+    background: @warning_color;
+    color: @theme_selected_fg_color;
 }
 
+
 #clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#custom-spotify,
-#tray,
-#mode,
-#idle_inhibitor,
-#custom-scratch,
-#custom-dnscrypt,
-#custom-net-metered,
-#custom-mail {
-    background: #000;
-    padding: 10px 0 10px 5px;
-    margin-top: 10px;
+.icon {
+    margin-bottom: 0;
+}
+
+.icon {
+    padding-bottom: 0;
+}
+
+.icon {
+    border-bottom-left-radius: 0;
+}
+
+.label {
+    border-top-left-radius: 0;
 }
 
 #clock {
-    border-color: #64727D;
     font-weight: bold;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-#battery {
-    border-color: #ffffff;
-    color: #ffffff;
-}
-
-#battery.charging {
-    color: #ffffff;
-    border-color: #26A65B;
 }
 
 @keyframes blink {
@@ -90,89 +93,48 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {
-    border-color: #2ecc71;
-    color: #ffffff;
-}
-
-#memory {
-    border-color: #9b59b6;
-}
-
-#backlight {
-    border-color: #90b1b1;
-}
-
-#network {
-    font-size: 10pt;
-    border-color: #2980b9;
+#network.label {
+    padding-left: 3px;
 }
 
 #network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-    border-color: #f1c40f;
-    color: #ffffff;
+    background: @error_color;
+    color: @theme_selected_fg_color;
 }
 
 #pulseaudio.muted {
-    background: #90b1b1;
-    color: #2a5c45;
+    background: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
     padding: 12px 0;
 }
 
 #custom-spotify {
-    border-color: #2acc45;
     color: #2acc45;
 }
 
-#temperature {
-    border-color: #f0932b;
-}
-
 #temperature.critical {
-    background: #eb4d4b;
-}
-
-#tray {
-    border-color: #2980b9;
-}
-
-#idle_inhibitor {
-    border-color: #2d3436;
+    background: @error_color;
+    color: @theme_selected_fg_color;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
 }
 
-#custom-dnscrypt.active {
-    border-color: #55cc55;
-}
 #custom-dnscrypt.inactive {
-    background-color: #ff5555;
-    color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-#custom-net-metered.no {
-    border-color: #55cc55;
-}
 #custom-net-metered.yes {
-    color: #ff5555;
-    border-color: #ff5555;
+    background: @error_color;
+    color: @theme_selected_fg_color;
 }
 
-#custom-mail.read {
-    color: #777;
-}
 #custom-mail.new {
-    color: #f94;
+    color: @error_color;
     transition-property: color;
 }

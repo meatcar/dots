@@ -1,11 +1,30 @@
-{ "layer": "top",
+{
+    "layer": "top",
     "position": "right",
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/mail", "custom/spotify"],
+    "modules-left": [
+        "sway/workspaces",
+         "sway/mode",
+         "custom/mail",
+         "custom/spotify"
+     ],
     "modules-center": [],
-    "modules-right": ["network#icon", "custom/dnscrypt", "custom/net-metered", "network", "temperature", "backlight", "battery", "pulseaudio", "tray", "clock"],
+    "modules-right": [
+        "idle_inhibitor",
+        "custom/dnscrypt",
+        "custom/net-metered",
+        "network#icon",
+        "network#label",
+        "bluetooth",
+        "temperature",
+        "backlight",
+        "battery",
+        "pulseaudio",
+        "tray",
+        "clock"
+     ],
     "sway/workspaces": {
         "disable-scroll": true,
-        "format": "{name}{icon}",
+        "format": "<small>{name}{icon}</small>",
         "format-icons": {
             "urgent": "!!!",
             "default": ""
@@ -20,30 +39,27 @@
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+        "tooltip": false
     },
     "tray": {
-        "spacing": 10
+        "spacing": 8
     },
     "clock": {
-        "format": "{:%H\n%M}",
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:<small>-%u</small>\n20\n%y\n%m\n%d}"
-    },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% "
+        "format": "<small>{:%H\n%M}</small>",
+        "tooltip-format": "<tt>{calendar}</tt>\n\n<big>{:<small>%Ow</small> %Y-%m-%d | %H:%M}</big>",
+        "format-alt": "<small>{:<small>%Ow</small>\n20\n%y\n%m\n%d}</small>"
     },
     "temperature": {
+        "tooltip": false,
         "thermal-zone": 10,
         "critical-threshold": 80,
-        "format": "  \n{temperatureC}"
+        "format": " {icon} \n<small>{temperatureC}</small>",
+        "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
-        "format": " {icon} \n{percent}",
-        "format-icons": [" ", " ", " "],
+        "format": " {icon} \n<small>{percent:0>2s}</small>",
+        "format-icons": ["", "", ""],
         "on-click": "brightnessctl -q set 100%",
         "on-click-right": "brightnessctl -q set 1%",
         "on-scroll-up": "brightnessctl -q set +2%",
@@ -51,38 +67,51 @@
     },
     "battery": {
         "states": {
-            "warning": 30,
-            "critical": 15
+            "warning": 25,
+            "critical": 10
         },
-        "format": "  \n{capacity}",
-        "format-discharging": "{icon} \n{capacity}",
-        "format-icons": ["", "", "", "", ""]
+        "full-at": 85,
+        "format": "  \n<small>{capacity}</small>",
+        "format-discharging": "{icon}\n <small>{capacity}</small>",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "Capacity: {capacity}%\n{timeTo}"
     },
     "network#icon": {
-        "format-wifi": "  ",
-        "format-ethernet": "  ",
-        "format-disconnected": " ⚠ ",
-        "on-click": "$TERMINAL -e nmtui"
+        "format-icons": ["直", ""],
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "format-disconnected": "⚠",
+        "on-click": "$TERMINAL -e iwctl"
     },
-    "network": {
+    "network#label": {
         "rotate": 270,
         "format-wifi": "{essid} ({signalStrength}%)",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": "Disconnected",
-        "tooltip-format": "{ifname} {ipaddr}/{cidr}",
-        "on-click": "$TERMINAL -e nmtui"
+        "tooltip-format-wifi": "{ifname}\n{essid}\n{frequency}hz\n{ipaddr}/{cidr}\n {bandwidthUpBits}\n {bandwidthDownBits}",
+        "on-click": "$TERMINAL -e iwctl"
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "interval": 30,
+        "format-icons": {
+            "enabled": "",
+            "disabled": ""
+        },
+        "tooltip-format": ""
     },
     "pulseaudio": {
+        "tooltip": false,
         "scroll-step": 4,
-        "format": " {icon}\n{volume}",
-        "format-bluetooth": " {icon}\n{volume}",
-        "format-muted": "  ",
+        "format": " {icon} \n<small>{volume:0>2}</small>",
+        "format-bluetooth": " {icon}\n<small>{volume:0>2}</small>",
+        "format-muted": "",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
@@ -107,10 +136,9 @@
     "custom/dnscrypt": {
         "format": "{icon}",
         "return-type": "json",
-        "exec": "$HOME/.config/waybar/systemd-status dnscrypt-proxy.service 2>/dev/null",
+        "exec": "$HOME/.config/waybar/systemd-status dnscrypt-proxy2.service 2>/dev/null",
         "exec-if": "which systemctl",
         "interval": 5,
-        "on-click": "$HOME/.config/waybar/systemd-status dnscrypt-proxy.service toggle 2>/dev/null",
         "format-icons": [ "", "" ]
     },
     "custom/net-metered": {
@@ -122,7 +150,7 @@
         "format-icons": [ "", "" ]
     },
     "custom/mail": {
-        "format": "{icon}\n<small>{}</small>",
+        "format": "{icon}",
         "return-type": "json",
         "exec": "$HOME/.config/waybar/new-mail 2>/dev/null",
         "exec-if": "test -d $HOME/Maildir",
