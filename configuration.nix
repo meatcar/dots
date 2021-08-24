@@ -1,7 +1,4 @@
 { ... }:
 {
-  imports = [
-    ./modules/niv.nix
-    ./system
-  ];
+  imports = [ ./system ];
 }

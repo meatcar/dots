@@ -86,7 +86,10 @@ in
             { title = "Farge"; }
           ];
         };
-        fonts = [ "sansSerif 10" ];
+        fonts = {
+          names = [ "sansSerif" ];
+          size = 10.0;
+        };
         gaps = { inner = 10; smartBorders = "on"; smartGaps = true; };
         menu = "${pkgs.wldash}/bin/wldash";
 

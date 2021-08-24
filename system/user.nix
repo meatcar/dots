@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  imports = [
-    <home-manager/nixos>
-  ];
-
+  nix.trustedUsers = [ "meatcar" ];
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;
@@ -20,9 +17,11 @@
     '';
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.users.meatcar = { pkgs, ... }: {
     imports = [
-      ../home-manager
+      ../home-manager/systems/single-user.nix
       ../home-manager/modules/gnome-keyring.nix
       ../home-manager/modules/egpu.nix
       ../home-manager/modules/sway
@@ -34,15 +33,10 @@
       ../home-manager/modules/gammastep.nix
       ../home-manager/modules/email
       ../home-manager/modules/neomutt
-      ../home-manager/modules/emacs
       ../home-manager/modules/qutebrowser
     ];
 
     config = {
-
-      nixpkgs.config = config.nixpkgs.config;
-      nixpkgs.overlays = config.nixpkgs.overlays;
-
       home = {
         username = "meatcar";
         homeDirectory = "/home/meatcar";
