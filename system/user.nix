@@ -11,7 +11,7 @@
     shell = "/run/current-system/sw/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "$6$d60LJzot5J$PeWx9sU6rPNEy39uSewpJiV5CfOh9McENT5Crl4WCFyvwL/5jyH7Jn2pENG6pEWPNNFl2Xnp4WGEJEMAU2Mym0";
-    extraGroups = [ "wheel" "video" "docker" "networkmanager" "power" ];
+    extraGroups = [ "wheel" "video" "docker" "networkmanager" "power" "input" ];
   };
 
   security.pam.services.swaylock = {
