@@ -562,6 +562,7 @@ local function colorscheme(use)
         vim.cmd [[colorscheme material]]
         vim.o.background = background -- restore background, since the theme always sets it to dark
       end
+      vim.cmd [[colorscheme material]]
     end,
   }
   vim.g.material_lighter_contrast = true
@@ -569,7 +570,7 @@ local function colorscheme(use)
   use {
     'folke/tokyonight.nvim',
     config = function()
-      vim.cmd [[colorscheme tokyonight]]
+      -- vim.cmd [[colorscheme tokyonight]]
     end,
   }
   if vim.o.background == 'dark' then
