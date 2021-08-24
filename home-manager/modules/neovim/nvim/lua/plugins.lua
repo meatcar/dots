@@ -150,6 +150,13 @@ local function lsp(use)
       }
     end,
   }
+
+  use {
+    'onsails/lspkind-nvim',
+    config = function()
+      require('lspkind').init {}
+    end,
+  }
 end
 
 local function completion(use)
