@@ -46,6 +46,9 @@
       home = {
         username = "meatcar";
         homeDirectory = "/home/meatcar";
+        packages = [
+          pkgs.dconf # dconf.settings
+        ];
       };
 
       xdg.configFile = {
@@ -65,7 +68,7 @@
       gtk = {
         enable = true;
         iconTheme.package = pkgs.papirus-icon-theme;
-        iconTheme.name = "Papirus-Dark";
+        iconTheme.name = "Papirus";
         theme.package = pkgs.pop-gtk-theme;
         theme.name = "Pop-dark";
         font.package = pkgs.inter;
