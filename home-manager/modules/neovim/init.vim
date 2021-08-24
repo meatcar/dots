@@ -7,23 +7,20 @@ if &compatible
     set nocompatible
 endif
 
-set undodir=$XDG_CACHE_HOME/nvim/undo
-set directory=$XDG_CACHE_HOME/nvim/swap
-set backupdir=$XDG_CACHE_HOME/nvim/backup
-set viewdir=$XDG_CACHE_HOME/nvim/view
-set runtimepath+=$XDG_CONFIG_HOME/nvim,$VIMRUNTIME,$XDG_CONFIG_HOME/nvim/after
-set packpath=$XDG_DATA_HOME/nvim,$XDG_DATA_HOME/nvim/site,$VIMRUNTIME
+let s:data_dir = stdpath('data')
+let s:cache_dir = stdpath('cache')
+let s:config_dir = stdpath('config')
 
-if empty(glob($XDG_CACHE_HOME.'/nvim/'))
-  call mkdir($XDG_CACHE_HOME.'/nvim/undo', 'p')
-  call mkdir($XDG_CACHE_HOME.'/nvim/swap', 'p')
-  call mkdir($XDG_CACHE_HOME.'/nvim/backup', 'p')
-  call mkdir($XDG_CACHE_HOME.'/nvim/view', 'p')
-endif
+exe 'set undodir=' . s:cache_dir . '/undo'
+exe 'set directory=' . s:cache_dir . '/directory'
+exe 'set backupdir=' . s:cache_dir . '/backup'
+exe 'set viewdir=' . s:cache_dir . '/view'
 
-if empty(glob($XDG_DATA_HOME.'/nvim/'))
-  silent !mkdir -p $XDG_DATA_HOME/nvim
-endif
+for dir in [&undodir, &directory, &backupdir, &viewdir]
+  if !isdirectory(dir)
+    call mkdir(dir, 'p')
+  endif
+endfor
 
 if exists('g:vscode')
   " VSCode extension

@@ -2,11 +2,11 @@
 -- Bootstrap
 _G.vim = vim
 local fn = vim.fn
-local install_path = fn.stdpath 'data' .. '/pack/packer/start/packer.nvim'
 _G.me = {}
 _G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer' }
 local sidebars = _G.me.sidebars
 
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.api.nvim_command 'packadd packer.nvim'
@@ -263,7 +263,16 @@ local function utilities(use)
   use 'janko/vim-test' -- run tests easily
   use 'lambdalisue/suda.vim' -- :SudaWrite
   use 'AndrewRadev/splitjoin.vim' -- gS/gJ to split/join multi-line code
-  use 'rmagatti/auto-session' -- associate sessions with cwd
+  use {
+    'rmagatti/auto-session', -- associate sessions with cwd
+    config = function()
+      local dir = vim.fn.stdpath 'data' .. '/sessions/'
+      vim.fn.mkdir(dir, 'p')
+      require('auto-session').setup {
+        auto_session_root_dir = dir,
+      }
+    end,
+  }
 
   use {
     'simnalamburt/vim-mundo', -- undo tree
@@ -748,7 +757,6 @@ end
 return require('packer').startup {
   load_plugins,
   config = {
-    package_root = vim.fn.stdpath 'data' .. '/pack',
     display = {
       open_fn = function()
         return require('packer.util').float { border = 'single' }
