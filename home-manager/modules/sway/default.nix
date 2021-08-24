@@ -1,4 +1,17 @@
 { config, pkgs, lib, ... }:
+let
+  gebaar-libinput = pkgs.gebaar-libinput.overrideAttrs
+    (attrs: rec {
+      version = "2019-11-29";
+      src = pkgs.fetchFromGitHub {
+        owner = "osleg";
+        repo = "gebaar-libinput-fork";
+        rev = "8c3f67db473896fd8d369d7f8492a8c8e83b44a1";
+        sha256 = "05g6dd6h2b0l2038hq0b10di2j44w4j9g8dcvbzh1mz35w2qkd9a";
+        fetchSubmodules = true;
+      };
+    });
+in
 {
   programs.fish.loginShellInit = ''
     if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
@@ -21,15 +34,14 @@
         export _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on
       '';
 
-      extraConfig =
-        ''
-          titlebar_padding ${toString (border * 4)} ${toString (border * 2)}
-          title_align left
+      extraConfig = ''
+        titlebar_padding ${toString (border * 4)} ${toString (border * 2)}
+        title_align left
 
-          titlebar_border_thickness ${toString border}
+        titlebar_border_thickness ${toString border}
 
-          default_orientation auto
-        '';
+        default_orientation auto
+      '';
 
       config = {
         modifier = "Mod4";
@@ -139,7 +151,7 @@
             '';
           }
           { command = "${pkgs.mako}/bin/mako"; }
-          { command = "${pkgs.gebaar-libinput}/bin/gebaard -b"; }
+          { command = "${gebaar-libinput}/bin/gebaard -b"; }
           {
             always = true;
             command =
@@ -242,25 +254,34 @@
       };
     };
 
-  xdg.configFile."gebaar/gebaard.toml".text = ''
-    [commands.swipe.three]
-    left_up = ""
-    right_up = ""
-    up = "swaymsg focus up"
-    left_down = ""
-    right_down = ""
-    down = "swaymsg focus down"
-    left = "swaymsg focus left"
-    right = "swaymsg focus right"
+  xdg.configFile."gebaar/gebaard.toml".text =
+    let
+      swaymsg = "${pkgs.sway}/bin/swaymsg";
+    in
+    ''
+      [swipe.settings]
+      threshold = 0.5
+      one_shot = false
+      trigger_on_release = false
 
-    [commands.swipe.four]
-    left_up = ""
-    right_up = ""
-    up = "${config.wayland.windowManager.sway.config.menu}"
-    left_down = ""
-    right_down = ""
-    down = ""
-    left = "swaymsg workspace prev"
-    right = "swaymsg workspace next"
-  '';
+      [swipe.commands.three]
+      left_up = ""
+      right_up = ""
+      up = "${swaymsg} focus up"
+      left_down = ""
+      right_down = ""
+      down = "${swaymsg} focus down"
+      left = "${swaymsg} focus left"
+      right = "${swaymsg} focus right"
+
+      [swipe.commands.four]
+      left_up = ""
+      right_up = ""
+      up = "${config.wayland.windowManager.sway.config.menu}"
+      left_down = ""
+      right_down = ""
+      down = "pkill ${builtins.baseNameOf config.wayland.windowManager.sway.config.menu}"
+      left = "${swaymsg} workspace prev"
+      right = "${swaymsg} workspace next"
+    '';
 }
