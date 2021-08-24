@@ -527,10 +527,13 @@ end
 local function colorscheme(use)
   _G.colorscheme = {}
   use 'liuchengxu/space-vim-theme'
-  use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
+
   use 'NLKNguyen/papercolor-theme'
 
   use 'bluz71/vim-moonfly-colors'
+
+  use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
+  vim.g.tempus_enforce_background_color = true
 
   use {
     'npxbr/gruvbox.nvim',
@@ -588,7 +591,9 @@ local function colorscheme(use)
       sidebars = sidebars,
     }
   end
-  vim.cmd [[autocmd packer ColorScheme github lua colorscheme.github()]]
+
+  vim.cmd [[autocmd packer ColorScheme github ++nested lua colorscheme.github()]]
+  vim.cmd [[autocmd packer ColorScheme * lua require('lualine').setup()]]
 end
 
 local function syntax(use)
