@@ -1,5 +1,5 @@
 #!/bin/sh
-set -euo pipefail
+set -eu
 
 escapeDbusPath() {
     # $SERVICE into systemd+dbus path, only [a-zA-Z0-9_] allowed.
@@ -8,7 +8,7 @@ escapeDbusPath() {
 }
 
 monitor() {
-    dbus-monitor --system --profile "type='signal',path='/org/freedesktop/systemd1/unit/$(escape $1)',member='PropertiesChanged'"
+    dbus-monitor --system --profile "type='signal',path='/org/freedesktop/systemd1/unit/$(escape "$1")',member='PropertiesChanged'"
 }
 
 # TODO: pipe monitor() into while read loop
@@ -19,24 +19,14 @@ monitor() {
 #     done
 
 SERVICE="$1"
-STATUS=$(systemctl is-active $SERVICE)
+STATUS=$(systemctl is-active "$SERVICE")
 
 TOOLTIP="$SERVICE is inactive"
 CLASS=inactive
 TEXT=inactive
 PERCENTAGE=0
 
-if [ "$2" == "toggle" ]; then
-    echo $2 $1 : $STATUS
-    if [ "$STATUS" == active ]; then
-        kdesu -c "systemctl stop $SERVICE"
-    else
-        kdesu -c "systemctl start $SERVICE"
-    fi
-    exit
-fi
-
-if [ "$STATUS" == active ]; then
+if [ "$STATUS" = active ]; then
     TOOLTIP="$SERVICE is active"
     CLASS=active
     TEXT=active
