@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../modules/cachix.nix
     ../modules/nix.nix
     ../modules/networking.nix
     ../modules/bluetooth.nix
@@ -9,7 +10,7 @@
     ../modules/intel.nix
     ../modules/nvidia
     ../modules/power
-    ../modules/steam.nix
+    # ../modules/steam.nix
     ../modules/egpu
     ../modules/dualboot.nix
     # ../modules/ly.nix
@@ -17,7 +18,9 @@
   ];
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixFlakes;
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes";
   };
 
   boot = {
@@ -46,7 +49,6 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = true;
     opengl.enable = true;
     pulseaudio.enable = true;
   };
@@ -75,7 +77,7 @@
   location.provider = "geoclue2";
 
   services = {
-    gnome3.gnome-settings-daemon.enable = true;
+    gnome.gnome-settings-daemon.enable = true;
   };
 
   services.dbus.packages = [ pkgs.gnome3.dconf ];
@@ -159,10 +161,10 @@
       mps-youtube
       youtube-dl
       ;
-    dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
-      enableTextMode = true;
-      theme = "cla";
-    });
+    # dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
+    #   enableTextMode = true;
+    #   theme = "cla";
+    # });
     inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
     inherit (pkgs) waybar;
     inherit (pkgs.gnome2) gnome_icon_theme;

@@ -32,6 +32,21 @@
         "type": "github"
       }
     },
+    "declarative-cachix": {
+      "locked": {
+        "lastModified": 1625560633,
+        "narHash": "sha256-Uhg950dgJiytcaecOJ3KB2MWDOdtUEogVyon9m6J/3g=",
+        "owner": "jonascarpay",
+        "repo": "declarative-cachix",
+        "rev": "1986455ab3e55804458bf6e7d2a5f5b8a68defce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonascarpay",
+        "repo": "declarative-cachix",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1629078857,
@@ -258,6 +273,7 @@
     "root": {
       "inputs": {
         "alacritty-theme": "alacritty-theme",
+        "declarative-cachix": "declarative-cachix",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",

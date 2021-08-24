@@ -9,6 +9,7 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    declarative-cachix.url = "github:jonascarpay/declarative-cachix";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -40,6 +41,7 @@
         config = { allowUnfree = true; };
         overlays = overlays;
       };
+      specialArgs = { inherit inputs; };
     in
     (
       inputs.flake-utils.lib.eachDefaultSystem
@@ -54,6 +56,7 @@
               buildInputs = with pkgs; [
                 (import inputs.home-manager { inherit pkgs; }).home-manager
                 nixFlakes
+                (nixos-rebuild.override { nix = nixFlakes; })
                 stow
                 (pkgs.writeShellScriptBin "nixos-rebuild-pretty" ''
                   # prettier than nixos-rebuild switch
@@ -68,12 +71,13 @@
           })
       //
       {
-        nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem rec {
+        nixosConfigurations.tormund = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = specialArgs;
           modules = [
-            {
-              nixpkgs = nixpkgsConfig;
-            }
+            { nixpkgs = nixpkgsConfig; }
+            inputs.home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = specialArgs; }
             ./configuration.nix
           ];
         };
@@ -82,7 +86,7 @@
             system = "x86_64-linux";
             username = "meatcar";
             homeDirectory = "/home/${username}";
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = specialArgs;
             configuration = { ... }: {
               imports = [ ./home.nix ];
               nixpkgs = nixpkgsConfig;
@@ -100,5 +104,3 @@
     );
 
 }
-
-
