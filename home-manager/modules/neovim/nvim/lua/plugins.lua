@@ -529,6 +529,9 @@ local function colorscheme(use)
   use 'liuchengxu/space-vim-theme'
   use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
   use 'NLKNguyen/papercolor-theme'
+
+  use 'bluz71/vim-moonfly-colors'
+
   use {
     'npxbr/gruvbox.nvim',
     requires = 'rktjmp/lush.nvim',
