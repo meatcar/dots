@@ -10,7 +10,7 @@
     ../modules/intel.nix
     ../modules/nvidia
     ../modules/power
-    # ../modules/steam.nix
+    ../modules/steam.nix
     ../modules/egpu
     ../modules/dualboot.nix
     # ../modules/ly.nix
