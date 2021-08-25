@@ -50,7 +50,9 @@
     (
       inputs.flake-utils.lib.eachDefaultSystem
         (system:
-          let pkgs = inputs.nixpkgs.legacyPackages.${system}; in
+          let
+            pkgs = import inputs.nixpkgs (nixpkgsConfig // { inherit system; });
+          in
           {
 
             devShell = pkgs.mkShell rec {
@@ -62,16 +64,14 @@
                 nixFlakes
                 (nixos-rebuild.override { nix = nixFlakes; })
                 stow
-                (pkgs.writeShellScriptBin "nixos-rebuild-pretty" ''
-                  # prettier than nixos-rebuild switch
-                  sudo -E sh -c "nix build --no-link -f '<nixpkgs/nixos>' config.system.build.toplevel && nixos-rebuild $@"
-                '')
               ];
               NIX_PATH = builtins.concatStringsSep ":" [
                 "nixpkgs=${inputs.nixpkgs}"
                 "home-manager=${inputs.home-manager}"
               ];
+              NIXOS_CONFIG = ./configuration.nix;
             };
+            pkgs = inputs.nixpkgs;
           })
       //
       {
