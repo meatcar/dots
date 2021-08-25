@@ -381,7 +381,11 @@ local function utilities(use)
 
   use {
     'nvim-telescope/telescope.nvim', -- a fuzzy completion engine
-    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
     config = function()
       require('telescope').setup {
         defaults = {
@@ -395,7 +399,16 @@ local function utilities(use)
             },
           },
         },
+        extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = 'smart_case', -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+          },
+        },
       }
+      require('telescope').load_extension 'fzf'
       vim.cmd [[
         command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
         nnoremap <C-p>      <Cmd>Ctrlp<CR>
