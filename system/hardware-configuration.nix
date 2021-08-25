@@ -6,11 +6,6 @@
 {
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/7899ceb7-446b-4e67-9f72-a86e94b6735e";

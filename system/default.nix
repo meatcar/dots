@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./dell-xps-15-9570.nix
     ../modules/cachix.nix
     ../modules/nix.nix
     ../modules/networking.nix
@@ -28,12 +29,9 @@
     kernelParams = [
       "resume"
       "resume_offset=267520"
-      "mem_sleep_default=deep"
     ];
     resumeDevice = "/dev/mapper/cryptroot";
-    kernel.sysctl = {
-      "vm.swappiness" = lib.mkDefault 1;
-    };
+    kernel.sysctl = { "vm.swappiness" = lib.mkDefault 1; };
 
     loader = {
       efi.canTouchEfiVariables = true;

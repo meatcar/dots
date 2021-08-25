@@ -1,15 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  boot = {
-    initrd.kernelModules = [ "i915" ];
-    kernelParams = [
-      "i915.fastboot=1"
-      "i915.enable_fbc=1"
-      "i915.enable_psr=1"
-      "i915.enable_guc=2"
-    ];
-  };
-
   hardware.cpu.intel.updateMicrocode = true;
 
   nixpkgs.config = {
@@ -18,12 +8,11 @@
     };
   };
 
-  hardware.opengl.extraPackages = builtins.attrValues {
-    inherit (pkgs)
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-      intel-media-driver
-      ;
-  };
+
+  hardware.opengl.extraPackages = [
+    pkgs.vaapiIntel
+    pkgs.vaapiVdpau
+    pkgs.libvdpau-va-gl
+    pkgs.intel-media-driver
+  ];
 }
