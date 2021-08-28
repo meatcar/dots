@@ -26,7 +26,7 @@ local function base(use)
   use 'tpope/vim-unimpaired' -- pairwise mappings like [b, ]b
   use 'wellle/targets.vim' -- additional text objects
   use 'pbrisbin/vim-mkdir' -- create directory when :e unknown/paths
-  use 'kopischke/vim-stay' -- save fold states
+  -- use 'kopischke/vim-stay' -- save fold states
   use 'kopischke/vim-fetch' -- handle line and column numbers in file names
   use 'airblade/vim-rooter' -- auto-cd to root directory
   use 'Konfekt/FastFold' -- speed up folding for big files

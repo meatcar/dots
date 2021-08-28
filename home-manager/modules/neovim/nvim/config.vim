@@ -82,8 +82,11 @@ set completeopt=menuone,noselect
 "}}}
 
 " Folds {{{
-set viewoptions=cursor,folds,slash,unix " save folds, cursor position
-set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+set viewoptions=cursor,folds " save folds, cursor position
+set foldopen+=insert,jump
+" Remember Folds
+autocmd vimrc BufWinLeave ?* mkview
+autocmd vimrc BufWinEnter ?* silent! loadview
 "}}}
 
 " Tabs and indenting {{{
