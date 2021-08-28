@@ -83,11 +83,11 @@ leadermap.t = {
   r = { '<Cmd>RainbowParenthesesToggle<CR>', 'Rainbow parens' },
   i = { '<Cmd>IndentBlanklineToggle<CR>', 'Indent highlight' },
   l = { '<Cmd>LspTroubleToggle<CR>', 'LSP' },
-  t = { '<Cmd>Lspsaga open_floaterm<CR>', 'Terminal' },
+  t = { [[<Cmd>Lspsaga open_floaterm $SHELL<CR>]], 'Terminal' },
 }
 leadermap_t.t = {
   name = leadermap.t.name,
-  t = { [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], 'Close Terminal' },
+  t = { [[:Lspsaga close_floaterm<CR>]], 'Close Terminal' },
 } -- }}}
 
 leadermap.r = {

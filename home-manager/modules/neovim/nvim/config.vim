@@ -52,8 +52,9 @@ set textwidth=0           " don't break lines
 set linebreak             " soft-wrap lines, don't break them (bad opt name)
 if exists('+breakindent') " move soft-wrapped lines to match the indent level.
   set breakindent
-  set breakindentopt=shift:2
+  set breakindentopt=shift:2,list:-1,min:30
   let &showbreak='↳ '
+  set cpoptions+=n
 endif
 
 set splitbelow            " place the new split below the current file
@@ -62,9 +63,9 @@ set previewheight=9       " default height for a preview window (def:12)
 
 set wildmode=longest,list:longest
 
-if has('nvim-0.4.0')
+if has('nvim')
   set pumblend=50           " neovim popup window blend
-  set wildoptions=pum       " use popup window for wildmenu
+  hi PmenuSel blend=0
 endif
 
 if has('nvim-0.3.2') || has('patch-8.1.0360')
@@ -72,7 +73,7 @@ if has('nvim-0.3.2') || has('patch-8.1.0360')
 endif
 set diffopt-=iwhite       " ignore whitespace when diffing
 let &listchars='tab:⇥ ,eol:$,trail:·,extends:>,precedes:<' " set list
-let &fillchars='vert:│,fold: '
+let &fillchars='vert:│'
 "}}}
 
 " Completion {{{
@@ -105,7 +106,7 @@ set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
 "}}}
 
-" Cursorline Toggling {{{
+" Show Cursorline only in hte focused window {{{
 autocmd vimrc WinEnter,BufEnter * setlocal cursorline
 autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
 " }}}
@@ -180,6 +181,8 @@ autocmd vimrc BufRead,BufNewFile mail set wrapmargin=3
 autocmd vimrc BufRead,BufNewFile *.tl set filetype=teal
 
 autocmd vimrc BufRead,BufNewFile *.nix set filetype=nix
+
+autocmd vimrc BufRead,BufNewFile *.heex set filetype=heex
 "}}}
 
 " Commands and Mappings {{{
@@ -198,26 +201,41 @@ set grepformat^=%f:%l:%c:%m
 
 " typo corrections
 nmap q: <Cmd>q<cr>
+"
+" nmap <C-j> <C-W>j
+" nmap <C-k> <C-W>k
+" nmap <C-h> <C-W>h
+" nmap <C-l> <C-W>l
 
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
-
-nmap <silent> H <Cmd>bp<CR>
-nmap <silent> L <Cmd>bn<CR>
+nmap <silent> H [b
+nmap <silent> L ]b
 vnoremap < <gv
 vnoremap > >gv
 
 autocmd vimrc FileType netrw call s:filer_settings()
-
 function! s:filer_settings()
+  " improve netrw a-la tpope/vim-vinegar
   nmap <buffer> q <C-^>
   nmap <buffer> h -
   nmap <buffer> l <CR>
   nmap <buffer> t i
   setlocal bufhidden=wipe
 endfunction
+
+" Terminal setup
+function! s:term(bang, rest)
+  " use $SHELL, not &shell, pass on any args
+  execute 'terminal'
+              \ . (a:bang?'!':'')
+              \ . ' ' . $SHELL
+              \ . (empty(a:rest)?'':' -c "' . a:rest . '"')
+  " execute 'normal i'
+endfunction
+command! -nargs=* -bang -complete=shellcmd Term call s:term(<bang>0, <q-args>)
+autocmd vimrc TermOpen * startinsert " start in insert mode
+autocmd vimrc TermClose *  feedkeys("i") " close terminal right away
+" get back to normal mode quickly
+tnoremap <Esc><Esc> <C-\><C-n>
 "}}}
 
 " Lua {{{
