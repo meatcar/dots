@@ -62,6 +62,38 @@
         "type": "github"
       }
     },
+    "fish-docker-compose": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1554316850,
+        "narHash": "sha256-VMBVLWCwW7/eXEedJrbcby0PjNWYe7MORR7hj+ZEmWg=",
+        "owner": "brgmnn",
+        "repo": "fish-docker-compose",
+        "rev": "44a9a5ad593f05ac77e4c5024cfe4a8c55db31e3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "brgmnn",
+        "repo": "fish-docker-compose",
+        "type": "github"
+      }
+    },
+    "fish-ssh-agent": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605087262,
+        "narHash": "sha256-e94Sd1GSUAxwLVVo5yR6msq0jZLOn2m+JZJ6mvwQdLs=",
+        "owner": "danhper",
+        "repo": "fish-ssh-agent",
+        "rev": "fd70a2afdd03caf9bf609746bf6b993b9e83be57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "danhper",
+        "repo": "fish-ssh-agent",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -121,6 +153,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "fzf-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629570536,
+        "narHash": "sha256-qQ+mQQsPH9WvdgmLVoY6w+pYUyk062BKPxvKbr93rZo=",
+        "owner": "PatrickF1",
+        "repo": "fzf.fish",
+        "rev": "176c8465b0fad2d5c30aacafff6eb5accb7e3826",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PatrickF1",
+        "repo": "fzf.fish",
         "type": "github"
       }
     },
@@ -247,14 +295,18 @@
         "alacritty-theme": "alacritty-theme",
         "declarative-cachix": "declarative-cachix",
         "emacs-overlay": "emacs-overlay",
+        "fish-docker-compose": "fish-docker-compose",
+        "fish-ssh-agent": "fish-ssh-agent",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
+        "fzf-fish": "fzf-fish",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "plug-kak": "plug-kak",
-        "wsl-open": "wsl-open"
+        "wsl-open": "wsl-open",
+        "z": "z"
       }
     },
     "wsl-open": {
@@ -271,6 +323,22 @@
         "owner": "4U6U57",
         "repo": "wsl-open",
         "type": "gitlab"
+      }
+    },
+    "z": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626157139,
+        "narHash": "sha256-pWkEhjbcxXduyKz1mAFo90IuQdX7R8bLCQgb0R+hXs4=",
+        "owner": "jethrokuan",
+        "repo": "z",
+        "rev": "45a9ff6d0932b0e9835cbeb60b9794ba706eef10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jethrokuan",
+        "repo": "z",
+        "type": "github"
       }
     }
   },

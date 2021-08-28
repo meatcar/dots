@@ -1,37 +1,55 @@
 {
   description = "Nix Development Environment";
 
-  inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    declarative-cachix.url = "github:jonascarpay/declarative-cachix";
-    declarative-cachix.inputs.nixpkgs.follows = "nixpkgs";
+  inputs =
+    {
+      flake-utils.url = "github:numtide/flake-utils";
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager.url = "github:nix-community/home-manager";
+      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+      nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
+      neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+      neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+      emacs-overlay.url = "github:nix-community/emacs-overlay";
+      emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+      declarative-cachix.url = "github:jonascarpay/declarative-cachix";
+      declarative-cachix.inputs.nixpkgs.follows = "nixpkgs";
 
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
+      flake-compat = {
+        url = "github:edolstra/flake-compat";
+        flake = false;
+      };
+      plug-kak = {
+        url = "github:andreyorst/plug.kak";
+        flake = false;
+      };
+      alacritty-theme = {
+        url = "github:eendroroy/alacritty-theme";
+        flake = false;
+      };
+      wsl-open = {
+        url = "gitlab:4U6U57/wsl-open";
+        flake = false;
+      };
+      # fish
+      fish-ssh-agent = {
+        url = "github:danhper/fish-ssh-agent";
+        flake = false;
+      };
+      fzf-fish = {
+        url = "github:PatrickF1/fzf.fish";
+        flake = false;
+      };
+      z = {
+        url = "github:jethrokuan/z";
+        flake = false;
+      };
+      fish-docker-compose = {
+        url = "github:brgmnn/fish-docker-compose";
+        flake = false;
+      };
     };
-    plug-kak = {
-      url = "github:andreyorst/plug.kak";
-      flake = false;
-    };
-    alacritty-theme = {
-      url = "github:eendroroy/alacritty-theme";
-      flake = false;
-    };
-    wsl-open = {
-      url = "gitlab:4U6U57/wsl-open";
-      flake = false;
-    };
-  };
 
 
   outputs = { self, ... }@inputs:

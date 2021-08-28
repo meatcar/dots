@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, specialArgs, ... }:
 {
   imports = [ ./single-user.nix ];
 
@@ -33,12 +33,9 @@
     '';
   };
 
-  xdg.configFile = {
-    "fish/fish_plugins".text = ''
-      # WSL Only:
-      danhper/fish-ssh-agent
-    '';
-  };
+  programs.fish.plugins = [
+    { name = "fish-ssh-agent"; src = specialArgs.inputs.fish-ssh-agent; }
+  ];
 
   programs.fish.shellInit = ''
     # WSL thinks the shell is bash, even when running fish. Let's change it's mind.
