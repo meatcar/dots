@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, specialArgs, ... }:
 let
   any-nix-shell-fish = pkgs.runCommand "any-nix-shell-fish"
     {
@@ -21,12 +21,16 @@ in
       ${builtins.readFile ./config.fish}
       eval (starship init fish)
     '';
+    plugins = [
+      { name = "z"; src = specialArgs.inputs.z; }
+      { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
+      # TODO: fzf.fish is out of date in nixpkgs
+      { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
+      { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
+      { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }
+    ];
   };
 
-  xdg.configFile."fish/fish_plugins" = {
-    text = builtins.readFile ./fish_plugins;
-    onChange = "fish -il -c 'fisher update'";
-  };
   xdg.configFile."fish/functions" = {
     source = ./functions;
     recursive = true;
