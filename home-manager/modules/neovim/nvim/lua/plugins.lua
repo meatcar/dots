@@ -33,28 +33,29 @@ local function base(use)
   use 'aymericbeaumet/symlink.vim' -- follow symlinks
   use 'ConradIrwin/vim-bracketed-paste' -- better paste in supported terminals
   use 'tweekmonster/startuptime.vim' -- debug slow vim startup times
-  use {
-    'machakann/vim-sandwich', -- work with surrounding text
+
+  use { -- work with surrounding text
+    'machakann/vim-sandwich',
     config = function()
       -- unmap s, which can easily be replaces by cl
       vim.api.nvim_set_keymap('n', 's', '<Nop>', {})
       vim.api.nvim_set_keymap('x', 's', '<Nop>', {})
     end,
   }
-  use {
-    'terrortylor/nvim-comment', --easy commenting with gcc
+  use { --easy commenting with gcc
+    'terrortylor/nvim-comment',
     config = function()
       require('nvim_comment').setup()
     end,
   }
-  use {
-    'tpope/vim-endwise', -- add  to function blocks
+  use { -- add  to function blocks
+    'tpope/vim-endwise',
     config = function()
       vim.g.endwise_no_mappings = true
     end,
   }
-  use {
-    'kazhala/close-buffers.nvim', -- quickly delete multiple buffers based on the conditions provided
+  use { -- quickly delete multiple buffers based on the conditions provided
+    'kazhala/close-buffers.nvim',
     config = function()
       require('close_buffers').setup {
         filetype_ignore = {}, -- Filetype to ignore when running deletions
@@ -100,8 +101,8 @@ end
 local function lsp(use)
   use 'neovim/nvim-lspconfig'
 
-  use {
-    'kabouzeid/nvim-lspinstall', -- easily install new lsp servers
+  use { -- easily install new lsp servers
+    'kabouzeid/nvim-lspinstall',
     config = function()
       local function setup_servers()
         require('lspinstall').setup()
@@ -121,15 +122,15 @@ local function lsp(use)
     end,
   }
 
-  use {
-    'kosayoda/nvim-lightbulb', -- show a lightbulb for lsp actions
+  use { -- show a lightbulb for lsp actions
+    'kosayoda/nvim-lightbulb',
     config = function()
       vim.cmd [[autocmd packer CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
     end,
   }
 
-  use {
-    'glepnir/lspsaga.nvim', -- pretty LSP popups
+  use { -- pretty LSP popups
+    'glepnir/lspsaga.nvim',
     config = function()
       require('lspsaga').init_lsp_saga {
         error_sign = '',
@@ -142,8 +143,8 @@ local function lsp(use)
 
   use 'folke/lsp-colors.nvim'
 
-  use {
-    'folke/lsp-trouble.nvim', -- show all LSP errors
+  use { -- show all LSP errors
+    'folke/lsp-trouble.nvim',
     config = function()
       require('trouble').setup {
         use_lsp_diagnostic_signs = false,
@@ -164,8 +165,8 @@ local function completion(use)
     'hrsh7th/nvim-compe',
     requires = {
       'kristijanhusak/vim-dadbod-completion',
-      {
-        'andersevenrud/compe-tmux', -- Sources words from adjacent tmux panes.
+      { -- Sources words from adjacent tmux panes.
+        'andersevenrud/compe-tmux',
         cond = function()
           return vim.env.TMUX ~= nil
         end,
@@ -226,15 +227,15 @@ local function git(use)
   use 'mattn/webapi-vim' -- for vim-gist
   use 'ruifm/gitlinker.nvim' -- generate a link to file on git remote site
 
-  use {
-    'tpope/vim-fugitive', -- tight git integration
+  use { -- tight git integration
+    'tpope/vim-fugitive',
     config = function()
       vim.cmd [[autocmd packer FileType fugitive nmap <buffer> q gq]]
     end,
   }
 
-  use {
-    'mattn/vim-gist', -- Gist support
+  use { -- Gist support
+    'mattn/vim-gist',
     config = function()
       if vim.env.WAYLAND_DISPLAY then
         vim.g.gist_clip_command = 'wl-copy'
@@ -247,8 +248,8 @@ local function git(use)
     end,
   }
 
-  use {
-    'lewis6991/gitsigns.nvim', -- show git changes in the gutter
+  use { -- show git changes in the gutter
+    'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('gitsigns').setup()
@@ -263,8 +264,9 @@ local function utilities(use)
   use 'janko/vim-test' -- run tests easily
   use 'lambdalisue/suda.vim' -- :SudaWrite
   use 'AndrewRadev/splitjoin.vim' -- gS/gJ to split/join multi-line code
-  use {
-    'rmagatti/auto-session', -- associate sessions with cwd
+
+  use { -- associate sessions with cwd
+    'rmagatti/auto-session',
     config = function()
       local dir = vim.fn.stdpath 'data' .. '/sessions/'
       vim.fn.mkdir(dir, 'p')
@@ -274,12 +276,12 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'simnalamburt/vim-mundo', -- undo tree
+  use { -- undo tree
+    'simnalamburt/vim-mundo',
     cmd = 'MundoToggle',
   }
 
-  use {
+  use { -- align operations
     'junegunn/vim-easy-align',
     config = function()
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -289,25 +291,25 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'kristijanhusak/vim-dadbod-ui', -- UI for dadbod
+  use { -- UI for dadbod, a database UI
+    'kristijanhusak/vim-dadbod-ui',
     requires = 'tpope/vim-dadbod', -- Modern database interface for Vim
   }
 
-  use {
+  use { -- editorconfig file support
     'editorconfig/editorconfig-vim',
     config = function()
       vim.g.EditorConfig_exclude_patterns = { [[fugitive://.*]] }
     end,
   }
 
-  use {
-    'junegunn/fzf.vim', -- fuzzy completion of all the things
+  use { -- fuzzy completion of all the things
+    'junegunn/fzf.vim',
     requires = { 'junegunn/fzf', run = './install --all' },
   }
 
-  use {
-    'dense-analysis/ale', -- async error checking
+  use { -- async error checking
+    'dense-analysis/ale',
     requires = 'desmap/ale-sensible', -- sensible ALE defaults
     config = function()
       vim.g.ale_lint_on_text_changed = 'never'
@@ -328,24 +330,24 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'justinmk/vim-dirvish', -- nice simple file browser
+  use { -- nice simple file browser
+    'justinmk/vim-dirvish',
     config = function()
       vim.cmd [[autocmd packer FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _]]
       vim.cmd [[autocmd packer FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)]]
     end,
   }
 
-  use {
-    'kyazdani42/nvim-tree.lua', -- fast file tree
+  use { -- fast file tree
+    'kyazdani42/nvim-tree.lua',
     config = function()
       vim.g.nvim_tree_git_hl = true
       vim.g.nvim_tree_add_trailing = true
     end,
   }
 
-  use {
-    'zegervdv/nrpattern.nvim', -- ctrl-[ax] on drugs
+  use { -- ctrl-[ax] on drugs
+    'zegervdv/nrpattern.nvim',
     config = function()
       -- Get the default dict of patterns
       local patterns = require 'nrpattern.default'
@@ -360,8 +362,8 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'lukas-reineke/indent-blankline.nvim', -- show lines for indents on blank lines
+  use { -- show lines for indents on blank lines
+    'lukas-reineke/indent-blankline.nvim',
     config = function()
       vim.g.indent_blankline_char = '▏'
       vim.g.indent_blankline_space_char_blankline = ' '
@@ -371,16 +373,16 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'folke/todo-comments.nvim', -- highlight and add UI for TODO comments
+  use { -- highlight and add UI for TODO comments
+    'folke/todo-comments.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('todo-comments').setup { signs = false }
     end,
   }
 
-  use {
-    'nvim-telescope/telescope.nvim', -- a fuzzy completion engine
+  use { -- a fuzzy completion engine
+    'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
@@ -416,7 +418,7 @@ local function utilities(use)
     end,
   }
 
-  use {
+  use { -- tmux integration
     'aserowy/tmux.nvim',
     cond = function()
       return vim.env.TMUX ~= nil
@@ -430,28 +432,34 @@ local function utilities(use)
     end,
   }
 
-  use {
-    'folke/zen-mode.nvim', -- fullscreen current buffer
+  use { -- fullscreen current buffer
+    'folke/zen-mode.nvim',
     config = function()
       require('zen-mode').setup {}
       vim.api.nvim_set_keymap('n', '<C-w>z', '<Cmd>ZenMode<CR>', {})
       vim.api.nvim_set_keymap('n', '<Leader>wz', '<Cmd>ZenMode<CR>', {})
     end,
   }
+
+  use { -- google keep integration
+    'stevearc/gkeep.nvim',
+    run = ':UpdateRemotePlugins',
+  }
 end
 
 local function pretty(use)
-  use {
-    'folke/which-key.nvim', --popup ui for obscure keys
+  use { --popup ui for obscure keys
+    'folke/which-key.nvim',
     config = function()
       require 'modules/which-key'
     end,
   }
 
-  use {
-    'mhinz/vim-startify', -- startup screen
+  use { -- startup screen
+    'mhinz/vim-startify',
     requires = 'ryanoasis/vim-devicons', -- pretty icons
     config = function()
+      ---@diagnostic disable-next-line: redefined-local
       local fn = vim.fn
       vim.g.startify_custom_indices = fn.map(fn.range(1, 100), 'string(v:val)') -- start with 1
       vim.g.startify_session_dir = fn.stdpath 'cache' .. '/session'
@@ -486,23 +494,23 @@ local function pretty(use)
 
   use 'xtal8/traces.vim'
 
-  use {
-    'karb94/neoscroll.nvim', -- smooth scrolling
+  use { -- smooth scrolling
+    'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup()
     end,
   }
 
-  use {
-    'akinsho/nvim-bufferline.lua', -- a pretty bufferline
+  use { -- a pretty bufferline
+    'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require 'modules/bufferline'
     end,
   }
 
-  use {
-    'edluffy/specs.nvim', -- flash cursor sometimes
+  use { -- flash cursor sometimes
+    'edluffy/specs.nvim',
     config = function()
       require('specs').setup {
         show_jumps = true,
@@ -524,8 +532,8 @@ local function pretty(use)
     end,
   }
 
-  use {
-    'RRethy/vim-illuminate', -- highlight word under cursor
+  use { -- highlight word under cursor
+    'RRethy/vim-illuminate',
     config = function()
       vim.api.nvim_set_keymap(
         'n',
@@ -542,8 +550,8 @@ local function pretty(use)
     end,
   }
 
-  use {
-    'jrudess/vim-foldtext', -- pretty fold texts
+  use { -- pretty fold texts
+    'jrudess/vim-foldtext',
     config = function()
       vim.g.FoldText_line = ''
       vim.g.FoldText_multiplication = ' '
@@ -626,8 +634,8 @@ local function colorscheme(use)
 end
 
 local function syntax(use)
-  use {
-    'sheerun/vim-polyglot', -- A plethora of syntaxes
+  use { -- A plethora of syntaxes
+    'sheerun/vim-polyglot',
     config = function()
       vim.g.polyglot_disabled = { 'yaml', 'markdown' }
     end,
@@ -684,8 +692,8 @@ local function syntax(use)
       }
     end,
   }
-  use {
-    'SidOfc/mkdx', -- Fancy markdown extras
+  use { -- Fancy markdown extras
+    'SidOfc/mkdx',
     ft = { 'md', 'markdown' },
     config = function()
       vim.g['mkdx#settings'] = {
@@ -710,15 +718,15 @@ local function syntax(use)
       }
     end,
   }
-  use {
-    'reedes/vim-pencil', -- make editing freetext easier
+  use { -- make editing freetext easier
+    'reedes/vim-pencil',
     ft = { 'md', 'markdown', 'text', 'mail' },
     config = function()
       vim.g.pencil_gutter_color = true
     end,
   }
-  use {
-    'npxbr/glow.nvim', -- preview markdown
+  use { -- preview markdown
+    'npxbr/glow.nvim',
     ft = { 'md', 'markdown' },
     cmd = 'Glow',
     config = function()
@@ -728,8 +736,8 @@ local function syntax(use)
 
   -- clojure
   use { 'tpope/vim-classpath', ft = 'clojure' }
-  use {
-    'tpope/vim-salve', -- static support for Leiningen
+  use { -- static support for Leiningen
+    'tpope/vim-salve',
     ft = 'clojure',
     requires = { 'tpope/vim-projectionist', ft = 'clojure' }, -- quick-switch between src and test
   }
