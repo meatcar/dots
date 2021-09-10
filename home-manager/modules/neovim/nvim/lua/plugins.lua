@@ -3,7 +3,7 @@
 _G.vim = vim
 local fn = vim.fn
 _G.me = {}
-_G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer' }
+_G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer', 'Mundo' }
 local sidebars = _G.me.sidebars
 
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
