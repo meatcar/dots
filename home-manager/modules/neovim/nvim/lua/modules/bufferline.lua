@@ -20,6 +20,7 @@ require('bufferline').setup {
     offsets = {
       { filetype = 'NvimTree', text = 'File Explorer' },
       { filetype = 'packager', text = 'Packager' },
+      { filetype = 'Mundo', text = 'Undo' },
     },
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
