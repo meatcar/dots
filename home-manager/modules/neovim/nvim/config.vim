@@ -151,6 +151,7 @@ autocmd vimrc ColorScheme *
 
 " Filetypes, Syntaxes, and AutoCMDs {{{
 
+autocmd vimrc FileType help setlocal buflisted
 autocmd vimrc FileType fish compiler fish
 autocmd vimrc BufRead,BufNewFile PKGBUILD set filetype=sh
 autocmd vimrc BufRead,BufNewFile .envrc set filetype=sh
@@ -232,8 +233,8 @@ function! s:term(bang, rest)
   " execute 'normal i'
 endfunction
 command! -nargs=* -bang -complete=shellcmd Term call s:term(<bang>0, <q-args>)
-autocmd vimrc TermOpen * startinsert " start in insert mode
-autocmd vimrc TermClose *  feedkeys("i") " close terminal right away
+autocmd vimrc TermOpen term://* startinsert " start in insert mode
+autocmd vimrc TermClose term://* bdelete! " close terminal right away
 " get back to normal mode quickly
 tnoremap <Esc><Esc> <C-\><C-n>
 "}}}

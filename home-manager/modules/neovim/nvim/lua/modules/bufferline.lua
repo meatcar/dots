@@ -1,9 +1,15 @@
+local groups = require 'bufferline.groups'
+
+vim.api.nvim_set_keymap('n', '[b', [[<Cmd>BufferLineCyclePrev<CR>]], { silent = true })
+vim.api.nvim_set_keymap('n', ']b', [[<Cmd>BufferLineCycleNext<CR>]], { silent = true })
+
+-- persist bufferline positions
+vim.o.sessionoptions = vim.o.sessionoptions .. ',globals'
+
 require('bufferline').setup {
   options = {
     view = 'multiwindow',
     numbers = 'none',
-    number_style = '',
-    mappings = false,
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
@@ -14,8 +20,8 @@ require('bufferline').setup {
     tab_size = 18,
     diagnostics = 'nvim_lsp',
     diagnostics_indicator = function(count, level)
-      local icon = level:match 'error' and ' ' or ''
-      return ' ' .. icon .. count
+      local icon = level:match 'error' and ' ' or ' '
+      return icon .. count
     end,
     offsets = {
       { filetype = 'NvimTree', text = 'File Explorer' },
@@ -24,10 +30,40 @@ require('bufferline').setup {
     },
     show_buffer_close_icons = true,
     persist_buffer_sort = true,
-    separator_style = 'slant',
+    separator_style = 'thick',
     enforce_regular_tabs = true,
     always_show_bufferline = false,
     sort_by = 'directory',
+    groups = {
+      options = {
+        toggle_hidden_on_enter = true,
+      },
+      items = {
+        {
+          name = '  Tests',
+          matcher = function(buf)
+            local patterns = { 'test%', '%.test.%', '%_spec' }
+            for _, pat in ipairs(patterns) do
+              if buf.filename:match(pat) then
+                return true
+              end
+            end
+          end,
+        },
+        groups.builtin.ungrouped,
+        {
+          name = '  Docs',
+          matcher = function(buf)
+            local patterns = { '%.md', '%.txt' }
+            for _, pat in ipairs(patterns) do
+              if buf.filename:match(pat) then
+                return true
+              end
+            end
+          end,
+        },
+      },
+    },
   },
   highlights = {
     buffer_selected = {
@@ -65,9 +101,3 @@ require('bufferline').setup {
     },
   },
 }
-
-vim.api.nvim_set_keymap('n', '[b', [[<Cmd>BufferLineCyclePrev<CR>]], { silent = true })
-vim.api.nvim_set_keymap('n', ']b', [[<Cmd>BufferLineCycleNext<CR>]], { silent = true })
-
--- persist bufferline positions
-vim.o.sessionoptions = vim.o.sessionoptions .. ',globals'
