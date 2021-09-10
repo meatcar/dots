@@ -743,6 +743,9 @@ local function syntax(use)
   }
   use { 'eraserhd/parinfer-rust', ft = 'clojure' }
   use { 'liquidz/vim-iced', ft = 'clojure' }
+
+  -- lua
+  use { 'milisims/nvim-luaref' }
 end
 
 local function load_plugins(use)
