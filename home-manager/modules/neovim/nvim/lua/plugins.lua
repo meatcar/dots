@@ -6,6 +6,7 @@ _G.me = {}
 _G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer', 'Mundo' }
 local sidebars = _G.me.sidebars
 
+-- bootstrap packer if not installed
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
@@ -448,6 +449,12 @@ local function utilities(use)
 end
 
 local function pretty(use)
+  use 'kien/rainbow_parentheses.vim'
+
+  use 'xtal8/traces.vim'
+
+  use 'romainl/vim-cool' -- smart set nohl after we're done searching
+
   use { --popup ui for obscure keys
     'folke/which-key.nvim',
     config = function()
@@ -489,10 +496,6 @@ local function pretty(use)
       ]]
     end,
   }
-
-  use 'kien/rainbow_parentheses.vim'
-
-  use 'xtal8/traces.vim'
 
   use { -- smooth scrolling
     'karb94/neoscroll.nvim',
@@ -558,7 +561,6 @@ local function pretty(use)
     end,
   }
 
-  use 'romainl/vim-cool' -- smart set nohl after we're done searching
   use { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
     config = function()
