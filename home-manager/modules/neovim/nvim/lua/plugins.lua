@@ -559,6 +559,22 @@ local function pretty(use)
   }
 
   use 'romainl/vim-cool' -- smart set nohl after we're done searching
+  use { -- eol hints & counters when searching
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+      for _, map in ipairs { 'n', 'N' } do
+        vim.api.nvim_set_keymap(
+          'n',
+          map,
+          [[<cmd>execute('normal! ' . v:count1 . ']] .. map .. [[')<cr><cmd>lua require('hlslens').start()<cr>]],
+          { noremap = true, silent = true }
+        )
+      end
+      for _, map in ipairs { '*', '#', 'g*', 'g#' } do
+        vim.api.nvim_set_keymap('n', map, map .. [[<cmd>lua require('hlslens').start()<cr>]], { noremap = true })
+      end
+    end,
+  }
 end
 
 local function colorscheme(use)
