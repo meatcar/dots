@@ -441,11 +441,6 @@ local function utilities(use)
       vim.api.nvim_set_keymap('n', '<Leader>wz', '<Cmd>ZenMode<CR>', {})
     end,
   }
-
-  use { -- google keep integration
-    'stevearc/gkeep.nvim',
-    run = ':UpdateRemotePlugins',
-  }
 end
 
 local function pretty(use)

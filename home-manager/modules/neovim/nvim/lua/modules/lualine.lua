@@ -51,13 +51,13 @@ function M.config()
       { 'filetype' },
       {
         'encoding',
-        condition = function()
+        cond = function()
           return vim.o.encoding ~= 'utf-8'
         end,
       },
       {
         'fileformat',
-        condition = function()
+        cond = function()
           return vim.o.fileformat ~= 'unix'
         end,
       },
