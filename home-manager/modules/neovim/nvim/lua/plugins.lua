@@ -138,6 +138,9 @@ local function lsp(use)
         warn_sign = '',
         hint_sign = '',
         infor_sign = '',
+        code_action_prompt = {
+          enable = false,
+        },
       }
     end,
   }
@@ -341,9 +344,16 @@ local function utilities(use)
 
   use { -- fast file tree
     'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       vim.g.nvim_tree_git_hl = true
       vim.g.nvim_tree_add_trailing = true
+      require('nvim-tree').setup {
+        -- disable conflict with dirvish
+        update_to_buf_dir = { enable = false },
+      }
+    end,
+  }
 
   use {
     'luukvbaal/nnn.nvim',
