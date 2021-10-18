@@ -1,14 +1,5 @@
 { config, pkgs, ... }:
 {
-  # FIXME: remove when this is fixed: https://github.com/nix-community/nix-direnv/issues/113#issuecomment-921328351
-  nixpkgs.overlays = [
-    (self: super: {
-      nixUnstable = super.nixUnstable.override {
-        patches = [ ./unset-is-macho.patch ];
-      };
-    })
-  ];
-
   programs.git.ignores = [ ".direnv/" ];
 
   programs.direnv = {
