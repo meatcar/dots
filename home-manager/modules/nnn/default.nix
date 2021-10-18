@@ -1,9 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, specialArgs, ... }:
 let
-  nnn = pkgs.nnn.overrideAttrs
-    (attrs: {
-      makeFlags = attrs.makeFlags ++ [ "O_NERD=1" ];
-    });
+  src = specialArgs.inputs.nnn;
+  nnn = (pkgs.nnn.override {
+    withNerdIcons = true;
+  }).overrideAttrs (attrs: {
+    inherit src;
+    # patches = [ "${src}/patches/gitstatus/mainline.diff" ];
+  });
 in
 {
   home.packages = [ nnn ];
