@@ -49,6 +49,10 @@
         url = "github:brgmnn/fish-docker-compose";
         flake = false;
       };
+      nnn = {
+        url = "github:jarun/nnn";
+        flake = false;
+      };
     };
 
 
