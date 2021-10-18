@@ -344,6 +344,11 @@ local function utilities(use)
     config = function()
       vim.g.nvim_tree_git_hl = true
       vim.g.nvim_tree_add_trailing = true
+
+  use {
+    'luukvbaal/nnn.nvim',
+    config = function()
+      require('nnn').setup()
     end,
   }
 
