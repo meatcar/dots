@@ -15,6 +15,7 @@
     ../modules/egpu
     ../modules/dualboot.nix
     # ../modules/ly.nix
+    # ../modules/fingerprint.nix
     ./user.nix
   ];
 
