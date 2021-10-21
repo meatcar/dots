@@ -13,15 +13,15 @@
     restart_cmd = shutdown -r now
     save_file = /tmp/ly-save
     shutdown = shutdown -a now
-    term_reset_cmd = echo tput
+    term_reset_cmd = tput reset
   '';
-  environment.etc."ly/lang".source = "${pkgs.ly}/etc/ly/lang";
+  environment.etc."ly/lang".source = "${pkgs.ly.src}/res/lang";
 
   # From https://github.com/cylgom/ly/blob/master/res/ly.service
   systemd.services.ly = {
     enable = true;
     description = "TUI display manager";
-    documentation = [ "https://github.com/cylgom/ly" ];
+    documentation = [ "https://github.com/nullgemm/ly" ];
     conflicts = [ "getty@tty2.service" ];
     after = [
       "systemd-user-sessions.service"
