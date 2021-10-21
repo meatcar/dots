@@ -100,6 +100,19 @@ leadermap.r = {
     r = { '<Cmd>TestLast<CR>', 'Recent' },
     g = { '<Cmd>TestVisit<CR>', 'Goto' },
   },
+  r = {
+    name = 'command',
+    p = { '<Cmd>VimuxPromptCommand<CR>', 'Prompt' },
+    r = { '<Cmd>VimuxRunLastCommand<CR>', 'Last' },
+    i = { '<Cmd>VimuxInspectRunner<CR>', 'Inspect' },
+    o = { '<Cmd>VimuxOpenRunner<CR>', 'Open' },
+    q = { '<Cmd>VimuxCloseRunner<CR>', 'Close' },
+    d = { '<Cmd>VimuxCloseRunner<CR>', 'Close' },
+    s = { '<Cmd>VimuxInterruptRunner<CR>', 'Interrupt' },
+    c = { '<Cmd>VimuxInterruptRunner<CR>', 'Interrupt' },
+    l = { '<Cmd>VimuxClearTerminalScreen<CR>', 'Clear' },
+    z = { '<Cmd>VimuxZoomRunner<CR>', 'Zoom' },
+  },
 } -- }}}
 
 leadermap.w = {
