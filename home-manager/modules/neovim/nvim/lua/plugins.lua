@@ -142,6 +142,8 @@ local function lsp(use)
           enable = false,
         },
       }
+      vim.cmd [[nnoremap <silent> <Down> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]]
+      vim.cmd [[nnoremap <silent> <Up> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]]
     end,
   }
 
@@ -265,9 +267,18 @@ local function utilities(use)
   use 'Olical/vim-enmasse' -- mass-edit lines in quickfix
   use 'kevinhwang91/nvim-bqf' -- better quickfix window
   use 'kshenoy/vim-signature' -- show marks in the SignColumn
-  use 'janko/vim-test' -- run tests easily
   use 'lambdalisue/suda.vim' -- :SudaWrite
   use 'AndrewRadev/splitjoin.vim' -- gS/gJ to split/join multi-line code
+
+  use { -- run tests easily
+    'janko/vim-test',
+    config = function()
+      if vim.env.TMUX ~= nil then
+        vim.g['test#strategy'] = 'vimux'
+      end
+      vim.g['test#preserve_screen'] = false
+    end,
+  }
 
   use { -- associate sessions with cwd
     'rmagatti/auto-session',
@@ -445,6 +456,13 @@ local function utilities(use)
         navigation = { enable_default_keybindings = true },
         resize = { enable_default_keybindings = true },
       }
+    end,
+  }
+
+  use { -- open and run commands in a tmux pane
+    'preservim/vimux',
+    cond = function()
+      return vim.env.TMUX ~= nil
     end,
   }
 
