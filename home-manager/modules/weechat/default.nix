@@ -6,8 +6,8 @@
       };
     })
   ];
-
-  home.sessionVariables = {
-    WEECHAT_HOME = "${config.xdg.configHome}/weechat";
-  };
+  #
+  #   home.sessionVariables = {
+  #     WEECHAT_HOME = "${config.xdg.configHome}/weechat";
+  #   };
 }
