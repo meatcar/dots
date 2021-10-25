@@ -1,7 +1,7 @@
 local M = {
   package = {
-    'shadmansaleh/lualine.nvim', -- status line
-    requires = 'kyazdani42/nvim-web-devicons',
+    'nvim-lualine/lualine.nvim', -- status line
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   },
 }
 
