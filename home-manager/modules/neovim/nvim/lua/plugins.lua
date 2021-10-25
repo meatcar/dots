@@ -414,8 +414,11 @@ local function utilities(use)
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-smart-history.nvim', requires = { 'tami5/sqlite.lua' } },
     },
     config = function()
+      local history_path = vim.fn.stdpath 'data' .. '/databases'
+      vim.fn.mkdir(history_path, 'p')
       require('telescope').setup {
         defaults = {
           -- TODO: Borken, see https://github.com/nvim-telescope/telescope.nvim/issues/840
@@ -425,6 +428,16 @@ local function utilities(use)
             vertical = {
               -- TODO: set to true once sorting_strategy = ascending is fixed
               mirror = false,
+            },
+          },
+          history = {
+            path = history_path .. '/telescope_history.sqlite3',
+            limit = 100,
+          },
+          mappings = {
+            i = {
+              ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+              ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
             },
           },
         },
@@ -438,6 +451,7 @@ local function utilities(use)
         },
       }
       require('telescope').load_extension 'fzf'
+      require('telescope').load_extension 'smart_history'
       vim.cmd [[
         command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
         nnoremap <C-p>      <Cmd>Ctrlp<CR>
