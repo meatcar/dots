@@ -414,7 +414,7 @@ local function utilities(use)
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-      { 'nvim-telescope/telescope-smart-history.nvim', requires = { 'tami5/sqlite.lua' } },
+      { 'nvim-telescope/telescope-smart-history.nvim' },
     },
     config = function()
       local history_path = vim.fn.stdpath 'data' .. '/databases'

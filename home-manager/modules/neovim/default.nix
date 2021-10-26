@@ -6,12 +6,17 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = pkgs.neovim-nightly.override {
+      lua = pkgs.luajit;
+    };
     withNodeJs = true;
 
-    plugins = with pkgs; [ ];
+    plugins = with pkgs.vimPlugins; [ sqlite-lua ];
 
     extraConfig = builtins.readFile ./init.vim;
+    extraPackages = [
+      pkgs.luajitPackages.luarocks
+    ];
   };
 
   xdg.configFile = {
