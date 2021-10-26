@@ -86,16 +86,12 @@
                 nixFlakes
                 (nixos-rebuild.override { nix = nixFlakes; })
                 stow
-                luajit
               ];
               NIX_PATH = builtins.concatStringsSep ":" [
                 "nixpkgs=${inputs.nixpkgs}"
                 "home-manager=${inputs.home-manager}"
               ];
               NIXOS_CONFIG = ./configuration.nix;
-              shellHook = ''
-                export LD_LIBRARY_PATH=${pkgs.zlib}/lib:${pkgs.sqlite.out}/lib:$LD_LIBRARY_PATH
-              '';
             };
             pkgs = inputs.nixpkgs;
           })
