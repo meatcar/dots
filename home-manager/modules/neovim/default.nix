@@ -13,7 +13,11 @@
 
     plugins = with pkgs.vimPlugins; [ sqlite-lua ];
 
-    extraConfig = builtins.readFile ./init.vim;
+    extraConfig = ''
+      let g:parinfer_dylib_path = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so"
+
+      ${builtins.readFile ./init.vim}
+    '';
     extraPackages = [
       pkgs.luajitPackages.luarocks
     ];
