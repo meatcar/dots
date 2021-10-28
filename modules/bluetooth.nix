@@ -4,6 +4,7 @@
     enable = true;
     package = pkgs.bluezFull;
     powerOnBoot = false;
+    hsphfpd.enable = true;
   };
 
   hardware.pulseaudio = {
