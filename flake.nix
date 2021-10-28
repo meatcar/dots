@@ -76,6 +76,7 @@
             pkgs = import inputs.nixpkgs (nixpkgsConfig // { inherit system; });
           in
           {
+            legacyPackages = pkgs; # expose the system nixpkgs for searching, shells
 
             devShell = pkgs.mkShell rec {
 
@@ -93,19 +94,20 @@
               ];
               NIXOS_CONFIG = ./configuration.nix;
             };
-            pkgs = inputs.nixpkgs;
           })
       //
       {
-        nixosConfigurations.tormund = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = specialArgs;
-          modules = [
-            { nixpkgs = nixpkgsConfig; }
-            inputs.home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
-            ./configuration.nix
-          ];
+        nixosConfigurations = {
+          tormund = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = specialArgs;
+            modules = [
+              { nixpkgs = nixpkgsConfig; }
+              inputs.home-manager.nixosModules.home-manager
+              { home-manager.extraSpecialArgs = specialArgs; }
+              ./configuration.nix
+            ];
+          };
         };
         homeConfigurations = {
           meatcar = inputs.home-manager.lib.homeManagerConfiguration rec {
@@ -118,13 +120,6 @@
               nixpkgs = nixpkgsConfig;
             };
           };
-        };
-        templates = {
-          project = {
-            path = ./templates/project;
-            description = "A basic dev environment with direnv and nix";
-          };
-          defaultTemplate = self.templates.project;
         };
       }
     );
