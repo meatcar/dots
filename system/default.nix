@@ -6,6 +6,7 @@
     ../modules/cachix.nix
     ../modules/nix.nix
     ../modules/networking.nix
+    ../modules/pipewire.nix
     ../modules/bluetooth.nix
     ../modules/keyring.nix
     ../modules/intel.nix
@@ -49,7 +50,6 @@
 
   hardware = {
     opengl.enable = true;
-    pulseaudio.enable = true;
   };
 
   services = {
@@ -151,7 +151,7 @@
       imv
       zathura
       streamlink
-      chromium
+      google-chrome
       qbittorrent
 
       # audio
