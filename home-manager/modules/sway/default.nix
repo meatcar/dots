@@ -138,6 +138,7 @@ in
             natural_scroll = "enabled";
             middle_emulation = "enabled";
             drag = "enabled";
+            scroll_factor = 0.1;
           };
         };
 
