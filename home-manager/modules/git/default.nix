@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ../mr ];
+
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -38,8 +40,7 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs.gitAndTools) lab hub delta;
-    inherit (pkgs) lazygit mr;
-    inherit (pkgs.perlPackages) PodPerldoc; # for mr
+    inherit (pkgs) lazygit;
   };
 
   programs.lazygit = {
