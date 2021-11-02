@@ -22,6 +22,15 @@
       charging_symbol = "";
       discharging_symbol = "";
     };
+
+    git_status = {
+      staged = "+\${count}";
+      modified = "!\${count}";
+      ahead = "⇡\${count}";
+      diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+      behind = "⇣\${count}";
+    };
+
     aws.symbol = " ";
     conda.symbol = " ";
     docker_context.symbol = " ";
