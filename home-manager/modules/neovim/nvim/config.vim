@@ -79,7 +79,7 @@ let &fillchars='vert:│'
 " Completion {{{
 set noshowmode shortmess+=c
 set noinfercase
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 "}}}
 
 " Folds {{{
@@ -106,7 +106,7 @@ set smartcase           " uppercase causes case-sensitive search
 set wrapscan            " searches wrap back to the top of file
 "}}}
 
-" Show Cursorline only in hte focused window {{{
+" Show Cursorline only in the focused window {{{
 autocmd vimrc WinEnter,BufEnter * setlocal cursorline
 autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
 " }}}
@@ -115,7 +115,6 @@ autocmd vimrc WinLeave,BufLeave * setlocal nocursorline
 set timeoutlen=500     " speed up whichkey
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-inoremap <silent> <C-m>   <c-\><c-o><Cmd>call feedkeys(g:maplocalleader)<CR>
 " }}}
 
 " gVIM settings {{{

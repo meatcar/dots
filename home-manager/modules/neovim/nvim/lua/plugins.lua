@@ -108,8 +108,13 @@ local function lsp(use)
       local function setup_servers()
         require('lspinstall').setup()
         local servers = require('lspinstall').installed_servers()
+
+        local cmp = require 'cmp'
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
         for _, server in pairs(servers) do
-          require('lspconfig')[server].setup {}
+          require('lspconfig')[server].setup { capabilities = capabilities }
         end
       end
 
@@ -177,6 +182,8 @@ local function completion(use)
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-vsnip',
       'kristijanhusak/vim-dadbod-completion',
+      'lukas-reineke/cmp-under-comparator',
+      'lukas-reineke/cmp-rg',
       { -- Sources words from adjacent tmux panes.
         'andersevenrud/compe-tmux',
         branch = 'cmp',
@@ -192,10 +199,14 @@ local function completion(use)
           { name = 'vsnip' },
           { name = 'tmux' },
           { name = 'vim-dadbod-completion' },
+          { name = 'rg' },
         },
         mapping = {
           ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
           ['<C-e>'] = cmp.mapping {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
@@ -207,6 +218,18 @@ local function completion(use)
           expand = function(args) -- REQUIRED - you must specify a snippet engine
             vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
           end,
+        },
+        sorting = {
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            require('cmp-under-comparator').under,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
         },
       }
       -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
