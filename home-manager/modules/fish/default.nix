@@ -16,7 +16,7 @@ in
 
   programs.fish = {
     enable = true;
-    promptInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
+    interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
     shellInit = ''
       ${builtins.readFile ./config.fish}
       eval (starship init fish)
