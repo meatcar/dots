@@ -168,43 +168,58 @@ end
 
 local function completion(use)
   use {
-    'hrsh7th/nvim-compe',
+    'hrsh7th/nvim-cmp',
     requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-vsnip',
       'kristijanhusak/vim-dadbod-completion',
       { -- Sources words from adjacent tmux panes.
         'andersevenrud/compe-tmux',
-        cond = function()
-          return vim.env.TMUX ~= nil
-        end,
+        branch = 'cmp',
       },
     },
-    -- Improve performance for big files
-    event = 'InsertEnter',
-    cond = function()
-      return vim.api.nvim_buf_line_count(0) < 2000
-    end,
     config = function()
-      require('compe').setup {
-        source = {
-          path = true,
-          buffer = true,
-          calc = true,
-          nvim_lsp = true,
-          nvim_lua = true,
-          vsnip = true,
-          ultisnips = true,
-          luasnip = true,
-          tmux = vim.env.TMUX ~= nil,
+      local cmp = require 'cmp'
+      cmp.setup {
+        sources = {
+          { name = 'path' },
+          { name = 'buffer' },
+          { name = 'nvim_lsp' },
+          { name = 'vsnip' },
+          { name = 'tmux' },
+          { name = 'vim-dadbod-completion' },
+        },
+        mapping = {
+          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<C-e>'] = cmp.mapping {
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+          },
+          ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        },
+        snippet = {
+          expand = function(args) -- REQUIRED - you must specify a snippet engine
+            vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+          end,
         },
       }
+      -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
 
-      -- https://github.com/hrsh7th/nvim-compe#mappings
-      local opts = { noremap = true, silent = true, expr = true }
-      vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', opts)
-      vim.api.nvim_set_keymap('i', '<CR>', [[compe#confirm('<CR>')]], opts)
-      vim.api.nvim_set_keymap('i', '<C-e>', [[compe#close('<C-e>')]], opts)
-      vim.api.nvim_set_keymap('i', '<C-f>', [[compe#scroll({'delta': +4})]], opts)
-      vim.api.nvim_set_keymap('i', '<C-d>', [[compe#scroll({'delta': -4})]], opts)
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
+        }),
+      })
     end,
   }
 
