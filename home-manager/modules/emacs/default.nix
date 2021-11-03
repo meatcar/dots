@@ -16,7 +16,7 @@
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsUnstable;
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
   programs.fish = {
