@@ -5,7 +5,6 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    nix-direnv.enableFlakes = true;
     stdlib = ''
       # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
       session_name(){
@@ -36,45 +35,21 @@
   '';
 
   programs.fish = {
-    shellInit = ''
-      function autotmux --on-variable TMUX_SESSION_NAME --description "autostart tmux when session gets set"
-          set -l name (echo "$TMUX_SESSION_NAME" | tr '.' '-')
-          if test -n "$name" && \
-              test -z "$TMUX" && \
-              command -s tmux >/dev/null
-            if not tmux has-session -t "$name"
-              tmux new-session -d -s "$name"
-            end
-            tmux new-session -t "$name"
+    interactiveShellInit = ''
+      function autotmux --on-variable=TMUX_SESSION_NAME --description="autostart tmux when session gets set"
+        set -l name (echo "$TMUX_SESSION_NAME" | tr '.' '-')
+        if test -n "$name" && \
+            test -z "$TMUX" && \
+            command -s tmux >/dev/null
+          if not tmux has-session -t "$name"
+            tmux new-session -d -s "$name"
           end
+          tmux new-session -t "$name"
+        end
       end
+
+      direnv hook fish | source
     '';
-
-    functions = {
-      nix-init = ''
-        set session_name (basename "$PWD" | tr '.' '-')
-        if [ -e ./.envrc ]
-          echo ".envrc already exists, skipping." >&2
-        else
-          # tmux doesn't like dots in session names
-          echo session_name $session_name >> .envrc
-          echo use nix >> .envrc
-          direnv allow
-        end
-
-        if [ -e shell.nix ]
-          echo "shell.nix already exists, skipping." >&2
-        else
-          echo >shell.nix "\
-        {pkgs ? import <nixpkgs> {}}:
-        pkgs.mkShell {
-          name = \"$session_name\";
-          buildInputs = [];
-        }
-        "
-        end
-      '';
-    };
   };
 
 }
