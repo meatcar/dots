@@ -3,6 +3,10 @@
   imports = [ ./single-user.nix ];
 
 
+  home.file.nixConf.text = ''
+    system-features = kvm
+  '';
+
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";
     BROWSER = "${pkgs.wsl-open}/bin/wsl-open";
