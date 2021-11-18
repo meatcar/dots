@@ -76,7 +76,10 @@
             pkgs = import inputs.nixpkgs (nixpkgsConfig // { inherit system; });
           in
           {
-            legacyPackages = pkgs; # expose the system nixpkgs for searching, shells
+            # expose the system nixpkgs for searching, shells
+            # run 'nix registry add dots /path/to/repo`
+            # then you can search like `nix search dots <query>`
+            legacyPackages = pkgs;
 
             devShell = pkgs.mkShell rec {
 
