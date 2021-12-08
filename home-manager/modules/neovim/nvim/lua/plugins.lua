@@ -184,10 +184,7 @@ local function completion(use)
       'kristijanhusak/vim-dadbod-completion',
       'lukas-reineke/cmp-under-comparator',
       'lukas-reineke/cmp-rg',
-      { -- Sources words from adjacent tmux panes.
-        'andersevenrud/compe-tmux',
-        branch = 'cmp',
-      },
+      'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
     },
     config = function()
       local cmp = require 'cmp'
