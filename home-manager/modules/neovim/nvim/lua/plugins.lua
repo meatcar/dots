@@ -734,7 +734,7 @@ end
 local function syntax(use)
   use { -- A plethora of syntaxes
     'sheerun/vim-polyglot',
-    config = function()
+    setup = function()
       vim.g.polyglot_disabled = { 'yaml', 'markdown' }
     end,
   }
