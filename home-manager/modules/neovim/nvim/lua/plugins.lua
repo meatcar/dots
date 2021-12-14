@@ -468,6 +468,9 @@ local function utilities(use)
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
             },
           },
+          cache_picker = {
+            num_pickers = 1,
+          },
         },
         extensions = {
           fzf = {
