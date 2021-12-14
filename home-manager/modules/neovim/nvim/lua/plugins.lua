@@ -2,8 +2,8 @@
 -- Bootstrap
 _G.vim = vim
 local fn = vim.fn
-_G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer', 'Mundo' }
-local sidebars = _G.me.sidebars
+_G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer', 'Mundo' }
+local sidebars = _G.me.o.sidebars
 
 -- bootstrap packer if not installed
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -128,7 +128,7 @@ local function lsp(use)
   }
 
   use { -- pretty LSP popups
-    'glepnir/lspsaga.nvim',
+    'tami5/lspsaga.nvim',
     config = function()
       require('lspsaga').init_lsp_saga {
         error_sign = '',
@@ -469,6 +469,9 @@ local function utilities(use)
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
             },
           },
+          cache_picker = {
+            num_pickers = 1,
+          },
         },
         extensions = {
           fzf = {
@@ -659,17 +662,16 @@ local function colorscheme(use)
   use {
     'marko-cerovac/material.nvim',
     config = function()
-      _G.me.material = {}
-      vim.cmd [[autocmd packer ColorSchemePre material lua me.material.onColorSchemePre()]]
-      function _G.me.material.onColorSchemePre()
-        _G.me.material.onOptionSetBackground()
+      vim.cmd [[autocmd packer ColorSchemePre material lua me.fn.autocmd_onColorSchemePre_material()]]
+      function _G.me.fn.autocmd_onColorSchemePre_material()
+        _G.me.fn.autocmd_onOptionSetBackground_material()
         vim.cmd [[augroup MaterialNvim]]
         vim.cmd [[  autocmd!]]
-        vim.cmd [[  autocmd OptionSet background lua me.material.onOptionSetBackground()]]
+        vim.cmd [[  autocmd OptionSet background lua me.material.autocmd_onOptionSetBackground_material()]]
         vim.cmd [[  autocmd ColorSchemePre * au! MaterialNvim]]
         vim.cmd [[augroup END]]
       end
-      function _G.me.material.onOptionSetBackground()
+      function _G.me.fn.autocmd_onOptionSetBackground_material()
         local background = vim.o.background
         if background == 'dark' then
           vim.g.material_style = 'deep ocean'
