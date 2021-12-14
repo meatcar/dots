@@ -14,16 +14,20 @@ if vim.g.vscode then
   return
 end
 
-_G.me = {}
-_G.me.packercompiled = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua'
+_G.me = {
+  o = {},
+  fn = {},
+}
 
-require 'impatient' --.enable_profile()
+-- require 'impatient' --.enable_profile()
 
 require 'config'
-require 'autocmd'
-require 'mappings'
+require 'commands'
+require 'autocmds'
+require 'keymaps'
 
+_G.me.o.packercompiled = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua'
 require 'plugins'
-if vim.fn.filereadable(_G.me.packercompiled) == 1 then
+if vim.fn.filereadable(_G.me.o.packercompiled) == 1 then
   require 'packer_compiled'
 end

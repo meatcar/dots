@@ -15,3 +15,7 @@ vim.cmd [[ autocmd vimrc ColorScheme * hi clear SignColumn \| hi! link SignColum
 
 -- spelling
 vim.cmd [[ autocmd vimrc FileType md,markdown,mail setlocal spell ]]
+
+-- terminal
+vim.cmd [[ autocmd vimrc TermOpen term://* startinsert ]]
+vim.cmd [[ autocmd vimrc TermClose term://* bdelete! ]]
