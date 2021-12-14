@@ -2,7 +2,6 @@
 -- Bootstrap
 _G.vim = vim
 local fn = vim.fn
-_G.me = {}
 _G.me.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'packer', 'Mundo' }
 local sidebars = _G.me.sidebars
 
@@ -34,6 +33,8 @@ local function base(use)
   use 'aymericbeaumet/symlink.vim' -- follow symlinks
   use 'ConradIrwin/vim-bracketed-paste' -- better paste in supported terminals
   use 'tweekmonster/startuptime.vim' -- debug slow vim startup times
+  use 'lewis6991/impatient.nvim' -- cache lua compiled modules
+  use 'axelf4/vim-strip-trailing-whitespace' -- strip whitespace on edited lines
 
   use { -- work with surrounding text
     'machakann/vim-sandwich',
@@ -103,28 +104,19 @@ local function lsp(use)
   use 'neovim/nvim-lspconfig'
 
   use { -- easily install new lsp servers
-    'kabouzeid/nvim-lspinstall',
+    'williamboman/nvim-lsp-installer',
     config = function()
-      local function setup_servers()
-        require('lspinstall').setup()
-        local servers = require('lspinstall').installed_servers()
+      local lsp_installer = require 'nvim-lsp-installer'
 
+      lsp_installer.on_server_ready(function(server)
         local cmp = require 'cmp'
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-        for _, server in pairs(servers) do
-          require('lspconfig')[server].setup { capabilities = capabilities }
-        end
-      end
-
-      setup_servers()
-
-      -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-      require('lspinstall').post_install_hook = function()
-        setup_servers() -- reload installed servers
-        vim.cmd 'bufdo e'
-      end
+        server:setup {
+          capabilities = capabilities,
+        }
+      end)
     end,
   }
 
@@ -178,7 +170,7 @@ local function completion(use)
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
+      -- 'hrsh7th/cmp-cmdline',
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-vsnip',
       'kristijanhusak/vim-dadbod-completion',
@@ -230,16 +222,16 @@ local function completion(use)
         },
       }
       -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
+      -- cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(':', {
-        sources = cmp.config.sources({
-          { name = 'path' },
-        }, {
-          { name = 'cmdline' },
-        }),
-      })
+      -- cmp.setup.cmdline(':', {
+      --   sources = cmp.config.sources({
+      --     { name = 'path' },
+      --   }, {
+      --     { name = 'cmdline' },
+      --   }),
+      -- })
     end,
   }
 
@@ -403,6 +395,7 @@ local function utilities(use)
 
   use {
     'luukvbaal/nnn.nvim',
+    cmd = { 'NnnPicker', 'NnnExplorer' },
     config = function()
       require('nnn').setup()
     end,
@@ -456,6 +449,7 @@ local function utilities(use)
       vim.fn.mkdir(history_path, 'p')
       require('telescope').setup {
         defaults = {
+          winblend = 10,
           -- TODO: Borken, see https://github.com/nvim-telescope/telescope.nvim/issues/840
           -- sorting_strategy = 'ascending',
           layout_strategy = 'vertical',
@@ -532,13 +526,6 @@ local function pretty(use)
 
   use 'romainl/vim-cool' -- smart set nohl after we're done searching
 
-  use { --popup ui for obscure keys
-    'folke/which-key.nvim',
-    config = function()
-      require 'modules/which-key'
-    end,
-  }
-
   use { -- startup screen
     'mhinz/vim-startify',
     requires = 'ryanoasis/vim-devicons', -- pretty icons
@@ -578,14 +565,6 @@ local function pretty(use)
     'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup()
-    end,
-  }
-
-  use { -- a pretty bufferline
-    'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require 'modules/bufferline'
     end,
   }
 
@@ -861,7 +840,9 @@ local function load_plugins(use)
   end
 
   local modules = {
+    'which-key',
     'lualine',
+    'bufferline',
   }
   for _, mod in ipairs(modules) do
     local M = require('modules/' .. mod)
@@ -880,5 +861,7 @@ return require('packer').startup {
       enable = true,
       threshold = 1,
     },
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = _G.me.packercompiled,
   },
 }

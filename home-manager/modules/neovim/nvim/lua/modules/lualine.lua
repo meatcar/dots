@@ -47,7 +47,7 @@ function M.config()
       },
     },
     lualine_x = {
-      { 'diagnostics', sources = { 'nvim_lsp', 'ale' } },
+      { 'diagnostics', sources = { 'nvim_diagnostic', 'ale' } },
       { 'filetype' },
       {
         'encoding',
