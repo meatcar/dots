@@ -115,6 +115,7 @@ local function lsp(use)
 
         server:setup {
           capabilities = capabilities,
+          on_attach = _G.me.fn.keymap_lsp_on_attach,
         }
       end)
     end,
@@ -139,8 +140,6 @@ local function lsp(use)
           enable = false,
         },
       }
-      vim.cmd [[nnoremap <silent> <Down> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]]
-      vim.cmd [[nnoremap <silent> <Up> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]]
     end,
   }
 
@@ -468,9 +467,6 @@ local function utilities(use)
               ['<C-Down>'] = require('telescope.actions').cycle_history_next,
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
             },
-          },
-          cache_picker = {
-            num_pickers = 1,
           },
         },
         extensions = {
