@@ -85,10 +85,11 @@ local M = {
         c = { '<Cmd>Telescope colorscheme<CR>', 'Colorscheme' },
         f = { '<Cmd>Telescope filetypes<CR>', 'Filetype' },
         u = { '<Cmd>MundoToggle<CR>', 'Undo' },
-        r = { '<Cmd>RainbowParenthesesToggle<CR>', 'Rainbow parens' },
+        p = { '<Cmd>RainbowParenthesesToggle<CR>', 'Rainbow parens' },
         i = { '<Cmd>IndentBlanklineToggle<CR>', 'Indent highlight' },
         l = { '<Cmd>TroubleToggle<CR>', 'LSP' },
         t = { [[<Cmd>Lspsaga open_floaterm $SHELL<CR>]], 'Terminal' },
+        r = { '<Cmd>Telescope resume<CR>', 'Telescope resume' },
       }
       leadermap_t.t = {
         name = leadermap.t.name,
