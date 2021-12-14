@@ -16,8 +16,9 @@
     extraConfig = ''
       let g:parinfer_dylib_path = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so"
 
-      ${builtins.readFile ./init.vim}
+      lua require('init')
     '';
+
     extraPackages = [
       pkgs.luajitPackages.luarocks
     ];
