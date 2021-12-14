@@ -1,6 +1,9 @@
 { config, lib, pkgs, specialArgs, ... }:
 {
-  imports = [ ./single-user.nix ];
+  imports = [
+    ./single-user.nix
+    # ../../home-manager/modules/distributed.nix
+  ];
 
 
   home.file.nixConf.text = ''
