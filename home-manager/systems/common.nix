@@ -1,6 +1,23 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
-  home.stateVersion = "20.09";
+  imports = [
+    ../modules/nix-flakes.nix
+    ../modules/cachix.nix
+    ../modules/man
+    ../modules/git
+    ../modules/fish
+    ../modules/ssh
+    ../modules/direnv
+    ../modules/tmux
+    ../modules/neovim
+    ../modules/weechat
+    ../modules/leiningen
+    ../modules/clojure
+    ../modules/emacs
+    ../modules/nnn
+    ../modules/kakoune
+  ];
+
   home.packages = builtins.attrValues {
     inherit (pkgs)
       curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq

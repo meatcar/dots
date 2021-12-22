@@ -1,21 +1,13 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [
-    ../modules/base.nix
-    ../modules/nix-flakes.nix
-    ../modules/cachix.nix
-    ../modules/man
-    ../modules/git
-    ../modules/fish
-    ../modules/ssh
-    ../modules/direnv
-    ../modules/tmux
-    ../modules/neovim
-    ../modules/weechat
-    ../modules/leiningen
-    ../modules/clojure
-    ../modules/emacs
-    ../modules/nnn
-    ../modules/kakoune
-  ];
+  # nixpkgs config
+  nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
+  nixpkgs.config = import ../config.nix;
+  xdg.configFile."nixpkgs/config.nix".text =
+    let
+      seqToString = lib.generators.toPretty { };
+      nixpkgsConfig = lib.filterAttrs (n: v: n != "packageOverrides") config.nixpkgs.config;
+    in
+    seqToString nixpkgsConfig;
+
 }
