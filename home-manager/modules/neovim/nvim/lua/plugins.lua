@@ -528,41 +528,6 @@ local function pretty(use)
 
   use 'romainl/vim-cool' -- smart set nohl after we're done searching
 
-  use { -- startup screen
-    'mhinz/vim-startify',
-    requires = 'ryanoasis/vim-devicons', -- pretty icons
-    config = function()
-      ---@diagnostic disable-next-line: redefined-local
-      local fn = vim.fn
-      vim.g.startify_custom_indices = fn.map(fn.range(1, 100), 'string(v:val)') -- start with 1
-      vim.g.startify_session_dir = fn.stdpath 'cache' .. '/session'
-      vim.g.startify_skiplist = {
-        'COMMIT_EDITMSG',
-        'pack/.*/doc',
-        fn.escape(fn.fnamemodify(fn.resolve(vim.env.VIMRUNTIME), ':p'), '\\') .. 'doc',
-      }
-      vim.g.startify_custom_footer = { '', [[   Vim is charityware. Please read ':help uganda'.]], '' }
-      vim.g.startify_custom_header = {
-        '',
-        [[    __   _(_)_ __ ___  ]],
-        [[    \ \ / / | '_ ` _ \ ]],
-        [[     \ V /| | | | | | |]],
-        [[   n  \_/ |_|_| |_| |_|]],
-      }
-      vim.g.startify_session_autoload = true
-      vim.g.startify_session_persistence = true
-      vim.g.startify_session_delete_buffers = true
-      vim.g.startify_change_to_vcs_root = true
-      vim.cmd [[autocmd packer User Startified setlocal buftype=nofile]]
-      -- devicons
-      vim.cmd [[
-        function! StartifyEntryFormat()
-            return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-        endfunction
-      ]]
-    end,
-  }
-
   use { -- smooth scrolling
     'karb94/neoscroll.nvim',
     config = function()
