@@ -88,6 +88,7 @@
               buildInputs = with pkgs; [
                 (import inputs.home-manager { inherit pkgs; }).home-manager
                 nixFlakes
+                git
                 (nixos-rebuild.override { nix = nixFlakes; })
                 stow
               ];
@@ -100,18 +101,35 @@
           })
       //
       {
-        nixosConfigurations = {
-          tormund = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = specialArgs;
-            modules = [
-              { nixpkgs = nixpkgsConfig; }
-              inputs.home-manager.nixosModules.home-manager
-              { home-manager.extraSpecialArgs = specialArgs; }
-              ./configuration.nix
+        nixosConfigurations =
+          let
+            mkSystem = extraModules: (
+              inputs.nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = specialArgs;
+                modules = extraModules ++ [
+                  { nixpkgs = nixpkgsConfig; }
+                  inputs.home-manager.nixosModules.home-manager
+                  { home-manager.extraSpecialArgs = specialArgs; }
+                ];
+              });
+          in
+          {
+            tormund = mkSystem [ ./systems/tormund ];
+            mormont = mkSystem [
+              ./systems/wsl-nixos
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.meatcar = { ... }: {
+                  imports = [
+                    ./home-manager/systems/common.nix
+                  ];
+                  home.stateVersion = "21.05";
+                };
+              }
             ];
           };
-        };
         homeConfigurations = {
           meatcar = inputs.home-manager.lib.homeManagerConfiguration rec {
             system = "x86_64-linux";
@@ -121,6 +139,7 @@
             configuration = { ... }: {
               imports = [ ./home.nix ];
               nixpkgs = nixpkgsConfig;
+              home.stateVersion = "20.09";
             };
           };
         };
