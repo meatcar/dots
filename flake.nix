@@ -124,6 +124,7 @@
                 home-manager.users.meatcar = { ... }: {
                   imports = [
                     ./home-manager/systems/common.nix
+                    ./home-manager/modules/keychain.nix
                   ];
                   home.stateVersion = "21.05";
                 };
