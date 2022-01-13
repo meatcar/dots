@@ -1,4 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  gitmessage = pkgs.writeText "gitmessage" ''
+
+    # type(scope): applying this commit will...
+    # type: build ci chore docs feat fix perf refactor revert style test
+    # !: breaking change
+    #
+    # What, Why, not how.
+  '';
+in
+{
   imports = [ ../mr ];
 
   programs.git = {
@@ -7,6 +18,10 @@
     userEmail = "me@denys.me";
     userName = "Denys Pavlov";
     includes = [{ path = ./config; }];
+    extraConfig =
+      {
+        commit.template = "${gitmessage}";
+      };
     attributes = [
       "*.c     diff=cpp"
       "*.h     diff=cpp"
