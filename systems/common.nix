@@ -5,10 +5,14 @@
     ../modules/nix.nix
   ];
 
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes";
+  # using nix-index instead in home-manager
+  programs.command-not-found.enable = false;
+
+  documentation = {
+    man.enable = true;
+    man.generateCaches = true;
+    nixos.enable = true;
+    dev.enable = true;
   };
 
   fonts = {

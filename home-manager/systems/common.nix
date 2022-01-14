@@ -16,6 +16,7 @@
     ../modules/emacs
     ../modules/nnn
     ../modules/kakoune
+    ../modules/nix-index
   ];
 
   home.packages = builtins.attrValues {

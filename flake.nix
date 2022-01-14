@@ -105,8 +105,8 @@
           let
             mkSystem = extraModules: (
               inputs.nixpkgs.lib.nixosSystem {
+                inherit specialArgs;
                 system = "x86_64-linux";
-                specialArgs = specialArgs;
                 modules = extraModules ++ [
                   { nixpkgs = nixpkgsConfig; }
                   inputs.home-manager.nixosModules.home-manager
@@ -116,7 +116,7 @@
           in
           {
             tormund = mkSystem [ ./systems/tormund ];
-            mormont = mkSystem [
+            nixos = mkSystem [
               ./systems/wsl-nixos
               {
                 home-manager.useGlobalPkgs = true;

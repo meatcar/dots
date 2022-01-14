@@ -7,13 +7,11 @@ let
 in
 {
   imports = [
-    "${modulesPath}/profiles/minimal.nix"
     ../common.nix
   ];
 
   # WSL is closer to a container than anything else
   boot.isContainer = true;
-  environment.noXlibs = false;
 
   environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
