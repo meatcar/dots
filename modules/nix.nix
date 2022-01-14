@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   nixpkgs = {
     config = {
@@ -6,9 +6,9 @@
       pulseaudio = true;
     };
   };
-  documentation.dev.enable = true;
 
   nix = {
+    trustedUsers = [ "root" "@wheel" ];
     autoOptimiseStore = true;
     gc = {
       automatic = true;
@@ -19,9 +19,12 @@
       automatic = true;
       dates = [ "daily" ];
     };
+    package = lib.mkDefault pkgs.nixFlakes;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
+      ${ lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes" }
     '';
   };
 }
