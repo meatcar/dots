@@ -53,7 +53,7 @@ in
 
   home.packages = builtins.attrValues {
     inherit (pkgs.gitAndTools) lab hub delta;
-    inherit (pkgs) lazygit;
+    inherit (pkgs) lazygit glab;
     inherit (pkgs) gh; # FIXME: https://github.com/nix-community/home-manager/issues/1654
   };
 
