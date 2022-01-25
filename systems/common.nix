@@ -44,12 +44,6 @@
   };
   gtk.iconCache.enable = true;
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    autoPrune.enable = true;
-  };
-
   xdg = {
     icons.enable = true;
     mime.enable = true;

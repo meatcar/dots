@@ -8,6 +8,7 @@ in
 {
   imports = [
     ../common.nix
+    ../../modules/docker.nix
   ];
 
   # WSL is closer to a container than anything else
@@ -18,9 +19,13 @@ in
 
   networking.dhcpcd.enable = false;
 
+  networking.nftables.enable = false;
+  networking.firewall.enable = true;
+  networking.firewall.package = pkgs.iptables-legacy;
+
   users.users.${defaultUser} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.fish;
   };
 
@@ -38,7 +43,7 @@ in
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@".enable = false;
 
-  systemd.services.firewall.enable = false;
+  # systemd.services.firewall.enable = false;
   systemd.services.systemd-resolved.enable = false;
   systemd.services.systemd-udevd.enable = false;
 
