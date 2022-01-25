@@ -16,6 +16,7 @@
     ../../modules/egpu
     ../../modules/dualboot.nix
     ../../modules/ly.nix
+    ../../modules/docker.nix
     # ../../modules/fingerprint.nix
   ];
 
