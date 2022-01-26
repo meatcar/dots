@@ -37,7 +37,7 @@ function M.config()
     lualine_c = {
       {
         'diff',
-        symbols = { added = ' ', modified = ' ', removed = ' ' },
+        symbols = { added = ' ', modified = '● ', removed = ' ' },
       },
       {
         'filename',

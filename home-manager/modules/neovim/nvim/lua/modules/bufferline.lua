@@ -15,17 +15,17 @@ local M = {
         options = {
           view = 'multiwindow',
           numbers = 'none',
-          buffer_close_icon = '',
+          buffer_close_icon = '✕',
           modified_icon = '●',
           close_icon = '',
-          left_trunc_marker = '',
-          right_trunc_marker = '',
+          left_trunc_marker = '',
+          right_trunc_marker = '',
           max_name_length = 18,
           max_prefix_length = 15,
           tab_size = 18,
           diagnostics = 'nvim_lsp',
           diagnostics_indicator = function(count, level)
-            local icon = level:match 'error' and ' ' or ' '
+            local icon = level:match 'error' and ' ' or ' '
             return icon .. count
           end,
           offsets = {
@@ -45,7 +45,7 @@ local M = {
             },
             items = {
               {
-                name = '  Tests',
+                name = '  Tests',
                 matcher = function(buf)
                   local patterns = { 'test%', '%.test.%', '%_spec' }
                   for _, pat in ipairs(patterns) do

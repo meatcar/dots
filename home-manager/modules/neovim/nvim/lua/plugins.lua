@@ -132,8 +132,8 @@ local function lsp(use)
     'tami5/lspsaga.nvim',
     config = function()
       require('lspsaga').init_lsp_saga {
-        error_sign = '',
-        warn_sign = '',
+        error_sign = '',
+        warn_sign = '',
         hint_sign = '',
         infor_sign = '',
         code_action_prompt = {
@@ -579,7 +579,7 @@ local function pretty(use)
   use { -- pretty fold texts
     'jrudess/vim-foldtext',
     config = function()
-      vim.g.FoldText_line = ''
+      vim.g.FoldText_line = '' -- 
       vim.g.FoldText_multiplication = ' '
     end,
   }
