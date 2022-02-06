@@ -8,8 +8,10 @@
   };
 
   nix = {
-    trustedUsers = [ "root" "@wheel" ];
-    autoOptimiseStore = true;
+    settings = {
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = true;
+    };
     gc = {
       automatic = true;
       dates = "daily";
