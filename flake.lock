@@ -34,11 +34,11 @@
     },
     "declarative-cachix": {
       "locked": {
-        "lastModified": 1625560633,
-        "narHash": "sha256-Uhg950dgJiytcaecOJ3KB2MWDOdtUEogVyon9m6J/3g=",
+        "lastModified": 1644208524,
+        "narHash": "sha256-BW43hqKBxNNMrgUnn6D53useE8f4/yz66bvCzwUbueQ=",
         "owner": "jonascarpay",
         "repo": "declarative-cachix",
-        "rev": "1986455ab3e55804458bf6e7d2a5f5b8a68defce",
+        "rev": "b63e9cb0d0962656d08fb4668a5b6b1ba1ca5648",
         "type": "github"
       },
       "original": {
