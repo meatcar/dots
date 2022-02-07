@@ -257,7 +257,14 @@ local function git(use)
   use 'rbong/vim-flog' -- pretty git log
   use 'Odie/gitabra' -- magit-like git ui
   use 'mattn/webapi-vim' -- for vim-gist
-  use 'ruifm/gitlinker.nvim' -- generate a link to file on git remote site
+
+  use { -- generate a link to file on git remote site
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('gitlinker').setup()
+    end,
+  }
 
   use { -- tight git integration
     'tpope/vim-fugitive',
