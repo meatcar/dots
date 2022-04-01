@@ -42,6 +42,7 @@
       };
     };
   };
+
   gtk.iconCache.enable = true;
 
   xdg = {

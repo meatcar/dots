@@ -22,6 +22,7 @@
   home-manager.users.meatcar = { pkgs, ... }: {
     imports = [
       ../home-manager/systems/single-user.nix
+      ../home-manager/modules/gtk.nix
       ../home-manager/modules/gnome-keyring.nix
       ../home-manager/modules/egpu.nix
       ../home-manager/modules/sway
@@ -57,16 +58,6 @@
         keybase.enable = true;
         kbfs.enable = true;
         udiskie.enable = true;
-      };
-
-      gtk = {
-        enable = true;
-        iconTheme.package = pkgs.papirus-icon-theme;
-        iconTheme.name = "Papirus";
-        theme.package = pkgs.pop-gtk-theme;
-        theme.name = "Pop-dark";
-        font.package = pkgs.inter;
-        font.name = "Inter 9";
       };
 
       programs.neovim.package = lib.mkForce pkgs.neovim-unwrapped;
