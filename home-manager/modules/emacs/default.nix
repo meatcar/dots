@@ -13,10 +13,11 @@
     pkgs.python3
     pkgs.pandoc
     pkgs.xdg_utils
+    pkgs.unzip
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsUnstable;
+    package = pkgs.emacsPgtkGcc;
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
   programs.fish = {
