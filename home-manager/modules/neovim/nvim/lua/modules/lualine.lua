@@ -71,6 +71,7 @@ function M.config()
       theme = 'auto',
       section_separators = '',
       component_separators = '',
+      globalstatus = true,
     },
     sections = sections,
     inactive_sections = {
