@@ -7,13 +7,16 @@
     nix-direnv.enable = true;
     stdlib = ''
       # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
+      # Takes a session name as an argument, defaulting to the directory name instead
+      tmux_session(){
+        TMUX_SESSION_NAME=''${*:-$(basename "$PWD")}
+        # tmux doesn't like dots in session name
+        export TMUX_SESSION_NAME=$(echo "$TMUX_SESSION_NAME" | tr . -)
+      }
+
       session_name(){
-        if [ -z "$*" ]; then
-          echo session_name needs a name as argument >&2
-          exit 1
-        else
-          export TMUX_SESSION_NAME="$*"
-        fi
+        echo "direnv: 'session_name [...]' is deprecated, use just 'tmux_session' instead" >&2
+        tmux_session "''${@:?session_name needs a name as argument}"
       }
 
       # store .direnv outside project dir
@@ -36,15 +39,15 @@
 
   programs.fish = {
     interactiveShellInit = ''
-      function autotmux --on-variable=TMUX_SESSION_NAME --description="autostart tmux when session gets set"
-        set -l name (echo "$TMUX_SESSION_NAME" | tr '.' '-')
-        if test -n "$name" && \
+      # NOTE: Can't be in functions dir because of load order (I think...)
+      #       needs to be loaded before direnv is hooked in
+      function autotmux --on-variable=TMUX_SESSION_NAME \
+          --description="autostart tmux when session name is set"
+        if test -n "$TMUX_SESSION_NAME" && \
             test -z "$TMUX" && \
             command -s tmux >/dev/null
-          if not tmux has-session -t "$name"
-            tmux new-session -d -s "$name"
-          end
-          tmux new-session -t "$name"
+            echo "starting session $TMUX_SESSION_NAME" >&2
+          tmux new-session -t "$TMUX_SESSION_NAME"
         end
       end
 
