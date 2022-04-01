@@ -125,6 +125,7 @@
                   imports = [
                     ./home-manager/systems/common.nix
                     ./home-manager/modules/keychain.nix
+                    ./home-manager/modules/gtk.nix
                   ];
                   home.stateVersion = "21.05";
                 };
