@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+  env_store = "~/Sync/backup/dev/env";
+in
 {
   programs.git.ignores = [ ".direnv/" ];
 
@@ -53,6 +56,26 @@
 
       direnv hook fish | source
     '';
+
+    functions.link_env = {
+      description = "symlink a .env file from the env store to this directory";
+      body = ''
+        set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+        if test -f "$env_file"
+          ln -s "$env_file" .env
+        end
+      '';
+    };
+    functions.backup_env = {
+      description = "backup a .env file replacing it with a symlink";
+      body = ''
+        set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+        if test ! -f "$env_file"
+          mv -i .env "$env_file"
+          link_env
+        end
+      '';
+    };
   };
 
 }
