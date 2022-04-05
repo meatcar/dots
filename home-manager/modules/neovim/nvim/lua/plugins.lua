@@ -248,6 +248,17 @@ local function completion(use)
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   }
+
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()',
+    config = function()
+      vim.g.doge_javascript_settings = {
+        destructuring_props = true,
+        omit_redundant_param_types = true,
+      }
+    end,
+  }
 end
 
 local function git(use)
