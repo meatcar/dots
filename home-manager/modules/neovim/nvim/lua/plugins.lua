@@ -465,6 +465,7 @@ local function utilities(use)
     config = function()
       local history_path = vim.fn.stdpath 'data' .. '/databases'
       vim.fn.mkdir(history_path, 'p')
+      local trouble = require 'trouble.providers.telescope'
       require('telescope').setup {
         defaults = {
           winblend = 10,
@@ -485,7 +486,9 @@ local function utilities(use)
             i = {
               ['<C-Down>'] = require('telescope.actions').cycle_history_next,
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
+              ['<c-t>'] = trouble.open_with_trouble,
             },
+            n = { ['<c-t>'] = trouble.open_with_trouble },
           },
           cache_picker = {
             num_pickers = 1,
