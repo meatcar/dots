@@ -11,7 +11,7 @@
     enable = true;
     automountPath = "/mnt";
     defaultUser = "meatcar";
-    startMenuLaunchers = true;
+    startMenuLaunchers = false; # we do it ourselves
     wslConf = {
       network.hostname = "nixos";
     };
@@ -23,4 +23,16 @@
     shell = pkgs.fish;
     extraGroups = [ "docker" ];
   };
+
+  system.activationScripts.copy-launchers =
+    pkgs.lib.stringAfter [ ] ''
+      for x in applications icons; do
+        echo "Copying /usr/share/$x"
+        mkdir -p /usr/share/$x
+        ${pkgs.rsync}/bin/rsync -a --delete $systemConfig/sw/share/$x/. /usr/share/$x
+        ${pkgs.rsync}/bin/rsync -a /nix/var/nix/profiles/per-user/${config.wsl.defaultUser}/home-manager/home-path/share/$x/. /usr/share/$x
+      done
+    '';
+
+  environment.systemPackages = [ pkgs.wget ];
 }
