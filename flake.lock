@@ -394,8 +394,25 @@
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nnn": "nnn",
         "plug-kak": "plug-kak",
+        "vscode-server": "vscode-server",
         "wsl-open": "wsl-open",
         "z": "z"
+      }
+    },
+    "vscode-server": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648830510,
+        "narHash": "sha256-U+UGKbZajc2NqDvBL7hCYshAiaXgiBv5rNFIqLl0X7M=",
+        "owner": "msteen",
+        "repo": "nixos-vscode-server",
+        "rev": "d2343b5eb47b811856085f3eff4d899a32b2c136",
+        "type": "github"
+      },
+      "original": {
+        "owner": "msteen",
+        "repo": "nixos-vscode-server",
+        "type": "github"
       }
     },
     "wsl-open": {
