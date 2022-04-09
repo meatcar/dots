@@ -123,6 +123,7 @@
           {
             tormund = mkSystem [ ./systems/tormund ];
             nixos = mkSystem [
+              { system.stateVersion = "21.11"; }
               ./systems/wsl-nixos
               {
                 home-manager.useGlobalPkgs = true;
@@ -134,8 +135,8 @@
                     ./home-manager/modules/gtk.nix
                     "${inputs.vscode-server}/modules/vscode-server/home.nix"
                   ];
-                  home.stateVersion = "21.05";
                   services.vscode-server.enable = true;
+                  home.stateVersion = "21.11";
                 };
               }
             ];
