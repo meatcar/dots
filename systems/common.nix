@@ -9,6 +9,7 @@
   programs.command-not-found.enable = false;
 
   documentation = {
+    enable = true;
     man.enable = true;
     man.generateCaches = true;
     nixos.enable = true;
