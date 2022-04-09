@@ -55,6 +55,10 @@
         url = "github:jarun/nnn";
         flake = false;
       };
+      vscode-server = {
+        url = "github:msteen/nixos-vscode-server";
+        flake = false;
+      };
     };
 
 
@@ -128,8 +132,10 @@
                     ./home-manager/systems/common.nix
                     ./home-manager/modules/keychain.nix
                     ./home-manager/modules/gtk.nix
+                    "${inputs.vscode-server}/modules/vscode-server/home.nix"
                   ];
                   home.stateVersion = "21.05";
+                  services.vscode-server.enable = true;
                 };
               }
             ];
