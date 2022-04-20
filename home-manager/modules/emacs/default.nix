@@ -1,19 +1,32 @@
 { config, pkgs, lib, ... }:
 {
   fonts.fontconfig.enable = lib.mkDefault true;
-  home.packages = [
-    pkgs.fontconfig
-    (pkgs.nerdfonts.override {
+  home.packages = with pkgs; [
+    fontconfig
+    (nerdfonts.override {
       fonts = [ "Go-Mono" ];
     })
-    pkgs.google-fonts
-    pkgs.dejavu_fonts
-    pkgs.symbola
-    pkgs.emacs-all-the-icons-fonts
-    pkgs.python3
-    pkgs.pandoc
-    pkgs.xdg_utils
-    pkgs.unzip
+    google-fonts
+    noto-fonts-emoji
+    dejavu_fonts
+    symbola
+    emacs-all-the-icons-fonts
+    python3
+    pandoc
+    xdg_utils
+    unzip
+
+    # LSP Servers
+    rnix-lsp
+    gopls
+    elixir_ls
+    python3Packages.python-lsp-server
+    clojure-lsp
+    rls
+    sqls
+    terraform-ls
+    yaml-language-server
+    zls
   ];
   programs.emacs = {
     enable = true;
