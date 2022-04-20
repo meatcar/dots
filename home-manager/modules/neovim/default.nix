@@ -46,5 +46,6 @@
     tree-sitter
     glow
     stylua
+    cargo
   ];
 }
