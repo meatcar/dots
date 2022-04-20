@@ -15,7 +15,7 @@ in
     ../fzf
   ];
   home.packages = with pkgs; [ bat fasd fd any-nix-shell ];
-  home.sessionVariables = { BAT_THEME = "base16"; };
+  home.sessionVariables = { BAT_THEME = "ansi"; };
 
   programs.fish = {
     enable = true;
@@ -27,7 +27,6 @@ in
     plugins = [
       { name = "z"; src = specialArgs.inputs.z; }
       { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
-      # TODO: fzf.fish is out of date in nixpkgs
       { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
       { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
       { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }

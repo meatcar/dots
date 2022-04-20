@@ -26,6 +26,7 @@
 [diff]
   algorithm = patience
   tool = nvimdiff
+  colorMoved = default
 [difftool]
   prompt = true
 [difftool "nvimdiff"]
@@ -59,3 +60,5 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only
+[delta]
+  navigate = true
