@@ -55,7 +55,7 @@
         url = "github:jarun/nnn";
         flake = false;
       };
-      vscode-server = {
+     vscode-server = {
         url = "github:msteen/nixos-vscode-server";
         flake = false;
       };
@@ -136,6 +136,7 @@
                     "${inputs.vscode-server}/modules/vscode-server/home.nix"
                   ];
                   services.vscode-server.enable = true;
+                  programs.fish.interactiveShellInit = "set -x COLORTERM truecolor";
                   home.stateVersion = "21.11";
                 };
               }
