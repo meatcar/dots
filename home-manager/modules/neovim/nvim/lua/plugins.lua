@@ -506,7 +506,7 @@ local function utilities(use)
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'smart_history'
       vim.cmd [[
-        command! Ctrlp execute (exists("*fugitive#head") && len(fugitive#head())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
+        command! Ctrlp execute (exists("*FugitiveHead()") && len(FugitiveHead())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
         nnoremap <C-p>      <Cmd>Ctrlp<CR>
       ]]
     end,
