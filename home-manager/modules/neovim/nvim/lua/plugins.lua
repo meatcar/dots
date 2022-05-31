@@ -625,74 +625,67 @@ local function pretty(use)
 end
 
 local function colorscheme(use)
-  _G.colorscheme = {}
+  vim.cmd [[autocmd packer ColorScheme * lua require('lualine').setup()]]
+  vim.cmd [[autocmd packer OptionSet background lua me.fn.autocmd_onOptionSetBackground()]]
+  function _G.me.fn.autocmd_onOptionSetBackground()
+    if vim.o.background == 'dark' then
+      vim.cmd [[Catppuccin mocha]]
+    else
+      vim.cmd [[Catppuccin latte]]
+    end
+  end
+
   use 'liuchengxu/space-vim-theme'
 
   use 'NLKNguyen/papercolor-theme'
 
   use 'bluz71/vim-moonfly-colors'
 
-  use 'https://gitlab.com/protesilaos/tempus-themes-vim' -- accessible themes
-  vim.g.tempus_enforce_background_color = true
-
   use {
-    'npxbr/gruvbox.nvim',
-    requires = 'rktjmp/lush.nvim',
-  }
-  vim.g.gruvbox_italic = true
-  vim.g.gruvbox_invert_selection = false
-  vim.g.gruvbox_contrast_dark = 'hard'
-  vim.g.gruvbox_sign_column = 'bg0'
-  vim.g.gruvbox_color_column = 'bg0'
-
-  use {
-    'marko-cerovac/material.nvim',
-    config = function()
-      vim.cmd [[autocmd packer ColorSchemePre material lua me.fn.autocmd_onColorSchemePre_material()]]
-      function _G.me.fn.autocmd_onColorSchemePre_material()
-        _G.me.fn.autocmd_onOptionSetBackground_material()
-        vim.cmd [[augroup MaterialNvim]]
-        vim.cmd [[  autocmd!]]
-        vim.cmd [[  autocmd OptionSet background lua me.material.autocmd_onOptionSetBackground_material()]]
-        vim.cmd [[  autocmd ColorSchemePre * au! MaterialNvim]]
-        vim.cmd [[augroup END]]
-      end
-      function _G.me.fn.autocmd_onOptionSetBackground_material()
-        local background = vim.o.background
-        if background == 'dark' then
-          vim.g.material_style = 'deep ocean'
-        else
-          vim.g.material_style = 'lighter'
-        end
-        vim.cmd [[colorscheme material]]
-        vim.o.background = background -- restore background, since the theme always sets it to dark
-      end
-      vim.cmd [[colorscheme material]]
+    'https://gitlab.com/protesilaos/tempus-themes-vim', -- accessible themes
+    setup = function()
+      vim.g.tempus_enforce_background_color = true
     end,
   }
-  vim.g.material_lighter_contrast = true
+
+  use {
+    'ellisonleao/gruvbox.nvim',
+    requires = 'rktjmp/lush.nvim',
+    setup = function()
+      vim.g.gruvbox_italic = true
+      vim.g.gruvbox_invert_selection = false
+      vim.g.gruvbox_contrast_dark = 'hard'
+      vim.g.gruvbox_sign_column = 'bg0'
+      vim.g.gruvbox_color_column = 'bg0'
+    end,
+  }
+  use {
+    'marko-cerovac/material.nvim',
+    setup = function()
+      vim.g.material_lighter_contrast = true
+    end,
+  }
 
   use {
     'folke/tokyonight.nvim',
+  }
+  use {
+    'projekt0n/github-nvim-theme',
+    setup = function()
+      vim.g.github_sidebars = sidebars
+    end,
     config = function()
-      -- vim.cmd [[colorscheme tokyonight]]
+      vim.cmd [[colorscheme github_dimmed]]
     end,
   }
-  if vim.o.background == 'dark' then
-    vim.g.tokyonight_style = 'night'
-  end
 
-  use 'projekt0n/github-nvim-theme'
-  function _G.colorscheme.github()
-    vim.g.colors_name = 'github'
-    require('github-theme').setup {
-      themeStyle = vim.o.background,
-      sidebars = sidebars,
-    }
-  end
-
-  vim.cmd [[autocmd packer ColorScheme github ++nested lua colorscheme.github()]]
-  vim.cmd [[autocmd packer ColorScheme * lua require('lualine').setup()]]
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    setup = function()
+      vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
+    end,
+  }
 end
 
 local function syntax(use)
