@@ -19,8 +19,12 @@
       lua require('init')
     '';
 
-    extraPackages = [
-      pkgs.luajitPackages.luarocks
+    extraPackages = with pkgs; [
+      luajitPackages.luarocks
+
+      # lsps
+      rnix-lsp
+      sumneko-lua-language-server
     ];
   };
 
