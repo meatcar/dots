@@ -30,7 +30,7 @@
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkGcc;
+    package = pkgs.emacsPgtkNativeComp;
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
   programs.fish = {
