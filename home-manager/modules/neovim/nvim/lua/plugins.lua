@@ -411,11 +411,13 @@ local function utilities(use)
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      vim.g.nvim_tree_git_hl = true
-      vim.g.nvim_tree_add_trailing = true
       require('nvim-tree').setup {
         -- disable conflict with dirvish
         update_to_buf_dir = { enable = false },
+        renderer = {
+          highlight_git = true,
+          add_trailing = true,
+        },
       }
     end,
   }
