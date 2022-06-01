@@ -101,23 +101,32 @@ local function snippets(use)
 end
 
 local function lsp(use)
-  use 'neovim/nvim-lspconfig'
-
   use { -- easily install new lsp servers
     'williamboman/nvim-lsp-installer',
+    requires = 'neovim/nvim-lspconfig',
     config = function()
-      local lsp_installer = require 'nvim-lsp-installer'
+      local lspinstaller = require 'nvim-lsp-installer'
+      lspinstaller.setup {}
 
-      lsp_installer.on_server_ready(function(server)
-        local cmp = require 'cmp'
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+      -- setup default lsp config
+      require 'cmp'
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-        server:setup {
-          capabilities = capabilities,
-          on_attach = _G.me.fn.keymap_lsp_on_attach,
-        }
-      end)
+      local lspconfig = require 'lspconfig'
+      local util = require 'lspconfig.util'
+      util.default_config = vim.tbl_extend('force', util.default_config, {
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          _G.me.fn.illuminate_lsp_on_attach(client, bufnr)
+          _G.me.fn.keymap_lsp_on_attach(client, bufnr)
+        end,
+      })
+
+      -- setup individual lsp servers
+      for _, server in ipairs(lspinstaller.get_installed_servers()) do
+        lspconfig[server.name].setup {}
+      end
     end,
   }
 
@@ -583,6 +592,7 @@ local function pretty(use)
   use { -- highlight word under cursor
     'RRethy/vim-illuminate',
     config = function()
+      vim.g.Illuminate_ftblacklist = sidebars
       vim.api.nvim_set_keymap(
         'n',
         '<a-n>',
@@ -595,6 +605,9 @@ local function pretty(use)
         '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>',
         { noremap = true }
       )
+      function _G.me.fn.illuminate_lsp_on_attach(client, _)
+        require('illuminate').on_attach(client)
+      end
     end,
   }
 
