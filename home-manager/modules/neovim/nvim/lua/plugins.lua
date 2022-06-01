@@ -449,11 +449,14 @@ local function utilities(use)
   use { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      vim.g.indent_blankline_char = '▏'
-      vim.g.indent_blankline_space_char_blankline = ' '
-      vim.g.indent_blankline_use_treesitter = false
-      vim.g.indent_blankline_show_current_context = true
-      vim.g.indent_blankline_filetype_exclude = sidebars
+      require('indent_blankline').setup {
+        char_list = { '¦', '┆', '┊', '▏' },
+        space_char_blankline = ' ',
+        use_treesitter = true,
+        show_current_context = true,
+        show_current_context_start = true,
+        filetype_exclude = sidebars,
+      }
     end,
   }
 
