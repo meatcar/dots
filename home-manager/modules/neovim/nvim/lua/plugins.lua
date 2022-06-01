@@ -675,7 +675,7 @@ local function colorscheme(use)
       vim.g.github_sidebars = sidebars
     end,
     config = function()
-      vim.cmd [[colorscheme github_dimmed]]
+      -- vim.cmd [[colorscheme github_dimmed]]
     end,
   }
 
@@ -684,6 +684,19 @@ local function colorscheme(use)
     as = 'catppuccin',
     setup = function()
       vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
+    end,
+    config = function()
+      require('catppuccin').setup {
+        integrations = {
+          lsp_trouble = true,
+          lsp_saga = true,
+          which_key = true,
+          nvimtree = {
+            enabled = true,
+          },
+        },
+      }
+      vim.cmd [[colorscheme catppuccin]]
     end,
   }
 end
