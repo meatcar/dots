@@ -3,6 +3,10 @@ set IS_WSL   (uname -a | grep -i microsoft)
 set fish_greeting # Disable fish greeting
 # fish struggles when Emacs sets TERM=dumb
 fish_vi_key_bindings >/dev/null 2>&1
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_replace_one underscore
+set fish_cursor_visual block
 
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
     fenv source ~/.nix-profile/etc/profile.d/nix.sh
