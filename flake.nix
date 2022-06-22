@@ -43,10 +43,6 @@
         url = "github:PatrickF1/fzf.fish";
         flake = false;
       };
-      z = {
-        url = "github:jethrokuan/z";
-        flake = false;
-      };
       fish-docker-compose = {
         url = "github:brgmnn/fish-docker-compose";
         flake = false;
@@ -55,8 +51,12 @@
         url = "github:jarun/nnn";
         flake = false;
       };
-     vscode-server = {
+      vscode-server = {
         url = "github:msteen/nixos-vscode-server";
+        flake = false;
+      };
+      autopair-fish = {
+        url = "github:jorgebucaran/autopair.fish";
         flake = false;
       };
     };

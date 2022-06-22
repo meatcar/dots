@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "autopair-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1610912397,
+        "narHash": "sha256-l6WJ2kjDO/TnU9FSigjxk5xFp90xl68gDfggkE/wrlM=",
+        "owner": "jorgebucaran",
+        "repo": "autopair.fish",
+        "rev": "1222311994a0730e53d8e922a759eeda815fcb62",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jorgebucaran",
+        "repo": "autopair.fish",
+        "type": "github"
+      }
+    },
     "cachix": {
       "locked": {
         "lastModified": 1653996475,
@@ -451,6 +467,7 @@
     "root": {
       "inputs": {
         "alacritty-theme": "alacritty-theme",
+        "autopair-fish": "autopair-fish",
         "declarative-cachix": "declarative-cachix",
         "emacs-overlay": "emacs-overlay",
         "fish-docker-compose": "fish-docker-compose",
