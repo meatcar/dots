@@ -14,24 +14,26 @@ in
     ../starship
     ../fzf
   ];
-  home.packages = with pkgs; [ bat fasd fd any-nix-shell ];
+  home.packages = with pkgs; [ bat fd any-nix-shell zoxide ];
   home.sessionVariables = { BAT_THEME = "ansi"; };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
-    shellInit = ''
-      ${builtins.readFile ./config.fish}
-      eval (starship init fish)
-    '';
-    plugins = [
-      { name = "z"; src = specialArgs.inputs.z; }
-      { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
-      { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
-      { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
-      { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }
-    ];
-  };
+  programs.fish =
+    {
+      enable = true;
+      interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
+      shellInit = ''
+        ${builtins.readFile ./config.fish}
+        eval (starship init fish)
+        zoxide init fish | source
+      '';
+      plugins =
+        [
+          { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
+          { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
+          { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
+          { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
+        ];
+    };
 
   xdg.configFile."fish/functions" = {
     source = ./functions;
