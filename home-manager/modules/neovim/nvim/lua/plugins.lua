@@ -174,13 +174,6 @@ local function lsp(use)
       }
     end,
   }
-
-  use {
-    'onsails/lspkind-nvim',
-    config = function()
-      require('lspkind').init {}
-    end,
-  }
 end
 
 local function completion(use)
@@ -197,31 +190,30 @@ local function completion(use)
       'lukas-reineke/cmp-under-comparator',
       'lukas-reineke/cmp-rg',
       'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
+      'onsails/lspkind-nvim', -- add icons to lsp completions
     },
     config = function()
       local cmp = require 'cmp'
       cmp.setup {
-        sources = {
-          { name = 'path' },
-          { name = 'buffer' },
+        sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
-          { name = 'tmux' },
           { name = 'vim-dadbod-completion' },
+        }, {
+          { name = 'path' },
+        }, {
+          { name = 'buffer' },
           { name = 'rg' },
-        },
-        mapping = {
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-          ['<C-e>'] = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          },
-          ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+          { name = 'tmux', option = {
+            all_panes = false,
+          } },
+        }),
+        mapping = cmp.mapping.preset.insert {
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
         },
         snippet = {
           expand = function(args) -- REQUIRED - you must specify a snippet engine
@@ -240,18 +232,45 @@ local function completion(use)
             cmp.config.compare.order,
           },
         },
+        view = {
+          entries = {
+            name = 'custom',
+            selection_order = 'near_cursor',
+          },
+        },
+        -- experimental = { ghost_text = false },
+        window = {
+          completion = {
+            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+            col_offset = -1,
+            side_padding = 0,
+          },
+        },
+        formatting = {
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(entry, vim_item)
+            local cmp_format = require('lspkind').cmp_format {
+              mode = 'symbol_text',
+              maxwidth = 50,
+              menu = {
+                path = 'pth',
+                rg = 'rg',
+                tmux = 'tmux',
+                buffer = 'buf',
+                nvim_lsp = 'lsp',
+                vsnip = 'snip',
+                ['vim-dadbod-completion'] = 'db',
+              },
+            }
+            local kind = cmp_format(entry, vim_item)
+            local menu = kind.menu
+            local strings = vim.split(kind.kind, '%s', { trimempty = true })
+            kind.kind = strings[1]
+            kind.menu = strings[2] .. ' (' .. menu .. ')'
+            return kind
+          end,
+        },
       }
-      -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline(':', {
-      --   sources = cmp.config.sources({
-      --     { name = 'path' },
-      --   }, {
-      --     { name = 'cmdline' },
-      --   }),
-      -- })
     end,
   }
 
