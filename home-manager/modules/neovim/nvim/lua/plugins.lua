@@ -586,6 +586,13 @@ local function utilities(use)
       vim.api.nvim_set_keymap('n', '<Leader>wz', '<Cmd>ZenMode<CR>', {})
     end,
   }
+
+  use { -- color highlighter
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  }
 end
 
 local function pretty(use)
