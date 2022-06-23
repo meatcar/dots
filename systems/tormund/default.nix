@@ -66,13 +66,7 @@
 
   location.provider = "geoclue2";
 
-  hardware = {
-    opengl.enable = true;
-  };
-
-  services = {
-    gnome.gnome-settings-daemon.enable = true;
-  };
+  services.gnome.gnome-settings-daemon.enable = true;
 
   services.dbus.packages = [ pkgs.gnome3.dconf ];
 

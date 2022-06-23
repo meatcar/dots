@@ -16,6 +16,8 @@
     dev.enable = true;
   };
 
+  hardware.opengl.enable = true;
+
   fonts = {
     fontconfig = {
       enable = lib.mkOptionDefault true;
