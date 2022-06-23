@@ -53,9 +53,13 @@ local function base(use)
     end,
   }
   use { -- add  to function blocks
-    'tpope/vim-endwise',
+    'RRethy/nvim-treesitter-endwise',
     config = function()
-      vim.g.endwise_no_mappings = true
+      require('nvim-treesitter.configs').setup {
+        endwise = {
+          enable = true,
+        },
+      }
     end,
   }
   use { -- quickly delete multiple buffers based on the conditions provided
