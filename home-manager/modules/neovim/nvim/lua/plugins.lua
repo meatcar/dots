@@ -194,11 +194,14 @@ local function completion(use)
     },
     config = function()
       local cmp = require 'cmp'
+      vim.cmd [[
+        autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+      ]]
+
       cmp.setup {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
-          { name = 'vim-dadbod-completion' },
         }, {
           { name = 'path' },
         }, {
@@ -394,6 +397,9 @@ local function utilities(use)
   use { -- UI for dadbod, a database UI
     'kristijanhusak/vim-dadbod-ui',
     requires = 'tpope/vim-dadbod', -- Modern database interface for Vim
+    setup = function()
+      vim.g.db_ui_use_nerd_fonts = true
+    end,
   }
 
   use { -- editorconfig file support
