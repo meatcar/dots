@@ -685,6 +685,27 @@ local function pretty(use)
       vim.notify = require 'notify'
     end,
   }
+
+  -- Lua
+  use {
+    'SmiteshP/nvim-gps',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-gps').setup()
+    end,
+  }
+
+  use {
+    'notken12/gps-bar',
+    requires = { 'nvim-web-devicons', 'nvim-gps' },
+    config = function()
+      -- Default options
+      require('gps-bar').setup {
+        separator = ' > ',
+        highlights = { text = 'Search' },
+      }
+    end,
+  }
 end
 
 local function colorscheme(use)
