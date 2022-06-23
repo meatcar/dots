@@ -45,9 +45,11 @@ local function base(use)
     end,
   }
   use { --easy commenting with gcc
-    'terrortylor/nvim-comment',
+    'numToStr/Comment.nvim',
     config = function()
-      require('nvim_comment').setup()
+      require('Comment').setup {
+        mappings = { extended = true },
+      }
     end,
   }
   use { -- add  to function blocks
