@@ -79,6 +79,12 @@ local function base(use)
       }
     end,
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end,
+  }
 end
 
 local function snippets(use)
