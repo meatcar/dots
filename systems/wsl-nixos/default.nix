@@ -19,6 +19,9 @@
 
   networking.firewall.enable = true;
 
+  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
+  hardware.opengl.driSupport32Bit = true;
+
   users.users.${config.wsl.defaultUser} = {
     shell = pkgs.fish;
     extraGroups = [ "docker" ];
