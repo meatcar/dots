@@ -678,6 +678,13 @@ local function pretty(use)
       end
     end,
   }
+
+  use { -- notifications
+    'rcarriga/nvim-notify',
+    config = function()
+      vim.notify = require 'notify'
+    end,
+  }
 end
 
 local function colorscheme(use)

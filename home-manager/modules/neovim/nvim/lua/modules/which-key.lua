@@ -90,6 +90,7 @@ local M = {
         l = { '<Cmd>TroubleToggle<CR>', 'LSP' },
         t = { [[<Cmd>Lspsaga open_floaterm $SHELL<CR>]], 'Terminal' },
         r = { '<Cmd>Telescope resume<CR>', 'Telescope resume' },
+        n = { [[<Cmd>Telecope notify<CR>', 'Notifications']] },
       }
       leadermap_t.t = {
         name = leadermap.t.name,
