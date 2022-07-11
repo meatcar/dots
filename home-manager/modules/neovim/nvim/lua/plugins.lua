@@ -432,6 +432,7 @@ local function utilities(use)
         sh = { 'shfmt' },
         elixir = { 'mix_format' },
         lua = { 'stylua' },
+        go = { 'gofmt' },
       }
     end,
   }
