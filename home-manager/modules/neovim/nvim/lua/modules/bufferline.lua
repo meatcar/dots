@@ -46,7 +46,7 @@ local M = {
               {
                 name = '  Tests',
                 matcher = function(buf)
-                  local patterns = { 'test%', '%.test.%', '%_spec' }
+                  local patterns = { '_test', '%.test', '_spec' }
                   for _, pat in ipairs(patterns) do
                     if buf.filename:match(pat) then
                       return true
