@@ -19,3 +19,5 @@ vim.cmd [[ autocmd vimrc FileType md,markdown,mail setlocal spell ]]
 -- terminal
 vim.cmd [[ autocmd vimrc TermOpen term://* startinsert ]]
 vim.cmd [[ autocmd vimrc TermClose term://* bdelete! ]]
+
+vim.cmd [[ autocm  vimrc BufEnter .env lua vim.diagnostic.disable(0)]]
