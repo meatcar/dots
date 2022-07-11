@@ -451,7 +451,7 @@ local function utilities(use)
     config = function()
       require('nvim-tree').setup {
         -- disable conflict with dirvish
-        update_to_buf_dir = { enable = false },
+        hijack_directories = { enable = false },
         renderer = {
           highlight_git = true,
           add_trailing = true,
