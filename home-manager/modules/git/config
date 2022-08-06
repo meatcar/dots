@@ -62,3 +62,7 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
+[delta "light"]
+  light = true
+[delta "dark"]
+  light = false
