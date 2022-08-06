@@ -22,8 +22,8 @@ return function(use)
     'machakann/vim-sandwich',
     config = function()
       -- unmap s, which can easily be replaces by cl
-      vim.api.nvim_set_keymap('n', 's', '<Nop>', {})
-      vim.api.nvim_set_keymap('x', 's', '<Nop>', {})
+      vim.keymap.set('n', 's', '<Nop>')
+      vim.keymap.set('x', 's', '<Nop>')
     end,
   }
 

@@ -35,9 +35,9 @@ return function(use)
     'junegunn/vim-easy-align',
     config = function()
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
-      vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
+      vim.keymap.set('n', 'ga', '<Plug>(EasyAlign)')
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
-      vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
+      vim.keymap.set('x', 'ga', '<Plug>(EasyAlign)')
     end,
   }
 
@@ -236,8 +236,8 @@ return function(use)
     'folke/zen-mode.nvim',
     config = function()
       require('zen-mode').setup {}
-      vim.api.nvim_set_keymap('n', '<C-w>z', '<Cmd>ZenMode<CR>', {})
-      vim.api.nvim_set_keymap('n', '<Leader>wz', '<Cmd>ZenMode<CR>', {})
+      vim.keymap.set('n', '<C-w>z', '<Cmd>ZenMode<CR>')
+      vim.keymap.set('n', '<Leader>wz', '<Cmd>ZenMode<CR>')
     end,
   }
 

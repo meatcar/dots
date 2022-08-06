@@ -40,8 +40,8 @@ local highlights = {
 local function config()
   local groups = require 'bufferline.groups'
 
-  vim.api.nvim_set_keymap('n', '[b', [[<Cmd>BufferLineCyclePrev<CR>]], { silent = true })
-  vim.api.nvim_set_keymap('n', ']b', [[<Cmd>BufferLineCycleNext<CR>]], { silent = true })
+  vim.keymap.set('n', '[b', [[<Cmd>BufferLineCyclePrev<CR>]], { silent = true })
+  vim.keymap.set('n', ']b', [[<Cmd>BufferLineCycleNext<CR>]], { silent = true })
 
   -- persist bufferline positions
   vim.o.sessionoptions = vim.o.sessionoptions .. ',globals'
