@@ -39,18 +39,8 @@ return function(use)
     'RRethy/vim-illuminate',
     config = function()
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
-      vim.api.nvim_set_keymap(
-        'n',
-        '<a-n>',
-        '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>',
-        { noremap = true }
-      )
-      vim.api.nvim_set_keymap(
-        'n',
-        '<a-p>',
-        '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>',
-        { noremap = true }
-      )
+      vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
+      vim.keymap.set('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
       function _G.me.fn.illuminate_lsp_on_attach(client, _)
         require('illuminate').on_attach(client)
       end
@@ -69,15 +59,16 @@ return function(use)
     'kevinhwang91/nvim-hlslens',
     config = function()
       for _, map in ipairs { 'n', 'N' } do
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
           'n',
           map,
           [[<cmd>execute('normal! ' . v:count1 . ']] .. map .. [[')<cr><cmd>lua require('hlslens').start()<cr>]],
-          { noremap = true, silent = true }
+          { silent = true }
         )
       end
+
       for _, map in ipairs { '*', '#', 'g*', 'g#' } do
-        vim.api.nvim_set_keymap('n', map, map .. [[<cmd>lua require('hlslens').start()<cr>]], { noremap = true })
+        vim.keymap.set('n', map, map .. [[<cmd>lua require('hlslens').start()<cr>]])
       end
     end,
   }

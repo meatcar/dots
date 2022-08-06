@@ -95,7 +95,7 @@ return function(use)
     ft = { 'md', 'markdown' },
     cmd = 'Glow',
     config = function()
-      vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>p', [[<Cmd>Glow<CR>]], { noremap = true })
+      vim.keymap.set('n', '<localleader>p', [[<Cmd>Glow<CR>]], { buffer = 0 })
     end,
   }
 
