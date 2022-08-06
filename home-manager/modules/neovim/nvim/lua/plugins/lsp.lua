@@ -23,7 +23,13 @@ return function(use)
 
       -- setup individual lsp servers
       for _, server in ipairs(lspinstaller.get_installed_servers()) do
-        lspconfig[server.name].setup {}
+        if server.name == 'sumneko_lua' then
+          lspconfig.sumneko_lua.setup {
+            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+          }
+        else
+          lspconfig[server.name].setup {}
+        end
       end
     end,
   }
@@ -66,8 +72,8 @@ return function(use)
     config = function()
       require('lsp_lines').setup()
       vim.diagnostic.config {
-        virtual_lines = true,
-        virtual_text = false,
+        virtual_lines = false,
+        virtual_text = true,
         update_in_insert = true,
       }
     end,
