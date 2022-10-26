@@ -14,7 +14,7 @@
       emacs-overlay.url = "github:nix-community/emacs-overlay";
       emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
       declarative-cachix.url = "github:jonascarpay/declarative-cachix";
-      nixos-wsl.url = "github:nix-community/NixOS-WSL";
+      nixos-wsl.url = "github:nix-community/NixOS-WSL/199c350de4e827d68cf1bc404725bb5307f4e3e9";
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
       flake-compat = {
