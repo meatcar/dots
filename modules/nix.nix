@@ -21,11 +21,11 @@
       automatic = true;
       dates = [ "daily" ];
     };
-    package = lib.mkDefault pkgs.nixFlakes;
+    package = lib.mkDefault pkgs.nixVersions.stable;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      ${ lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      ${ lib.optionalString (config.nix.package == pkgs.nixVersions.stable)
       "experimental-features = nix-command flakes" }
     '';
   };

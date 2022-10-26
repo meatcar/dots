@@ -24,7 +24,7 @@
     inherit (pkgs)
       curl htop mosh eternal-terminal neomutt isync msmtp ripgrep jq
       docker docker-compose entr nox nixpkgs-fmt statix binutils
-      gcc gnumake openssl pkgconfig imgcat hydra-check nvd;
+      gcc gnumake openssl pkg-config imgcat hydra-check nvd;
   };
 
   xdg.enable = true;
