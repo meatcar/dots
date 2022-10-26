@@ -14,7 +14,6 @@
       emacs-overlay.url = "github:nix-community/emacs-overlay";
       emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
       declarative-cachix.url = "github:jonascarpay/declarative-cachix";
-      declarative-cachix.inputs.nixpkgs.follows = "nixpkgs";
       nixos-wsl.url = "github:nix-community/NixOS-WSL";
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -64,14 +63,13 @@
 
   outputs = { self, ... }@inputs:
     let
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-        inputs.neovim-nightly-overlay.overlay
-        inputs.emacs-overlay.overlay
-      ];
       nixpkgsConfig = {
         config = { allowUnfree = true; };
-        overlays = overlays;
+        overlays = [
+          inputs.nixpkgs-wayland.overlay
+          inputs.neovim-nightly-overlay.overlay
+          inputs.emacs-overlay.overlay
+        ];
       };
       specialArgs = { inherit inputs; };
     in
@@ -93,9 +91,9 @@
 
               buildInputs = with pkgs; [
                 (import inputs.home-manager { inherit pkgs; }).home-manager
-                nixFlakes
+                nixVersions.stable
                 git
-                (nixos-rebuild.override { nix = nixFlakes; })
+                (nixos-rebuild.override { nix = nixVersions.stable; })
                 stow
               ];
               NIX_PATH = builtins.concatStringsSep ":" [
