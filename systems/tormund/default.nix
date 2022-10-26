@@ -91,7 +91,7 @@
       inotify-tools# for waybar
 
       # File Management
-      xdg_utils
+      xdg-utils
       fuse_exfat
       exfat-utils
       ntfs3g

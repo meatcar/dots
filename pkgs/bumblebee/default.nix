@@ -21,7 +21,7 @@
 , fetchurl
 , fetchpatch
 , fetchgit
-, pkgconfig
+, pkg-config
 , help2man
 , makeWrapper
 , glib
@@ -51,8 +51,8 @@ let
   version = "develop";
 
   nvidia_x11s = [ nvidia_x11 ]
-  ++ lib.optional nvidia_x11.useGLVND libglvnd
-  ++ lib.optionals (nvidia_x11_i686 != null)
+    ++ lib.optional nvidia_x11.useGLVND libglvnd
+    ++ lib.optionals (nvidia_x11_i686 != null)
     ([ nvidia_x11_i686 ] ++ lib.optional nvidia_x11_i686.useGLVND libglvnd_i686);
 
   nvidiaLibs = lib.makeLibraryPath nvidia_x11s;
@@ -115,7 +115,7 @@ stdenv.mkDerivation rec {
   # Build-time dependencies of bumblebeed and optirun.
   # Note that it has several runtime dependencies.
   buildInputs = [ libX11 glib libbsd kmod ];
-  nativeBuildInputs = [ makeWrapper pkgconfig help2man automake autoconf ];
+  nativeBuildInputs = [ makeWrapper pkg-config help2man automake autoconf ];
 
   # The order of LDPATH is very specific: First X11 then the host
   # environment then the optional sub architecture paths.

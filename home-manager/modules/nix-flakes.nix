@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home.packages = [ pkgs.nixFlakes ];
+  home.packages = [ pkgs.nixVersions.stable ];
 
   home.file.nixConf.text = ''
     experimental-features = nix-command flakes

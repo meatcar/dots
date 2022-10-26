@@ -13,7 +13,7 @@
     emacs-all-the-icons-fonts
     python3
     pandoc
-    xdg_utils
+    xdg-utils
     unzip
 
     # LSP Servers
@@ -22,7 +22,7 @@
     elixir_ls
     python3Packages.python-lsp-server
     clojure-lsp
-    rls
+    rust-analyzer
     sqls
     terraform-ls
     yaml-language-server
