@@ -111,6 +111,57 @@ return function(use)
       }
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+      vim.o.foldlevelstart = 3
+    end,
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        textobjects = {
+          select = {
+            enable = true,
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['ac'] = '@class.outer',
+              ['ic'] = '@class.inner',
+              ['aa'] = '@parameter.outer',
+              ['ia'] = '@parameter.inner',
+              ['ak'] = '@block.outer',
+              ['ik'] = '@block.inner',
+            },
+            -- You can choose the select mode (default is charwise 'v')
+            selection_modes = {
+              ['@parameter.outer'] = 'v', -- charwise
+              ['@function.outer'] = 'V', -- linewise
+              ['@class.outer'] = '<c-v>', -- blockwise
+            },
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ['<leader>a'] = '@parameter.inner',
+            },
+            swap_previous = {
+              ['<leader>A'] = '@parameter.inner',
+            },
+          },
+          lsp_interop = {
+            enable = true,
+            border = 'none',
+            peek_definition_code = {
+              ['<leader>df'] = '@function.outer',
+              ['<leader>dF'] = '@class.outer',
+            },
+          },
+        },
+      }
     end,
   }
 
