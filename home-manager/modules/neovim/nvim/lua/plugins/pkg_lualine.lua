@@ -43,6 +43,13 @@ local function config()
         vim.cmd [[ Telescope filetypes ]]
       end,
     },
+    fileicon = {
+      'filetype',
+      icon_only = true,
+      on_click = function()
+        vim.cmd [[ Telescope filetypes ]]
+      end,
+    },
     filename = {
       'filename',
       file_status = true,
@@ -121,23 +128,43 @@ local function config()
 
   local winbar = {
     lualine_a = { parts.filetype },
-    lualine_b = {},
-    lualine_c = { parts.diagnostics },
-    lualine_x = { parts.encoding, parts.fileformat },
+    lualine_b = { parts.encoding, parts.fileformat },
+    lualine_c = {},
+    lualine_x = { parts.diagnostics },
     lualine_y = { parts.diff },
     lualine_z = { parts.branch },
   }
 
   local sections = {
-    lualine_a = { parts.mode },
-    lualine_b = { parts.filetype, parts.encoding, parts.fileformat },
+    lualine_a = { parts.filetype },
+    lualine_b = { parts.encoding, parts.fileformat },
     lualine_c = { parts.filename },
     lualine_x = { parts.diagnostics },
-    lualine_y = { parts.diff, parts.branch },
+    lualine_y = { parts.diff },
     lualine_z = { parts.location, parts.progress },
   }
 
+  local sections_sparse = {
+    lualine_a = { parts.mode },
+    lualine_b = { parts.fileicon },
+    lualine_c = { parts.filename },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { parts.location, parts.progress },
+  }
+
+  local sections_global = {
+    lualine_a = { parts.mode },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = { '' },
+    lualine_y = {},
+    lualine_z = { parts.branch },
+  }
+
   -- require('tabline').setup { enable = false }
+
+  vim.cmd [[autocmd packer ColorScheme * lua require('lualine').setup()]]
 
   return require('lualine').setup {
     options = {
@@ -152,10 +179,10 @@ local function config()
       globalstatus = false,
     },
 
-    sections = sections,
-    inactive_sections = sections,
-    winbar = {},
-    inactive_winbar = {},
+    sections = sections_sparse,
+    inactive_sections = sections_sparse,
+    winbar = winbar,
+    inactive_winbar = winbar,
     tabline = {},
 
     extensions = { 'nvim-tree', 'fugitive', 'mundo', 'man', 'quickfix' },
