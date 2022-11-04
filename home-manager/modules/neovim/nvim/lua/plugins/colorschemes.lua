@@ -1,5 +1,4 @@
 return function(use)
-  vim.cmd [[autocmd packer ColorScheme * lua require('lualine').setup()]]
   vim.cmd [[autocmd packer OptionSet background lua me.fn.autocmd_onOptionSetBackground()]]
   function _G.me.fn.autocmd_onOptionSetBackground()
     if vim.o.background == 'dark' then
@@ -16,6 +15,7 @@ return function(use)
     local theme = vim.fn.readfile '/mnt/c/Users/meatcar/.config/theme'
     print('Setting background to ' .. theme[1])
     vim.o.background = theme[1] -- 'dark' or 'light' or a message will be shown
+    vim.cmd [[colorscheme catppuccin]]
   end
 
   use 'liuchengxu/space-vim-theme'
@@ -81,7 +81,6 @@ return function(use)
           },
         },
       }
-      vim.cmd [[colorscheme catppuccin]]
     end,
   }
 end
