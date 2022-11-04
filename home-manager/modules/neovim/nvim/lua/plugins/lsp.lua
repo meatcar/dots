@@ -8,8 +8,7 @@ return function(use)
 
       -- setup default lsp config
       require 'cmp'
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local lspconfig = require 'lspconfig'
       local util = require 'lspconfig.util'
