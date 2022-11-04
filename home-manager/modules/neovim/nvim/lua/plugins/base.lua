@@ -30,9 +30,7 @@ return function(use)
   use { --easy commenting with gcc
     'numToStr/Comment.nvim',
     config = function()
-      require('Comment').setup {
-        mappings = { extended = true },
-      }
+      require('Comment').setup {}
     end,
   }
 

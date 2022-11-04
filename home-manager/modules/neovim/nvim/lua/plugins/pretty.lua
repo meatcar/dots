@@ -58,6 +58,8 @@ return function(use)
   use { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
     config = function()
+      require('hlslens').setup()
+
       for _, map in ipairs { 'n', 'N' } do
         vim.keymap.set(
           'n',
