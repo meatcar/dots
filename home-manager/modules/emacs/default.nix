@@ -31,7 +31,7 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacsPgtkNativeComp;
-    extraPackages = (epkgs: [ epkgs.vterm ]);
+    extraPackages = epkgs: [ epkgs.vterm ];
   };
   programs.fish = {
     shellInit = ''
