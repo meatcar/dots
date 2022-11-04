@@ -54,7 +54,6 @@ return function(use)
         filetype_ignore = {}, -- Filetype to ignore when running deletions
         preserve_window_layout = { 'this' }, -- Types of deletion that should preserve the window layout
         next_buffer_cmd = function(windows)
-          require('bufferline').cycle(1)
           local bufnr = vim.api.nvim_get_current_buf()
 
           for _, window in ipairs(windows) do
