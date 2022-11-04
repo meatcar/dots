@@ -84,24 +84,24 @@ return function(use)
     end,
   }
 
-  use { -- nice simple file browser
-    'justinmk/vim-dirvish',
-    config = function()
-      vim.cmd [[autocmd packer FileType dirvish sort ,^.*[\/], | silent keeppatterns g@\v/\.[^\/]+/?$@d _]]
-      vim.cmd [[autocmd packer FileType dirvish nmap <buffer> q <Plug>(dirvish_quit)]]
-    end,
-  }
-
   use { -- fast file tree
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require('nvim-tree').setup {
         -- disable conflict with dirvish
-        hijack_directories = { enable = false },
+        hijack_netrw = true,
+        hijack_directories = { enable = true },
         renderer = {
           highlight_git = true,
           add_trailing = true,
+        },
+        view = {
+          mappings = {
+            list = {
+              { key = '<CR>', action = 'edit_in_place' },
+            },
+          },
         },
       }
     end,
