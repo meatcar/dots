@@ -141,8 +141,16 @@ local function config()
     s = { '<Cmd>Lspsaga signature_help<CR>', 'Signature' },
     m = { '<Cmd>Lspsaga rename<CR>', 'Rename' },
     d = { '<Cmd>Lspsaga preview_definition<CR>', 'Definition' },
-    l = { '<Cmd>Lspsaga show_line_diagnostics<CR>', 'Line info' },
+    i = { '<Cmd>Lspsaga show_line_diagnostics<CR>', 'Line info' },
     c = { '<Cmd>Lspsaga show_cursor_diagnostics<CR>', 'Cursor info' },
+    l = {
+      name = 'lsp',
+      r = { '<Cmd>LspRestart<CR>', 'Restart' },
+      o = { '<Cmd>LspStop<CR>', 'Stop' },
+      a = { '<Cmd>LspStart<CR>', 'Start' },
+      l = { '<Cmd>LspInfo<CR>', 'Info' },
+      i = { '<Cmd>LspInstallInfo<CR>', 'Install Info' },
+    },
   }
   leadermap_v.l = {
     name = leadermap.l.name,
