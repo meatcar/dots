@@ -33,13 +33,6 @@ return function(use)
     end,
   }
 
-  use { -- show a lightbulb for lsp actions
-    'kosayoda/nvim-lightbulb',
-    config = function()
-      vim.cmd [[autocmd packer CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-    end,
-  }
-
   use { -- pretty LSP popups
     'tami5/lspsaga.nvim',
     config = function()
@@ -48,8 +41,9 @@ return function(use)
         warn_sign = '',
         hint_sign = '',
         infor_sign = '',
-        code_action_prompt = {
-          enable = false,
+        code_action_keys = {
+          quit = '<ESC>',
+          exec = '<CR>',
         },
       }
     end,
