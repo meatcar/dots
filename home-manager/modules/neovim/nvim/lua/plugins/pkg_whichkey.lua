@@ -47,11 +47,13 @@ local function config()
   leadermap.b = {
     name = 'buffers', -- {{{
     b = { '<Cmd>Telescope buffers show_all_buffers=true<CR>', 'Buffers' },
-    d = { '<Cmd>BDelete this<CR>', 'Delete buffer' },
+    B = { '<Cmd>BufferPick<CR>', 'Bufferline Pick' },
+    d = { '<Cmd>BufferClose<CR>', 'Delete buffer' },
     n = { ']b', 'Next' },
     p = { '[b', 'Prev' },
-    N = { '<Cmd>BufferLineMoveNext<CR>', 'Move left' },
-    P = { '<Cmd>BufferLineMovePrev<CR>', 'Move prev' },
+    N = { '<Cmd>BufferMoveNext<CR>', 'Move left' },
+    P = { '<Cmd>BufferMovePrev<CR>', 'Move prev' },
+    i = { '<Cmd>BufferPin<CR>', 'Pin buffer' },
   } -- }}}
 
   leadermap.f = {

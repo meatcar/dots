@@ -8,6 +8,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local function load_plugins(use)
+  use(require 'plugins/pkg_whichkey')
+  use(require 'plugins/pkg_lualine')
+  -- use(require 'plugins/pkg_bufferline')
+  use(require 'plugins/pkg_barbar')
+
   require 'plugins/base'(use)
   require 'plugins/snippets'(use)
   require 'plugins/lsp'(use)
@@ -17,10 +22,6 @@ local function load_plugins(use)
   require 'plugins/pretty'(use)
   require 'plugins/colorschemes'(use)
   require 'plugins/syntax'(use)
-
-  use(require 'plugins/pkg_whichkey')
-  use(require 'plugins/pkg_lualine')
-  use(require 'plugins/pkg_bufferline')
 end
 
 function _G.me.fn.reload_config()
