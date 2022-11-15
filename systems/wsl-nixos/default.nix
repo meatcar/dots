@@ -8,11 +8,11 @@
 
   wsl = {
     enable = true;
-    automountPath = "/mnt";
     defaultUser = "meatcar";
     startMenuLaunchers = false; # we do it ourselves
     wslConf = {
       network.hostname = "nixos";
+      interop.appendWindowsPath = false; # slows down some apps
     };
   };
 
@@ -36,5 +36,10 @@
       done
     '';
 
-  environment.systemPackages = [ pkgs.wget ];
+  environment.systemPackages = [
+    pkgs.wget
+    (pkgs.writeShellScriptBin "powershell.exe" ''
+      /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive –ExecutionPolicy Bypass "$@"
+    '')
+  ];
 }
