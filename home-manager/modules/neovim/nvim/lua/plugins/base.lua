@@ -19,11 +19,26 @@ return function(use)
   use 'axelf4/vim-strip-trailing-whitespace' -- strip whitespace on edited lines
 
   use { -- work with surrounding text
-    'machakann/vim-sandwich',
+    'echasnovski/mini.surround',
     config = function()
-      -- unmap s, which can easily be replaces by cl
-      vim.keymap.set('n', 's', '<Nop>')
-      vim.keymap.set('x', 's', '<Nop>')
+      require('mini.surround').setup {
+        mappings = {
+          add = '<leader>sa', -- Add surrounding in Normal and Visual modes
+          delete = '<leader>sd', -- Delete surrounding
+          find = '<leader>sf', -- Find surrounding (to the right)
+          find_left = '<leader>sF', -- Find surrounding (to the left)
+          highlight = '<leader>sh', -- Highlight surrounding
+          replace = '<leader>sr', -- Replace surrounding
+          update_n_lines = '<leader>sn', -- Update `n_lines`
+        },
+      }
+    end,
+  }
+
+  use {
+    'ggandor/leap.nvim',
+    config = function()
+      require('leap').add_default_mappings()
     end,
   }
 
