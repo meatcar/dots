@@ -12,7 +12,7 @@ local function config()
     ['/'] = { '<Cmd>Telescope live_grep<CR>', 'Search' },
     ['*'] = { '<Cmd>Telescope grep_string search=<cword><CR>', 'Search current word' },
     [':'] = { '<Cmd>Telescope commands<CR>', 'Commands' },
-    s = { '<Cmd>Snippets<CR>', 'Snippets' },
+    s = { name = 'surround' },
   }
   wk.register {
     ['//'] = { '<Cmd>Telescope current_buffer_fuzzy_find<CR>', 'Buffer lines' },
