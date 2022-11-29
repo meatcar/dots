@@ -118,6 +118,12 @@ local function config()
       l = { '<Cmd>VimuxClearTerminalScreen<CR>', 'Clear' },
       z = { '<Cmd>VimuxZoomRunner<CR>', 'Zoom' },
     },
+    s = {
+      function()
+        require('ssr').open()
+      end,
+      'Structural Search/Replace',
+    },
   } -- }}}
 
   leadermap.w = {
