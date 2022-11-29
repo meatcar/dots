@@ -41,5 +41,8 @@
     (pkgs.writeShellScriptBin "powershell.exe" ''
       /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive –ExecutionPolicy Bypass "$@"
     '')
+    (pkgs.writeShellScriptBin "x-www-browser" ''
+      ${pkgs.wsl-open}/bin/wsl-open "$@"
+    '')
   ];
 }
