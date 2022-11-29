@@ -53,8 +53,14 @@ in
 
   home.packages = builtins.attrValues {
     inherit (pkgs.gitAndTools) lab hub delta;
-    inherit (pkgs) lazygit glab;
-    inherit (pkgs) gh; # FIXME: https://github.com/nix-community/home-manager/issues/1654
+    inherit (pkgs) glab;
+  };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
   };
 
   programs.lazygit = {
