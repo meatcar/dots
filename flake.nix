@@ -129,13 +129,8 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.meatcar = { ... }: {
                   imports = [
-                    ./home-manager/systems/common.nix
-                    ./home-manager/modules/keychain.nix
-                    ./home-manager/modules/gtk.nix
-                    "${inputs.vscode-server}/modules/vscode-server/home.nix"
+                    ./home-manager/systems/wsl-nixos.nix
                   ];
-                  services.vscode-server.enable = true;
-                  programs.fish.interactiveShellInit = "set -x COLORTERM truecolor";
                   home.stateVersion = "21.11";
                 };
               }

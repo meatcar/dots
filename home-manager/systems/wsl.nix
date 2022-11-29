@@ -2,6 +2,7 @@
 {
   imports = [
     ./single-user.nix
+    ../../modules/gnome-keyring.nix
     # ../../home-manager/modules/distributed.nix
   ];
 
