@@ -5,7 +5,7 @@ vim.o.shell = 'sh'
 vim.o.termguicolors = true
 
 -- window title
-vim.o.title = true
+vim.o.title = false -- TODO : see https://github.com/neovim/neovim/issues/18573
 vim.o.titlelen = 20
 
 -- ensure utf8
