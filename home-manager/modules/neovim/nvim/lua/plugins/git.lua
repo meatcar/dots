@@ -4,7 +4,6 @@ return function(use)
   use 'rhysd/git-messenger.vim' -- pop-up window of git commit under cursor
   use 'sodapopcan/vim-twiggy' -- pop-up git branches
   use 'rbong/vim-flog' -- pretty git log
-  use 'Odie/gitabra' -- magit-like git ui
   use 'mattn/webapi-vim' -- for vim-gist
 
   use { -- generate a link to file on git remote site
