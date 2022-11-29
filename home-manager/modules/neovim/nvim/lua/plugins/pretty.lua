@@ -81,4 +81,16 @@ return function(use)
       vim.notify = require 'notify'
     end,
   }
+
+  use {
+    'dstein64/nvim-scrollview', -- scroll bar
+    config = function()
+      require('scrollview').setup {
+        excluded_filetypes = _G.me.o.sidebars,
+        current_only = true,
+        winblend = 75,
+        base = 'right',
+      }
+    end,
+  }
 end
