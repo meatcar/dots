@@ -3,7 +3,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = pkgs.firefox;
     profiles.default = {
       userChrome = builtins.readFile ./userChrome.css;
       settings = {
