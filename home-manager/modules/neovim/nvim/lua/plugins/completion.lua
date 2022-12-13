@@ -34,9 +34,10 @@ return function(use)
           } },
         }),
         mapping = cmp.mapping.preset.insert {
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-          ['<C-e>'] = cmp.mapping.abort(),
+          ['<C-x><C-o>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm(),
+          ['<C-Space>'] = cmp.mapping.confirm { select = true },
+          ['<C-g>'] = cmp.mapping.abort(),
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
         },
@@ -86,12 +87,17 @@ return function(use)
                 vsnip = 'snip',
                 ['vim-dadbod-completion'] = 'db',
               },
+              symbol_map = {
+                TypeParameter = '',
+              },
             }
             local kind = cmp_format(entry, vim_item)
             local menu = kind.menu
             local strings = vim.split(kind.kind, '%s', { trimempty = true })
-            kind.kind = strings[1]
-            kind.menu = strings[2] .. ' (' .. menu .. ')'
+            if #strings >= 2 then
+              kind.kind = strings[1]
+              kind.menu = strings[2] .. ' (' .. menu .. ')'
+            end
             return kind
           end,
         },
