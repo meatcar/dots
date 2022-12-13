@@ -2,7 +2,7 @@
 {
   fonts.fontconfig.enable = lib.mkDefault true;
   home.packages = [
-    pkgs.google-fonts
+    (pkgs.google-fonts.override { fonts = [ "Bitter" ]; })
     pkgs.go-font
     pkgs.emacs-all-the-icons-fonts
     pkgs.fd
