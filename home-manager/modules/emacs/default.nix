@@ -6,7 +6,7 @@
     (nerdfonts.override {
       fonts = [ "Go-Mono" ];
     })
-    google-fonts
+    (google-fonts.override { fonts = [ "Bitter" ]; })
     noto-fonts-emoji
     dejavu_fonts
     symbola

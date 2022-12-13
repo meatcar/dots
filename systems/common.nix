@@ -34,7 +34,6 @@
         # icons
         font-awesome_4
         # proportional
-        google-fonts
         inter
         # monospace
         go-font
