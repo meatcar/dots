@@ -1,6 +1,6 @@
 { ... }:
 {
   imports = [
-    ./home-manager/systems/wsl.nix
+    ./home-manager/systems/wsl-singleuser.nix
   ];
 }
