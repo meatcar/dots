@@ -4,10 +4,7 @@
   inputs =
     {
       flake-utils.url = "github:numtide/flake-utils";
-      # TODO: locking temporarily until https://github.com/NixOS/nixpkgs/issues/205733 is in nixos-unstable
-      # see: https://nixpk.gs/pr-tracker.html?pr=205803
-      nixpkgs.url = "github:nixos/nixpkgs/2787fc7d1e51404678614bf0fe92fc296746eec0";
-      # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
       home-manager.url = "github:nix-community/home-manager";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
