@@ -28,6 +28,4 @@ function _G.me.fn.keymap_lsp_on_attach(_, bufnr)
   vim.keymap.set('n', 'gj', '<Cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true, buffer = bufnr })
   vim.keymap.set('n', 'gk', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true, buffer = bufnr })
   vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', '<C-u>', "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", { buffer = bufnr })
-  vim.keymap.set('n', '<C-d>', "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", { buffer = bufnr })
 end
