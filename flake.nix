@@ -4,7 +4,10 @@
   inputs =
     {
       flake-utils.url = "github:numtide/flake-utils";
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      # TODO: locking temporarily until https://github.com/NixOS/nixpkgs/issues/205733 is in nixos-unstable
+      # see: https://nixpk.gs/pr-tracker.html?pr=205803
+      nixpkgs.url = "github:nixos/nixpkgs/2787fc7d1e51404678614bf0fe92fc296746eec0";
+      # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
       home-manager.url = "github:nix-community/home-manager";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -14,7 +17,6 @@
       emacs-overlay.url = "github:nix-community/emacs-overlay";
       emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
       declarative-cachix.url = "github:jonascarpay/declarative-cachix";
-      # nixos-wsl.url = "github:nix-community/NixOS-WSL/199c350de4e827d68cf1bc404725bb5307f4e3e9";
       nixos-wsl.url = "github:nix-community/NixOS-WSL";
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
