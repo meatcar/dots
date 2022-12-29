@@ -9,7 +9,6 @@
     dotDir = ".config/zsh";
     initExtra = ''
       any-nix-shell zsh --info-right | source /dev/stdin
-      eval "$(starship init zsh)"
 
       ${builtins.readFile ./keybinds.zsh}
     '';
