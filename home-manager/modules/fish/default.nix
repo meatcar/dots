@@ -10,28 +10,19 @@ let
     '';
 in
 {
-  imports = [
-    ../starship
-    ../fzf
-  ];
-  home.packages = with pkgs; [ bat fd any-nix-shell zoxide ];
-  home.sessionVariables = { BAT_THEME = "ansi"; };
+  home.packages = with pkgs; [ any-nix-shell ];
 
   programs.fish =
     {
       enable = true;
       interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
-      shellInit = ''
-        ${builtins.readFile ./config.fish}
-        eval (starship init fish)
-        zoxide init fish | source
-      '';
+      shellInit = builtins.readFile ./config.fish;
       plugins =
         [
           { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
           { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
           { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
-          { name = "foreign-env"; src = pkgs.fishPlugins.foreign-env.src; }
+          { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
         ];
     };
 

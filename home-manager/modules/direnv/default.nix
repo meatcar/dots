@@ -15,6 +15,10 @@ in
         TMUX_SESSION_NAME=''${*:-$(basename "$PWD")}
         # tmux doesn't like dots in session name
         export TMUX_SESSION_NAME=$(echo "$TMUX_SESSION_NAME" | tr . -)
+        if test -z "$TMUX" && which tmux 2>&1 >/dev/null; then
+          echo "starting session $TMUX_SESSION_NAME" >&2
+          tmux new-session -t "$TMUX_SESSION_NAME"
+        fi
       }
 
       session_name(){
@@ -41,22 +45,6 @@ in
   '';
 
   programs.fish = {
-    interactiveShellInit = ''
-      # NOTE: Can't be in functions dir because of load order (I think...)
-      #       needs to be loaded before direnv is hooked in
-      function autotmux --on-variable=TMUX_SESSION_NAME \
-          --description="autostart tmux when session name is set"
-        if test -n "$TMUX_SESSION_NAME" && \
-            test -z "$TMUX" && \
-            command -s tmux >/dev/null
-            echo "starting session $TMUX_SESSION_NAME" >&2
-          tmux new-session -t "$TMUX_SESSION_NAME"
-        end
-      end
-
-      direnv hook fish | source
-    '';
-
     functions.link_env = {
       description = "symlink a .env file from the env store to this directory";
       body = ''
