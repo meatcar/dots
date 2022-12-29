@@ -9,9 +9,11 @@
   wsl = {
     enable = true;
     defaultUser = "meatcar";
-    startMenuLaunchers = false; # we do it ourselves
+    nativeSystemd = true;
+    startMenuLaunchers = true; # we do it ourselves
     wslConf = {
       network.hostname = "nixos";
+      interop.enabled = true;
       interop.appendWindowsPath = false; # slows down some apps
     };
   };
@@ -22,19 +24,10 @@
   hardware.opengl.driSupport32Bit = true;
 
   users.users.${config.wsl.defaultUser} = {
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
+    shell = pkgs.bash;
     extraGroups = [ "docker" ];
   };
-
-  system.activationScripts.copy-launchers =
-    pkgs.lib.stringAfter [ ] ''
-      for x in applications icons; do
-        echo "Copying /usr/share/$x"
-        mkdir -p /usr/share/$x
-        ${pkgs.rsync}/bin/rsync -a --delete $systemConfig/sw/share/$x/. /usr/share/$x
-        ${pkgs.rsync}/bin/rsync -a /nix/var/nix/profiles/per-user/${config.wsl.defaultUser}/home-manager/home-path/share/$x/. /usr/share/$x
-      done
-    '';
 
   environment.systemPackages = [
     pkgs.wget
