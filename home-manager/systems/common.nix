@@ -73,6 +73,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.bash.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    enableVteIntegration = true;
+    historySubstringSearch.enable = true;
+  };
   programs.fzf.enable = true;
   programs.lsd.enable = true;
   programs.lsd.enableAliases = true;

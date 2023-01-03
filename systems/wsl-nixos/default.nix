@@ -23,10 +23,11 @@
   hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
   hardware.opengl.driSupport32Bit = true;
 
+  programs.fish.enable = true;
   users.users.${config.wsl.defaultUser} = {
-    # shell = pkgs.fish;
-    shell = pkgs.bash;
+    shell = pkgs.fish;
     extraGroups = [ "docker" ];
+    isNormalUser = true;
   };
 
   environment.systemPackages = [
