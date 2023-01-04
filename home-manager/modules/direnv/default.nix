@@ -9,16 +9,8 @@ in
     enable = true;
     nix-direnv.enable = true;
     stdlib = ''
-      # source: https://github.com/direnv/direnv/wiki/Tmux-and-Fish
-      # Takes a session name as an argument, defaulting to the directory name instead
       tmux_session(){
-        TMUX_SESSION_NAME=''${*:-$(basename "$PWD")}
-        # tmux doesn't like dots in session name
-        export TMUX_SESSION_NAME=$(echo "$TMUX_SESSION_NAME" | tr . -)
-        if test -z "$TMUX" && which tmux 2>&1 >/dev/null; then
-          echo "starting session $TMUX_SESSION_NAME" >&2
-          tmux new-session -t "$TMUX_SESSION_NAME"
-        fi
+        echo "tmux_session is deprecated and should be removed" >&2
       }
 
       session_name(){
@@ -45,24 +37,39 @@ in
   '';
 
   programs.fish = {
-    functions.link_env = {
-      description = "symlink a .env file from the env store to this directory";
-      body = ''
-        set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
-        if test -f "$env_file"
-          ln -s "$env_file" .env
-        end
-      '';
-    };
-    functions.backup_env = {
-      description = "backup a .env file replacing it with a symlink";
-      body = ''
-        set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
-        if test ! -f "$env_file"
-          mv -i .env "$env_file"
-          link_env
-        end
-      '';
+    interactiveShellInit = ''
+      # NOTE: Can't be in functions dir because of load order (I think...)
+      #       needs to be loaded before direnv is hooked in
+      function autotmux_on_direnv_enter --on-variable=DIRENV_DIR \
+        --description="start or attach to a tmux session when direnv is activated"
+          test -z "$DIRENV_DIR" && return
+          set -x TMUX_SESSION_NAME (basename "/$DIRENV_DIR" | tr . -)
+          if test -z "$TMUX" && command -qs tmux
+            echo "starting session $TMUX_SESSION_NAME" >&2
+            tmux new-session -t "$TMUX_SESSION_NAME"
+          end
+      end
+    '';
+    functions = {
+      link_env = {
+        description = "symlink a .env file from the env store to this directory";
+        body = ''
+          set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+          if test -f "$env_file"
+            ln -s "$env_file" .env
+          end
+        '';
+      };
+      backup_env = {
+        description = "backup a .env file replacing it with a symlink";
+        body = ''
+          set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+          if test ! -f "$env_file"
+            mv -i .env "$env_file"
+            link_env
+          end
+        '';
+      };
     };
   };
 
