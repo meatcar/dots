@@ -461,22 +461,6 @@
         "type": "github"
       }
     },
-    "nnn": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672700906,
-        "narHash": "sha256-xllYx9yXtzwXuMjpDRiUC4Krhhmk0G0CacM4n1kHVEI=",
-        "owner": "jarun",
-        "repo": "nnn",
-        "rev": "fa62b082435fe4b43499617bf3b2eee1c8d9362b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jarun",
-        "repo": "nnn",
-        "type": "github"
-      }
-    },
     "plug-kak": {
       "flake": false,
       "locked": {
@@ -509,7 +493,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "nnn": "nnn",
         "plug-kak": "plug-kak",
         "vscode-server": "vscode-server",
         "wsl-open": "wsl-open"
