@@ -1,13 +1,12 @@
-{ config, pkgs, specialArgs, ... }:
-let
-  src = specialArgs.inputs.nnn;
-  nnn = (pkgs.nnn.override {
-    withNerdIcons = true;
-  }).overrideAttrs (attrs: {
-    inherit src;
-    # patches = [ "${src}/patches/gitstatus/mainline.diff" ];
-  });
-in
+{ config, pkgs, ... }:
 {
-  home.packages = [ nnn ];
+  programs.nnn = {
+    enable = true;
+    package =
+      (pkgs.nnn.override {
+        withNerdIcons = true;
+      }).overrideAttrs (attrs: {
+        patches = [ "${attrs.src}/patches/gitstatus/mainline.diff" ];
+      });
+  };
 }

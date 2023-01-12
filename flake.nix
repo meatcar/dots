@@ -46,10 +46,6 @@
         url = "github:brgmnn/fish-docker-compose";
         flake = false;
       };
-      nnn = {
-        url = "github:jarun/nnn";
-        flake = false;
-      };
       vscode-server = {
         url = "github:msteen/nixos-vscode-server";
         flake = false;
