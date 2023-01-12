@@ -2,7 +2,7 @@ return function(use)
   use { -- A plethora of syntaxes
     'sheerun/vim-polyglot',
     setup = function()
-      vim.g.polyglot_disabled = { 'yaml', 'markdown' }
+      vim.g.polyglot_disabled = { 'yaml', 'markdown', 'scala' }
     end,
   }
 
@@ -24,7 +24,7 @@ return function(use)
   use {
     'mattn/emmet-vim',
 
-    ft = { '*html*', '*handlebars*', '*css*', '*less*', '*sass*', '*scss*', '*jsx*' },
+    ft = { 'html', 'html.*', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
     config = function()
       vim.g.user_emmet_leader_key = '<localleader>'
       vim.g.user_emmet_install_global = false
@@ -62,7 +62,7 @@ return function(use)
     ft = { 'md', 'markdown' },
     config = function()
       vim.g['mkdx#settings'] = {
-        map = { prefix = '<localleader>', enable = true },
+        map = { prefix = '<localleader>', enable = 1 },
         tokens = {
           enter = { '-', '*', '>' },
           bold = '**',
@@ -77,9 +77,9 @@ return function(use)
           update_tree = 2,
           initial_state = ' ',
         },
-        highlight = { enable = true },
-        auto_update = { enable = true },
-        fold = { enable = true },
+        highlight = { enable = 1 },
+        auto_update = { enable = 1 },
+        fold = { enable = 1 },
       }
     end,
   }
