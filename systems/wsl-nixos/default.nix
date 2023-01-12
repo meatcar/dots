@@ -10,7 +10,6 @@
     enable = true;
     defaultUser = "meatcar";
     nativeSystemd = true;
-    startMenuLaunchers = true; # we do it ourselves
     wslConf = {
       network.hostname = "nixos";
       interop.enabled = true;
@@ -29,6 +28,29 @@
     extraGroups = [ "docker" ];
     isNormalUser = true;
   };
+
+  # override nixos-wsl startMenuLaunchers to pull in home-manager ones
+  wsl.startMenuLaunchers = false; # we do it ourselves
+  system.activationScripts.copy-launchers =
+    pkgs.lib.stringAfter [ ] ''
+      for x in applications icons; do
+        echo -n "setting up /usr/share/''${x}..."
+        systemdir=$systemConfig/sw/share/$x
+        userdir=/nix/var/nix/profiles/per-user/${config.wsl.defaultUser}/home-manager/home-path/share/$x
+        if [[ -d $systemdir ]]; then
+          mkdir -p /usr/share/$x
+          echo -n " system..."
+          ${pkgs.rsync}/bin/rsync -ar --delete $systemdir/. /usr/share/$x
+          if [[ -d $userdir ]]; then
+            echo -n " home-manager..."
+            ${pkgs.rsync}/bin/rsync -ar $userdir/ /usr/share/$x/
+          fi
+        else
+          rm -rf /usr/share/$x
+        fi
+        echo
+      done
+    '';
 
   environment.systemPackages = [
     pkgs.wget
