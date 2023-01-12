@@ -17,6 +17,9 @@
     };
   };
 
+
+  time.timeZone = "America/Toronto";
+
   networking.firewall.enable = true;
 
   hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
