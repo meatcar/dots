@@ -7,5 +7,7 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
+    hashKnownHosts = true;
+    includes = [ "config.d/*" ];
   };
 }
