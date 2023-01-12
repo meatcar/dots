@@ -172,7 +172,10 @@ return function(use)
     'luukvbaal/nnn.nvim',
     cmd = { 'NnnPicker', 'NnnExplorer' },
     config = function()
-      require('nnn').setup()
+      require('nnn').setup {
+        explorer = { cmd = 'nnn -G' },
+        picker = { cmd = 'nnn -G' },
+      }
     end,
   }
 
