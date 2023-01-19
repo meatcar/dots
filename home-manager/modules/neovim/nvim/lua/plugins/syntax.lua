@@ -24,7 +24,7 @@ return function(use)
   use {
     'mattn/emmet-vim',
 
-    ft = { 'html', 'html.*', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
+    ft = { 'html', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
     config = function()
       vim.g.user_emmet_leader_key = '<localleader>'
       vim.g.user_emmet_install_global = false
