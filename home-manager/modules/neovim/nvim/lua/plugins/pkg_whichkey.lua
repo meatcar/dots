@@ -28,6 +28,12 @@ local function config()
     u = { '<Cmd>PackerUpdate<CR>', 'PackerUpdate' },
     p = { '<Cmd>PackerProfile<CR>', 'PackerProfile' },
     S = { '<Cmd>PackerStatus<CR>', 'PackerStatus' },
+    h = {
+      function()
+        require('noice').cmd 'telescope'
+      end,
+      'Message History',
+    },
   } -- }}}
 
   leadermap.h = {
