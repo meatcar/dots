@@ -11,9 +11,6 @@ vim.o.titlelen = 20
 -- ensure utf8
 vim.o.encoding = 'utf-8'
 
--- speed up large files
-vim.o.lazyredraw = true
-
 -- mouse
 vim.o.mouse = 'a'
 
@@ -36,8 +33,6 @@ vim.o.whichwrap = 'h,l,<,>,[,]'
 vim.o.linebreak = true -- soft-wrap lines, don't break them (bad opt name)
 vim.o.breakindent = true -- indent soft-wrapped lines
 vim.o.breakindentopt = 'shift:2,list:-1,min:30'
-vim.o.showbreak = '↳ '
-vim.opt.cpoptions:append 'n'
 
 -- new windows
 vim.o.splitbelow = true
