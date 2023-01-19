@@ -22,6 +22,8 @@ local function load_plugins(use)
   require 'plugins/pretty'(use)
   require 'plugins/colorschemes'(use)
   require 'plugins/syntax'(use)
+
+  require 'plugins/statuscolumn'
 end
 
 function _G.me.fn.reload_config()

@@ -50,12 +50,70 @@ return function(use)
       end
     end,
   }
+  --
+  -- use { -- pretty fold texts
+  --   'jrudess/vim-foldtext',
+  --   config = function()
+  --     vim.g.FoldText_line = '' -- 
+  --     vim.g.FoldText_multiplication = ' '
+  --   end,
+  -- }
 
-  use { -- pretty fold texts
-    'jrudess/vim-foldtext',
+  use {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
     config = function()
-      vim.g.FoldText_line = '' -- 
-      vim.g.FoldText_multiplication = ' '
+      vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      -- vim.o.statuscolumn = '%s%#FoldColumn#%@v:lua.StatusColumn.handler.fold@%{v:lua.StatusColumn.display.fold()%}'
+      -- .. '%#FoldColumn#' -- highlight group for fold
+      -- .. '%{' -- expression for showing fold expand/colapse
+      -- .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
+      -- .. '? (foldclosed(v:lnum) == -1' -- currently open?
+      -- .. '? ""' -- point down
+      -- .. ':  ""' -- point to right
+      -- .. ')'
+      -- .. ': " "' -- blank for no fold, or inside fold
+      -- .. '}'
+
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      require('ufo').setup {
+        provider_selector = function()
+          return { 'treesitter', 'indent' }
+        end,
+        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+          local newVirtText = {}
+          local suffix = ('  %d '):format(endLnum - lnum)
+          local sufWidth = vim.fn.strdisplaywidth(suffix)
+          local targetWidth = width - sufWidth
+          local curWidth = 0
+          for _, chunk in ipairs(virtText) do
+            local chunkText = chunk[1]
+            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            if targetWidth > curWidth + chunkWidth then
+              table.insert(newVirtText, chunk)
+            else
+              chunkText = truncate(chunkText, targetWidth - curWidth)
+              local hlGroup = chunk[2]
+              table.insert(newVirtText, { chunkText, hlGroup })
+              chunkWidth = vim.fn.strdisplaywidth(chunkText)
+              -- str width returned from truncate() may less than 2nd argument, need padding
+              if curWidth + chunkWidth < targetWidth then
+                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+              end
+              break
+            end
+            curWidth = curWidth + chunkWidth
+          end
+          table.insert(newVirtText, { suffix, 'UfoFoldedEllipsis' })
+          return newVirtText
+        end,
+      }
     end,
   }
 
