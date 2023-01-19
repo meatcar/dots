@@ -232,13 +232,31 @@ return function(use)
       require('telescope').setup {
         defaults = {
           winblend = 10,
-          -- TODO: Borken, see https://github.com/nvim-telescope/telescope.nvim/issues/840
-          -- sorting_strategy = 'ascending',
+          dynamic_preview_title = true,
+          sorting_strategy = 'ascending',
           layout_strategy = 'vertical',
           layout_config = {
+            flex = {
+              flip_columns = 120,
+              vertical = {
+                width = 0.9999,
+                anchor = 'SW',
+              },
+              horizontal = {
+                anchor = 'SW',
+              },
+            },
             vertical = {
-              -- TODO: set to true once sorting_strategy = ascending is fixed
-              mirror = false,
+              anchor = 'N',
+              mirror = true,
+              prompt_position = 'top',
+              width = function(self, max_columns, max_lines)
+                if max_columns < 80 then
+                  return max_columns
+                else
+                  return 80
+                end
+              end,
             },
           },
           history = {
