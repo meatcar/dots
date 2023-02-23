@@ -161,7 +161,6 @@ local function config()
       o = { '<Cmd>LspStop<CR>', 'Stop' },
       a = { '<Cmd>LspStart<CR>', 'Start' },
       l = { '<Cmd>LspInfo<CR>', 'Info' },
-      i = { '<Cmd>LspInstallInfo<CR>', 'Install Info' },
     },
   }
   leadermap_v.l = {

@@ -1,11 +1,7 @@
 return function(use)
-  use { -- easily install new lsp servers
-    'williamboman/nvim-lsp-installer',
-    requires = 'neovim/nvim-lspconfig',
+  use {
+    'neovim/nvim-lspconfig',
     config = function()
-      local lspinstaller = require 'nvim-lsp-installer'
-      lspinstaller.setup {}
-
       -- setup default lsp config
       require 'cmp'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -20,16 +16,36 @@ return function(use)
         end,
       })
 
-      -- setup individual lsp servers
-      for _, server in ipairs(lspinstaller.get_installed_servers()) do
-        if server.name == 'sumneko_lua' then
-          lspconfig.sumneko_lua.setup {
-            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-          }
-        else
-          lspconfig[server.name].setup {}
-        end
-      end
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+            },
+            diagnostics = { globals = { 'vim' } },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file('', true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      }
+      lspconfig.rnix.setup {}
+      lspconfig.terraformls.setup {}
+      lspconfig.gopls.setup {}
+      lspconfig.ansiblels.setup {}
+      lspconfig.elixirls.setup {}
+      lspconfig.eslint.setup {}
+      lspconfig.cssls.setup {}
+      lspconfig.html.setup {}
+      lspconfig.tsserver.setup {}
+      lspconfig.bashls.setup {}
+      lspconfig.dockerls.setup {}
     end,
   }
 

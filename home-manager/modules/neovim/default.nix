@@ -21,10 +21,20 @@
 
     extraPackages = with pkgs; [
       luajitPackages.luarocks
+      parinfer-rust
 
       # lsps
       rnix-lsp
-      sumneko-lua-language-server
+      lua-language-server
+      terraform-ls
+      gopls
+      ansible-language-server
+      elixir_ls
+      nodePackages.vscode-langservers-extracted # eslint
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.bash-language-server
+      nodePackages.dockerfile-language-server-nodejs
     ];
   };
 
@@ -45,7 +55,6 @@
     shellcheck
     shfmt
     update-nix-fetchgit
-    parinfer-rust
     vim-vint
     tree-sitter
     glow
