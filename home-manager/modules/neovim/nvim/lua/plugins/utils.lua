@@ -4,6 +4,7 @@ return function(use)
   use 'kshenoy/vim-signature' -- show marks in the SignColumn
   use 'lambdalisue/suda.vim' -- :SudaWrite
   use 'AndrewRadev/splitjoin.vim' -- gS/gJ to split/join multi-line code
+  use 'junegunn/fzf.vim' -- fuzzy completion of all the things
 
   use { -- run tests easily
     'janko/vim-test',
@@ -54,11 +55,6 @@ return function(use)
     config = function()
       vim.g.EditorConfig_exclude_patterns = { [[fugitive://.*]] }
     end,
-  }
-
-  use { -- fuzzy completion of all the things
-    'junegunn/fzf.vim',
-    requires = { 'junegunn/fzf', run = './install --all' },
   }
 
   use { -- async error checking
