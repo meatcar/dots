@@ -67,17 +67,7 @@ return function(use)
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-      -- vim.o.statuscolumn = '%s%#FoldColumn#%@v:lua.StatusColumn.handler.fold@%{v:lua.StatusColumn.display.fold()%}'
-      -- .. '%#FoldColumn#' -- highlight group for fold
-      -- .. '%{' -- expression for showing fold expand/colapse
-      -- .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
-      -- .. '? (foldclosed(v:lnum) == -1' -- currently open?
-      -- .. '? ""' -- point down
-      -- .. ':  ""' -- point to right
-      -- .. ')'
-      -- .. ': " "' -- blank for no fold, or inside fold
-      -- .. '}'
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+]]
 
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
