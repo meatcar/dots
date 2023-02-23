@@ -29,7 +29,3 @@ function _G.me.fn.keymap_lsp_on_attach(_, bufnr)
   vim.keymap.set('n', 'gek', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true, buffer = bufnr })
   vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true, buffer = bufnr })
 end
-
-vim.keymap.set('c', '<S-Enter>', function()
-  require('noice').redirect(vim.fn.getcmdline())
-end, { desc = 'Redirect Cmdline' })
