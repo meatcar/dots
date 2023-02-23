@@ -25,6 +25,7 @@ in
           { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
         ];
     };
+  programs.fzf.enableFishIntegration = false; # we use fzf.fish
 
   xdg.configFile."fish/functions" = {
     source = ./functions;
