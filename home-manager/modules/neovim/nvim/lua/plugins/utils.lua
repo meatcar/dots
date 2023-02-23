@@ -99,8 +99,8 @@ return function(use)
     'luukvbaal/nnn.nvim',
     config = function()
       require('nnn').setup {
-        explorer = { cmd = 'nnn -G' },
-        picker = { cmd = 'nnn -G', style = { border = 'rounded' } },
+        explorer = { cmd = 'nnn -G -C' },
+        picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
         replace_netrw = 'picker',
       }
       vim.keymap.set('n', '-', function()
