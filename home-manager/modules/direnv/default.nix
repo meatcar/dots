@@ -14,8 +14,7 @@ in
       }
 
       session_name(){
-        echo "direnv: 'session_name [...]' is deprecated, use just 'tmux_session' instead" >&2
-        tmux_session "''${@:?session_name needs a name as argument}"
+        echo "session_name is deprecated and should be removed" >&2
       }
 
       # store .direnv outside project dir
