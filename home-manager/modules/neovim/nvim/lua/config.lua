@@ -50,7 +50,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.diffopt = 'filler,internal,algorithm:patience,indent-heuristic,closeoff,iwhite'
 
 -- whitespace
-vim.o.listchars = 'tab:⇥ ,eol:$,trail:·,extends:>,precedes:<'
+vim.o.listchars = 'tab:⇥ ,eol:$,trail:·,extends:…,precedes:…,nbsp:␣'
 vim.o.fillchars = 'vert:│'
 
 -- clean-up messages
