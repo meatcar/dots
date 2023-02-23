@@ -5,7 +5,6 @@ return function(use)
   use 'nvim-lua/plenary.nvim' -- used by neovim packages
   use 'tpope/vim-eunuch' -- :Delete, :Move, etc
   use 'tpope/vim-repeat' -- repeat more things
-  use 'tpope/vim-unimpaired' -- pairwise mappings like [b, ]b
   use 'wellle/targets.vim' -- additional text objects
   use 'pbrisbin/vim-mkdir' -- create directory when :e unknown/paths
   -- use 'kopischke/vim-stay' -- save fold states
@@ -17,6 +16,23 @@ return function(use)
   use 'tweekmonster/startuptime.vim' -- debug slow vim startup times
   use 'lewis6991/impatient.nvim' -- cache lua compiled modules
   use 'axelf4/vim-strip-trailing-whitespace' -- strip whitespace on edited lines
+
+  use { -- basis
+    'echasnovski/mini.basics',
+    config = function()
+      require('mini.basics').setup {
+        options = {
+          basic = false,
+          extra_ui = false,
+          winborders = 'single',
+        },
+        mappings = {
+          basic = true,
+          option_toggle_prefix = '<Leader>t',
+        },
+      }
+    end,
+  }
 
   use { -- work with surrounding text
     'echasnovski/mini.surround',
@@ -32,6 +48,13 @@ return function(use)
           update_n_lines = '<leader>sn', -- Update `n_lines`
         },
       }
+    end,
+  }
+
+  use { -- [b ]b etc to manipulate nvim
+    'echasnovski/mini.bracketed',
+    config = function()
+      require('mini.bracketed').setup {}
     end,
   }
 
