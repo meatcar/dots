@@ -39,7 +39,6 @@ end
 set -x LESSKEY "$XDG_CACHE_HOME"/less/lesskey
 set -x LESSHISTFILE "$XDG_CACHE_HOME"/less/history
 
-set -U FZF_LEGACY_KEYBINDINGS 0
 fzf_configure_bindings
 
 if [ -z "$SSH_AUTH_SOCK" ] && command -qs gnome-keyring-daemon
