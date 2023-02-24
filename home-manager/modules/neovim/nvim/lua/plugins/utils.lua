@@ -97,15 +97,13 @@ return function(use)
 
   use {
     'luukvbaal/nnn.nvim',
+    cmd = { 'NnnExplorer', 'NnnPicker' },
     config = function()
       require('nnn').setup {
-        explorer = { cmd = 'nnn -G -C' },
+        explorer = { cmd = 'nnn -C -G' },
         picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
         replace_netrw = 'picker',
       }
-      vim.keymap.set('n', '-', function()
-        vim.cmd [[ NnnPicker %:p ]]
-      end, { desc = 'File Picker' })
     end,
   }
 
