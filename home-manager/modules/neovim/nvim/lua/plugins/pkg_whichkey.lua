@@ -102,7 +102,8 @@ local function config()
     l = { '<Cmd>TroubleToggle<CR>', 'LSP List' },
     r = { '<Cmd>Telescope resume<CR>', 'Resume Telescope' },
     n = { [[<Cmd>Telecope notify<CR>', 'Notifications']] },
-    f = { '<Cmd>NvimTreeToggle<CR>', 'Toggle' },
+    f = { '<Cmd>NvimTreeToggle<CR>', 'File Tree' },
+    t = { '<Cmd>TodoTelescope<CR>', 'TODO' },
   } -- }}}
 
   leadermap.r = {
