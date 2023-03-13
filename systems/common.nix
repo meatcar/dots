@@ -47,6 +47,8 @@
 
   gtk.iconCache.enable = true;
 
+  environment.enableAllTerminfo = true;
+
   xdg = {
     icons.enable = true;
     mime.enable = true;
