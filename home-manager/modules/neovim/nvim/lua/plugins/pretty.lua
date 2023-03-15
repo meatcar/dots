@@ -153,10 +153,8 @@ return function(use)
     'luukvbaal/statuscol.nvim',
     config = function()
       require('statuscol').setup {
-        foldfunc = 'builtin',
-        setopt = true,
-        order = 'NSFs',
-        separator = false,
+        setopt = false,
+        ft_ignore = _G.me.o.sidebars,
       }
     end,
   }
