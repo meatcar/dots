@@ -2,10 +2,10 @@
 [
   {
     name = "nix-community";
-    sha256 = "sha256:1rgbl9hzmpi5x2xx9777sf6jamz5b9qg72hkdn1vnhyqcy008xwg";
+    sha256 = "sha256:0m6kb0a0m3pr6bbzqz54x37h5ri121sraj1idfmsrr6prknc7q3x";
   }
   {
     name = "nixpkgs-wayland";
-    sha256 = "sha256:0pr9d9mvhpjf3rspqlrmz7fkr5nyhabyfib89vd6dv44xqip70gc";
+    sha256 = "sha256:11mqxlyhsqxvb6zg27819h29856bc2d6s98ihrs4ksnf20fzdx7h";
   }
 ]
