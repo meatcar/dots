@@ -3,7 +3,6 @@ return function(use)
   use 'kevinhwang91/nvim-bqf' -- better quickfix window
   use 'kshenoy/vim-signature' -- show marks in the SignColumn
   use 'lambdalisue/suda.vim' -- :SudaWrite
-  use 'AndrewRadev/splitjoin.vim' -- gS/gJ to split/join multi-line code
   use 'junegunn/fzf.vim' -- fuzzy completion of all the things
 
   use { -- run tests easily
@@ -255,6 +254,18 @@ return function(use)
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup()
+    end,
+  }
+
+  use { -- split/join code using treesitter
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup { use_default_keymaps = false }
+
+      vim.keymap.set('n', '<localleader>jj', require('treesj').toggle, { desc = 'split/join toggle' })
+      vim.keymap.set('n', '<localleader>jS', require('treesj').split, { desc = 'split' })
+      vim.keymap.set('n', '<localleader>jJ', require('treesj').join, { desc = 'join' })
     end,
   }
 end
