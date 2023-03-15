@@ -4,7 +4,7 @@
     ./common.nix
     ../modules/gtk.nix
     ../modules/gnome-keyring.nix
-    "${specialArgs.inputs.vscode-server}/modules/vscode-server/home.nix"
+    specialArgs.inputs.vscode-server.nixosModule
   ];
 
 
@@ -12,13 +12,22 @@
     BROWSER = "x-www-browser";
   };
 
-  services.vscode-server.enable = true;
+  # services.vscode-server.enable = true;
 
   programs.fish.plugins = [
     { name = "fish-ssh-agent"; src = specialArgs.inputs.fish-ssh-agent; }
   ];
 
   programs.fish.interactiveShellInit = "set -x COLORTERM truecolor";
+
+  programs.fish.functions.osc7_prompt = {
+    onEvent = "fish_prompt";
+    body = ''
+      if grep -q Microsoft /proc/version
+        printf "\033]7;file://%s\033\\" (wslpath -w "$PWD")
+      end
+    '';
+  };
 
   # TODO: systemdaemonize
   # programs.fish.shellInit = ''
