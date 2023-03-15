@@ -1,22 +1,20 @@
-return function(use)
-  use 'kien/rainbow_parentheses.vim'
+return {
+  'kien/rainbow_parentheses.vim',
 
-  use 'xtal8/traces.vim'
+  'xtal8/traces.vim',
 
-  use 'romainl/vim-cool' -- smart set nohl after we're done searching
+  'romainl/vim-cool', -- smart set nohl after we're done searching
 
-  use { -- smooth scrolling
+  { -- smooth scrolling
     'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup {
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
-        easing_function = 'circular',
-      }
-    end,
-  }
+    opts = {
+      -- All these keys will be mapped to their corresponding default scrolling animation
+      mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+      easing_function = 'circular',
+    },
+  },
 
-  use { -- flash cursor sometimes
+  { -- flash cursor sometimes
     'edluffy/specs.nvim',
     config = function()
       require('specs').setup {
@@ -37,9 +35,9 @@ return function(use)
         },
       }
     end,
-  }
+  },
 
-  use { -- highlight word under cursor
+  { -- highlight word under cursor
     'RRethy/vim-illuminate',
     config = function()
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
@@ -49,7 +47,7 @@ return function(use)
         require('illuminate').on_attach(client)
       end
     end,
-  }
+  },
   --
   -- use { -- pretty fold texts
   --   'jrudess/vim-foldtext',
@@ -59,9 +57,9 @@ return function(use)
   --   end,
   -- }
 
-  use {
+  {
     'kevinhwang91/nvim-ufo',
-    requires = 'kevinhwang91/promise-async',
+    dependencies = 'kevinhwang91/promise-async',
     config = function()
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
@@ -105,9 +103,9 @@ return function(use)
         end,
       }
     end,
-  }
+  },
 
-  use { -- eol hints & counters when searching
+  { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
     config = function()
       require('hlslens').setup()
@@ -125,21 +123,19 @@ return function(use)
         vim.keymap.set('n', map, map .. [[<cmd>lua require('hlslens').start()<cr>]])
       end
     end,
-  }
+  },
 
-  use {
+  {
     'dstein64/nvim-scrollview', -- scroll bar
-    config = function()
-      require('scrollview').setup {
-        excluded_filetypes = _G.me.o.sidebars,
-        current_only = true,
-        winblend = 75,
-        base = 'right',
-      }
-    end,
-  }
+    opts = {
+      excluded_filetypes = _G.me.o.sidebars,
+      current_only = true,
+      winblend = 75,
+      base = 'right',
+    },
+  },
 
-  use {
+  {
     'rcarriga/nvim-notify',
     config = function()
       require('notify').setup {
@@ -147,15 +143,13 @@ return function(use)
         render = 'compact',
       }
     end,
-  }
+  },
 
-  use {
+  {
     'luukvbaal/statuscol.nvim',
-    config = function()
-      require('statuscol').setup {
-        setopt = false,
-        ft_ignore = _G.me.o.sidebars,
-      }
-    end,
-  }
-end
+    opts = {
+      setopt = false,
+      ft_ignore = _G.me.o.sidebars,
+    },
+  },
+}

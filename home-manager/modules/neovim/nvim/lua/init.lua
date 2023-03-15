@@ -19,6 +19,44 @@ _G.me = {
   fn = {},
 }
 
+-- bootstrap lazy.nvim if not installed
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+
+function _G.me.fn.reload_config()
+  -- un-require all plugins
+  for k, _ in pairs(package.loaded) do
+    if string.match(k, '^plugins') then
+      package.loaded[k] = nil
+    end
+  end
+  -- prepend current vim config dir to runtimepath, source root packer config, recompile.
+  vim.cmd [[
+    execute ":set runtimepath^=".. expand("%:p:s?/lua/.*$??")
+    lua require('plugins')
+    PackerCompile
+    redraw
+    echomsg 'Packer compiled using surrounding neovim config.'
+  ]]
+end
+
+vim.cmd [[
+  augroup me
+    autocmd!
+  augroup END
+]]
+-- autocmd BufWritePost */home-manager/modules/neovim/nvim/lua/*.lua lua _G.me.fn.reload_config()
+
 -- require 'impatient' --.enable_profile()
 
 require 'config'
@@ -26,8 +64,4 @@ require 'commands'
 require 'autocmds'
 require 'keymaps'
 
-_G.me.o.packercompiled = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua'
-require 'plugins'
-if vim.fn.filereadable(_G.me.o.packercompiled) == 1 then
-  require 'packer_compiled'
-end
+require('lazy').setup 'plugins'

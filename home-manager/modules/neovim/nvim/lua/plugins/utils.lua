@@ -1,11 +1,11 @@
-return function(use)
-  use 'Olical/vim-enmasse' -- mass-edit lines in quickfix
-  use 'kevinhwang91/nvim-bqf' -- better quickfix window
-  use 'kshenoy/vim-signature' -- show marks in the SignColumn
-  use 'lambdalisue/suda.vim' -- :SudaWrite
-  use 'junegunn/fzf.vim' -- fuzzy completion of all the things
+return {
+  'Olical/vim-enmasse', -- mass-edit lines in quickfix
+  'kevinhwang91/nvim-bqf', -- better quickfix window
+  'kshenoy/vim-signature', -- show marks in the SignColumn
+  'lambdalisue/suda.vim', -- :SudaWrite
+  'junegunn/fzf.vim', -- fuzzy completion of all the things
 
-  use { -- run tests easily
+  { -- run tests easily
     'janko/vim-test',
     config = function()
       if vim.env.TMUX ~= nil then
@@ -13,9 +13,9 @@ return function(use)
       end
       vim.g['test#preserve_screen'] = false
     end,
-  }
+  },
 
-  use { -- associate sessions with cwd
+  { -- associate sessions with cwd
     'rmagatti/auto-session',
     config = function()
       local dir = vim.fn.stdpath 'data' .. '/sessions/'
@@ -24,14 +24,14 @@ return function(use)
         auto_session_root_dir = dir,
       }
     end,
-  }
+  },
 
-  use { -- undo tree
+  { -- undo tree
     'simnalamburt/vim-mundo',
     cmd = 'MundoToggle',
-  }
+  },
 
-  use { -- align operations
+  { -- align operations
     'junegunn/vim-easy-align',
     config = function()
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -39,26 +39,26 @@ return function(use)
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
       vim.keymap.set('x', 'ga', '<Plug>(EasyAlign)')
     end,
-  }
+  },
 
-  use { -- UI for dadbod, a database UI
+  { -- UI for dadbod, a database UI
     'kristijanhusak/vim-dadbod-ui',
-    requires = 'tpope/vim-dadbod', -- Modern database interface for Vim
-    setup = function()
+    dependencies = 'tpope/vim-dadbod', -- Modern database interface for Vim
+    init = function()
       vim.g.db_ui_use_nerd_fonts = true
     end,
-  }
+  },
 
-  use { -- editorconfig file support
+  { -- editorconfig file support
     'editorconfig/editorconfig-vim',
     config = function()
       vim.g.EditorConfig_exclude_patterns = { [[fugitive://.*]] }
     end,
-  }
+  },
 
-  use { -- async error checking
+  { -- async error checking
     'dense-analysis/ale',
-    requires = 'desmap/ale-sensible', -- sensible ALE defaults
+    dependencies = 'desmap/ale-sensible', -- sensible ALE defaults
     config = function()
       vim.g.ale_lint_on_text_changed = 'never'
       vim.g.ale_linter_aliases = { vimwiki = 'markdown' }
@@ -77,11 +77,11 @@ return function(use)
         go = { 'gofmt' },
       }
     end,
-  }
+  },
 
-  use { -- fast file tree
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
+  { -- fast file tree
+    'nvim-tree/nvim-tree.lua',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('nvim-tree').setup {
         -- disable conflict with dirvish
@@ -92,59 +92,55 @@ return function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     'nvim-neo-tree/neo-tree.nvim',
-    as = 'neo-tree',
+    name = 'neo-tree',
     branch = 'v2.x',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     },
-    setup = function()
+    init = function()
       -- Unless you are still migrating, remove the deprecated commands from v1.x
       vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
     end,
-    config = function()
-      require('neo-tree').setup {
-        hijack_netrw_behavior = 'disabled',
-        add_blank_line_at_top = true,
-        auto_clean_after_session_restore = true,
-        source_selector = {
-          winbar = true,
-          statusline = false,
-          tab_labels = { -- table
-            filesystem = '  Files ',
-            buffers = '  Buffers ',
-            git_status = '  Git ',
-            diagnostics = ' 裂Diagnostics ',
-          },
-          content_layout = 'center',
-          tabs_layout = 'equal',
-          truncation_character = '…',
-          tabs_min_width = nil,
-          tabs_max_width = nil,
-          padding = 0,
+    opts = {
+      hijack_netrw_behavior = 'disabled',
+      add_blank_line_at_top = true,
+      auto_clean_after_session_restore = true,
+      source_selector = {
+        winbar = true,
+        statusline = false,
+        tab_labels = { -- table
+          filesystem = '  Files ',
+          buffers = '  Buffers ',
+          git_status = '  Git ',
+          diagnostics = ' 裂Diagnostics ',
         },
-      }
-    end,
-  }
+        content_layout = 'center',
+        tabs_layout = 'equal',
+        truncation_character = '…',
+        tabs_min_width = nil,
+        tabs_max_width = nil,
+        padding = 0,
+      },
+    },
+  },
 
-  use {
+  {
     'luukvbaal/nnn.nvim',
     cmd = { 'NnnExplorer', 'NnnPicker' },
-    config = function()
-      require('nnn').setup {
-        explorer = { cmd = 'nnn -C -G' },
-        picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
-        replace_netrw = 'picker',
-      }
-    end,
-  }
+    opts = {
+      explorer = { cmd = 'nnn -C -G' },
+      picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
+      replace_netrw = 'picker',
+    },
+  },
 
-  use { -- ctrl-[ax] on drugs
+  { -- ctrl-[ax] on drugs
     'zegervdv/nrpattern.nvim',
     config = function()
       -- Get the default dict of patterns
@@ -158,9 +154,9 @@ return function(use)
       -- Call the setup to enable the patterns
       require('nrpattern').setup(patterns)
     end,
-  }
+  },
 
-  use { -- show lines for indents on blank lines
+  { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup {
@@ -172,22 +168,20 @@ return function(use)
         filetype_exclude = _G.me.o.sidebars,
       }
     end,
-  }
+  },
 
-  use { -- highlight and add UI for TODO comments
+  { -- highlight and add UI for TODO comments
     'folke/todo-comments.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('todo-comments').setup { signs = false }
-    end,
-  }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 
-  use { -- a fuzzy completion engine
+  { -- a fuzzy completion engine
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       { 'nvim-telescope/telescope-smart-history.nvim' },
     },
     config = function()
@@ -256,9 +250,9 @@ return function(use)
         nnoremap <C-p>      <Cmd>Ctrlp<CR>
       ]]
     end,
-  }
+  },
 
-  use { -- tmux integration
+  { -- tmux integration
     'aserowy/tmux.nvim',
     cond = function()
       return vim.env.TMUX ~= nil
@@ -270,34 +264,34 @@ return function(use)
         resize = { enable_default_keybindings = true },
       }
     end,
-  }
+  },
 
-  use { -- open and run commands in a tmux pane
+  { -- open and run commands in a tmux pane
     'preservim/vimux',
     cond = function()
       return vim.env.TMUX ~= nil
     end,
-  }
+  },
 
-  use { -- fullscreen current buffer
+  { -- fullscreen current buffer
     'folke/zen-mode.nvim',
     config = function()
       require('zen-mode').setup {}
       vim.keymap.set('n', '<C-w>z', '<Cmd>ZenMode<CR>')
       vim.keymap.set('n', '<Leader>wz', '<Cmd>ZenMode<CR>')
     end,
-  }
+  },
 
-  use { -- color highlighter
+  { -- color highlighter
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup()
     end,
-  }
+  },
 
-  use { -- split/join code using treesitter
+  { -- split/join code using treesitter
     'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
+    dependencies = { 'nvim-treesitter' },
     config = function()
       require('treesj').setup { use_default_keymaps = false }
 
@@ -305,5 +299,5 @@ return function(use)
       vim.keymap.set('n', '<localleader>jS', require('treesj').split, { desc = 'split' })
       vim.keymap.set('n', '<localleader>jJ', require('treesj').join, { desc = 'join' })
     end,
-  }
-end
+  },
+}

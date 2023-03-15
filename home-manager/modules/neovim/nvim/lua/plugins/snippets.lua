@@ -1,7 +1,7 @@
-return function(use)
-  use 'rafamadriz/friendly-snippets'
+return {
+  'rafamadriz/friendly-snippets',
 
-  use {
+  {
     'hrsh7th/vim-vsnip',
     config = function()
       vim.cmd [[
@@ -20,5 +20,5 @@ return function(use)
       smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
       ]]
     end,
-  }
-end
+  },
+}

@@ -1,5 +1,5 @@
-return function(use)
-  use {
+return {
+  {
     'neovim/nvim-lspconfig',
     config = function()
       -- setup default lsp config
@@ -47,36 +47,35 @@ return function(use)
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
     end,
-  }
+  },
 
-  use { -- pretty LSP popups
-    'tami5/lspsaga.nvim',
-    config = function()
-      require('lspsaga').init_lsp_saga {
-        error_sign = '',
-        warn_sign = '',
-        hint_sign = '',
-        infor_sign = '',
-        code_action_keys = {
-          quit = '<ESC>',
-          exec = '<CR>',
-        },
-      }
-    end,
-  }
+  -- TODO update
+  --{ -- pretty LSP popups
+  --    'glepnir/lspsaga.nvim',
+  --    config = function()
+  --      require('lspsaga').init_lsp_saga {
+  --        error_sign = '',
+  --        warn_sign = '',
+  --        hint_sign = '',
+  --        infor_sign = '',
+  --        code_action_keys = {
+  --          quit = '<ESC>',
+  --          exec = '<CR>',
+  --        },
+  --      }
+  --    end,
+  --  },
 
-  use 'folke/lsp-colors.nvim'
+  'folke/lsp-colors.nvim',
 
-  use { -- show all LSP errors
-    'folke/lsp-trouble.nvim',
-    config = function()
-      require('trouble').setup {
-        use_lsp_diagnostic_signs = false,
-      }
-    end,
-  }
+  { -- show all LSP errors
+    'folke/trouble.nvim',
+    opts = {
+      use_lsp_diagnostic_signs = false,
+    },
+  },
 
-  use {
+  {
     'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
     config = function()
       require('lsp_lines').setup()
@@ -86,23 +85,19 @@ return function(use)
         update_in_insert = true,
       }
     end,
-  }
+  },
 
-  use {
+  {
     'cshuaimin/ssr.nvim',
-    module = 'ssr',
-    -- Calling setup is optional.
-    config = function()
-      require('ssr').setup {
-        min_width = 50,
-        min_height = 5,
-        keymaps = {
-          close = 'q',
-          next_match = 'n',
-          prev_match = 'N',
-          replace_all = '<leader><cr>',
-        },
-      }
-    end,
-  }
-end
+    opts = {
+      min_width = 50,
+      min_height = 5,
+      keymaps = {
+        close = 'q',
+        next_match = 'n',
+        prev_match = 'N',
+        replace_all = '<leader><cr>',
+      },
+    },
+  },
+}
