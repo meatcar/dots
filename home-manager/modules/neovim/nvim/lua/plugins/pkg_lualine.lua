@@ -136,8 +136,8 @@ local function config()
   }
 
   local sections = {
-    lualine_a = { parts.filetype },
-    lualine_b = { parts.encoding, parts.fileformat },
+    lualine_a = { parts.mode },
+    lualine_b = { parts.filetype, parts.encoding, parts.fileformat },
     lualine_c = { parts.filename },
     lualine_x = { parts.diagnostics },
     lualine_y = { parts.diff },
@@ -179,10 +179,10 @@ local function config()
       globalstatus = false,
     },
 
-    sections = sections_sparse,
-    inactive_sections = sections_sparse,
-    winbar = winbar,
-    inactive_winbar = winbar,
+    sections = sections,
+    inactive_sections = sections,
+    -- winbar = winbar,
+    -- inactive_winbar = winbar,
     tabline = {},
 
     extensions = { 'nvim-tree', 'fugitive', 'mundo', 'man', 'quickfix' },

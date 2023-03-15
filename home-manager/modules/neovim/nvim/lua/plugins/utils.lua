@@ -95,6 +95,44 @@ return function(use)
   }
 
   use {
+    'nvim-neo-tree/neo-tree.nvim',
+    as = 'neo-tree',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    },
+    setup = function()
+      -- Unless you are still migrating, remove the deprecated commands from v1.x
+      vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+    end,
+    config = function()
+      require('neo-tree').setup {
+        hijack_netrw_behavior = 'disabled',
+        add_blank_line_at_top = true,
+        auto_clean_after_session_restore = true,
+        source_selector = {
+          winbar = true,
+          statusline = false,
+          tab_labels = { -- table
+            filesystem = '  Files ',
+            buffers = '  Buffers ',
+            git_status = '  Git ',
+            diagnostics = ' 裂Diagnostics ',
+          },
+          content_layout = 'center',
+          tabs_layout = 'equal',
+          truncation_character = '…',
+          tabs_min_width = nil,
+          tabs_max_width = nil,
+          padding = 0,
+        },
+      }
+    end,
+  }
+
+  use {
     'luukvbaal/nnn.nvim',
     cmd = { 'NnnExplorer', 'NnnPicker' },
     config = function()
