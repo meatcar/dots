@@ -1,7 +1,7 @@
-return function(use)
-  use {
+return {
+{
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -103,11 +103,11 @@ return function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+{
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = 'all',
@@ -119,9 +119,9 @@ return function(use)
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
       vim.o.foldlevelstart = 3
     end,
-  }
+  },
 
-  use {
+{
     'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -169,16 +169,16 @@ return function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+{
     'kkoomen/vim-doge',
-    run = ':call doge#install()',
+    build = ':call doge#install()',
     config = function()
       vim.g.doge_javascript_settings = {
         destructuring_props = true,
         omit_redundant_param_types = true,
       }
     end,
-  }
-end
+  },
+}

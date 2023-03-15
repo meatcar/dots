@@ -1,7 +1,6 @@
 return {
   'romgrk/barbar.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons' },
-  event = 'ColorScheme', -- hack, delay bufferline until a colorscheme is set
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('bufferline').setup {
       animation = false,
