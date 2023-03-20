@@ -1,4 +1,4 @@
-_G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'trouble', 'neo-tree' }
+_G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'trouble', 'neo-tree', 'fugitive' }
 
 return {
   'nvim-lua/plenary.nvim', -- used by neovim packages
