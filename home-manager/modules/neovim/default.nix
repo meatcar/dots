@@ -15,6 +15,7 @@
 
     extraConfig = ''
       let g:parinfer_dylib_path = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so"
+      let g:sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
 
       lua require('init')
     '';

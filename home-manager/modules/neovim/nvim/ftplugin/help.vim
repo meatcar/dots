@@ -1,1 +1,1 @@
-autocmd vimrc FileType help setlocal buflisted
+autocmd me FileType help setlocal buflisted

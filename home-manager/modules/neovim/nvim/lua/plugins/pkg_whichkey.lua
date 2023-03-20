@@ -27,7 +27,7 @@ return {
 
     leadermap.v = {
       name = 'vim', -- {{{
-      l = { '<Cmd>Lazy<CR>', 'Lazy' },
+      v = { '<Cmd>Lazy<CR>', 'Lazy' },
       s = { '<Cmd>Lazy sync<CR>', 'Lazy sync' },
       c = { '<Cmd>Lazy clean<CR>', 'Lazy clean' },
       u = { '<Cmd>Lazy check<CR>', 'Lazy check' },
@@ -72,9 +72,8 @@ return {
       f = { '<Cmd>Telescope find_files<CR>', 'Files' },
       t = {
         name = 'file-tree',
-        t = { '<Cmd>NvimTreeToggle<CR>', 'Toggle' },
-        r = { '<Cmd>NvimTreeRefresh<CR>', 'Refresh' },
-        f = { '<Cmd>NvimTreeFindFile<CR>', 'Find file' },
+        t = { '<Cmd>Neotree toggle<CR>', 'Toggle' },
+        f = { '<Cmd>Neotree filesystem reveal_file=%<CR>', 'Find file' },
       },
     } -- }}}
 
@@ -106,7 +105,7 @@ return {
       l = { '<Cmd>TroubleToggle<CR>', 'LSP List' },
       r = { '<Cmd>Telescope resume<CR>', 'Resume Telescope' },
       n = { [[<Cmd>Telecope notify<CR>', 'Notifications']] },
-      f = { '<Cmd>NvimTreeToggle<CR>', 'File Tree' },
+      f = { '<Cmd>Neotree<CR>', 'File Tree' },
       t = { '<Cmd>TodoTelescope<CR>', 'TODO' },
     } -- }}}
 

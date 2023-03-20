@@ -1,5 +1,5 @@
 return {
-{
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -14,6 +14,7 @@ return {
       'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
       'onsails/lspkind-nvim', -- add icons to lsp completions
     },
+    event = 'InsertEnter',
     config = function()
       local cmp = require 'cmp'
       vim.cmd [[
@@ -105,7 +106,7 @@ return {
     end,
   },
 
-{
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
@@ -121,7 +122,7 @@ return {
     end,
   },
 
-{
+  {
     'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -171,7 +172,7 @@ return {
     end,
   },
 
-{
+  {
     'kkoomen/vim-doge',
     build = ':call doge#install()',
     config = function()

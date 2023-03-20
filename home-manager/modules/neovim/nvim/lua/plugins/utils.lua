@@ -79,30 +79,15 @@ return {
     end,
   },
 
-  { -- fast file tree
-    'nvim-tree/nvim-tree.lua',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('nvim-tree').setup {
-        -- disable conflict with dirvish
-        hijack_netrw = true,
-        renderer = {
-          highlight_git = true,
-          add_trailing = true,
-        },
-      }
-    end,
-  },
-
   {
     'nvim-neo-tree/neo-tree.nvim',
-    name = 'neo-tree',
     branch = 'v2.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     },
+    cmd = 'Neotree',
     init = function()
       -- Unless you are still migrating, remove the deprecated commands from v1.x
       vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
@@ -182,7 +167,16 @@ return {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      { 'nvim-telescope/telescope-smart-history.nvim' },
+      { 'nvim-telescope/telescope-smart-history.nvim', dependencies = 'kkharji/sqlite.lua' },
+    },
+    cmd = 'Telescope',
+    init = function()
+      vim.cmd [[
+        command! Ctrlp execute (exists("*FugitiveHead()") && len(FugitiveHead())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
+      ]]
+    end,
+    keys = {
+      { '<C-p>', '<Cmd>Ctrlp<CR>' },
     },
     config = function()
       local history_path = vim.fn.stdpath 'data' .. '/databases'
@@ -245,10 +239,6 @@ return {
       }
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'smart_history'
-      vim.cmd [[
-        command! Ctrlp execute (exists("*FugitiveHead()") && len(FugitiveHead())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
-        nnoremap <C-p>      <Cmd>Ctrlp<CR>
-      ]]
     end,
   },
 
@@ -292,12 +282,29 @@ return {
   { -- split/join code using treesitter
     'Wansmer/treesj',
     dependencies = { 'nvim-treesitter' },
-    config = function()
-      require('treesj').setup { use_default_keymaps = false }
-
-      vim.keymap.set('n', '<localleader>jj', require('treesj').toggle, { desc = 'split/join toggle' })
-      vim.keymap.set('n', '<localleader>jS', require('treesj').split, { desc = 'split' })
-      vim.keymap.set('n', '<localleader>jJ', require('treesj').join, { desc = 'join' })
-    end,
+    keys = {
+      {
+        '<localleader>jj',
+        function()
+          require('treesj').toggle()
+        end,
+        desc = 'split/join toggle',
+      },
+      {
+        '<localleader>jS',
+        function()
+          require('treesj').split()
+        end,
+        desc = 'split',
+      },
+      {
+        '<localleader>jJ',
+        function()
+          require('treesj').join()
+        end,
+        desc = 'join',
+      },
+    },
+    opts = { use_default_keymaps = false },
   },
 }

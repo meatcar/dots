@@ -56,6 +56,7 @@ vim.o.fillchars = 'vert:│'
 -- clean-up messages
 vim.o.showmode = false
 vim.opt.shortmess:append 'c'
+vim.opt.shortmess:append 'o'
 
 vim.opt.viewoptions:remove 'curdir'
 
@@ -65,7 +66,6 @@ vim.opt.foldopen:append 'insert,jump'
 -- tabs & indents
 vim.o.expandtab = true -- spaces over tabs
 vim.o.tabstop = 4
-vim.osofttabstop = 4
 vim.o.softtabstop = 4
 
 -- searching

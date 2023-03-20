@@ -7,8 +7,8 @@ return {
       auto_hide = true,
       closable = false,
       exclude_ft = _G.me.o.sidebars,
+      icon_pinned = '車',
     }
-    vim.keymap.set('n', '[b', [[<Cmd>BufferPrev<CR>]], { silent = true })
-    vim.keymap.set('n', ']b', [[<Cmd>BufferNext<CR>]], { silent = true })
+    require('core/keymaps').barbar()
   end,
 }

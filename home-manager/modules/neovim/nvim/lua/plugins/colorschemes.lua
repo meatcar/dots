@@ -75,8 +75,16 @@ return {
         lsp_trouble = true,
         lsp_saga = true,
         which_key = true,
-        nvimtree = {
+        neotree = true,
+        barbar = true,
+        cmp = true,
+        leap = true,
+        markdown = true,
+        mini = true,
+        gitsigns = true,
+        indent_blankline = {
           enabled = true,
+          colored_indent_levels = false,
         },
       },
     },
