@@ -1,4 +1,4 @@
-_G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'trouble' }
+_G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'trouble', 'neo-tree' }
 
 return {
   'nvim-lua/plenary.nvim', -- used by neovim packages
@@ -60,6 +60,9 @@ return {
     config = function(_, opts)
       require('mini.bracketed').setup(opts)
     end,
+    opts = {
+      buffer = { suffix = '' }, -- set by barbar.nvim
+    },
   },
 
   {

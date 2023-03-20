@@ -43,19 +43,8 @@ return {
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
       vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
       vim.keymap.set('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
-      function _G.me.fn.illuminate_lsp_on_attach(client, _)
-        require('illuminate').on_attach(client)
-      end
     end,
   },
-  --
-  -- use { -- pretty fold texts
-  --   'jrudess/vim-foldtext',
-  --   config = function()
-  --     vim.g.FoldText_line = '' -- 
-  --     vim.g.FoldText_multiplication = ' '
-  --   end,
-  -- }
 
   {
     'kevinhwang91/nvim-ufo',

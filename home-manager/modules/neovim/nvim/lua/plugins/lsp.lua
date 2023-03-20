@@ -1,6 +1,9 @@
+local keymaps = require 'core/keymaps'
+
 return {
   {
     'neovim/nvim-lspconfig',
+    event = 'VeryLazy',
     config = function()
       -- setup default lsp config
       require 'cmp'
@@ -11,27 +14,25 @@ return {
       util.default_config = vim.tbl_extend('force', util.default_config, {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
-          _G.me.fn.illuminate_lsp_on_attach(client, bufnr)
-          _G.me.fn.keymap_lsp_on_attach(client, bufnr)
+          require('illuminate').on_attach(client)
+          keymaps.lsp_on_attach(client, bufnr)
         end,
       })
 
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
-            },
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            runtime = { version = 'LuaJIT' },
+            -- don't warn for some undefined globals
             diagnostics = { globals = { 'vim' } },
             workspace = {
               -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false, -- disable unhelpful prompts
             },
             -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
-            },
+            telemetry = { enable = false },
           },
         },
       }
@@ -49,22 +50,24 @@ return {
     end,
   },
 
-  -- TODO update
-  --{ -- pretty LSP popups
-  --    'glepnir/lspsaga.nvim',
-  --    config = function()
-  --      require('lspsaga').init_lsp_saga {
-  --        error_sign = '',
-  --        warn_sign = '',
-  --        hint_sign = '',
-  --        infor_sign = '',
-  --        code_action_keys = {
-  --          quit = '<ESC>',
-  --          exec = '<CR>',
-  --        },
-  --      }
-  --    end,
-  --  },
+  { -- pretty LSP popups
+
+    'glepnir/lspsaga.nvim',
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' },
+      --Please make sure you install markdown and markdown_inline parser
+      { 'nvim-treesitter/nvim-treesitter' },
+    },
+    event = 'BufRead',
+    opts = {
+      code_action = {
+        keys = {
+          quit = '<ESC>',
+          exec = '<CR>',
+        },
+      },
+    },
+  },
 
   'folke/lsp-colors.nvim',
 
@@ -97,6 +100,15 @@ return {
         next_match = 'n',
         prev_match = 'N',
         replace_all = '<leader><cr>',
+      },
+    },
+  },
+
+  {
+    'j-hui/fidget.nvim',
+    opts = {
+      text = {
+        spinner = 'dots',
       },
     },
   },
