@@ -175,10 +175,6 @@ return {
       name = leadermap.l.name,
       a = { '<Cmd>Lspsaga range_code_action<CR>', 'Action' },
     }
-    wk.register {
-      [']d'] = { '<Cmd>Lspsaga diagnostic_jump_next<CR>', 'Next LSP diagnostic' },
-      ['[d'] = { '<Cmd>Lspsaga diagnostic_jump_prev<CR>', 'Previous LSP diagnostic' },
-    }
 
     leadermap.n = {
       name = 'notes', -- {{{
