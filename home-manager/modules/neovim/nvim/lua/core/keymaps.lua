@@ -8,8 +8,6 @@ M.main = function()
   vim.keymap.set('v', '<', [[<gv]])
   vim.keymap.set('v', '>', [[>gv]])
 
-  vim.keymap.set('n', 'w', [[:silent! w]], { noremap = true })
-
   -- get back to normal mode quickly
   vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], { noremap = true })
 
