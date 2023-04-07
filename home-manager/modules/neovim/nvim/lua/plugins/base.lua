@@ -6,7 +6,6 @@ return {
   'tpope/vim-repeat', -- repeat more things
   'wellle/targets.vim', -- additional text objects
   'pbrisbin/vim-mkdir', -- create directory when :e unknown/paths
-  -- 'kopischke/vim-stay', -- save fold states
   'kopischke/vim-fetch', -- handle line and column numbers in file names
   'airblade/vim-rooter', -- auto-cd to root directory
   'Konfekt/FastFold', -- speed up folding for big files
@@ -81,6 +80,7 @@ return {
 
   { -- add  to function blocks
     'RRethy/nvim-treesitter-endwise',
+    event = { 'InsertEnter' },
     config = function()
       require('nvim-treesitter.configs').setup {
         endwise = {

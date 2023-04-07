@@ -281,7 +281,6 @@ return {
 
   { -- split/join code using treesitter
     'Wansmer/treesj',
-    dependencies = { 'nvim-treesitter' },
     keys = {
       {
         '<localleader>jj',

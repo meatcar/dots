@@ -38,5 +38,6 @@ return {
   { -- show git changes in the gutter
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    config = true,
   },
 }
