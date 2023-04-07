@@ -4,6 +4,7 @@ return {
   'xtal8/traces.vim',
 
   'romainl/vim-cool', -- smart set nohl after we're done searching
+  'Bekaboo/deadcolumn.nvim', -- gradually show colorcolumn
 
   { -- smooth scrolling
     'karb94/neoscroll.nvim',
