@@ -55,8 +55,6 @@ return {
     'glepnir/lspsaga.nvim',
     dependencies = {
       { 'nvim-tree/nvim-web-devicons' },
-      --Please make sure you install markdown and markdown_inline parser
-      { 'nvim-treesitter/nvim-treesitter' },
     },
     event = 'BufRead',
     opts = {
@@ -92,6 +90,16 @@ return {
 
   {
     'cshuaimin/ssr.nvim',
+    keys = {
+      {
+        '<leader>sr',
+        function()
+          require('ssr').open()
+        end,
+        desc = 'Structural Search/Replace',
+        mode = { 'n', 'x' },
+      },
+    },
     opts = {
       min_width = 50,
       min_height = 5,
