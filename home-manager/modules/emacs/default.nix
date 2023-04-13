@@ -67,12 +67,7 @@
             printf "\e]%s\e\\" "$argv"
         end
       '';
-      fish_title.body = ''
-        hostname
-        echo ":"
-        pwd
-      '';
-      vterm_cmd = ''
+      vterm_cmd.body = ''
         set -l vterm_elisp ()
         for arg in $argv
             set -a vterm_elisp (printf '"%s" ' (string replace -a -r '([\\\\"])' '\\\\\\\\$1' $arg))

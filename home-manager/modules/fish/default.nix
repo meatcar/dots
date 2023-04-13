@@ -24,6 +24,15 @@ in
           { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
           { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
         ];
+      functions = {
+        fish_title.body = ''
+          prompt_pwd
+          set cmd (status current-commandline)
+          if [ $cmd != fish ]
+            echo " $cmd"
+          end
+        '';
+      };
     };
   programs.fzf.enableFishIntegration = false; # we use fzf.fish
 
