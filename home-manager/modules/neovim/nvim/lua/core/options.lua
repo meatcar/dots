@@ -47,7 +47,7 @@ vim.cmd [[ hi PmenuSel blend=0 ]]
 vim.o.completeopt = 'menu,menuone,noselect'
 
 -- diff
-vim.o.diffopt = 'filler,internal,algorithm:patience,indent-heuristic,closeoff,iwhite'
+vim.o.diffopt = 'filler,internal,algorithm:patience,indent-heuristic,closeoff,iwhite,linematch:60'
 
 -- whitespace
 vim.o.listchars = 'tab:⇥ ,eol:$,trail:·,extends:…,precedes:…,nbsp:␣'
