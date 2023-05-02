@@ -1,4 +1,6 @@
 return {
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
+
   'kien/rainbow_parentheses.vim',
 
   'xtal8/traces.vim',
@@ -40,6 +42,7 @@ return {
 
   { -- highlight word under cursor
     'RRethy/vim-illuminate',
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
       vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')

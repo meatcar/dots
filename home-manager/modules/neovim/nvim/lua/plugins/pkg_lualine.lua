@@ -1,6 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim', -- status line
-  dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  event = 'VeryLazy',
   config = function()
     local mode_map = {
       ['NORMAL'] = 'N',

@@ -3,7 +3,7 @@ local keymaps = require 'core/keymaps'
 return {
   {
     'neovim/nvim-lspconfig',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       -- setup default lsp config
       require 'cmp'
@@ -53,9 +53,6 @@ return {
   { -- pretty LSP popups
 
     'glepnir/lspsaga.nvim',
-    dependencies = {
-      { 'nvim-tree/nvim-web-devicons' },
-    },
     event = 'BufRead',
     opts = {
       code_action = {
