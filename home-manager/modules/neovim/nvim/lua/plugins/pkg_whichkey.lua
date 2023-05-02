@@ -103,7 +103,7 @@ return {
       u = { '<Cmd>MundoToggle<CR>', 'Undo Tree' },
       l = { '<Cmd>TroubleToggle<CR>', 'LSP List' },
       r = { '<Cmd>Telescope resume<CR>', 'Resume Telescope' },
-      n = { [[<Cmd>Telecope notify<CR>', 'Notifications']] },
+      n = { '<Cmd>Telecope notify<CR>', 'Notifications' },
       f = { '<Cmd>Neotree<CR>', 'File Tree' },
       t = { '<Cmd>TodoTelescope<CR>', 'TODO' },
     } -- }}}

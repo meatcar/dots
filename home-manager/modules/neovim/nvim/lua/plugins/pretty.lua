@@ -147,11 +147,24 @@ return {
 
   {
     'rcarriga/nvim-notify',
-    config = function()
-      require('notify').setup {
-        background_colour = '#000000',
-        render = 'compact',
-      }
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>vn',
+        function()
+          require('notify').dismiss { silent = true, pending = true }
+        end,
+        desc = 'Delete all Notifications',
+      },
+    },
+    opts = {
+      background_colour = '#000000',
+      render = 'compact',
+    },
+    config = function(_, opts)
+      local notify = require 'notify'
+      notify.setup(opts)
+      vim.notify = notify
     end,
   },
 
