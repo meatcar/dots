@@ -8,6 +8,23 @@ return {
   'romainl/vim-cool', -- smart set nohl after we're done searching
   'Bekaboo/deadcolumn.nvim', -- gradually show colorcolumn
 
+  { -- better vim.ui
+    'stevearc/dressing.nvim',
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.input(...)
+      end
+    end,
+  },
+
   { -- smooth scrolling
     'karb94/neoscroll.nvim',
     opts = {

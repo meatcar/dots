@@ -2,7 +2,7 @@ _G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'troub
 
 return {
   'nvim-lua/plenary.nvim', -- used by neovim packages
-  'tpope/vim-eunuch', -- :Delete, :Move, etc
+  'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
   'tpope/vim-repeat', -- repeat more things
   'wellle/targets.vim', -- additional text objects
   'pbrisbin/vim-mkdir', -- create directory when :e unknown/paths
