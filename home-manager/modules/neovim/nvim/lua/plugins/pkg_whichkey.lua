@@ -2,7 +2,6 @@
 
 return {
   'folke/which-key.nvim', --popup ui for obscure keys
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local wk = require 'which-key'
 

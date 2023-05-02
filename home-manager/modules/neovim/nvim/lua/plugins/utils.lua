@@ -77,7 +77,6 @@ return {
     branch = 'v2.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     },
     cmd = 'Neotree',
@@ -237,6 +236,7 @@ return {
 
   { -- tmux integration
     'aserowy/tmux.nvim',
+    event = 'VeryLazy',
     cond = function()
       return vim.env.TMUX ~= nil
     end,

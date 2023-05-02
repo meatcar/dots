@@ -1,7 +1,7 @@
 return {
   { -- A plethora of syntaxes
     'sheerun/vim-polyglot',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     init = function()
       vim.g.polyglot_disabled = { 'yaml', 'markdown', 'scala' }
     end,
