@@ -119,10 +119,8 @@ return {
       }
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-      vim.o.foldlevelstart = 3
     end,
   },
-
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     event = { 'BufReadPost', 'BufNewFile' },
@@ -173,7 +171,6 @@ return {
       }
     end,
   },
-
   {
     'kkoomen/vim-doge',
     build = ':call doge#install()',
