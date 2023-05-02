@@ -49,13 +49,6 @@ return {
     end,
   },
 
-  { -- editorconfig file support
-    'editorconfig/editorconfig-vim',
-    config = function()
-      vim.g.EditorConfig_exclude_patterns = { [[fugitive://.*]] }
-    end,
-  },
-
   { -- async error checking
     'dense-analysis/ale',
     dependencies = 'desmap/ale-sensible', -- sensible ALE defaults
