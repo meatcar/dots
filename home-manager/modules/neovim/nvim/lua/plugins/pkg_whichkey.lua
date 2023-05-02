@@ -178,6 +178,24 @@ return {
       j = { '<Cmd>NoteJournal<CR>', 'Journal' },
     } -- }}}
 
+    leadermap.a = {
+      name = 'NeoAI', -- {{{
+      a = { '<cmd>NeoAIToggle<cr>', 'NeoAI' },
+      c = { '<cmd>NeoAIContext<cr>', 'NeoAI Context', mode = 'v' },
+      s = { '<cmd>NeoAIShortcut textify<cr>', 'summarize text', mode = 'v' },
+      g = { '<cmd>NeoAIShortcut gitcommit<cr>', 'generate git commit' },
+      i = {
+        name = 'inject',
+        i = { '<c-u>:NeoAIInject ', 'Inject', mode = 'v' },
+        c = { '<c-u>:NeoAIInjectCode ', 'Code', mode = 'v' },
+        v = {
+          name = 'context',
+          v = { '<c-u>:NeoAIInjectContext ', 'Context', mode = 'v' },
+          c = { '<c-u>:NeoAIInjectContextCode ', 'Context Code', mode = 'v' },
+        },
+      },
+    } -- }}}
+
     wk.register(leadermap, { prefix = '<leader>' })
     wk.register(leadermap_v, { prefix = '<leader>', mode = 'v' })
     wk.register(leadermap_t, { prefix = '<leader>', mode = 't' })

@@ -45,6 +45,8 @@ M.main = function()
   vim.cmd [[ autocmd me BufEnter .env lua vim.diagnostic.disable(0)]]
 
   vim.cmd [[ autocmd me FileType netrw lua require('core/keymaps').netrw() ]]
+
+  vim.cmd [[ autocmd me FileType help lua vim.treesitter.start() ]]
 end
 
 return M

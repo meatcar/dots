@@ -306,4 +306,78 @@ return {
     },
     opts = { use_default_keymaps = false },
   },
+
+  {
+    'jackMort/ChatGPT.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    cmd = {
+      'ChatGPT',
+      'ChatGPTActAs',
+      'ChatGPTEditWithInstructions',
+      'ChatGPTRun',
+    },
+    keys = {
+      { '<leader>acc', '<cmd>ChatGPT<cr>', desc = 'ChatGPT' },
+      { '<leader>aca', '<cmd>ChatGPTActAs<cr>', desc = 'ChatGPT Act-As' },
+      { '<leader>ace', '<cmd>ChatGPTEditWithInstructions<cr>', desc = 'ChatGPT Edit' },
+      { '<leader>acr', '<cmd>ChatGPTRun<cr>', desc = 'ChatGPT Run' },
+    },
+    config = function()
+      require('chatgpt').setup()
+    end,
+  },
+
+  {
+    'Bryley/neoai.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    cmd = {
+      'NeoAI',
+      'NeoAIOpen',
+      'NeoAIClose',
+      'NeoAIToggle',
+      'NeoAIContext',
+      'NeoAIContextOpen',
+      'NeoAIContextClose',
+      'NeoAIInject',
+      'NeoAIInjectCode',
+      'NeoAIInjectContext',
+      'NeoAIInjectContextCode',
+    },
+    config = function()
+      require('neoai').setup {
+        shortcuts = {
+          name = 'textify',
+          desc = 'NeoAI fix text with AI',
+          use_context = true,
+          prompt = [[
+                    Please rewrite the text to make it more readable, clear,
+                    concise, and fix any grammatical, punctuation, or spelling
+                    errors
+                ]],
+          modes = { 'v' },
+          strip_function = nil,
+        },
+        {
+          name = 'gitcommit',
+          desc = 'NeoAI generate git commit message',
+          use_context = false,
+          prompt = function()
+            return [[
+                        Using the following git diff generate a consise and
+                        clear git commit message, with a short title summary
+                        that is 75 characters or less:
+                    ]] .. vim.fn.system 'git diff --cached'
+          end,
+          modes = { 'n' },
+          strip_function = nil,
+        },
+      }
+    end,
+  },
 }
