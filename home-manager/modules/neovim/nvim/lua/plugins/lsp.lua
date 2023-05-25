@@ -50,7 +50,48 @@ return {
     end,
   },
 
-  { -- pretty LSP popups
+  {
+    -- async error checking
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      local null_ls = require 'null-ls'
+
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.diagnostics.clj_kondo,
+
+          null_ls.builtins.completion.spell,
+
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.eslint_d,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.stylelint,
+          null_ls.builtins.formatting.autopep8,
+          null_ls.builtins.formatting.nixpkgs_fmt,
+          null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.gofmt,
+          null_ls.builtins.formatting.joker,
+        },
+        -- format on save
+        on_attach = function(client, bufnr)
+          if client.supports_method 'textDocument/formatting' then
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                vim.lsp.buf.format { bufnr = bufnr }
+              end,
+            })
+          end
+        end,
+      }
+    end,
+  },
+
+  {
+    -- pretty LSP popups
 
     'glepnir/lspsaga.nvim',
     event = 'BufRead',
@@ -66,7 +107,8 @@ return {
 
   'folke/lsp-colors.nvim',
 
-  { -- show all LSP errors
+  {
+    -- show all LSP errors
     'folke/trouble.nvim',
     opts = {
       use_lsp_diagnostic_signs = false,
