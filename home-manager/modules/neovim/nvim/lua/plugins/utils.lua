@@ -49,29 +49,6 @@ return {
     end,
   },
 
-  { -- async error checking
-    'dense-analysis/ale',
-    dependencies = 'desmap/ale-sensible', -- sensible ALE defaults
-    config = function()
-      vim.g.ale_lint_on_text_changed = 'never'
-      vim.g.ale_linter_aliases = { vimwiki = 'markdown' }
-      vim.g.ale_linters = { clojure = { 'clj-kondo', 'joker' } }
-
-      vim.g.ale_fix_on_save = true
-      vim.g.ale_fixers = {
-        javascript = { 'eslint', 'prettier' },
-        css = { 'stylelint' },
-        scss = { 'stylelint' },
-        python = { 'autopep8' },
-        nix = { 'nixpkgs-fmt' },
-        sh = { 'shfmt' },
-        elixir = { 'mix_format' },
-        lua = { 'stylua' },
-        go = { 'gofmt' },
-      }
-    end,
-  },
-
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
@@ -371,6 +348,18 @@ return {
           strip_function = nil,
         },
       }
+    end,
+  },
+
+  { -- use neovim to edit browser text fields
+    'glacambre/firenvim',
+
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    cond = not not vim.g.started_by_firenvim,
+    build = function()
+      require('lazy').load { plugins = 'firenvim', wait = true }
+      vim.fn['firenvim#install'](0)
     end,
   },
 }
