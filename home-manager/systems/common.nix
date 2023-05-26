@@ -46,6 +46,14 @@
     hydra-check
     nvd
     fd
+    (pkgs.writeShellScriptBin "get-theme" ''
+      THEME_FILE=/mnt/c/Users/meatcar/.config/theme
+      if [ -f "$THEME_FILE" ]; then
+        cat "$THEME_FILE"
+      else
+        echo "dark"
+      fi
+    '')
   ];
 
   xdg.enable = true;

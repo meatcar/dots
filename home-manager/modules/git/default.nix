@@ -83,6 +83,6 @@ in
   };
 
   programs.fish.shellInit = ''
-    set -x DELTA_FEATURES "+$(cat /mnt/c/Users/meatcar/.config/theme)"
+    set -x DELTA_FEATURES "+$(get-theme)"
   '';
 }
