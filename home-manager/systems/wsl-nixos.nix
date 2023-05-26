@@ -4,15 +4,12 @@
     ./common.nix
     ../modules/gtk.nix
     ../modules/gnome-keyring.nix
-    specialArgs.inputs.vscode-server.nixosModule
   ];
 
 
   home.sessionVariables = {
     BROWSER = "x-www-browser";
   };
-
-  # services.vscode-server.enable = true;
 
   programs.fish.plugins = [
     { name = "fish-ssh-agent"; src = specialArgs.inputs.fish-ssh-agent; }

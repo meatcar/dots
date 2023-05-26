@@ -4,7 +4,9 @@
     inputs.nixos-wsl.nixosModules.wsl
     ../common.nix
     ../../modules/docker.nix
+    inputs.vscode-server.nixosModule
   ];
+  services.vscode-server.enable = true;
 
   wsl = {
     enable = true;

@@ -16,6 +16,7 @@
       declarative-cachix.url = "github:jonascarpay/declarative-cachix";
       nixos-wsl.url = "github:nix-community/NixOS-WSL";
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+      vscode-server.url = "github:nix-community/nixos-vscode-server";
 
       flake-compat = {
         url = "github:edolstra/flake-compat";
@@ -44,10 +45,6 @@
       };
       fish-docker-compose = {
         url = "github:brgmnn/fish-docker-compose";
-        flake = false;
-      };
-      vscode-server = {
-        url = "github:msteen/nixos-vscode-server";
         flake = false;
       };
       autopair-fish = {
