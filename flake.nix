@@ -131,19 +131,31 @@
               }
             ];
           };
-        homeConfigurations = {
-          meatcar = inputs.home-manager.lib.homeManagerConfiguration rec {
+        homeConfigurations =
+          let
             system = "x86_64-linux";
-            username = "meatcar";
-            homeDirectory = "/home/${username}";
-            extraSpecialArgs = specialArgs;
-            configuration = { ... }: {
-              imports = [ ./home.nix ];
-              nixpkgs = nixpkgsConfig;
-              home.stateVersion = "20.09";
+            pkgs = import inputs.nixpkgs ({
+              inherit system;
+            } // nixpkgsConfig);
+          in
+          {
+            meatcar = inputs.home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              extraSpecialArgs = specialArgs;
+              modules = [
+                ./home-manager/systems/wsl-singleuser.nix
+                {
+                  nixpkgs = nixpkgsConfig;
+                  home = rec {
+                    username = "meatcar";
+                    homeDirectory = "/home/${username}";
+                    stateVersion = "20.09";
+                  };
+                }
+              ];
+            };
             };
           };
-        };
       }
     );
 
