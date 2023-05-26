@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 {
+  imports = [ ./common.nix ];
   # nixpkgs config
-  nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
+  nix.package = pkgs.nixVersions.stable;
   nixpkgs.config = import ../config.nix;
   xdg.configFile."nixpkgs/config.nix".text =
     let

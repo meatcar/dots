@@ -6,6 +6,7 @@
     # ../../home-manager/modules/distributed.nix
   ];
 
+  nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
 
   home.file.nixConf.text = ''
     system-features = kvm

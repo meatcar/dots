@@ -154,6 +154,20 @@
                 }
               ];
             };
+            deck = inputs.home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              extraSpecialArgs = specialArgs;
+              modules = [
+                ./home-manager/systems/steamdeck.nix
+                {
+                  nixpkgs = nixpkgsConfig;
+                  home = rec {
+                    username = "deck";
+                    homeDirectory = "/home/${username}";
+                    stateVersion = "23.05";
+                  };
+                }
+              ];
             };
           };
       }

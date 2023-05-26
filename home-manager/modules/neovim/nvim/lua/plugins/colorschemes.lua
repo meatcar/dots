@@ -1,9 +1,10 @@
 -- detect system dark mode at startup/sync
 function _G.me.fn.autocmd_onVimEnterSetBackground()
-  local theme = vim.fn.readfile '/mnt/c/Users/meatcar/.config/theme'
+  local theme = vim.fn.systemlist 'get-theme'
   -- print('Setting background to ' .. theme[1])
   vim.o.background = theme[1] -- 'dark' or 'light' or a message will be shown
 end
+
 vim.api.nvim_create_autocmd({ 'User' }, {
   group = 'me',
   pattern = 'LazyDone',
@@ -73,7 +74,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
-    priority = 1000, -- main theme, load first
+    priority = 1000,                     -- main theme, load first
     init = function()
       vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
     end,
