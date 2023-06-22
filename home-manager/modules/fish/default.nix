@@ -28,7 +28,7 @@ in
         fish_title.body = ''
           prompt_pwd
           set cmd (status current-commandline)
-          if [ $cmd != fish ]
+          if [ "$cmd" != fish ]
             echo " $cmd"
           end
         '';
