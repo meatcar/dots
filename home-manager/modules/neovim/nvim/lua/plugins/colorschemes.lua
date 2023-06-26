@@ -1,8 +1,8 @@
 -- detect system dark mode at startup/sync
 function _G.me.fn.autocmd_onVimEnterSetBackground()
-  local theme = vim.fn.systemlist 'get-theme'
-  -- print('Setting background to ' .. theme[1])
-  vim.o.background = theme[1] -- 'dark' or 'light' or a message will be shown
+  local theme = vim.fn.trim(vim.fn.system 'get-theme')
+  -- print('Setting background to ' .. theme)
+  vim.o.background = theme -- 'dark' or 'light' or a message will be shown
 end
 
 vim.api.nvim_create_autocmd({ 'User' }, {
