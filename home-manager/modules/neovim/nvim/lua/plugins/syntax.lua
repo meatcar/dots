@@ -7,7 +7,7 @@ return {
     end,
   },
 
-  { 'zirrostig/vim-shbed', ft = { 'sh', 'fish' } },
+  { 'zirrostig/vim-shbed',       ft = { 'sh', 'fish' } },
   {
     'vim-scripts/TeX-9',
     ft = { 'tex', 'latex' },
@@ -18,8 +18,8 @@ return {
       }
     end,
   },
-  { 'neomutt/neomutt.vim', ft = 'mail' },
-  { 'pantharshit00/vim-prisma', ft = 'prisma' },
+  { 'neomutt/neomutt.vim',       ft = 'mail' },
+  { 'pantharshit00/vim-prisma',  ft = 'prisma' },
   { 'nathangrigg/vim-beancount', ft = { '*.bean', '*.beancount' } },
 
   {
@@ -106,14 +106,14 @@ return {
   },
 
   -- clojure
-  { 'tpope/vim-classpath', ft = 'clojure' },
+  { 'tpope/vim-classpath',    ft = 'clojure' },
   { -- static support for Leiningen
     'tpope/vim-salve',
     ft = 'clojure',
     dependencies = { 'tpope/vim-projectionist', ft = 'clojure' }, -- quick-switch between src and test
   },
   { 'eraserhd/parinfer-rust', ft = 'clojure' },
-  { 'liquidz/vim-iced', ft = 'clojure' },
+  { 'liquidz/vim-iced',       ft = 'clojure' },
 
   -- lua
   { 'milisims/nvim-luaref' },

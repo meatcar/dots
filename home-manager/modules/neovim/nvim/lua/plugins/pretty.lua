@@ -5,10 +5,10 @@ return {
 
   'xtal8/traces.vim',
 
-  'romainl/vim-cool', -- smart set nohl after we're done searching
+  'romainl/vim-cool',        -- smart set nohl after we're done searching
   'Bekaboo/deadcolumn.nvim', -- gradually show colorcolumn
 
-  { -- better vim.ui
+  {                          -- better vim.ui
     'stevearc/dressing.nvim',
     lazy = true,
     init = function()
@@ -42,8 +42,8 @@ return {
         min_jump = 30,
         popup = {
           delay_ms = 0, -- delay before popup displays
-          inc_ms = 10, -- time increments used for fade/resize effects
-          blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
+          inc_ms = 10,  -- time increments used for fade/resize effects
+          blend = 10,   -- starting blend, between 0-100 (fully transparent), see :h winblend
           width = 10,
           winhl = 'PMenu',
           fader = require('specs').linear_fader,
