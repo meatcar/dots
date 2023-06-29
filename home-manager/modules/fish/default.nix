@@ -10,7 +10,7 @@ let
     '';
 in
 {
-  home.packages = with pkgs; [ any-nix-shell ];
+  home.packages = with pkgs; [ any-nix-shell grc ];
 
   programs.fish =
     {
@@ -23,6 +23,7 @@ in
           { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
           { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
           { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
+          { name = "grc"; inherit (pkgs.fishPlugins.grc) src; }
         ];
       functions = {
         fish_title.body = ''
