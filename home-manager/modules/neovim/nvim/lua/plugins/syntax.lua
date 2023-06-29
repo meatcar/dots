@@ -99,6 +99,11 @@ return {
       vim.keymap.set('n', '<localleader>p', [[<Cmd>Glow<CR>]], { buffer = 0 })
     end,
   },
+  { -- highlight headlines and codeblocks in markdown
+    'lukas-reineke/headlines.nvim',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = true, -- or `opts = {}`
+  },
 
   -- clojure
   { 'tpope/vim-classpath', ft = 'clojure' },
