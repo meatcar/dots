@@ -20,7 +20,7 @@
         statusline = {
           left = [ "mode" "spinner" ];
           center = [ "file-name" ];
-          right = [ "selections" "primary-selection-length" "diagnostics" "workspace-diagnostics" "file-encoding" "file-line-ending" "file-type" "position-" ];
+          right = [ "selections" "primary-selection-length" "diagnostics" "workspace-diagnostics" "file-encoding" "file-line-ending" "file-type" "position" ];
           mode.normal = "N";
           mode.insert = "I";
           mode.select = "S";
