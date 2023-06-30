@@ -1,3 +1,6 @@
+vim.g.parinfer_dylib_path = vim.fn.stdpath 'data' .. '/lib/libparinfer_rust.so'
+vim.g.sqlite_clib_path = vim.fn.stdpath 'data' .. '/lib/libsqlite3.so'
+
 -- vim.o.undodir = vim.fn.stdpath 'cache' .. '/undo'
 local cache_opts = { 'undodir', 'directory', 'backupdir', 'viewdir' }
 for _, optname in ipairs(cache_opts) do

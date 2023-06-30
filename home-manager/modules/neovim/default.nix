@@ -13,13 +13,6 @@
 
     plugins = with pkgs.vimPlugins; [ sqlite-lua ];
 
-    extraConfig = ''
-      let g:parinfer_dylib_path = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so"
-      let g:sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
-
-      lua require('init')
-    '';
-
     extraPackages = with pkgs; [
       luajitPackages.luarocks
       parinfer-rust
@@ -40,16 +33,20 @@
   };
 
   xdg.configFile = {
-    "nvim" = {
-      recursive = true;
-      source = ./nvim;
-    };
+    nvim.source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/git/hub/meatcar/dots/home-manager/modules/neovim/nvim";
     "luacheck/.luacheckrc".text = ''
       globals = {
           "vim",
       }
     '';
   };
+
+  xdg.dataFile = {
+    "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so";
+    "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+  };
+
 
   home.packages = with pkgs; [
     fortune
