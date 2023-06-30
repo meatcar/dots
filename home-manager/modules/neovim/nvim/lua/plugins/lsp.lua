@@ -1,6 +1,6 @@
 local keymaps = require 'core/keymaps'
 
-local signs = { Error = '', Warn = '', Hint = '', Info = '' }
+local signs = { Error = '󰅚', Warn = '', Hint = '󰌶', Info = '󰋽' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -99,7 +99,7 @@ return {
   {
     -- pretty LSP popups
 
-    'glepnir/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     event = 'BufRead',
     opts = {
       code_action = {
@@ -107,6 +107,10 @@ return {
           quit = '<ESC>',
           exec = '<CR>',
         },
+      },
+      symbol_in_winbar = {
+        color_mode = false,
+        separator = '  ',
       },
     },
   },
@@ -159,6 +163,7 @@ return {
 
   {
     'j-hui/fidget.nvim',
+    tag = 'legacy',
     opts = {
       text = {
         spinner = 'dots',

@@ -177,7 +177,7 @@ return {
         ft_ignore = _G.me.o.sidebars,
         segments = {
           {
-            sign = { name = { '.*' }, maxwidth = 2, auto = true },
+            sign = { name = { '.*' }, maxwidth = 2, colwidth = 2, auto = true },
             click = 'v:lua.ScSa',
           },
           { text = { builtin.foldfunc }, click = 'v:lua.ScFa' },
