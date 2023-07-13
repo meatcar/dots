@@ -82,7 +82,7 @@ return {
       F = { '<Cmd>Telescope git_status<CR>', 'Status' },
       b = { '<Cmd>Twiggy<CR>', 'Branches' },
       l = { '<Cmd>Flog<CR>', 'Log' },
-      s = { '<Cmd>Git<CR>', 'Status' },
+      s = { '<Cmd>Neogit<CR>', 'Status' },
       g = { ':<C-u>Git<Space>', ':Git' },
     } -- }}}
 
