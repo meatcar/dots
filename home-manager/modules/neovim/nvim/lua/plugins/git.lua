@@ -1,12 +1,12 @@
 return {
-  'tpope/vim-rhubarb', -- auto-complete Github issues in fugitive
+  'tpope/vim-rhubarb',       -- auto-complete Github issues in fugitive
   'samoshkin/vim-mergetool', -- Better merging (3-way becomes 2-way)
   'rhysd/git-messenger.vim', -- pop-up window of git commit under cursor
-  'sodapopcan/vim-twiggy', -- pop-up git branches
-  'rbong/vim-flog', -- pretty git log
-  'mattn/webapi-vim', -- for vim-gist
+  'sodapopcan/vim-twiggy',   -- pop-up git branches
+  'rbong/vim-flog',          -- pretty git log
+  'mattn/webapi-vim',        -- for vim-gist
 
-  { -- generate a link to file on git remote site
+  {                          -- generate a link to file on git remote site
     'ruifm/gitlinker.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
@@ -39,5 +39,22 @@ return {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = true,
+  },
+
+  { -- magic git UI
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+    },
+    cmd = 'Neogit',
+    config = {
+      use_telescope = true,
+      disable_insert_on_commit = 'auto',
+      use_magit_keybindings = true,
+      integrations = {
+        diffview = true,
+      },
+    },
   },
 }
