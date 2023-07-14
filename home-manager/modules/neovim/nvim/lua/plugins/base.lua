@@ -1,19 +1,23 @@
 _G.me.o.sidebars = { 'NvimTree', 'qf', 'vista_kind', 'terminal', 'Mundo', 'trouble', 'neo-tree', 'fugitive' }
 
 return {
-  'nvim-lua/plenary.nvim', -- used by neovim packages
-  'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
-  'tpope/vim-repeat', -- repeat more things
-  'wellle/targets.vim', -- additional text objects
-  'pbrisbin/vim-mkdir', -- create directory when :e unknown/paths
-  'kopischke/vim-fetch', -- handle line and column numbers in file names
-  'airblade/vim-rooter', -- auto-cd to root directory
-  'Konfekt/FastFold', -- speed up folding for big files
-  'aymericbeaumet/symlink.vim', -- follow symlinks
+  'nvim-lua/plenary.nvim',           -- used by neovim packages
+  'chrisgrieser/nvim-genghis',       -- :Delete, :Move, etc
+  'tpope/vim-repeat',                -- repeat more things
+  'wellle/targets.vim',              -- additional text objects
+  'pbrisbin/vim-mkdir',              -- create directory when :e unknown/paths
+  'kopischke/vim-fetch',             -- handle line and column numbers in file names
+  'airblade/vim-rooter',             -- auto-cd to root directory
+  'Konfekt/FastFold',                -- speed up folding for big files
+  'aymericbeaumet/symlink.vim',      -- follow symlinks
   'ConradIrwin/vim-bracketed-paste', -- better paste in supported terminals
-  'tweekmonster/startuptime.vim', -- debug slow vim startup times
-  'lewis6991/impatient.nvim', -- cache lua compiled modules
-  'axelf4/vim-strip-trailing-whitespace', -- strip whitespace on edited lines
+  'tweekmonster/startuptime.vim',    -- debug slow vim startup times
+  'lewis6991/impatient.nvim',        -- cache lua compiled modules
+  -- 'axelf4/vim-strip-trailing-whitespace', -- strip whitespace on edited lines
+  {
+    'lewis6991/spaceless.nvim',
+    config = true,
+  },
 
   { -- basics
     'echasnovski/mini.basics',
@@ -40,12 +44,12 @@ return {
     version = false,
     opts = {
       mappings = {
-        add = '<leader>sa', -- Add surrounding in Normal and Visual modes
-        delete = '<leader>sd', -- Delete surrounding
-        find = '<leader>sf', -- Find surrounding (to the right)
-        find_left = '<leader>sF', -- Find surrounding (to the left)
-        highlight = '<leader>sh', -- Highlight surrounding
-        replace = '<leader>sr', -- Replace surrounding
+        add = '<leader>sa',            -- Add surrounding in Normal and Visual modes
+        delete = '<leader>sd',         -- Delete surrounding
+        find = '<leader>sf',           -- Find surrounding (to the right)
+        find_left = '<leader>sF',      -- Find surrounding (to the left)
+        highlight = '<leader>sh',      -- Highlight surrounding
+        replace = '<leader>sr',        -- Replace surrounding
         update_n_lines = '<leader>sn', -- Update `n_lines`
       },
     },
@@ -95,7 +99,7 @@ return {
     'kazhala/close-buffers.nvim',
     config = function()
       require('close_buffers').setup {
-        filetype_ignore = {}, -- Filetype to ignore when running deletions
+        filetype_ignore = {},                -- Filetype to ignore when running deletions
         preserve_window_layout = { 'this' }, -- Types of deletion that should preserve the window layout
         next_buffer_cmd = function(windows)
           local bufnr = vim.api.nvim_get_current_buf()
