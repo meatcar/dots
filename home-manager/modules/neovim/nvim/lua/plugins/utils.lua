@@ -18,7 +18,7 @@ return {
   { -- associate sessions with cwd
     'rmagatti/auto-session',
     config = function()
-      local dir = vim.fn.stdpath 'data' .. '/sessions/'
+      local dir = table.concat { vim.fn.stdpath 'data', '/sessions/' }
       vim.fn.mkdir(dir, 'p')
       require('auto-session').setup {
         auto_session_root_dir = dir,
@@ -148,7 +148,7 @@ return {
       { '<C-p>', '<Cmd>Ctrlp<CR>' },
     },
     config = function()
-      local history_path = vim.fn.stdpath 'data' .. '/databases'
+      local history_path = table.concat { vim.fn.stdpath 'data', '/databases' }
       vim.fn.mkdir(history_path, 'p')
       local trouble = require 'trouble.providers.telescope'
       require('telescope').setup {
@@ -182,7 +182,7 @@ return {
             },
           },
           history = {
-            path = history_path .. '/telescope_history.sqlite3',
+            path = table.concat { history_path, '/telescope_history.sqlite3' },
             limit = 100,
           },
           mappings = {
