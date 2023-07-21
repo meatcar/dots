@@ -33,6 +33,7 @@
     jq
     docker
     docker-compose
+    lazydocker
     entr
     nox
     nixpkgs-fmt
