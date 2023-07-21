@@ -1,11 +1,11 @@
-vim.g.parinfer_dylib_path = vim.fn.stdpath 'data' .. '/lib/libparinfer_rust.so'
-vim.g.sqlite_clib_path = vim.fn.stdpath 'data' .. '/lib/libsqlite3.so'
+vim.g.parinfer_dylib_path = table.concat { vim.fn.stdpath 'data', '/lib/libparinfer_rust.so' }
+vim.g.sqlite_clib_path = table.concat { vim.fn.stdpath 'data', '/lib/libsqlite3.so' }
 
 -- vim.o.undodir = vim.fn.stdpath 'cache' .. '/undo'
 local cache_opts = { 'undodir', 'directory', 'backupdir', 'viewdir' }
 for _, optname in ipairs(cache_opts) do
   local dirname, _ = string.gsub(optname, 'dir$', '')
-  local dir = vim.fn.stdpath 'cache' .. '/' .. dirname
+  local dir = table.concat({ vim.fn.stdpath 'cache', dirname }, '/')
   vim.o[optname] = dir
   if not vim.fn.isdirectory(dir) then
     vim.fn.mkdir(dir, 'p')
@@ -23,7 +23,7 @@ _G.me = {
 }
 
 -- bootstrap lazy.nvim if not installed
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+local lazypath = table.concat { vim.fn.stdpath 'data', '/lazy/lazy.nvim' }
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     'git',

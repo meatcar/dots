@@ -97,7 +97,7 @@ return {
             local strings = vim.split(kind.kind, '%s', { trimempty = true })
             if #strings >= 2 then
               kind.kind = strings[1]
-              kind.menu = strings[2] .. ' (' .. menu .. ')'
+              kind.menu = ('%s(%s)').format(strings[2], menu)
             end
             return kind
           end,
