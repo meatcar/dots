@@ -82,6 +82,10 @@
 
   environment.systemPackages = [
     pkgs.wget
+    pkgs.wslu
+    (pkgs.writeShellScriptBin "wslpath" ''
+      ${pkgs.wslu}/bin/wslupath "$@"
+    '')
     (pkgs.writeShellScriptBin "powershell.exe" ''
       /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive –ExecutionPolicy Bypass "$@"
     '')
