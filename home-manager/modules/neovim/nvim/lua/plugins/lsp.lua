@@ -15,6 +15,8 @@ return {
       require 'cmp'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+      local augroup = vim.api.nvim_create_augroup('LspFormat', { clear = true })
+
       local lspconfig = require 'lspconfig'
       local util = require 'lspconfig.util'
       util.default_config = vim.tbl_extend('force', util.default_config, {
@@ -22,6 +24,18 @@ return {
         on_attach = function(client, bufnr)
           require('illuminate').on_attach(client)
           keymaps.lsp_on_attach(client, bufnr)
+
+          -- format on save
+          if client.supports_method 'textDocument/formatting' then
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format { bufnr = bufnr, async = false }
+              end,
+            })
+          end
         end,
       })
 
@@ -68,7 +82,7 @@ return {
 
           null_ls.builtins.completion.spell,
 
-          null_ls.builtins.formatting.stylua,
+          -- null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.eslint_d,
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.stylelint,
@@ -78,20 +92,6 @@ return {
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.joker,
         },
-        -- format on save
-        on_attach = function(client, bufnr)
-          if client.supports_method 'textDocument/formatting' then
-            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                vim.lsp.buf.format { bufnr = bufnr }
-              end,
-            })
-          end
-        end,
       }
     end,
   },
