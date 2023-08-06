@@ -13,6 +13,8 @@ return {
   'ConradIrwin/vim-bracketed-paste', -- better paste in supported terminals
   'tweekmonster/startuptime.vim',    -- debug slow vim startup times
   'lewis6991/impatient.nvim',        -- cache lua compiled modules
+  'gbprod/stay-in-place.nvim',       -- keep cursor in place when shifting around
+  'marklcrns/vim-smartq',            -- smartly exit things
   -- 'axelf4/vim-strip-trailing-whitespace', -- strip whitespace on edited lines
   {
     'lewis6991/spaceless.nvim',
