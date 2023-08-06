@@ -10,6 +10,20 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      "folke/neodev.nvim",
+      opts = {
+        override = function(root_dir, library)
+          if root_dir:find(table.concat({ vim.fn.expand("$HOME"), "/git/hub/meatcar/dots" }), 1, true) == 1 then
+            library.enabled = true
+            library.plugins = true
+            library.runtime = true
+            library.types = true
+          end
+        end,
+      },
+      config = true
+    },
     config = function()
       -- setup default lsp config
       require 'cmp'
@@ -47,8 +61,6 @@ return {
             -- don't warn for some undefined globals
             diagnostics = { globals = { 'vim' } },
             workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file('', true),
               checkThirdParty = false, -- disable unhelpful prompts
             },
             -- Do not send telemetry data containing a randomized but unique identifier
