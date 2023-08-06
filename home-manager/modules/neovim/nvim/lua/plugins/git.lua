@@ -9,9 +9,24 @@ return {
   {                          -- generate a link to file on git remote site
     'ruifm/gitlinker.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitlinker').setup()
-    end,
+    keys = {
+      {
+        '<leader>gy',
+        function()
+          require('gitlinker').get_buf_range_url('n')
+        end,
+        desc = 'Yank link to line in repo',
+        mode = { 'n' }
+      },
+      {
+        '<leader>gy',
+        function()
+          require('gitlinker').get_buf_range_url('v')
+        end,
+        desc = 'Yank link to range in repo',
+        mode = { 'v' }
+      }
+    }
   },
 
   { -- tight git integration
