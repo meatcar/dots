@@ -118,4 +118,7 @@ return {
 
   -- lua
   { 'milisims/nvim-luaref' },
+
+  -- nix
+  { "calops/hmts.nvim",       ft = "nix",    version = "*" },
 }
