@@ -3,6 +3,7 @@ return {
 
   {
     'hrsh7th/vim-vsnip',
+    event = 'InsertEnter',
     config = function()
       vim.cmd [[
       " Expand

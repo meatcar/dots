@@ -102,6 +102,7 @@ return {
   { -- highlight headlines and codeblocks in markdown
     'lukas-reineke/headlines.nvim',
     dependencies = 'nvim-treesitter/nvim-treesitter',
+    ft = { 'md', 'markdown' },
     config = true, -- or `opts = {}`
   },
 

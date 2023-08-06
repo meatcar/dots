@@ -70,6 +70,7 @@ return {
   {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
+    event = 'VeryLazy',
     config = function()
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
@@ -117,21 +118,26 @@ return {
 
   { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
-    config = function()
-      require('hlslens').setup()
-
+    keys = function(plugin, keys)
       for _, map in ipairs { 'n', 'N' } do
-        vim.keymap.set(
-          'n',
+        table.insert(keys, {
           map,
-          [[<cmd>execute('normal! ' . v:count1 . ']] .. map .. [[')<cr><cmd>lua require('hlslens').start()<cr>]],
-          { silent = true }
-        )
+          ([[<cmd>execute('normal! ' . v:count1 . '%s')<cr><cmd>lua require('hlslens').start()<cr>]]):format(map),
+          silent = true
+        })
       end
 
       for _, map in ipairs { '*', '#', 'g*', 'g#' } do
-        vim.keymap.set('n', map, map .. [[<cmd>lua require('hlslens').start()<cr>]])
+        table.insert(keys, {
+          map,
+          ([[%s<cmd>lua require('hlslens').start()<cr>]]):format(map)
+        })
       end
+
+      return keys
+    end,
+    config = function()
+      require('hlslens').setup()
     end,
   },
 
