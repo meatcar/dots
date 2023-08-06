@@ -196,4 +196,13 @@ return {
       }
     end,
   },
+
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'BufReadPost',
+    keys = {
+      { "<leader>ttc", ":TSContextToggle<CR>" }
+    },
+    config = true
+  }
 }
