@@ -110,11 +110,14 @@ return {
         },
       },
       symbol_in_winbar = {
+        enable = false,
         color_mode = false,
         separator = '  ',
       },
     },
   },
+
+  { 'Bekaboo/dropbar.nvim', event = { 'BufReadPre', 'BufNewFile' } },
 
   'folke/lsp-colors.nvim',
 
