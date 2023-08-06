@@ -42,5 +42,10 @@ require 'core/options'
 require 'core/commands'
 require('core/autocmds').main()
 require('core/keymaps').main()
+if vim.g.neovide then
+  print 'neovide'
+  require 'core/gui'
+end
+
 
 require('lazy').setup 'plugins'
