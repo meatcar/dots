@@ -101,7 +101,6 @@ return {
     leadermap.o = {
       name = 'open', -- {{{
       u = { '<Cmd>MundoToggle<CR>', 'Undo Tree' },
-      l = { '<Cmd>TroubleToggle<CR>', 'LSP List' },
       r = { '<Cmd>Telescope resume<CR>', 'Resume Telescope' },
       n = { '<Cmd>Telecope notify<CR>', 'Notifications' },
       f = { '<Cmd>Neotree<CR>', 'File Tree' },
@@ -148,7 +147,6 @@ return {
 
     leadermap.l = {
       name = 'lsp', -- {{{
-      r = { '<Cmd>TroubleToggle lsp_references<CR>', 'References' },
       a = { '<Cmd>Lspsaga code_action<CR>', 'Action' },
       h = { '<Cmd>Lspsaga hover_doc<CR>', 'Hover Doc' },
       s = { '<Cmd>Lspsaga signature_help<CR>', 'Signature' },

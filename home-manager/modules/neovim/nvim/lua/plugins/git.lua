@@ -38,6 +38,7 @@ return {
   { -- show git changes in the gutter
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    event = 'BufReadPre',
     config = true,
   },
 
@@ -48,7 +49,7 @@ return {
       'sindrets/diffview.nvim',
     },
     cmd = 'Neogit',
-    config = {
+    opts = {
       use_telescope = true,
       disable_insert_on_commit = 'auto',
       use_magit_keybindings = true,

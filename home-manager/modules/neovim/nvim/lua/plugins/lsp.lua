@@ -73,6 +73,7 @@ return {
   {
     -- async error checking
     'jose-elias-alvarez/null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local null_ls = require 'null-ls'
 
@@ -100,7 +101,7 @@ return {
     -- pretty LSP popups
 
     'nvimdev/lspsaga.nvim',
-    event = 'BufRead',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       code_action = {
         keys = {
@@ -120,6 +121,10 @@ return {
   {
     -- show all LSP errors
     'folke/trouble.nvim',
+    keys = {
+      { '<leader>ol', '<Cmd>TroubleToggle<CR>',                desc = 'LSP List' },
+      { '<leader>lr', '<Cmd>TroubleToggle lsp_references<CR>', desc = 'References' },
+    },
     opts = {
       use_lsp_diagnostic_signs = false,
     },
@@ -163,6 +168,7 @@ return {
 
   {
     'j-hui/fidget.nvim',
+    event = 'VeryLazy',
     tag = 'legacy',
     opts = {
       text = {

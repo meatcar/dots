@@ -22,6 +22,9 @@ return {
       vim.fn.mkdir(dir, 'p')
       require('auto-session').setup {
         auto_session_root_dir = dir,
+        session_lens = {
+          load_on_setup = false,
+        }
       }
     end,
   },
@@ -112,6 +115,7 @@ return {
 
   { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    event = 'BufReadPre',
     config = function()
       require('indent_blankline').setup {
         char_list = { '¦', '┆', '┊', '▏' },
