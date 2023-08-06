@@ -13,6 +13,7 @@ vim.o.encoding = 'utf-8'
 
 -- mouse
 vim.o.mouse = 'a'
+vim.o.mousemoveevent = true
 
 -- write file to disk on :next, :make, etc
 vim.o.autowrite = true
