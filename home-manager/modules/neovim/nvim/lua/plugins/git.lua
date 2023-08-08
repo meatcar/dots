@@ -69,6 +69,7 @@ return {
       disable_insert_on_commit = 'auto',
       use_magit_keybindings = true,
       integrations = {
+        telescope = true,
         diffview = true,
       },
     },
