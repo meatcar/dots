@@ -78,6 +78,6 @@ vim.o.grepprg = 'rg --vimgrep'
 vim.opt.grepformat:prepend '%f:%l:%c:%m'
 
 -- leader
-vim.o.timeoutlen = 500
+vim.o.timeoutlen = 1000
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
