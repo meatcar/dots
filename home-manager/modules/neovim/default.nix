@@ -29,6 +29,15 @@
       nodePackages.typescript-language-server
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
+
+      # formatters
+      eslint_d
+      nodePackages.prettier
+      nodePackages.stylelint
+      python3Packages.autopep8
+      (pkgs.writeScriptBin "gofmt" ''
+        ${pkgs.go}/bin/gofmt "$@"
+      '')
     ];
   };
 
