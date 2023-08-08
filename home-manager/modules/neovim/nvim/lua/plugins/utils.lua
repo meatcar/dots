@@ -1,11 +1,11 @@
 return {
-  'Olical/vim-enmasse', -- mass-edit lines in quickfix
+  'Olical/vim-enmasse',    -- mass-edit lines in quickfix
   'kevinhwang91/nvim-bqf', -- better quickfix window
   'kshenoy/vim-signature', -- show marks in the SignColumn
-  'lambdalisue/suda.vim', -- :SudaWrite
-  'junegunn/fzf.vim', -- fuzzy completion of all the things
+  'lambdalisue/suda.vim',  -- :SudaWrite
+  'junegunn/fzf.vim',      -- fuzzy completion of all the things
 
-  { -- run tests easily
+  {                        -- run tests easily
     'janko/vim-test',
     config = function()
       if vim.env.TMUX ~= nil then
@@ -44,7 +44,7 @@ return {
     end,
   },
 
-  { -- UI for dadbod, a database UI
+  {                                    -- UI for dadbod, a database UI
     'kristijanhusak/vim-dadbod-ui',
     dependencies = 'tpope/vim-dadbod', -- Modern database interface for Vim
     init = function()
@@ -139,7 +139,7 @@ return {
     dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim',    build = 'make' },
       { 'nvim-telescope/telescope-smart-history.nvim', dependencies = 'kkharji/sqlite.lua' },
     },
     cmd = 'Telescope',
@@ -203,10 +203,10 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true, -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = 'smart_case', -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = 'smart_case',       -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
           },
         },
       }
@@ -295,10 +295,10 @@ return {
       'ChatGPTRun',
     },
     keys = {
-      { '<leader>acc', '<cmd>ChatGPT<cr>', desc = 'ChatGPT' },
-      { '<leader>aca', '<cmd>ChatGPTActAs<cr>', desc = 'ChatGPT Act-As' },
+      { '<leader>acc', '<cmd>ChatGPT<cr>',                     desc = 'ChatGPT' },
+      { '<leader>aca', '<cmd>ChatGPTActAs<cr>',                desc = 'ChatGPT Act-As' },
       { '<leader>ace', '<cmd>ChatGPTEditWithInstructions<cr>', desc = 'ChatGPT Edit' },
-      { '<leader>acr', '<cmd>ChatGPTRun<cr>', desc = 'ChatGPT Run' },
+      { '<leader>acr', '<cmd>ChatGPTRun<cr>',                  desc = 'ChatGPT Run' },
     },
     config = function()
       require('chatgpt').setup()
