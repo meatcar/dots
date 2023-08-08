@@ -366,4 +366,18 @@ return {
       vim.fn['firenvim#install'](0)
     end,
   },
+
+  { -- open browser with various queries
+    'lalitmee/browse.nvim',
+    keys = {
+      { '<leader>obb', function() require('browse').browse() end,                       desc = 'Browse' },
+      { '<leader>obs', function() require('browse').input_search() end,                 desc = 'Search' },
+      { '<leader>obd', function() require('browse.devdocs').search() end,               desc = 'DevDocs' },
+      { '<leader>obD', function() require('browse.devdocs').search_with_filetype() end, desc = 'DevDocs Filetype' },
+      { '<leader>obm', function() require('browse.mdn').search() end,                   desc = 'MDN' },
+    },
+    opts = {
+      provider = 'duckduckgo'
+    }
+  },
 }
