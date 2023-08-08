@@ -196,5 +196,11 @@ return {
     'ray-x/lsp_signature.nvim',
     event = 'BufReadPre',
     config = true
+  },
+
+  { -- defer diagnostics until insert mode is exited
+    'yorickpeterse/nvim-dd',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = true
   }
 }
