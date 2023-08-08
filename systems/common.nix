@@ -27,9 +27,9 @@
         serif = [ "Liberation Serif" ];
       };
     };
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
     fontDir.enable = true;
-    fonts = builtins.attrValues {
+    packages = builtins.attrValues {
       inherit (pkgs)
         # icons
         font-awesome_4
