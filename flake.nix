@@ -116,7 +116,7 @@
           {
             tormund = mkSystem [ ./systems/tormund ];
             nixos = mkSystem [
-              { system.stateVersion = "22.11"; }
+              { system.stateVersion = "23.05"; }
               ./systems/wsl-nixos
               {
                 home-manager.useGlobalPkgs = true;
@@ -125,7 +125,7 @@
                   imports = [
                     ./home-manager/systems/wsl-nixos.nix
                   ];
-                  home.stateVersion = "22.11";
+                  home.stateVersion = "23.05";
                 };
               }
             ];
