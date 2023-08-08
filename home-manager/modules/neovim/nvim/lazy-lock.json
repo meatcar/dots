@@ -5,6 +5,7 @@
   "TeX-9": { "branch": "master", "commit": "cb55bd6735978f44acd249fdcdc66d0c82bd9147" },
   "auto-session": { "branch": "main", "commit": "7afbb149f87be279778689596c781882014f7eef" },
   "barbar.nvim": { "branch": "master", "commit": "8cca17ea0ced3ba564e5da972a25600edafe7d7b" },
+  "browse.nvim": { "branch": "main", "commit": "85319013fc7d5d29d3122d5086dda71ada805559" },
   "catppuccin": { "branch": "main", "commit": "6425df128d46f2db2cccf9aa7a66ca2823c1d153" },
   "close-buffers.nvim": { "branch": "master", "commit": "3acbcad1211572342632a6c0151f839e7dead27f" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
