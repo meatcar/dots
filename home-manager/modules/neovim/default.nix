@@ -11,7 +11,10 @@
     };
     withNodeJs = true;
 
-    plugins = with pkgs.vimPlugins; [ sqlite-lua ];
+    plugins = with pkgs.vimPlugins; [
+      sqlite-lua
+      nvim-treesitter.withAllGrammars
+    ];
 
     extraPackages = with pkgs; [
       luajitPackages.luarocks
@@ -54,6 +57,7 @@
   xdg.dataFile = {
     "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so";
     "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+    "nvim/lib/nvim-treesiter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
   };
 
 
