@@ -49,7 +49,7 @@ M.main = function()
   vim.cmd [[ autocmd me TermOpen term://* startinsert ]]
   vim.cmd [[ autocmd me TermClose term://* bdelete! ]]
 
-  vim.cmd [[ autocmd me BufEnter .env lua vim.diagnostic.disable(0)]]
+  vim.cmd [[ autocmd me BufEnter *.env{,.*} lua vim.diagnostic.disable(0)]]
 
   vim.cmd [[ autocmd me FileType netrw lua require('core/keymaps').netrw() ]]
 
