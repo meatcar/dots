@@ -27,7 +27,7 @@
       gopls
       ansible-language-server
       elixir_ls
-      nodePackages.vscode-langservers-extracted # eslint
+      nodePackages.vscode-langservers-extracted # css,eslint,html,json,markdown
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.bash-language-server
