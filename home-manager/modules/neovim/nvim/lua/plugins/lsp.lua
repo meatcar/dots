@@ -10,7 +10,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
+    dependencies = { {
       "folke/neodev.nvim",
       opts = {
         override = function(root_dir, library)
@@ -23,7 +23,7 @@ return {
         end,
       },
       config = true
-    },
+    }, { "b0o/schemastore.nvim", lazy = true } },
     config = function()
       -- setup default lsp config
       require 'cmp'
@@ -79,6 +79,14 @@ return {
       lspconfig.tsserver.setup {}
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
+      lspconfig.jsonls.setup {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      }
     end,
   },
 
