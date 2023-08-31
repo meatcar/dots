@@ -28,12 +28,12 @@ end
 M.cmd_term = function(opts)
   local cmd = 'terminal'
   if opts.bang then
-    cmd = ('%s!').format(cmd)
+    cmd = ('%s!'):format(cmd)
   end
 
   local args = ''
   if #opts.args > 0 then
-    args = ('-c "%s"').format(table.concat(opts.args, ' '))
+    args = ('-c "%s"'):format(table.concat(opts.args, ' '))
   end
 
   vim.fn.execute(table.concat({ cmd, vim.env.SHELL, args }, ' '))
