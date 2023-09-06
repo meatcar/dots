@@ -18,14 +18,15 @@ return {
     config = function()
       require 'neodev'
       require 'cmp'
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
       local augroup = vim.api.nvim_create_augroup('LspFormat', { clear = true })
 
       local lspconfig = require 'lspconfig'
       local util = require 'lspconfig.util'
       util.default_config = vim.tbl_extend('force', util.default_config, {
-        capabilities = capabilities,
+        capabilities = cmp_capabilities,
         on_attach = function(client, bufnr)
           require('illuminate').on_attach(client)
           keymaps.lsp_on_attach(client, bufnr)
