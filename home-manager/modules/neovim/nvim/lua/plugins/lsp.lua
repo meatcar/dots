@@ -87,6 +87,14 @@ return {
           },
         },
       }
+      lspconfig.yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = require('schemastore').yaml.schemas(),
+            schemaStore = { enable = false, url = "" }, -- disable built-in schemaStore support
+          },
+        },
+      }
     end,
   },
 
@@ -134,6 +142,9 @@ return {
         color_mode = false,
         separator = '  ',
       },
+      lightbulb = {
+        virtual_text = false
+      }
     },
   },
 
