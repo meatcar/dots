@@ -81,3 +81,6 @@ vim.opt.grepformat:prepend '%f:%l:%c:%m'
 vim.o.timeoutlen = 1000
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
+
+-- include the whitespace following a word motion
+vim.opt.cpoptions:remove '_'
