@@ -10,22 +10,13 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = { {
-      "folke/neodev.nvim",
-      opts = {
-        override = function(root_dir, library)
-          if root_dir:find(table.concat({ vim.fn.expand("$HOME"), "/git/hub/meatcar/dots" }), 1, true) == 1 then
-            library.enabled = true
-            library.plugins = true
-            library.runtime = true
-            library.types = true
-          end
-        end,
-      },
-      config = true
-    }, { "b0o/schemastore.nvim", lazy = true } },
+    dependencies = {
+      { "b0o/schemastore.nvim", lazy = true },
+      { "folke/neoconf.nvim",   config = true, cmd = 'Neoconf' },
+      { "folke/neodev.nvim",    config = true, lazy = true },
+    },
     config = function()
-      -- setup default lsp config
+      require 'neodev'
       require 'cmp'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -58,8 +49,6 @@ return {
           Lua = {
             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
             runtime = { version = 'LuaJIT' },
-            -- don't warn for some undefined globals
-            diagnostics = { globals = { 'vim' } },
             workspace = {
               checkThirdParty = false, -- disable unhelpful prompts
             },
