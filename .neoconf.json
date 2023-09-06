@@ -1,0 +1,33 @@
+{
+  "neodev": {
+    "library": {
+      "enabled": true,
+      "runtime": true
+    }
+  },
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  },
+  "lspconfig": {
+    "lua_ls": {
+      "diagnostics": {
+        "disable": [
+          "undefined-global"
+        ],
+        "globals": [
+          "vim"
+        ]
+      },
+      "format": {
+        "defaultConfig": {
+          "indent_style": "space",
+          "indent_size": "2"
+        }
+      }
+    }
+  }
+}
