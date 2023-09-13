@@ -20,6 +20,7 @@
     ../modules/helix
     ../modules/nix-index
     ../modules/starship
+    ../modules/zellij
   ];
 
   home.packages = with pkgs; [
