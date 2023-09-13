@@ -3,7 +3,6 @@ return {
   'kevinhwang91/nvim-bqf', -- better quickfix window
   'kshenoy/vim-signature', -- show marks in the SignColumn
   'lambdalisue/suda.vim',  -- :SudaWrite
-  'junegunn/fzf.vim',      -- fuzzy completion of all the things
 
   {                        -- run tests easily
     'janko/vim-test',
