@@ -170,9 +170,12 @@ return {
     leadermap.n = {
       name = 'notes', -- {{{
       c = { ':<C-u>NoteNew<Space>', 'Create new note' },
-      n = { ':<C-u>NoteFind<Space>', 'Find a note' },
-      ['/'] = { ':<C-u>NoteRg<Space>', 'Search in notes' },
-      j = { '<Cmd>NoteJournal<CR>', 'Journal' },
+      n = { ':<C-u>NoteFind<CR>', 'Find a note' },
+      N = { ':<C-u>NoteFind<Space>', 'Find a note in a subdirectory' },
+      ['/'] = { ':<C-u>NoteGrep<CR>', 'Search notes' },
+      F = { ':<C-u>NoteGrep<Space>', 'Search notes in a subdirectory' },
+      j = { '<Cmd>JournalDaily<CR>', 'Journal' },
+      J = { '<Cmd>JournalDaily<Space>', 'Open a specific journal' },
     } -- }}}
 
     leadermap.a = {

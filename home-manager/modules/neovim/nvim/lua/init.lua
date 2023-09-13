@@ -47,5 +47,6 @@ if vim.g.neovide then
   require 'core/gui'
 end
 
-
 require('lazy').setup 'plugins'
+
+require 'core/notes'
