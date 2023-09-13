@@ -19,6 +19,7 @@
       vscode-server.url = "github:nix-community/nixos-vscode-server";
       nix-index-database.url = "github:nix-community/nix-index-database";
       nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+      zellij.url = "github:a-kenji/zellij-nix";
 
       flake-compat = {
         url = "github:edolstra/flake-compat";
