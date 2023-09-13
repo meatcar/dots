@@ -8,6 +8,7 @@
     ../modules/fish
     ../modules/ssh
     ../modules/direnv
+    ../modules/lsd
     ../modules/tmux
     ../modules/neovim
     ../modules/weechat
@@ -90,7 +91,6 @@
     historySubstringSearch.enable = true;
   };
   programs.fzf.enable = true;
-  programs.lsd.enable = true;
   programs.lsd.enableAliases = true;
   programs.dircolors.enable = true;
   programs.zoxide.enable = true;
