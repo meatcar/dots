@@ -21,6 +21,7 @@ return {
         autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
       ]]
 
+      ---@diagnostic disable-next-line: missing-fields
       cmp.setup {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
@@ -49,10 +50,11 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
         },
         snippet = {
-          expand = function(args) -- REQUIRED - you must specify a snippet engine
+          expand = function(args)                -- REQUIRED - you must specify a snippet engine
             vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
           end,
         },
+        ---@diagnostic disable-next-line: missing-fields
         sorting = {
           comparators = {
             cmp.config.compare.offset,
@@ -65,6 +67,7 @@ return {
             cmp.config.compare.order,
           },
         },
+        ---@diagnostic disable-next-line: missing-fields
         view = {
           entries = {
             name = 'custom',
@@ -73,12 +76,14 @@ return {
         },
         -- experimental = { ghost_text = false },
         window = {
+          ---@diagnostic disable-next-line: missing-fields
           completion = {
             winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
             col_offset = -1,
             side_padding = 0,
           },
         },
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           fields = { 'kind', 'abbr', 'menu' },
           format = function(entry, vim_item)
@@ -118,6 +123,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         ensure_installed = 'all',
         highlight = { enable = true },
@@ -131,6 +137,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         textobjects = {
           select = {

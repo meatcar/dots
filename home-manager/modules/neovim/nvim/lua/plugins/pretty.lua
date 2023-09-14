@@ -81,6 +81,7 @@ return {
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
+      ---@diagnostic disable-next-line: missing-fields
       require('ufo').setup {
         provider_selector = function()
           return { 'treesitter', 'indent' }
@@ -118,7 +119,7 @@ return {
 
   { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
-    keys = function(plugin, keys)
+    keys = function(_plugin, keys)
       for _, map in ipairs { 'n', 'N' } do
         table.insert(keys, {
           map,
