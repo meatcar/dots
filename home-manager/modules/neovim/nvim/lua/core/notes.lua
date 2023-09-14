@@ -3,15 +3,25 @@ local M = {
   NOTES_DIR = fn.expand(fn.environ().NOTES_DIR, true, false) --[[@as string]]
 }
 
---- Create a new note
---- @param name? string
-function M.note_new(name)
-  local date = fn.strftime('%F-%H%M%z')
-  if name then
-    name = string.format('%s_%s', date, string.gsub(name, ' ', '-'))
-  else
-    name = date
+--- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+--- In this case a note with the title 'My new note' will given an ID that looks
+--- like '2020-01-01-0942-0400_my-new-note'
+--- @param title? string
+function M.notename(title)
+  local suffix = ""
+  if title ~= nil then
+    -- If title is given, transform it into valid file name.
+    suffix = "_" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", "")
   end
+  -- date is like YYYY-MM-DD-HHMM+0000
+  local date = fn.strftime('%F-%H%M%z')
+  return date .. suffix
+end
+
+--- Create a new note
+--- @param title? string
+function M.note_new(title)
+  local name = M.notename(title)
   fn.execute('e ' .. string.format('%s/%s.md', M.NOTES_DIR, name))
 end
 
