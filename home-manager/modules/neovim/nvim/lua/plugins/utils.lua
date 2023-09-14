@@ -19,6 +19,7 @@ return {
     config = function()
       local dir = table.concat { vim.fn.stdpath 'data', '/sessions/' }
       vim.fn.mkdir(dir, 'p')
+      ---@diagnostic disable-next-line: missing-fields
       require('auto-session').setup {
         auto_session_root_dir = dir,
         session_lens = {
@@ -175,7 +176,7 @@ return {
               anchor = 'N',
               mirror = true,
               prompt_position = 'top',
-              width = function(self, max_columns, max_lines)
+              width = function(_self, max_columns, _max_lines)
                 if max_columns < 80 then
                   return max_columns
                 else
