@@ -84,3 +84,6 @@ vim.g.maplocalleader = ','
 
 -- include the whitespace following a word motion
 vim.opt.cpoptions:remove '_'
+
+-- hide commandline, have it replace statusbar when : is pressed
+vim.o.cmdheight = 0
