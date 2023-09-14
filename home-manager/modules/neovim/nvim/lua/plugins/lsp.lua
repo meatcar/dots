@@ -133,7 +133,8 @@ return {
         separator = '  ',
       },
       lightbulb = {
-        virtual_text = false
+        virtual_text = true,
+        sign = false
       }
     },
   },
