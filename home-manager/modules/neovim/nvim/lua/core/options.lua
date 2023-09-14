@@ -31,7 +31,7 @@ vim.opt.matchpairs:append '<:>'
 vim.o.whichwrap = 'h,l,<,>,[,]'
 
 -- wrapping
-vim.o.linebreak = true -- soft-wrap lines, don't break them (bad opt name)
+vim.o.linebreak = true   -- soft-wrap lines, don't break them (bad opt name)
 vim.o.breakindent = true -- indent soft-wrapped lines
 vim.o.breakindentopt = 'shift:2,list:-1,min:30'
 

@@ -12,7 +12,7 @@ return {
       'lukas-reineke/cmp-under-comparator',
       'lukas-reineke/cmp-rg',
       'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
-      'onsails/lspkind-nvim', -- add icons to lsp completions
+      'onsails/lspkind-nvim',   -- add icons to lsp completions
     },
     event = 'InsertEnter',
     config = function()
@@ -37,9 +37,12 @@ return {
         }, {
           { name = 'buffer' },
           { name = 'rg' },
-          { name = 'tmux', option = {
-            all_panes = false,
-          } },
+          {
+            name = 'tmux',
+            option = {
+              all_panes = false,
+            }
+          },
         }),
         mapping = cmp.mapping.preset.insert {
           ['<C-x><C-o>'] = cmp.mapping.complete(),
@@ -159,7 +162,7 @@ return {
             -- You can choose the select mode (default is charwise 'v')
             selection_modes = {
               ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V', -- linewise
+              ['@function.outer'] = 'V',  -- linewise
               ['@class.outer'] = '<c-v>', -- blockwise
             },
           },
