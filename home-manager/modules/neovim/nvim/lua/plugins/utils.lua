@@ -377,6 +377,28 @@ return {
     },
     opts = {
       provider = 'duckduckgo'
+    },
+    {
+      'epwalsh/obsidian.nvim',
+      config = function()
+        ---@diagnostic disable-next-line: missing-fields
+        require('obsidian').setup {
+          dir = vim.fn.environ().NOTES_DIR,
+          daily_notes = {
+            folder = "journal/daily"
+          },
+          mappings = {
+            -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+            ["gf"] = require("obsidian.mapping").gf_passthrough(),
+          },
+          note_id_func = require('core/notes').notename,
+          templates = {
+            subdir = "templates",
+            date_format = "%Y-%m-%d",
+            time_format = "%H:%M",
+          },
+        }
+      end
     }
   },
 }
