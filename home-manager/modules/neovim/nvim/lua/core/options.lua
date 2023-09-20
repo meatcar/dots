@@ -49,6 +49,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
 
 -- diff
 vim.o.diffopt = 'filler,internal,algorithm:patience,indent-heuristic,closeoff,iwhite,linematch:60'
+vim.opt.fillchars:append { diff = "╱" } -- diagonal hatched lines for deletions
 
 -- whitespace
 vim.o.listchars = 'tab:⇥ ,eol:$,trail:·,extends:…,precedes:…,nbsp:␣'

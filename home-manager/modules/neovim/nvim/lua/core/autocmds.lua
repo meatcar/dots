@@ -4,7 +4,7 @@ M.main = function()
   vim.api.nvim_create_augroup('me', { clear = true })
   vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     group = 'me',
-    pattern = '*/home-manager/modules/neovim/nvim/lua/*.lua',
+    pattern = '/*/home-manager/modules/neovim/nvim/lua/*.lua',
     callback = function(e)
       require('core/functions').reload_nvim_config(e)
     end,
