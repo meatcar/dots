@@ -1,5 +1,5 @@
 return {
-  { 'nvim-tree/nvim-web-devicons',  lazy = true },
+  { 'nvim-tree/nvim-web-devicons' },
 
   { 'kien/rainbow_parentheses.vim', event = me.o.events.buf_early },
   { 'xtal8/traces.vim',             event = me.o.events.insert },
@@ -8,7 +8,6 @@ return {
 
   {                                                                 -- better vim.ui
     'stevearc/dressing.nvim',
-    lazy = true,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)

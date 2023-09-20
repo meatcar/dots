@@ -11,9 +11,9 @@ return {
     'neovim/nvim-lspconfig',
     event = me.o.events.buf_early,
     dependencies = {
-      { "b0o/schemastore.nvim", lazy = true },
-      { "folke/neoconf.nvim",   config = true, cmd = 'Neoconf' },
-      { "folke/neodev.nvim",    config = true, lazy = true },
+      { "b0o/schemastore.nvim" },
+      { "folke/neoconf.nvim",  config = true, cmd = 'Neoconf' },
+      { "folke/neodev.nvim",   config = true },
     },
     config = function()
       require 'neodev'
