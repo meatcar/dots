@@ -1,14 +1,29 @@
 return {
-  'tpope/vim-rhubarb',       -- auto-complete Github issues in fugitive
-  'samoshkin/vim-mergetool', -- Better merging (3-way becomes 2-way)
-  'rhysd/git-messenger.vim', -- pop-up window of git commit under cursor
-  'sodapopcan/vim-twiggy',   -- pop-up git branches
-  'rbong/vim-flog',          -- pretty git log
-  'mattn/webapi-vim',        -- for vim-gist
+  { -- auto-complete Github issues in fugitive
+    'tpope/vim-rhubarb',
+    event = me.o.events.insert,
+    ft = 'gitcommit'
+  },
+  { -- Better merging (3-way becomes 2-way)
+    'samoshkin/vim-mergetool',
+    cmd = { 'MergetoolStart', 'MergetoolStop', 'MergetoolToggle' }
+  },
+  { -- pop-up window of git commit under cursor
+    'rhysd/git-messenger.vim',
+    cmd = 'GitMessenger'
+  },
+  { -- pretty git log
+    'rbong/vim-flog',
+    cmd = 'Flog'
+  },
 
-  {                          -- generate a link to file on git remote site
+  { -- pretty branches
+    'sodapopcan/vim-twiggy',
+    cmd = 'Twiggy'
+  },
+
+  { -- generate a link to file on git remote site
     'ruifm/gitlinker.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       {
         '<leader>gy',
@@ -31,6 +46,10 @@ return {
 
   { -- tight git integration
     'tpope/vim-fugitive',
+    cmd = {
+      'G', 'Git', 'Grep', 'Glgrep', 'Gclog', 'Gllog', 'Gcd', 'Glcd', 'Gedit', 'Gsplit', 'Gvsplit', 'Gtabedit',
+      'Gpedit', 'Gdrop', 'Gread', 'Gwrite', 'Gdiffsplit', 'Gvdiffsplit'
+    },
     config = function()
       vim.cmd [[autocmd me FileType fugitive nmap <buffer> q gq]]
     end,
@@ -38,6 +57,8 @@ return {
 
   { -- Gist support
     'mattn/vim-gist',
+    dependencies = 'mattn/webapi-vim',
+    cmd = 'Gist',
     config = function()
       if vim.env.WAYLAND_DISPLAY then
         vim.g.gist_clip_command = 'wl-copy'

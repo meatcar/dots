@@ -14,7 +14,7 @@ return {
       'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
       'onsails/lspkind-nvim',   -- add icons to lsp completions
     },
-    event = 'InsertEnter',
+    event = me.o.events.insert,
     config = function()
       local cmp = require 'cmp'
       vim.cmd [[
@@ -123,7 +123,7 @@ return {
   { -- nvim-treesitter/nvim-treesitter, installed through nixos
     name = 'nvim-treesitter',
     dir = table.concat { vim.fn.stdpath 'data', '/lib/nvim-treesitter' },
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = me.o.events.buf_late,
     build = ':TSUpdate',
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -138,7 +138,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = me.o.events.buf_late,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
@@ -190,7 +190,10 @@ return {
   {
     'kkoomen/vim-doge',
     build = ':call doge#install()',
-    config = function()
+    keys = {
+      { '<leader>rd', '<Plug>(doge-generate)', desc = 'Generate documentation' }
+    },
+    init = function()
       vim.g.doge_javascript_settings = {
         destructuring_props = true,
         omit_redundant_param_types = true,

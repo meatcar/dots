@@ -11,30 +11,70 @@ _G.me.o.sidebars = {
 }
 
 return {
-  'nvim-lua/plenary.nvim',           -- used by neovim packages
-  'chrisgrieser/nvim-genghis',       -- :Delete, :Move, etc
-  'tpope/vim-repeat',                -- repeat more things
-  'wellle/targets.vim',              -- additional text objects
-  'pbrisbin/vim-mkdir',              -- create directory when :e unknown/paths
-  'kopischke/vim-fetch',             -- handle line and column numbers in file names
-  'airblade/vim-rooter',             -- auto-cd to root directory
-  'Konfekt/FastFold',                -- speed up folding for big files
-  'aymericbeaumet/symlink.vim',      -- follow symlinks
-  'ConradIrwin/vim-bracketed-paste', -- better paste in supported terminals
-  'tweekmonster/startuptime.vim',    -- debug slow vim startup times
-  'lewis6991/impatient.nvim',        -- cache lua compiled modules
-  'gbprod/stay-in-place.nvim',       -- keep cursor in place when shifting around
-  'marklcrns/vim-smartq',            -- smartly exit things
-  -- 'axelf4/vim-strip-trailing-whitespace', -- strip whitespace on edited lines
+  'nvim-lua/plenary.nvim',                             -- used by neovim packages
+  { 'tpope/vim-repeat',                lazy = false }, -- repeat more things
+  { 'wellle/targets.vim',              lazy = false }, -- additional text objects
+  { 'pbrisbin/vim-mkdir',              lazy = false }, -- create directory when :e unknown/paths
+  { 'kopischke/vim-fetch',             lazy = false }, -- handle line and column numbers in file names
+  { 'airblade/vim-rooter',             lazy = false }, -- auto-cd to root directory
+  { 'Konfekt/FastFold',                lazy = false }, -- speed up folding for big files
+  { 'aymericbeaumet/symlink.vim',      lazy = false }, -- follow symlinks
+  { 'ConradIrwin/vim-bracketed-paste', lazy = false }, -- better paste in supported terminals
+
+  {                                                    -- smartly exit things
+    'marklcrns/vim-smartq',
+    keys = {
+      { 'Q',     'q' },
+      { 'q',     '<Plug>(smartq_this)' },
+      { '<C-q>', '<Plug>(smartq_this_force)' },
+    }
+  },
+
+  { -- keep cursor in place when shifting around
+    'gbprod/stay-in-place.nvim',
+    event = me.o.events.verylazy,
+    config = true
+  },
+
   {
+    'dstein64/vim-startuptime', -- debug slow vim startup times
+    cmd = 'StartupTime',
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
+  },
+
+  { -- strip whitespace on edited lines
     'lewis6991/spaceless.nvim',
     config = true,
+  },
+
+  {
+    'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
+    config = true,
+    cmd = {
+      'New', 'Duplicate', 'NewFromSelection', 'Rename', 'Move', 'Trash', 'Chmodx',
+      'CopyFilename', 'CopyFilepath', 'CopyDirectoryPath', 'CopyRelativePath', 'CopyRelativeDirectoryPath',
+    },
+    keys = {
+      { '<leader>fn',  '<cmd>New<CR>',                       desc = 'New' },
+      { '<leader>fd',  '<cmd>Duplicate<CR>',                 desc = 'Duplicate' },
+      { '<leader>fR',  '<cmd>Rename<CR>',                    desc = 'Rename' },
+      { '<leader>fm',  '<cmd>Move<CR>',                      desc = 'Move' },
+      { '<leader>fT',  '<cmd>Trash<CR>',                     desc = 'Trash' },
+      { '<leader>fx',  '<cmd>Chmodx<CR>',                    desc = 'chmod +x' },
+      { '<leader>fyn', '<cmd>CopyFilename<CR>',              desc = 'Copy file name' },
+      { '<leader>fyp', '<cmd>CopyFilepath<CR>',              desc = 'Copy file path' },
+      { '<leader>fyd', '<cmd>CopyDirectoryPath<CR>',         desc = 'Copy directory path' },
+      { '<leader>fyr', '<cmd>CopyRelativePath<CR>',          desc = 'Copy relative path' },
+      { '<leader>fyR', '<cmd>CopyRelativeDirectoryPath<CR>', desc = 'Copy relative directory path' },
+    }
   },
 
   { -- basics
     'echasnovski/mini.basics',
     version = false,
-    event = 'VeryLazy',
+    event = me.o.events.verylazy,
     opts = {
       options = {
         basic = false,
@@ -54,6 +94,7 @@ return {
   { -- work with surrounding text
     'echasnovski/mini.surround',
     version = false,
+    event = me.o.events.verylazy,
     opts = {
       mappings = {
         add = '<leader>sa',            -- Add surrounding in Normal and Visual modes
@@ -72,6 +113,7 @@ return {
 
   { -- [b ]b etc to manipulate nvim
     'echasnovski/mini.bracketed',
+    event = me.o.events.verylazy,
     version = false,
     config = function(_, opts)
       require('mini.bracketed').setup(opts)
@@ -81,23 +123,25 @@ return {
     },
   },
 
-  {
+  { -- jump around
     'ggandor/leap.nvim',
+    event = me.o.events.verylazy,
     config = function()
       require('leap').add_default_mappings()
     end,
   },
 
-  { --easy commenting with gcc
+  { -- easy commenting with gcc
     'numToStr/Comment.nvim',
+    event = me.o.events.verylazy,
     config = function()
       require('Comment').setup()
     end,
   },
 
-  { -- add  to function blocks
+  { -- add to function blocks
     'RRethy/nvim-treesitter-endwise',
-    event = { 'InsertEnter' },
+    event = me.o.events.insert,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
@@ -110,6 +154,7 @@ return {
 
   { -- quickly delete multiple buffers based on the conditions provided
     'kazhala/close-buffers.nvim',
+    cmd = { 'BDelete', 'BWipeout' },
     config = function()
       require('close_buffers').setup {
         filetype_ignore = {},                -- Filetype to ignore when running deletions
@@ -127,5 +172,7 @@ return {
 
   {
     'windwp/nvim-autopairs',
+    event = me.o.events.insert,
+    config = true
   },
 }

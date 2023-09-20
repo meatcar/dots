@@ -1,10 +1,13 @@
 return {
-  'Olical/vim-enmasse',    -- mass-edit lines in quickfix
-  'kevinhwang91/nvim-bqf', -- better quickfix window
-  'kshenoy/vim-signature', -- show marks in the SignColumn
-  'lambdalisue/suda.vim',  -- :SudaWrite
+  { -- mass-edit lines in quickfix
+    'Olical/vim-enmasse',
+    cmd = 'EnMasse',
+  },
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' },                    -- better quickfix window
+  { 'kshenoy/vim-signature', event = me.o.events.verylazy }, -- show marks in the SignColumn
+  { 'lambdalisue/suda.vim',  cmd = 'SudaWrite' },            -- save file with sudo
 
-  {                        -- run tests easily
+  {                                                          -- run tests easily
     'janko/vim-test',
     config = function()
       if vim.env.TMUX ~= nil then
@@ -16,12 +19,10 @@ return {
 
   { -- associate sessions with cwd
     'rmagatti/auto-session',
+    lazy = false,
     config = function()
-      local dir = table.concat { vim.fn.stdpath 'data', '/sessions/' }
-      vim.fn.mkdir(dir, 'p')
       ---@diagnostic disable-next-line: missing-fields
       require('auto-session').setup {
-        auto_session_root_dir = dir,
         session_lens = {
           load_on_setup = false,
         }
@@ -36,17 +37,21 @@ return {
 
   { -- align operations
     'junegunn/vim-easy-align',
-    config = function()
+    cmd = { 'EasyAlign', 'LiveEasyAlign' },
+    keys = {
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
-      vim.keymap.set('n', 'ga', '<Plug>(EasyAlign)')
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
-      vim.keymap.set('x', 'ga', '<Plug>(EasyAlign)')
-    end,
+      { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' } },
+    }
   },
 
-  {                                    -- UI for dadbod, a database UI
+  { -- UI for dadbod, a database UI
     'kristijanhusak/vim-dadbod-ui',
-    dependencies = 'tpope/vim-dadbod', -- Modern database interface for Vim
+    dependencies = {
+      { 'tpope/vim-dadbod',                     lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = { 'DBUI', 'DBUIToggle', 'DBUIAddConnection', 'DBUIFindBuffer', },
     init = function()
       vim.g.db_ui_use_nerd_fonts = true
     end,
@@ -99,6 +104,7 @@ return {
 
   { -- ctrl-[ax] on drugs
     'zegervdv/nrpattern.nvim',
+    event = me.o.events.buf_early,
     config = function()
       -- Get the default dict of patterns
       local patterns = require 'nrpattern.default'
@@ -115,7 +121,7 @@ return {
 
   { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = 'BufReadPre',
+    event = me.o.events.buf_early,
     config = function()
       require('indent_blankline').setup {
         char_list = { '¦', '┆', '┊', '▏' },
@@ -131,6 +137,7 @@ return {
   { -- highlight and add UI for TODO comments
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    event = me.o.events.buf_early,
     opts = { signs = false },
   },
 
@@ -217,7 +224,7 @@ return {
 
   { -- tmux integration
     'aserowy/tmux.nvim',
-    event = 'VeryLazy',
+    event = me.o.events.verylazy,
     cond = function()
       return vim.env.TMUX ~= nil
     end,
@@ -232,6 +239,7 @@ return {
 
   { -- open and run commands in a tmux pane
     'preservim/vimux',
+    event = me.o.events.verylazy,
     cond = function()
       return vim.env.TMUX ~= nil
     end,
@@ -239,6 +247,7 @@ return {
 
   { -- fullscreen current buffer
     'folke/zen-mode.nvim',
+    cmd = 'ZenMode',
     config = function()
       require('zen-mode').setup {}
       vim.keymap.set('n', '<C-w>z', '<Cmd>ZenMode<CR>')
@@ -248,6 +257,7 @@ return {
 
   { -- color highlighter
     'norcalli/nvim-colorizer.lua',
+    event = me.o.events.verylazy,
     config = function()
       require('colorizer').setup()
     end,
@@ -369,6 +379,19 @@ return {
     },
     {
       'epwalsh/obsidian.nvim',
+      cmd = {
+        'ObsidianOpen',
+        'ObsidianNew',
+        'ObsidianQuickSwitch',
+        'ObsidianFollowLink',
+        'ObsidianBacklinks',
+        'ObsidianToday',
+        'ObsidianYesterday',
+        'ObsidianTemplate',
+        'ObsidianSearch',
+        'ObsidianLink',
+        'ObsidianLinkNew',
+      },
       config = function()
         ---@diagnostic disable-next-line: missing-fields
         require('obsidian').setup {

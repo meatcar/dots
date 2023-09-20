@@ -1,9 +1,9 @@
 return {
-  'rafamadriz/friendly-snippets',
+  { 'rafamadriz/friendly-snippets' },
 
   {
     'hrsh7th/vim-vsnip',
-    event = 'InsertEnter',
+    event = me.o.events.insert,
     config = function()
       vim.cmd [[
       " Expand
