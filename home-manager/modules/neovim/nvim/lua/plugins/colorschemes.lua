@@ -20,6 +20,47 @@ vim.api.nvim_create_autocmd({ 'User' }, {
 
 return {
   {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000, -- main theme, load first
+    lazy = false,
+    opts = {
+      flavour = 'mocha',
+      integrations = {
+        barbar = true,
+        cmp = true,
+        dropbar = {
+          enabled = true,
+          color_mode = true, -- enable color for kind's texts, not just kind's icons
+        },
+        gitsigns = true,
+        illuminate = {
+          enabled = true,
+          lsp = true
+        },
+        indent_blankline = {
+          enabled = true,
+          colored_indent_levels = false,
+        },
+        leap = true,
+        lsp_saga = true,
+        lsp_trouble = true,
+        headlines = true,
+        fidget = true,
+        markdown = true,
+        mini = true,
+        neotree = true,
+        neogit = true,
+        notify = true,
+        which_key = true,
+      },
+    },
+    config = function(_, opts)
+      require('catppuccin').setup(opts)
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+  {
     'liuchengxu/space-vim-theme',
     lazy = false,
   },
@@ -68,43 +109,22 @@ return {
   },
   {
     'projekt0n/github-nvim-theme',
+    as = 'github-theme',
     lazy = false,
     init = function()
       vim.g.github_sidebars = _G.me.o.sidebars
     end,
-    config = function()
-      -- vim.cmd [[colorscheme github_dimmed]]
-    end,
-  },
-
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    lazy = false,
-    priority = 1000,                     -- main theme, load first
-    init = function()
-      vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
-    end,
     opts = {
-      integrations = {
-        lsp_trouble = true,
-        lsp_saga = true,
-        which_key = true,
-        neotree = true,
-        barbar = true,
-        cmp = true,
-        leap = true,
-        markdown = true,
-        mini = true,
-        gitsigns = true,
-        indent_blankline = {
-          enabled = true,
-          colored_indent_levels = false,
+      options = {
+        darken = { -- Darken floating windows and sidebar-like windows
+          floats = false,
+          sidebars = {
+            enabled = true,
+            list = me.o.sidebars, -- Apply dark background to specific windows
+          },
         },
-      },
-    },
-    config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end,
+
+      }
+    }
   },
 }
