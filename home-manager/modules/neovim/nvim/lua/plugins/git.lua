@@ -53,16 +53,28 @@ return {
   { -- show git changes in the gutter
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    event = 'BufReadPre',
+    event = me.o.events.buf_early,
     config = true,
+  },
+
+  {
+    'sindrets/diffview.nvim',
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    config = true,
+    opts = {
+      keymaps = {
+        view = {
+          { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } }
+        },
+        file_panel = {
+          { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } }
+        }
+      }
+    }
   },
 
   { -- magic git UI
     'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-    },
     cmd = 'Neogit',
     opts = {
       use_telescope = true,
