@@ -1,7 +1,7 @@
 return {
   { -- A plethora of syntaxes
     'sheerun/vim-polyglot',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = me.o.events.buf_early,
     init = function()
       vim.g.polyglot_disabled = { 'yaml', 'markdown', 'scala' }
     end,
@@ -24,7 +24,6 @@ return {
 
   {
     'mattn/emmet-vim',
-
     ft = { 'html', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
     config = function()
       vim.g.user_emmet_leader_key = '<localleader>'

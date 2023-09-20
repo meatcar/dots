@@ -1,3 +1,5 @@
+vim.loader.enable() -- speed up lua file loading
+
 vim.g.parinfer_dylib_path = table.concat { vim.fn.stdpath 'data', '/lib/libparinfer_rust.so' }
 vim.g.sqlite_clib_path = table.concat { vim.fn.stdpath 'data', '/lib/libsqlite3.so' }
 
@@ -47,6 +49,16 @@ if vim.g.neovide then
   require 'core/gui'
 end
 
-require('lazy').setup 'plugins'
+-- predefine lazyloading events for consistency
+_G.me.o.events = {
+  verylazy = 'VeryLazy',
+  buf_early = { 'BufReadPre', 'BufNewFile' },
+  buf_late = { "BufReadPost", "BufNewFile" },
+  insert = 'InsertEnter',
+}
+
+require('lazy').setup('plugins', {
+  defaults = { lazy = true }
+})
 
 require 'core/notes'

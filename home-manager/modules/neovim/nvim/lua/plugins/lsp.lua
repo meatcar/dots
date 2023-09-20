@@ -9,7 +9,7 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = me.o.events.buf_early,
     dependencies = {
       { "b0o/schemastore.nvim", lazy = true },
       { "folke/neoconf.nvim",   config = true, cmd = 'Neoconf' },
@@ -90,8 +90,8 @@ return {
 
   {
     -- async error checking
-    'jose-elias-alvarez/null-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    'nvimtools/none-ls.nvim',
+    event = me.o.events.buf_early,
     config = function()
       local null_ls = require 'null-ls'
 
@@ -119,7 +119,7 @@ return {
     -- pretty LSP popups
 
     'nvimdev/lspsaga.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = me.o.events.buf_early,
     opts = {
       code_action = {
         keys = {
@@ -139,9 +139,8 @@ return {
     },
   },
 
-  { 'Bekaboo/dropbar.nvim', event = { 'BufReadPre', 'BufNewFile' } },
-
-  'folke/lsp-colors.nvim',
+  { 'Bekaboo/dropbar.nvim',  event = me.o.events.buf_early },
+  { 'folke/lsp-colors.nvim', event = me.o.events.buf_early },
 
   {
     -- show all LSP errors
@@ -157,6 +156,7 @@ return {
 
   {
     'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    event = me.o.events.buf_early,
     config = function()
       require('lsp_lines').setup()
       vim.diagnostic.config {
@@ -193,7 +193,7 @@ return {
 
   {
     'j-hui/fidget.nvim',
-    event = 'VeryLazy',
+    event = me.o.events.verylazy,
     tag = 'legacy',
     opts = {
       text = {
@@ -204,13 +204,13 @@ return {
 
   {
     'ray-x/lsp_signature.nvim',
-    event = 'BufReadPre',
+    event = me.o.events.buf_early,
     config = true
   },
 
   { -- defer diagnostics until insert mode is exited
     'yorickpeterse/nvim-dd',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = me.o.events.buf_early,
     config = true
   }
 }

@@ -1,14 +1,12 @@
 return {
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  { 'nvim-tree/nvim-web-devicons',  lazy = true },
 
-  'kien/rainbow_parentheses.vim',
+  { 'kien/rainbow_parentheses.vim', event = me.o.events.buf_early },
+  { 'xtal8/traces.vim',             event = me.o.events.insert },
+  { 'romainl/vim-cool',             event = me.o.events.buf_late }, -- smart set nohl after we're done searching
+  { 'Bekaboo/deadcolumn.nvim',      event = me.o.events.buf_late }, -- gradually show colorcolumn
 
-  'xtal8/traces.vim',
-
-  'romainl/vim-cool',        -- smart set nohl after we're done searching
-  'Bekaboo/deadcolumn.nvim', -- gradually show colorcolumn
-
-  {                          -- better vim.ui
+  {                                                                 -- better vim.ui
     'stevearc/dressing.nvim',
     lazy = true,
     init = function()
@@ -27,15 +25,18 @@ return {
 
   { -- smooth scrolling
     'karb94/neoscroll.nvim',
+    event = me.o.events.verylazy,
     opts = {
       -- All these keys will be mapped to their corresponding default scrolling animation
       mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
       easing_function = 'circular',
+      hide_cursor = true,
     },
   },
 
   { -- flash cursor sometimes
     'edluffy/specs.nvim',
+    event = me.o.events.verylazy,
     config = function()
       require('specs').setup {
         show_jumps = true,
@@ -59,7 +60,7 @@ return {
 
   { -- highlight word under cursor
     'RRethy/vim-illuminate',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = me.o.events.buf_late,
     config = function()
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
       vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
@@ -70,7 +71,7 @@ return {
   {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
-    event = 'VeryLazy',
+    event = me.o.events.verylazy,
     config = function()
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
@@ -119,6 +120,7 @@ return {
 
   { -- eol hints & counters when searching
     'kevinhwang91/nvim-hlslens',
+    event = me.o.events.verylazy,
     keys = function(_plugin, keys)
       for _, map in ipairs { 'n', 'N' } do
         table.insert(keys, {
@@ -144,6 +146,7 @@ return {
 
   {
     'dstein64/nvim-scrollview', -- scroll bar
+    event = me.o.events.buf_late,
     opts = {
       excluded_filetypes = _G.me.o.sidebars,
       current_only = true,
@@ -154,7 +157,7 @@ return {
 
   {
     'rcarriga/nvim-notify',
-    event = 'VeryLazy',
+    event = me.o.events.verylazy,
     keys = {
       {
         '<leader>vn',
@@ -178,6 +181,7 @@ return {
   {
     'luukvbaal/statuscol.nvim',
     version = false,
+    event = me.o.events.verylazy,
     config = function()
       local builtin = require 'statuscol.builtin'
       require('statuscol').setup {
@@ -200,7 +204,7 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter-context',
-    event = 'BufReadPost',
+    event = me.o.events.buf_late,
     keys = {
       { "<leader>ttc", ":TSContextToggle<CR>" }
     },

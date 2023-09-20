@@ -2,12 +2,14 @@
 
 return {
   'folke/which-key.nvim', --popup ui for obscure keys
-  config = function()
+  lazy = false,
+  opts = function(_, opts)
+    opts.spelling = { enabled = true }
+  end,
+  config = function(_, opts)
     local wk = require 'which-key'
 
-    wk.setup {
-      spelling = { enabled = true },
-    }
+    wk.setup(opts)
 
     local leadermap = {
       m = { '<Cmd>call feedkeys(g:maplocalleader)<CR>', '+localleader' },
@@ -84,6 +86,7 @@ return {
       l = { '<Cmd>Flog<CR>', 'Log' },
       s = { '<Cmd>Neogit<CR>', 'Status' },
       g = { ':<C-u>Git<Space>', ':Git' },
+      m = { '<Cmd>GitMessenger<CR>', ':Git' },
     } -- }}}
 
     leadermap.t = {

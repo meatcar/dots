@@ -19,17 +19,14 @@ vim.api.nvim_create_autocmd({ 'User' }, {
 })
 
 return {
-  'liuchengxu/space-vim-theme',
+  { 'liuchengxu/space-vim-theme' },
 
-  'NLKNguyen/papercolor-theme',
+  { 'bluz71/vim-moonfly-colors' },
 
-  'bluz71/vim-moonfly-colors',
-
-  'B4mbus/oxocarbon-lua.nvim',
+  { 'B4mbus/oxocarbon-lua.nvim' },
 
   {
     'https://gitlab.com/protesilaos/tempus-themes-vim', -- accessible themes
-    lazy = true,
     init = function()
       vim.g.tempus_enforce_background_color = true
     end,
@@ -38,7 +35,6 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     dependencies = 'rktjmp/lush.nvim',
-    lazy = true,
     init = function()
       vim.g.gruvbox_italic = true
       vim.g.gruvbox_invert_selection = false
@@ -49,7 +45,6 @@ return {
   },
   {
     'marko-cerovac/material.nvim',
-    lazy = true,
     init = function()
       vim.g.material_lighter_contrast = true
     end,
@@ -57,11 +52,9 @@ return {
 
   {
     'folke/tokyonight.nvim',
-    lazy = true,
   },
   {
     'projekt0n/github-nvim-theme',
-    lazy = true,
     init = function()
       vim.g.github_sidebars = _G.me.o.sidebars
     end,

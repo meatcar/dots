@@ -1,6 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim', -- status line
-  event = 'VeryLazy',
+  event = me.o.events.verylazy,
   config = function()
     local mode_map = {
       ['NORMAL'] = 'N',

@@ -1,6 +1,6 @@
 return {
   'romgrk/barbar.nvim',
-  event = 'VeryLazy',
+  event = me.o.events.verylazy,
   config = function()
     require('bufferline').setup {
       animation = false,
