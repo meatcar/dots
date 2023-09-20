@@ -69,13 +69,9 @@ return {
 
     leadermap.f = {
       name = 'files', -- {{{
+      t = { name = 'file-tree' },
       r = { '<Cmd>Telescope oldfiles<CR>', 'Recent' },
       f = { '<Cmd>Telescope find_files<CR>', 'Files' },
-      t = {
-        name = 'file-tree',
-        t = { '<Cmd>Neotree toggle<CR>', 'Toggle' },
-        f = { '<Cmd>Neotree filesystem reveal_file=%<CR>', 'Find file' },
-      },
     } -- }}}
 
     leadermap.g = {

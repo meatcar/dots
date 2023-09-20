@@ -59,28 +59,30 @@ return {
 
   {
     'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-    },
+    branch = 'v3.x',
+    dependencies = { 'MunifTanjim/nui.nvim', },
     cmd = 'Neotree',
+    keys = {
+      { '<leader>ftt', '<cmd>Neotree toggle<CR>',                   desc = 'Toggle' },
+      { '<leader>ftf', '<Cmd>Neotree filesystem reveal_file=%<CR>', desc = 'Find file' },
+    },
     init = function()
       -- Unless you are still migrating, remove the deprecated commands from v1.x
       vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
     end,
     opts = {
       hijack_netrw_behavior = 'disabled',
-      add_blank_line_at_top = true,
+      add_blank_line_at_top = false,
       auto_clean_after_session_restore = true,
       source_selector = {
         winbar = true,
         statusline = false,
-        tab_labels = { -- table
-          filesystem = '  Files ',
-          buffers = '  Buffers ',
-          git_status = '  Git ',
-          diagnostics = ' 裂Diagnostics ',
+        sources = {
+          { source = 'filesystem', display_name = ' 󰉓  Files ' },
+          { source = 'buffers', display_name = ' 󱒋  Buffers ' },
+          { source = 'git_status', display_name = ' 󰊢  Git ' },
+          { source = 'diagnostics', display_name = ' 󱠂  LSP' },
+          { source = 'document_symbols', display_name = ' 󱘎  Outline ' },
         },
         content_layout = 'center',
         tabs_layout = 'equal',
