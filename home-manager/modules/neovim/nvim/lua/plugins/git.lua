@@ -81,6 +81,11 @@ return {
   {
     'sindrets/diffview.nvim',
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    keys = {
+      { '<leader>gd', '<cmd>DiffviewOpen<CR>',          desc = 'Diff repo' },
+      { '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', desc = 'History of file' },
+      { '<leader>gB', '<cmd>DiffviewFileHistory<CR>',   desc = 'History of branch' },
+    },
     config = true,
     opts = {
       keymaps = {
@@ -88,6 +93,9 @@ return {
           { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } }
         },
         file_panel = {
+          { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } }
+        },
+        file_history_panel = {
           { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } }
         }
       }
