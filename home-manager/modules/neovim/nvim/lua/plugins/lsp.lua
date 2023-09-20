@@ -120,23 +120,28 @@ return {
 
     'nvimdev/lspsaga.nvim',
     event = me.o.events.buf_early,
-    opts = {
-      code_action = {
-        keys = {
-          quit = '<ESC>',
-          exec = '<CR>',
+    opts = function()
+      return {
+        ui = {
+          kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
         },
-      },
-      symbol_in_winbar = {
-        enable = false,
-        color_mode = false,
-        separator = '  ',
-      },
-      lightbulb = {
-        virtual_text = true,
-        sign = false
+        code_action = {
+          keys = {
+            quit = '<ESC>',
+            exec = '<CR>',
+          },
+        },
+        symbol_in_winbar = {
+          enable = false,
+          color_mode = false,
+          separator = '  ',
+        },
+        lightbulb = {
+          virtual_text = true,
+          sign = false
+        }
       }
-    },
+    end,
   },
 
   { 'Bekaboo/dropbar.nvim',  event = me.o.events.buf_early },
@@ -196,9 +201,8 @@ return {
     event = me.o.events.verylazy,
     tag = 'legacy',
     opts = {
-      text = {
-        spinner = 'dots',
-      },
+      text = { spinner = 'dots' },
+      window = { blend = 0 }
     },
   },
 
