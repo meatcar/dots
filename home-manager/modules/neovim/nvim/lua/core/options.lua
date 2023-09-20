@@ -52,7 +52,7 @@ vim.o.diffopt = 'filler,internal,algorithm:patience,indent-heuristic,closeoff,iw
 
 -- whitespace
 vim.o.listchars = 'tab:⇥ ,eol:$,trail:·,extends:…,precedes:…,nbsp:␣'
-vim.o.fillchars = 'vert:│'
+vim.opt.fillchars:append { vert = '│' }
 
 -- clean-up messages
 vim.o.showmode = false
