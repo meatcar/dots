@@ -14,12 +14,12 @@ return {
   'nvim-lua/plenary.nvim',                             -- used by neovim packages
   { 'tpope/vim-repeat',                lazy = false }, -- repeat more things
   { 'wellle/targets.vim',              lazy = false }, -- additional text objects
-  { 'pbrisbin/vim-mkdir',              lazy = false }, -- create directory when :e unknown/paths
   { 'kopischke/vim-fetch',             lazy = false }, -- handle line and column numbers in file names
   { 'airblade/vim-rooter',             lazy = false }, -- auto-cd to root directory
   { 'Konfekt/FastFold',                lazy = false }, -- speed up folding for big files
   { 'aymericbeaumet/symlink.vim',      lazy = false }, -- follow symlinks
   { 'ConradIrwin/vim-bracketed-paste', lazy = false }, -- better paste in supported terminals
+  { 'jghauser/mkdir.nvim',             lazy = false }, -- create directory when :e unknown/paths
 
   {                                                    -- smartly exit things
     'marklcrns/vim-smartq',
