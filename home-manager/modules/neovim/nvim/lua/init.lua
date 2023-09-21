@@ -38,12 +38,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require 'impatient' --.enable_profile()
-
 require 'core/options'
 require 'core/commands'
 require('core/autocmds').main()
-require('core/keymaps').main()
 if vim.g.neovide then
   print 'neovide'
   require 'core/gui'
@@ -58,7 +55,10 @@ _G.me.o.events = {
 }
 
 require('lazy').setup('plugins', {
-  defaults = { lazy = true }
+  defaults = { lazy = true },
+  performance = { reset_packpath = false } -- needed to source nixos-installed plugins
 })
 
 require 'core/notes'
+
+require('core/keymaps').main()

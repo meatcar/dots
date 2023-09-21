@@ -133,11 +133,6 @@ return {
 
   { -- easy commenting with gcc
     'numToStr/Comment.nvim',
-    event = me.o.events.verylazy,
-    config = function()
-      require('Comment').setup()
-    end,
-  },
 
   { -- add to function blocks
     'RRethy/nvim-treesitter-endwise',
@@ -150,6 +145,9 @@ return {
         },
       }
     end,
+    keys = { "gc", "gb" },
+    main = 'Comment',
+    opts = {},
   },
 
   { -- quickly delete multiple buffers based on the conditions provided
