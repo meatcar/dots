@@ -42,7 +42,7 @@ vim.o.previewheight = 9
 
 -- completion
 vim.o.wildmode = 'longest:full,full'
-vim.o.pumblend = 20
+vim.o.pumblend = 0
 vim.o.winblend = 20
 vim.cmd [[ hi PmenuSel blend=0 ]]
 vim.o.completeopt = 'menu,menuone,noselect'

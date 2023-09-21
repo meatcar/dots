@@ -4,36 +4,47 @@ return {
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
+      'FelipeLema/cmp-async-path',
       -- 'hrsh7th/cmp-cmdline',
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-vsnip',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'kristijanhusak/vim-dadbod-completion',
       'lukas-reineke/cmp-under-comparator',
       'lukas-reineke/cmp-rg',
       'andersevenrud/cmp-tmux', -- Sources words from adjacent tmux panes.
       'onsails/lspkind-nvim',   -- add icons to lsp completions
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'doxnit/cmp-luasnip-choice', opts = {} },
     },
     event = me.o.events.insert,
     config = function()
-      local cmp = require 'cmp'
       vim.cmd [[
-        autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+        autocmd me FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
       ]]
+
+      local cmp = require 'cmp'
+      local luasnip = require("luasnip")
+
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
 
       ---@diagnostic disable-next-line: missing-fields
       cmp.setup {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'nvim_lsp_signature_help' },
           {
-            name = 'vsnip',
+            name = 'luasnip',
             entry_filter = function()
               local context = require("cmp.config.context")
               return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
             end,
           },
+          { name = 'luasnip_choice' }
         }, {
-          { name = 'path' },
+          { name = 'async_path' },
         }, {
           { name = 'buffer' },
           { name = 'rg' },
@@ -46,15 +57,48 @@ return {
         }),
         mapping = cmp.mapping.preset.insert {
           ['<C-x><C-o>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm(),
           ['<C-Space>'] = cmp.mapping.confirm { select = true },
           ['<C-g>'] = cmp.mapping.abort(),
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+              -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+              -- they way you will only jump inside the snippet region
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<CR>"] = cmp.mapping({
+            i = function(fallback)
+              if cmp.visible() and cmp.get_active_entry() then
+                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+              else
+                fallback()
+              end
+            end,
+            s = cmp.mapping.confirm({ select = true }),
+            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+          }),
         },
         snippet = {
-          expand = function(args)                -- REQUIRED - you must specify a snippet engine
-            vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+          expand = function(args) -- REQUIRED - you must specify a snippet engine
+            require 'luasnip'.lsp_expand(args.body)
           end,
         },
         ---@diagnostic disable-next-line: missing-fields
@@ -88,30 +132,33 @@ return {
         },
         ---@diagnostic disable-next-line: missing-fields
         formatting = {
-          fields = { 'kind', 'abbr', 'menu' },
+          fields = { 'menu', 'abbr', 'kind' },
           format = function(entry, vim_item)
             local cmp_format = require('lspkind').cmp_format {
               mode = 'symbol_text',
               maxwidth = 50,
               menu = {
-                path = 'pth',
-                rg = 'rg',
-                tmux = 'tmux',
-                buffer = 'buf',
-                nvim_lsp = 'lsp',
-                vsnip = 'snip',
-                ['vim-dadbod-completion'] = 'db',
+                path = ' ',
+                async_path = ' ',
+                rg = '󰍉 ',
+                tmux = ' ',
+                buffer = '󰧭 ',
+                nvim_lsp = '󰘧 ',
+                vsnip = '󰢵 ',
+                luasnip = '󰢵 ',
+                luasnip_choice = '󰢵 ',
+                ['vim-dadbod-completion'] = '󱘲 ',
               },
               symbol_map = {
-                TypeParameter = '',
+                TypeParameter = ' ',
               },
             }
             local kind = cmp_format(entry, vim_item)
             local menu = kind.menu
             local strings = vim.split(kind.kind, '%s', { trimempty = true })
             if #strings >= 2 then
-              kind.kind = strings[1]
-              kind.menu = ('%s(%s)'):format(strings[2], menu)
+              kind.kind = ('%s  %s'):format(strings[1], strings[2])
+              kind.menu = ('%s'):format(menu)
             end
             return kind
           end,
