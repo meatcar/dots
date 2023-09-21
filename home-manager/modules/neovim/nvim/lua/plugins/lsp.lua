@@ -227,12 +227,12 @@ return {
   {
     'ray-x/lsp_signature.nvim',
     event = me.o.events.buf_early,
-    config = true
+    opts = {}
   },
 
   { -- defer diagnostics until insert mode is exited
     'yorickpeterse/nvim-dd',
     event = me.o.events.buf_early,
-    config = true
+    opts = {}
   }
 }

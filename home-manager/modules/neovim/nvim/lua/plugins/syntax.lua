@@ -102,7 +102,7 @@ return {
     'lukas-reineke/headlines.nvim',
     dependencies = 'nvim-treesitter/nvim-treesitter',
     ft = { 'md', 'markdown' },
-    config = true, -- or `opts = {}`
+    opts = {}
   },
 
   -- clojure
