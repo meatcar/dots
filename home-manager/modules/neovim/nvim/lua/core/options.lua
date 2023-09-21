@@ -88,3 +88,5 @@ vim.opt.cpoptions:remove '_'
 
 -- hide commandline, have it replace statusbar when : is pressed
 vim.o.cmdheight = 0
+
+vim.o.jumpoptions = 'view,stack'
