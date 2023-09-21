@@ -133,7 +133,10 @@ return {
 
   { -- easy commenting with gcc
     'numToStr/Comment.nvim',
-    keys = { "gc", "gb" },
+    keys = {
+      { "gc", mode = { 'n', 'v' } },
+      { "gb", mode = { 'n', 'v' } },
+    },
     main = 'Comment',
     opts = {},
   },
