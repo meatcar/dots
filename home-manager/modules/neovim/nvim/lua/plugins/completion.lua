@@ -57,6 +57,14 @@ return {
         }),
         mapping = cmp.mapping.preset.insert {
           ['<C-x><C-o>'] = cmp.mapping.complete(),
+          ---@diagnostic disable-next-line: missing-fields
+          ['<C-x><C-f>'] = cmp.mapping.complete({ config = { sources = { { name = 'async_path' } } } }),
+          ---@diagnostic disable-next-line: missing-fields
+          ['<C-x><C-s>'] = cmp.mapping.complete({ config = { sources = { { name = 'luasnip' } } } }),
+          ---@diagnostic disable-next-line: missing-fields
+          ['<C-x><C-t>'] = cmp.mapping.complete({ config = { sources = { { name = 'tmux' } } } }),
+          ---@diagnostic disable-next-line: missing-fields
+          ['<C-x><C-r>'] = cmp.mapping.complete({ config = { sources = { { name = 'rg' } } } }),
           ['<C-Space>'] = cmp.mapping.confirm { select = true },
           ['<C-g>'] = cmp.mapping.abort(),
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),

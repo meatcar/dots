@@ -1,5 +1,5 @@
 return {
-  { 'rafamadriz/friendly-snippets' },
+  { 'rafamadriz/friendly-snippets', lazy = false },
 
   {
     "L3MON4D3/LuaSnip",
@@ -8,5 +8,8 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     event = me.o.events.insert,
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end
   },
 }
