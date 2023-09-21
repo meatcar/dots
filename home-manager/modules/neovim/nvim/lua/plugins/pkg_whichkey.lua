@@ -77,13 +77,7 @@ return {
     leadermap.g = {
       name = 'git', -- {{{
       f = { '<Cmd>Telescope git_files<CR>', 'Files' },
-      F = { '<Cmd>Telescope git_status<CR>', 'Status' },
-      b = { '<Cmd>Twiggy<CR>', 'Branches' },
-      l = { '<Cmd>Flog<CR>', 'Log' },
-      s = { '<Cmd>Neogit<CR>', 'Status' },
-      g = { ':<C-u>Git<Space>', ':Git' },
-      m = { '<Cmd>GitMessenger<CR>', ':Git' },
-    } -- }}}
+    }               -- }}}
 
     leadermap.t = {
       name = 'toggle', -- {{{

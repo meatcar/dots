@@ -8,18 +8,23 @@ return {
     'samoshkin/vim-mergetool',
     cmd = { 'MergetoolStart', 'MergetoolStop', 'MergetoolToggle' }
   },
+
   { -- pop-up window of git commit under cursor
     'rhysd/git-messenger.vim',
-    cmd = 'GitMessenger'
+    cmd = 'GitMessenger',
+    keys = { { '<leader>gh', '<cmd>GitMessenger<CR>', desc = 'Hover message' } }
   },
+
   { -- pretty git log
     'rbong/vim-flog',
-    cmd = 'Flog'
+    cmd = 'Flog',
+    keys = { { '<leader>gl', '<cmd>Flog<CR>', desc = 'Log' } }
   },
 
   { -- pretty branches
     'sodapopcan/vim-twiggy',
-    cmd = 'Twiggy'
+    cmd = 'Twiggy',
+    keys = { { '<leader>gb', '<cmd>Twiggy<CR>', desc = 'Branches' } }
   },
 
   { -- generate a link to file on git remote site
@@ -50,6 +55,7 @@ return {
       'G', 'Git', 'Grep', 'Glgrep', 'Gclog', 'Gllog', 'Gcd', 'Glcd', 'Gedit', 'Gsplit', 'Gvsplit', 'Gtabedit',
       'Gpedit', 'Gdrop', 'Gread', 'Gwrite', 'Gdiffsplit', 'Gvdiffsplit'
     },
+    keys = { { '<leader>gg', ':<C-u>Git<Space>', desc = ':Git' } },
     config = function()
       vim.cmd [[autocmd me FileType fugitive nmap <buffer> q gq]]
     end,
@@ -73,9 +79,8 @@ return {
 
   { -- show git changes in the gutter
     'lewis6991/gitsigns.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     event = me.o.events.buf_early,
-    config = true,
+    opts = {},
   },
 
   {
@@ -86,7 +91,6 @@ return {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', desc = 'History of file' },
       { '<leader>gB', '<cmd>DiffviewFileHistory<CR>',   desc = 'History of branch' },
     },
-    config = true,
     opts = {
       keymaps = {
         view = {
@@ -105,6 +109,7 @@ return {
   { -- magic git UI
     'NeogitOrg/neogit',
     cmd = 'Neogit',
+    keys = { { '<leader>gs', '<cmd>Neogit<CR>', desc = 'Status' } },
     opts = {
       use_telescope = true,
       disable_insert_on_commit = 'auto',
