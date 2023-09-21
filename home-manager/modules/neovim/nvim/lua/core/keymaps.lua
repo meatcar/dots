@@ -13,6 +13,14 @@ M.main = function()
 
   -- open NnnPicker a-la vinegar
   vim.keymap.set('n', '-', [[<Cmd>NnnPicker %:p<CR>]], { desc = 'File Picker' })
+
+  vim.keymap.set('n', '<leader>nc', ':<C-u>NoteNew<Space>', { desc = 'Create new note' })
+  vim.keymap.set('n', '<leader>nn', ':<C-u>NoteFind<CR>', { desc = 'Open a note' })
+  vim.keymap.set('n', '<leader>no', ':<C-u>NoteFind<Space>', { desc = 'Open a note in a subdirectory' })
+  vim.keymap.set('n', '<leader>n/', ':<C-u>NoteGrep<CR>', { desc = 'Search all notes' })
+  vim.keymap.set('n', '<leader>ns', ':<C-u>NoteGrep<Space>', { desc = 'Search notes in a subdirectory' })
+  vim.keymap.set('n', '<leader>nt', '<Cmd>JournalDaily<CR>', { desc = 'Journal today' })
+  vim.keymap.set('n', '<leader>nj', '<Cmd>JournalDaily<Space>', { desc = 'Open a specific journal' })
 end
 
 -- improve netrw a-la tpope/vim-vinegar

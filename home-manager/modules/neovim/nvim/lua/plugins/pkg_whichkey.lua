@@ -166,18 +166,6 @@ return {
       a = { '<Cmd>Lspsaga range_code_action<CR>', 'Action' },
     }
 
-    leadermap.n = {
-      name = 'notes', -- {{{
-      c = { ':<C-u>NoteNew<Space>', 'Create new note' },
-      n = { ':<C-u>NoteFind<CR>', 'Open a note' },
-      o = { ':<C-u>NoteFind<Space>', 'Open a note in a subdirectory' },
-      ['/'] = { ':<C-u>NoteGrep<CR>', 'Search all notes' },
-      s = { ':<C-u>NoteGrep<Space>', 'Search notes in a subdirectory' },
-      t = { '<Cmd>JournalDaily<CR>', 'Journal today' },
-      y = { '<Cmd>ObsidianYesterday<CR>', 'Journal yesterday' },
-      j = { '<Cmd>JournalDaily<Space>', 'Open a specific journal' },
-      l = { '<Cmd>ObsidianLinkNew<Space>', 'Link to a note' },
-    } -- }}}
 
     leadermap.a = {
       name = 'NeoAI', -- {{{

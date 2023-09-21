@@ -382,17 +382,17 @@ return {
     {
       'epwalsh/obsidian.nvim',
       cmd = {
-        'ObsidianOpen',
-        'ObsidianNew',
+        'ObsidianOpen', 'ObsidianNew',
         'ObsidianQuickSwitch',
-        'ObsidianFollowLink',
-        'ObsidianBacklinks',
-        'ObsidianToday',
-        'ObsidianYesterday',
+        'ObsidianFollowLink', 'ObsidianBacklinks',
+        'ObsidianToday', 'ObsidianYesterday',
         'ObsidianTemplate',
         'ObsidianSearch',
-        'ObsidianLink',
-        'ObsidianLinkNew',
+        'ObsidianLink', 'ObsidianLinkNew',
+      },
+      keys = {
+        { '<leader>ny', '<Cmd>ObsidianYesterday<CR>',  desc = 'Journal yesterday' },
+        { '<leader>nl', '<Cmd>ObsidianLinkNew<Space>', desc = 'Link to a note' },
       },
       config = function()
         ---@diagnostic disable-next-line: missing-fields
