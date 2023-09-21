@@ -110,11 +110,8 @@ return {
   },
   {
     'projekt0n/github-nvim-theme',
-    as = 'github-theme',
+    main = 'github-theme',
     lazy = false,
-    init = function()
-      vim.g.github_sidebars = _G.me.o.sidebars
-    end,
     opts = {
       options = {
         darken = { -- Darken floating windows and sidebar-like windows
