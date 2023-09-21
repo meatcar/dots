@@ -9,6 +9,16 @@ return {
 
   {                                                          -- run tests easily
     'janko/vim-test',
+    keys = {
+      { '<leader>rtt', '<Cmd>TestNearest<CR>', desc = 'Nearest' },
+      { '<leader>rtf', '<Cmd>TestFile<CR>',    desc = 'File' },
+      { '<leader>rts', '<Cmd>TestSuite<CR>',   desc = 'Suite' },
+      { '<leader>rtr', '<Cmd>TestLast<CR>',    desc = 'Recent' },
+      { '<leader>rtg', '<Cmd>TestVisit<CR>',   desc = 'Goto' },
+    },
+    init = function()
+      require('which-key').register({ ['<leader>rt'] = { name = 'test' } })
+    end,
     config = function()
       if vim.env.TMUX ~= nil then
         vim.g['test#strategy'] = 'vimux'
@@ -33,6 +43,7 @@ return {
   { -- undo tree
     'simnalamburt/vim-mundo',
     cmd = 'MundoToggle',
+    keys = { { '<leader>ou', '<cmd>MundoToggle<CR>', desc = 'Undo Tree' } }
   },
 
   { -- align operations
@@ -55,43 +66,6 @@ return {
     init = function()
       vim.g.db_ui_use_nerd_fonts = true
     end,
-  },
-
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = { 'MunifTanjim/nui.nvim', },
-    cmd = 'Neotree',
-    keys = {
-      { '<leader>ftt', '<cmd>Neotree toggle<CR>',                   desc = 'Toggle' },
-      { '<leader>ftf', '<Cmd>Neotree filesystem reveal_file=%<CR>', desc = 'Find file' },
-    },
-    init = function()
-      -- Unless you are still migrating, remove the deprecated commands from v1.x
-      vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
-    end,
-    opts = {
-      hijack_netrw_behavior = 'disabled',
-      add_blank_line_at_top = false,
-      auto_clean_after_session_restore = true,
-      source_selector = {
-        winbar = true,
-        statusline = false,
-        sources = {
-          { source = 'filesystem', display_name = ' 󰉓  Files ' },
-          { source = 'buffers', display_name = ' 󱒋  Buffers ' },
-          { source = 'git_status', display_name = ' 󰊢  Git ' },
-          { source = 'diagnostics', display_name = ' 󱠂  LSP' },
-          { source = 'document_symbols', display_name = ' 󱘎  Outline ' },
-        },
-        content_layout = 'center',
-        tabs_layout = 'equal',
-        truncation_character = '…',
-        tabs_min_width = nil,
-        tabs_max_width = nil,
-        padding = 0,
-      },
-    },
   },
 
   {
@@ -124,6 +98,7 @@ return {
   { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
     event = me.o.events.buf_early,
+    keys = { { '<leader>tI', '<cmd>IndentBlanklineToggle<CR>', desc = 'Indent highlight' } },
     config = function()
       require('indent_blankline').setup {
         char_list = { '¦', '┆', '┊', '▏' },
@@ -136,92 +111,11 @@ return {
     end,
   },
 
-  { -- highlight and add UI for TODO comments
+  { -- highlight and add UI for #TODO comments
     'folke/todo-comments.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
     event = me.o.events.buf_early,
+    keys = { { '<leader>ot', '<cmd>TodoTelescope<CR>', desc = 'TODO' } },
     opts = { signs = false },
-  },
-
-  { -- a fuzzy completion engine
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim',    build = 'make' },
-      { 'nvim-telescope/telescope-smart-history.nvim', dependencies = 'kkharji/sqlite.lua' },
-    },
-    cmd = 'Telescope',
-    init = function()
-      vim.cmd [[
-        command! Ctrlp execute (exists("*FugitiveHead()") && len(FugitiveHead())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
-      ]]
-    end,
-    keys = {
-      { '<C-p>', '<Cmd>Ctrlp<CR>' },
-    },
-    config = function()
-      local history_path = table.concat { vim.fn.stdpath 'data', '/databases' }
-      vim.fn.mkdir(history_path, 'p')
-      local trouble = require 'trouble.providers.telescope'
-      require('telescope').setup {
-        defaults = {
-          winblend = 10,
-          dynamic_preview_title = true,
-          sorting_strategy = 'ascending',
-          layout_strategy = 'vertical',
-          layout_config = {
-            flex = {
-              flip_columns = 120,
-              vertical = {
-                width = 0.9999,
-                anchor = 'SW',
-              },
-              horizontal = {
-                anchor = 'SW',
-              },
-            },
-            vertical = {
-              anchor = 'N',
-              mirror = true,
-              prompt_position = 'top',
-              width = function(_self, max_columns, _max_lines)
-                if max_columns < 80 then
-                  return max_columns
-                else
-                  return 80
-                end
-              end,
-            },
-          },
-          history = {
-            path = table.concat { history_path, '/telescope_history.sqlite3' },
-            limit = 100,
-          },
-          mappings = {
-            i = {
-              ['<C-Down>'] = require('telescope.actions').cycle_history_next,
-              ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
-              ['<c-t>'] = trouble.open_with_trouble,
-            },
-            n = { ['<c-t>'] = trouble.open_with_trouble },
-          },
-          cache_picker = {
-            num_pickers = 1,
-          },
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = 'smart_case',       -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
-          },
-        },
-      }
-      require('telescope').load_extension 'fzf'
-      require('telescope').load_extension 'smart_history'
-    end,
   },
 
   { -- tmux integration
@@ -242,6 +136,21 @@ return {
   { -- open and run commands in a tmux pane
     'preservim/vimux',
     event = me.o.events.verylazy,
+    keys = {
+      { '<leader>rrp', '<Cmd>VimuxPromptCommand<CR>',       desc = 'Prompt' },
+      { '<leader>rrr', '<Cmd>VimuxRunLastCommand<CR>',      desc = 'Last' },
+      { '<leader>rri', '<Cmd>VimuxInspectRunner<CR>',       desc = 'Inspect' },
+      { '<leader>rro', '<Cmd>VimuxOpenRunner<CR>',          desc = 'Open' },
+      { '<leader>rrq', '<Cmd>VimuxCloseRunner<CR>',         desc = 'Close' },
+      { '<leader>rrd', '<Cmd>VimuxCloseRunner<CR>',         desc = 'Close' },
+      { '<leader>rrs', '<Cmd>VimuxInterruptRunner<CR>',     desc = 'Interrupt (stop)' },
+      { '<leader>rrc', '<Cmd>VimuxInterruptRunner<CR>',     desc = 'Interrupt (cancel)' },
+      { '<leader>rrl', '<Cmd>VimuxClearTerminalScreen<CR>', desc = 'Clear' },
+      { '<leader>rrz', '<Cmd>VimuxZoomRunner<CR>',          desc = 'Zoom' },
+    },
+    init = function()
+      require('which-key').register({ ['<leader>rr'] = { name = 'command' } })
+    end,
     cond = function()
       return vim.env.TMUX ~= nil
     end,
@@ -291,80 +200,6 @@ return {
       },
     },
     opts = { use_default_keymaps = false },
-  },
-
-  {
-    'jackMort/ChatGPT.nvim',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-    cmd = {
-      'ChatGPT',
-      'ChatGPTActAs',
-      'ChatGPTEditWithInstructions',
-      'ChatGPTRun',
-    },
-    keys = {
-      { '<leader>acc', '<cmd>ChatGPT<cr>',                     desc = 'ChatGPT' },
-      { '<leader>aca', '<cmd>ChatGPTActAs<cr>',                desc = 'ChatGPT Act-As' },
-      { '<leader>ace', '<cmd>ChatGPTEditWithInstructions<cr>', desc = 'ChatGPT Edit' },
-      { '<leader>acr', '<cmd>ChatGPTRun<cr>',                  desc = 'ChatGPT Run' },
-    },
-    config = function()
-      require('chatgpt').setup()
-    end,
-  },
-
-  {
-    'Bryley/neoai.nvim',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = {
-      'NeoAI',
-      'NeoAIOpen',
-      'NeoAIClose',
-      'NeoAIToggle',
-      'NeoAIContext',
-      'NeoAIContextOpen',
-      'NeoAIContextClose',
-      'NeoAIInject',
-      'NeoAIInjectCode',
-      'NeoAIInjectContext',
-      'NeoAIInjectContextCode',
-    },
-    config = function()
-      require('neoai').setup {
-        shortcuts = {
-          name = 'textify',
-          desc = 'NeoAI fix text with AI',
-          use_context = true,
-          prompt = [[
-                    Please rewrite the text to make it more readable, clear,
-                    concise, and fix any grammatical, punctuation, or spelling
-                    errors
-                ]],
-          modes = { 'v' },
-          strip_function = nil,
-        },
-        {
-          name = 'gitcommit',
-          desc = 'NeoAI generate git commit message',
-          use_context = false,
-          prompt = function()
-            return [[
-                        Using the following git diff generate a consise and
-                        clear git commit message, with a short title summary
-                        that is 75 characters or less:
-                    ]] .. vim.fn.system 'git diff --cached'
-          end,
-          modes = { 'n' },
-          strip_function = nil,
-        },
-      }
-    end,
   },
 
   { -- open browser with various queries

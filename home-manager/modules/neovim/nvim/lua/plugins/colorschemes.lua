@@ -52,6 +52,7 @@ return {
         neotree = true,
         neogit = true,
         notify = true,
+        rainbow_delimiters = true,
         which_key = true,
       },
     },

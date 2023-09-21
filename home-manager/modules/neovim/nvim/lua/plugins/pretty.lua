@@ -1,12 +1,44 @@
 return {
   { 'nvim-tree/nvim-web-devicons' },
 
-  { 'kien/rainbow_parentheses.vim', event = me.o.events.buf_early },
-  { 'xtal8/traces.vim',             event = me.o.events.insert },
-  { 'romainl/vim-cool',             event = me.o.events.buf_late }, -- smart set nohl after we're done searching
-  { 'Bekaboo/deadcolumn.nvim',      event = me.o.events.buf_late }, -- gradually show colorcolumn
+  { 'xtal8/traces.vim',           event = me.o.events.insert },
+  { 'romainl/vim-cool',           event = me.o.events.buf_late }, -- smart set nohl after we're done searching
+  { 'Bekaboo/deadcolumn.nvim',    event = me.o.events.buf_late }, -- gradually show colorcolumn
 
-  {                                                                 -- better vim.ui
+  {
+    'HiPhish/rainbow-delimiters.nvim',
+    event = me.o.events.buf_early,
+    keys = { { '<leader>tp', function() require('rainbow-delimiters').toggle() end, desc = 'Rainbow parens' } },
+    config = function()
+      local rainbow = require 'rainbow-delimiters'
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow.strategy['global'],
+          commonlisp = rainbow.strategy['local'],
+          html = rainbow.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+          elixir = 'rainbow-blocks',
+          javascript = 'rainbow-delimiters-react',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+        blacklist = { 'c', 'cpp' },
+      }
+    end
+  },
+
+  { -- better vim.ui
     'stevearc/dressing.nvim',
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -155,29 +187,6 @@ return {
   },
 
   {
-    'rcarriga/nvim-notify',
-    event = me.o.events.verylazy,
-    keys = {
-      {
-        '<leader>vn',
-        function()
-          require('notify').dismiss { silent = true, pending = true }
-        end,
-        desc = 'Delete all Notifications',
-      },
-    },
-    opts = {
-      background_colour = '#000000',
-      render = 'compact',
-    },
-    config = function(_, opts)
-      local notify = require 'notify'
-      notify.setup(opts)
-      vim.notify = notify
-    end,
-  },
-
-  {
     'luukvbaal/statuscol.nvim',
     version = false,
     event = me.o.events.verylazy,
@@ -201,12 +210,4 @@ return {
     end,
   },
 
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    event = me.o.events.buf_late,
-    keys = {
-      { "<leader>ttc", ":TSContextToggle<CR>" }
-    },
-    config = true
-  }
 }

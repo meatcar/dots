@@ -7,14 +7,25 @@ for type, icon in pairs(signs) do
 end
 
 return {
+  { 'Bekaboo/dropbar.nvim', event = me.o.events.buf_early },
+
   {
     'neovim/nvim-lspconfig',
     event = me.o.events.buf_early,
     dependencies = {
       { "b0o/schemastore.nvim" },
-      { "folke/neoconf.nvim",  config = true, cmd = 'Neoconf' },
-      { "folke/neodev.nvim",   config = true },
+      { "folke/neoconf.nvim",  opts = {}, cmd = 'Neoconf' },
+      { "folke/neodev.nvim",   opts = {} },
     },
+    keys = {
+      { '<leader>llr', '<Cmd>LspRestart<CR>', desc = 'Restart' },
+      { '<leader>llo', '<Cmd>LspStop<CR>',    desc = 'Stop' },
+      { '<leader>lla', '<Cmd>LspStart<CR>',   desc = 'Start' },
+      { '<leader>lll', '<Cmd>LspInfo<CR>',    desc = 'Info' },
+    },
+    init = function()
+      require('which-key').register({ ['<leader>ll'] = { name = 'lspconfig' } })
+    end,
     config = function()
       require 'neodev'
       require 'cmp'
@@ -120,6 +131,16 @@ return {
 
     'nvimdev/lspsaga.nvim',
     event = me.o.events.buf_early,
+    keys = {
+      { '<leader>la', '<Cmd>Lspsaga code_action<CR>',             desc = 'Action' },
+      { '<leader>lh', '<Cmd>Lspsaga hover_doc<CR>',               desc = 'Hover Doc' },
+      { '<leader>ls', '<Cmd>Lspsaga signature_help<CR>',          desc = 'Signature' },
+      { '<leader>lm', '<Cmd>Lspsaga rename<CR>',                  desc = 'Rename' },
+      { '<leader>ld', '<Cmd>Lspsaga preview_definition<CR>',      desc = 'Definition' },
+      { '<leader>li', '<Cmd>Lspsaga show_line_diagnostics<CR>',   desc = 'Line info' },
+      { '<leader>lc', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', desc = 'Cursor info' },
+      { '<leader>la', '<Cmd>Lspsaga range_code_action<CR>',       desc = 'Action',     mode = 'v' },
+    },
     opts = function()
       return {
         ui = {
@@ -143,9 +164,6 @@ return {
       }
     end,
   },
-
-  { 'Bekaboo/dropbar.nvim',  event = me.o.events.buf_early },
-  { 'folke/lsp-colors.nvim', event = me.o.events.buf_early },
 
   {
     -- show all LSP errors
