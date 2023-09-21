@@ -27,19 +27,6 @@ return {
     end,
   },
 
-  { -- associate sessions with cwd
-    'rmagatti/auto-session',
-    lazy = false,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('auto-session').setup {
-        session_lens = {
-          load_on_setup = false,
-        }
-      }
-    end,
-  },
-
   { -- undo tree
     'simnalamburt/vim-mundo',
     cmd = 'MundoToggle',
@@ -249,5 +236,19 @@ return {
         }
       end
     }
+  },
+
+  {
+    'kkoomen/vim-doge',
+    build = ':call doge#install()',
+    keys = {
+      { '<leader>rd', '<Plug>(doge-generate)', desc = 'Generate documentation' }
+    },
+    init = function()
+      vim.g.doge_javascript_settings = {
+        destructuring_props = true,
+        omit_redundant_param_types = true,
+      }
+    end,
   },
 }

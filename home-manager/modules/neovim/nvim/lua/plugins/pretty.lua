@@ -95,13 +95,14 @@ return {
     config = function()
       vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
       vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
-      vim.keymap.set('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
+      vim.keymap.set('n', '<a-p>',
+        '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
     end,
   },
 
   {
     'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
+    dependencies = { 'kevinhwang91/promise-async', 'nvim-treesitter/nvim-treesitter' },
     event = me.o.events.verylazy,
     config = function()
       vim.o.foldcolumn = '1'
@@ -136,7 +137,8 @@ return {
               chunkWidth = vim.fn.strdisplaywidth(chunkText)
               -- str width returned from truncate() may less than 2nd argument, need padding
               if curWidth + chunkWidth < targetWidth then
-                suffix = table.concat { suffix, (' '):rep(targetWidth - curWidth - chunkWidth) }
+                suffix = table.concat { suffix, (' '):rep(targetWidth -
+                  curWidth - chunkWidth) }
               end
               break
             end
@@ -156,7 +158,8 @@ return {
       for _, map in ipairs { 'n', 'N' } do
         table.insert(keys, {
           map,
-          ([[<cmd>execute('normal! ' . v:count1 . '%s')<cr><cmd>lua require('hlslens').start()<cr>]]):format(map),
+          ([[<cmd>execute('normal! ' . v:count1 . '%s')<cr><cmd>lua require('hlslens').start()<cr>]])
+              :format(map),
           silent = true
         })
       end

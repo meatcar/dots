@@ -33,7 +33,7 @@ return {
   { -- keep cursor in place when shifting around
     'gbprod/stay-in-place.nvim',
     event = me.o.events.verylazy,
-    config = true
+    opts = {}
   },
 
   {
@@ -46,12 +46,12 @@ return {
 
   { -- strip whitespace on edited lines
     'lewis6991/spaceless.nvim',
-    config = true,
+    opts = {},
   },
 
   {
     'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
-    config = true,
+    opts = {},
     cmd = {
       'New', 'Duplicate', 'NewFromSelection', 'Rename', 'Move', 'Trash', 'Chmodx',
       'CopyFilename', 'CopyFilepath', 'CopyDirectoryPath', 'CopyRelativePath', 'CopyRelativeDirectoryPath',
@@ -133,18 +133,6 @@ return {
 
   { -- easy commenting with gcc
     'numToStr/Comment.nvim',
-
-  { -- add to function blocks
-    'RRethy/nvim-treesitter-endwise',
-    event = me.o.events.insert,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        endwise = {
-          enable = true,
-        },
-      }
-    end,
     keys = { "gc", "gb" },
     main = 'Comment',
     opts = {},
