@@ -76,6 +76,7 @@ return {
       patterns[{ 'yes', 'no' }] = { priority = 10 }
       patterns[{ 'True', 'False' }] = { priority = 10 }
       patterns[{ '[ ]', '[x]', '[-]' }] = { priority = 10 }
+      patterns[{ 'TODO', 'DONE', 'FIX', 'NOTE', 'WARN', 'TEST', 'HACK', 'WARN', 'PERF' }] = { priority = 10 }
 
       -- Call the setup to enable the patterns
       require('nrpattern').setup(patterns)
