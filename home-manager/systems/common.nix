@@ -49,6 +49,7 @@
     hydra-check
     nvd
     fd
+    fx
     (pkgs.writeShellScriptBin "get-theme" ''
       THEME_FILE=/mnt/c/Users/meatcar/.config/theme
       if [ -f "$THEME_FILE" ]; then
