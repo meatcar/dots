@@ -12,14 +12,17 @@
       style = "dimmed black";
     };
 
+    hostname.style = "bold green";
+
     username.format = "[$user]($style) ";
     hostname.format = "in $ssh_symbol[$hostname]($style) ";
     directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
 
     character = {
-      success_symbol = "[\\$](bold green)";
-      error_symbol = "[\\$](bold red)";
-      vicmd_symbol = "[](bold green)";
+      format = "$symbol";
+      success_symbol = "[\\$ ](bold green)"; #single-width
+      error_symbol = "[\\$ ](bold red)"; #single-width
+      vicmd_symbol = "[ ](bold green)"; #double-width
     };
 
     status = {
@@ -34,6 +37,13 @@
       map_symbol = true;
       pipestatus = true;
       pipestatus_format = "\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)";
+    };
+
+    directory = {
+      truncation_symbol = "… /";
+      before_repo_root_style = "bold cyan";
+      repo_root_style = "bold green";
+      style = "green"; # after repo root
     };
 
     battery = {
@@ -52,10 +62,10 @@
 
     shell = {
       disabled = false;
-      # fish_indicator = "󰈺 ";
-      # bash_indicator = "b$_";
-      # zsh_indicator = "zs";
-      # powershell_indicator = " ";
+      fish_indicator = "fish";
+      bash_indicator = "bash";
+      zsh_indicator = "zsh";
+      powershell_indicator = "pwsh";
     };
     shlvl = {
       disabled = false;
