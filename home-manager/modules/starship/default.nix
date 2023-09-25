@@ -60,11 +60,16 @@
       };
 
       git_status = {
-        staged = "+\${count}";
-        modified = "!\${count}";
-        ahead = "⇡\${count}";
-        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-        behind = "⇣\${count}";
+        format = "([$conflicted$stashed$deleted$renamed$modified$untracked( $staged)( $ahead_behind)]($style) )";
+        conflicted = "!\${count}";
+        untracked = "?\${count}";
+        staged = "^\${count}";
+        modified = "±\${count}";
+        deleted = "-\${count}";
+        renamed = "»\${count}";
+        ahead = "⇡ \${count}";
+        behind = "⇣ \${count}";
+        diverged = "⇡ \${ahead_count}⇣ \${behind_count}";
       };
 
       shell = {
