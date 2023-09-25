@@ -5,7 +5,7 @@
     character = {
       success_symbol = "[\\$](bold green)";
       error_symbol = "[\\$](bold red)";
-      vicmd_symbol = "[](bold green)";
+      vicmd_symbol = "[](bold green)";
     };
 
     status = {
@@ -32,24 +32,37 @@
     };
 
     aws.symbol = " ";
+    buf.symbol = " ";
+    c.symbol = " ";
     conda.symbol = "○ ";
+    dart.symbol = " ";
+    directory.read_only = "󰌾 ";
     docker_context.symbol = " ";
     elixir.symbol = " ";
     elm.symbol = " ";
+    fossil_branch.symbol = " ";
     git_branch.symbol = " ";
     golang.symbol = " ";
+    guix_shell.symbol = " ";
+    haskell.symbol = " ";
+    haxe.symbol = " ";
     hg_branch.symbol = " ";
-    java.symbol = " ";
+    hostname.ssh_symbol = "󰢹 ";
+    java.symbol = " ";
     julia.symbol = " ";
-    memory_usage.symbol = " ";
-    nim.symbol = "👑 ";
+    lua.symbol = " ";
+    memory_usage.symbol = "󰍛 ";
+    meson.symbol = "󰔷 ";
+    nim.symbol = " ";
     nix_shell.symbol = " ";
-    nodejs.symbol = " ";
-    package.symbol = " ";
+    nodejs.symbol = "󰎙 ";
+    package.symbol = "󰏗 ";
+    pijul_channel.symbol = " ";
     php.symbol = " ";
     python.symbol = " ";
+    rlang.symbol = "󰟔 ";
     ruby.symbol = " ";
-    rust.symbol = " ";
-    zig.symbol = " ";
+    rust.symbol = " ";
+    zig.symbol = "󱐋 ";
   };
 }
