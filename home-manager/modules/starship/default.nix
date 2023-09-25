@@ -17,11 +17,10 @@
         style = "dimmed black";
       };
 
-      hostname.style = "bold green";
-
       username.format = "[$user]($style) ";
+
+      hostname.style = "bold green";
       hostname.format = "in [$ssh_symbol $hostname]($style) ";
-      directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
 
       character = {
         format = "$symbol";
@@ -45,11 +44,13 @@
       };
 
       directory = {
-        truncation_symbol = "… /";
-        before_repo_root_style = "cyan";
-        repo_root_style = "bold cyan";
-        style = "cyan"; # after repo root
         fish_style_pwd_dir_length = 1;
+        truncation_symbol = "… /";
+        before_repo_root_style = "bold cyan";
+        repo_root_style = "bold green";
+        style = "green"; # after repo root
+        # NOTE: can't use truncation, due to https://github.com/starship/starship/issues/3975
+        truncation_length = 0;
       };
 
       battery = {
