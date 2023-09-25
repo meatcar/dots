@@ -2,6 +2,8 @@
   programs.starship = {
     enable = true;
 
+    # NOTE: blocked by https://github.com/starship/starship/issues/4929
+    # enableTransience = true;
 
     settings = {
       format = "$username$hostname$directory$fill $shell$all$line_break$shlvl$character";
