@@ -2,6 +2,22 @@
   programs.starship.enable = true;
   # xdg.configFile."starship.toml".source = ./starship.toml;
   programs.starship.settings = {
+    format = "$username$hostname$directory$fill $shell$all$line_break$shlvl$character";
+    right_format = "$cmd_duration$status";
+    time.disabled = false;
+    cmd_duration.show_notifications = true;
+
+    fill = {
+      symbol = "─";
+      style = "dimmed black";
+    };
+
+    nix_shell = {
+      format = "via [$symbol$state( $name)]($style) ";
+      impure_msg = "";
+      pure_msg = "";
+    };
+
     character = {
       success_symbol = "[\\$](bold green)";
       error_symbol = "[\\$](bold red)";
@@ -10,11 +26,16 @@
 
     status = {
       disabled = false;
-      symbol = "!";
-    };
-
-    env_var = {
-      variable = "STARSHIP_SHELL";
+      format = "[$symbol$common_meaning$signal_name$maybe_int]($style) ";
+      success_symbol = "";
+      symbol = "  ";
+      not_executable_symbol = "  ";
+      not_found_symbol = "  ";
+      sigint_symbol = "  ";
+      signal_symbol = "!";
+      map_symbol = true;
+      pipestatus = true;
+      pipestatus_format = "\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)";
     };
 
     battery = {
@@ -30,6 +51,27 @@
       diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
       behind = "⇣\${count}";
     };
+
+    shell = {
+      disabled = false;
+      # fish_indicator = "󰈺 ";
+      # bash_indicator = "b$_";
+      # zsh_indicator = "zs";
+      # powershell_indicator = " ";
+    };
+    shlvl = {
+      disabled = false;
+      format = "[$symbol]($style)";
+      style = "dimmed black";
+      repeat = true;
+      symbol = "\\$";
+      repeat_offset = 1;
+      threshold = 0;
+    };
+
+    username.format = "[$user]($style) ";
+    hostname.format = "in $ssh_symbol[$hostname]($style) ";
+    directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
 
     aws.symbol = " ";
     buf.symbol = " ";
