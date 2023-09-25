@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   programs.starship = {
     enable = true;
 
@@ -75,10 +75,10 @@
 
       shell = {
         disabled = false;
-        fish_indicator = "fish";
-        bash_indicator = "bash";
-        zsh_indicator = "zsh";
-        powershell_indicator = "pwsh";
+        fish_indicator = lib.mkDefault "fish";
+        bash_indicator = lib.mkDefault "bash";
+        zsh_indicator = lib.mkDefault "zsh";
+        powershell_indicator = lib.mkDefault "pwsh";
       };
       shlvl = {
         disabled = false;

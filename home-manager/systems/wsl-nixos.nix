@@ -6,10 +6,12 @@
     ../modules/gnome-keyring.nix
   ];
 
-
   home.sessionVariables = {
     BROWSER = "x-www-browser";
   };
+
+  # fish is the default shell. hide it.
+  programs.starship.settings.shell.fish_indicator = "";
 
   programs.fish.plugins = [
     { name = "fish-ssh-agent"; src = specialArgs.inputs.fish-ssh-agent; }
