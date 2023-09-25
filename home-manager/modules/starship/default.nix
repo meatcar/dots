@@ -60,10 +60,11 @@
       };
 
       git_status = {
-        format = "([$conflicted$stashed$deleted$renamed$modified$untracked( $staged)( $ahead_behind)]($style) )";
+        format = "([($conflicted$stashed )($deleted$renamed$modified$untracked)$staged($ahead_behind)]($style) )";
+        stashed = "≡\${count}";
         conflicted = "!\${count}";
         untracked = "?\${count}";
-        staged = "^\${count}";
+        staged = "✓ \${count}";
         modified = "±\${count}";
         deleted = "-\${count}";
         renamed = "»\${count}";
