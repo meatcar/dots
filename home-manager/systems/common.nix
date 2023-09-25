@@ -84,7 +84,11 @@
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    enableVteIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
