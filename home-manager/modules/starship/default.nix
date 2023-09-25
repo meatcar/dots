@@ -12,11 +12,9 @@
       style = "dimmed black";
     };
 
-    nix_shell = {
-      format = "via [$symbol$state( $name)]($style) ";
-      impure_msg = "";
-      pure_msg = "";
-    };
+    username.format = "[$user]($style) ";
+    hostname.format = "in $ssh_symbol[$hostname]($style) ";
+    directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
 
     character = {
       success_symbol = "[\\$](bold green)";
@@ -69,9 +67,12 @@
       threshold = 0;
     };
 
-    username.format = "[$user]($style) ";
-    hostname.format = "in $ssh_symbol[$hostname]($style) ";
-    directory.format = "in [$path]($style)[$read_only]($read_only_style) ";
+    nix_shell = {
+      format = "via [$symbol$state( $name)]($style) ";
+      impure_msg = "";
+      pure_msg = "";
+    };
+
 
     aws.symbol = " ";
     buf.symbol = " ";
