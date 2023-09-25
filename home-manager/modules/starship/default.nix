@@ -51,6 +51,7 @@
         style = "green"; # after repo root
         # NOTE: can't use truncation, due to https://github.com/starship/starship/issues/3975
         truncation_length = 0;
+
       };
 
       battery = {
@@ -91,9 +92,9 @@
       };
 
       nix_shell = {
-        format = "via [$symbol$state( $name)]($style) ";
-        impure_msg = "";
-        pure_msg = "";
+        format = "via [$symbol( $name)( $state)]($style) ";
+        pure_msg = "[ ](bold green)";
+        impure_msg = ""; # impure by default
       };
 
 
