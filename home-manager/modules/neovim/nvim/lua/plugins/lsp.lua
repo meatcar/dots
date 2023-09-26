@@ -77,7 +77,6 @@ return {
       lspconfig.eslint.setup {}
       lspconfig.cssls.setup {}
       lspconfig.html.setup {}
-      lspconfig.tsserver.setup {}
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
       lspconfig.jsonls.setup {
@@ -95,6 +94,14 @@ return {
             schemaStore = { enable = false, url = "" }, -- disable built-in schemaStore support
           },
         },
+      }
+      lspconfig.denols.setup {
+        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+      }
+
+      lspconfig.tsserver.setup {
+        root_dir = lspconfig.util.root_pattern("package.json"),
+        single_file_support = false
       }
     end,
   },
