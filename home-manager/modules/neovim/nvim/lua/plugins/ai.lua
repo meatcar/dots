@@ -12,13 +12,13 @@ return {
     },
     keys = {
       { '<leader>aa',   '<cmd>NeoAIToggle<cr>',             desc = 'NeoAI' },
-      { '<leader>ag',   '<cmd>NeoAIShortcut gitcommit<cr>', desc = 'generate git commit' },
-      { '<leader>as',   '<cmd>NeoAIShortcut textify<cr>',   desc = 'summarize text',     mode = 'v' },
-      { '<leader>ac',   '<cmd>NeoAIContext<cr>',            desc = 'NeoAI Context',      mode = 'v' },
-      { '<leader>aii',  '<c-u>:NeoAIInject ',               desc = 'Inject',             mode = 'v' },
-      { '<leader>aic',  '<c-u>:NeoAIInjectCode ',           desc = 'Code',               mode = 'v' },
-      { '<leader>aivv', '<c-u>:NeoAIInjectContext ',        desc = 'Context',            mode = 'v' },
-      { '<leader>aivc', '<c-u>:NeoAIInjectContextCode ',    desc = 'Context Code',       mode = 'v' },
+      { '<leader>ac',   '<cmd>NeoAIContext<cr>',            desc = 'NeoAI using Context', mode = { 'n', 'v' } },
+      { '<leader>ag',   '<cmd>NeoAIShortcut gitcommit<cr>', desc = 'Generate git commit' },
+      { '<leader>as',   '<cmd>NeoAIShortcut textify<cr>',   desc = 'Summarize text',      mode = 'v' },
+      { '<leader>ai',   '<c-u>:NeoAIInject ',               desc = 'Inject', },
+      { '<leader>aic',  '<c-u>:NeoAIInjectCode ',           desc = 'Code', },
+      { '<leader>aivv', '<c-u>:NeoAIInjectContext ',        desc = 'Context',             mode = { 'n', 'v' } },
+      { '<leader>aivc', '<c-u>:NeoAIInjectContextCode ',    desc = 'Context Code',        mode = { 'n', 'v' } },
     },
     init = function()
       require('which-key').register({ ['<leader>a'] = { name = 'ai' } })
@@ -145,6 +145,10 @@ return {
       require('which-key').register({ ['<leader>acr'] = { name = 'run' } })
     end,
     main = 'chatgpt',
-    opts = {}
+    opts = {
+      popup_input = {
+        submit = "<CR>"
+      }
+    }
   },
 }
