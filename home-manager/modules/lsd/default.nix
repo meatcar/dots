@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       icons.separator = "  "; # double-space, first one gets consumed by nerdfont icon
-      indicators = true;
+      indicators = false;
       blocks = [
         "permission"
         "user"
