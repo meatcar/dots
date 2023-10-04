@@ -38,7 +38,7 @@
       nodePackages.prettier
       nodePackages.stylelint
       python3Packages.autopep8
-      (pkgs.writeScriptBin "gofmt" ''
+      (pkgs.writeShellScriptBin "gofmt" ''
         ${pkgs.go}/bin/gofmt "$@"
       '')
     ];
