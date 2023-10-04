@@ -40,4 +40,15 @@
   #     sudo /etc/init.d/cron start 2>&1 >/dev/null
   #   end
   # '';
+
+
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        font = "monospace:size=10";
+        pad = "8x8center";
+      };
+    };
+  };
 }
