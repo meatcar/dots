@@ -57,7 +57,7 @@
   xdg.dataFile = {
     "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so";
     "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-    "nvim/lib/nvim-treesiter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
+    "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
   };
 
 
