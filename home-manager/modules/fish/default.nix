@@ -28,9 +28,9 @@ in
       functions = {
         fish_title.body = ''
           prompt_pwd
-          set cmd (status current-commandline)
+          set cmd (status current-command)
           if [ "$cmd" != fish ]
-            echo " $cmd"
+            echo ":$cmd"
           end
         '';
       };
