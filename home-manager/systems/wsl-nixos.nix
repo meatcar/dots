@@ -10,6 +10,13 @@
     BROWSER = "x-www-browser";
   };
 
+  home.packages = [
+    (pkgs.writeShellScriptBin "get-theme" ''
+      THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
+      cat "$THEME_FILE" 2>&1 || echo dark
+    '')
+  ];
+
   # fish is the default shell. hide it.
   programs.starship.settings.shell.fish_indicator = "";
 
