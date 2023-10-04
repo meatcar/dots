@@ -86,17 +86,17 @@ return {
   { -- show lines for indents on blank lines
     'lukas-reineke/indent-blankline.nvim',
     event = me.o.events.buf_early,
-    keys = { { '<leader>tI', '<cmd>IndentBlanklineToggle<CR>', desc = 'Indent highlight' } },
-    config = function()
-      require('indent_blankline').setup {
-        char_list = { '¦', '┆', '┊', '▏' },
-        space_char_blankline = ' ',
-        use_treesitter = true,
-        show_current_context = true,
-        show_current_context_start = true,
-        filetype_exclude = _G.me.o.sidebars,
-      }
-    end,
+    keys = { { '<leader>tI', '<cmd>IBLToggle<CR>', desc = 'Indent highlight' } },
+    main = 'ibl',
+    opts = {
+      enable = true,
+      indent = {
+        char = { '¦', '┆', '┊', '▏' },
+      },
+      whitespace = { remove_blankline_trail = true },
+      use_treesitter = true,
+      excludes = { filetype = _G.me.o.sidebars },
+    }
   },
 
   { -- highlight and add UI for #TODO comments
