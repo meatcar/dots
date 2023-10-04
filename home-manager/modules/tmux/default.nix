@@ -5,18 +5,16 @@ in
 {
   programs.tmux = {
     enable = true;
-    extraConfig = builtins.readFile ./tmux.conf;
-    aggressiveResize = true;
-    baseIndex = 1;
-    secureSocket = false;
-    escapeTime = 0;
     keyMode = "vi";
-    shortcut = "a";
+    prefix = "C-a";
+    aggressiveResize = true;
+    secureSocket = false;
     terminal = "tmux-256color";
+    extraConfig = builtins.readFile ./tmux.conf;
     plugins = [
+      tmuxPlugins.sensible
       tmuxPlugins.yank
       tmuxPlugins.pain-control
-      tmuxPlugins.ctrlw
       {
         plugin = tmuxPlugins.prefix-highlight;
         extraConfig = ''
@@ -32,8 +30,7 @@ in
       fzf = "${pkgs.fzf}/bin/fzf";
     in
     [
-      (pkgs.writeScriptBin "tmux_session_fzf" ''
-        #!/bin/sh
+      (pkgs.writeShellScriptBin "tmux_session_fzf" ''
         prompt=$1
         fmt='#{session_id}:|#{?#{session_grouped},@#{session_group},###{session_name}}'
         # fmt='#{session_id}:|#S|(#{session_attached} attached)'
@@ -43,16 +40,14 @@ in
             | ${fzf} --reverse --prompt "$prompt> " \
             | cut -d':' -f1
       '')
-      (pkgs.writeScriptBin "tmux_select_session" ''
-        #!/bin/sh
+      (pkgs.writeShellScriptBin "tmux_select_session" ''
         # Select selected tmux session
         # Note: To be bound to a tmux key in from .tmux.conf
         # Example: bind-key s run "tmux new-window -n 'Switch Session' 'bash -ci tmux_select_session'"
         tmux_session_fzf 'switch session' | xargs ${tmux} switch-client -t
       ''
       )
-      (pkgs.writeScriptBin "tmux_kill_session" ''
-        #!/bin/sh
+      (pkgs.writeShellScriptBin "tmux_kill_session" ''
         tmux_session_fzf 'kill session' \
           | {
             read -r id
