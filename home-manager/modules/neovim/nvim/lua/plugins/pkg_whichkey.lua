@@ -26,7 +26,16 @@ return {
     local leadermap_v = {}
     local leadermap_t = {}
 
-    leadermap.v = { name = 'vim' }
+    leadermap.v = {
+      name = 'vim',
+      l = {
+        name = 'lazy',
+        l = { '<Cmd>Lazy<CR>', 'Lazy' },
+        c = { '<Cmd>Lazy clean<CR>', 'Lazy clean' },
+        u = { '<Cmd>Lazy check<CR>', 'Lazy check' },
+        p = { '<Cmd>Lazy profile<CR>', 'Lazy profile' },
+      }
+    }
 
     leadermap.h = {
       name = 'help', -- {{{
@@ -87,7 +96,6 @@ return {
       h = { '<C-w>h', 'Focus right' },
       s = { '<Cmd>split<CR>', 'Split' },
       v = { '<Cmd>vsplit<CR>', 'Vertical split' },
-      z = { '<C-w><T>', 'Zoom' },
     }
 
     leadermap.l = { name = 'lsp' }
