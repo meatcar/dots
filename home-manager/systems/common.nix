@@ -51,12 +51,8 @@
     fd
     fx
     (pkgs.writeShellScriptBin "get-theme" ''
-      THEME_FILE=/mnt/c/Users/meatcar/.config/theme
-      if [ -f "$THEME_FILE" ]; then
-        cat "$THEME_FILE"
-      else
-        echo "dark"
-      fi
+      THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
+      cat "$THEME_FILE" || echo dark
     '')
   ];
 
