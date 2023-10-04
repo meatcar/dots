@@ -89,13 +89,12 @@ return {
     keys = { { '<leader>tI', '<cmd>IBLToggle<CR>', desc = 'Indent highlight' } },
     main = 'ibl',
     opts = {
-      enable = true,
+      enabled = true,
       indent = {
         char = { '¦', '┆', '┊', '▏' },
       },
       whitespace = { remove_blankline_trail = true },
-      use_treesitter = true,
-      excludes = { filetype = _G.me.o.sidebars },
+      exclude = { filetypes = _G.me.o.sidebars },
     }
   },
 

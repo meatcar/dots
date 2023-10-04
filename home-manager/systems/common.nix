@@ -51,8 +51,7 @@
     fd
     fx
     (pkgs.writeShellScriptBin "get-theme" ''
-      THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
-      cat "$THEME_FILE" || echo dark
+      echo dark
     '')
   ];
 
