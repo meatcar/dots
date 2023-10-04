@@ -147,11 +147,11 @@ return {
   { -- fullscreen current buffer
     'folke/zen-mode.nvim',
     cmd = 'ZenMode',
-    config = function()
-      require('zen-mode').setup {}
-      vim.keymap.set('n', '<C-w>z', '<Cmd>ZenMode<CR>')
-      vim.keymap.set('n', '<Leader>wz', '<Cmd>ZenMode<CR>')
-    end,
+    keys = {
+      { '<C-w>z',     '<Cmd>ZenMode<CR>', desc = "Zen Mode" },
+      { '<leader>wz', '<Cmd>ZenMode<CR>', desc = "Zen Mode" },
+    },
+    opts = {}
   },
 
   { -- color highlighter
