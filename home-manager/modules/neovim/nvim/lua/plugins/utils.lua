@@ -112,13 +112,12 @@ return {
     cond = function()
       return vim.env.TMUX ~= nil
     end,
-    config = function()
-      require('tmux').setup {
-        copy_sync = { enable = true },
-        navigation = { enable_default_keybindings = true },
-        resize = { enable_default_keybindings = true },
-      }
-    end,
+    main = 'tmux',
+    opts = {
+      copy_sync = { enable = true },
+      navigation = { enable_default_keybindings = true },
+      resize = { enable_default_keybindings = true },
+    }
   },
 
   { -- open and run commands in a tmux pane
