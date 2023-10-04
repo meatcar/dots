@@ -10,9 +10,7 @@
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
       nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
       neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-      neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
       emacs-overlay.url = "github:nix-community/emacs-overlay";
-      emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
       declarative-cachix.url = "github:jonascarpay/declarative-cachix";
       nixos-wsl.url = "github:nix-community/NixOS-WSL";
       nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
