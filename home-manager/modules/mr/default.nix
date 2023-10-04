@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  mr = pkgs.writeScriptBin "mr" ''
-    #!/bin/sh
+  mr = pkgs.writeShellScriptBin "mr" ''
     # A wrapper around mr to automatically parallelize it.
     MR_MAX_PROCS=''${MR_MAX_PROCS:-5}
     NPROCS=$(grep -c ^processor /proc/cpuinfo)
