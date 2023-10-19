@@ -50,9 +50,9 @@
     nvd
     fd
     fx
-    (pkgs.writeShellScriptBin "get-theme" ''
+    (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
       echo dark
-    '')
+    ''))
   ];
 
   xdg.enable = true;
