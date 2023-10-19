@@ -11,10 +11,10 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin "get-theme" ''
+    (lib.mkForce (pkgs.writeShellScriptBin "get-theme" ''
       THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
       cat "$THEME_FILE" 2>&1 || echo dark
-    '')
+    ''))
   ];
 
   # fish is the default shell. hide it.
@@ -34,20 +34,6 @@
       end
     '';
   };
-
-  # TODO: systemdaemonize
-  # programs.fish.shellInit = ''
-  #   # Detect startup
-  #   if not pgrep cron >/dev/null
-  #     if not sudo crontab -l | grep -qv 'drop_caches'
-  #       # Occasionally drop caches to minimize WSL2 ram usages
-  #       #set -l crontab '*/2 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run'
-  #       #(sudo crontab -l; echo "$crontab") | sudo crontab -
-  #     end
-  #     sudo /etc/init.d/cron start 2>&1 >/dev/null
-  #   end
-  # '';
-
 
   programs.foot = {
     enable = true;
