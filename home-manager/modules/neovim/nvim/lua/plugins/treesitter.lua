@@ -2,7 +2,6 @@ return {
   { -- nvim-treesitter/nvim-treesitter, installed through nixos
     'nvim-treesitter/nvim-treesitter',
     name = 'nvim-treesitter',
-    dir = table.concat { vim.fn.stdpath 'data', '/lib/nvim-treesitter' },
     event = me.o.events.buf_late,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
