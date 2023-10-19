@@ -13,7 +13,8 @@
 
     plugins = with pkgs.vimPlugins; [
       sqlite-lua
-      nvim-treesitter.withAllGrammars
+      # TODO: try again. for some reason the bash parser throws errors
+      # nvim-treesitter.withAllGrammars
     ];
 
     extraPackages = with pkgs; [
@@ -57,7 +58,7 @@
   xdg.dataFile = {
     "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so";
     "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-    "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
+    # "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
   };
 
 
