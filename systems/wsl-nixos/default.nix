@@ -29,6 +29,8 @@
   hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
   hardware.opengl.driSupport32Bit = true;
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   programs.fish.enable = true;
   users.users.${config.wsl.defaultUser} = {
     shell = pkgs.fish;
