@@ -24,16 +24,11 @@ return {
           winblend = 10,
           dynamic_preview_title = true,
           sorting_strategy = 'ascending',
-          layout_strategy = 'vertical',
+          layout_strategy = 'flex',
           layout_config = {
             flex = {
               flip_columns = 120,
               vertical = {
-                width = 0.9999,
-                anchor = 'SW',
-              },
-              horizontal = {
-                anchor = 'SW',
               },
             },
             vertical = {
@@ -43,11 +38,19 @@ return {
               width = function(_, max_columns, _)
                 if max_columns < 80 then
                   return max_columns
-                else
+                elseif max_columns <= 96 then
                   return 80
+                elseif max_columns < 120 then
+                  return math.floor(max_columns * 0.8)
+                else
+                  return 120
                 end
               end,
             },
+            horizontal = {
+              anchor = 'N',
+              prompt_position = 'top'
+            }
           },
           history = {
             path = table.concat { history_path, '/telescope_history.sqlite3' },
@@ -58,6 +61,26 @@ return {
               ['<C-Down>'] = require('telescope.actions').cycle_history_next,
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
               ['<c-t>'] = trouble.open_with_trouble,
+              -- FIX: prevent entering insert mode after opening a file with Telescope
+              -- source: https://github.com/nvim-telescope/telescope.nvim/issues/2501#issuecomment-1562937344
+              ["<CR>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><CR>", true, false, true), "i", false)
+              end,
+              ["<C-x>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-x>", true, false, true), "i", false)
+              end,
+              ["<C-v>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-v>", true, false, true), "i", false)
+              end,
+              ["<C-t>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-t>", true, false, true), "i", false)
+              end,
+              ["<C-q>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><C-q>", true, false, true), "i", false)
+              end,
+              ["<M-q>"] = function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><M-q>", true, false, true), "i", false)
+              end,
             },
             n = { ['<c-t>'] = trouble.open_with_trouble },
           },
