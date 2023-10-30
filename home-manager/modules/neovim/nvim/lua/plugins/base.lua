@@ -7,7 +7,9 @@ _G.me.o.sidebars = {
   'trouble',
   'neo-tree',
   'fugitive',
-  'sagaoutline'
+  'sagaoutline',
+  'NeogitStatus',
+  'NeogitCommitMessage',
 }
 
 return {
