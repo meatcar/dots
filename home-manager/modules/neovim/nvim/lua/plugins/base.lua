@@ -115,6 +115,12 @@ return {
     'echasnovski/mini.bracketed',
     event = me.o.events.verylazy,
     version = false,
+    keys = {
+      { "[", "<Cmd>WhichKey [<CR>"},
+      { "]", "<Cmd>WhichKey ]<CR>"},
+      { "[<Tab>", "<Cmd>tabprevious<CR>" },
+      { "]<Tab>", "<Cmd>tabnext<CR>" },
+    },
     config = function(_, opts)
       require('mini.bracketed').setup(opts)
     end,
