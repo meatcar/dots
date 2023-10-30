@@ -12,6 +12,7 @@
     enable = true;
     defaultUser = "meatcar";
     nativeSystemd = true;
+    interop.register = true;
     wslConf = {
       network.hostname = "nixos";
       interop.enabled = true;
