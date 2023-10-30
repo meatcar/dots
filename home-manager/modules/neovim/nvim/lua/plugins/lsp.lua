@@ -7,8 +7,6 @@ for type, icon in pairs(signs) do
 end
 
 return {
-  { 'Bekaboo/dropbar.nvim', event = me.o.events.buf_early },
-
   {
     'neovim/nvim-lspconfig',
     event = me.o.events.buf_early,
