@@ -38,13 +38,6 @@ M.main = function()
     end,
   })
 
-  -- fix neogit treesitter warning (see https://github.com/NeogitOrg/neogit/issues/405)
-  vim.api.nvim_create_autocmd("FileType", {
-    group = "me",
-    pattern = "NeogitCommitMessage",
-    command = "silent! set filetype=gitcommit",
-  })
-
   -- terminal
   vim.cmd [[ autocmd me TermOpen term://* startinsert ]]
   vim.cmd [[ autocmd me TermClose term://* bdelete! ]]
