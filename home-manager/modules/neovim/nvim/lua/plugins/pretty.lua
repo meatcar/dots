@@ -205,7 +205,7 @@ return {
           { text = { builtin.foldfunc }, click = 'v:lua.ScFa' },
           { text = { builtin.lnumfunc }, click = 'v:lua.ScLa' },
           {
-            sign = { name = { 'GitSigns*' }, maxwidth = 2, colwidth = 1, auto = true },
+            sign = { namespace = { 'gitsigns' }, maxwidth = 2, colwidth = 1, auto = true },
             click = 'v:lua.ScSa',
           },
         },
