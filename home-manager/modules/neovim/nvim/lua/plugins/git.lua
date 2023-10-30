@@ -2,7 +2,7 @@ return {
   { -- auto-complete Github issues in fugitive
     'tpope/vim-rhubarb',
     event = me.o.events.insert,
-    ft = 'gitcommit'
+    ft = { 'gitcommit', 'NeogitCommitMessage' }
   },
   { -- Better merging (3-way becomes 2-way)
     'samoshkin/vim-mergetool',
@@ -119,5 +119,22 @@ return {
         diffview = true,
       },
     },
+    config = function(_, opts)
+      require('neogit').setup(opts)
+
+      local group = vim.api.nvim_create_augroup('neogit_me', { clear = true })
+      vim.api.nvim_create_autocmd("TabLeave", {
+        group = group,
+        pattern = "*",
+        desc = "Auto-close neogit when switching tabs",
+        callback = function(_)
+          for _, buf in ipairs(vim.fn.tabpagebuflist()) do
+            if vim.bo[buf].filetype == 'NeogitStatus' then
+              require('neogit').close()
+            end
+          end
+        end
+      })
+    end
   },
 }
