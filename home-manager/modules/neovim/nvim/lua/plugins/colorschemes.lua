@@ -118,7 +118,7 @@ return {
           floats = false,
           sidebars = {
             enabled = true,
-            list = me.o.sidebars, -- Apply dark background to specific windows
+            list = me.o.panels, -- Apply dark background to specific windows
           },
         },
 

@@ -94,7 +94,7 @@ return {
         char = { '¦', '┆', '┊', '▏' },
       },
       whitespace = { remove_blankline_trail = true },
-      exclude = { filetypes = _G.me.o.sidebars },
+      exclude = { filetypes = _G.me.o.panels},
     }
   },
 

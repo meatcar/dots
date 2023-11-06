@@ -1,15 +1,22 @@
-_G.me.o.sidebars = {
-  'NvimTree',
-  'qf',
-  'vista_kind',
-  'terminal',
+_G.me.o.panels = {
   'Mundo',
-  'trouble',
-  'neo-tree',
-  'fugitive',
-  'sagaoutline',
   'NeogitStatus',
-  'NeogitCommitMessage',
+  'NvimTree',
+  'fugitive',
+  'neo-tree',
+  'qf',
+  'sagaoutline',
+  'terminal',
+  'trouble',
+  'vista_kind',
+}
+
+_G.me.o.sidebars = {
+  'Mundo',
+  'NvimTree',
+  'neo-tree',
+  'sagaoutline',
+  'vista_kind',
 }
 
 return {

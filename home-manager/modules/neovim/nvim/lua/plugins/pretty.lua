@@ -93,7 +93,7 @@ return {
     'RRethy/vim-illuminate',
     event = me.o.events.buf_late,
     config = function()
-      vim.g.Illuminate_ftblacklist = _G.me.o.sidebars
+      vim.g.Illuminate_ftblacklist = _G.me.o.panels
       vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
       vim.keymap.set('n', '<a-p>',
         '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
@@ -182,7 +182,7 @@ return {
     'dstein64/nvim-scrollview', -- scroll bar
     event = me.o.events.buf_late,
     opts = {
-      excluded_filetypes = _G.me.o.sidebars,
+      excluded_filetypes = _G.me.o.panels,
       current_only = true,
       winblend = 75,
       base = 'right',
@@ -196,7 +196,7 @@ return {
     config = function()
       local builtin = require 'statuscol.builtin'
       require('statuscol').setup {
-        ft_ignore = _G.me.o.sidebars,
+        ft_ignore = _G.me.o.panels,
         segments = {
           {
             sign = { name = { '.*' }, maxwidth = 2, colwidth = 2, auto = true },

@@ -163,7 +163,7 @@ return {
         -- section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = {
-          winbar = _G.me.o.sidebars,
+          winbar = _G.me.o.panels,
         },
         globalstatus = false,
       },
