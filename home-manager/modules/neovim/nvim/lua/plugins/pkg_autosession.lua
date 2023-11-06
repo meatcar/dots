@@ -3,8 +3,11 @@ return {
   { -- associate sessions with cwd
     'rmagatti/auto-session',
     keys = {
-      { '<leader>vss', '<cmd>SessionSave<CR>',   desc = 'Save' },
-      { '<leader>vsd', '<cmd>SessionDelete<CR>', desc = 'Delete' }
+      { '<leader>vss', '<cmd>SessionSave<CR>',        desc = 'Save' },
+      { '<leader>vsd', '<cmd>SessionDelete<CR>',      desc = 'Delete' },
+      { '<leader>vsA', '<cmd>Autosession delete<CR>', desc = 'Pick to delete' },
+      { '<leader>vsa', '<cmd>Autosession delete<CR>', desc = 'Pick to restore' },
+      { '<leader>vsp', '<cmd>SessionPurge<CR>',       desc = 'Purge non-existing' },
     },
     init = function()
       require('which-key').register({ ['<leader>vs'] = { name = 'session' } })
@@ -51,10 +54,36 @@ return {
           end
         end,
       })
+
+      local function purge_sessions()
+        local auto_session = require 'auto-session'
+        local to_purge = {}
+        for _, session in ipairs(auto_session.get_session_files()) do
+          assert(session.display_name, "Session has no 'display_name' field") -- in case of API change
+          if session.display_name:find('^/.*') and vim.fn.isdirectory(session.display_name) == 0 then
+            table.insert(to_purge, session.display_name)
+          end
+        end
+        for _, name in ipairs(to_purge) do
+          vim.notify("Purging session " .. name, vim.log.info)
+          auto_session.DeleteSessionByName(name)
+        end
+        if #to_purge == 0 then
+          vim.notify("Nothing to purge", vim.log.info)
+        end
+      end
+      vim.api.nvim_create_user_command('SessionPurge', purge_sessions, { desc = "Purge orphaned sessions" })
     end,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('auto-session').setup {
+        auto_session_use_git_branch = true,
+        pre_save_cmds = { 'Neotree close', function()
+          require('neogit').close()
+        end, function()
+          -- for barbar.nvim
+          vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
+        end },
         session_lens = {
           load_on_setup = false,
         }
