@@ -13,7 +13,8 @@ return {
     end,
     keys = {
       { '<C-p>',      '<Cmd>Ctrlp<CR>' },
-      { '<leader>tt', '<Cmd>Telescope resume<CR>', 'Telescope' },
+      { '<leader>tt', '<Cmd>Telescope resume<CR>',                 desc = 'Telescope' },
+      { '<C-t>',      '<Cmd>Telescope quickfix<CR><Cmd>cclose<CR>' },
     },
     config = function()
       local history_path = table.concat { vim.fn.stdpath 'data', '/databases' }

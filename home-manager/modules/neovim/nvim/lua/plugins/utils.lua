@@ -3,7 +3,13 @@ return {
     'Olical/vim-enmasse',
     cmd = 'EnMasse',
   },
-  { 'kevinhwang91/nvim-bqf', ft = 'qf' },                    -- better quickfix window
+  { -- better quickfix window
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    opts = {
+      func_map = { tabc = '' }
+    }
+  },
   { 'kshenoy/vim-signature', event = me.o.events.verylazy }, -- show marks in the SignColumn
   { 'lambdalisue/suda.vim',  cmd = 'SudaWrite' },            -- save file with sudo
 
