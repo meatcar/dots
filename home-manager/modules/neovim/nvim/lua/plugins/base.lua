@@ -125,8 +125,8 @@ return {
     event = me.o.events.verylazy,
     version = false,
     keys = {
-      { "[", "<Cmd>WhichKey [<CR>"},
-      { "]", "<Cmd>WhichKey ]<CR>"},
+      { "[",      "<Cmd>WhichKey [<CR>" },
+      { "]",      "<Cmd>WhichKey ]<CR>" },
       { "[<Tab>", "<Cmd>tabprevious<CR>" },
       { "]<Tab>", "<Cmd>tabnext<CR>" },
     },
