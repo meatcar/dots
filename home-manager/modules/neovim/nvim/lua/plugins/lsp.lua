@@ -14,6 +14,7 @@ return {
       { "b0o/schemastore.nvim" },
       { "folke/neoconf.nvim",  opts = {}, cmd = 'Neoconf' },
       { "folke/neodev.nvim",   opts = {} },
+      { "sigmaSd/deno-nvim" }, -- no opts, as we require it down below
     },
     keys = {
       { '<leader>llr', '<Cmd>LspRestart<CR>', desc = 'Restart' },
@@ -27,31 +28,32 @@ return {
     config = function()
       require 'neodev'
       require 'cmp'
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
 
       local augroup = vim.api.nvim_create_augroup('LspFormat', { clear = true })
+      local on_attach = function(client, bufnr)
+        require('illuminate').on_attach(client)
+        keymaps.lsp_on_attach(client, bufnr)
+
+        -- format on save
+        if client.supports_method 'textDocument/formatting' then
+          vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format { bufnr = bufnr, async = false }
+            end,
+          })
+        end
+      end
 
       local lspconfig = require 'lspconfig'
       local util = require 'lspconfig.util'
       util.default_config = vim.tbl_extend('force', util.default_config, {
-        capabilities = cmp_capabilities,
-        on_attach = function(client, bufnr)
-          require('illuminate').on_attach(client)
-          keymaps.lsp_on_attach(client, bufnr)
-
-          -- format on save
-          if client.supports_method 'textDocument/formatting' then
-            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format { bufnr = bufnr, async = false }
-              end,
-            })
-          end
-        end,
+        capabilities = capabilities,
+        on_attach = on_attach,
       })
 
       lspconfig.lua_ls.setup {
@@ -73,7 +75,8 @@ return {
       lspconfig.ansiblels.setup {}
       lspconfig.elixirls.setup {}
       lspconfig.eslint.setup {}
-      lspconfig.cssls.setup {}
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      lspconfig.cssls.setup { capabilities = capabilities }
       lspconfig.html.setup {}
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
@@ -93,8 +96,12 @@ return {
           },
         },
       }
-      lspconfig.denols.setup {
-        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+      require("deno-nvim").setup {
+        server = {
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+          capabilities = capabilities,
+          on_attach = on_attach,
+        }
       }
 
       lspconfig.tsserver.setup {
