@@ -44,11 +44,4 @@ M.lsp_on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true, buffer = bufnr })
 end
 
-M.barbar = function()
-  vim.keymap.set('n', '[b', [[<Cmd>BufferPrevious<CR>]], { silent = true, desc = 'Buffer previous' })
-  vim.keymap.set('n', ']b', [[<Cmd>BufferNext<CR>]], { silent = true, desc = 'Buffer next' })
-  vim.keymap.set('n', '[B', [[<Cmd>BufferFirst<CR>]], { silent = true, desc = 'Buffer first' })
-  vim.keymap.set('n', ']B', [[<Cmd>BufferLast<CR>]], { silent = true, desc = 'Buffer last' })
-end
-
 return M

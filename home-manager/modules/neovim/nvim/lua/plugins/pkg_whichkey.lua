@@ -54,14 +54,7 @@ return {
     leadermap.b = {
       name = 'buffers', -- {{{
       b = { '<Cmd>Telescope buffers show_all_buffers=true<CR>', 'Buffers' },
-      B = { '<Cmd>BufferPick<CR>', 'Bufferline Pick' },
-      d = { '<Cmd>BufferClose<CR>', 'Delete buffer' },
-      n = { ']b', 'Next' },
-      p = { '[b', 'Prev' },
-      N = { '<Cmd>BufferMoveNext<CR>', 'Move left' },
-      P = { '<Cmd>BufferMovePrev<CR>', 'Move prev' },
-      i = { '<Cmd>BufferPin<CR>', 'Pin buffer' },
-    } -- }}}
+    }                   -- }}}
 
     leadermap.f = {
       name = 'files', -- {{{
