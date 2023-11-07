@@ -36,7 +36,12 @@ return {
       { 'Q',     'q' },
       { 'q',     '<Plug>(smartq_this)' },
       { '<C-q>', '<Plug>(smartq_this_force)' },
-    }
+    },
+    init = function()
+      vim.g.smartq_default_mappings = false
+      vim.g.smartq_q_buftypes = { 'quickfix' }
+      vim.g.smartq_auto_close_splits = true
+    end
   },
 
   { -- keep cursor in place when shifting around
