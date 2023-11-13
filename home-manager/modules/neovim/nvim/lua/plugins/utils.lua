@@ -256,4 +256,9 @@ return {
       }
     end,
   },
+
+  {
+    'wakatime/vim-wakatime',
+    event = _G.me.o.events.verylazy
+  },
 }
