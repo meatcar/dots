@@ -14,15 +14,16 @@ for _, optname in ipairs(cache_opts) do
   end
 end
 
-if vim.g.vscode then
-  print 'vscode'
-  return
-end
-
 _G.me = {
   o = {},
   fn = {},
 }
+
+if vim.g.vscode then
+  print 'vscode'
+  require('core/vscode')
+  return
+end
 
 -- bootstrap lazy.nvim if not installed
 local lazypath = table.concat { vim.fn.stdpath 'data', '/lazy/lazy.nvim' }
