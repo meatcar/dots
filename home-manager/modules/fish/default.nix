@@ -10,7 +10,7 @@ let
     '';
 in
 {
-  home.packages = with pkgs; [ any-nix-shell grc ];
+  home.packages = with pkgs; [ any-nix-shell grc wakatime ];
 
   programs.fish =
     {
@@ -18,12 +18,14 @@ in
       interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
       shellInit = builtins.readFile ./config.fish;
       plugins =
+        (lib.mapAttrsToList (name: p: { inherit name; inherit (p) src; }) {
+          inherit (pkgs.fishPlugins) foreign-env grc puffer wakatime-fish;
+        })
+        ++
         [
           { name = "fish-docker-compose"; src = specialArgs.inputs.fish-docker-compose; }
           { name = "fzf-fish"; src = specialArgs.inputs.fzf-fish; }
           { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
-          { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
-          { name = "grc"; inherit (pkgs.fishPlugins.grc) src; }
           { name = "vscode-fish"; src = specialArgs.inputs.vscode-fish; }
         ];
       functions = {
