@@ -1,4 +1,4 @@
-{ pkgs, specialArgs, ... }:
+{ pkgs, specialArgs, lib, ... }:
 let
   any-nix-shell-fish = pkgs.runCommand "any-nix-shell-fish"
     {
@@ -24,6 +24,7 @@ in
           { name = "autopair"; src = specialArgs.inputs.autopair-fish; }
           { name = "foreign-env"; inherit (pkgs.fishPlugins.foreign-env) src; }
           { name = "grc"; inherit (pkgs.fishPlugins.grc) src; }
+          { name = "vscode-fish"; src = specialArgs.inputs.vscode-fish; }
         ];
       functions = {
         fish_title.body = ''

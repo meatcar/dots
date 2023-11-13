@@ -52,6 +52,10 @@
         url = "github:jorgebucaran/autopair.fish";
         flake = false;
       };
+      vscode-fish = {
+        url = "github:kidonng/vscode.fish";
+        flake = false;
+      };
     };
 
 

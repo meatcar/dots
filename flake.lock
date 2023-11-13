@@ -708,6 +708,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "plug-kak": "plug-kak",
+        "vscode-fish": "vscode-fish",
         "vscode-server": "vscode-server",
         "wsl-open": "wsl-open"
       }
@@ -821,6 +822,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vscode-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660826993,
+        "narHash": "sha256-/ubqKno6y+LZImV3kMu915HoJW/rgv742yg4rlrnmkA=",
+        "owner": "kidonng",
+        "repo": "vscode.fish",
+        "rev": "45ecd14c0edb55908baa3aa44e7c2140984a06d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kidonng",
+        "repo": "vscode.fish",
         "type": "github"
       }
     },
