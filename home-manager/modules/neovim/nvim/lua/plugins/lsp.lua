@@ -70,6 +70,7 @@ return {
         },
       }
       lspconfig.rnix.setup {}
+      lspconfig.nil_ls.setup {}
       lspconfig.terraformls.setup {}
       lspconfig.gopls.setup {}
       lspconfig.ansiblels.setup {}

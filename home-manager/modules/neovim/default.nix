@@ -23,6 +23,7 @@
 
       # lsps
       rnix-lsp
+      nil
       lua-language-server
       terraform-ls
       gopls
