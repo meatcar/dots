@@ -114,6 +114,7 @@ return {
       use_telescope = true,
       disable_insert_on_commit = 'auto',
       use_magit_keybindings = true,
+      auto_show_console = false,
       integrations = {
         telescope = true,
         diffview = true,
