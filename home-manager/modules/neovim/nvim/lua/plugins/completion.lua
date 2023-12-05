@@ -4,6 +4,7 @@ return {
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-omni',
       'FelipeLema/cmp-async-path',
       -- 'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -32,6 +33,11 @@ return {
 
       ---@diagnostic disable-next-line: missing-fields
       cmp.setup {
+        ---@diagnostic disable-next-line: missing-fields
+        performance = {
+          debounce = 500,
+          throttle = 500,
+        },
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
@@ -172,6 +178,11 @@ return {
           end,
         },
       }
+
+      ---@diagnostic disable-next-line: missing-fields
+      cmp.setup.filetype("DressingInput", {
+        sources = cmp.config.sources { { name = "omni" } },
+      })
     end,
   },
 
