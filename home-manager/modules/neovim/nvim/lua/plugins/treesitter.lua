@@ -8,10 +8,6 @@ return {
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true },
         indent = { enable = true },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
       }
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -21,7 +17,9 @@ return {
   -- get the commentstring based on ts context, i.e. vue or jsx files
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    opts = {}
+    opts = {
+      enable_autocmd = false,
+    }
   },
   { -- configure comment.nvim to use the context-sensitive commentstring
     'numToStr/Comment.nvim',
