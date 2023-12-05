@@ -69,8 +69,11 @@ return {
           },
         },
       }
-      lspconfig.rnix.setup {}
-      lspconfig.nil_ls.setup {}
+      lspconfig.nil_ls.setup {
+        formatting = {
+          command = "nixpkgs-fmt"
+        }
+      }
       lspconfig.terraformls.setup {}
       lspconfig.gopls.setup {}
       lspconfig.ansiblels.setup {}
