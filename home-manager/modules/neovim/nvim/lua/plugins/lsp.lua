@@ -84,6 +84,7 @@ return {
       lspconfig.html.setup {}
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
+      lspconfig.zls.setup {}
       lspconfig.jsonls.setup {
         settings = {
           json = {
