@@ -191,6 +191,7 @@ return {
 
   {
     'luukvbaal/statuscol.nvim',
+    branch = "0.10",
     version = false,
     event = me.o.events.verylazy,
     config = function()
