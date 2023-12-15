@@ -8,9 +8,7 @@
 
   nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
 
-  home.file.nixConf.text = ''
-    system-features = kvm
-  '';
+  nix.settings.system-features = [ "kvm" ];
 
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";

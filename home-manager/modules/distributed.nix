@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
-  home.file.nixConf.text = ''
-    builders-use-substitutes = true
-    builders = ssh://eu.nixbuild.net x86_64-linux - 100 1 big-parallel,benchmark
-  '';
+  nix.settings = {
+    builders-use-substitutes = true;
+    builders = [ "ssh://eu.nixbuild.net x86_64-linux - 100 1 big-parallel,benchmark" ];
+  };
 
   programs.ssh.matchBlocks = {
     "eu.nixbuild.net" = {
