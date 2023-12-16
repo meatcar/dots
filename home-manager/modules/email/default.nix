@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   mkAccount = name: email: {
     address = email;
     userName = email;
@@ -20,7 +23,7 @@ let
     msmtp.enable = true;
     imapnotify = {
       enable = true;
-      boxes = [ "Inbox" ];
+      boxes = ["Inbox"];
       onNotify = "${pkgs.isync}/bin/mbsync ${name} && ${pkgs.mu}/bin/mu index";
       onNotifyPost = {
         mail = "${pkgs.libnotify}/bin/notify-send -a mail '${name}: new in %s'";
@@ -29,34 +32,39 @@ let
       };
     };
   };
-in
-{
+in {
   accounts.email.accounts = {
-    fastmail = (mkAccount "fastmail" "denys@fastmail.com") // {
-      primary = true;
-      address = "me@denys.me";
-      aliases = [ ".*@denys.me" ".*@dnka.ca" ]; # regex gets passed to neomutt
-      realName = "Denys Pavlov";
-      imap.host = "imap.fastmail.com";
-      smtp.host = "smtp.fastmail.com";
-    };
-    gmail = (mkAccount "gmail" "denys.pavlov@gmail.com") // {
-      aliases = [
-        "denys.pavlo(v|v\\+.*)@gmail.com"
-        "shagydo(g|g\\+.*)@gmail.com"
-      ];
-      flavor = "gmail.com";
-      realName = "Denys Pavlov";
-      imap.host = "imap.gmail.com";
-      smtp.host = "smtp.gmail.com";
-    };
-    zoho = (mkAccount "zoho" "denys.pavlov@zoho.com") // {
-      address = "denys@dnka.ca";
-      aliases = [ "denys.pavlov@zoho.com" ];
-      realName = "Denys Pavlov";
-      imap.host = "imap.zoho.com";
-      smtp.host = "smtp.zoho.com";
-    };
+    fastmail =
+      (mkAccount "fastmail" "denys@fastmail.com")
+      // {
+        primary = true;
+        address = "me@denys.me";
+        aliases = [".*@denys.me" ".*@dnka.ca"]; # regex gets passed to neomutt
+        realName = "Denys Pavlov";
+        imap.host = "imap.fastmail.com";
+        smtp.host = "smtp.fastmail.com";
+      };
+    gmail =
+      (mkAccount "gmail" "denys.pavlov@gmail.com")
+      // {
+        aliases = [
+          "denys.pavlo(v|v\\+.*)@gmail.com"
+          "shagydo(g|g\\+.*)@gmail.com"
+        ];
+        flavor = "gmail.com";
+        realName = "Denys Pavlov";
+        imap.host = "imap.gmail.com";
+        smtp.host = "smtp.gmail.com";
+      };
+    zoho =
+      (mkAccount "zoho" "denys.pavlov@zoho.com")
+      // {
+        address = "denys@dnka.ca";
+        aliases = ["denys.pavlov@zoho.com"];
+        realName = "Denys Pavlov";
+        imap.host = "imap.zoho.com";
+        smtp.host = "smtp.zoho.com";
+      };
   };
 
   programs.mbsync = {
@@ -67,7 +75,7 @@ in
     groups = {
       quick = {
         fastmail = [];
-        gmail = [ "Inbox" "[Gmail]" ];
+        gmail = ["Inbox" "[Gmail]"];
         zoho = [];
       };
     };
@@ -84,5 +92,4 @@ in
     mu
     mblaze
   ];
-
 }

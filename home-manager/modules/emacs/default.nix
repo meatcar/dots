@@ -1,12 +1,16 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   fonts.fontconfig.enable = lib.mkDefault true;
   home.packages = with pkgs; [
     fontconfig
     (nerdfonts.override {
-      fonts = [ "Go-Mono" ];
+      fonts = ["Go-Mono"];
     })
-    (google-fonts.override { fonts = [ "Bitter" ]; })
+    (google-fonts.override {fonts = ["Bitter"];})
     noto-fonts-emoji
     dejavu_fonts
     symbola
@@ -31,7 +35,7 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [epkgs.vterm];
   };
   programs.fish = {
     shellInit = ''

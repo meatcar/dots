@@ -1,10 +1,18 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.kanshi = {
     enable = true;
     profiles = {
       all = {
-        outputs = [{ criteria = "*"; status = "enable"; }];
+        outputs = [
+          {
+            criteria = "*";
+            status = "enable";
+          }
+        ];
       };
       samsung = {
         exec = "${pkgs.sway}/bin/swaymsg workspace 1, move workspace to DP-6";

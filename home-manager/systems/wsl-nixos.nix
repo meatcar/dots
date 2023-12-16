@@ -1,5 +1,10 @@
-{ config, lib, pkgs, specialArgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  specialArgs,
+  ...
+}: {
   imports = [
     ./common.nix
     ../modules/gtk.nix
@@ -21,7 +26,10 @@
   programs.starship.settings.shell.fish_indicator = "";
 
   programs.fish.plugins = [
-    { name = "fish-ssh-agent"; src = specialArgs.inputs.fish-ssh-agent; }
+    {
+      name = "fish-ssh-agent";
+      src = specialArgs.inputs.fish-ssh-agent;
+    }
   ];
 
   programs.fish.interactiveShellInit = "set -x COLORTERM truecolor";

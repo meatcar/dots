@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
-    kernelModules = [ "acpi_call" ];
+    kernelModules = ["acpi_call"];
     extraModulePackages = [
       config.boot.kernelPackages.acpi_call
     ];
@@ -34,10 +37,10 @@
 
   systemd.services = {
     powertop = {
-      wantedBy = [ "multi-user.target" ];
-      after = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
+      after = ["multi-user.target"];
       description = "Powertop tunings";
-      path = [ pkgs.kmod ];
+      path = [pkgs.kmod];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = "no";
@@ -45,9 +48,9 @@
       };
     };
     powertop-fix = {
-      wantedBy = [ "powertop.service" ];
-      after = [ "powertop.service" ];
-      partOf = [ "powertop.service" ];
+      wantedBy = ["powertop.service"];
+      after = ["powertop.service"];
+      partOf = ["powertop.service"];
       description = "Fix powertop tunings for USB HID devices";
       serviceConfig = {
         Type = "oneshot";
@@ -56,5 +59,4 @@
       };
     };
   };
-
 }

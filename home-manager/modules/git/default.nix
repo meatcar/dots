@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   gitmessage = pkgs.writeText "gitmessage" ''
 
     # type(scope): applying this commit will...
@@ -8,20 +7,18 @@ let
     #
     # What, Why, not how.
     #'';
-in
-{
-  imports = [ ../mr ];
+in {
+  imports = [../mr];
 
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
     userEmail = "me@denys.me";
     userName = "Denys Pavlov";
-    includes = [{ path = ./config; }];
-    extraConfig =
-      {
-        commit.template = "${gitmessage}";
-      };
+    includes = [{path = ./config;}];
+    extraConfig = {
+      commit.template = "${gitmessage}";
+    };
     attributes = [
       "*.c     diff=cpp"
       "*.h     diff=cpp"
@@ -71,8 +68,8 @@ in
       gui = {
         showFileTree = true;
         theme = {
-          selectedLineBgColor = [ "reverse" ];
-          selectedRangeBgColor = [ "reverse" ];
+          selectedLineBgColor = ["reverse"];
+          selectedRangeBgColor = ["reverse"];
         };
       };
       git.paging = {

@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }:
 {
-  nix.trustedUsers = [ "meatcar" ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  nix.trustedUsers = ["meatcar"];
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;
@@ -8,7 +12,7 @@
     shell = "/run/current-system/sw/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "$6$d60LJzot5J$PeWx9sU6rPNEy39uSewpJiV5CfOh9McENT5Crl4WCFyvwL/5jyH7Jn2pENG6pEWPNNFl2Xnp4WGEJEMAU2Mym0";
-    extraGroups = [ "wheel" "video" "docker" "networkmanager" "power" "input" ];
+    extraGroups = ["wheel" "video" "docker" "networkmanager" "power" "input"];
   };
 
   security.pam.services.swaylock = {
@@ -19,7 +23,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.meatcar = { pkgs, ... }: {
+  home-manager.users.meatcar = {pkgs, ...}: {
     imports = [
       ../home-manager/systems/single-user.nix
       ../home-manager/modules/gtk.nix

@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.mosh ];
+{pkgs, ...}: {
+  home.packages = [pkgs.mosh];
   programs.ssh = {
     enable = true;
     compression = true;
@@ -8,6 +8,6 @@
       AddKeysToAgent yes
     '';
     hashKnownHosts = true;
-    includes = [ "config.d/*" ];
+    includes = ["config.d/*"];
   };
 }

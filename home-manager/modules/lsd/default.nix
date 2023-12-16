@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.lsd = {
     enable = true;
     settings = {
