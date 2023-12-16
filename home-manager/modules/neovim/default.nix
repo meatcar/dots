@@ -63,6 +63,7 @@
 
 
   home.packages = with pkgs; [
+    alejandra
     fortune
     shellcheck
     shfmt
