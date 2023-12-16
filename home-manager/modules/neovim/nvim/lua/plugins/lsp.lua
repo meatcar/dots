@@ -117,29 +117,23 @@ return {
   },
 
   {
-    -- async error checking
-    'nvimtools/none-ls.nvim',
+    'stevearc/conform.nvim',
     event = me.o.events.buf_early,
-    config = function()
-      local null_ls = require 'null-ls'
-
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.diagnostics.clj_kondo,
-
-          -- null_ls.builtins.completion.spell,
-
-          -- null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.stylelint,
-          null_ls.builtins.formatting.autopep8,
-          null_ls.builtins.formatting.nixpkgs_fmt,
-          null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.formatting.gofmt,
-          null_ls.builtins.formatting.joker,
-        },
-      }
+    cmd = { 'ConformInfo' },
+    opts = {
+      formatters_by_ft = {
+        -- lua = { 'stylua' },
+        python = { 'isort', 'black', 'autopep8' },
+        javascript = { { 'prettierd', 'prettier' }, { 'eslint_d', 'eslint' } },
+        css = { 'stylelint' },
+        sh = { 'shfmt' },
+        go = { 'gofmt' },
+        clojure = { 'joker' },
+      },
+      format_on_save = { lsp_fallback = true, timeout_ms = 500 },
+    },
+    init = function()
+      vim.o.formatexpr = [[ v:lua.require'conform'.formatexpr() ]]
     end,
   },
 
