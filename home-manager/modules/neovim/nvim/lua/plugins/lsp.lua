@@ -31,22 +31,9 @@ return {
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
 
-      local augroup = vim.api.nvim_create_augroup('LspFormat', { clear = true })
       local on_attach = function(client, bufnr)
         require('illuminate').on_attach(client)
         keymaps.lsp_on_attach(client, bufnr)
-
-        -- format on save
-        if client.supports_method 'textDocument/formatting' then
-          vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format { bufnr = bufnr, async = false }
-            end,
-          })
-        end
       end
 
       local lspconfig = require 'lspconfig'
