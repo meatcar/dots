@@ -22,7 +22,7 @@
     fontconfig = {
       enable = lib.mkOptionDefault true;
       defaultFonts = {
-        monospace = [ "GoMono Nerd Font" ];
+        monospace = [ "Iosevka Nerd Font" ];
         sansSerif = [ "Inter" ];
         serif = [ "Liberation Serif" ];
       };
@@ -38,9 +38,10 @@
         # monospace
         go-font
         emacs-all-the-icons-fonts
+        iosevka-bin
         ;
       nerdfonts = pkgs.nerdfonts.override {
-        fonts = [ "Go-Mono" ];
+        fonts = ["Go-Mono" "Iosevka"];
       };
     };
   };
