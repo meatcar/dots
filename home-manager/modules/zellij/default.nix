@@ -1,5 +1,9 @@
-{ config, pkgs, specialArgs, ... }:
 {
+  config,
+  pkgs,
+  specialArgs,
+  ...
+}: {
   programs.zellij = {
     enable = true;
     enableFishIntegration = false;

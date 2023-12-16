@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.starship = {
     enable = true;
 
@@ -51,7 +55,6 @@
         style = "green"; # after repo root
         # NOTE: can't use truncation, due to https://github.com/starship/starship/issues/3975
         truncation_length = 0;
-
       };
 
       battery = {
@@ -96,7 +99,6 @@
         pure_msg = "[ ](bold green)";
         impure_msg = ""; # impure by default
       };
-
 
       aws.symbol = " ";
       buf.symbol = " ";

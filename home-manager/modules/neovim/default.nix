@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../nnn
   ];
@@ -46,7 +49,8 @@
   };
 
   xdg.configFile = {
-    nvim.source = config.lib.file.mkOutOfStoreSymlink
+    nvim.source =
+      config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/git/hub/meatcar/dots/home-manager/modules/neovim/nvim";
     "luacheck/.luacheckrc".text = ''
       globals = {
@@ -60,7 +64,6 @@
     "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
     # "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
   };
-
 
   home.packages = with pkgs; [
     alejandra

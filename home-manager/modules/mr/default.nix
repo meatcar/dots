@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   mr = pkgs.writeShellScriptBin "mr" ''
     # A wrapper around mr to automatically parallelize it.
     MR_MAX_PROCS=''${MR_MAX_PROCS:-5}
@@ -9,8 +13,7 @@ let
     fi
     ${pkgs.mr}/bin/mr --jobs "$NPROCS" "$@"
   '';
-in
-{
+in {
   home.packages = [
     mr
     pkgs.perlPackages.PodPerldoc

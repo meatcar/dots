@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -9,7 +13,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
     };
     gc = {
@@ -19,14 +23,14 @@
     };
     optimise = {
       automatic = true;
-      dates = [ "daily" ];
+      dates = ["daily"];
     };
     package = lib.mkDefault pkgs.nixVersions.stable;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      ${ lib.optionalString (config.nix.package == pkgs.nixVersions.stable)
-      "experimental-features = nix-command flakes" }
+      ${lib.optionalString (config.nix.package == pkgs.nixVersions.stable)
+        "experimental-features = nix-command flakes"}
     '';
   };
 }

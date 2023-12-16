@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.helix = {
     enable = true;
     settings = {
@@ -18,9 +21,9 @@
         };
         lsp.display-messages = true;
         statusline = {
-          left = [ "mode" "spinner" ];
-          center = [ "file-name" ];
-          right = [ "selections" "primary-selection-length" "diagnostics" "workspace-diagnostics" "file-encoding" "file-line-ending" "file-type" "position" ];
+          left = ["mode" "spinner"];
+          center = ["file-name"];
+          right = ["selections" "primary-selection-length" "diagnostics" "workspace-diagnostics" "file-encoding" "file-line-ending" "file-type" "position"];
           mode.normal = "N";
           mode.insert = "I";
           mode.select = "S";
@@ -28,10 +31,12 @@
       };
     };
     languages = {
-      language = [{
-        name = "nix";
-        auto-format = true;
-      }];
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+        }
+      ];
     };
   };
 }

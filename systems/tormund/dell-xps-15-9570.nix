@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-
 {
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.kernelModules = [ "kvm-intel" "i915" ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
+  boot.kernelModules = ["kvm-intel" "i915"];
   boot.kernelParams = [
     "mem_sleep_default=deep"
     "acpi_rev_override=1"
@@ -12,7 +15,7 @@
     "nmi_watchdog=0"
   ];
 
-  boot.blacklistedKernelModules = [ "nouveau" "nv" "rivafb" "nvidiafb" "rivatv" ];
+  boot.blacklistedKernelModules = ["nouveau" "nv" "rivafb" "nvidiafb" "rivatv"];
 
   boot.extraModprobeConfig = ''
     options i915 disable_power_well=0 fastboot=1 enable_fbc=1 enable_guc=3 enable_psr=1
@@ -31,7 +34,7 @@
     modesetting.enable = true;
   };
 
-  hardware.firmware = [ pkgs.wireless-regdb ];
+  hardware.firmware = [pkgs.wireless-regdb];
 
   services.hardware.bolt.enable = true;
   services.fstrim.enable = true;
@@ -47,7 +50,7 @@
     SOUND_POWER_SAVE_ON_AC = 1;
   };
 
-  environment.systemPackages = [ pkgs.libsmbios ];
+  environment.systemPackages = [pkgs.libsmbios];
 
   hardware.pulseaudio.daemon.config = {
     "default-sample-format" = "float32le";

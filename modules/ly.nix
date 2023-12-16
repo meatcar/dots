@@ -1,9 +1,11 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
+  nixpkgs.overlays = [(import ../overlays/ly.nix)];
 
-  nixpkgs.overlays = [ (import ../overlays/ly.nix) ];
-
-  environment.systemPackages = [ pkgs.ly ];
+  environment.systemPackages = [pkgs.ly];
 
   environment.etc."ly/config.ini".text = ''
     tty = 2
@@ -21,17 +23,17 @@
   systemd.services.ly = {
     enable = true;
     description = "TUI display manager";
-    documentation = [ "https://github.com/nullgemm/ly" ];
-    conflicts = [ "getty@tty2.service" ];
+    documentation = ["https://github.com/nullgemm/ly"];
+    conflicts = ["getty@tty2.service"];
     after = [
       "systemd-user-sessions.service"
       "plymouth-quit-wait.service"
       "getty@tty2.service"
       "user.slice"
     ];
-    aliases = [ "display-manager.service" ];
-    requires = [ "user.slice" ];
-    wantedBy = [ "multi-user.target" ];
+    aliases = ["display-manager.service"];
+    requires = ["user.slice"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "idle";
       ExecStart = "${pkgs.ly}/bin/ly";

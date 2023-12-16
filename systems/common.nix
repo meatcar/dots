@@ -1,5 +1,8 @@
-{ config, pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../modules/cachix.nix
     ../modules/nix.nix
@@ -22,20 +25,24 @@
     fontconfig = {
       enable = lib.mkOptionDefault true;
       defaultFonts = {
-        monospace = [ "Iosevka Nerd Font" ];
-        sansSerif = [ "Inter" ];
-        serif = [ "Liberation Serif" ];
+        monospace = ["Iosevka Nerd Font"];
+        sansSerif = ["Inter"];
+        serif = ["Liberation Serif"];
       };
     };
     enableDefaultPackages = true;
     fontDir.enable = true;
     packages = builtins.attrValues {
-      inherit (pkgs)
+      inherit
+        (pkgs)
         # icons
+        
         font-awesome_4
         # proportional
+        
         inter
         # monospace
+        
         go-font
         emacs-all-the-icons-fonts
         iosevka-bin
@@ -59,7 +66,7 @@
       enable = true;
       wlr.enable = true;
       # gtk portal needed to make gtk apps happy
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
       config.common.default = "gtk";
     };
     sounds.enable = true;

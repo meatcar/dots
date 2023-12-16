@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   user = config.home.username;
   man_color_args = lib.strings.concatStringsSep " " [
     "-DP+k-" # Prompt = formatted bold Black on normal
@@ -17,7 +21,7 @@ let
     export LESS_TERMCAP_so=$(tput smso; tput bold)  # begin standout moude
     export LESS_TERMCAP_se=$(tput rmso; tput sgr0)  # end standout moude
     export LESS_TERMCAP_us=$(tput bold; tput smul)  # begin underline
-    export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)  # end underline 
+    export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)  # end underline
     export LESS_TERMCAP_mr=$(tput rev)              # reverse
     export LESS_TERMCAP_mh=$(tput dim)              # half-bright
     export LESS_TERMCAP_ZN=$(tput ssubm)
@@ -27,8 +31,7 @@ let
 
     less --use-color ${man_color_args} "$@"
   '';
-in
-{
+in {
   programs.man.enable = true;
   programs.man.generateCaches = false;
 
@@ -36,5 +39,5 @@ in
     MANROFFOPT = "-c";
     MANPAGER = "manpager";
   };
-  home.packages = [ manpager ];
+  home.packages = [manpager];
 }

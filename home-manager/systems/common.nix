@@ -1,5 +1,8 @@
-{ config, lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../modules/nix-flakes.nix
     ../modules/cachix.nix

@@ -1,5 +1,9 @@
-{ config, pkgs, specialArgs, ... }:
 {
+  config,
+  pkgs,
+  specialArgs,
+  ...
+}: {
   programs.kakoune = {
     enable = true;
     config = {
@@ -15,7 +19,7 @@
         word = true;
       };
     };
-    plugins = [ pkgs.kakounePlugins.parinfer-rust ];
+    plugins = [pkgs.kakounePlugins.parinfer-rust];
     extraConfig = ''
 
       ${builtins.readFile ./kakrc}
@@ -24,5 +28,5 @@
 
   xdg.configFile."kak/plugins/plug.kak".source = specialArgs.inputs.plug-kak;
 
-  home.packages = with pkgs; [ fzf ];
+  home.packages = with pkgs; [fzf];
 }
