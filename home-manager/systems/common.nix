@@ -38,7 +38,6 @@
     lazydocker
     entr
     nox
-    nixpkgs-fmt
     statix
     binutils
     gcc

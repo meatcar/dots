@@ -71,7 +71,7 @@ return {
       }
       lspconfig.nil_ls.setup {
         formatting = {
-          command = "nixpkgs-fmt"
+          command = 'alejandra',
         }
       }
       lspconfig.terraformls.setup {}
@@ -123,6 +123,7 @@ return {
     opts = {
       formatters_by_ft = {
         -- lua = { 'stylua' },
+        nix = { 'alejandra' },
         python = { 'isort', 'black', 'autopep8' },
         javascript = { { 'prettierd', 'prettier' }, { 'eslint_d', 'eslint' } },
         css = { 'stylelint' },
