@@ -10,7 +10,7 @@
 [pull]
   ff = only
 [push]
-  default = simple
+  autoSetupRemote = true
 
 [alias]
   s = status -sb
@@ -19,7 +19,7 @@
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
 [diff]
-  algorithm = patience
+  algorithm = histogram
   tool = nvimdiff
   colorMoved = default
 [difftool]
@@ -29,7 +29,7 @@
 
 [merge]
   tool = nvim_mergetool
-  conflictStyle = diff3
+  conflictStyle = zdiff3
 [mergetool "nvim_mergetool"]
   prompt = true
   cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
@@ -61,3 +61,19 @@
   light = true
 [delta "dark"]
   light = false
+
+[branch]
+  sort = -committerdate
+
+[url "git@github.com:"]
+  insteadOf = "https://github.com/"
+
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckObjects = true
+
+[log]
+  date = iso
