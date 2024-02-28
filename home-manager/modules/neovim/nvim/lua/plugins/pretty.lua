@@ -8,7 +8,7 @@ return {
   {
     'HiPhish/rainbow-delimiters.nvim',
     event = me.o.events.buf_early,
-    keys = { { '<leader>tp', function() require('rainbow-delimiters').toggle() end, desc = 'Rainbow parens' } },
+    keys = { { '<leader>tp', function() require('rainbow-delimiters').toggle(0) end, desc = 'Rainbow parens' } },
     config = function()
       local rainbow = require 'rainbow-delimiters'
 
