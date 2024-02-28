@@ -79,6 +79,9 @@ return {
             validate = { enable = true },
           },
         },
+        handlers = {
+          ["textDocument/diagnostic"] = function() end
+        }
       }
       lspconfig.yamlls.setup {
         settings = {
