@@ -89,7 +89,6 @@
   "schemastore.nvim": { "branch": "main", "commit": "a93078f016d3216f4ab4e4c65306b65212314d8d" },
   "space-vim-theme": { "branch": "master", "commit": "4790dbba31f678f75af4f4c7a1465008542bd979" },
   "spaceless.nvim": { "branch": "main", "commit": "d84eb8b05fca9748ef7e118afe94e1a483ca3b81" },
-  "specs.nvim": { "branch": "main", "commit": "2743e412bbe21c9d73954c403d01e8de7377890d" },
   "sqlite.lua": { "branch": "master", "commit": "40701b6151f8883980c1548647116de39b763540" },
   "ssr.nvim": { "branch": "main", "commit": "bb323ba621ac647b4ac5638b47666e3ef3c279e1" },
   "statuscol.nvim": { "branch": "0.10", "commit": "e9e4c30b68abe456d80a0b144149ebf3f4527ed8" },
