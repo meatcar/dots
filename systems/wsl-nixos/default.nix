@@ -85,6 +85,11 @@
     done
   '';
 
+  fonts.fontconfig = {
+    hinting.style = "full";
+    subpixel.rgba = "rgb";
+  };
+
   environment.systemPackages = [
     pkgs.wget
     pkgs.wslu
