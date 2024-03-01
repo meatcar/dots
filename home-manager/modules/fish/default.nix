@@ -21,30 +21,29 @@ in {
     interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
     shellInit = builtins.readFile ./config.fish;
     plugins =
-      (lib.mapAttrsToList (name: p: {
+      (
+        builtins.map (p: {inherit (p) name src;})
+        (with pkgs.fishPlugins; [
+          foreign-env
+          grc
+          puffer
+          wakatime-fish
+          done
+          autopair
+          fzf-fish
+        ])
+      )
+      ++ (
+        builtins.map (name: {
           inherit name;
-          inherit (p) src;
-        }) {
-          inherit (pkgs.fishPlugins) foreign-env grc puffer wakatime-fish;
+          src = specialArgs.inputs.${name};
         })
-      ++ [
-        {
-          name = "fish-docker-compose";
-          src = specialArgs.inputs.fish-docker-compose;
-        }
-        {
-          name = "fzf-fish";
-          src = specialArgs.inputs.fzf-fish;
-        }
-        {
-          name = "autopair";
-          src = specialArgs.inputs.autopair-fish;
-        }
-        {
-          name = "vscode-fish";
-          src = specialArgs.inputs.vscode-fish;
-        }
-      ];
+        [
+          # flake inputs
+          "fish-docker-compose"
+          "vscode-fish"
+        ]
+      );
     functions = {
       fish_title.body = ''
         prompt_pwd
