@@ -39,16 +39,8 @@
       url = "github:danhper/fish-ssh-agent";
       flake = false;
     };
-    fzf-fish = {
-      url = "github:PatrickF1/fzf.fish";
-      flake = false;
-    };
     fish-docker-compose = {
       url = "github:brgmnn/fish-docker-compose";
-      flake = false;
-    };
-    autopair-fish = {
-      url = "github:jorgebucaran/autopair.fish";
       flake = false;
     };
     vscode-fish = {

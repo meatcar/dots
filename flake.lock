@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "autopair-fish": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1656950411,
-        "narHash": "sha256-qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqZJ/oRIT1A=",
-        "owner": "jorgebucaran",
-        "repo": "autopair.fish",
-        "rev": "4d1752ff5b39819ab58d7337c69220342e9de0e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jorgebucaran",
-        "repo": "autopair.fish",
-        "type": "github"
-      }
-    },
     "declarative-cachix": {
       "locked": {
         "lastModified": 1698062126,
@@ -331,22 +315,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "fzf-fish": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708296200,
-        "narHash": "sha256-x/q7tlMlyxZ1ow2saqjuYn05Z1lPOVc13DZ9exFDWoU=",
-        "owner": "PatrickF1",
-        "repo": "fzf.fish",
-        "rev": "dfdf69369bd3a3c83654261f90363da2aa1db8c9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PatrickF1",
-        "repo": "fzf.fish",
         "type": "github"
       }
     },
@@ -693,14 +661,12 @@
     "root": {
       "inputs": {
         "alacritty-theme": "alacritty-theme",
-        "autopair-fish": "autopair-fish",
         "declarative-cachix": "declarative-cachix",
         "emacs-overlay": "emacs-overlay",
         "fish-docker-compose": "fish-docker-compose",
         "fish-ssh-agent": "fish-ssh-agent",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils_2",
-        "fzf-fish": "fzf-fish",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-index-database": "nix-index-database",
