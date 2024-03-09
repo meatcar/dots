@@ -55,9 +55,25 @@ _G.me.o.events = {
   insert = 'InsertEnter',
 }
 
-require('lazy').setup('plugins', {
+require('lazy').setup({
+  spec = {
+    { import = "plugins" }
+  },
   defaults = { lazy = true },
-  performance = { reset_packpath = false } -- needed to source nixos-installed plugins
+  checker = { enabled = false },
+  performance = {
+    reset_packpath = false, -- needed to source nixos-installed plugins
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })
 
 require 'core/notes'
