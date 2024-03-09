@@ -31,8 +31,8 @@ return {
       l = {
         name = 'lazy',
         l = { '<Cmd>Lazy<CR>', 'Lazy' },
-        c = { '<Cmd>Lazy clean<CR>', 'Lazy clean' },
-        u = { '<Cmd>Lazy check<CR>', 'Lazy check' },
+        x = { '<Cmd>Lazy clean<CR>', 'Lazy clean' },
+        c = { '<Cmd>Lazy check<CR>', 'Lazy check' },
         p = { '<Cmd>Lazy profile<CR>', 'Lazy profile' },
       }
     }
