@@ -52,7 +52,7 @@ in {
       end
     '';
     functions = {
-      link_env = {
+      env_backup = {
         description = "symlink a .env file from the env store to this directory";
         body = ''
           set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
@@ -61,10 +61,17 @@ in {
           end
         '';
       };
-      backup_env = {
+      env_link = {
         description = "backup a .env file replacing it with a symlink";
         body = ''
           set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+          if test ! -f .env.example
+            echo ".env.example not found."
+            echo "sanitizing .env, copying to .env.example"
+            sed -E 's/=.+$/=/' .env > .env.example
+            echo "confirm all env vars needed in .env.example:"
+            cat .env.example
+          end
           if test ! -f "$env_file"
             mv -i .env "$env_file"
             link_env
