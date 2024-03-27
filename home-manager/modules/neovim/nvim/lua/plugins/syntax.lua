@@ -9,14 +9,9 @@ return {
 
   { 'zirrostig/vim-shbed',       ft = { 'sh', 'fish' } },
   {
-    'vim-scripts/TeX-9',
+    'lervag/vimtex',
     ft = { 'tex', 'latex' },
-    config = function()
-      vim.g.tex_nine_config = {
-        compiler = 'pdflatex',
-        viewer = { app = 'zathura', target = 'pdf' },
-      }
-    end,
+    init = function() end,
   },
   { 'neomutt/neomutt.vim',       ft = 'mail' },
   { 'pantharshit00/vim-prisma',  ft = 'prisma' },
@@ -121,3 +116,4 @@ return {
   -- nix
   { "calops/hmts.nvim",       ft = "nix",    version = "*" },
 }
+
