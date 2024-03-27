@@ -37,6 +37,8 @@ in {
     keep-outputs = true;
   };
 
+  home.sessionVariables.ENV_STORE = env_store;
+
   programs.fish = {
     interactiveShellInit = ''
       # NOTE: Can't be in functions dir because of load order (I think...)
@@ -52,19 +54,28 @@ in {
       end
     '';
     functions = {
-      env_backup = {
-        description = "symlink a .env file from the env store to this directory";
+      env-store-path = {
+        description = "get the store path of the .env file in directory";
         body = ''
-          set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
-          if test -f "$env_file"
-            ln -s "$env_file" .env
-          end
+          echo "$ENV_STORE"/(systemd-escape -p $PWD/.env)
         '';
       };
-      env_link = {
+      env-link = {
+        description = "symlink a .env file from the env store to this directory";
+        body = ''
+          set -l env_file (env-store-path)
+          if ! test -f "$env_file"
+            echo "$env_file" not found >&2
+            return 1
+          end
+          echo .env linked to "$env_file" >&2
+          ln -s "$env_file" .env
+        '';
+      };
+      env-backup = {
         description = "backup a .env file replacing it with a symlink";
         body = ''
-          set -l env_file "${env_store}"(systemd-escape -p $PWD/.env)
+          set -l env_file (env-store-path)
           if test ! -f .env.example
             echo ".env.example not found."
             echo "sanitizing .env, copying to .env.example"
@@ -73,8 +84,9 @@ in {
             cat .env.example
           end
           if test ! -f "$env_file"
+            echo .env moved to "$env_file" >&2
             mv -i .env "$env_file"
-            link_env
+            env-link
           end
         '';
       };
