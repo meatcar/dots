@@ -24,6 +24,7 @@
     ../modules/nix-index
     ../modules/starship
     ../modules/zellij
+    ../modules/wakatime
   ];
 
   home.packages = with pkgs; [

@@ -14,7 +14,7 @@
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right > $out/any-nix-shell.fish
     '';
 in {
-  home.packages = with pkgs; [any-nix-shell grc wakatime];
+  home.packages = with pkgs; [any-nix-shell grc];
 
   programs.fish = {
     enable = true;
@@ -27,7 +27,6 @@ in {
           foreign-env
           grc
           puffer
-          wakatime-fish
           done
           autopair
           fzf-fish
