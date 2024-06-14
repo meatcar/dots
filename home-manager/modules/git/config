@@ -77,3 +77,6 @@
 
 [log]
   date = iso
+
+[blame]
+  ignoreRevsFile = .git-blame-ignore-revs
