@@ -29,7 +29,7 @@
 
   networking.firewall.enable = true;
 
-  services.sshd.enable = true;
+  services.openssh.enable = true;
 
   hardware.opengl.extraPackages = [pkgs.mesa.drivers];
   hardware.opengl.driSupport32Bit = true;
