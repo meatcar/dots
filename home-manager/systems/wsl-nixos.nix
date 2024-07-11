@@ -9,6 +9,7 @@
     ./common.nix
     ../modules/gtk.nix
     ../modules/gnome-keyring.nix
+    ../modules/email
   ];
 
   home.sessionVariables = {

@@ -13,8 +13,8 @@
     image/png; ${./view_attachment.sh} %s png
     image/gif; ${./view_attachment.sh} %s gif
     application/pdf; ${./view_attachment.sh} %s pdf
-    text/html; ${pkgs.python}/bin/python ${./viewhtmlmail} %s; test=test -n "$DISPLAY"; nametemplate=%s.html; needsterminal;
-    text/html; ${pkgs.python38Packages.html2text}/bin/html2text --ignore-links --reference-links --ignore-tables; copiousoutput;
+    text/html; ${pkgs.python3}/bin/python ${./viewhtmlmail} %s; test=test -n "$DISPLAY"; nametemplate=%s.html; needsterminal;
+    text/html; ${pkgs.python3Packages.html2text}/bin/html2text --ignore-links --reference-links --ignore-tables; copiousoutput;
     text/plain; cat; copiousoutput;
     # Unidentified files
     application/octet-stream; ${./view_attachment.sh} %s "-"
@@ -62,7 +62,7 @@
       # vim: ft=muttrc
       set realname  = "${account.realName}"
       set from      = "${account.address}"
-      set spoolfile = "+${name}/Inbox"
+      set spoolfile = "+${name}/INBOX"
       set mbox      = "+${name}/${mbox}"
       set postponed = "+${name}/${drafts}"
       set trash     = "+${name}/${trash}"
@@ -73,7 +73,7 @@
 
       unmailboxes *
       named-mailboxes \
-        Inbox +${name}/Inbox \
+        INBOX +${name}/INBOX \
         Archive +${name}/${mbox} \
         Sent +${name}/${sent} \
         Drafts +${name}/${drafts}
@@ -105,7 +105,7 @@
   in ''
     source ${file}
     folder-hook =+${name}/.* source ${file}
-    macro index,pager \\${key} "<change-folder>+${name}/Inbox<enter>" "change accounts ${name}"
+    macro index,pager \\${key} "<change-folder>+${name}/INBOX<enter>" "change accounts ${name}"
 
   '';
   accountSettings = let
@@ -119,7 +119,7 @@
 
     # Mailboxes to always show in the sidebar.
     folder-hook .* mailboxes "+_" \
-    ${builtins.toString (builtins.map (name: "+${name}/Inbox") names)}
+    ${builtins.toString (builtins.map (name: "+${name}/INBOX") names)}
 
   '';
 in {
@@ -132,7 +132,7 @@ in {
     ${builtins.readFile ./bindings}
     # Links
     macro index,pager,attach,compose gl "<pipe-message> ${pkgs.urlscan}/bin/urlscan<Enter>" "View all links in message"
-    macro index,pager gb "<shell-escape>mkdir -p /tmp/mutttmpbox<enter><copy-message>/tmp/mutttmpbox<enter><shell-escape>${pkgs.python}/bin/python ${./viewhtmlmail} /tmp/mutttmpbox<enter><shell-escape>rm -rf /tmp/muttmpbox<enter>" "View message in Browser"
+    macro index,pager gb "<shell-escape>mkdir -p /tmp/mutttmpbox<enter><copy-message>/tmp/mutttmpbox<enter><shell-escape>${pkgs.python3}/bin/python ${./viewhtmlmail} /tmp/mutttmpbox<enter><shell-escape>rm -rf /tmp/muttmpbox<enter>" "View message in Browser"
 
     # Account Settings -----------------------------------
     ${accountSettings}
