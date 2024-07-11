@@ -13,12 +13,25 @@ in {
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
-    userEmail = "me@denys.me";
-    userName = "Denys Pavlov";
-    includes = [{path = ./config;}];
+    lfs.enable = true;
     extraConfig = {
+      user.name = "Denys Pavlov";
+      user.email = "me@denys.me";
       commit.template = "${gitmessage}";
     };
+    includes = [
+      {path = ./config;}
+      {
+        condition = "gitdir:~/git/hub/alipes/**";
+        contents = {
+          user.email = "denysp@alipes.com";
+        };
+      }
+      {
+        condition = "gitdir:~/git/hub/alipes/**";
+        path = "~/git/hub/alipes/.gitconfig";
+      }
+    ];
     attributes = [
       "*.c     diff=cpp"
       "*.h     diff=cpp"
