@@ -31,6 +31,11 @@
 
   services.openssh.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sudo.enableGnomeKeyring = true;
+  security.pam.services.sshd.enableGnomeKeyring = true;
+
   hardware.opengl.extraPackages = [pkgs.mesa.drivers];
   hardware.opengl.driSupport32Bit = true;
 

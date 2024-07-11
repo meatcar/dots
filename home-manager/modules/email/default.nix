@@ -6,7 +6,8 @@
   mkAccount = name: email: {
     address = email;
     userName = email;
-    passwordCommand = "${pkgs.gnome3.libsecret}/bin/secret-tool lookup email ${email}";
+    passwordCommand = "${pkgs.libsecret}/bin/secret-tool lookup email ${email}";
+    folders.inbox = "INBOX";
     mbsync = {
       enable = true;
       create = "both";
@@ -23,16 +24,13 @@
     msmtp.enable = true;
     imapnotify = {
       enable = true;
-      boxes = ["Inbox"];
-      onNotify = "${pkgs.isync}/bin/mbsync ${name} && ${pkgs.mu}/bin/mu index";
-      onNotifyPost = {
-        mail = "${pkgs.libnotify}/bin/notify-send -a mail '${name}: new in %s'";
-        update = "${pkgs.libnotify}/bin/notify-send -a mail '${name}: update %s'";
-        expunge = "${pkgs.libnotify}/bin/notify-send -a mail '${name}: expunge %s'";
-      };
+      boxes = ["INBOX"];
+      onNotify = "${pkgs.isync}/bin/mbsync ${name}:INBOX && ${pkgs.mu}/bin/mu index";
+      onNotifyPost = "${pkgs.libnotify}/bin/notify-send -a mail '${name}: new in %s'";
     };
   };
 in {
+  imports = [../gnome-keyring.nix ../neomutt];
   accounts.email.accounts = {
     fastmail =
       (mkAccount "fastmail" "denys@fastmail.com")
@@ -41,8 +39,7 @@ in {
         address = "me@denys.me";
         aliases = [".*@denys.me" ".*@dnka.ca"]; # regex gets passed to neomutt
         realName = "Denys Pavlov";
-        imap.host = "imap.fastmail.com";
-        smtp.host = "smtp.fastmail.com";
+        flavor = "fastmail.com";
       };
     gmail =
       (mkAccount "gmail" "denys.pavlov@gmail.com")
@@ -51,17 +48,15 @@ in {
           "denys.pavlo(v|v\\+.*)@gmail.com"
           "shagydo(g|g\\+.*)@gmail.com"
         ];
-        flavor = "gmail.com";
         realName = "Denys Pavlov";
-        imap.host = "imap.gmail.com";
-        smtp.host = "smtp.gmail.com";
+        flavor = "gmail.com";
       };
     zoho =
       (mkAccount "zoho" "denys.pavlov@zoho.com")
       // {
         address = "denys@dnka.ca";
         aliases = ["denys.pavlov@zoho.com"];
-        realName = "Denys Pavlov";
+        realName = "Denys";
         imap.host = "imap.zoho.com";
         smtp.host = "smtp.zoho.com";
       };
@@ -74,9 +69,9 @@ in {
     '';
     groups = {
       quick = {
-        fastmail = [];
-        gmail = ["Inbox" "[Gmail]"];
-        zoho = [];
+        fastmail = []; # all
+        gmail = ["INBOX" "[Gmail]"];
+        zoho = []; # all
       };
     };
   };
