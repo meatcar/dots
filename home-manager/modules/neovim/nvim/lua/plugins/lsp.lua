@@ -67,7 +67,12 @@ return {
       lspconfig.elixirls.setup {}
       lspconfig.eslint.setup {}
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      lspconfig.cssls.setup { capabilities = capabilities }
+      lspconfig.cssls.setup {
+        capabilities = capabilities,
+        handlers = {
+          ["textDocument/diagnostic"] = function() end
+        }
+      }
       lspconfig.html.setup {}
       lspconfig.bashls.setup {}
       lspconfig.dockerls.setup {}
@@ -116,12 +121,12 @@ return {
         nix = { 'alejandra' },
         python = { 'isort', 'black', 'autopep8' },
         javascript = { { 'prettierd', 'prettier' }, { 'eslint_d', 'eslint' } },
-        css = { 'stylelint' },
+        css = { { 'prettierd', 'prettier' } },
         sh = { 'shfmt' },
         go = { 'gofmt' },
         clojure = { 'joker' },
       },
-      format_on_save = { lsp_fallback = true, timeout_ms = 500 },
+      format_after_save = { lsp_fallback = true },
     },
     init = function()
       vim.o.formatexpr = [[ v:lua.require'conform'.formatexpr() ]]

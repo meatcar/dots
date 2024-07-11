@@ -39,8 +39,8 @@
 
       # formatters
       eslint_d
+      prettierd
       nodePackages.prettier
-      nodePackages.stylelint
       python3Packages.autopep8
       (pkgs.writeShellScriptBin "gofmt" ''
         ${pkgs.go}/bin/gofmt "$@"
