@@ -73,7 +73,7 @@ return {
 
   { -- ctrl-[ax] on drugs
     'zegervdv/nrpattern.nvim',
-    event = me.o.events.buf_early,
+    keys = { '<C-a>', '<C-x>'},
     config = function()
       -- Get the default dict of patterns
       local patterns = require 'nrpattern.default'
