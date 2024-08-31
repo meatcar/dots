@@ -21,7 +21,6 @@
     unzip
 
     # LSP Servers
-    rnix-lsp
     gopls
     elixir_ls
     python3Packages.python-lsp-server
