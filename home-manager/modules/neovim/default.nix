@@ -9,7 +9,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly.override {
+    package = pkgs.neovim.override {
       lua = pkgs.luajit;
     };
     withNodeJs = true;

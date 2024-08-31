@@ -54,7 +54,7 @@
       config = {allowUnfree = true;};
       overlays = [
         inputs.nixpkgs-wayland.overlay
-        inputs.neovim-nightly-overlay.overlay
+        inputs.neovim-nightly-overlay.overlays.default
         inputs.emacs-overlay.overlay
       ];
     };
