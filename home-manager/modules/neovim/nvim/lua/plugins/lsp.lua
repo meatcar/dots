@@ -23,7 +23,7 @@ return {
       { '<leader>lll', '<Cmd>LspInfo<CR>',    desc = 'Info' },
     },
     init = function()
-      require('which-key').register({ ['<leader>ll'] = { name = 'lspconfig' } })
+      require('which-key').add({ '<leader>ll', group = 'lspconfig' })
     end,
     config = function()
       require 'neodev'
