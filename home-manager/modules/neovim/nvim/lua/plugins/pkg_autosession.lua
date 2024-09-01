@@ -10,7 +10,7 @@ return {
       { '<leader>vsp', '<cmd>SessionPurge<CR>',       desc = 'Purge non-existing' },
     },
     init = function()
-      require('which-key').register({ ['<leader>vs'] = { name = 'session' } })
+      require('which-key').add({ '<leader>vs', group = 'session' })
 
       -- source: https://github.com/rmagatti/auto-session/issues/223#issuecomment-1666658887
       local function auto_session_restore()
@@ -75,9 +75,10 @@ return {
       vim.api.nvim_create_user_command('SessionPurge', purge_sessions, { desc = "Purge orphaned sessions" })
     end,
     config = function()
+      vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
       ---@diagnostic disable-next-line: missing-fields
       require('auto-session').setup {
-        auto_session_use_git_branch = true,
+        use_git_branch = true,
         pre_save_cmds = { 'Neotree close', function()
           require('neogit').close()
         end, function()
