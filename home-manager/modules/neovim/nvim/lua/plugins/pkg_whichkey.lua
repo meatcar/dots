@@ -3,100 +3,64 @@
 return {
   'folke/which-key.nvim', --popup ui for obscure keys
   lazy = false,
-  opts = function(_, opts)
-    opts.spelling = { enabled = true }
-  end,
+  opts = {
+    preset = 'modern',
+    plugins = {
+      spelling = {
+        enabled = true
+      }
+    }
+  },
   config = function(_, opts)
     local wk = require 'which-key'
 
     wk.setup(opts)
 
-    local leadermap = {
-      m = { '<Cmd>call feedkeys(g:maplocalleader)<CR>', '+localleader' },
-      [' '] = { ':', 'Command' },
-      ['/'] = { '<Cmd>Telescope live_grep<CR>', 'Search' },
-      ['*'] = { '<Cmd>Telescope grep_string search=<cword><CR>', 'Search current word' },
-      [':'] = { '<Cmd>Telescope commands<CR>', 'Commands' },
-      s = { name = 'surround' },
+    wk.add {
+      { '//',          '<Cmd>Telescope current_buffer_fuzzy_find<CR>',     desc = 'Buffer lines' },
+      { '<leader>*',   '<Cmd>Telescope grep_string search=<cword><CR>',    desc = 'Search current word' },
+      { '<leader>/',   '<Cmd>Telescope live_grep<CR>',                     desc = 'Search' },
+      { '<leader>:',   '<Cmd>Telescope commands<CR>',                      desc = 'Commands' },
+      { '<leader>b',   group = 'buffers' },
+      { '<leader>bb',  '<Cmd>Telescope buffers show_all_buffers=true<CR>', desc = 'Buffers' },
+      { '<leader>c',   group = 'change' },
+      { '<leader>cc',  '<Cmd>Telescope colorscheme<CR>',                   desc = 'Colorscheme' },
+      { '<leader>cf',  '<Cmd>Telescope filetypes<CR>',                     desc = 'Filetype' },
+      { '<leader>f',   group = 'files' },
+      { '<leader>ff',  '<Cmd>Telescope find_files<CR>',                    desc = 'Files' },
+      { '<leader>fr',  '<Cmd>Telescope oldfiles<CR>',                      desc = 'Recent' },
+      { '<leader>g',   group = 'git' },
+      { '<leader>gf',  '<Cmd>Telescope git_files<CR>',                     desc = 'Files' },
+      { '<leader>h',   group = 'help' },
+      { '<leader>hc',  '<Cmd>Telescope commands<CR>',                      desc = 'Commands' },
+      { '<leader>hh',  '<Cmd>Telescope help_tags<CR>',                     desc = 'Help' },
+      { '<leader>hk',  '<Cmd>Telescope keymaps<CR>',                       desc = 'Keymaps' },
+      { '<leader>l',   group = 'lsp' },
+      { '<leader>m',   '<Cmd>call feedkeys(g:maplocalleader)<CR>',         desc = '+localleader' },
+      { '<leader>n',   group = 'notes' },
+      { '<leader>o',   group = 'open' },
+      { '<leader>q',   group = 'quit' },
+      { '<leader>qq',  '<Cmd>q<CR>',                                       desc = 'Quit' },
+      { '<leader>qw',  '<Cmd>wq<CR>',                                      desc = 'Save and quit' },
+      { '<leader>qx',  '<Cmd>x<CR>',                                       desc = 'Save and exit' },
+      { '<leader>r',   group = 'run' },
+      { '<leader>s',   group = 'surround' },
+      { '<leader>t',   group = 'toggle' },
+      { '<leader>v',   group = 'vim' },
+      { '<leader>vl',  group = 'lazy' },
+      { '<leader>vlc', '<Cmd>Lazy check<CR>',                              desc = 'Lazy check' },
+      { '<leader>vll', '<Cmd>Lazy<CR>',                                    desc = 'Lazy' },
+      { '<leader>vlp', '<Cmd>Lazy profile<CR>',                            desc = 'Lazy profile' },
+      { '<leader>vlx', '<Cmd>Lazy clean<CR>',                              desc = 'Lazy clean' },
+      { '<leader>w',   group = 'window' },
+      { '<leader>wd',  '<Cmd>hide<CR>',                                    desc = 'Close' },
+      { '<leader>wh',  '<C-w>h',                                           desc = 'Focus right' },
+      { '<leader>wj',  '<C-w>j',                                           desc = 'Focus down' },
+      { '<leader>wk',  '<C-w>k',                                           desc = 'Focus up' },
+      { '<leader>wl',  '<C-w>l',                                           desc = 'Focus left' },
+      { '<leader>wq',  '<Cmd>hide<CR>',                                    desc = 'Close' },
+      { '<leader>ws',  '<Cmd>split<CR>',                                   desc = 'Split' },
+      { '<leader>wv',  '<Cmd>vsplit<CR>',                                  desc = 'Vertical split' },
     }
-    wk.register {
-      ['//'] = { '<Cmd>Telescope current_buffer_fuzzy_find<CR>', 'Buffer lines' },
-    }
-
-    local leadermap_v = {}
-    local leadermap_t = {}
-
-    leadermap.v = {
-      name = 'vim',
-      l = {
-        name = 'lazy',
-        l = { '<Cmd>Lazy<CR>', 'Lazy' },
-        x = { '<Cmd>Lazy clean<CR>', 'Lazy clean' },
-        c = { '<Cmd>Lazy check<CR>', 'Lazy check' },
-        p = { '<Cmd>Lazy profile<CR>', 'Lazy profile' },
-      }
-    }
-
-    leadermap.h = {
-      name = 'help', -- {{{
-      h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
-      k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
-      c = { '<Cmd>Telescope commands<CR>', 'Commands' },
-    } -- }}}
-
-    leadermap.q = {
-      name = 'quit', -- {{{
-      q = { '<Cmd>q<CR>', 'Quit' },
-      w = { '<Cmd>wq<CR>', 'Save and quit' },
-      x = { '<Cmd>x<CR>', 'Save and exit' },
-    } -- }}}
-
-    leadermap.b = {
-      name = 'buffers', -- {{{
-      b = { '<Cmd>Telescope buffers show_all_buffers=true<CR>', 'Buffers' },
-    }                   -- }}}
-
-    leadermap.f = {
-      name = 'files', -- {{{
-      r = { '<Cmd>Telescope oldfiles<CR>', 'Recent' },
-      f = { '<Cmd>Telescope find_files<CR>', 'Files' },
-    } -- }}}
-
-    leadermap.g = {
-      name = 'git', -- {{{
-      f = { '<Cmd>Telescope git_files<CR>', 'Files' },
-    }               -- }}}
-
-    leadermap.t = { name = 'toggle', }
-
-    leadermap.c = {
-      name = 'change',
-      c = { '<Cmd>Telescope colorscheme<CR>', 'Colorscheme' },
-      f = { '<Cmd>Telescope filetypes<CR>', 'Filetype' },
-    }
-
-    leadermap.o = { name = 'open' }
-
-    leadermap.r = { name = 'run' }
-
-    leadermap.w = {
-      name = 'window',
-      q = { '<Cmd>hide<CR>', 'Close' },
-      d = { '<Cmd>hide<CR>', 'Close' },
-      j = { '<C-w>j', 'Focus down' },
-      k = { '<C-w>k', 'Focus up' },
-      l = { '<C-w>l', 'Focus left' },
-      h = { '<C-w>h', 'Focus right' },
-      s = { '<Cmd>split<CR>', 'Split' },
-      v = { '<Cmd>vsplit<CR>', 'Vertical split' },
-    }
-
-    leadermap.l = { name = 'lsp' }
-
-    leadermap.n = { name = 'notes' }
-
-    wk.register(leadermap, { prefix = '<leader>' })
-    wk.register(leadermap_v, { prefix = '<leader>', mode = 'v' })
-    wk.register(leadermap_t, { prefix = '<leader>', mode = 't' })
   end,
 }

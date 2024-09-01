@@ -23,7 +23,7 @@ return {
       { '<leader>rtg', '<Cmd>TestVisit<CR>',   desc = 'Goto' },
     },
     init = function()
-      require('which-key').register({ ['<leader>rt'] = { name = 'test' } })
+      require('which-key').add({ '<leader>rt', group = 'test' })
     end,
     config = function()
       if vim.env.TMUX ~= nil then
@@ -73,7 +73,7 @@ return {
 
   { -- ctrl-[ax] on drugs
     'zegervdv/nrpattern.nvim',
-    keys = { '<C-a>', '<C-x>'},
+    keys = { '<C-a>', '<C-x>' },
     config = function()
       -- Get the default dict of patterns
       local patterns = require 'nrpattern.default'
@@ -141,7 +141,7 @@ return {
       { '<leader>rrz', '<Cmd>VimuxZoomRunner<CR>',          desc = 'Zoom' },
     },
     init = function()
-      require('which-key').register({ ['<leader>rr'] = { name = 'command' } })
+      require('which-key').add({ '<leader>rr', group = 'command' })
     end,
     cond = function()
       return vim.env.TMUX ~= nil

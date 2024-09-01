@@ -21,9 +21,9 @@ return {
       { '<leader>aivc', '<c-u>:NeoAIInjectContextCode ',    desc = 'Context Code',        mode = { 'n', 'v' } },
     },
     init = function()
-      require('which-key').register({ ['<leader>a'] = { name = 'ai' } })
-      require('which-key').register({ ['<leader>ai'] = { name = 'inject' } }, { mode = 'v' })
-      require('which-key').register({ ['<leader>aiv'] = { name = 'context' } }, { mode = 'v' })
+      require('which-key').add({ '<leader>a', group = 'ai' })
+      require('which-key').add({ '<leader>ai', group = 'inject', mode = 'v' })
+      require('which-key').add({ '<leader>aiv', group = 'context', mode = 'v' })
     end,
     config = function()
       require('neoai').setup {
@@ -141,8 +141,8 @@ return {
       },
     },
     init = function()
-      require('which-key').register({ ['<leader>ac'] = { name = 'chatgpt' } })
-      require('which-key').register({ ['<leader>acr'] = { name = 'run' } })
+      require('which-key').add({ '<leader>ac', group = 'chatgpt' })
+      require('which-key').add({ '<leader>acr', group = 'run' })
     end,
     main = 'chatgpt',
     opts = {

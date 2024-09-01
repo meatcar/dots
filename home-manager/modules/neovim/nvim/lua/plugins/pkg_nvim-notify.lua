@@ -14,7 +14,7 @@ return {
       { '<leader>on',  '<cmd>Telescope notify<CR>', desc = 'Notifications' }
     },
     init = function()
-      require('which-key').register({ ['<leader>vn'] = { name = 'notifications' } })
+      require('which-key').add({ '<leader>vn', group = 'notifications' })
     end,
     opts = {
       background_colour = '#000000',
