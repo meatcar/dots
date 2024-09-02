@@ -19,7 +19,7 @@ return {
     config = function()
       local history_path = table.concat { vim.fn.stdpath 'data', '/databases' }
       vim.fn.mkdir(history_path, 'p')
-      local trouble = require 'trouble.providers.telescope'
+      local trouble = require 'trouble.sources.telescope'
       require('telescope').setup {
         defaults = {
           winblend = 10,
@@ -61,7 +61,7 @@ return {
             i = {
               ['<C-Down>'] = require('telescope.actions').cycle_history_next,
               ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
-              ['<c-t>'] = trouble.open_with_trouble,
+              ['<c-t>'] = trouble.open,
               -- FIX: prevent entering insert mode after opening a file with Telescope
               -- source: https://github.com/nvim-telescope/telescope.nvim/issues/2501#issuecomment-1562937344
               ["<CR>"] = function()
@@ -83,7 +83,7 @@ return {
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc><M-q>", true, false, true), "i", false)
               end,
             },
-            n = { ['<c-t>'] = trouble.open_with_trouble },
+            n = { ['<c-t>'] = trouble.open },
           },
           cache_picker = {
             num_pickers = 1,
