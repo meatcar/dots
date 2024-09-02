@@ -237,9 +237,9 @@ return {
     opts = {}
   },
 
-  { -- defer diagnostics until insert mode is exited
-    'yorickpeterse/nvim-dd',
-    event = me.o.events.buf_early,
-    opts = {}
-  }
+  -- { -- defer diagnostics until insert mode is exited
+  --   'yorickpeterse/nvim-dd',
+  --   event = me.o.events.buf_early,
+  --   opts = {}
+  -- }
 }
