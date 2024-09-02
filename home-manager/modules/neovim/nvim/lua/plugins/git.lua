@@ -124,17 +124,26 @@ return {
       require('neogit').setup(opts)
 
       local group = vim.api.nvim_create_augroup('neogit_me', { clear = true })
-      vim.api.nvim_create_autocmd("TabLeave", {
+      -- vim.api.nvim_create_autocmd("TabLeave", {
+      --   group = group,
+      --   pattern = "*",
+      --   desc = "Auto-close neogit when switching tabs",
+      --   callback = function(_)
+      --     for _, buf in ipairs(vim.fn.tabpagebuflist()) do
+      --       if vim.bo[buf].filetype == 'NeogitStatus' then
+      --         require('neogit').close()
+      --       end
+      --     end
+      --   end
+      -- })
+      vim.api.nvim_create_autocmd('FileType', {
         group = group,
-        pattern = "*",
-        desc = "Auto-close neogit when switching tabs",
-        callback = function(_)
-          for _, buf in ipairs(vim.fn.tabpagebuflist()) do
-            if vim.bo[buf].filetype == 'NeogitStatus' then
-              require('neogit').close()
-            end
-          end
-        end
+        pattern = { 'NeogitStatus' },
+        callback = function()
+          require('ufo').detach()
+          vim.opt_local.foldenable = false
+          vim.opt_local.foldcolumn = '0'
+        end,
       })
     end
   },
