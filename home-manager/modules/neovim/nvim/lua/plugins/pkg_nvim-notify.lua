@@ -15,6 +15,7 @@ return {
     },
     init = function()
       require('which-key').add({ '<leader>vn', group = 'notifications' })
+      vim.notify = vim.schedule_wrap(require 'notify')
     end,
     opts = {
       background_colour = '#000000',
@@ -23,7 +24,6 @@ return {
     config = function(_, opts)
       local notify = require 'notify'
       notify.setup(opts)
-      vim.notify = notify
     end,
   },
 
