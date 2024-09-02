@@ -112,28 +112,6 @@ return {
   },
 
   {
-    'stevearc/conform.nvim',
-    event = me.o.events.buf_early,
-    cmd = { 'ConformInfo' },
-    opts = {
-      formatters_by_ft = {
-        -- lua = { 'stylua' },
-        nix = { 'alejandra' },
-        python = { 'isort', 'black', 'autopep8' },
-        javascript = { { 'prettierd', 'prettier' }, { 'eslint_d', 'eslint' } },
-        css = { { 'prettierd', 'prettier' } },
-        sh = { 'shfmt' },
-        go = { 'gofmt' },
-        clojure = { 'joker' },
-      },
-      format_after_save = { lsp_fallback = true },
-    },
-    init = function()
-      vim.o.formatexpr = [[ v:lua.require'conform'.formatexpr() ]]
-    end,
-  },
-
-  {
     -- pretty LSP popups
 
     'nvimdev/lspsaga.nvim',
