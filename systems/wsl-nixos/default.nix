@@ -12,12 +12,18 @@
     inputs.vscode-server.nixosModule
   ];
   services.vscode-server.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs; # only for NixOS 24.05
+  };
 
   wsl = {
     enable = true;
     defaultUser = "meatcar";
     nativeSystemd = true;
     interop.register = true;
+    wsl.useWindowsDriver = true;
+    wrapBinSh = false;
     wslConf = {
       network.hostname = "nixos";
       interop.enabled = true;
