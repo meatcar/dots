@@ -6,7 +6,11 @@
   home.packages = [
     (pkgs.weechat.override {
       configure = {availablePlugins, ...}: {
-        scripts = with pkgs.weechatScripts; [wee-slack weechat-matrix multiline];
+        scripts = with pkgs.weechatScripts; [
+          wee-slack
+          # weechat-matrix
+          multiline
+        ];
       };
     })
   ];
