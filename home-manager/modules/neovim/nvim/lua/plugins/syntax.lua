@@ -94,8 +94,8 @@ return {
     end,
   },
   { -- highlight headlines and codeblocks in markdown
-    'lukas-reineke/headlines.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     ft = { 'md', 'markdown' },
     opts = {}
   },
@@ -116,4 +116,3 @@ return {
   -- nix
   { "calops/hmts.nvim",       ft = "nix",    version = "*" },
 }
-

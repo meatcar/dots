@@ -66,22 +66,18 @@ return {
   {
     'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
     opts = {},
-    cmd = {
-      'New', 'Duplicate', 'NewFromSelection', 'Rename', 'Move', 'Trash', 'Chmodx',
-      'CopyFilename', 'CopyFilepath', 'CopyDirectoryPath', 'CopyRelativePath', 'CopyRelativeDirectoryPath',
-    },
     keys = {
-      { '<leader>fn',  '<cmd>New<CR>',                       desc = 'New' },
-      { '<leader>fd',  '<cmd>Duplicate<CR>',                 desc = 'Duplicate' },
-      { '<leader>fR',  '<cmd>Rename<CR>',                    desc = 'Rename' },
-      { '<leader>fm',  '<cmd>Move<CR>',                      desc = 'Move' },
-      { '<leader>fT',  '<cmd>Trash<CR>',                     desc = 'Trash' },
-      { '<leader>fx',  '<cmd>Chmodx<CR>',                    desc = 'chmod +x' },
-      { '<leader>fyn', '<cmd>CopyFilename<CR>',              desc = 'Copy file name' },
-      { '<leader>fyp', '<cmd>CopyFilepath<CR>',              desc = 'Copy file path' },
-      { '<leader>fyd', '<cmd>CopyDirectoryPath<CR>',         desc = 'Copy directory path' },
-      { '<leader>fyr', '<cmd>CopyRelativePath<CR>',          desc = 'Copy relative path' },
-      { '<leader>fyR', '<cmd>CopyRelativeDirectoryPath<CR>', desc = 'Copy relative directory path' },
+      { '<leader>fn',  '<cmd>Genghis createNewFile<CR>',             desc = 'Create New File' },
+      { '<leader>fd',  '<cmd>Genghis duplicateFile<CR>',             desc = 'Duplicate File' },
+      { '<leader>fR',  '<cmd>Genghis renameFile<CR>',                desc = 'Rename File' },
+      { '<leader>fm',  '<cmd>Genghis moveAndRenameFile<CR>',         desc = 'Move and Rename File' },
+      { '<leader>fT',  '<cmd>Genghis trashFile<CR>',                 desc = 'Trash File' },
+      { '<leader>fx',  '<cmd>Genghis chmodx<CR>',                    desc = 'chmod +x' },
+      { '<leader>fyn', '<cmd>Genghis copyFilename<CR>',              desc = 'Copy file name' },
+      { '<leader>fyp', '<cmd>Genghis copyFilepath<CR>',              desc = 'Copy file path' },
+      { '<leader>fyd', '<cmd>Genghis copyDirectoryPath<CR>',         desc = 'Copy directory path' },
+      { '<leader>fyr', '<cmd>Genghis copyRelativePath<CR>',          desc = 'Copy relative path' },
+      { '<leader>fyR', '<cmd>Genghis copyRelativeDirectoryPath<CR>', desc = 'Copy relative directory path' },
     }
   },
 
