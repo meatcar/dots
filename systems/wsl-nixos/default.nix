@@ -22,7 +22,7 @@
     defaultUser = "meatcar";
     nativeSystemd = true;
     interop.register = true;
-    wsl.useWindowsDriver = true;
+    useWindowsDriver = true;
     wrapBinSh = false;
     wslConf = {
       network.hostname = "nixos";
@@ -52,6 +52,11 @@
     shell = pkgs.fish;
     extraGroups = ["docker"];
     isNormalUser = true;
+  };
+
+  # BUG: https://github.com/moby/moby/issues/48056#issuecomment-2315995230
+  virtualisation.docker.daemon.settings = {
+    userland-proxy = false;
   };
 
   # override nixos-wsl startMenuLaunchers to pull in home-manager ones
