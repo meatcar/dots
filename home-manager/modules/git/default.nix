@@ -63,7 +63,7 @@ in {
 
   home.packages = builtins.attrValues {
     inherit (pkgs.gitAndTools) lab hub delta;
-    inherit (pkgs) glab;
+    inherit (pkgs) glab git-absorb;
   };
 
   programs.gh = {
