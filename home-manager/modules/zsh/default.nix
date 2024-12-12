@@ -8,7 +8,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     dotDir = ".config/zsh";
     initExtra = ''
       any-nix-shell zsh --info-right | source /dev/stdin
