@@ -12,7 +12,7 @@
     };
   };
 
-  hardware.opengl.extraPackages = [
+  hardware.graphics.extraPackages = [
     pkgs.vaapiIntel
     pkgs.vaapiVdpau
     pkgs.libvdpau-va-gl
