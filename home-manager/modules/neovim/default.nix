@@ -9,9 +9,6 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim.override {
-      lua = pkgs.luajit;
-    };
     withNodeJs = true;
 
     plugins = with pkgs.vimPlugins; [

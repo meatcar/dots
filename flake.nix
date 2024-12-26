@@ -8,7 +8,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     declarative-cachix.url = "github:jonascarpay/declarative-cachix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
@@ -54,7 +53,6 @@
       config = {allowUnfree = true;};
       overlays = [
         inputs.nixpkgs-wayland.overlay
-        inputs.neovim-nightly-overlay.overlays.default
         inputs.emacs-overlay.overlay
       ];
     };
