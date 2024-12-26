@@ -4,15 +4,13 @@
   ...
 }: {
   imports = [../starship];
-  home.packages = [pkgs.fzf pkgs.bat pkgs.any-nix-shell];
+  home.packages = [pkgs.fzf pkgs.bat];
 
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     dotDir = ".config/zsh";
     initExtra = ''
-      any-nix-shell zsh --info-right | source /dev/stdin
-
       ${builtins.readFile ./keybinds.zsh}
     '';
   };
