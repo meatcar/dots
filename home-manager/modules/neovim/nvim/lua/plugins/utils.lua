@@ -61,14 +61,23 @@ return {
     end,
   },
 
+  -- {
+  --   'luukvbaal/nnn.nvim',
+  --   cmd = { 'NnnExplorer', 'NnnPicker' },
+  --   opts = {
+  --     explorer = { cmd = 'nnn -C -G' },
+  --     picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
+  --     replace_netrw = 'picker',
+  --   },
+  -- },
   {
-    'luukvbaal/nnn.nvim',
-    cmd = { 'NnnExplorer', 'NnnPicker' },
-    opts = {
-      explorer = { cmd = 'nnn -C -G' },
-      picker = { cmd = 'nnn -G -C', style = { border = 'rounded' } },
-      replace_netrw = 'picker',
-    },
+    'mikavilpas/yazi.nvim',
+    keys = {
+      {
+        '-', '<cmd>Yazi<CR>', desc = "Open Yazi file manager"
+      }
+
+    }
   },
 
   { -- ctrl-[ax] on drugs

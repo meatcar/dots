@@ -11,9 +11,6 @@ M.main = function()
   -- get back to normal mode quickly
   vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], { noremap = true })
 
-  -- open NnnPicker a-la vinegar
-  vim.keymap.set('n', '-', [[<Cmd>NnnPicker %:p<CR>]], { desc = 'File Picker' })
-
   vim.keymap.set('n', '<leader>nc', ':<C-u>NoteNew<Space>', { desc = 'Create new note' })
   vim.keymap.set('n', '<leader>nn', ':<C-u>NoteFind<CR>', { desc = 'Open a note' })
   vim.keymap.set('n', '<leader>no', ':<C-u>NoteFind<Space>', { desc = 'Open a note in a subdirectory' })

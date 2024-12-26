@@ -19,6 +19,7 @@
     ../modules/clojure
     ../modules/emacs
     ../modules/nnn
+    ../modules/yazi
     ../modules/kakoune
     ../modules/helix
     ../modules/nix-index
