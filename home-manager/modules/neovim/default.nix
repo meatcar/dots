@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../nnn
+    ../yazi
   ];
 
   programs.neovim = {
