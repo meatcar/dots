@@ -47,9 +47,7 @@
         emacs-all-the-icons-fonts
         iosevka-bin
         ;
-      nerdfonts = pkgs.nerdfonts.override {
-        fonts = ["Go-Mono" "Iosevka"];
-      };
+      inherit (pkgs.nerd-fonts) go-mono iosevka;
     };
   };
 

@@ -7,9 +7,7 @@
   fonts.fontconfig.enable = lib.mkDefault true;
   home.packages = with pkgs; [
     fontconfig
-    (nerdfonts.override {
-      fonts = ["Go-Mono"];
-    })
+    nerd-fonts.go-mono
     (google-fonts.override {fonts = ["Bitter"];})
     noto-fonts-emoji
     dejavu_fonts
