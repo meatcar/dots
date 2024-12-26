@@ -3,22 +3,11 @@
   specialArgs,
   lib,
   ...
-}: let
-  any-nix-shell-fish =
-    pkgs.runCommand "any-nix-shell-fish"
-    {
-      buildInputs = with pkgs; [which];
-    }
-    ''
-      mkdir $out
-      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right > $out/any-nix-shell.fish
-    '';
-in {
-  home.packages = with pkgs; [any-nix-shell grc];
+}: {
+  home.packages = with pkgs; [grc];
 
   programs.fish = {
     enable = true;
-    interactiveShellInit = builtins.readFile "${any-nix-shell-fish}/any-nix-shell.fish";
     shellInit = builtins.readFile ./config.fish;
     plugins =
       (
