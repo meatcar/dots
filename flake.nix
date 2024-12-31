@@ -115,6 +115,18 @@
             };
           }
         ];
+        iso = mkSystem [
+          {system.stateVersion = "24.11";}
+          ({
+            pkgs,
+            modulesPath,
+            ...
+          }: {
+            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+            environment.systemPackages = [pkgs.neovim];
+            isoImage.forceTextMode = true;
+          })
+        ];
       };
       homeConfigurations = let
         system = "x86_64-linux";
