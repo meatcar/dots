@@ -4,6 +4,12 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence.url = "github:nix-community/impermanence";
+    lanzaboote.url = "github:nix-community/lanzaboote";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -15,7 +21,6 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    # zellij.url = "github:a-kenji/zellij-nix";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -101,6 +106,13 @@
         );
       in {
         tormund = mkSystem [./systems/tormund];
+        watson = mkSystem [
+          inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
+          inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen4
+          ./systems/watson
+        ];
         nixos = mkSystem [
           {system.stateVersion = "23.05";}
           ./systems/wsl-nixos
