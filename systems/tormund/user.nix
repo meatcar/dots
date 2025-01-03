@@ -4,13 +4,13 @@
   lib,
   ...
 }: {
-  nix.trustedUsers = ["meatcar"];
+  nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;
     useDefaultShell = false;
     shell = "/run/current-system/sw/bin/fish";
-    # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
+    # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'trustedUsers
     hashedPassword = "***REDACTED***";
     extraGroups = ["wheel" "video" "docker" "networkmanager" "power" "input"];
   };
