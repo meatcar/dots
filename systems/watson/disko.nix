@@ -64,7 +64,7 @@ in {
                     mount -t btrfs -o 'compress=zstd,noexec,noatime,nodev,nosuid,discard' "$SRCMNT" "$MNTPOINT"
                     trap 'umount $MNTPOINT; rmdir $MNTPOINT' EXIT
 
-                    btrfs subvolume snapshot -r "$MNTPOINT"/${rootSubvolume} "$MNTPOINT"/${rootSubvolume}-blank
+                    btrfs subvolume snapshot -r "$MNTPOINT"/@${rootSubvolume} "$MNTPOINT"/@${rootSubvolume}-blank
                   '';
                   subvolumes = {
                     "@${rootSubvolume}" = {
@@ -84,7 +84,7 @@ in {
                       mountOptions = ["compress=no"] ++ defaultOptions;
                     };
                     "@persist/git" = {
-                      mountpoint = "/persist/home/git";
+                      mountpoint = "/git";
                       mountOptions = ["compress=zstd"] ++ defaultOptions;
                     };
                     "@var/log" = {
@@ -105,7 +105,7 @@ in {
     };
   };
   fileSystems = {
-    "/persist".neededForBoot = lib.mkIf config.impermanence.enable true;
+    "/persist".neededForBoot = true;
     "/var/log".neededForBoot = true;
     "/.swap".neededForBoot = true;
   };

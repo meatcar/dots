@@ -18,15 +18,13 @@
     ../modules/weechat
     ../modules/leiningen
     ../modules/clojure
-    ../modules/emacs
-    ../modules/nnn
+    # ../modules/emacs
+    # ../modules/nnn
     ../modules/yazi
-    ../modules/kakoune
+    # ../modules/kakoune
     ../modules/helix
     ../modules/nix-index
     ../modules/starship
-    ../modules/zellij
-    ../modules/wakatime
   ];
 
   home.packages = with pkgs; [
@@ -57,6 +55,9 @@
     fd
     fx
     (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
+      echo dark
+    ''))
+    (lib.mkDefault (pkgs.writeShellScriptBin "get-theme" ''
       echo dark
     ''))
   ];

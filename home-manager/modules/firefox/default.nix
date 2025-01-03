@@ -1,13 +1,22 @@
-{pkgs, ...}: {
+{specialArgs, ...}: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
     profiles.default = {
-      userChrome = builtins.readFile ./userChrome.css;
       settings = {
+        # for arcwtf
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "layers.acceleration.force-enabled" = true; # fix youtube stutter
+        "svg.context-properties.content.enabled" = true;
+        "uc.tweak.popup-search" = true;
+        "uc.tweak.hide-sidebar-header" = true;
+
+        # fix youtube stutter
+        "layers.acceleration.force-enabled" = true;
       };
     };
+  };
+
+  home.file.".mozilla/firefox/default/chrome" = {
+    source = specialArgs.inputs.firefox-arcwtf;
+    recursive = true;
   };
 }

@@ -51,6 +51,10 @@
       url = "github:kidonng/vscode.fish";
       flake = false;
     };
+    firefox-arcwtf = {
+      url = "github:KiKaraage/ArcWTF";
+      flake = false;
+    };
   };
 
   outputs = {self, ...} @ inputs: let
@@ -110,8 +114,18 @@
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen4
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
           ./systems/watson
+          {
+            home-manager.users.meatcar = {...}: {
+              imports = [
+                inputs.impermanence.homeManagerModules.impermanence
+                ./home-manager/systems/watson
+              ];
+              nixpkgs.config = nixpkgsConfig;
+              home.stateVersion = "24.11";
+            };
+          }
         ];
         nixos = mkSystem [
           {system.stateVersion = "23.05";}
