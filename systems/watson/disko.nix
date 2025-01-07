@@ -1,9 +1,5 @@
 # based on: https://github.com/matthewpi/nixos-config/blob/cffedc488740767402615c8790b82bcdff0f3509/systems/nxb/disko.nix
-{
-  lib,
-  config,
-  ...
-}: let
+{...}: let
   luksName = "crypted";
   rootSubvolume = "rootfs";
 in {
@@ -34,6 +30,7 @@ in {
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
+                  crypttabExtraOpts = ["tpm2-device=auto"];
                 };
                 content = let
                   defaultOptions = [
@@ -95,6 +92,10 @@ in {
                       mountpoint = "/.swap";
                       swap.swapfile.size = "40G"; # 32G RAM + overhead
                     };
+                    "@tmp" = {
+                      mountpoint = "/tmp";
+                      mountOptions = ["compress=zstd"] ++ defaultOptions;
+                    };
                   };
                 };
               };
@@ -108,5 +109,6 @@ in {
     "/persist".neededForBoot = true;
     "/var/log".neededForBoot = true;
     "/.swap".neededForBoot = true;
+    "/tmp".neededForBoot = true;
   };
 }

@@ -35,13 +35,10 @@
       inherit
         (pkgs)
         # icons
-        
         font-awesome_4
         # proportional
-        
         inter
         # monospace
-        
         go-font
         emacs-all-the-icons-fonts
         iosevka-bin

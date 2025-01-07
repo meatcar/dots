@@ -12,6 +12,7 @@
     ../../modules/gnome-shell
     ../../modules/1password
     ../../modules/docker
+    ./impermanence.nix
   ];
 
   home.packages = with pkgs; [
@@ -36,13 +37,7 @@
   services.syncthing.enable = true;
   services.activitywatch.enable = true;
 
-  home.persistence."/persist/home/meatcar" = {
-    directories = [
-      "Downloads"
-      "Sync"
-      ".ssh"
-      ".local/share/gnome-shell"
-    ];
-    allowOther = true;
   };
+
+  home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
