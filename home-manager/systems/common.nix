@@ -5,7 +5,6 @@
 }: {
   imports = [
     ../modules/nix-flakes.nix
-    ../modules/cachix.nix
     ../modules/nix-your-shell
     ../modules/man
     ../modules/git

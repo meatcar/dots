@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ../modules/cachix.nix
     ../modules/nix.nix
   ];
 
