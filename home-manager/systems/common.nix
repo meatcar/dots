@@ -4,59 +4,42 @@
   ...
 }: {
   imports = [
-    ../modules/nix-flakes.nix
+    ../modules/nix.nix
     ../modules/nix-your-shell
     ../modules/man
     ../modules/git
     ../modules/fish
+    ../modules/starship
     ../modules/ssh
     ../modules/direnv
     ../modules/lsd
     ../modules/tmux
     ../modules/neovim
-    ../modules/weechat
-    ../modules/leiningen
-    ../modules/clojure
+    # ../modules/weechat
+    # ../modules/clojure
     # ../modules/emacs
     # ../modules/nnn
     ../modules/yazi
     # ../modules/kakoune
     ../modules/helix
     ../modules/nix-index
-    ../modules/starship
+    ../modules/docker
   ];
 
   home.packages = with pkgs; [
-    nh
     curl
     htop
+    imgcat
+
+    # dev
+    entr
     mosh
-    eternal-terminal
-    neomutt
-    isync
-    msmtp
     ripgrep
     jq
-    docker
-    docker-compose
-    lazydocker
-    entr
-    nox
-    statix
-    binutils
-    gcc
-    gnumake
-    openssl
-    pkg-config
-    imgcat
-    hydra-check
-    nvd
-    fd
     fx
+    openssl
+
     (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
-      echo dark
-    ''))
-    (lib.mkDefault (pkgs.writeShellScriptBin "get-theme" ''
       echo dark
     ''))
   ];
@@ -74,17 +57,14 @@
     enableCompletion = true;
     enableVteIntegration = true;
   };
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    enableVteIntegration = true;
-    historySubstringSearch.enable = true;
-  };
+  programs.less.enable = true;
+  programs.fd.enable = true;
+  programs.jq.enable = true;
   programs.fzf.enable = true;
   programs.lsd.enableAliases = true;
   programs.dircolors.enable = true;
   programs.zoxide.enable = true;
+  programs.pay-respects.enable = true;
   programs.bat = {
     enable = true;
     config.theme = "ansi";
@@ -94,8 +74,5 @@
       batgrep
       batwatch
     ];
-  };
-  programs.less = {
-    enable = true;
   };
 }
