@@ -35,11 +35,6 @@
 
   services.syncthing.enable = true;
   services.activitywatch.enable = true;
-  services.easyeffects = {
-    enable = true;
-    presets = "t14g1";
-  };
-  services.kdeconnect.enable = true;
 
   home.persistence."/persist/home/meatcar" = {
     directories = [
