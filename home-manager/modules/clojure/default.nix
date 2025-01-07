@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  import = [
+    ../modules/leiningen
+  ];
   home.packages = [
     pkgs.clojure
     ## linters

@@ -20,9 +20,11 @@
     extraPackages = with pkgs; [
       luajitPackages.luarocks
       parinfer-rust
+      fzf
 
       # lsps
       nil
+      statix
       lua-language-server
       terraform-ls
       gopls

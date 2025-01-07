@@ -1,7 +1,6 @@
 {
   pkgs,
   specialArgs,
-  lib,
   ...
 }: {
   home.packages = with pkgs; [grc];

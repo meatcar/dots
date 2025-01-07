@@ -86,5 +86,8 @@ in {
   home.packages = with pkgs; [
     mu
     mblaze
+    neomutt
+    isync
+    msmtp
   ];
 }
