@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -8,13 +9,48 @@
     ./hardware-configuration.nix
     ../common.nix
     ../../modules/impermanence
+    ../../modules/secureboot
     ../../modules/geoclue
     ../../modules/gnome
   ];
   system.stateVersion = "24.11";
-  boot.loader.systemd-boot.enable = true;
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+
+  boot.initrd.systemd = {
+    # for hibernation, tpm2 luks unlock
+    enable = true;
+
+    # additionalUpstreamUnits = ["systemd-tpm2-setup-early.service"];
+    storePaths = [
+      "${config.boot.initrd.systemd.package}/lib/systemd/systemd-tpm2-setup"
+      "${config.boot.initrd.systemd.package}/lib/systemd/system-generators/systemd-tpm2-generator"
+    ];
+  };
+  security.tpm2.enable = true;
+  security.tpm2.pkcs11.enable = true;
+
+  systemd.services.t14-hibernate-pre = {
+    description = "T14s Gen4 Hibernate Tweak (pre)";
+    before = ["hibernate.target"];
+    wantedBy = ["hibernate.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ["/run/current-system/sw/sbin/rmmod ath11k_pci"];
+    };
+  };
+
+  systemd.services.t14-hibernate-post = {
+    description = "T14s Gen4 Hibernate Tweak (post)";
+    after = ["hibernate.target"];
+    wantedBy = ["hibernate.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ["/run/current-system/sw/sbin/modprobe ath11k_pci"];
+    };
+  };
+
   networking.hostName = "watson"; # Define your hostname.
   networking.networkmanager.enable = true;
   services.printing.enable = true;
@@ -32,6 +68,7 @@
     v4l-utils
   ];
 
+  zramSwap.enable = true;
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 
