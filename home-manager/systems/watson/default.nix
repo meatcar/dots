@@ -35,8 +35,16 @@
   };
 
   services.syncthing.enable = true;
-  services.activitywatch.enable = true;
-
+  services.activitywatch = {
+    enable = true;
+    watchers = {
+      aw-watcher-window = {
+        package = pkgs.activitywatch;
+      };
+      aw-watcher-afk = {
+        package = pkgs.activitywatch;
+      };
+    };
   };
 
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
