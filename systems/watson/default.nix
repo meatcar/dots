@@ -72,6 +72,10 @@
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 
+  services.fprintd = {
+    enable = true;
+  };
+
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
