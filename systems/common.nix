@@ -27,28 +27,24 @@
       useEmbeddedBitmaps = true;
       subpixel.rgba = "rgb";
       defaultFonts = {
-        monospace = ["Iosevka Nerd Font"];
+        monospace = ["Iosevka SS07" "Symbols Nerd Font"];
         sansSerif = ["Inter"];
         serif = ["Liberation Serif"];
       };
     };
     enableDefaultPackages = true;
     fontDir.enable = true;
-    packages = builtins.attrValues {
-      inherit
-        (pkgs)
-        noto-fonts-emoji
-        # icons
-        font-awesome_4
-        # proportional
-        inter
-        # monospace
-        go-font
-        emacs-all-the-icons-fonts
-        iosevka-bin
-        ;
-      inherit (pkgs.nerd-fonts) go-mono iosevka;
-    };
+    packages = with pkgs; [
+      # icons
+      noto-fonts-emoji
+      font-awesome_4
+      nerd-fonts.symbols-only
+      # proportional
+      inter
+      # monospace
+      go-font
+      (iosevka-bin.override {variant = "SS07";})
+    ];
   };
 
   gtk.iconCache.enable = true;

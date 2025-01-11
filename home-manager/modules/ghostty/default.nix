@@ -4,8 +4,8 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
     settings = {
-      font-family = "Iosevka NF";
-      font-size = 11;
+      font-family = "Iosevka Term SS07";
+      font-size = 10;
       font-feature = "ss07";
       freetype-load-flags = "no-force-autohint"; # let the font hint itself
       theme = "dark:catppuccin-mocha,light:catppuccin-latte";
