@@ -10,6 +10,7 @@
     ../common.nix
     ../../modules/impermanence
     ../../modules/secureboot
+    ../../modules/power
     ../../modules/geoclue
     ../../modules/gnome
   ];
@@ -80,20 +81,6 @@
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
 
-  # needs tuning. maybe use tlp?
-  # powerManagement.powertop.enable = true;
-  services.power-profiles-daemon.enable = false;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
 
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;

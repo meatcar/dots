@@ -1,62 +1,60 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  boot = {
-    kernelModules = ["acpi_call"];
-    extraModulePackages = [
-      config.boot.kernelPackages.acpi_call
-    ];
-  };
+{pkgs, ...}: {
   powerManagement.enable = true;
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) s-tui powertop;
+    inherit (pkgs) tlp s-tui powertop;
   };
 
   services = {
     upower.enable = true;
-    acpid.enable = true;
-    undervolt = {
-      enable = true;
-      analogioOffset = 0;
-      coreOffset = -125;
-      uncoreOffset = -125;
-      gpuOffset = -70;
-    };
     tlp = {
       enable = true;
       settings = {
         TLP_ENABLE = 1;
-        DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-        USB_BLACKLIST_PHONE = 1;
+
+        PLATFORM_PROFILE_ON_AC = "balanced"; # not "performance" to reduce fan noise
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+        CPU_BOOST_ON_AC = 1;
+        CPU_BOOST_ON_BAT = 0;
+
+        RADEON_DPM_STATE_ON_AC = "performance";
+        RADEON_DPM_STATE_ON_BAT = "battery";
+
+        # turn off distracting backlight compensation
+        AMDGPU_ABM_LEVEL_ON_AC = 0;
+        AMDGPU_ABM_LEVEL_ON_BAT = 0;
+
+        # only charge up to 80% of the battery capacity
+        START_CHARGE_THRESH_BAT0 = "80";
+        STOP_CHARGE_THRESH_BAT0 = "85";
+
+        # don't power down phone
+        USB_EXCLUDE_PHONE = 1;
       };
     };
   };
 
-  systemd.services = {
-    powertop = {
-      wantedBy = ["multi-user.target"];
-      after = ["multi-user.target"];
-      description = "Powertop tunings";
-      path = [pkgs.kmod];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = "no";
-        ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-      };
-    };
-    powertop-fix = {
-      wantedBy = ["powertop.service"];
-      after = ["powertop.service"];
-      partOf = ["powertop.service"];
-      description = "Fix powertop tunings for USB HID devices";
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = "no";
-        ExecStart = "${pkgs.bash}/bin/bash ${./untune-hid.sh}";
-      };
-    };
-  };
+  # conflicts with tlp, see https://linrunner.de/tlp/faq/ppd.html
+  services.power-profiles-daemon.enable = false;
+
+  # systemd.services = {
+  #   powertop-fix = {
+  #     wantedBy = ["powertop.service"];
+  #     after = ["powertop.service"];
+  #     partOf = ["powertop.service"];
+  #     description = "Fix powertop tunings for USB HID devices";
+  #     serviceConfig = {
+  #       Type = "oneshot";
+  #       RemainAfterExit = "no";
+  #       ExecStart = "${pkgs.bash}/bin/bash ${./untune-hid.sh}";
+  #     };
+  #   };
+  # };
 }
