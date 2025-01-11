@@ -12,15 +12,17 @@
     ../../modules/gnome-shell
     ../../modules/1password
     ../../modules/docker
+    ../../modules/activitywatch
     ./impermanence.nix
   ];
 
   home.packages = with pkgs; [
     vivaldi
     pciutils
+    albert
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode"];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode" "albert"];
 
   programs.vscode.enable = true;
   programs.ghostty = {
@@ -35,17 +37,5 @@
   };
 
   services.syncthing.enable = true;
-  services.activitywatch = {
-    enable = true;
-    watchers = {
-      aw-watcher-window = {
-        package = pkgs.activitywatch;
-      };
-      aw-watcher-afk = {
-        package = pkgs.activitywatch;
-      };
-    };
-  };
-
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
