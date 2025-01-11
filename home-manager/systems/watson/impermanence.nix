@@ -62,6 +62,10 @@
         ".cache/mozilla"
         ".mozilla/firefox"
       ]
+      ++ lib.optionals config.programs.chromium.enable [
+        ".cache/chromium"
+        ".config/chromium"
+      ]
       ++ lib.optionals config.programs.neovim.enable [
         ".local/share/nvim"
         ".cache/nvim"
