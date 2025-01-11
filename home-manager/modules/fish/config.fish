@@ -18,12 +18,6 @@ if [ -f ~/.nix-defexpr/channels ] \
     set -x NIX_PATH "$HOME/.nix-defexpr/channels:$NIX_PATH"
 end
 
-if not functions -q fisher # Install fisher if not installed
-    set -q XDG_CONFIG_HOME || set -x XDG_CONFIG_HOME "$HOME/.config"
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-end
-
 if [ -n "$fish_user_paths" ]
     set-fish-user-paths
 end
