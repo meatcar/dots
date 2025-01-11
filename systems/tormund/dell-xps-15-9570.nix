@@ -74,4 +74,8 @@
     uncoreOffset = -125;
     gpuOffset = -70;
   };
+  services.fprintd.tod = {
+    enable = true;
+    driver = pkgs.libfprint-2-tod1-goodix;
+  };
 }
