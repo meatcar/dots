@@ -9,6 +9,7 @@
     {package = pkgs.gnomeExtensions.caffeine;}
     {package = pkgs.gnomeExtensions.clipboard-indicator;}
     {package = pkgs.gnomeExtensions.iso8601-ish-clock;}
+    {package = pkgs.gnomeExtensions.focused-window-d-bus;}
   ];
 
   services.darkman = {

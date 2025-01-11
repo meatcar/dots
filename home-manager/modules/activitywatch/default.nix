@@ -3,12 +3,12 @@
     enable = true;
     package = pkgs.aw-server-rust;
     watchers = {
-      # awatcher = {
-      #   package = pkgs.awatcher;
-      # };
-      # aw-watcher-afk = {
-      #   package = pkgs.aw-server-rust;
-      # };
+      awatcher = {
+        package = pkgs.awatcher;
+      };
+      aw-watcher-afk = {
+        package = pkgs.aw-server-rust;
+      };
     };
   };
 }
