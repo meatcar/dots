@@ -18,22 +18,6 @@
         # ".cache/nix"
         # ".local/state/nix"
         ".local/share/nix"
-        ".cache/gnome-desktop-thumbnailer"
-        ".local/state/home-manager"
-        ".local/share/gnome-shell"
-        ".local/share/gnome-settings-daemon"
-        ".local/share/nautilus"
-        ".local/share/icc"
-        ".cache/tracker3"
-        ".cache/darkman"
-        ".cache/fontconfig"
-        ".config/dconf"
-        ".config/gtk-3.0"
-        ".config/gtk-4.0"
-        ".config/keyrings"
-        ".config/gvfs-metadata"
-        ".config/evolution"
-        ".config/autostart"
         ".local/share/zoxide"
         ".local/state/syncthing"
         ".cache/less"
@@ -41,6 +25,14 @@
         ".config/op"
         ".config/aws"
         ".config/1Password"
+        {
+          directory = ".npm";
+          method = "symlink";
+        }
+        {
+          directory = ".cache/typescript";
+          method = "symlink";
+        }
         ".cache/npm"
         ".cache/pnpm"
         ".cache/nixpkgs-review"
@@ -72,6 +64,27 @@
         ".local/state/nvim"
       ]
       ++ [
+        # gnome-shell
+        ".cache/gnome-desktop-thumbnailer"
+        ".local/state/home-manager"
+        ".local/share/gnome-shell"
+        ".local/share/gnome-settings-daemon"
+        ".local/share/nautilus"
+        ".local/share/icc"
+        ".cache/tracker3"
+        ".cache/darkman"
+        ".cache/fontconfig"
+        ".config/dconf"
+        ".config/gtk-3.0"
+        ".config/gtk-4.0"
+        ".local/share/keyrings"
+        ".local/share/gvfs-metadata"
+        ".local/share/evolution"
+        ".config/autostart"
+        ".cache/libgweather"
+        ".cache/geocode-glib"
+      ]
+      ++ [
         ".config/vivaldi"
         ".cache/vivaldi"
         ".local/lib/vivaldi"
@@ -80,6 +93,10 @@
         ".config/activitywatch"
         ".cache/activitywatch"
         ".local/share/activitywatch"
+      ]
+      ++ [
+        ".config/albert"
+        ".cache/albert"
       ];
   };
 }
