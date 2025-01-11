@@ -22,6 +22,10 @@
       parinfer-rust
       fzf
 
+      # for building plugins
+      gnumake
+      gcc
+
       # lsps
       nil
       statix
