@@ -72,7 +72,7 @@ else
 		-e -t -n -c "$background" -i "$temp" \
 		--clock \
 		--time-align 1 --date-align 1 \
-		--time-font "Iosevka Nerd Font" --date-font "Iosevka Nerd Font" \
+		--time-font "Iosevka" --date-font "Iosevka" \
 		--timesize "$(scale $TIMESIZE)" --timepos="$TIMEPOS" \
 		--datesize "$(scale $DATESIZE)" --datepos="$DATEPOS" \
 		--indpos="$INDPOS" \

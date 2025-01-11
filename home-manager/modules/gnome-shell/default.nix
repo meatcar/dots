@@ -10,6 +10,7 @@
     {package = pkgs.gnomeExtensions.clipboard-indicator;}
     {package = pkgs.gnomeExtensions.iso8601-ish-clock;}
     {package = pkgs.gnomeExtensions.focused-window-d-bus;}
+    {package = pkgs.gnomeExtensions.smile-complementary-extension;}
   ];
 
   services.darkman = {
@@ -41,5 +42,6 @@
     (pkgs.writeShellScriptBin "get-theme" ''
       ${pkgs.dconf}/bin/dconf read /org/gnome/desktop/interface/color-scheme | tr -d "'" | sed 's/^prefer-//'
     '')
+    pkgs.smile
   ];
 }
