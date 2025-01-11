@@ -35,6 +35,7 @@
       theme = "dark:catppuccin-mocha,light:catppuccin-latte";
     };
   };
+  programs.chromium.enable = true;
 
   services.syncthing.enable = true;
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
