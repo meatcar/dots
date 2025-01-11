@@ -23,6 +23,9 @@
   fonts = {
     fontconfig = {
       enable = lib.mkOptionDefault true;
+      # render embedded emojis
+      useEmbeddedBitmaps = true;
+      subpixel.rgba = "rgb";
       defaultFonts = {
         monospace = ["Iosevka Nerd Font"];
         sansSerif = ["Inter"];
@@ -34,6 +37,7 @@
     packages = builtins.attrValues {
       inherit
         (pkgs)
+        noto-fonts-emoji
         # icons
         font-awesome_4
         # proportional

@@ -30,7 +30,7 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
     settings = {
-      font-family = "Iosevka NF";
+      font-family = "Iosevka Nerd Font";
       font-size = 10;
       theme = "dark:catppuccin-mocha,light:catppuccin-latte";
     };
