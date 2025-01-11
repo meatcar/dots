@@ -14,6 +14,7 @@
     ../../modules/geoclue
     ../../modules/gnome
     ../../modules/docker.nix
+    ../../modules/fingerprint.nix
   ];
   system.stateVersion = "24.11";
 
@@ -73,9 +74,9 @@
   zramSwap.enable = true;
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
-
-  services.fprintd = {
+  hardware.trackpoint = {
     enable = true;
+    emulateWheel = true;
   };
 
   programs._1password.enable = true;
