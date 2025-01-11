@@ -66,4 +66,12 @@
   # console.font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
   networking.networkmanager.wifi.powersave = true;
+
+  services.undervolt = {
+    enable = true;
+    analogioOffset = 0;
+    coreOffset = -125;
+    uncoreOffset = -125;
+    gpuOffset = -70;
+  };
 }
