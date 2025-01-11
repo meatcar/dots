@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
@@ -15,6 +14,7 @@
     ../../modules/gnome
     ../../modules/docker.nix
     ../../modules/fingerprint.nix
+    ./t14s-micmuteled.nix
   ];
   system.stateVersion = "24.11";
 
@@ -83,6 +83,7 @@
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
 
+  services.t14-micmuteled.enable = true;
 
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;
