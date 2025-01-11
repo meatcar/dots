@@ -13,6 +13,7 @@
     ../../modules/1password
     ../../modules/docker
     ../../modules/activitywatch
+    ../../modules/ghostty
     ./impermanence.nix
   ];
 
@@ -25,16 +26,6 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode" "albert"];
 
   programs.vscode.enable = true;
-  programs.ghostty = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    settings = {
-      font-family = "Iosevka Nerd Font";
-      font-size = 10;
-      theme = "dark:catppuccin-mocha,light:catppuccin-latte";
-    };
-  };
   programs.chromium.enable = true;
 
   services.syncthing.enable = true;
