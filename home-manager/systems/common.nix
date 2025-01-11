@@ -38,6 +38,7 @@
     jq
     fx
     openssl
+    devenv
 
     (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
       echo dark
