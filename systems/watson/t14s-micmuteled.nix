@@ -1,13 +1,12 @@
 # source: https://github.com/antipatico/nixos-thinkpad-t14-gen5-amd-tweaks/blob/b2aec538015f956fc4417caf8d7197acdf744a53/modules/nixos/services/t14-micmuteled/default.nix
 # author: antipatico (https://blog.bootkit.dev)
+# TODO: explore an event-based solution, as this one relies on poling which makes it less responsive.
 {
   pkgs,
   config,
   lib,
   ...
-}:
-with lib;
-with lib.antipatico; let
+}: let
   cfg = config.services.t14-micmuteled;
   script = pkgs.writeShellScriptBin "t14-micmuteled-daemon" ''
     #!/usr/bin/env bash
@@ -29,15 +28,31 @@ with lib.antipatico; let
     done
   '';
 in {
-  options.services.t14-micmuteled = with types; {
-    enable = mkEnableOption "tweak to make micmute led work on t14 laptop";
-    ledBrightness = mkOpt str "/sys/class/leds/platform::micmute/brightness" "Path to the target led to control";
-    microphoneNumId = mkOpt int 2 "numid for the microphone to monitor (find out using: amixer controls)";
-    userId = mkOpt int 1000 "User id to select the right pipewire socket";
-    sleepInterval = mkOpt int 3 "Interval between each check (the higher the less power consumption, the more lag)";
+  options.services.t14-micmuteled = with lib.types; {
+    enable = lib.mkEnableOption "tweak to make micmute led work on t14 laptop";
+    ledBrightness = lib.mkOption {
+      type = str;
+      default = "/sys/class/leds/platform::micmute/brightness";
+      description = "Path to the target led to control";
+    };
+    microphoneNumId = lib.mkOption {
+      type = int;
+      default = 2;
+      description = "numid for the microphone to monitor (find out using: amixer controls)";
+    };
+    userId = lib.mkOption {
+      type = int;
+      default = 1000;
+      description = "User id to select the right pipewire socket";
+    };
+    sleepInterval = lib.mkOption {
+      type = int;
+      default = 3;
+      description = "Interval between each check (the higher the less power consumption, the more lag)";
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd.services.t14-micmuteled = {
       description = "ThinkPad T14 Mic Mute Led Tweak";
       after = ["network.target"];
