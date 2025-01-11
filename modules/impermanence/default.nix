@@ -12,6 +12,7 @@ in {
     ./bluetooth.nix
     ./fwupd.nix
     ./gnome.nix
+    ./fprintd.nix
   ];
   # Setup a service that will automatically rollback the root subvolume to a fresh state.
   boot.initrd.systemd.services.rollback = {
