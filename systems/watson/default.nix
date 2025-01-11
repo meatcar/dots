@@ -13,6 +13,7 @@
     ../../modules/power
     ../../modules/geoclue
     ../../modules/gnome
+    ../../modules/docker.nix
   ];
   system.stateVersion = "24.11";
 
@@ -90,6 +91,6 @@
     shell = "${pkgs.fish}/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "$6$d60LJzot5J$PeWx9sU6rPNEy39uSewpJiV5CfOh9McENT5Crl4WCFyvwL/5jyH7Jn2pENG6pEWPNNFl2Xnp4WGEJEMAU2Mym0";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "docker"];
   };
 }
