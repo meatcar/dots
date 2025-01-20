@@ -62,8 +62,18 @@ in {
   };
 
   home.packages = builtins.attrValues {
-    inherit (pkgs.gitAndTools) lab hub delta;
-    inherit (pkgs) glab git-absorb;
+    inherit
+      (pkgs.gitAndTools)
+      lab # gitlab cli
+      hub # github cli (pre-gh, less official)
+      delta # delta
+      ;
+    inherit
+      (pkgs)
+      glab # gitlab CLI
+      git-absorb # quick fixup rebases
+      gitu # cli magit
+      ;
   };
 
   programs.gh = {
