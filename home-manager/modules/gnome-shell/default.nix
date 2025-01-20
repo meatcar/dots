@@ -1,17 +1,18 @@
 {pkgs, ...}: {
   programs.gnome-shell.enable = true;
-  programs.gnome-shell.extensions = [
-    {package = pkgs.gnomeExtensions.do-not-disturb-while-screen-sharing-or-recording;}
-    {package = pkgs.gnomeExtensions.dash-to-dock;}
-    {package = pkgs.gnomeExtensions.appindicator;}
-    {package = pkgs.gnomeExtensions.astra-monitor;}
-    {package = pkgs.gnomeExtensions.bluetooth-battery-meter;}
-    {package = pkgs.gnomeExtensions.caffeine;}
-    {package = pkgs.gnomeExtensions.clipboard-indicator;}
-    {package = pkgs.gnomeExtensions.iso8601-ish-clock;}
-    {package = pkgs.gnomeExtensions.focused-window-d-bus;}
-    {package = pkgs.gnomeExtensions.smile-complementary-extension;}
-  ];
+  programs.gnome-shell.extensions = builtins.map (p: {package = p;}) (with pkgs.gnomeExtensions; [
+    do-not-disturb-while-screen-sharing-or-recording
+    dash-to-dock
+    appindicator
+    astra-monitor
+    bluetooth-battery-meter
+    caffeine
+    clipboard-indicator
+    iso8601-ish-clock
+    focused-window-d-bus
+    smile-complementary-extension
+    battery-time
+  ]);
 
   services.darkman = {
     enable = true;
