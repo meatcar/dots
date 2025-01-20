@@ -43,5 +43,6 @@
       ${pkgs.dconf}/bin/dconf read /org/gnome/desktop/interface/color-scheme | tr -d "'" | sed 's/^prefer-//'
     '')
     pkgs.smile
+    pkgs.wl-clipboard
   ];
 }
