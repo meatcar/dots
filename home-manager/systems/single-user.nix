@@ -6,7 +6,7 @@
 }: {
   imports = [./common.nix];
   # nixpkgs config
-  nix.package = pkgs.nixVersions.stable;
+  nix.package = lib.mkForce pkgs.nixVersions.stable;
   nixpkgs.config = import ../config.nix;
   xdg.configFile."nixpkgs/config.nix".text = let
     seqToString = lib.generators.toPretty {};

@@ -47,7 +47,7 @@
       };
     };
 
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
 
   services = {
@@ -72,7 +72,7 @@
 
   services.gnome.gnome-settings-daemon.enable = true;
 
-  services.dbus.packages = [pkgs.gnome3.dconf];
+  services.dbus.packages = [pkgs.dconf];
 
   programs = {
     sway.enable = false;
@@ -95,29 +95,29 @@
       slurp
       wl-clipboard
       light
-      gtk2fontsel
       libnotify
       inotify-tools # for waybar
-      
+
       # File Management
-      
       xdg-utils
-      fuse_exfat
-      exfat-utils
+      exfat
+      exfatprogs
       ntfs3g
+      # themes
       hicolor-icon-theme
+      gnome-icon-theme
       breeze-icons
       imv
       zathura
       streamlink
       google-chrome
       qbittorrent
+      adwaita-icon-theme
       # audio
-      
       pavucontrol
       ncpamixer
-      mps-youtube
-      youtube-dl
+      yewtube
+      yt-dlp
       ;
     # dwarf-fortress-full = (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
     #   enableTextMode = true;
@@ -125,12 +125,7 @@
     # });
     inherit (pkgs.xfce) thunar thunar-archive-plugin tumbler;
     inherit (pkgs) waybar;
-    inherit (pkgs.gnome2) gnome_icon_theme;
-    inherit (pkgs.gnome3) adwaita-icon-theme;
-    python3 = pkgs.python3.withPackages (
-      pkgs: [pkgs.youtube-dl]
-    );
     # spotify
-    inherit (pkgs) spotifyd spotify-tui;
+    inherit (pkgs) spotifyd;
   };
 }

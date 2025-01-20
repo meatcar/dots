@@ -88,7 +88,7 @@
       # then you can search like `nix search dots <query>`
       legacyPackages = pkgs;
 
-      devShell = pkgs.mkShell rec {
+      devShells.default = pkgs.mkShell {
         name = "dots";
 
         buildInputs = with pkgs; [
