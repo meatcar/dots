@@ -10,7 +10,7 @@
 
   programs.ssh.matchBlocks = {
     "eu.nixbuild.net" = {
-      identityFile = "/home/meatcar/.ssh/id_ed25519";
+      identityFile = "${config.home.homeDirectory}/.ssh/id_ed25519";
       extraOptions = {
         PubkeyAcceptedKeyTypes = "ssh-ed25519";
       };
