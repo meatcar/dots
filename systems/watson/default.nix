@@ -55,6 +55,8 @@
     };
   };
 
+  services.t14-micmuteled.enable = true;
+
   networking.hostName = "watson"; # Define your hostname.
   services.printing.enable = true;
   services.pipewire = {
@@ -81,8 +83,6 @@
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
-
-  services.t14-micmuteled.enable = true;
 
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;
