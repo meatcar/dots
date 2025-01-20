@@ -37,6 +37,9 @@
 
         # don't power down phone
         USB_EXCLUDE_PHONE = 1;
+
+        # disable wake-on-lan
+        WOL_DISABLE = "Y";
       };
     };
   };

@@ -27,7 +27,7 @@ in {
     border = 3;
   in {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
       export QT_QPA_PLATFORM=wayland
@@ -153,7 +153,7 @@ in {
           natural_scroll = "enabled";
           middle_emulation = "enabled";
           drag = "enabled";
-          scroll_factor = 0.1;
+          scroll_factor = "0.1";
         };
       };
 

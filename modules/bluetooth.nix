@@ -5,9 +5,9 @@
 }: {
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
+    package = pkgs.bluez;
     powerOnBoot = false;
-    hsphfpd.enable = true;
+    hsphfpd.enable = !config.services.pipewire.wireplumber.enable; # conflicts
   };
 
   hardware.pulseaudio = {

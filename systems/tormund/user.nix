@@ -25,24 +25,25 @@
   home-manager.useUserPackages = true;
   home-manager.users.meatcar = {pkgs, ...}: {
     imports = [
-      ../home-manager/systems/single-user.nix
-      ../home-manager/modules/gtk.nix
-      ../home-manager/modules/gnome-keyring.nix
-      ../home-manager/modules/egpu.nix
-      ../home-manager/modules/sway
-      ../home-manager/modules/kanshi
-      ../home-manager/modules/alacritty
-      ../home-manager/modules/firefox
-      ../home-manager/modules/mpv.nix
-      ../home-manager/modules/spotifyd.nix
-      ../home-manager/modules/gammastep.nix
-      ../home-manager/modules/email
-      ../home-manager/modules/neomutt
-      ../home-manager/modules/qutebrowser
+      ../../home-manager/systems/single-user.nix
+      ../../home-manager/modules/gtk.nix
+      ../../home-manager/modules/gnome-keyring.nix
+      ../../home-manager/modules/egpu.nix
+      ../../home-manager/modules/sway
+      ../../home-manager/modules/kanshi
+      ../../home-manager/modules/alacritty
+      ../../home-manager/modules/firefox
+      ../../home-manager/modules/mpv.nix
+      ../../home-manager/modules/spotifyd.nix
+      ../../home-manager/modules/gammastep.nix
+      ../../home-manager/modules/email
+      ../../home-manager/modules/neomutt
+      ../../home-manager/modules/qutebrowser
     ];
 
     config = {
       home = {
+        stateVersion = "24.11";
         username = "meatcar";
         homeDirectory = "/home/meatcar";
         packages = [
@@ -51,10 +52,10 @@
       };
 
       xdg.configFile = {
-        "swaylock".source = ../conf/sway/.config/swaylock;
-        "wldash".source = ../conf/sway/.config/wldash;
-        "waybar".source = ../conf/waybar/.config/waybar;
-        "mako".source = ../conf/mako/.config/mako;
+        # "swaylock".source = ../conf/sway/.config/swaylock;
+        # "wldash".source = ../conf/sway/.config/wldash;
+        # "waybar".source = ../conf/waybar/.config/waybar;
+        # "mako".source = ../conf/mako/.config/mako;
       };
 
       services = {
