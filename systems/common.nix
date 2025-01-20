@@ -27,7 +27,7 @@
       useEmbeddedBitmaps = true;
       subpixel.rgba = "rgb";
       defaultFonts = {
-        monospace = ["Iosevka SS07" "Symbols Nerd Font"];
+        monospace = ["Iosevka Term SS07" "Symbols Nerd Font"];
         sansSerif = ["Inter"];
         serif = ["Liberation Serif"];
       };
