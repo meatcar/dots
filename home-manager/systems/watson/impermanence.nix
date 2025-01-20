@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  home.persistence."/persist/home/meatcar" = {
+  home.persistence."/persist/${config.home.homeDirectory}" = {
     allowOther = true;
     files = [
       # ".config/user-dirs.dirs"
