@@ -39,6 +39,7 @@ return {
       { '<leader>m',   '<Cmd>call feedkeys(g:maplocalleader)<CR>',         desc = '+localleader' },
       { '<leader>n',   group = 'notes' },
       { '<leader>o',   group = 'open' },
+      { '<leader>oa',  group = 'ai' },
       { '<leader>q',   group = 'quit' },
       { '<leader>qq',  '<Cmd>q<CR>',                                       desc = 'Quit' },
       { '<leader>qw',  '<Cmd>wq<CR>',                                      desc = 'Save and quit' },
