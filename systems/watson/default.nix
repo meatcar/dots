@@ -9,7 +9,7 @@
     ../common.nix
     ../../modules/impermanence
     ../../modules/secureboot
-    ../../modules/power
+    ../../modules/laptop
     ../../modules/geoclue
     ../../modules/gnome
     ../../modules/docker.nix
@@ -55,7 +55,6 @@
   };
 
   networking.hostName = "watson"; # Define your hostname.
-  networking.networkmanager.enable = true;
   services.printing.enable = true;
   services.pipewire = {
     enable = true;
@@ -71,7 +70,6 @@
     v4l-utils
   ];
 
-  zramSwap.enable = true;
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
   hardware.trackpoint = {
