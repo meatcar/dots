@@ -14,6 +14,7 @@
     ../../modules/docker
     ../../modules/activitywatch
     ../../modules/ghostty
+    ../../modules/obsidian
     ./impermanence.nix
   ];
 
