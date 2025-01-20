@@ -6,9 +6,10 @@
   home.persistence."/persist/${config.home.homeDirectory}" = {
     allowOther = true;
     files = [
+      # FIXME: don't reliably work, see https://github.com/nix-community/impermanence/issues/107
       # ".config/user-dirs.dirs"
       # ".config/user-dirs.locale"
-      ".config/monitors.xml"
+      # ".config/monitors.xml"
     ];
     directories =
       [
