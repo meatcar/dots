@@ -94,10 +94,6 @@
         ".config/activitywatch"
         ".cache/activitywatch"
         ".local/share/activitywatch"
-      ]
-      ++ [
-        ".config/albert"
-        ".cache/albert"
       ];
   };
 }
