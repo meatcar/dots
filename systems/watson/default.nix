@@ -72,6 +72,7 @@
     efibootmgr
     radeontop
     v4l-utils
+    opensnitch-ui
   ];
 
   services.fwupd.enable = true;
@@ -84,6 +85,7 @@
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
+  services.opensnitch.enable = true;
 
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;

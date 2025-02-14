@@ -14,6 +14,8 @@
     directories =
       [
         "Downloads"
+        "Pictures"
+        "Documents"
         "Sync"
         ".ssh"
         # ".cache/nix"
@@ -36,6 +38,14 @@
         }
         ".cache/npm"
         ".cache/pnpm"
+        {
+          directory = ".hex";
+          method = "symlink";
+        }
+        {
+          directory = ".mix";
+          method = "symlink";
+        }
         ".cache/nixpkgs-review"
       ]
       ++ lib.optional config.programs.bat.enable ".cache/bat"
@@ -84,6 +94,7 @@
         ".config/autostart"
         ".cache/libgweather"
         ".cache/geocode-glib"
+        ".cache/clipboard-indicator@tudmotu.com"
       ]
       ++ [
         ".config/vivaldi"
@@ -94,6 +105,15 @@
         ".config/activitywatch"
         ".cache/activitywatch"
         ".local/share/activitywatch"
+        ".config/awatcher"
+      ]
+      ++ [".config/opensnitch"]
+      ++ [".config/obsidian"]
+      ++ [
+        ".continue"
+        ".cache/treefmt"
+        ".cache/pre-commit"
+        ".cache/nix"
       ];
   };
 }
