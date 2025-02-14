@@ -6,6 +6,7 @@
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
+      "https://wurzelpfropf.cachix.org"
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -17,6 +18,8 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    agenix.url = "github:yaxitech/ragenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
@@ -97,6 +100,7 @@
           git
           (nixos-rebuild.override {nix = nixVersions.stable;})
           stow
+          inputs.agenix.packages.${system}.default
         ];
         NIX_PATH = builtins.concatStringsSep ":" [
           "nixpkgs=${inputs.nixpkgs}"
@@ -123,6 +127,7 @@
       in {
         tormund = mkSystem [./systems/tormund];
         watson = mkSystem [
+          inputs.agenix.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
@@ -131,6 +136,7 @@
           {
             home-manager.users.meatcar = {...}: {
               imports = [
+                inputs.agenix.homeManagerModules.default
                 inputs.impermanence.homeManagerModules.impermanence
                 ./home-manager/systems/watson
               ];

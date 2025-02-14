@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../common.nix
+    ../../modules/agenix
     ../../modules/gtk.nix
     ../../modules/gnome-keyring.nix
     ../../modules/firefox
@@ -22,8 +23,13 @@
   home.packages = with pkgs; [
     vivaldi
     pciutils
-    aider-chat
     code-cursor
+    (
+      pkgs.writeShellScriptBin "aider" ''
+        source ${config.age.secrets.aienv.path}
+        ${pkgs.aider-chat}/bin/aider "$@"
+      ''
+    )
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode"];
