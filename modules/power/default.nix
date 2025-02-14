@@ -32,8 +32,8 @@
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
 
         # only charge up to 80% of the battery capacity
-        START_CHARGE_THRESH_BAT0 = "80";
-        STOP_CHARGE_THRESH_BAT0 = "85";
+        START_CHARGE_THRESH_BAT0 = "75";
+        STOP_CHARGE_THRESH_BAT0 = "81";
 
         # don't power down phone
         USB_EXCLUDE_PHONE = 1;
