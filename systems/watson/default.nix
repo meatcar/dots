@@ -13,7 +13,8 @@
     ../../modules/geoclue
     ../../modules/gnome
     ../../modules/keyd
-    ../../modules/docker.nix
+    # ../../modules/docker.nix
+    ../../modules/podman.nix
     ../../modules/fingerprint.nix
     ./t14s-micmuteled.nix
   ];
