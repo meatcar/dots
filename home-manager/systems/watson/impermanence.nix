@@ -9,7 +9,7 @@
       # FIXME: don't reliably work, see https://github.com/nix-community/impermanence/issues/107
       # ".config/user-dirs.dirs"
       # ".config/user-dirs.locale"
-      # ".config/monitors.xml"
+      ".config/monitors.xml"
     ];
     directories =
       [
@@ -18,6 +18,7 @@
         "Documents"
         "Sync"
         ".ssh"
+        ".local/share/fonts"
         # ".cache/nix"
         # ".local/state/nix"
         ".local/share/nix"
@@ -51,6 +52,7 @@
           method = "symlink";
         }
         ".cache/nixpkgs-review"
+        ".aider"
       ]
       ++ lib.optional config.programs.bat.enable ".cache/bat"
       ++ lib.optional config.programs.gh.enable ".config/gh"
@@ -89,6 +91,7 @@
         ".cache/tracker3"
         ".cache/darkman"
         ".cache/fontconfig"
+        ".cache/dconf"
         ".config/dconf"
         ".config/gtk-3.0"
         ".config/gtk-4.0"
