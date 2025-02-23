@@ -52,6 +52,8 @@
           method = "symlink";
         }
         ".cache/nixpkgs-review"
+        ".local/share/zed"
+        ".config/zed"
         ".aider"
       ]
       ++ lib.optional config.programs.bat.enable ".cache/bat"
