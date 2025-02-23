@@ -84,6 +84,10 @@ in {
                       mountpoint = "/git";
                       mountOptions = ["compress=zstd"] ++ defaultOptions;
                     };
+                    "@persist/docker" = {
+                      mountpoint = "/persist/var/lib/docker";
+                      mountOptions = ["compress=no"] ++ defaultOptions;
+                    };
                     "@var/log" = {
                       mountpoint = "/var/log";
                       mountOptions = ["compress=zstd" "noexec"] ++ defaultOptions;
