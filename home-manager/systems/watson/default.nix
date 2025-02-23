@@ -17,6 +17,7 @@
     ../../modules/ghostty
     ../../modules/obsidian
     ../../modules/vscode
+    ../../modules/zed
     ./impermanence.nix
   ];
 
