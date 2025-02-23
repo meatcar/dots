@@ -118,6 +118,7 @@ in {
       }
       "/var/lib/cups"
       "/var/lib/boltd"
+      "/var/lib/opensnitch/rules"
     ];
 
     files = [
