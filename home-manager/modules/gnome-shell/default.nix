@@ -11,7 +11,10 @@
     iso8601-ish-clock
     focused-window-d-bus
     smile-complementary-extension
-    battery-time
+    auto-move-windows
+    quick-settings-audio-devices-renamer
+    quick-settings-audio-devices-hider
+    toggle-headphone
   ]);
 
   services.darkman = {
