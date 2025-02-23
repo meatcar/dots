@@ -20,4 +20,15 @@
     source = specialArgs.inputs.firefox-arcwtf;
     recursive = true;
   };
+
+  xdg.mime.enable = true;
+  xdg.mimeApps.defaultApplications = let
+    browser = "firefox.desktop";
+  in {
+    "text/html" = browser;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
+    "x-scheme-handler/about" = browser;
+    "x-scheme-handler/unknown" = browser;
+  };
 }

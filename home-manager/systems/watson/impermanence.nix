@@ -10,6 +10,7 @@
       # ".config/user-dirs.dirs"
       # ".config/user-dirs.locale"
       ".config/monitors.xml"
+      # ".config/mimeapps.list"
     ];
     directories =
       [
