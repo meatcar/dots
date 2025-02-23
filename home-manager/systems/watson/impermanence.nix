@@ -29,6 +29,10 @@
         ".config/aws"
         ".config/1Password"
         {
+          directory = ".local/share/containers"; # podman
+          method = "symlink";
+        }
+        {
           directory = ".npm";
           method = "symlink";
         }

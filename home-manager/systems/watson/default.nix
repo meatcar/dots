@@ -12,7 +12,7 @@
     ../../modules/firefox
     ../../modules/gnome-shell
     ../../modules/1password
-    ../../modules/docker
+    # ../../modules/docker
     ../../modules/activitywatch
     ../../modules/ghostty
     ../../modules/obsidian
