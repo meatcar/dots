@@ -22,6 +22,9 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+  # TODO: linux 6.13 causes bug. Wait for resolution.
+  # https://gitlab.freedesktop.org/drm/amd/-/issues/3697
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   boot.initrd.systemd = {
     # for hibernation, tpm2 luks unlock

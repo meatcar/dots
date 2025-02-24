@@ -13,6 +13,6 @@
 
   programs.nh = {
     enable = true;
-    flake = specialArgs.inputs.self;
+    flake = "dots";
   };
 }
