@@ -38,7 +38,9 @@
   };
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true;
-  boot.plymouth.enable = true;
+
+  # if you're not going to work reliably, don't work at all.
+  # boot.plymouth.enable = true;
 
   systemd.services.t14-hibernate-pre = {
     description = "T14s Gen4 Hibernate Tweak (pre)";
