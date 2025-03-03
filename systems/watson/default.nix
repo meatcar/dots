@@ -79,6 +79,7 @@
     radeontop
     v4l-utils
     opensnitch-ui
+    config.boot.kernelPackages.perf
   ];
 
   services.fwupd.enable = true;
