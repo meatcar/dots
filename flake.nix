@@ -37,6 +37,7 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    niri-flake.url = "github:sodiboo/niri-flake";
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -126,6 +127,7 @@
             inputs.impermanence.nixosModules.impermanence
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
+            inputs.niri-flake.nixosModules.niri
             ./systems/watson
             {
               home-manager.users.meatcar = {...}: {

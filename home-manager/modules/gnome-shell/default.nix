@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  imports = [../wayland];
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = builtins.map (p: {package = p;}) (with pkgs.gnomeExtensions; [
     do-not-disturb-while-screen-sharing-or-recording
@@ -18,7 +19,6 @@
   ]);
 
   services.darkman = {
-    enable = true;
     darkModeScripts = {
       gtk-theme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
@@ -28,9 +28,6 @@
       gtk-theme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
       '';
-    };
-    settings = {
-      usegeoclue = true;
     };
   };
 
@@ -47,6 +44,5 @@
       ${pkgs.dconf}/bin/dconf read /org/gnome/desktop/interface/color-scheme | tr -d "'" | sed 's/^prefer-//'
     '')
     pkgs.smile
-    pkgs.wl-clipboard
   ];
 }

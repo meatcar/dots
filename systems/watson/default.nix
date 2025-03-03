@@ -78,7 +78,6 @@
     efibootmgr
     radeontop
     v4l-utils
-    opensnitch-ui
     config.boot.kernelPackages.perf
   ];
 
@@ -89,6 +88,7 @@
     emulateWheel = true;
   };
 
+  programs.niri.enable = true;
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["meatcar"];
