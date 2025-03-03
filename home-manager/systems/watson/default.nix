@@ -11,6 +11,7 @@
     ../../modules/gnome-keyring.nix
     ../../modules/firefox
     ../../modules/gnome-shell
+    ../../modules/niri
     ../../modules/1password
     # ../../modules/docker
     ../../modules/activitywatch
@@ -38,5 +39,6 @@
   programs.chromium.enable = true;
 
   services.syncthing.enable = true;
+  services.opensnitch-ui.enable = true;
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
