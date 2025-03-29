@@ -86,6 +86,9 @@
     emulateWheel = true;
   };
 
+  time.timeZone = lib.mkDefault "Canada/Eastern";
+  services.automatic-timezoned.enable = true;
+
   programs.niri.enable = true;
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
