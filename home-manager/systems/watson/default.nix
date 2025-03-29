@@ -29,6 +29,7 @@
     vivaldi
     pciutils
     code-cursor
+    calibre
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode"];
