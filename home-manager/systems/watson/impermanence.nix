@@ -120,10 +120,16 @@
       ++ [".config/opensnitch"]
       ++ [".config/obsidian"]
       ++ [
-        ".continue"
+        {
+          # seems to consume a lot of CPU as a non-symlink
+          directory = ".continue";
+          method = "symlink";
+        }
         ".cache/treefmt"
         ".cache/pre-commit"
         ".cache/nix"
+        ".cursor"
+        ".config/Cursor"
       ];
   };
 }
