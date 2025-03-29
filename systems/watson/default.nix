@@ -12,6 +12,7 @@
     ../../modules/laptop
     ../../modules/geoclue
     ../../modules/gnome
+    ../../modules/pipewire
     ../../modules/keyd
     # ../../modules/docker.nix
     ../../modules/podman.nix
@@ -66,16 +67,13 @@
 
   networking.hostName = "watson"; # Define your hostname.
   services.printing.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
     wget
 
     efibootmgr
+    usbutils
     radeontop
     v4l-utils
     config.boot.kernelPackages.perf
