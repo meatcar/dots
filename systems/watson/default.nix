@@ -11,8 +11,8 @@
     ../../modules/secureboot
     ../../modules/laptop
     ../../modules/geoclue
-    ../../modules/gnome
     ../../modules/pipewire
+    ../../modules/display-manager
     ../../modules/keyd
     # ../../modules/docker.nix
     ../../modules/podman.nix
@@ -82,6 +82,10 @@
 
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
+
+  hardware.bluetooth.enable = true;
+  services.hardware.bolt.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   hardware.trackpoint = {
     enable = true;
     emulateWheel = true;

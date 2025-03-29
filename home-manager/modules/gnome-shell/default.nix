@@ -10,7 +10,7 @@
     caffeine
     clipboard-indicator
     iso8601-ish-clock
-    focused-window-d-bus
+    focused-window-d-bus # for awatcher https://github.com/2e3s/awatcher?tab=readme-ov-file#user-content-fn-4-f18d6f5c4c9abfe4b35ead5fb5b50e46
     smile-complementary-extension
     auto-move-windows
     quick-settings-audio-devices-renamer
