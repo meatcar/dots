@@ -1,26 +1,38 @@
-@define-color foreground #eee;
-@define-color background #000;
-@define-color cursor #fff;
-@define-color active #079;
-@define-color inactive #ddd;
+/* source: https://github.com/catppuccin/waybar/blob/main/themes/mocha.css */
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
 
-/* @define-color color0 #000; */
-/* @define-color color1 #111; */
-/* @define-color color2 #222; */
-/* @define-color color3 #333; */
-/* @define-color color4 #444; */
-/* @define-color color5 #555; */
-/* @define-color color6 #666; */
-/* @define-color color7 #777; */
-/* @define-color color8 #888; */
-/* @define-color color9 #999; */
-/* @define-color color10 #aaa; */
-/* @define-color color11 #bbb; */
-/* @define-color color12 #ccc; */
-/* @define-color color13 #ddd; */
-/* @define-color color14 #ee0; */
-/* @define-color color15 #fff; */
-/**/
+@define-color bar-background @base;
+@define-color foreground @text;
+@define-color background @surface0;
+@define-color cursor @text;
+@define-color active @text;
+@define-color inactive @subtext0;
+
 * {
   font-size: 16px;
   font-family: "monospace";
@@ -36,16 +48,22 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: @background;
-  background: alpha(@background, 0.8);
+  background: transparent;
   color: @foreground;
+}
+
+window#waybar.right {
+  margin-left: 4px;
+}
+window#waybar.left {
+  margin-right: 4px;
 }
 
 menu,
 tooltip {
   border-radius: 8px;
   padding: 2px;
-  border: 1px solid lighter(@active);
+  border: 1px solid @overlay0;
   background: alpha(@background, 0.9);
 
   color: @foreground;
@@ -54,11 +72,9 @@ tooltip {
 menu label,
 tooltip label {
   font-size: 14px;
-  color: lighter(@active);
 }
 
-#submap,
-#tray > .needs-attention {
+#tray>.needs-attention {
   animation-name: blink-active;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -66,137 +82,117 @@ tooltip label {
   animation-direction: alternate;
 }
 
+.modules-left,
 .modules-right {
-  padding: 4px;
-  padding-right: 0;
-  background: alpha(@background, 0.4);
-  color: lighter(@active);
-}
-
-.modules-left {
+  background: @bar-background;
   transition-property: background-color;
   transition-duration: 0.5s;
-  padding: 4px;
-  padding-right: 0;
-  padding-bottom: 0;
-  background: alpha(@background, 0.4);
-  color: lighter(@active);
 }
 
-#custom-notifications,
-#gcpu,
-#custom-github,
-#memory,
-#disk,
-#time,
-#submap,
-#custom-weather,
-#custom-recorder,
-#connection,
-#cnoti,
-#brightness,
-#power,
-#custom-updates,
+window#waybar.right .modules-center,
+window#waybar.right .modules-left {
+  border-bottom-left-radius: 8px;
+}
+window#waybar.right .modules-center,
+window#waybar.right .modules-right {
+  border-top-left-radius: 8px;
+}
+
+window#waybar.left .modules-center,
+window#waybar.left .modules-left {
+  border-bottom-right-radius: 8px;
+}
+window#waybar.left .modules-center,
+window#waybar.left .modules-right {
+  border-top-right-radius: 8px;
+}
+
+
+/** modules */
+#custom-notification,
+#tray,
+#workspaces,
+/** groups */
+#audio-output,
+#audio-input,
 #net,
 #bt,
-#tray,
-#audio,
-#privacy,
-#sound {
-  border-radius: 4px;
-  padding: 4px;
-  margin: 2px 0;
-  background: alpha(darker(@active), 0.3);
+#power,
+#time
+{
+  border-radius: 6px;
+  padding: 6px 4px;
+  margin: 4px;
+  margin-bottom: 0;
+  background: @background;
 }
 
-#custom-hotspot,
-#custom-github,
-#custom-notifications {
-  font-size: 14px;
-}
-
-#custom-hotspot {
-  padding-right: 2px;
-}
-
-#custom-vpn,
-#custom-hotspot {
-  background: alpha(darker(@active), 0.3);
-}
-
-#privacy-item {
-  padding: 6px 0px 6px 6px;
-}
-
-#gcpu {
-  padding: 8px 0px 8px 0px;
-}
-
-#custom-cpu-icon {
-  font-size: 25px;
-}
-
-#custom-cputemp,
-#disk,
-#memory,
-#cpu {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-#custom-github {
-  padding-top: 2px;
-  padding-right: 4px;
-}
-
-#custom-dmark {
-  color: alpha(@foreground, 0.3);
-}
-
-#submap {
-  margin-bottom: 0px;
-}
-
+/* first and last modules/groups */
 #workspaces {
-  margin: 0px 2px 4px 2px;
-  border-radius: 8px;
+  margin-bottom: 4px;
+}
+#custom-notification {
+  margin-top: 0;
+}
+#time {
+  margin-bottom: 0;
+}
+
+/* custom notification */
+#custom-notification {
+  background: transparent;
+  color: @overlay0;
+}
+#custom-notification.notification {
+  background: @background;
+  color: @red;
+}
+#custom-notification.dnd-notification {
+  background: @background;
+  color: @foreground;
+}
+
+/* workspaces */
+#workspaces {
+  padding: 0;
+}
+
+/* workspace first/last button corners */
+#workspaces button:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+#workspaces button:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 #workspaces button {
-  padding: 4px 2px;
   transition-property: background-color;
-  transition-duration: 0.5s;
-  color: @foreground;
+  transition-duration: 0.3s;
   background: transparent;
-  border-radius: 4px;
-  color: alpha(@foreground, 0.3);
+  color: @text;
+  padding: 4px;
+}
+
+#workspaces button.active {
+  color: @text;
+  background: @surface1;
 }
 
 #workspaces button.urgent {
   font-weight: bold;
-  color: @foreground;
+  color: @background;
+  background: @yellow;
 }
 
-#workspaces button.active {
-  background: alpha(@active, 0.4);
-  color: lighter(@active);
-  border-radius: 4px;
-}
-
-#submap {
-  min-width: 0px;
-  margin: 4px 6px 4px 6px;
-}
-
-#custom-weather,
 #tray {
   padding: 4px;
 }
 
-#battery {
-  border-radius: 8px;
-  padding: 4px 0px;
-  margin: 4px 2px 4px 2px;
+#battery.full,
+#battery.plugged {
+  color: @green;
 }
 
 #battery.discharging.warning {
@@ -217,13 +213,13 @@ tooltip label {
 
 #clock {
   font-weight: bold;
-  padding: 4px 2px 2px 2px;
+  padding: 2px 0
 }
 
-#pulseaudio.mic {
-  border-radius: 4px;
-  color: @background;
-  background: alpha(darker(@foreground), 0.6);
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted {
+  color: @red;
+  background-color: @background;
 }
 
 #backlight-slider slider,
@@ -268,14 +264,14 @@ tooltip label {
 
 @keyframes blink-red {
   to {
-    background-color: #c64d4f;
+    background-color: @red;
     color: @foreground;
   }
 }
 
 @keyframes blink-yellow {
   to {
-    background-color: #cf9022;
+    background-color: @yellow;
     color: @foreground;
   }
 }
