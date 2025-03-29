@@ -32,6 +32,4 @@
     radeontop
     v4l-utils
   ];
-  services.fwupd.enable = true;
-  systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 }
