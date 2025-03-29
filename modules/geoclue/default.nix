@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   location.provider = "geoclue2";
   services.geoclue2 = {
     enable = true;
@@ -6,6 +6,10 @@
     enableDemoAgent = lib.mkForce true;
     appConfig = {
       "nl.whynothugo.darkman" = {
+        isAllowed = true;
+        isSystem = false;
+      };
+      "gammastep" = {
         isAllowed = true;
         isSystem = false;
       };
