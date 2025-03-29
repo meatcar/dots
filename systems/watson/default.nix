@@ -15,7 +15,6 @@
     ../../modules/pipewire
     ../../modules/display-manager
     ../../modules/keyd
-    # ../../modules/docker.nix
     ../../modules/podman.nix
     ../../modules/fingerprint.nix
     ../../modules/1password
