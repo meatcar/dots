@@ -15,6 +15,7 @@
       sqlite-lua
       # TODO: try again. for some reason the bash parser throws errors
       # nvim-treesitter.withAllGrammars
+      (pkgs.callPackage (import ./darkman-nvim.nix) {})
     ];
 
     extraPackages = with pkgs; [

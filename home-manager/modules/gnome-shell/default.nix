@@ -18,19 +18,6 @@
     toggle-headphone
   ]);
 
-  services.darkman = {
-    darkModeScripts = {
-      gtk-theme = ''
-        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-      '';
-    };
-    lightModeScripts = {
-      gtk-theme = ''
-        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-      '';
-    };
-  };
-
   programs.firefox.package = pkgs.firefox.override {
     # See nixpkgs' firefox/wrapper.nix to check which options you can use
     nativeMessagingHosts = [
@@ -40,9 +27,6 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin "get-theme" ''
-      ${pkgs.dconf}/bin/dconf read /org/gnome/desktop/interface/color-scheme | tr -d "'" | sed 's/^prefer-//'
-    '')
     pkgs.smile
   ];
 }

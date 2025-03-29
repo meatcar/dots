@@ -1,4 +1,9 @@
 return {
+  { -- respect Freedesktop Dark-mode standard
+    'darkman.nvim',
+    event = 'VimEnter',
+    opts = {}
+  },
   { 'nvim-tree/nvim-web-devicons' },
 
   { 'xtal8/traces.vim',           event = me.o.events.insert },
@@ -192,8 +197,6 @@ return {
 
   {
     'luukvbaal/statuscol.nvim',
-    branch = "0.10",
-    version = false,
     event = me.o.events.verylazy,
     config = function()
       local builtin = require 'statuscol.builtin'
