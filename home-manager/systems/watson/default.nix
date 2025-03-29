@@ -20,6 +20,7 @@
     ../../modules/vscode
     # ../../modules/zed
     ../../modules/calendar
+    ../../modules/evince
     ./impermanence.nix
   ];
 
