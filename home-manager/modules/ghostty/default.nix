@@ -15,6 +15,8 @@
       window-padding-balance = true;
       window-padding-color = "extend";
       window-theme = "ghostty";
+      gtk-single-instance = true;
+      quit-after-last-window-closed = false;
     };
   };
 }
