@@ -62,7 +62,10 @@
       ++ lib.optional config.programs.gh.enable ".config/gh"
       ++ lib.optional config.programs.ssh.enable ".cache/ssh"
       ++ lib.optional config.programs.starship.enable ".cache/starship"
-      ++ lib.optional config.programs.fish.enable ".local/share/fish"
+      ++ lib.optionals config.programs.fish.enable [
+        ".local/share/fish"
+        ".cache/fish"
+      ]
       ++ lib.optionals config.programs.vscode.enable [
         ".vscode"
         ".config/Code"
