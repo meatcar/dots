@@ -39,6 +39,8 @@
       noto-fonts-emoji
       font-awesome_4
       nerd-fonts.symbols-only
+      # web
+      corefonts
       # proportional
       inter
       # monospace
