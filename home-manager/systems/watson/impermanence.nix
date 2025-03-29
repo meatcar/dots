@@ -84,6 +84,11 @@
         ".cache/nvim"
         ".local/state/nvim"
       ]
+      ++ lib.optionals config.services.copyq.enable [
+        ".config/copyq"
+        ".qt_material"
+        ".local/share/copyq"
+      ]
       ++ [
         # gnome-shell
         ".cache/gnome-desktop-thumbnailer"

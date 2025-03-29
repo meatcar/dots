@@ -26,8 +26,8 @@
         layer = "top";
         position = "right";
         modules-left = [
-          "niri/workspaces"
           "custom/notification"
+          "niri/workspaces"
         ];
         modules-center = ["privacy"];
         modules-right = [
@@ -41,10 +41,10 @@
         "custom/notification" = {
           format = "{icon}";
           format-icons = rec {
-            notification = "<span foreground='red'></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'></span>";
-            dnd-none = "";
+            notification = "<span foreground='red'>󰅸</span>";
+            none = "󰂜";
+            dnd-notification = "<span foreground='yellow'>󰪓</span>";
+            dnd-none = "󰪓";
             inhibited-notification = notification;
             inhibited-none = none;
             dnd-inhibited-notification = dnd-notification;
@@ -54,20 +54,24 @@
           exec = "${pkgs.swaynotificationcenter}/bin/swaync-client --subscribe-waybar";
           on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-panel --skip-wait";
           on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-dnd --skip-wait";
+          on-click-middle = "${pkgs.swaynotificationcenter}/bin/swaync-client --close-latest";
           escape = "true";
         };
         "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
             me = "󰁥";
+            "1" = "󰁥";
             work = "";
+            "2" = "";
             code = "";
-            "4" = "󱂋";
-            "5" = "󰬃";
-            "6" = "󱂍";
-            "7" = "󱂎";
-            "8" = "󱂏";
-            "9" = "󱂐";
+            "3" = "";
+            # "4" = "󱂋";
+            # "5" = "󰬃";
+            # "6" = "󱂍";
+            # "7" = "󱂎";
+            # "8" = "󱂏";
+            # "9" = "󱂐";
           };
         };
         "privacy" = {
@@ -100,10 +104,10 @@
             car = " ";
             default = ["󰕿" "󰖀" "󰕾"];
           };
-          on-click-middle = "${lib.getExe pkgs.pavucontrol}";
-          on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          on-scroll-up = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +1%";
-          on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
+          on-click-middle = "${lib.getExe pkgs.myxer}";
+          on-click = "${pkgs.swayosd}/bin/swayosd-client --output-volume=mute-toggle";
+          on-click-up = "${pkgs.swayosd}/bin/swayosd-client --output-volume=raise";
+          on-click-down = "${pkgs.swayosd}/bin/swayosd-client --output-volume=lower";
           smooth-scrolling-threshold = 1;
         };
         "pulseaudio#mic" = {
@@ -111,9 +115,10 @@
           format-source = "";
           format-source-muted = "";
           tooltip-format = "{volume}% {format_source} ";
-          on-click = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-          on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-source-volume @DEFAULT_SOURCE@ -1%";
-          on-scroll-up = "${pkgs.pulseaudio}/bin/pactl set-source-volume @DEFAULT_SOURCE@ +1%";
+          on-click-middle = "${lib.getExe pkgs.pavucontrol} --tab=4";
+          on-click = "${pkgs.swayosd}/bin/swayosd-client --input-volume=mute-toggle";
+          on-click-up = "${pkgs.swayosd}/bin/swayosd-client --input-volume=raise";
+          on-click-down = "${pkgs.swayosd}/bin/swayosd-client --input-volume=lower";
         };
         "pulseaudio/slider" = {
           min = 0;
@@ -145,7 +150,7 @@
         "bluetooth" = {
           format-on = "";
           format-off = "󰂲";
-          fomat-disabled = "";
+          format-disabled = "󰂲";
           format-connected = "<b></b>";
           tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";

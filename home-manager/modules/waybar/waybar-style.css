@@ -83,6 +83,7 @@ tooltip label {
   color: lighter(@active);
 }
 
+#custom-notifications,
 #gcpu,
 #custom-github,
 #memory,
@@ -106,10 +107,6 @@ tooltip label {
   padding: 4px;
   margin: 2px 0;
   background: alpha(darker(@active), 0.3);
-}
-
-#custom-notifications {
-  padding-left: 4px;
 }
 
 #custom-hotspot,
@@ -254,7 +251,7 @@ tooltip label {
 #bluetooth.discoverable,
 #bluetooth.discovering,
 #bluetooth.pairable {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   animation-name: blink-active;
   animation-duration: 1s;
   animation-timing-function: linear;
