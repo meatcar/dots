@@ -14,23 +14,12 @@ in {
     ../waybar
     ../fuzzel
     ../gammastep.nix
+    ../swaync
   ];
   home.packages = with pkgs; [
     swaylock
     fuzzel
   ];
-  services.swaync = {
-    enable = true;
-    settings = {
-      widgets = [
-        "title"
-        "dnd"
-        "notifications"
-        "volume"
-        "mpris"
-      ];
-    };
-  };
   services.gnome-keyring.enable = true;
   xdg.portal = {
     enable = true;
