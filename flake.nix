@@ -136,6 +136,7 @@
                   inputs.agenix.homeManagerModules.default
                   inputs.impermanence.homeManagerModules.impermanence
                   ./home-manager/systems/watson
+                  ./git-crypt/hm-me.nix
                 ];
                 nixpkgs.config = nixpkgsConfig;
                 home.stateVersion = "24.11";
