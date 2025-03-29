@@ -19,6 +19,7 @@
     ../../modules/obsidian
     ../../modules/vscode
     # ../../modules/zed
+    ../../modules/aider
     ../../modules/calendar
     ../../modules/evince
     ./impermanence.nix
@@ -28,12 +29,6 @@
     vivaldi
     pciutils
     code-cursor
-    (
-      pkgs.writeShellScriptBin "aider" ''
-        source ${config.age.secrets.aienv.path}
-        ${pkgs.aider-chat}/bin/aider "$@"
-      ''
-    )
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vivaldi" "vscode"];

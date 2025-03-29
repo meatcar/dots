@@ -11,7 +11,7 @@
       ''
     )
   ];
-  package.git.ignores = [
+  programs.git.ignores = [
     ".aider*"
   ];
 }
