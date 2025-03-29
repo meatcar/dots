@@ -1,26 +1,84 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: {
-  imports = [../wayland ../waybar];
+}: let
+  DISPLAY = ":0";
+  winswitch = pkgs.writeScript "winswitch" ''
+    #!/usr/bin/env bash
+    ${lib.getExe pkgs.python3} -u ${./winswitch.py}
+  '';
+in {
+  imports = [
+    ../wayland
+    ../waybar
+    ../fuzzel
+    ../gammastep.nix
+  ];
   home.packages = with pkgs; [
     swaylock
     fuzzel
   ];
-  services.swaync.enable = true;
-  services.swayosd.enable = true;
-  programs.niri = {
+  services.swaync = {
+    enable = true;
     settings = {
-      environment =
-        {
-          DISPLAY = null;
-        };
-      input.focus-follows-mouse.enable = true;
-      input.touchpad.dwtp = true;
+      widgets = [
+        "title"
+        "dnd"
+        "notifications"
+        "volume"
+        "mpris"
+      ];
+    };
+  };
+  services.gnome-keyring.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+    configPackages = [pkgs.niri];
+  };
+  services.swayosd.enable = true;
+  services.copyq.enable = true;
+  programs.niri = let
+    workspace-names = ["me" "work" "code"];
+    workspaces = lib.pipe workspace-names [
+      (lib.imap1 (i: n: {
+        name = "0${toString i}-${n}";
+        value = {name = n;};
+      }))
+      builtins.listToAttrs
+    ];
+  in {
+    settings = {
+      inherit workspaces;
+      environment = {
+        inherit DISPLAY;
+      };
+      spawn-at-startup = [
+        {command = ["${lib.getExe pkgs.xwayland-satellite}" "${DISPLAY}"];}
+        {command = ["${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY=${DISPLAY}" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];}
+      ];
+      cursor = {
+        size = 16;
+        theme = "Posy_Cursor";
+      };
+      input.focus-follows-mouse = {
+        enable = true;
+        max-scroll-amount = "10%";
+      };
+      input.touchpad = {
+        dwtp = true;
+        scroll-factor = 0.8;
+        drag-lock = true;
+      };
+      input.trackpoint = {
+        accel-profile = "flat";
+      };
       hotkey-overlay.skip-at-startup = true;
       prefer-no-csd = true;
+      outputs."eDP-1" = {
+        scale = 1.0;
+      };
       layout.preset-column-widths = [
         {proportion = 1.0 / 3.0;}
         {proportion = 1.0 / 2.0;}
@@ -35,26 +93,34 @@
       ];
       layout.always-center-single-column = true;
       layout.tab-indicator = {
-        position = "top";
+        position = "right";
       };
-
-      workspaces."1-me" = {name = "me";};
-      workspaces."2-work" = {name = "work";};
-      workspaces."3-code" = {name = "code";};
 
       switch-events.lid-close.action.spawn = ["systemctl" "suspend"];
       binds =
         {
           "Mod+Shift+Slash".action.show-hotkey-overlay = {};
-          "Mod+Return".action.spawn = "ghostty";
+          "Mod+Return".action.spawn = ["ghostty"];
           "Mod+Return".repeat = false;
-          "Mod+P".action.spawn = "fuzzel";
+          "Mod+P".action.spawn = ["fuzzel"];
           "Mod+P".repeat = false;
-          "Mod+Shift+P".action.spawn = "1password --quick-access --ozone-platform-hint=auto";
+          "Mod+Shift+P".action.spawn = ["1password" "--quick-access"];
           "Mod+Shift+P".repeat = false;
-          "Mod+Shift+N".action.spawn = "swaync-client -t -sw";
+          "Mod+Shift+N".action.spawn = ["swaync-client" "-t" "-sw"];
           "Mod+Shift+N".repeat = false;
-          "Mod+N".action.spawn = "swaync-client --hide-latest -sw";
+          "Mod+N".action.spawn = ["swaync-client" "--hide-latest" "-sw"];
+          "Mod+V".action.spawn = ["copyq" "toggle"];
+          "Mod+W".action.spawn = "${winswitch}";
+          "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
+          "Mod+C".action.spawn = "${lib.getExe pkgs.hyprpicker}";
+          "Mod+E".action.spawn = "${lib.getExe pkgs.nautilus}";
+
+          "XF86AudioRaiseVolume".action.spawn = ["swayosd-client" "--output-volume=raise"];
+          "XF86AudioLowerVolume".action.spawn = ["swayosd-client" "--output-volume=lower"];
+          "XF86AudioMute".action.spawn = ["swayosd-client" "--output-volume=mute-toggle"];
+          "XF86AudioMicMute".action.spawn = ["swayosd-client" "--input-volume=mute-toggle"];
+          "XF86MonBrightnessUp".action.spawn = ["swayosd-client" "--brightness=raise"];
+          "XF86MonBrightnessDown".action.spawn = ["swayosd-client" "--brightness=lower"];
 
           "Mod+Shift+Q".action.quit = {};
 
@@ -71,14 +137,16 @@
 
           "Mod+H".action.focus-column-or-monitor-left = {};
           "Mod+L".action.focus-column-or-monitor-right = {};
-          "Mod+K".action.focus-window-or-monitor-up = {};
-          "Mod+J".action.focus-window-or-monitor-down = {};
+          "Mod+K".action.focus-window-or-workspace-up = {};
+          "Mod+J".action.focus-window-or-workspace-down = {};
           "Mod+Shift+H".action.consume-or-expel-window-left = {};
           "Mod+Shift+L".action.consume-or-expel-window-right = {};
           "Mod+Shift+K".action.move-window-up = {};
           "Mod+Shift+J".action.move-window-down = {};
           "Mod+Alt+H".action.move-column-left-or-to-monitor-left = {};
           "Mod+Alt+L".action.move-column-right-or-to-monitor-right = {};
+          "Mod+Alt+K".action.move-column-to-workspace-up = {};
+          "Mod+Alt+J".action.move-column-to-workspace-down = {};
           "Mod+Ctrl+H".action.focus-monitor-left = {};
           "Mod+Ctrl+L".action.focus-monitor-right = {};
           "Mod+Ctrl+J".action.focus-monitor-up = {};
@@ -112,30 +180,23 @@
           "Print".action.screenshot = {};
           "Mod+Print".action.screenshot-window = {};
           "Mod+Shift+Print".action.screenshot-screen = {};
-
-          "Mod+1".action.focus-workspace = 1;
-          "Mod+Shift+1".action.move-window-to-workspace = 1;
-          "Mod+Alt+1".action.move-column-to-workspace = 1;
-          "Mod+2".action.focus-workspace = 2;
-          "Mod+Shift+2".action.move-window-to-workspace = 2;
-          "Mod+Alt+2".action.move-column-to-workspace = 2;
-          "Mod+3".action.focus-workspace = 2;
-          "Mod+Shift+3".action.move-window-to-workspace = 3;
-          "Mod+Alt+3".action.move-column-to-workspace = 3;
         }
+        # Map 1-9 to workspaces
         // (lib.pipe 9 [
           (builtins.genList (x: x + 1))
-          (builtins.map (n: [
+          (builtins.map (n: let
+            nstr = builtins.toString n;
+          in [
             {
-              name = "Mod+${builtins.toString n}";
+              name = "Mod+${nstr}";
               value = {action.focus-workspace = n;};
             }
             {
-              name = "Mod+Shift+${builtins.toString n}";
+              name = "Mod+Shift+${nstr}";
               value = {action.move-window-to-workspace = n;};
             }
             {
-              name = "Mod+Alt+${builtins.toString n}";
+              name = "Mod+Alt+${nstr}";
               value = {action.move-column-to-workspace = n;};
             }
           ]))
@@ -170,6 +231,30 @@
           shadow.color = "#7d0d2d70";
           tab-indicator.active.color = "#f38ba8";
           tab-indicator.inactive.color = "#7d0d2d";
+        }
+        {
+          # Private Tray Floater
+          matches = [{app-id = "copyq";}];
+          open-floating = true;
+          default-floating-position.relative-to = "bottom-right";
+          default-floating-position.x = 0;
+          default-floating-position.y = 0;
+          block-out-from = "screen-capture";
+        }
+        {
+          # Private Floater
+          matches = [
+            {app-id = "opensnitch_ui";}
+            {title = "^.+ Mail - Vivaldi$";} # gmail notification summon
+            {app-id = "org.kde.polkit-kde-authentication-agent-1";}
+          ];
+          open-floating = true;
+          block-out-from = "screen-capture";
+        }
+        {
+          # Public Floater
+          matches = [{app-id = "it.mijorus.smile";}];
+          open-floating = true;
         }
       ];
     };
