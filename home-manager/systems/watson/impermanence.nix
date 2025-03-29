@@ -29,7 +29,6 @@
         ".local/state/syncthing"
         ".cache/less"
         ".local/state/wireplumber"
-        ".config/op"
         ".config/aws"
         ".config/1Password"
         {

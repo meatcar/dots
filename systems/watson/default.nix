@@ -17,6 +17,7 @@
     # ../../modules/docker.nix
     ../../modules/podman.nix
     ../../modules/fingerprint.nix
+    ../../modules/1password
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "24.11";
@@ -90,9 +91,7 @@
   services.automatic-timezoned.enable = true;
 
   programs.niri.enable = true;
-  programs._1password.enable = true;
-  programs._1password-gui.enable = true;
-  programs._1password-gui.polkitPolicyOwners = ["meatcar"];
+
   services.opensnitch.enable = true;
 
   nix.settings.trusted-users = ["meatcar"];
