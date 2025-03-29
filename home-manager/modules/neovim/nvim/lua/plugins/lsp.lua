@@ -9,6 +9,7 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
+    version = "*",
     event = me.o.events.buf_early,
     dependencies = {
       { "b0o/schemastore.nvim" },
@@ -121,7 +122,7 @@ return {
       { '<leader>lh', '<Cmd>Lspsaga hover_doc<CR>',               desc = 'Hover Doc' },
       { '<leader>ls', '<Cmd>Lspsaga signature_help<CR>',          desc = 'Signature' },
       { '<leader>lm', '<Cmd>Lspsaga rename<CR>',                  desc = 'Rename' },
-      { '<leader>ld', '<Cmd>Lspsaga preview_definition<CR>',      desc = 'Definition' },
+      { '<leader>ld', '<Cmd>Lspsaga peek_definition<CR>',         desc = 'Definition' },
       { '<leader>li', '<Cmd>Lspsaga show_line_diagnostics<CR>',   desc = 'Line info' },
       { '<leader>lc', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', desc = 'Cursor info' },
       { '<leader>la', '<Cmd>Lspsaga range_code_action<CR>',       desc = 'Action',     mode = 'v' },
