@@ -11,6 +11,7 @@
     ../../modules/gnome-keyring.nix
     ../../modules/firefox
     ../../modules/gnome-shell
+    ../../modules/darkman
     ../../modules/niri
     ../../modules/1password
     # ../../modules/docker
