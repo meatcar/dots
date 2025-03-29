@@ -18,8 +18,8 @@
     ../../modules/ghostty
     ../../modules/obsidian
     ../../modules/vscode
-    # ../../modules/zed
     ../../modules/aider
+    ../../modules/zed
     ../../modules/calendar
     ../../modules/evince
     ./impermanence.nix
