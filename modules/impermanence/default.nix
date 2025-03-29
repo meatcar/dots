@@ -15,6 +15,7 @@ in {
     ./fprintd.nix
     ./docker.nix
     ./podman.nix
+    ./meatcar.nix
   ];
   # Setup a service that will automatically rollback the root subvolume to a fresh state.
   boot.initrd.systemd.services.rollback = {
