@@ -73,6 +73,7 @@ in {
       glab # gitlab CLI
       git-absorb # quick fixup rebases
       gitu # cli magit
+      git-crypt # transparent encryption
       ;
   };
 
