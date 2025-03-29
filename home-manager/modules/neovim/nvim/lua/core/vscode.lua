@@ -1,5 +1,5 @@
 -- Sync vim yanking with system clipboard
-vim.o.clipboard = "unnamedplus"
+vim.opt.clipboard:append("unnamedplus")
 
 vim.keymap.set('x', 'gc', '<Plug>VSCodeCommentary', {})
 vim.keymap.set('n', 'gc', '<Plug>VSCodeCommentary', {})

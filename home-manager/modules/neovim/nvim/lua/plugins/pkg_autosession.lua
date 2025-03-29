@@ -2,6 +2,7 @@ return {
 
   { -- associate sessions with cwd
     'rmagatti/auto-session',
+    lazy = false,
     keys = {
       { '<leader>vss', '<cmd>SessionSave<CR>',        desc = 'Save' },
       { '<leader>vsd', '<cmd>SessionDelete<CR>',      desc = 'Delete' },
