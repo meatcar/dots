@@ -79,4 +79,7 @@
   };
 
   xdg.systemDirs.data = ["${config.home.homeDirectory}/.nix-profile/share/applications"];
+
+  xdg.mime.enable = true;
+  xdg.mimeApps.enable = true;
 }
