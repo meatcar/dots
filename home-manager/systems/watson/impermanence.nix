@@ -19,6 +19,8 @@
         "Documents"
         "Sync"
         ".ssh"
+        ".local/share/calendars"
+        ".local/share/vdirsyncer"
         ".local/share/fonts"
         # ".cache/nix"
         # ".local/state/nix"

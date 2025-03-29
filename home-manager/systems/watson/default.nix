@@ -19,6 +19,7 @@
     ../../modules/obsidian
     ../../modules/vscode
     # ../../modules/zed
+    ../../modules/calendar
     ./impermanence.nix
   ];
 
