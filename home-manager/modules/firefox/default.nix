@@ -21,7 +21,6 @@
     recursive = true;
   };
 
-  xdg.mime.enable = true;
   xdg.mimeApps.defaultApplications = let
     browser = "firefox.desktop";
   in {
