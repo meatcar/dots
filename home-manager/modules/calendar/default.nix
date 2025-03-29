@@ -8,7 +8,7 @@
 in {
   options.me.calendar.accounts = let
     account.primaryCollection = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       description = "Primary calendar";
     };
     account.primary = lib.mkOption {
