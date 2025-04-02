@@ -115,8 +115,8 @@
             default = ["󰕿" "󰖀" "󰕾"];
             default-muted = "󰸈";
           };
-          on-click-right = "${lib.getExe pkgs.pavucontrol} --tab=3";
-          on-click = "${pkgs.swayosd}/bin/swayosd-client --output-volume=mute-toggle";
+          on-click = "${lib.getExe pkgs.pavucontrol} --tab=3";
+          on-click-right = "${pkgs.swayosd}/bin/swayosd-client --output-volume=mute-toggle";
           on-click-up = "${pkgs.swayosd}/bin/swayosd-client --output-volume=raise";
           on-click-down = "${pkgs.swayosd}/bin/swayosd-client --output-volume=lower";
           smooth-scrolling-threshold = 1;
@@ -133,8 +133,8 @@
           format-source = "";
           format-source-muted = "";
           tooltip-format = "{volume}% {format_source} ";
-          on-click-right = "${lib.getExe pkgs.pavucontrol} --tab=4";
-          on-click = "${pkgs.swayosd}/bin/swayosd-client --input-volume=mute-toggle";
+          on-click = "${lib.getExe pkgs.pavucontrol} --tab=4";
+          on-click-right = "${pkgs.swayosd}/bin/swayosd-client --input-volume=mute-toggle";
           on-click-up = "${pkgs.swayosd}/bin/swayosd-client --input-volume=raise";
           on-click-down = "${pkgs.swayosd}/bin/swayosd-client --input-volume=lower";
         };
