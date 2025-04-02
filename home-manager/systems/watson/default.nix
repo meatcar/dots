@@ -22,6 +22,7 @@
     ../../modules/zed
     ../../modules/calendar
     ../../modules/evince
+    ../../modules/spotify
     ./impermanence.nix
   ];
 
