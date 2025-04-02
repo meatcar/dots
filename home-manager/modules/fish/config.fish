@@ -38,3 +38,5 @@ fzf_configure_bindings
 if [ -z "$SSH_AUTH_SOCK" ] && command -qs gnome-keyring-daemon
     gnome-keyring-daemon --start --components=pkcs11,secrets,ssh | fishify -x | source -
 end
+
+set -U --append __done_exclude '^tmux'
