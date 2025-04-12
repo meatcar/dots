@@ -103,6 +103,11 @@
 
   services.opensnitch.enable = true;
 
+  # for nautilus
+  environment.pathsToLink = [
+    "/share/nautilus-python/extensions"
+  ];
+
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;
   users.users.meatcar = {
