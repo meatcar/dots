@@ -19,6 +19,7 @@
     ../../modules/podman.nix
     ../../modules/fingerprint.nix
     ../../modules/1password
+    ../../modules/printing
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "24.11";
@@ -68,7 +69,6 @@
   services.t14-micmuteled.enable = true;
 
   networking.hostName = "watson"; # Define your hostname.
-  services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
