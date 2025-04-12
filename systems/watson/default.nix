@@ -70,6 +70,20 @@
   services.t14-micmuteled.enable = true;
 
   networking.hostName = "watson"; # Define your hostname.
+  networking.nameservers = [
+    "8.8.8.8#dns.google"
+    "1.1.1.1#cloudflare-dns.com"
+  ];
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+  };
+  # FIX for https://github.com/systemd/systemd/issues/35654
+  systemd.services.systemd-resolved = {
+    wantedBy = ["network-online.target"];
+    after = ["network-online.target"];
+    partOf = ["network-online.target"];
+  };
 
   environment.systemPackages = with pkgs; [
     neovim
