@@ -30,6 +30,9 @@ in {
   services.swayosd.enable = true;
   services.copyq.enable = true;
   programs.niri = let
+    lock = pkgs.writeShellScript "lock" ''
+      ${lib.getExe pkgs.swaylock-effects} --screenshots --clock --effect-pixelate 40
+    '';
     workspace-names = ["me" "work" "code"];
     workspaces = lib.pipe workspace-names [
       (lib.imap1 (i: n: {
@@ -47,6 +50,17 @@ in {
       spawn-at-startup = [
         {command = ["${lib.getExe pkgs.xwayland-satellite}" "${DISPLAY}"];}
         {command = ["${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "DISPLAY=${DISPLAY}" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];}
+        {
+          command = [
+            "${lib.getExe pkgs.swayidle}"
+            "timeout"
+            (builtins.toString (60 * 15))
+            "niri msg power-off-monitors"
+            "timeout"
+            (builtins.toString (60 * 20))
+            "${lock}"
+          ];
+        }
       ];
       cursor = {
         size = 16;
