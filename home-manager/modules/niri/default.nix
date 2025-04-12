@@ -126,12 +126,14 @@ in {
           "XF86MonBrightnessUp".action.spawn = ["swayosd-client" "--brightness=raise"];
           "XF86MonBrightnessDown".action.spawn = ["swayosd-client" "--brightness=lower"];
 
+          "Mod+Q".action.power-off-monitors = {};
           "Mod+Shift+Q".action.quit = {};
 
           "Mod+D".action.close-window = {};
           "Mod+O".action.focus-window-previous = {};
-          "Mod+Z".action.maximize-column = {};
-          "Mod+Shift+Z".action.fullscreen-window = {};
+          "Mod+Z".action.expand-column-to-available-width = {};
+          "Mod+F".action.maximize-column = {};
+          "Mod+Shift+F".action.fullscreen-window = {};
           "Mod+B".action.center-window = {};
 
           "Mod+Tab".action.focus-workspace-down = {};
@@ -173,7 +175,6 @@ in {
           "Mod+T".action.toggle-column-tabbed-display = {};
           "Mod+Minus".action.set-column-width = "-5%";
           "Mod+Equal".action.set-column-width = "+5%";
-          "Mod+0".action.expand-column-to-available-width = {};
           "Mod+Shift+Minus".action.set-window-height = "-5%";
           "Mod+Shift+Equal".action.set-window-height = "+5%";
           "Mod+Shift+0".action.reset-window-height = {};
