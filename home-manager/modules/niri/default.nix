@@ -15,6 +15,7 @@ in {
     ../fuzzel
     ../gammastep.nix
     ../swaync
+    ../nautilus
   ];
   home.packages = with pkgs; [
     swaylock
