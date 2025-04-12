@@ -51,7 +51,7 @@
 
   gtk.iconCache.enable = true;
 
-  environment.enableAllTerminfo = true;
+  environment.enableAllTerminfo = lib.mkDefault true;
 
   xdg = {
     icons.enable = true;

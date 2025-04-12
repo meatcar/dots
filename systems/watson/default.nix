@@ -119,6 +119,7 @@
   services.opensnitch.enable = true;
   services.tailscale.enable = true;
 
+  environment.enableAllTerminfo = lib.mkForce false;
 
   # for nautilus
   environment.pathsToLink = [
