@@ -117,6 +117,8 @@
   programs.niri.enable = true;
 
   services.opensnitch.enable = true;
+  services.tailscale.enable = true;
+
 
   # for nautilus
   environment.pathsToLink = [
