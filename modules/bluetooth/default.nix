@@ -6,11 +6,11 @@
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez;
-    powerOnBoot = false;
+    powerOnBoot = true;
     # hsphfpd.enable = !config.services.pipewire.wireplumber.enable; # conflicts
   };
 
-  hardware.pulseaudio = {
+  services.pulseaudio = {
     extraModules = [pkgs.pulseaudio-modules-bt];
     package = pkgs.pulseaudioFull;
   };
