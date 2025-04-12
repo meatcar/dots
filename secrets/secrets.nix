@@ -7,4 +7,6 @@ in {
   # https://console.cloud.google.com/auth/clients/create
   "gcalClientId.age".publicKeys = systems;
   "gcalClientSecret.age".publicKeys = systems;
+  "spotifyClientId.age".publicKeys = systems;
+  "spotifyClientSecret.age".publicKeys = systems;
 }

@@ -91,6 +91,11 @@
     emulateWheel = true;
   };
 
+  networking.firewall.allowedTCPPorts = [
+    57621 # for spotify
+    5353 # for chromecast
+  ];
+
   time.timeZone = lib.mkDefault "Canada/Eastern";
   services.automatic-timezoned.enable = true;
 
