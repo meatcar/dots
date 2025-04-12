@@ -31,7 +31,10 @@ return {
         go = { 'gofmt' },
         clojure = { 'joker' },
       },
-      format_after_save = { lsp_fallback = true },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+      format_after_save = {},
     },
     init = function()
       vim.o.formatexpr = [[ v:lua.require'conform'.formatexpr() ]]
