@@ -82,6 +82,16 @@ in {
       prefer-no-csd = true;
       outputs."eDP-1" = {
         scale = 1.0;
+        position = {
+          x = 0;
+          y = 0;
+        };
+      };
+      outputs."LG Electronics LG HDR WFHD 0x0003DA2B" = {
+        position = {
+          x = 1920;
+          y = 0;
+        };
       };
       layout.preset-column-widths = [
         {proportion = 1.0 / 3.0;}
