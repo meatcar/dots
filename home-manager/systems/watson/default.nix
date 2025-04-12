@@ -31,6 +31,9 @@
     pciutils
     code-cursor
     calibre
+    gimp
+    loupe
+    pantheon.epiphany
   ];
 
   home.sessionVariables = {
@@ -44,5 +47,6 @@
 
   services.syncthing.enable = true;
   services.opensnitch-ui.enable = true;
+  services.easyeffects.enable = true;
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
