@@ -45,6 +45,21 @@
           },
         ]
       '')
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-disable-devices.conf" ''
+        monitor.alsa.rules = [
+          {
+            matches = [
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI1__sink" },
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI2__sink" },
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI3__sink" },
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI4__sink" },
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI5__sink" },
+              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI6__sink" }
+            ]
+            actions = { update-props = { devices.disabled = true} }
+          },
+        ]
+      '')
     ];
   };
 }
