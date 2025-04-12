@@ -12,4 +12,7 @@
     ".repomixignore"
     "memory-bank/"
   ];
+  home.sessionVariables = {
+    "NEXT_TELEMETRY_DISABLED" = "1";
+  };
 }
