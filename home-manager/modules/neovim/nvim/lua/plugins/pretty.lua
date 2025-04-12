@@ -98,12 +98,26 @@ return {
   { -- highlight word under cursor
     'RRethy/vim-illuminate',
     event = me.o.events.buf_late,
-    config = function()
-      vim.g.Illuminate_ftblacklist = _G.me.o.panels
-      vim.keymap.set('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>')
-      vim.keymap.set('n', '<a-p>',
-        '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>')
-    end,
+    keys = {
+      {
+        'n',
+        '<a-n>',
+        function() require('illuminate').next_reference { wrap = true } end,
+        desc = 'Next occurence of word under cursor'
+      },
+      {
+        'n',
+        '<a-p>',
+        function()
+          require('illuminate').next_reference { reverse = true, wrap = true }
+        end,
+        desc = 'Previous occurence of word under cursor'
+      },
+    },
+    opts = {
+      filetypes_denylist = _G.me.o.panels,
+    },
+    config = true
   },
 
   {
