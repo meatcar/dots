@@ -6,7 +6,11 @@ return {
     config = true,
     opts = {
       panel = {
-        enabled = false
+        enabled = false,
+        auto_refresh = true
+      },
+      suggestion = {
+        auto_trigger = true,
       }
     },
   },
@@ -32,6 +36,5 @@ return {
       { "<leader>oac",     "<cmd>CodeCompanionChat toggle<cr>", mode = { 'n', 'v' }, desc = "Chat" },
       { "<localleader>aa", "<cmd>CodeCompanionChat Add<cr>",    mode = { "v" } },
     }
-
   },
 }
