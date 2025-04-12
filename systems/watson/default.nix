@@ -13,6 +13,7 @@
     ../../modules/laptop
     ../../modules/geoclue
     ../../modules/pipewire
+    ../../modules/bluetooth
     ../../modules/display-manager
     ../../modules/keyd
     ../../modules/podman.nix
@@ -83,7 +84,6 @@
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 
-  hardware.bluetooth.enable = true;
   services.hardware.bolt.enable = true;
   services.gnome.gnome-keyring.enable = true;
   hardware.trackpoint = {
