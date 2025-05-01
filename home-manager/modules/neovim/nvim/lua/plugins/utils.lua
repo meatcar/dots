@@ -215,40 +215,41 @@ return {
     opts = {
       provider = 'duckduckgo'
     },
-    {
-      'epwalsh/obsidian.nvim',
-      cmd = {
-        'ObsidianOpen', 'ObsidianNew',
-        'ObsidianQuickSwitch',
-        'ObsidianFollowLink', 'ObsidianBacklinks',
-        'ObsidianToday', 'ObsidianYesterday',
-        'ObsidianTemplate',
-        'ObsidianSearch',
-        'ObsidianLink', 'ObsidianLinkNew',
+  },
+  {
+    'obsidian-nvim/obsidian.nvim',
+    cmd = {
+      'Obsidian'
+    },
+    keys = {
+      { '<leader>ny', '<Cmd>Obsidian yesterday<CR>',  desc = 'Journal yesterday' },
+      { '<leader>nl', '<Cmd>Obsidian linknew<Space>', desc = 'Link to a note' },
+    },
+    opts = {
+      dir = vim.fn.environ().NOTES_DIR,
+      daily_notes = {
+        folder = "journal/daily",
+        workdays_only = false,
       },
-      keys = {
-        { '<leader>ny', '<Cmd>ObsidianYesterday<CR>',  desc = 'Journal yesterday' },
-        { '<leader>nl', '<Cmd>ObsidianLinkNew<Space>', desc = 'Link to a note' },
-      },
-      config = function()
-        ---@diagnostic disable-next-line: missing-fields
-        require('obsidian').setup {
-          dir = vim.fn.environ().NOTES_DIR,
-          daily_notes = {
-            folder = "journal/daily"
-          },
-          mappings = {
-            -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-            ["gf"] = require("obsidian.mapping").gf_passthrough(),
-          },
-          note_id_func = require('core/notes').notename,
-          templates = {
-            subdir = "templates",
-            date_format = "%Y-%m-%d",
-            time_format = "%H:%M",
-          },
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ["gf"] = {
+          action = function() return require("obsidian").util.gf_passthrough() end,
+          opts = { noremap = false, expr = true, buffer = true },
         }
-      end
+      },
+      completion = {
+        blink = true,
+      },
+      note_id_func = require('core/notes').notename,
+      templates = {
+        folder = "templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+      },
+      picker = {
+        name = "telescope.nvim"
+      }
     }
   },
 
