@@ -23,7 +23,7 @@ in {
   ];
   services.gnome-keyring.enable = true;
   xdg.portal = {
-    enable = true;
+    enable = lib.mkDefault true;
     extraPortals = [pkgs.xdg-desktop-portal-gnome];
     configPackages = [pkgs.niri];
   };
@@ -55,10 +55,10 @@ in {
             "${lib.getExe pkgs.swayidle}"
             "timeout"
             (builtins.toString (60 * 15))
-            "niri msg power-off-monitors"
-            "timeout"
-            (builtins.toString (60 * 20))
-            "${lock}"
+            "niri msg action power-off-monitors"
+            # "timeout"
+            # (builtins.toString (60 * 20))
+            # "${lock}"
           ];
         }
       ];
