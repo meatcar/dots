@@ -75,11 +75,17 @@
       ".cache/libgweather"
       ".cache/geocode-glib"
       ".cache/clipboard-indicator@tudmotu.com"
+
+      # code
       ".cache/treefmt"
       ".cache/pre-commit"
       ".cache/nix"
       ".cursor"
       ".config/Cursor"
+      {
+        directory = ".local/share/uv";
+        mode = "0755";
+      }
     ];
   };
 }
