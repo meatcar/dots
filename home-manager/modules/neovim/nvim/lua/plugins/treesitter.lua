@@ -82,18 +82,10 @@ return {
       }
     end,
   },
-  { -- add to function blocks
-
+  { -- close function blocks
     'RRethy/nvim-treesitter-endwise',
     event = me.o.events.insert,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        endwise = {
-          enable = true,
-        },
-      }
-    end,
+    opts = {}
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
