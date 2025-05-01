@@ -15,6 +15,7 @@
     ../../modules/pipewire
     ../../modules/bluetooth
     ../../modules/display-manager
+    # ../../modules/displaylink
     ../../modules/keyd
     ../../modules/podman.nix
     ../../modules/fingerprint.nix
