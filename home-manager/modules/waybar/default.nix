@@ -32,6 +32,7 @@
         modules-left = [
           "custom/notification"
           "niri/workspaces"
+          "hyprland/workspaces"
         ];
         modules-center = [];
         modules-right = [
@@ -68,6 +69,9 @@
           on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-dnd --skip-wait";
           on-click-middle = "${pkgs.swaynotificationcenter}/bin/swaync-client --close-latest";
           escape = "true";
+        };
+        "hyprland/workspaces" = {
+          format = "{icon}";
         };
         "niri/workspaces" = {
           format = "{icon}";
