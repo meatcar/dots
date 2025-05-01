@@ -32,6 +32,7 @@
     code-cursor
     calibre
     gimp
+    inkscape
     loupe
     pantheon.epiphany
   ];
