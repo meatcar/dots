@@ -11,6 +11,7 @@
     ../../modules/impermanence
     ../../modules/secureboot
     ../../modules/laptop
+    ../../modules/resolved
     ../../modules/geoclue
     ../../modules/pipewire
     ../../modules/bluetooth
@@ -21,6 +22,7 @@
     ../../modules/fingerprint.nix
     ../../modules/1password
     ../../modules/printing
+    ../../modules/opensnitch
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "24.11";
@@ -75,16 +77,6 @@
     "8.8.8.8#dns.google"
     "1.1.1.1#cloudflare-dns.com"
   ];
-  services.resolved = {
-    enable = true;
-    dnsovertls = "true";
-  };
-  # FIX for https://github.com/systemd/systemd/issues/35654
-  systemd.services.systemd-resolved = {
-    wantedBy = ["network-online.target"];
-    after = ["network-online.target"];
-    partOf = ["network-online.target"];
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -117,7 +109,6 @@
 
   programs.niri.enable = true;
 
-  services.opensnitch.enable = true;
   services.tailscale.enable = true;
 
   environment.enableAllTerminfo = lib.mkForce false;
@@ -126,6 +117,7 @@
   environment.pathsToLink = [
     "/share/nautilus-python/extensions"
   ];
+  # programs.hyprland.enable = true;
 
   nix.settings.trusted-users = ["meatcar"];
   users.mutableUsers = false;
