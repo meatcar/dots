@@ -12,6 +12,7 @@
     ../../modules/firefox
     ../../modules/darkman
     ../../modules/niri
+    # ../../modules/hyperland
     ../../modules/1password
     # ../../modules/docker
     ../../modules/activitywatch
