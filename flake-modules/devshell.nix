@@ -10,6 +10,8 @@
         (nixos-rebuild.override {nix = nixVersions.stable;})
         stow
         inputs.agenix.packages.${system}.default
+        nil # nix lsp server
+        nixd
       ];
       NIX_PATH = builtins.concatStringsSep ":" [
         "nixpkgs=${inputs.nixpkgs}"
