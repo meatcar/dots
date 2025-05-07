@@ -41,6 +41,7 @@ in {
       }))
       builtins.listToAttrs
     ];
+    inTerminal = cmd: ["${lib.getExe pkgs.ghostty}" "--gtk-single-instance=false" "--title=float" "-e"] ++ cmd;
   in {
     settings = {
       inherit workspaces;
@@ -114,7 +115,7 @@ in {
       binds =
         {
           "Mod+Shift+Slash".action.show-hotkey-overlay = {};
-          "Mod+Return".action.spawn = ["ghostty"];
+          "Mod+Return".action.spawn = "ghostty";
           "Mod+Return".repeat = false;
           "Mod+P".action.spawn = ["fuzzel"];
           "Mod+P".repeat = false;
@@ -128,6 +129,7 @@ in {
           "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
           "Mod+C".action.spawn = "${lib.getExe pkgs.hyprpicker}";
           "Mod+E".action.spawn = "${lib.getExe pkgs.nautilus}";
+          "Mod+O".action.spawn = inTerminal ["p" "zeditor" "-n" "."];
 
           "XF86AudioRaiseVolume".action.spawn = ["swayosd-client" "--output-volume=raise"];
           "XF86AudioLowerVolume".action.spawn = ["swayosd-client" "--output-volume=lower"];
@@ -140,7 +142,6 @@ in {
           "Mod+Shift+Q".action.quit = {};
 
           "Mod+D".action.close-window = {};
-          "Mod+O".action.focus-window-previous = {};
           "Mod+Z".action.expand-column-to-available-width = {};
           "Mod+F".action.maximize-column = {};
           "Mod+Shift+F".action.fullscreen-window = {};
@@ -230,7 +231,9 @@ in {
           clip-to-geometry = true;
         }
         {
-          matches = [{is-floating = true;}];
+          matches = [
+            {is-floating = true;}
+          ];
           shadow.enable = true;
           shadow.draw-behind-window = true;
         }
@@ -255,6 +258,14 @@ in {
           default-floating-position.x = 0;
           default-floating-position.y = 0;
           block-out-from = "screen-capture";
+        }
+        {
+          # Public Floater
+          matches = [
+            {app-id = "float";}
+            {title = "float";}
+          ];
+          open-floating = true;
         }
         {
           # Private Floater
