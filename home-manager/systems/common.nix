@@ -44,6 +44,24 @@
     (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
       echo dark
     ''))
+    (pkgs.writeShellScriptBin "p" ''
+      set -eu -o pipefail
+      if [ "$#" -eq 0 ]; then
+        echo "usage: $0 [editor cmd line]" >&2
+        echo "       run a command in a zoxide directory" >&2
+        exit 1
+      fi
+      edit="$@"
+
+      dir=$(${pkgs.zoxide}/bin/zoxide query -i)
+      cd "$dir"
+
+      if [ -f ".envrc" ]; then
+        ${pkgs.direnv}/bin/direnv exec . $edit
+      else
+        $edit
+      fi
+    '')
   ];
 
   xdg.enable = true;
@@ -63,7 +81,7 @@
   programs.fd.enable = true;
   programs.jq.enable = true;
   programs.fzf.enable = true;
-  programs.lsd.enableAliases = true;
+  programs.lsd.enable = true;
   programs.dircolors.enable = true;
   programs.zoxide.enable = true;
   programs.pay-respects.enable = true;
