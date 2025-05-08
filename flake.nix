@@ -69,6 +69,18 @@
       url = "github:KiKaraage/ArcWTF";
       flake = false;
     };
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-delta = {
+      url = "github:catppuccin/delta";
+      flake = false;
+    };
+    catppuccin-swaync = {
+      url = "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css";
+      flake = false;
+    };
   };
 
   outputs = inputs: let
