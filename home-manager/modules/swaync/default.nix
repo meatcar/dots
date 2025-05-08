@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{specialArgs, ...}: {
   services.swaync = {
     enable = true;
     settings = {
@@ -32,13 +32,9 @@
       };
     };
     style = let
-      version = "0.2.3";
-      cattpuccin-mocha = builtins.readFile (pkgs.fetchurl {
-        url = "https://github.com/catppuccin/swaync/releases/download/v${version}/mocha.css";
-        hash = "sha256-Hie/vDt15nGCy4XWERGy1tUIecROw17GOoasT97kIfc=";
-      });
+      cattpuccin-mocha = "${specialArgs.inputs.catppuccin-swaync}";
     in ''
-      ${cattpuccin-mocha}
+      ${builtins.readFile cattpuccin-mocha}
 
       * {
         font-family: "Symbols Nerd Font", sans-serif;
