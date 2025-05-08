@@ -58,14 +58,9 @@
   pager = delta
   fsmonitor = true
   untrackedCache = true
+
 [interactive]
   diffFilter = delta --color-only
-[delta]
-  navigate = true
-[delta "light"]
-  light = true
-[delta "dark"]
-  light = false
 
 [branch]
   sort = -committerdate
@@ -107,5 +102,3 @@
   autoSquash = true
   autoStash = true
   updateRefs = true
-
-

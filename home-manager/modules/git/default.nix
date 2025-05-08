@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  specialArgs,
+  ...
+}: let
   gitmessage = pkgs.writeText "gitmessage" ''
 
     # type(scope): applying this commit will...
@@ -21,6 +25,7 @@ in {
     };
     includes = [
       {path = ./config;}
+      {path = "${specialArgs.inputs.catppuccin-delta}/catppuccin.gitconfig";}
       {
         condition = "gitdir:~/git/hub/alipes/**";
         contents = {
@@ -84,6 +89,19 @@ in {
     };
   };
 
+  programs.git.delta.enable = true;
+  programs.git.delta.options = {
+    navigate = true;
+    light = {
+      light = true;
+      features = "catppuccin-latte";
+    };
+    dark = {
+      light = false;
+      features = "catppuccin-mocha";
+    };
+  };
+
   programs.lazygit = {
     enable = true;
     settings = {
@@ -91,6 +109,7 @@ in {
       disableStartupPopups = true;
       gui = {
         showFileTree = true;
+        nerdFontsVersion = "3";
         theme = {
           selectedLineBgColor = ["reverse"];
           selectedRangeBgColor = ["reverse"];
@@ -98,7 +117,7 @@ in {
       };
       git.paging = {
         colorArg = "always";
-        pager = "${pkgs.gitAndTools.delta}/bin/delta";
+        pager = "${pkgs.gitAndTools.delta}/bin/delta --paging=never";
       };
     };
   };
