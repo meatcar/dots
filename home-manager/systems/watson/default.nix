@@ -24,6 +24,7 @@
     ../../modules/calendar
     ../../modules/evince
     ../../modules/spotify
+    ../../modules/television
     ./impermanence.nix
   ];
 
