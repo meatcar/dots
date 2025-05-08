@@ -13,6 +13,7 @@
     ../modules/starship
     ../modules/ssh
     ../modules/direnv
+    ../modules/bat
     ../modules/lsd
     ../modules/tmux
     ../modules/neovim
@@ -85,16 +86,6 @@
   programs.dircolors.enable = true;
   programs.zoxide.enable = true;
   programs.pay-respects.enable = true;
-  programs.bat = {
-    enable = true;
-    config.theme = "ansi";
-    extraPackages = with pkgs.bat-extras; [
-      batdiff
-      batman
-      batgrep
-      batwatch
-    ];
-  };
 
   xdg.systemDirs.data = ["${config.home.homeDirectory}/.nix-profile/share/applications"];
 
