@@ -7,3 +7,6 @@
 
 # style: nix fmt (alejandra => nixfmt)
 5c4272e96ebed599b9eae555cae99c280bbde6ff
+
+# style: nix fmt
+42342171ed579efddfd61202b721d015e9deeded
