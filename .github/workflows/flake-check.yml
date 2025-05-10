@@ -13,10 +13,15 @@ jobs:
       - uses: nix-community/cache-nix-action@v6
         with:
           primary-key: ${{runner.os}}-${{hashFiles('./flake.nix', './flake-modules/**/*.nix', './flake.lock')}}
+      - uses: nicknovitski/nix-develop@v1
 
-      - name: Ensure ssh-agent has private keys loaded
+      - name: load ssh key for agenix
         run: |
           eval "$(ssh-agent -s)"
           ssh-add - <<< '${{ secrets.SSH_KEY }}'
+      - name: load gpg key for git-crypt
+        run: |
+          gpg --batch --import <<< '${{ secrets.GPG_KEY }}'
+      - run: git-crypt unlock
       - name: Run flake check
         run: nix flake check
