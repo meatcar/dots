@@ -20,6 +20,7 @@
     # flake parts
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
     # rest
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # secrets
@@ -110,6 +111,7 @@
       imports = [
         ./flake-modules/devshell.nix
         ./flake-modules/treefmt.nix
+        ./flake-modules/git-hooks.nix
       ];
 
       perSystem =

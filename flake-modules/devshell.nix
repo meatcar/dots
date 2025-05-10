@@ -1,10 +1,15 @@
 { inputs, ... }:
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       devShells.default = pkgs.mkShell {
         name = "dots";
+        inputsFrom = [
+          config.pre-commit.devShell
+          config.treefmt.build.devShell
+        ];
+
         buildInputs = with pkgs; [
           (import inputs.home-manager { inherit pkgs; }).home-manager
           nixVersions.stable
