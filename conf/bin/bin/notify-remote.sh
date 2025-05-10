@@ -5,11 +5,11 @@
 
 delay="2000"
 
-read line
+read -r line
 summary="$line"
-read line
+read -r line
 msg="$line"
-read line
+read -r line
 
 if [ "$line" = "" ] && [ "$summary" != "" ]; then
   # Change the icon

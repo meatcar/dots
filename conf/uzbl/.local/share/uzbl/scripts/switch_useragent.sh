@@ -11,10 +11,10 @@ else
 fi
 
 if [ -z "$8" ]; then
-  new_agent=$(grep -v '^[[:space:]#]' $file | $DMENU $COLORS | perl -p -e 's/^.*?: ?//')
+  new_agent=$(grep -v '^[[:space:]#]' "$file" | $DMENU "$COLORS" | perl -p -e 's/^.*?: ?//')
 else
-  new_agent=$(grep "^$8:" $file | perl -p -e 's/^.*?: ?//')
+  new_agent=$(grep "^$8:" "$file" | perl -p -e 's/^.*?: ?//')
   [ -z "$new_agent" ] && exit 1
 fi
-echo "set useragent = $new_agent" >$UZBL_FIFO
-echo "reload" >$UZBL_FIFO # Reload the page so the new user agent is used.
+echo "set useragent = $new_agent" >"$UZBL_FIFO"
+echo "reload" >"$UZBL_FIFO" # Reload the page so the new user agent is used.

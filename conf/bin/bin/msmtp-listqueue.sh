@@ -2,7 +2,7 @@
 
 QUEUEDIR=${QUEUEDIR:-$HOME/.msmtpqueue}
 
-for i in $QUEUEDIR/*.mail; do
-  egrep -s --colour -h '(^From:|^To:|^Subject:)' "$i" || echo "No mail in queue"
+for i in "$QUEUEDIR"/*.mail; do
+  grep -Es --colour -h '(^From:|^To:|^Subject:)' "$i" || echo "No mail in queue"
   echo " "
 done

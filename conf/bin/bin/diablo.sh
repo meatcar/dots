@@ -6,7 +6,7 @@
 export LAST_PWD=$PWD
 
 #Goes to your diablo 2 install path
-cd "/home/meatcar/Downloads/Diablo II MXL/"
+cd "/home/meatcar/Downloads/Diablo II MXL/" || exit 1
 
 # runs diablo 2 on a new X session at screen 1, on virtual terminal 9.
 #startx /usr/bin/wine 'Game.exe' -3dfx -- :1 vt9 &
@@ -15,5 +15,5 @@ cd "/home/meatcar/Downloads/Diablo II MXL/"
 #wait $DIABLOPID
 wine 'Diablo II.exe' -w
 
-cd $LAST_PWD # On diablo exit, returns to your last working path.
+cd "$LAST_PWD" || exit 1 # On diablo exit, returns to your last working path.
 exit 0
