@@ -11,47 +11,47 @@ AUDIO_USER_ID="$2"
 export PIPEWIRE_RUNTIME_DIR="/run/user/$AUDIO_USER_ID"
 
 get_mic_status() {
-    pw-dump "$1" |
-        jq -r '.[] | select(.type == "PipeWire:Interface:Device") | .info.params.Route[] | select(.direction == "Input") | .props.mute'
+  pw-dump "$1" |
+    jq -r '.[] | select(.type == "PipeWire:Interface:Device") | .info.params.Route[] | select(.direction == "Input") | .props.mute'
 }
 
 update_mic_led() {
-    local device="$1"
-    local mute_status=$(get_mic_status "$device")
-    echo Device ID: "$device" Muted: "$mute_status" >&2
+  local device="$1"
+  local mute_status=$(get_mic_status "$device")
+  echo Device ID: "$device" Muted: "$mute_status" >&2
 
-    if [ "$mute_status" = "true" ]; then
-        echo 1 >"$LED_BRIGHTNESS"
-    else
-        echo 0 >"$LED_BRIGHTNESS"
-    fi
+  if [ "$mute_status" = "true" ]; then
+    echo 1 >"$LED_BRIGHTNESS"
+  else
+    echo 0 >"$LED_BRIGHTNESS"
+  fi
 }
 
 cleanstate() {
-    # state transitions: block => device => direction => input => mute
-    export STATE=""
-    export DEVICE_ID=""
-    export MUTE_STATUS=""
+  # state transitions: block => device => direction => input => mute
+  export STATE=""
+  export DEVICE_ID=""
+  export MUTE_STATUS=""
 }
 cleanstate
 
 # Monitor PipeWire events
 PIPEWIRE_RUNTIME_DIR="/run/user/$AUDIO_USER_ID" pw-mon -p | while read -r line; do
-    if [[ "$line" = "" ]]; then
-        cleanstate
-    elif [[ "$line" =~ ^(changed|added): ]]; then
-        STATE="block"
-    elif [[ "$STATE" = "block" && "$line" =~ ^id:\ ([0-9]+) ]]; then
-        STATE="device"
-        DEVICE_ID="${BASH_REMATCH[1]}"
-    elif [[ "$STATE" = "device" && "$line" =~ ^Prop:\ key\ Spa:Pod:Object:Param:Route:direction\ \(2\) ]]; then
-        STATE="direction"
-    elif [[ "$STATE" = "direction" && "$line" =~ ^Id\ 0\ +\(Spa:Enum:Direction:Input\) ]]; then
-        STATE="input"
-    fi
+  if [[ $line == "" ]]; then
+    cleanstate
+  elif [[ $line =~ ^(changed|added): ]]; then
+    STATE="block"
+  elif [[ $STATE == "block" && $line =~ ^id:\ ([0-9]+) ]]; then
+    STATE="device"
+    DEVICE_ID="${BASH_REMATCH[1]}"
+  elif [[ $STATE == "device" && $line =~ ^Prop:\ key\ Spa:Pod:Object:Param:Route:direction\ \(2\) ]]; then
+    STATE="direction"
+  elif [[ $STATE == "direction" && $line =~ ^Id\ 0\ +\(Spa:Enum:Direction:Input\) ]]; then
+    STATE="input"
+  fi
 
-    if [[ "$STATE" = "input" ]]; then
-        update_mic_led "$DEVICE_ID"
-        cleanstate
-    fi
+  if [[ $STATE == "input" ]]; then
+    update_mic_led "$DEVICE_ID"
+    cleanstate
+  fi
 done

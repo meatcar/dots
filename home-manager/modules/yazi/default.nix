@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.yazi = {
     enable = true;
     keymap = {

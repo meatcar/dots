@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.ghostty = {
     enable = true;
     enableBashIntegration = true;

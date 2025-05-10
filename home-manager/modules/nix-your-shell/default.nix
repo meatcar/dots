@@ -1,4 +1,3 @@
-_:
-{
+_: {
   programs.nix-your-shell.enable = true;
 }

@@ -2,7 +2,7 @@
 
 cd "/home/meatcar/Dropbox/Pics/webcam"
 
-IMAGE=`date +%s`
+IMAGE=$(date +%s)
 
 sleep 1
 
