@@ -81,30 +81,30 @@ rm -f "$tmpdir"/*
 filename=$(basename "$1")
 
 # get rid of the extenson and save the name for later.
-file=$(echo "$filename "| cut -d"." -f1)
+file=$(echo "$filename " | cut -d"." -f1)
 
 if [ $debug = "yes" ]; then
-    {
-        echo "1: $1 2: $2 3: $3"
-        echo "Filename: $filename"
-        echo "File: $file"
-        echo "==========================="
-    } >> "$debug_file"
+  {
+    echo "1: $1 2: $2 3: $3"
+    echo "Filename: $filename"
+    echo "File: $file"
+    echo "==========================="
+  } >>"$debug_file"
 fi
 
 # if the type is empty then try to figure it out.
 if [ -z "$type" ]; then
-    file "$1"
-    type=$(file -bi "$1" | cut -d"/" -f2)
+  file "$1"
+  type=$(file -bi "$1" | cut -d"/" -f2)
 fi
 
 # if the type is '-' then we don't want to mess with type.
 # Otherwise we are rebuilding the name.  Either from the
 # type that was passed in or from the type we discerned.
 if [ "$type" = "-" ]; then
-    newfile=$filename
+  newfile=$filename
 else
-    newfile=$file.$type
+  newfile=$file.$type
 fi
 
 newfile=$tmpdir/$newfile
@@ -114,18 +114,18 @@ newfile=$tmpdir/$newfile
 cp "$1" "$newfile"
 
 if [ $debug = "yes" ]; then
-    {
-        echo "File: $file TYPE: $type"
-        echo "Newfile: $newfile"
-        echo "Open With: $open_with"
-    } >> "$debug_file"
+  {
+    echo "File: $file TYPE: $type"
+    echo "Newfile: $newfile"
+    echo "Open With: $open_with"
+  } >>"$debug_file"
 fi
 
 # If there's no 'open with' then we can let preview do it's thing.
 # Otherwise we've been told what to use.
 
 if [ -z "$open_with" ]; then
-    xdg-open "$newfile"
+  xdg-open "$newfile"
 else
-    "$open_with" "$newfile"
+  "$open_with" "$newfile"
 fi

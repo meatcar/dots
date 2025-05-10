@@ -1,4 +1,3 @@
-_:
-{
+_: {
   services.opensnitch.enable = true;
 }

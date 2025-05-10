@@ -1,12 +1,12 @@
 { inputs, ... }:
 {
   imports = [ inputs.treefmt-nix.flakeModule ];
-  perSystem = _: {
+  perSystem = {
     treefmt = {
       programs.nixfmt.enable = true;
       programs.statix.enable = true;
       programs.deadnix.enable = true;
-      programs.shellcheck.enable = true;
+      programs.shfmt.enable = true;
     };
   };
 }

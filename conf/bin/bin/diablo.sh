@@ -3,7 +3,7 @@
 # Run Diablo 2 on other X instance
 
 # Saves you last working path
-export LAST_PWD=$PWD 
+export LAST_PWD=$PWD
 
 #Goes to your diablo 2 install path
 cd "/home/meatcar/Downloads/Diablo II MXL/"

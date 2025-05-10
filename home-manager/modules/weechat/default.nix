@@ -5,15 +5,13 @@
 {
   home.packages = [
     (pkgs.weechat.override {
-      configure =
-        _:
-        {
-          scripts = with pkgs.weechatScripts; [
-            wee-slack
-            # weechat-matrix
-            multiline
-          ];
-        };
+      configure = _: {
+        scripts = with pkgs.weechatScripts; [
+          wee-slack
+          # weechat-matrix
+          multiline
+        ];
+      };
     })
   ];
   #

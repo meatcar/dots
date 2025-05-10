@@ -1,5 +1,4 @@
-_:
-{
+_: {
   environment.persistence."/persist".users.meatcar = {
     files = [ ];
     directories = [

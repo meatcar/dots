@@ -1,11 +1,10 @@
 #!/bin/sh
 
 # If we get an argument, use it for ssh port, otherwise use default of 22
-if [ -n "$1" ]
-then
-    port=$1
+if [ -n "$1" ]; then
+  port=$1
 else
-    port=22
+  port=22
 fi
 
 host="denys.me"
