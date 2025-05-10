@@ -5,6 +5,7 @@ IFS=$'\n\t'
 ICONS="/home/meatcar/dots/status/xbm8x8"
 fg='#516DA8'
 bg='#D7DCE7'
+echo $fg >/dev/null
 
 function netstatus {
   links=$(ip link | grep 'BROADCAST' | awk '{print $2}' | tr -d ':')
@@ -25,7 +26,7 @@ function netspeed {
 
   links=""
   for link in $(netstatus); do
-    link=$(echo "$link" | sed 's/@.*//')
+    link=${link//@.*//}
     if ip link show "$link" | head -n1 | grep -v 'UP' >/dev/null; then
       net="$net ^bg($bg) ^fg(red)^i($ICONS/info_01) $link ^fg() ^bg()"
       continue
@@ -36,9 +37,9 @@ function netspeed {
   # get the up/down speed
   old=""
   for link in $links; do
-    old_state=$(cat /proc/net/dev | grep $link)
-    old_dn=$(echo ${old_state/*:/} | awk -F " " '{ print $1 }')
-    old_up=$(echo ${old_state/*:/} | awk -F " " '{ print $9 }')
+    old_state=$(grep "$link" </proc/net/dev)
+    old_dn=$(echo "${old_state/*:/}" | awk -F " " '{ print $1 }')
+    old_up=$(echo "${old_state/*:/}" | awk -F " " '{ print $9 }')
     old="$old $old_dn;$old_up"
   done
 
@@ -46,22 +47,22 @@ function netspeed {
 
   new=""
   for link in $links; do
-    new_state=$(cat /proc/net/dev | grep $link)
-    new_dn=$(echo ${new_state/*:/} | awk -F " " '{ print $1 }')
-    new_up=$(echo ${new_state/*:/} | awk -F " " '{ print $9 }')
+    new_state=$(grep "$link" </proc/net/dev)
+    new_dn=$(echo "${new_state/*:/}" | awk -F " " '{ print $1 }')
+    new_up=$(echo "${new_state/*:/}" | awk -F " " '{ print $9 }')
     new="$new $new_dn;$new_up"
   done
 
   count=1
   for link in $links; do
     # calculate speed
-    old_state=$(echo $old | awk -F " " "{ print \$$count }")
-    old_dn=$(echo $old_state | awk -F ";" '{ print $1 }')
-    old_up=$(echo $old_state | awk -F ";" '{ print $2 }')
+    old_state=$(echo "$old" | awk -F " " "{ print \$$count }")
+    old_dn=$(echo "$old_state" | awk -F ";" '{ print $1 }')
+    old_up=$(echo "$old_state" | awk -F ";" '{ print $2 }')
 
-    new_state=$(echo $new | awk -F " " "{ print \$$count }")
-    new_dn=$(echo $new_state | awk -F ";" '{ print $1 }')
-    new_up=$(echo $new_state | awk -F ";" '{ print $2 }')
+    new_state=$(echo "$new" | awk -F " " "{ print \$$count }")
+    new_dn=$(echo "$new_state" | awk -F ";" '{ print $1 }')
+    new_up=$(echo "$new_state" | awk -F ";" '{ print $2 }')
 
     dnload=$((new_dn - old_dn))
 
@@ -85,7 +86,7 @@ function netspeed {
 
     net="$net      $str"
 
-    count=$(expr $count + 1)
+    count=$((count + 1))
   done
 
   echo "$net"

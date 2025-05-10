@@ -7,6 +7,10 @@
       programs.statix.enable = true;
       programs.deadnix.enable = true;
       programs.shfmt.enable = true;
+      programs.shellcheck.enable = true;
+      programs.shellcheck.excludes = [
+        ".envrc"
+      ];
     };
   };
 }

@@ -1,3 +1,4 @@
+#!/bin/sh
 # Inspired by https://github.com/swaywm/wlroots/issues/1923
 # Prefer amd, since nvidia could be an internal dgpu on laptops
 # TODO: make order customizeable

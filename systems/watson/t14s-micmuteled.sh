@@ -17,7 +17,8 @@ get_mic_status() {
 
 update_mic_led() {
   local device="$1"
-  local mute_status=$(get_mic_status "$device")
+  local mute_status
+  mute_status=$(get_mic_status "$device")
   echo Device ID: "$device" Muted: "$mute_status" >&2
 
   if [ "$mute_status" = "true" ]; then
