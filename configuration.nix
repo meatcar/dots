@@ -1,3 +1,4 @@
-{...}: {
-  imports = [./system];
+{ ... }:
+{
+  imports = [ ./system ];
 }

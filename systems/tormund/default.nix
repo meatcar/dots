@@ -1,9 +1,9 @@
 {
-  config,
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./dell-xps-15-9570.nix
     ./hardware-configuration.nix
@@ -35,7 +35,9 @@
       "resume_offset=267520"
     ];
     resumeDevice = "/dev/mapper/cryptroot";
-    kernel.sysctl = {"vm.swappiness" = lib.mkDefault 1;};
+    kernel.sysctl = {
+      "vm.swappiness" = lib.mkDefault 1;
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -55,7 +57,7 @@
     fstrim.enable = true;
     btrfs.autoScrub = {
       enable = true;
-      fileSystems = ["/"];
+      fileSystems = [ "/" ];
     };
     logind = {
       lidSwitch = "hybrid-sleep";
@@ -72,7 +74,7 @@
 
   services.gnome.gnome-settings-daemon.enable = true;
 
-  services.dbus.packages = [pkgs.dconf];
+  services.dbus.packages = [ pkgs.dconf ];
 
   programs = {
     sway.enable = false;
@@ -82,9 +84,16 @@
   };
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) vim git pciutils usbutils bind nix-prefetch-git brightnessctl;
-    inherit
-      (pkgs)
+    inherit (pkgs)
+      vim
+      git
+      pciutils
+      usbutils
+      bind
+      nix-prefetch-git
+      brightnessctl
+      ;
+    inherit (pkgs)
       glib
       xwayland
       swaybg

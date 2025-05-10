@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ../modules/nix.nix
     ../modules/nix-your-shell
@@ -42,9 +43,11 @@
     openssl
     devenv
 
-    (lib.mkDefault (pkgs.writeShellScriptBin "get-theme-default" ''
-      echo dark
-    ''))
+    (lib.mkDefault (
+      pkgs.writeShellScriptBin "get-theme-default" ''
+        echo dark
+      ''
+    ))
     (pkgs.writeShellScriptBin "p" ''
       set -eu -o pipefail
       if [ "$#" -eq 0 ]; then
@@ -87,7 +90,7 @@
   programs.zoxide.enable = true;
   programs.pay-respects.enable = true;
 
-  xdg.systemDirs.data = ["${config.home.homeDirectory}/.nix-profile/share/applications"];
+  xdg.systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
 
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;

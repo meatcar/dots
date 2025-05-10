@@ -1,5 +1,6 @@
-{inputs, ...}: {
-  imports = [inputs.treefmt-nix.flakeModule];
+{ inputs, ... }:
+{
+  imports = [ inputs.treefmt-nix.flakeModule ];
   perSystem = _: {
     treefmt = {
       programs.nixfmt.enable = true;

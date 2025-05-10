@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ../yazi
   ];
@@ -15,7 +16,7 @@
       sqlite-lua
       # TODO: try again. for some reason the bash parser throws errors
       # nvim-treesitter.withAllGrammars
-      (pkgs.callPackage (import ./darkman-nvim.nix) {})
+      (pkgs.callPackage (import ./darkman-nvim.nix) { })
     ];
 
     extraPackages = with pkgs; [
@@ -53,9 +54,7 @@
   };
 
   xdg.configFile = {
-    nvim.source =
-      config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/git/hub/meatcar/dots/home-manager/modules/neovim/nvim";
+    nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/hub/meatcar/dots/home-manager/modules/neovim/nvim";
     "luacheck/.luacheckrc".text = ''
       globals = {
           "vim",

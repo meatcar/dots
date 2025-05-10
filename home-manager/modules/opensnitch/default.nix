@@ -2,12 +2,13 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   systemd.user.services."opensnitch-ui" = {
     Unit = {
       Description = "Opensnitch UI";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session-pre.target"];
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session-pre.target" ];
     };
     Service = {
       ExecStart = "${lib.getExe pkgs.opensnitch-ui} --background";
@@ -15,7 +16,7 @@
       RestartSec = "10s";
     };
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }

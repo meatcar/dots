@@ -1,8 +1,8 @@
 {
-  config,
   pkgs,
   ...
-}: {
+}:
+{
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez;
@@ -11,7 +11,7 @@
   };
 
   services.pulseaudio = {
-    extraModules = [pkgs.pulseaudio-modules-bt];
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
   };
 

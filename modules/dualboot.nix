@@ -1,3 +1,4 @@
-{...}: {
+_:
+{
   time.hardwareClockInLocalTime = true;
 }

@@ -1,8 +1,8 @@
 {
-  pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.starship = {
     enable = true;
 
@@ -28,9 +28,9 @@
 
       character = {
         format = "$symbol";
-        success_symbol = "[\\$ ](bold green)"; #single-width
-        error_symbol = "[\\$ ](bold red)"; #single-width
-        vicmd_symbol = "[ ](bold green)"; #double-width
+        success_symbol = "[\\$ ](bold green)"; # single-width
+        error_symbol = "[\\$ ](bold red)"; # single-width
+        vicmd_symbol = "[ ](bold green)"; # double-width
       };
 
       status = {

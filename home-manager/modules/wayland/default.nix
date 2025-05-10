@@ -1,8 +1,8 @@
 {
   pkgs,
-  lib,
   ...
-}: let
+}:
+let
   env = {
     # FIXME: blocked by https://github.com/NixOS/nixpkgs/issues/382612
     # NIXOS_OZONE_WL = "1"; # hint chromium/electron to not use XWayland
@@ -12,7 +12,8 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
     SDL_VIDEODRIVER = "wayland";
   };
-in {
+in
+{
   home.sessionVariables = env;
   systemd.user.sessionVariables = env;
   home.packages = [

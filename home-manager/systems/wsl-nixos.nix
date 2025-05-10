@@ -4,7 +4,8 @@
   pkgs,
   specialArgs,
   ...
-}: {
+}:
+{
   imports = [
     ./common.nix
     ../modules/gtk.nix
@@ -17,10 +18,12 @@
   };
 
   home.packages = [
-    (lib.mkForce (pkgs.writeShellScriptBin "get-theme" ''
-      THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
-      cat "$THEME_FILE" 2>&1 || echo dark
-    ''))
+    (lib.mkForce (
+      pkgs.writeShellScriptBin "get-theme" ''
+        THEME_FILE=''${THEME_FILE:-/mnt/c/Users/${config.home.username}/.config/theme}
+        cat "$THEME_FILE" 2>&1 || echo dark
+      ''
+    ))
   ];
 
   # fish is the default shell. hide it.

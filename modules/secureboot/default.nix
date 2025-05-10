@@ -3,12 +3,21 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   # Make tpm kernel modules available in the initrd
-  boot.initrd.availableKernelModules = ["tpm-crb" "tpm-tis"];
+  boot.initrd.availableKernelModules = [
+    "tpm-crb"
+    "tpm-tis"
+  ];
 
   # Install fido2, sbctl, and tpm packages
-  environment.systemPackages = with pkgs; [libfido2 sbctl tpm2-tools tpm2-tss];
+  environment.systemPackages = with pkgs; [
+    libfido2
+    sbctl
+    tpm2-tools
+    tpm2-tss
+  ];
 
   # Ensure bootspec is enabled
   boot.bootspec.enable = lib.mkDefault true;

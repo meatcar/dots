@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+_:
+let
   # from httpa://github.com/dracula/qutebrowser
   palette = {
     background = "#282a36";
@@ -30,7 +27,8 @@
     left = spacing;
     bottom = spacing;
   };
-in {
+in
+{
   programs.qutebrowser = {
     enable = false;
     settings = {

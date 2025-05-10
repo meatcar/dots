@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   powerManagement.enable = true;
 
   environment.systemPackages = builtins.attrValues {

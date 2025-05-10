@@ -2,8 +2,9 @@
   pkgs,
   config,
   ...
-}: let
-  accounts = config.accounts.email.accounts;
+}:
+let
+  inherit (config.accounts.email) accounts;
   names = builtins.attrNames accounts;
   mailcap = pkgs.writeText "mailcap" ''
     application/msword; ${./view_attachment.sh} %s "-" '${pkgs.catdocx}/bin/catdocx'
@@ -20,44 +21,46 @@
     application/octet-stream; ${./view_attachment.sh} %s "-"
   '';
 
-  mkAccountFile = name: let
-    account = builtins.getAttr name accounts;
-    mbox = builtins.getAttr name {
-      gmail = "[Gmail]/All\\ Mail";
-      fastmail = "Archive";
-      zoho = "Archives";
-    };
-    archive = builtins.getAttr name {
-      gmail = "[Gmail]/All ";
-      fastmail = "Archive";
-      zoho = "Archives";
-    };
-    drafts = builtins.getAttr name {
-      gmail = "[Gmail]/Drafts";
-      fastmail = "Drafts";
-      zoho = "Drafts";
-    };
-    trash = builtins.getAttr name {
-      gmail = "[Gmail]/Trash";
-      fastmail = "Trash";
-      zoho = "Trash";
-    };
-    spam = builtins.getAttr name {
-      gmail = "[Gmail]/Spam";
-      fastmail = "Spam";
-      zoho = "Spam";
-    };
-    sent = builtins.getAttr name {
-      gmail = "[Gmail]/Sent\\ Mail";
-      fastmail = "Sent";
-      zoho = "Sent";
-    };
-    color = builtins.getAttr name {
-      gmail = "white";
-      fastmail = "blue";
-      zoho = "red";
-    };
-  in
+  mkAccountFile =
+    name:
+    let
+      account = builtins.getAttr name accounts;
+      mbox = builtins.getAttr name {
+        gmail = "[Gmail]/All\\ Mail";
+        fastmail = "Archive";
+        zoho = "Archives";
+      };
+      archive = builtins.getAttr name {
+        gmail = "[Gmail]/All ";
+        fastmail = "Archive";
+        zoho = "Archives";
+      };
+      drafts = builtins.getAttr name {
+        gmail = "[Gmail]/Drafts";
+        fastmail = "Drafts";
+        zoho = "Drafts";
+      };
+      trash = builtins.getAttr name {
+        gmail = "[Gmail]/Trash";
+        fastmail = "Trash";
+        zoho = "Trash";
+      };
+      spam = builtins.getAttr name {
+        gmail = "[Gmail]/Spam";
+        fastmail = "Spam";
+        zoho = "Spam";
+      };
+      sent = builtins.getAttr name {
+        gmail = "[Gmail]/Sent\\ Mail";
+        fastmail = "Sent";
+        zoho = "Sent";
+      };
+      color = builtins.getAttr name {
+        gmail = "white";
+        fastmail = "blue";
+        zoho = "red";
+      };
+    in
     pkgs.writeText "${name}_account" ''
       # vim: ft=muttrc
       set realname  = "${account.realName}"
@@ -99,31 +102,41 @@
       "<shell-escape>${./mutt-mu} ${name}<enter><change-folder-readonly>~/.cache/mu/search<enter>" \
       "search mail (using mu)"
     '';
-  mkFolderHook = name: let
-    key = builtins.substring 0 1 name;
-    file = mkAccountFile name;
-  in ''
-    source ${file}
-    folder-hook =+${name}/.* source ${file}
-    macro index,pager \\${key} "<change-folder>+${name}/INBOX<enter>" "change accounts ${name}"
+  mkFolderHook =
+    name:
+    let
+      key = builtins.substring 0 1 name;
+      file = mkAccountFile name;
+    in
+    ''
+      source ${file}
+      folder-hook =+${name}/.* source ${file}
+      macro index,pager \\${key} "<change-folder>+${name}/INBOX<enter>" "change accounts ${name}"
 
-  '';
-  accountSettings = let
-    primary = builtins.filter (n: (builtins.getAttr n accounts).primary) names;
-  in ''
-    # \\+<first letter> to switch between accounts
-    bind index,pager \\ noop
-    ${builtins.toString (builtins.map mkFolderHook names)}
+    '';
+  accountSettings =
+    let
+      primary = builtins.filter (n: (builtins.getAttr n accounts).primary) names;
+    in
+    ''
+      # \\+<first letter> to switch between accounts
+      bind index,pager \\ noop
+      ${builtins.toString (builtins.map mkFolderHook names)}
 
-    ${builtins.toString (builtins.map (name: "source ${mkAccountFile name}") primary)}
+      ${builtins.toString (builtins.map (name: "source ${mkAccountFile name}") primary)}
 
-    # Mailboxes to always show in the sidebar.
-    folder-hook .* mailboxes "+_" \
-    ${builtins.toString (builtins.map (name: "+${name}/INBOX") names)}
+      # Mailboxes to always show in the sidebar.
+      folder-hook .* mailboxes "+_" \
+      ${builtins.toString (builtins.map (name: "+${name}/INBOX") names)}
 
-  '';
-in {
-  home.packages = with pkgs; [neomutt urlscan mu];
+    '';
+in
+{
+  home.packages = with pkgs; [
+    neomutt
+    urlscan
+    mu
+  ];
   xdg.configFile."neomutt/meatcar.mutt".source = ./meatcar.mutt;
   xdg.configFile."neomutt/neomuttrc".text = ''
     set mailcap_path = ${mailcap}

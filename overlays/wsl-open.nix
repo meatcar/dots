@@ -1,5 +1,4 @@
-self: (
-  super: {
-    wsl-open = super.callPackage ../pkgs/wsl-open {};
-  }
-)
+_self:
+(super: {
+  wsl-open = super.callPackage ../pkgs/wsl-open { };
+})

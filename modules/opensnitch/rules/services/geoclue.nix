@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   name = "services-geoclue";
-in {
+in
+{
   services.opensnitch.rules.${name} = {
     inherit name;
     enabled = true;

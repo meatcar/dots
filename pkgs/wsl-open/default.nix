@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
     url = "https://gitlab.com/4U6U57/wsl-open/-/archive/v${version}/wsl-open-v${version}.tar.gz";
     sha256 = "sha256-amqkDXdgIqGjRZMkltwco0UAI++G0RY/MxLXwtlxogE=";
   };
-  buildInputs = [makeWrapper];
+  buildInputs = [ makeWrapper ];
   installPhase = ''
     mkdir -p $out/bin
     chmod +x ${src}/wsl-open.sh
@@ -23,8 +23,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Open files with xdg-open on Bash for Windows in Windows applications";
     license = licenses.mit;
-    homepage = https://gitlab.com/4U6U57/wsl-open;
-    maintainers = [maintainers.meatcar];
+    homepage = "https://gitlab.com/4U6U57/wsl-open";
+    maintainers = [ maintainers.meatcar ];
     platforms = platforms.linux;
   };
 }

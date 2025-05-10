@@ -1,3 +1,6 @@
 {
-  services.xserver.videoDrivers = ["displaylink" "modesetting"];
+  services.xserver.videoDrivers = [
+    "displaylink"
+    "modesetting"
+  ];
 }

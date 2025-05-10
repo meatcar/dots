@@ -1,5 +1,4 @@
-self: (
-  super: {
-    ly = super.callPackage ../pkgs/ly {};
-  }
-)
+_self:
+(super: {
+  ly = super.callPackage ../pkgs/ly { };
+})

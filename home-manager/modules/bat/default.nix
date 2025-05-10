@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   themes = specialArgs.inputs.catppuccin-bat;
-in {
+in
+{
   programs.bat = {
     enable = true;
     extraPackages = with pkgs.bat-extras; [
@@ -26,9 +28,8 @@ in {
     };
   };
   home.packages = [
-    (
-      lib.hiPrio
-      (pkgs.writeShellScriptBin "bat" ''
+    (lib.hiPrio (
+      pkgs.writeShellScriptBin "bat" ''
         theme=$(get-theme)
         if [ "$theme" == "light" ]; then
           export BAT_THEME="Catppuccin Latte"
@@ -36,7 +37,7 @@ in {
           export BAT_THEME="Catppuccin Mocha"
         fi
         ${pkgs.bat}/bin/bat "$@"
-      '')
-    )
+      ''
+    ))
   ];
 }

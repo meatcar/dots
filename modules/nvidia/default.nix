@@ -1,8 +1,8 @@
 {
-  config,
   pkgs,
   ...
-}: let
+}:
+let
   gpu-on = pkgs.writeScriptBin "gpu-on" ''
     #!/bin/sh
     # mv /etc/modprobe.d/disable-nvidia.conf /etc/modprobe.d/disable-nvidia.conf.disable
@@ -31,7 +31,8 @@
     echo -n auto > /sys/bus/pci/devices/0000\:00\:01.0/power/control
     sleep 1
   '';
-in {
+in
+{
   boot = {
     kernelParams = [
       # https://wiki.archlinux.org/index.php/Dell_XPS_15_9570#Lock-ups_when_resuming_from_suspend_with_nvidia_module

@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
@@ -59,21 +60,21 @@
 
   systemd.services.t14-hibernate-pre = {
     description = "T14s Gen4 Hibernate Tweak (pre)";
-    before = ["hibernate.target"];
-    wantedBy = ["hibernate.target"];
+    before = [ "hibernate.target" ];
+    wantedBy = [ "hibernate.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ["/run/current-system/sw/sbin/rmmod ath11k_pci"];
+      ExecStart = [ "/run/current-system/sw/sbin/rmmod ath11k_pci" ];
     };
   };
 
   systemd.services.t14-hibernate-post = {
     description = "T14s Gen4 Hibernate Tweak (post)";
-    after = ["hibernate.target"];
-    wantedBy = ["hibernate.target"];
+    after = [ "hibernate.target" ];
+    wantedBy = [ "hibernate.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ["/run/current-system/sw/sbin/modprobe ath11k_pci"];
+      ExecStart = [ "/run/current-system/sw/sbin/modprobe ath11k_pci" ];
     };
   };
 
@@ -126,7 +127,7 @@
   ];
   # programs.hyprland.enable = true;
 
-  nix.settings.trusted-users = ["meatcar"];
+  nix.settings.trusted-users = [ "meatcar" ];
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;
@@ -134,6 +135,9 @@
     shell = "${pkgs.fish}/bin/fish";
     # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
     hashedPassword = "***REDACTED***";
-    extraGroups = ["wheel" "docker"];
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
   };
 }

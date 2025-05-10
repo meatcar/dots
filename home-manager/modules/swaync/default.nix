@@ -1,4 +1,5 @@
-{specialArgs, ...}: {
+{ specialArgs, ... }:
+{
   services.swaync = {
     enable = true;
     settings = {
@@ -31,14 +32,16 @@
         };
       };
     };
-    style = let
-      cattpuccin-mocha = "${specialArgs.inputs.catppuccin-swaync}";
-    in ''
-      ${builtins.readFile cattpuccin-mocha}
+    style =
+      let
+        cattpuccin-mocha = "${specialArgs.inputs.catppuccin-swaync}";
+      in
+      ''
+        ${builtins.readFile cattpuccin-mocha}
 
-      * {
-        font-family: "Symbols Nerd Font", sans-serif;
-      }
-    '';
+        * {
+          font-family: "Symbols Nerd Font", sans-serif;
+        }
+      '';
   };
 }
