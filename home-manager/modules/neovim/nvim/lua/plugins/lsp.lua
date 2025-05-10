@@ -46,7 +46,7 @@ return {
         },
         nil_ls = {
           formatting = {
-            command = 'alejandra',
+            command = 'nixfmt',
           }
         },
         terraformls = {},
