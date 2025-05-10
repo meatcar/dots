@@ -1,3 +1,4 @@
-{...}: {
-  imports = [../../secrets/module.nix];
+{ ... }:
+{
+  imports = [ ../../secrets/module.nix ];
 }

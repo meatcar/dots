@@ -1,4 +1,5 @@
-{specialArgs, ...}: {
+{ specialArgs, ... }:
+{
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -21,13 +22,15 @@
     recursive = true;
   };
 
-  xdg.mimeApps.defaultApplications = let
-    browser = "firefox.desktop";
-  in {
-    "text/html" = browser;
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/unknown" = browser;
-  };
+  xdg.mimeApps.defaultApplications =
+    let
+      browser = "firefox.desktop";
+    in
+    {
+      "text/html" = browser;
+      "x-scheme-handler/http" = browser;
+      "x-scheme-handler/https" = browser;
+      "x-scheme-handler/about" = browser;
+      "x-scheme-handler/unknown" = browser;
+    };
 }

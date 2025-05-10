@@ -1,6 +1,10 @@
-{...}: {
+_:
+{
   services.gnome-keyring = {
     enable = true;
-    components = ["pkcs11" "secrets"];
+    components = [
+      "pkcs11"
+      "secrets"
+    ];
   };
 }

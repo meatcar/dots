@@ -2,20 +2,22 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   name = "nix";
   getClientId = pkgs.writeShellScript "getClientId" ''
     # trim trailing newline
     ${pkgs.gnused}/bin/sed -Ez 's/\n+$//' "${config.age.secrets.spotifyClientId.path}"
   '';
-in {
+in
+{
   programs.spotify-player = {
     enable = true;
     settings = {
       default_device = name;
       client_id_command = {
         command = "${getClientId}";
-        args = [];
+        args = [ ];
       };
       enable_notify = false;
       play_icon = " ";

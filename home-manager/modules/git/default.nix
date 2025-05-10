@@ -2,7 +2,8 @@
   pkgs,
   specialArgs,
   ...
-}: let
+}:
+let
   gitmessage = pkgs.writeText "gitmessage" ''
 
     # type(scope): applying this commit will...
@@ -11,8 +12,9 @@
     #
     # What, Why, not how.
     #'';
-in {
-  imports = [../mr];
+in
+{
+  imports = [ ../mr ];
 
   programs.git = {
     enable = true;
@@ -24,8 +26,8 @@ in {
       commit.template = "${gitmessage}";
     };
     includes = [
-      {path = ./config;}
-      {path = "${specialArgs.inputs.catppuccin-delta}/catppuccin.gitconfig";}
+      { path = ./config; }
+      { path = "${specialArgs.inputs.catppuccin-delta}/catppuccin.gitconfig"; }
       {
         condition = "gitdir:~/git/hub/alipes/**";
         contents = {
@@ -67,14 +69,12 @@ in {
   };
 
   home.packages = builtins.attrValues {
-    inherit
-      (pkgs.gitAndTools)
+    inherit (pkgs.gitAndTools)
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
       delta # delta
       ;
-    inherit
-      (pkgs)
+    inherit (pkgs)
       glab # gitlab CLI
       git-absorb # quick fixup rebases
       gitu # cli magit
@@ -111,8 +111,8 @@ in {
         showFileTree = true;
         nerdFontsVersion = "3";
         theme = {
-          selectedLineBgColor = ["reverse"];
-          selectedRangeBgColor = ["reverse"];
+          selectedLineBgColor = [ "reverse" ];
+          selectedRangeBgColor = [ "reverse" ];
         };
       };
       git.paging = {

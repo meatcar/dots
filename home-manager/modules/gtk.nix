@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [dconf glib.bin];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    dconf
+    glib.bin
+  ];
   gtk = {
     enable = true;
     iconTheme.package = pkgs.papirus-icon-theme;

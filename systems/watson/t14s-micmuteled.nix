@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.services.t14-micmuteled;
   script = pkgs.writeShellScript "t14-micmuteled-daemon" (builtins.readFile ./t14s-micmuteled.sh);
-in {
+in
+{
   options.services.t14-micmuteled = with lib.types; {
     enable = lib.mkEnableOption "tweak to make micmute led work on t14 laptop";
     ledBrightness = lib.mkOption {
@@ -24,14 +26,17 @@ in {
   config = lib.mkIf cfg.enable {
     systemd.services.t14-micmuteled = {
       description = "ThinkPad T14 Mic Mute Led Tweak";
-      after = ["network.target"];
-      path = [pkgs.pipewire pkgs.jq];
+      after = [ "network.target" ];
+      path = [
+        pkgs.pipewire
+        pkgs.jq
+      ];
       serviceConfig = {
         ExecStart = ''${pkgs.bash}/bin/bash ${script} "${cfg.ledBrightness}" ${toString cfg.userId}'';
         Restart = "always";
         Type = "simple";
       };
-      wantedBy = ["default.target"];
+      wantedBy = [ "default.target" ];
     };
   };
 }

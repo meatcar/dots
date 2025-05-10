@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   services.darkman = {
     darkModeScripts = {
       gtk-theme = ''

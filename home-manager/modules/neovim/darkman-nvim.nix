@@ -3,7 +3,8 @@
   fetchFromGitHub,
   vimUtils,
   ...
-}: let
+}:
+let
   pname = "darkman.nvim";
   version = "2025-02-01";
 
@@ -20,12 +21,12 @@
     vendorHash = "sha256-HpyKzvKVN9hVRxxca4sdWRo91H32Ha9gxitr7Qg5MY8=";
   };
 in
-  vimUtils.buildVimPlugin {
-    inherit pname src version;
+vimUtils.buildVimPlugin {
+  inherit pname src version;
 
-    postInstall = ''
-      ln -s ${package}/bin $out/bin
-    '';
+  postInstall = ''
+    ln -s ${package}/bin $out/bin
+  '';
 
-    meta.homepage = "https://github.com/4e554c4c/darkman.nvim";
-  }
+  meta.homepage = "https://github.com/4e554c4c/darkman.nvim";
+}

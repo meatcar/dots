@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.vscode.enable = true;
   programs.vscode.package = pkgs.vscode-fhs;
   # TODO: vscode-fhs environment has trouble reading .ssh/config.

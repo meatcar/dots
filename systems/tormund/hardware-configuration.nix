@@ -2,20 +2,23 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
-  pkgs,
   ...
-}: {
+}:
+{
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7899ceb7-446b-4e67-9f72-a86e94b6735e";
     fsType = "btrfs";
-    options = ["subvol=@root" "compress"];
+    options = [
+      "subvol=@root"
+      "compress"
+    ];
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/bf7e4389-a54d-47b6-9110-6abf3011a57c";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/bf7e4389-a54d-47b6-9110-6abf3011a57c";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/58CD-DA1E";

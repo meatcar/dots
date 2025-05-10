@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   services.activitywatch = {
     enable = true;
     package = pkgs.aw-server-rust;
@@ -18,7 +19,7 @@
     };
   };
   systemd.user.services.activitywatch-watcher-awatcher = {
-    Unit.Requires = ["activitywatch.service"];
+    Unit.Requires = [ "activitywatch.service" ];
     Service = {
       # delay start for activiywatch to spin up.
       ExecStartPre = "/run/current-system/sw/bin/sleep 5";
@@ -29,7 +30,7 @@
 
   # FIXME: workaround for https://github.com/nix-community/home-manager/issues/5988
   systemd.user.targets.activitywatch = {
-    Unit.After = lib.mkForce ["graphical-session.target"];
-    Install.WantedBy = lib.mkForce ["graphical-session.target"];
+    Unit.After = lib.mkForce [ "graphical-session.target" ];
+    Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
   };
 }

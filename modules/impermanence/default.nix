@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   luksName = "crypted";
   rootSubvolume = "rootfs";
-in {
+in
+{
   imports = [
     ./networkmanager.nix
     ./bluetooth.nix
@@ -21,9 +23,9 @@ in {
   # Setup a service that will automatically rollback the root subvolume to a fresh state.
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume to a fresh state";
-    wantedBy = ["initrd.target"];
-    before = ["sysroot.mount"];
-    after = ["systemd-cryptsetup@${luksName}.service"];
+    wantedBy = [ "initrd.target" ];
+    before = [ "sysroot.mount" ];
+    after = [ "systemd-cryptsetup@${luksName}.service" ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
 

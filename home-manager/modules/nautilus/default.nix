@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = [
     pkgs.nautilus
     pkgs.nautilus-python

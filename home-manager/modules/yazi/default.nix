@@ -1,11 +1,12 @@
-{...}: {
+_:
+{
   programs.yazi = {
     enable = true;
     keymap = {
       input.prepend_keymap = [
         {
           run = "shell \"$SHELL\" --block";
-          on = ["!"];
+          on = [ "!" ];
           desc = "Open shell here";
         }
       ];

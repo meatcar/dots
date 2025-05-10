@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     description = "Configures eGPU as primary under Linux Wayland desktops";
     homepage = "https://github.com/ewagner12/all-ways-egpu";
     license = licenses.mit;
-    platforms = ["x86_64-linux"];
+    platforms = [ "x86_64-linux" ];
     mainProgram = "all-ways-egpu";
   };
 }

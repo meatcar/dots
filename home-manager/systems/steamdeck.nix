@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  imports = [./single-user.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./single-user.nix ];
   home.packages = with pkgs; [
     gocryptfs
     fuse-overlayfs

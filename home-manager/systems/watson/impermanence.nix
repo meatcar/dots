@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   home.persistence."/persist/${config.home.homeDirectory}" = {
     allowOther = true;
     files = [
@@ -70,8 +71,6 @@
         ".local/share/copyq"
       ]
       ++ [
-      ]
-      ++ [
         ".config/vivaldi"
         ".cache/vivaldi"
         ".local/lib/vivaldi"
@@ -82,7 +81,7 @@
         ".local/share/activitywatch"
         ".config/awatcher"
       ]
-      ++ [".config/opensnitch"]
-      ++ [".config/obsidian"];
+      ++ [ ".config/opensnitch" ]
+      ++ [ ".config/obsidian" ];
   };
 }

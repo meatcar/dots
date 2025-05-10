@@ -2,26 +2,27 @@
   pkgs,
   specialArgs,
   ...
-}: {
-  home.packages = with pkgs; [grc];
+}:
+{
+  home.packages = with pkgs; [ grc ];
 
   programs.fish = {
     enable = true;
     shellInit = builtins.readFile ./config.fish;
     plugins =
-      (
-        builtins.map (p: {inherit (p) name src;})
-        (with pkgs.fishPlugins; [
+      (builtins.map (p: { inherit (p) name src; }) (
+        with pkgs.fishPlugins;
+        [
           foreign-env
           grc
           puffer
           done
           autopair
           fzf-fish
-        ])
-      )
-      ++ (
-        builtins.map (name: {
+        ]
+      ))
+      ++ (builtins.map
+        (name: {
           inherit name;
           src = specialArgs.inputs.${name};
         })

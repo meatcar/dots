@@ -4,7 +4,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixos-wsl.nixosModules.wsl
     ../common.nix
@@ -46,16 +47,16 @@
   };
 
   hardware.graphics = {
-    extraPackages = [pkgs.mesa.drivers];
+    extraPackages = [ pkgs.mesa.drivers ];
     enable32Bit = true;
   };
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   programs.fish.enable = true;
   users.users.${config.wsl.defaultUser} = {
     shell = pkgs.fish;
-    extraGroups = ["docker"];
+    extraGroups = [ "docker" ];
     isNormalUser = true;
   };
 
@@ -66,7 +67,7 @@
 
   # override nixos-wsl startMenuLaunchers to pull in home-manager ones
   wsl.startMenuLaunchers = false; # we do it ourselves
-  system.activationScripts.copy-launchers = pkgs.lib.stringAfter [] ''
+  system.activationScripts.copy-launchers = pkgs.lib.stringAfter [ ] ''
     for x in applications icons; do
       echo -n "setting up /usr/share/''${x}..."
       systemdir=$systemConfig/sw/share/$x

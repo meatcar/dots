@@ -89,143 +89,162 @@
     };
   };
 
-  outputs = inputs: let
-    nixpkgsConfig = {
-      config = {allowUnfree = true;};
-      overlays = [
-        inputs.nixpkgs-wayland.overlay
-        inputs.emacs-overlay.overlay
-      ];
-    };
-    specialArgs = {inherit inputs;};
-    extraSpecialArgs = specialArgs;
-  in
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+  outputs =
+    inputs:
+    let
+      nixpkgsConfig = {
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [
+          inputs.nixpkgs-wayland.overlay
+          inputs.emacs-overlay.overlay
+        ];
+      };
+      specialArgs = { inherit inputs; };
+      extraSpecialArgs = specialArgs;
+    in
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
 
       imports = [
         ./flake-modules/devshell.nix
         ./flake-modules/treefmt.nix
       ];
 
-      perSystem = {
-        pkgs,
-        system,
-        ...
-      }: {
-        # expose the system nixpkgs for searching, shells
-        # run 'nix registry add dots /path/to/repo`
-        # then you can search like `nix search dots <query>`
-        _module.args.pkgs = import inputs.nixpkgs ({
-            inherit system;
-          }
-          // nixpkgsConfig);
-
-        legacyPackages = pkgs;
-      };
-
-      flake = {
-        nixosConfigurations = let
-          mkSystem = extraModules: (
-            inputs.nixpkgs.lib.nixosSystem {
-              inherit specialArgs;
-              system = "x86_64-linux";
-              modules =
-                extraModules
-                ++ [
-                  {nixpkgs = nixpkgsConfig;}
-                  inputs.home-manager.nixosModules.home-manager
-                  {home-manager = {inherit extraSpecialArgs;};}
-                ];
-            }
-          );
-        in {
-          tormund = mkSystem [./systems/tormund];
-          watson = mkSystem [
-            inputs.agenix.nixosModules.default
-            inputs.disko.nixosModules.disko
-            inputs.impermanence.nixosModules.impermanence
-            inputs.lanzaboote.nixosModules.lanzaboote
-            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
-            inputs.niri-flake.nixosModules.niri
-            ./systems/watson
+      perSystem =
+        {
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          # expose the system nixpkgs for searching, shells
+          # run 'nix registry add dots /path/to/repo`
+          # then you can search like `nix search dots <query>`
+          _module.args.pkgs = import inputs.nixpkgs (
             {
-              home-manager.users.meatcar = {...}: {
-                imports = [
-                  inputs.agenix.homeManagerModules.default
-                  inputs.impermanence.homeManagerModules.impermanence
-                  ./home-manager/systems/watson
-                  ./git-crypt/hm-me.nix
-                ];
-                nixpkgs.config = nixpkgsConfig;
-                home.stateVersion = "24.11";
-              };
-            }
-          ];
-          nixos = mkSystem [
-            {system.stateVersion = "23.05";}
-            ./systems/wsl-nixos
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.meatcar = {...}: {
-                imports = [
-                  ./home-manager/systems/wsl-nixos.nix
-                ];
-                home.stateVersion = "23.05";
-              };
-            }
-          ];
-          iso = mkSystem [
-            {system.stateVersion = "24.11";}
-            ({
-              pkgs,
-              modulesPath,
-              ...
-            }: {
-              imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
-              environment.systemPackages = [pkgs.neovim];
-              isoImage.forceTextMode = true;
-            })
-          ];
-        };
-
-        homeConfigurations = let
-          system = "x86_64-linux";
-          pkgs = import inputs.nixpkgs ({
               inherit system;
             }
-            // nixpkgsConfig);
-        in {
-          meatcar = inputs.home-manager.lib.homeManagerConfiguration {
-            inherit pkgs extraSpecialArgs;
-            modules = [
-              ./home-manager/systems/wsl-singleuser.nix
-              {
-                nixpkgs = nixpkgsConfig;
-                home = rec {
-                  username = "meatcar";
-                  homeDirectory = "/home/${username}";
-                  stateVersion = "20.09";
-                };
-              }
-            ];
-          };
-          deck = inputs.home-manager.lib.homeManagerConfiguration {
-            inherit pkgs extraSpecialArgs;
-            modules = [
-              ./home-manager/systems/steamdeck.nix
-              {
-                nixpkgs = nixpkgsConfig;
-                home = rec {
-                  username = "deck";
-                  homeDirectory = "/home/${username}";
-                  stateVersion = "23.05";
-                };
-              }
-            ];
-          };
+            // nixpkgsConfig
+          );
+
+          legacyPackages = pkgs;
         };
+
+      flake = {
+        nixosConfigurations =
+          let
+            mkSystem =
+              extraModules:
+              (inputs.nixpkgs.lib.nixosSystem {
+                inherit specialArgs;
+                system = "x86_64-linux";
+                modules = extraModules ++ [
+                  { nixpkgs = nixpkgsConfig; }
+                  inputs.home-manager.nixosModules.home-manager
+                  { home-manager = { inherit extraSpecialArgs; }; }
+                ];
+              });
+          in
+          {
+            tormund = mkSystem [ ./systems/tormund ];
+            watson = mkSystem [
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.impermanence.nixosModules.impermanence
+              inputs.lanzaboote.nixosModules.lanzaboote
+              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
+              inputs.niri-flake.nixosModules.niri
+              ./systems/watson
+              {
+                home-manager.users.meatcar =
+                  { ... }:
+                  {
+                    imports = [
+                      inputs.agenix.homeManagerModules.default
+                      inputs.impermanence.homeManagerModules.impermanence
+                      ./home-manager/systems/watson
+                      ./git-crypt/hm-me.nix
+                    ];
+                    nixpkgs.config = nixpkgsConfig;
+                    home.stateVersion = "24.11";
+                  };
+              }
+            ];
+            nixos = mkSystem [
+              { system.stateVersion = "23.05"; }
+              ./systems/wsl-nixos
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.meatcar =
+                  { ... }:
+                  {
+                    imports = [
+                      ./home-manager/systems/wsl-nixos.nix
+                    ];
+                    home.stateVersion = "23.05";
+                  };
+              }
+            ];
+            iso = mkSystem [
+              { system.stateVersion = "24.11"; }
+              (
+                {
+                  pkgs,
+                  modulesPath,
+                  ...
+                }:
+                {
+                  imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+                  environment.systemPackages = [ pkgs.neovim ];
+                  isoImage.forceTextMode = true;
+                }
+              )
+            ];
+          };
+
+        homeConfigurations =
+          let
+            system = "x86_64-linux";
+            pkgs = import inputs.nixpkgs (
+              {
+                inherit system;
+              }
+              // nixpkgsConfig
+            );
+          in
+          {
+            meatcar = inputs.home-manager.lib.homeManagerConfiguration {
+              inherit pkgs extraSpecialArgs;
+              modules = [
+                ./home-manager/systems/wsl-singleuser.nix
+                {
+                  nixpkgs = nixpkgsConfig;
+                  home = rec {
+                    username = "meatcar";
+                    homeDirectory = "/home/${username}";
+                    stateVersion = "20.09";
+                  };
+                }
+              ];
+            };
+            deck = inputs.home-manager.lib.homeManagerConfiguration {
+              inherit pkgs extraSpecialArgs;
+              modules = [
+                ./home-manager/systems/steamdeck.nix
+                {
+                  nixpkgs = nixpkgsConfig;
+                  home = rec {
+                    username = "deck";
+                    homeDirectory = "/home/${username}";
+                    stateVersion = "23.05";
+                  };
+                }
+              ];
+            };
+          };
       };
     };
 }

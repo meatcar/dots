@@ -1,3 +1,3 @@
 {
-  environment.persistence."/persist".directories = ["/var/lib/bluetooth"];
+  environment.persistence."/persist".directories = [ "/var/lib/bluetooth" ];
 }

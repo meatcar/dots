@@ -1,5 +1,5 @@
 {
-  imports = [../starship];
+  imports = [ ../starship ];
 
   programs.zsh = {
     enable = true;

@@ -3,8 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
-  user = config.home.username;
+}:
+let
   man_color_args = lib.strings.concatStringsSep " " [
     "-DP+k-" # Prompt = formatted bold Black on normal
     "-DE+kr" # Error/Info = formatted bold Black on Red
@@ -31,7 +31,8 @@
 
     less --use-color ${man_color_args} "$@"
   '';
-in {
+in
+{
   programs.man.enable = true;
   programs.man.generateCaches = false;
 
@@ -39,5 +40,5 @@ in {
     MANROFFOPT = "-c";
     MANPAGER = "manpager";
   };
-  home.packages = [manpager];
+  home.packages = [ manpager ];
 }

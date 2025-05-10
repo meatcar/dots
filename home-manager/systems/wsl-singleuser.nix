@@ -1,19 +1,18 @@
 {
-  config,
-  lib,
   pkgs,
   specialArgs,
   ...
-}: {
+}:
+{
   imports = [
     ./single-user.nix
     ../../modules/gnome-keyring.nix
     # ../../home-manager/modules/distributed.nix
   ];
 
-  nixpkgs.overlays = [(import ../../overlays/wsl-open.nix)];
+  nixpkgs.overlays = [ (import ../../overlays/wsl-open.nix) ];
 
-  nix.settings.system-features = ["kvm"];
+  nix.settings.system-features = [ "kvm" ];
 
   home.sessionVariables = {
     XDG_RUNTIME_DIR = "$HOME/.cache/runtime";

@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   services.opensnitch.rules.systemd-resolved = {
     name = "systemd-resolved";
     enabled = true;

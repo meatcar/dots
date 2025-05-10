@@ -1,11 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+_:
+let
   env_store = "~/Sync/backup/dev/env";
-in {
-  programs.git.ignores = [".direnv/"];
+in
+{
+  programs.git.ignores = [ ".direnv/" ];
 
   programs.direnv = {
     enable = true;

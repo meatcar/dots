@@ -1,8 +1,8 @@
 {
-  config,
   pkgs,
   ...
-}: {
+}:
+{
   import = [
     ../modules/leiningen
   ];
@@ -10,11 +10,9 @@
     pkgs.clojure
     ## linters
     # pkgs.clj-kondo is too heavy, as it pulls in graalvm
-    (
-      pkgs.writeShellScriptBin "clj-kondo" ''
-        clj -A:clj-kondo "$@"
-      ''
-    )
+    (pkgs.writeShellScriptBin "clj-kondo" ''
+      clj -A:clj-kondo "$@"
+    '')
     # pkgs.clj-kondo
     pkgs.joker
   ];

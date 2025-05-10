@@ -1,10 +1,22 @@
 {
-  config,
   pkgs,
   ...
-}: {
-  boot.kernelParams = ["amd_iommu=on" "intel_iommu=on" "iommu=1" "rd.driver.pre=vfio-pci"];
-  boot.kernelModules = ["kvm-intel" "tap" "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
+}:
+{
+  boot.kernelParams = [
+    "amd_iommu=on"
+    "intel_iommu=on"
+    "iommu=1"
+    "rd.driver.pre=vfio-pci"
+  ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "tap"
+    "vfio_virqfd"
+    "vfio_pci"
+    "vfio_iommu_type1"
+    "vfio"
+  ];
   boot.extraModprobeConfig = "options vfio-pci ids=8086:3e9b,10de:1c8c,1002:ab38"; # Intel,Nvidia,AMD
 
   environment.systemPackages = [
@@ -33,7 +45,7 @@
       ExecStart = "${pkgs.scream-receivers}/bin/scream-ivshmem-pulse /dev/shm/scream";
       Restart = "always";
     };
-    wantedBy = ["multi-user.target"];
-    requires = ["pulseaudio.service"];
+    wantedBy = [ "multi-user.target" ];
+    requires = [ "pulseaudio.service" ];
   };
 }

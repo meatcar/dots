@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ../modules/nix.nix
   ];
@@ -27,9 +28,12 @@
       useEmbeddedBitmaps = true;
       subpixel.rgba = "rgb";
       defaultFonts = {
-        monospace = ["Iosevka Term SS07" "Symbols Nerd Font"];
-        sansSerif = ["Inter"];
-        serif = ["Liberation Serif"];
+        monospace = [
+          "Iosevka Term SS07"
+          "Symbols Nerd Font"
+        ];
+        sansSerif = [ "Inter" ];
+        serif = [ "Liberation Serif" ];
       };
     };
     enableDefaultPackages = true;
@@ -45,7 +49,7 @@
       inter
       # monospace
       go-font
-      (iosevka-bin.override {variant = "SS07";})
+      (iosevka-bin.override { variant = "SS07"; })
     ];
   };
 
