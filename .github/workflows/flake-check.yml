@@ -14,5 +14,9 @@ jobs:
         with:
           primary-key: ${{runner.os}}-${{hashFiles('./flake.nix', './flake-modules/**/*.nix', './flake.lock')}}
 
+      - name: Ensure ssh-agent has private keys loaded
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< '${{ secrets.SSH_KEY }}'
       - name: Run flake check
         run: nix flake check
