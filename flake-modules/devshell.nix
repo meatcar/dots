@@ -15,6 +15,7 @@
           nixVersions.stable
           git
           git-crypt
+          gnupg
           (nixos-rebuild.override { nix = nixVersions.stable; })
           stow
           inputs.agenix.packages.${system}.default
