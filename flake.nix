@@ -17,16 +17,22 @@
   };
 
   inputs = {
-    # Framework
+    # flake parts
     flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    # rest
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # secrets
     agenix.url = "github:yaxitech/ragenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    # disk mgmt
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
+    # secure boot mgmt
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    # hardware incantations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -99,6 +105,7 @@
 
       imports = [
         ./flake-modules/devshell.nix
+        ./flake-modules/treefmt.nix
       ];
 
       perSystem = {
