@@ -21,7 +21,7 @@ return {
     cmd = { 'ConformInfo' },
     opts = {
       formatters_by_ft = {
-        nix = { 'alejandra' },
+        nix = { 'nixfmt' },
         python = { 'isort', 'black', 'autopep8' },
         javascript = function(bufnr)
           return { first(bufnr, 'prettierd', 'prettier'), first(bufnr, 'eslint_d', 'eslint') }

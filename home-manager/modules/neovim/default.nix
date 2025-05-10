@@ -71,6 +71,7 @@
 
   home.packages = with pkgs; [
     alejandra
+    nixfmt-rfc-style
     fortune
     shellcheck
     shfmt
