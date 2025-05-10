@@ -34,6 +34,13 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # hardware.graphics.extraPackages = [
+  #   pkgs.rocmPackages.clr.icd
+  #   pkgs.amdvlk
+  # ];
+  # hardware.graphics.extraPackages32 = [pkgs.driversi686Linux.amdvlk];
+  # environment.variables.AMD_VULKAN_ICD = "RADV";
+  #
   boot.initrd.systemd = {
     # for hibernation, tpm2 luks unlock
     enable = true;
