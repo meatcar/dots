@@ -4,3 +4,6 @@
 # use the following style in this doc:
 # # exact commit msg
 # hash
+
+# style: nix fmt (alejandra => nixfmt)
+5c4272e96ebed599b9eae555cae99c280bbde6ff
