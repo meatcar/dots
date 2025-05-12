@@ -310,13 +310,13 @@ in
             };
             clip-to-geometry = true;
           }
-          {
-            matches = [
-              { is-floating = true; }
-            ];
-            shadow.enable = true;
-            shadow.draw-behind-window = true;
-          }
+          # {
+          #   matches = [
+          #     { is-floating = true; }
+          #   ];
+          # shadow.enable = true;
+          # shadow.draw-behind-window = true;
+          # }
           {
             matches = [ { app-id = "code"; } ];
             open-on-workspace = "code";
