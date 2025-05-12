@@ -5,7 +5,7 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: sprinters:aws:ubuntu-latest:spot=auto
 
     steps:
       - uses: actions/checkout@v4
