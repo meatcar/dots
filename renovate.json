@@ -1,6 +1,12 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "$schema": "http://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchFileNames": ["home-manager/modules/clojure/deps.edn"],
+      "description": "Clojure deps.edn",
+      "groupName": "Clojure deps.edn",
+      "groupSlug": "clj-deps-edn"
+    }
   ]
 }
