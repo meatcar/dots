@@ -1,4 +1,4 @@
-{:deps {refactor-nrepl/refactor-nrepl {:mvn/version "2.5.0"}
+{:deps {refactor-nrepl/refactor-nrepl {:mvn/version "2.5.1"}
         cider/cider-nrepl {:mvn/version "0.25.2"}
         nrepl/nrepl {:mvn/version "0.8.0"}
         iced-nrepl/iced-nrepl {:mvn/version "1.0.4"}}
