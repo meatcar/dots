@@ -1,6 +1,6 @@
 {
   "$schema": "http://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"],
+  "extends": ["config:best-practices", "security:openssf-scorecard"],
   "packageRules": [
     {
       "matchFileNames": ["home-manager/modules/clojure/deps.edn"],
