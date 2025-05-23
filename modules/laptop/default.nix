@@ -6,8 +6,15 @@
 
   # more ram!
   zramSwap.enable = true;
-  # why would we ever want to just suspend?
-  systemd.services."systemd-suspend-then-hibernate".aliases = [ "systemd-suspend.service" ];
 
   networking.networkmanager.enable = true;
+
+  # suspend-then-hibernate suspends faster, but the wakeup can leave the system in a stuck state.
+  services.logind.extraConfig = ''
+    SleepOperation=hybrid-sleep
+  '';
+  services.logind.lidSwitch = "sleep";
+  services.logind.suspendKey = "sleep";
+  services.logind.powerKey = "sleep";
+  services.logind.powerKeyLongPress = "poweroff";
 }
