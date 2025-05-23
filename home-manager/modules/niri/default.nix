@@ -9,6 +9,27 @@ let
     #!/usr/bin/env bash
     ${lib.getExe pkgs.python3} -u ${./winswitch.py}
   '';
+  edit-screenshot = pkgs.writeScript "editScreenshot" ''
+    DIRECTORY=~/Pictures/Screenshots
+    LATEST=$(ls -t "$DIRECTORY" | head -n 1)
+    EXTENSION="''${LATEST##*.}"
+    NAME="''${LATEST%.*}"
+    OUTPUT_FILE="$DIRECTORY/$NAME-edited-$(date +%Y-%m-%d_%H-%M-%S).$EXTENSION"
+    ${lib.getExe pkgs.satty} \
+      --file "$LATEST"  --output-filename "$OUTPUT_FILE" \
+      --early-exit \
+      "$@"
+  '';
+  screen-record = pkgs.writeShellApplication {
+    name = "screen-record";
+    runtimeInputs = with pkgs; [
+      wf-recorder
+      slurp
+      ffmpeg
+      wl-clipboard
+    ];
+    text = builtins.readFile ./screen-record.sh;
+  };
 in
 {
   imports = [
@@ -19,10 +40,16 @@ in
     ../swaync
     ../nautilus
   ];
-  home.packages = with pkgs; [
-    swaylock
-    fuzzel
-  ];
+  home.packages =
+    (with pkgs; [
+      swaylock
+      fuzzel
+      swww
+      waypaper
+    ])
+    ++ [
+      screen-record
+    ];
   services.gnome-keyring.enable = true;
   xdg.portal = {
     enable = lib.mkDefault true;
@@ -31,6 +58,7 @@ in
   };
   services.swayosd.enable = true;
   services.copyq.enable = true;
+  services.swww.enable = true;
   programs.niri =
     let
       workspace-names = [
@@ -138,6 +166,12 @@ in
         ];
         binds =
           {
+            "Mod+A".action.spawn = [
+              "niri"
+              "msg"
+              "action"
+              "toggle-overview"
+            ];
             "Mod+Shift+Slash".action.show-hotkey-overlay = { };
             "Mod+Return".action.spawn = "ghostty";
             "Mod+Return".repeat = false;
@@ -210,6 +244,7 @@ in
             "Mod+Z".action.expand-column-to-available-width = { };
             "Mod+F".action.maximize-column = { };
             "Mod+Shift+F".action.fullscreen-window = { };
+
             "Mod+B".action.center-window = { };
 
             "Mod+Tab".action.focus-workspace-down = { };
@@ -229,10 +264,10 @@ in
             "Mod+Alt+L".action.move-column-right-or-to-monitor-right = { };
             "Mod+Alt+K".action.move-column-to-workspace-up = { };
             "Mod+Alt+J".action.move-column-to-workspace-down = { };
-            "Mod+Ctrl+H".action.focus-monitor-left = { };
-            "Mod+Ctrl+L".action.focus-monitor-right = { };
-            "Mod+Ctrl+J".action.focus-monitor-up = { };
-            "Mod+Ctrl+K".action.focus-monitor-down = { };
+            "Mod+Ctrl+H".action.move-workspace-to-monitor-left = { };
+            "Mod+Ctrl+L".action.move-workspace-to-monitor-right = { };
+            "Mod+Ctrl+J".action.move-workspace-to-monitor-down = { };
+            "Mod+Ctrl+K".action.move-workspace-to-monitor-up = { };
             "Mod+Ctrl+Shift+H".action.move-window-to-monitor-left = { };
             "Mod+Ctrl+Shift+L".action.move-window-to-monitor-right = { };
             "Mod+Ctrl+Shift+J".action.move-window-to-monitor-up = { };
@@ -261,6 +296,11 @@ in
             "Print".action.screenshot = { };
             "Mod+Print".action.screenshot-window = { };
             "Mod+Shift+Print".action.screenshot-screen = { };
+            "Mod+Alt+Print".action.spawn = "${edit-screenshot}";
+            "Mod+Ctrl+Print".action.spawn = inTerminal [
+              "${screen-record}/bin/screen-record"
+              "-g"
+            ];
           }
           # Map 1-9 to workspaces
           // (lib.pipe 9 [
