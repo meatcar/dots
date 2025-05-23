@@ -176,7 +176,7 @@ in
             "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
             "Mod+C".action.spawn = "${lib.getExe pkgs.hyprpicker}";
             "Mod+E".action.spawn = "${lib.getExe pkgs.nautilus}";
-            "Mod+O".action.spawn = inTerminal [
+            "Mod+O".action.spawn = [
               "p"
               "zeditor"
               "-n"
