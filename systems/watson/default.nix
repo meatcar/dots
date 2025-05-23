@@ -8,6 +8,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
+    ../../modules/hardware/thinkpad_trackpoint_keyboard_ii.nix
     ../common.nix
     ../../modules/impermanence
     ../../modules/secureboot
