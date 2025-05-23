@@ -15,6 +15,11 @@ _: {
       ".local/state/syncthing"
       ".cache/less"
       ".local/state/wireplumber"
+      ".cache/thumbnails"
+
+      # wallpapers
+      ".cache/swww"
+      ".cache/waypaper"
 
       # dev
       ".config/github-copilot"
