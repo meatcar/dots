@@ -118,6 +118,10 @@
   programs.niri.enable = true;
 
   services.tailscale.enable = true;
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+  };
 
   environment.enableAllTerminfo = lib.mkForce false;
 
