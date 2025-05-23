@@ -18,6 +18,8 @@ in
     ./docker.nix
     ./podman.nix
     ./tailscale.nix
+    ./cups.nix
+    ./opensnitch.nix
     ./meatcar.nix
   ];
   # Setup a service that will automatically rollback the root subvolume to a fresh state.
@@ -120,9 +122,7 @@ in
         directory = "/root";
         mode = "0700";
       }
-      "/var/lib/cups"
       "/var/lib/boltd"
-      "/var/lib/opensnitch/rules"
     ];
 
     files = [
