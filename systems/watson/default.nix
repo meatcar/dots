@@ -48,7 +48,6 @@
     # for hibernation, tpm2 luks unlock
     enable = true;
 
-    # additionalUpstreamUnits = ["systemd-tpm2-setup-early.service"];
     storePaths = [
       "${config.boot.initrd.systemd.package}/lib/systemd/systemd-tpm2-setup"
       "${config.boot.initrd.systemd.package}/lib/systemd/system-generators/systemd-tpm2-generator"
@@ -56,6 +55,7 @@
   };
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true;
+  systemd.enableEmergencyMode = false;
 
   # if you're not going to work reliably, don't work at all.
   # boot.plymouth.enable = true;
