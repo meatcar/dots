@@ -1,6 +1,5 @@
 { config, ... }:
 {
-  imports = [ ../opensnitch/rules/systemd/resolved.nix ];
   services.resolved = {
     enable = true;
     dnsovertls = "true";
