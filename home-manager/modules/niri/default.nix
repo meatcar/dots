@@ -49,15 +49,6 @@ in
         ))
         builtins.listToAttrs
       ];
-      inTerminal =
-        cmd:
-        [
-          "${lib.getExe pkgs.ghostty}"
-          "--gtk-single-instance=false"
-          "--title=float"
-          "-e"
-        ]
-        ++ cmd;
     in
     {
       settings = {
@@ -174,7 +165,11 @@ in
             ];
             "Mod+W".action.spawn = "${winswitch}";
             "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
-            "Mod+C".action.spawn = "${lib.getExe pkgs.hyprpicker}";
+            "Mod+C".action.spawn = [
+              "/bin/sh"
+              "-c"
+              "${lib.getExe pkgs.hyprpicker} | ${pkgs.wl-clipboard}/bin/wl-copy"
+            ];
             "Mod+E".action.spawn = "${lib.getExe pkgs.nautilus}";
             "Mod+O".action.spawn = [
               "p"
