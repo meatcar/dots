@@ -11,6 +11,7 @@
     ../common.nix
     ../../modules/impermanence
     ../../modules/secureboot
+    # ../../modules/ddcci
     ../../modules/laptop
     ../../modules/resolved
     ../../modules/geoclue
