@@ -5,13 +5,14 @@
   ...
 }:
 let
-  name = "services-geoclue";
+  name = "services-geoclue2";
 in
 {
-  services.opensnitch.rules.${name} = {
+  services.opensnitch.rules.${name} = lib.mkIf config.services.geoclue2.enable {
     inherit name;
     enabled = true;
     action = "allow";
+    created = "1970-01-01T00:00:00Z";
     duration = "always";
     operator = {
       type = "list";
@@ -20,7 +21,7 @@ in
         {
           type = "simple";
           operand = "process.path";
-          data = "${lib.getExe pkgs.geoclue2}";
+          data = "${pkgs.geoclue2}/lib/exec/geoclue-wrapped";
         }
         {
           type = "regexp";

@@ -1,12 +1,14 @@
 {
+  config,
   pkgs,
   lib,
   ...
 }:
 {
-  services.opensnitch.rules.systemd-resolved = {
+  services.opensnitch.rules.systemd-resolved = lib.mkIf config.services.resolved.enable {
     name = "systemd-resolved";
     enabled = true;
+    created = "1970-01-01T00:00:00Z";
     action = "allow";
     duration = "always";
     operator = {
