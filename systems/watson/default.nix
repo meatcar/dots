@@ -26,6 +26,7 @@
     ../../modules/1password
     ../../modules/printing
     ../../modules/opensnitch
+    ../../modules/steam
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "24.11";

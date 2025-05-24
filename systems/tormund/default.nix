@@ -16,7 +16,7 @@
     ../../modules/intel.nix
     ../../modules/nvidia
     ../../modules/power
-    ../../modules/steam.nix
+    ../../modules/steam
     ../../modules/egpu
     ../../modules/dualboot.nix
     ../../modules/ly.nix
