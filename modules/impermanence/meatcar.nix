@@ -91,6 +91,16 @@ _: {
         directory = ".local/share/uv";
         mode = "0755";
       }
+
+      # steam
+      {
+        directory = ".local/share/Steam";
+        mode = "0755";
+      }
+      {
+        directory = ".paradoxlauncher";
+        mode = "0755";
+      }
     ];
   };
 }
