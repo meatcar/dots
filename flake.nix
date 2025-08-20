@@ -7,12 +7,14 @@
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://wurzelpfropf.cachix.org" # ragenix
+      "https://ghostty.cachix.org"
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "wurzelpfropf.cachix.org-1:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
+      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
     ];
   };
 
@@ -22,7 +24,8 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     # rest
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # secrets
     agenix.url = "github:yaxitech/ragenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +38,7 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     # hardware incantations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +49,10 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     niri-flake.url = "github:sodiboo/niri-flake";
+    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs";
+    centerpiece.url = "github:friedow/centerpiece";
+    centerpiece.inputs.nixpkgs.follows = "nixpkgs";
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -138,20 +145,36 @@
         nixosConfigurations =
           let
             mkSystem =
-              extraModules:
-              (inputs.nixpkgs.lib.nixosSystem {
-                inherit specialArgs;
+              system: extraModules:
+              let
+                nixpkgs-unstable = import inputs.nixpkgs-unstable (
+                  {
+                    inherit system;
+                  }
+                  // nixpkgsConfig
+                );
+              in
+              inputs.nixpkgs.lib.nixosSystem {
+                specialArgs = specialArgs // {
+                  inherit nixpkgs-unstable;
+                };
                 system = "x86_64-linux";
                 modules = extraModules ++ [
                   { nixpkgs = nixpkgsConfig; }
                   inputs.home-manager.nixosModules.home-manager
-                  { home-manager = { inherit extraSpecialArgs; }; }
+                  {
+                    home-manager = {
+                      extraSpecialArgs = extraSpecialArgs // {
+                        inherit nixpkgs-unstable;
+                      };
+                    };
+                  }
                 ];
-              });
+              };
           in
           {
             # tormund = mkSystem [ ./systems/tormund ];
-            watson = mkSystem [
+            watson = mkSystem "x86_64-linux" [
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
               inputs.impermanence.nixosModules.impermanence
@@ -166,6 +189,7 @@
                     imports = [
                       inputs.agenix.homeManagerModules.default
                       inputs.impermanence.homeManagerModules.impermanence
+                      inputs.centerpiece.hmModules."x86_64-linux".default
                       ./home-manager/systems/watson
                       ./git-crypt/hm-me.nix
                     ];
@@ -190,7 +214,7 @@
             #       };
             #   }
             # ];
-            iso = mkSystem [
+            iso = mkSystem "x86_64-linux" [
               { system.stateVersion = "24.11"; }
               (
                 {
