@@ -5,6 +5,9 @@
 }:
 {
   environment.persistence."/persist".directories = lib.mkIf config.services.opensnitch.enable [
-    "/var/lib/opensnitch/rules"
+    {
+      directory = config.services.opensnitch.settings.Rules.Path;
+      mode = "0755";
+    }
   ];
 }

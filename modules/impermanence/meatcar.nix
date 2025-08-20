@@ -30,6 +30,8 @@ _: {
       ".local/share/zed"
       ".config/zed"
       ".aider"
+      ".aws"
+      ".mcp-auth"
 
       # graphics
       ".cache/mesa_shader_cache_db"
@@ -42,7 +44,7 @@ _: {
       ".config/spotifyd"
       ".cache/spotifyd"
       ".config/spotify-player"
-      ".cache/sporify-player"
+      ".cache/spotify-player"
 
       # 1password
       ".config/aws"
@@ -87,6 +89,7 @@ _: {
       ".cache/nix"
       ".cursor"
       ".config/Cursor"
+      ".config/configstore"
       {
         directory = ".local/share/uv";
         mode = "0755";
