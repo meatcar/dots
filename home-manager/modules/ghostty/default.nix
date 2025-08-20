@@ -1,6 +1,8 @@
-_: {
+{ pkgs, specialArgs, ... }:
+{
   programs.ghostty = {
     enable = true;
+    package = specialArgs.inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableBashIntegration = true;
     enableFishIntegration = true;
     settings = {
