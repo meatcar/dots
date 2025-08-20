@@ -26,6 +26,7 @@
     ../../modules/evince
     ../../modules/spotify
     ../../modules/television
+    ../../modules/centerpiece
     ./impermanence.nix
   ];
 
