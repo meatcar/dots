@@ -125,6 +125,7 @@
     enable = false;
     openDefaultPorts = true;
   };
+  services.flatpak.enable = true;
 
   environment.enableAllTerminfo = lib.mkForce false;
 
