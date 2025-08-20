@@ -77,54 +77,53 @@
       animation = [
         "windows, 1, 2, default"
       ];
-      bind =
-        [
-          "$mod, Return, exec, ghostty"
-          "$mod, P, exec, fuzzel"
-          "$mod SHIFT, P, exec, 1password --quick-access"
-          "$mod SHIFT, N, exec, swaync-client -t -sw"
-          "$mod, N, exec, swaync-client --hide-latest -sw"
-          "$mod, V, exec, copyq toggle"
-          "$mod, Period, exec, ${lib.getExe pkgs.smile}"
-          "$mod, C, exec, ${lib.getExe pkgs.hyprpicker}"
-          "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
-          ", print, exec, ${lib.getExe pkgs.grimblast} -freeze copysave area"
+      bind = [
+        "$mod, Return, exec, ghostty"
+        "$mod, P, exec, fuzzel"
+        "$mod SHIFT, P, exec, 1password --quick-access"
+        "$mod SHIFT, N, exec, swaync-client -t -sw"
+        "$mod, N, exec, swaync-client --hide-latest -sw"
+        "$mod, V, exec, copyq toggle"
+        "$mod, Period, exec, ${lib.getExe pkgs.smile}"
+        "$mod, C, exec, ${lib.getExe pkgs.hyprpicker}"
+        "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
+        ", print, exec, ${lib.getExe pkgs.grimblast} -freeze copysave area"
 
-          "$mod SHIFT, Q, exit"
-          "$mod, D, killactive"
-          "$mod, Space, togglefloating"
-          "$mod, T, togglegroup"
-          "$mod, J, movefocus, d"
-          "$mod, K, movefocus, u"
-          "$mod, H, movefocus, l"
-          "$mod, L, movefocus, r"
-          "$mod SHIFT, J, movewindoworgroup, d"
-          "$mod SHIFT, K, movewindoworgroup, u"
-          "$mod SHIFT, H, movewindoworgroup, l"
-          "$mod SHIFT, L, movewindoworgroup, r"
-          "$mod, Tab, changegroupactive, f"
-          "$mod SHIFT, Tab, changegroupactive, b"
-          "$mod ALT, J, movecurrentworkspacetomonitor, d"
-          "$mod ALT, K, movecurrentworkspacetomonitor, u"
-          "$mod ALT, H, movecurrentworkspacetomonitor, l"
-          "$mod ALT, L, movecurrentworkspacetomonitor, r"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              i:
-              let
-                ws = i + 1;
-              in
-              [
-                "$mod, code:1${toString i}, workspace, ${toString ws}"
-                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+        "$mod SHIFT, Q, exit"
+        "$mod, D, killactive"
+        "$mod, Space, togglefloating"
+        "$mod, T, togglegroup"
+        "$mod, J, movefocus, d"
+        "$mod, K, movefocus, u"
+        "$mod, H, movefocus, l"
+        "$mod, L, movefocus, r"
+        "$mod SHIFT, J, movewindoworgroup, d"
+        "$mod SHIFT, K, movewindoworgroup, u"
+        "$mod SHIFT, H, movewindoworgroup, l"
+        "$mod SHIFT, L, movewindoworgroup, r"
+        "$mod, Tab, changegroupactive, f"
+        "$mod SHIFT, Tab, changegroupactive, b"
+        "$mod ALT, J, movecurrentworkspacetomonitor, d"
+        "$mod ALT, K, movecurrentworkspacetomonitor, u"
+        "$mod ALT, H, movecurrentworkspacetomonitor, l"
+        "$mod ALT, L, movecurrentworkspacetomonitor, r"
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
