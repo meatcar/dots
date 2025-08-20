@@ -68,19 +68,28 @@ in
     ];
   };
 
-  home.packages = builtins.attrValues {
-    inherit (pkgs.gitAndTools)
+  home.packages =
+    (with pkgs; [
+      glab # gitlab CLI
+      git-absorb # quick fixup rebases
+      git-crypt # transparent encryption
+
+    ])
+    ++ (with pkgs.gitAndTools; [
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
       delta # delta
-      ;
-    inherit (pkgs)
-      glab # gitlab CLI
-      git-absorb # quick fixup rebases
+    ])
+    ++ [
+      (pkgs.writeShellScriptBin "git-op-crypt" ''
+        ${builtins.readFile ./git-op-crypt.sh}
+      '')
+    ]
+    ++ (with specialArgs.nixpkgs-unstable; [
       gitu # cli magit
-      git-crypt # transparent encryption
-      ;
-  };
+    ]);
+
+  xdg.configFile."gitu/config.toml".source = ./gitu-config.toml;
 
   programs.gh = {
     enable = true;
