@@ -19,8 +19,8 @@
     ../../modules/activitywatch
     ../../modules/ghostty
     ../../modules/obsidian
+    ../../modules/ai
     ../../modules/vscode
-    ../../modules/aider
     ../../modules/zed
     ../../modules/calendar
     ../../modules/evince
