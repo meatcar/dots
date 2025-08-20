@@ -90,7 +90,7 @@ return {
       -- Add a cyclic pattern (toggles between yes and no)
       patterns[{ 'yes', 'no' }] = { priority = 10 }
       patterns[{ 'True', 'False' }] = { priority = 10 }
-      patterns[{ '[ ]', '[x]', '[-]' }] = { priority = 10 }
+      patterns[{ '[ ]', '[x]', '[-]', '[>]', '[~]', '[!]' }] = { priority = 10 }
       patterns[{ 'TODO', 'DONE', 'FIX', 'NOTE', 'WARN', 'TEST', 'HACK', 'WARN', 'PERF' }] = { priority = 10 }
 
       -- Call the setup to enable the patterns
@@ -226,18 +226,23 @@ return {
       { '<leader>nl', '<Cmd>Obsidian linknew<Space>', desc = 'Link to a note' },
     },
     opts = {
-      dir = vim.fn.environ().NOTES_DIR,
+      workspaces = {
+        {
+          name = "personal",
+          path = vim.fn.environ().NOTES_DIR,
+        }
+      },
       daily_notes = {
         folder = "journal/daily",
         workdays_only = false,
       },
-      mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gf"] = {
-          action = function() return require("obsidian").util.gf_passthrough() end,
-          opts = { noremap = false, expr = true, buffer = true },
-        }
-      },
+      -- mappings = {
+      --   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+      --   ["gf"] = {
+      --     action = function() return require("obsidian").util.gf_passthrough() end,
+      --     opts = { noremap = false, expr = true, buffer = true },
+      --   }
+      -- },
       completion = {
         blink = true,
       },
@@ -249,6 +254,9 @@ return {
       },
       picker = {
         name = "telescope.nvim"
+      },
+      ui = {
+        enable = false, -- prefer render-markdown.nvim
       }
     }
   },

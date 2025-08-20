@@ -52,32 +52,32 @@ return {
       }
     end,
   },
-  { -- Fancy markdown extras
-    'SidOfc/mkdx',
-    ft = { 'md', 'markdown' },
-    config = function()
-      vim.g['mkdx#settings'] = {
-        map = { prefix = '<localleader>', enable = 1 },
-        tokens = {
-          enter = { '-', '*', '>' },
-          bold = '**',
-          italic = '*',
-          strike = '',
-          list = '-',
-          fence = '',
-          header = '#',
-        },
-        checkbox = {
-          toggles = { ' ', '-', 'x' },
-          update_tree = 2,
-          initial_state = ' ',
-        },
-        highlight = { enable = 1 },
-        auto_update = { enable = 1 },
-        fold = { enable = 1 },
-      }
-    end,
-  },
+  -- { -- Fancy markdown extras
+  --   'SidOfc/mkdx',
+  --   ft = { 'md', 'markdown' },
+  --   config = function()
+  --     vim.g['mkdx#settings'] = {
+  --       map = { prefix = '<localleader>', enable = 1 },
+  --       tokens = {
+  --         enter = { '-', '*', '>' },
+  --         bold = '**',
+  --         italic = '*',
+  --         strike = '',
+  --         list = '-',
+  --         fence = '',
+  --         header = '#',
+  --       },
+  --       checkbox = {
+  --         toggles = { ' ', '-', 'x' },
+  --         update_tree = 2,
+  --         initial_state = ' ',
+  --       },
+  --       highlight = { enable = 1 },
+  --       auto_update = { enable = 1 },
+  --       fold = { enable = 1 },
+  --     }
+  --   end,
+  -- },
   { -- make editing freetext easier
     'reedes/vim-pencil',
     ft = { 'md', 'markdown', 'text', 'mail' },
@@ -97,7 +97,31 @@ return {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     ft = { 'md', 'markdown' },
-    opts = {}
+    opts = {
+      completions = { blink = { enabled = true } },
+      bullet = {
+        enabled = false
+      },
+      checkbox = {
+        bullet = true,
+        right_pad = 1,
+        unchecked = { icon = '  ' },
+        checked = { icon = '  ', scope_highlight = '@markup.strikethrough' },
+        custom = {
+          todo = { raw = '[-]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+          arrow = { raw = '[>]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+          tilde = { raw = '[~]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = '@markup.strikethrough' },
+          important = { raw = '[!]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+        }
+      },
+      heading = {
+        icons = {
+          '󰎦 ', '󰎩 ', '󰎬 ', '󰎮 ', '󰎰 ', '󰎵 '
+        },
+        -- border = true,
+        -- border_virtual = true
+      }
+    }
   },
 
   -- clojure
