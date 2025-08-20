@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  networking.networkmanager.dns = "systemd-resolved";
   services.resolved = {
     enable = true;
     dnsovertls = "true";
@@ -11,5 +12,6 @@
     wantedBy = [ "network-online.target" ];
     after = [ "network-online.target" ];
     partOf = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
   };
 }
