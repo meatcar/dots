@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  specialArgs,
   ...
 }:
 {
@@ -29,26 +30,31 @@
     ../modules/docker
   ];
 
-  home.packages = with pkgs; [
-    curl
-    htop
-    imgcat
+  home.packages =
+    with pkgs;
+    [
+      curl
+      htop
+      imgcat
 
-    # dev
-    entr
-    mosh
-    ripgrep
-    jq
-    fx
-    openssl
-    devenv
+      # dev
+      entr
+      mosh
+      ripgrep
+      jq
+      fx
+      openssl
 
-    (lib.mkDefault (
-      pkgs.writeShellScriptBin "get-theme-default" ''
-        echo dark
-      ''
-    ))
-  ];
+      (lib.mkDefault (
+        pkgs.writeShellScriptBin "get-theme-default" ''
+          echo dark
+        ''
+      ))
+    ]
+    ++ [
+      # FIXME: fails to build from stable, use unstable for now
+      specialArgs.nixpkgs-unstable.devenv
+    ];
 
   xdg.enable = true;
   home.sessionVariables = {
