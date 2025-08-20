@@ -76,7 +76,8 @@ in
                         mountOptions = [
                           "compress=zstd"
                           "noexec"
-                        ] ++ defaultOptions;
+                        ]
+                        ++ defaultOptions;
                       };
                       "@nix" = {
                         mountpoint = "/nix";
@@ -87,7 +88,8 @@ in
                         mountOptions = [
                           "compress=no"
                           "noexec"
-                        ] ++ defaultOptions;
+                        ]
+                        ++ defaultOptions;
                       };
                       "@persist/home" = {
                         mountpoint = "/persist/home";
@@ -106,7 +108,8 @@ in
                         mountOptions = [
                           "compress=zstd"
                           "noexec"
-                        ] ++ defaultOptions;
+                        ]
+                        ++ defaultOptions;
                       };
                       "@swap" = {
                         mountpoint = "/.swap";
