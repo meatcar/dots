@@ -25,7 +25,7 @@
     ../../modules/fingerprint.nix
     ../../modules/1password
     ../../modules/printing
-    ../../modules/opensnitch
+    # ../../modules/opensnitch
     ../../modules/steam
     ./t14s-micmuteled.nix
   ];
