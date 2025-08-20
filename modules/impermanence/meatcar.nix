@@ -32,6 +32,11 @@ _: {
       ".aider"
       ".aws"
       ".mcp-auth"
+      ".local/share/opencode"
+      {
+        directory = ".cache/opencode";
+        mode = "0755";
+      }
 
       # graphics
       ".cache/mesa_shader_cache_db"
