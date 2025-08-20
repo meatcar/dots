@@ -122,7 +122,7 @@
 
   services.tailscale.enable = true;
   services.syncthing = {
-    enable = true;
+    enable = false;
     openDefaultPorts = true;
   };
 

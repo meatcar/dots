@@ -54,7 +54,7 @@
 
   programs.chromium.enable = true;
 
-  # services.syncthing.enable = true;
+  services.syncthing.enable = true;
   services.opensnitch-ui.enable = true;
   services.easyeffects.enable = false; # true; TODO: causes shutdown to be slow
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
