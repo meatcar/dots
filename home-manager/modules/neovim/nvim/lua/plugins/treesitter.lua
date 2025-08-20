@@ -85,7 +85,6 @@ return {
   { -- close function blocks
     'RRethy/nvim-treesitter-endwise',
     event = me.o.events.insert,
-    opts = {}
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
