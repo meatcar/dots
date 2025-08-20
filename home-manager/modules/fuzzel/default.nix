@@ -32,14 +32,14 @@
   };
   home.packages = [
     (pkgs.writeShellApplication {
-      name = "p";
+      name = "fuzzel-git-projects";
       runtimeInputs = with pkgs; [
         zoxide
         fd
         direnv
         fuzzel
       ];
-      text = builtins.readFile ./p.sh;
+      text = builtins.readFile ./fuzzel-git-projects.sh;
     })
   ];
 }
