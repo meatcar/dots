@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  specialArgs,
   ...
 }:
 {
@@ -30,16 +31,20 @@
     ./impermanence.nix
   ];
 
-  home.packages = with pkgs; [
-    vivaldi
-    pciutils
-    code-cursor
-    calibre
-    gimp
-    inkscape
-    loupe
-    pantheon.epiphany
-  ];
+  home.packages =
+    with pkgs;
+    [
+      pciutils
+      code-cursor
+      calibre
+      gimp
+      inkscape
+      loupe
+      pantheon.epiphany
+    ]
+    ++ (with specialArgs.nixpkgs-unstable; [
+      vivaldi
+    ]);
 
   home.sessionVariables = {
     EDITOR = "nvim";
