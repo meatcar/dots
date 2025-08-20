@@ -9,16 +9,17 @@ let
 in
 {
   home.packages = [
-    (pkgs.writeShellScriptBin "aider" ''
-      source ${config.age.secrets.aienv.path}
-      ${uPkgs.aider-chat}/bin/aider "$@"
-    '')
     (pkgs.writeShellScriptBin "opencode" ''
       source ${config.age.secrets.aienv.path}
       ${uPkgs.opencode}/bin/opencode "$@"
     '')
   ];
+  xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
+    "$schema" = "https://opencode.ai/config.json";
+    # see https://opencode.ai/docs/config/
+    autoupdate = false; # managed by nix
+  };
   programs.git.ignores = [
-    ".aider*"
+    "opencode.json"
   ];
 }
