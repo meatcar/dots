@@ -16,6 +16,7 @@
     ../../modules/niri
     # ../../modules/hyperland
     ../../modules/1password
+    ../../modules/bitwarden
     # ../../modules/docker
     ../../modules/activitywatch
     ../../modules/ghostty
