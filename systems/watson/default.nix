@@ -21,8 +21,8 @@
     ../../modules/display-manager
     # ../../modules/displaylink
     ../../modules/keyd
-    ../../modules/podman.nix
-    ../../modules/fingerprint.nix
+    ../../modules/podman
+    ../../modules/fingerprint
     ../../modules/1password
     ../../modules/printing
     # ../../modules/opensnitch
