@@ -16,6 +16,7 @@ _: {
       ".cache/less"
       ".local/state/wireplumber"
       ".cache/thumbnails"
+      ".local/share/man"
 
       # wallpapers
       ".cache/swww"
