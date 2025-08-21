@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -13,7 +14,7 @@ let
     "-Du+g" # underline = formatted green
     "-Ds+kw" # standout = formatted Black on White
   ];
-  manpager = pkgs.writeShellScriptBin "manpager" ''
+  manpager = pkgs.writeShellScript "manpager" ''
     export LESS_TERMCAP_mb=$(tput bold)             # begin blinking
     export LESS_TERMCAP_md=$(tput bold)             # begin bold
     export LESS_TERMCAP_me=$(tput sgr0)             # end mode
@@ -33,11 +34,18 @@ let
 in
 {
   programs.man.enable = true;
-  programs.man.generateCaches = false;
+  programs.man.generateCaches = true;
+  home.file.".manpath".text =
+    let
+      inherit (config.home) homeDirectory;
+    in
+    ''
+      MANDATORY_MANPATH ${homeDirectory}/.local/share/man
+      MANDATORY_MANPATH ${homeDirectory}/.nix-profile/share/man
+    '';
 
   home.sessionVariables = {
     MANROFFOPT = "-c";
-    MANPAGER = "manpager";
+    MANPAGER = "${manpager}";
   };
-  home.packages = [ manpager ];
 }
