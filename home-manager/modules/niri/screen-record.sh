@@ -1,4 +1,4 @@
-#!/usr/bin/env bashs
+#!/usr/bin/env bash
 set -eux -o pipefail
 
 DIR=$(mktemp -d -t screen-record-XXXXXX)

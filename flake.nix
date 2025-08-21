@@ -53,6 +53,7 @@
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
     centerpiece.url = "github:friedow/centerpiece";
     centerpiece.inputs.nixpkgs.follows = "nixpkgs";
+    clipboard-sync.url = "github:dnut/clipboard-sync";
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -181,6 +182,7 @@
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
               inputs.niri-flake.nixosModules.niri
+              inputs.clipboard-sync.nixosModules.default
               ./systems/watson
               {
                 home-manager.users.meatcar =
