@@ -40,7 +40,7 @@ let
     vertical = "Samsung Electric Company C27JG5x H4ZN100219";
   };
   manage-monitors = pkgs.writeShellScriptBin "manage-monitors" ''
-    if niri msg outputs | grep -q "${monitors.flex}"; then 
+    if niri msg outputs | grep -q "${monitors.flex}"; then
       niri msg output "${monitors.internal}" off
     else
       niri msg outputs "${monitors.internal}" on
@@ -71,19 +71,35 @@ in
       fuzzel
       swww
       waypaper
+      cliphist
     ])
     ++ [
       screen-record
       manage-monitors
     ];
-  services.gnome-keyring.enable = true;
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    Unit = {
+      Description = "polkit-gnome-authentication-agent-1";
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
   xdg.portal = {
     enable = lib.mkDefault true;
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     configPackages = [ pkgs.niri ];
   };
   services.swayosd.enable = true;
-  services.copyq.enable = true;
   services.swww.enable = true;
   programs.niri =
     let
@@ -135,6 +151,14 @@ in
               # "timeout"
               # (builtins.toString (60 * 20))
               # "${lock}"
+            ];
+          }
+          {
+            command = [
+              "wl-paste"
+              "--watch"
+              "cliphist"
+              "store"
             ];
           }
           {
@@ -256,8 +280,9 @@ in
             "-sw"
           ];
           "Mod+V".action.spawn = [
-            "copyq"
-            "toggle"
+            "sh"
+            "-c"
+            "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
           ];
           "Mod+Tab".action.spawn = "${winswitch}";
           "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
@@ -432,7 +457,6 @@ in
           {
             # Private Tray Floater
             matches = [
-              { app-id = "copyq"; }
               { app-id = "opensnitch_ui"; }
             ];
             open-floating = true;
@@ -456,6 +480,7 @@ in
               { app-id = "opensnitch_ui"; }
               { title = "^.+ Mail - Vivaldi$"; } # gmail notification summon
               { app-id = "org.kde.polkit-kde-authentication-agent-1"; }
+              { app-id = "org.gnome.polkit-gnome-authentication-agent-1"; }
             ];
             open-floating = true;
             block-out-from = "screen-capture";

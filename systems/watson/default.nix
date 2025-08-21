@@ -132,6 +132,10 @@
     "/share/nautilus-python/extensions"
   ];
   # programs.hyprland.enable = true;
+  # we manage this in HM
+  systemd.user.services.niri-flake-polkit.enable = false;
+
+  services.clipboard-sync.enable = true;
 
   nix.settings.trusted-users = [ "meatcar" ];
   users.mutableUsers = false;
