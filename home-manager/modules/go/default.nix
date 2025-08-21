@@ -1,0 +1,7 @@
+{
+  home.sessionVariables = {
+    # need to be in +x dirs
+    GOPATH = "/git/go";
+    GOCACHE = "/git/go/.cache";
+  };
+}

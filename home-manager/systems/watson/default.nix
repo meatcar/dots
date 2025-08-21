@@ -23,6 +23,7 @@
     ../../modules/ai
     ../../modules/vscode
     ../../modules/zed
+    ../../modules/go
     ../../modules/calendar
     ../../modules/evince
     ../../modules/spotify
