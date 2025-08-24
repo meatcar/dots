@@ -44,7 +44,7 @@
           "custom/cpu-temp" = {
             format = "<small>{}C</small>";
             interval = 5;
-            exec = "awk '{printf \"%.0f\", $1/1000}' /sys/class/thermal/thermal_zone0/temp"; # is there a shorter more readable way to do this math in a single line AI?
+            exec = "echo $(($(cat /sys/class/thermal/thermal_zone0/temp)/1000))";
             tooltip-format = "CPU Temperature: {}°C";
           };
           "group/g-pings" = group {
