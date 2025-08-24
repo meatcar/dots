@@ -41,6 +41,12 @@
             format = "";
             tooltip = false;
           };
+          "custom/cpu-temp" = {
+            format = "<small>{}C</small>";
+            interval = 5;
+            exec = "awk '{printf \"%.0f\", $1/1000}' /sys/class/thermal/thermal_zone0/temp"; # is there a shorter more readable way to do this math in a single line AI?
+            tooltip-format = "CPU Temperature: {}°C";
+          };
           "group/g-pings" = group {
             modules = [ "custom/notification" ];
           };
