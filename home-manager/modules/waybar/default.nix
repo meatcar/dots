@@ -28,6 +28,7 @@
           ];
           modules-center = [ ];
           modules-right = [
+            "custom/cpu-temp" # implement this module by reading /sys/class/thermal/thermal_zone0/temp and dividing by 1000 AI!
             "tray"
             "group/audio-output"
             "group/audio-input"
