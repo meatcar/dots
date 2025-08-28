@@ -111,6 +111,7 @@
   networking.firewall.allowedTCPPorts = [
     57621 # for spotify
     5353 # for chromecast
+    22000 # for syncthing
   ];
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
