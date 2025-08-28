@@ -47,13 +47,17 @@ let
     fi
   '';
   inTerminal =
+    {
+      class ? "",
+      title ? "",
+    }:
     cmd:
     [
-      "${ghostty}/bin/ghostty"
-      "--gtk-single-instance=false"
-      "--title=float"
-      "-e"
+      "${lib.getExe ghostty}"
     ]
+    ++ (if title == "" then [ ] else [ "--title=${title}" ])
+    ++ (if class == "" then [ ] else [ "--class=${class}" ])
+    ++ [ "-e" ]
     ++ cmd;
 in
 {
@@ -71,7 +75,6 @@ in
       fuzzel
       swww
       waypaper
-      cliphist
     ])
     ++ [
       screen-record
@@ -151,14 +154,6 @@ in
               # "timeout"
               # (builtins.toString (60 * 20))
               # "${lock}"
-            ];
-          }
-          {
-            command = [
-              "wl-paste"
-              "--watch"
-              "cliphist"
-              "store"
             ];
           }
           {
@@ -282,7 +277,15 @@ in
           "Mod+V".action.spawn = [
             "sh"
             "-c"
-            "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
+            (builtins.concatStringsSep " " (
+              inTerminal
+                {
+                  title = "float";
+                }
+                [
+                  "${lib.getExe pkgs.clipse}"
+                ]
+            ))
           ];
           "Mod+Tab".action.spawn = "${winswitch}";
           "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
@@ -385,7 +388,7 @@ in
           "Mod+Print".action.screenshot-window = { };
           "Mod+Shift+Print".action.screenshot-screen = { };
           "Mod+Alt+Print".action.spawn = "${edit-screenshot}";
-          "Mod+Ctrl+Print".action.spawn = inTerminal [
+          "Mod+Ctrl+Print".action.spawn = inTerminal { title = "float"; } [
             "${screen-record}/bin/screen-record"
             "-g"
           ];
