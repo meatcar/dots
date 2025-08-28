@@ -135,8 +135,6 @@
   # we manage this in HM
   systemd.user.services.niri-flake-polkit.enable = false;
 
-  services.clipboard-sync.enable = true;
-
   nix.settings.trusted-users = [ "meatcar" ];
   users.mutableUsers = false;
   users.users.meatcar = {
