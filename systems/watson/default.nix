@@ -114,6 +114,10 @@
     22000 # for syncthing
   ];
 
+  networking.firewall.allowedUDPPorts = [
+    21027 # for syncthing discovery
+  ];
+
   time.timeZone = lib.mkDefault "Canada/Eastern";
   services.automatic-timezoned.enable = true;
 
@@ -122,7 +126,7 @@
   services.tailscale.enable = true;
   services.syncthing = {
     enable = false;
-    openDefaultPorts = true;
+    openDefaultPorts = false;
   };
   services.flatpak.enable = true;
 
