@@ -81,6 +81,8 @@ treefmt
 
 This command is available in the development shell. It is also enforced by a pre-commit hook.
 
+When creating new Nix modules, please follow the established structure. Prefer creating a directory for a module with a `default.nix` file inside it (e.g., `modules/my-module/default.nix`) rather than a single file (e.g., `modules/my-module.nix`). This helps keep related files together as the module grows.
+
 ### Commit Messages
 
 This repository uses [Conventional Commits](https://www.conventionalcommits.org/) for commit messages. This is enforced with a pre-commit hook using `commitizen`.
