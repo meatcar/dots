@@ -14,7 +14,7 @@ return {
     dependencies = {
       { "b0o/schemastore.nvim" },
       { "folke/neoconf.nvim",  opts = {}, cmd = 'Neoconf' },
-      { "folke/neodev.nvim",   opts = {} },
+      { "folke/lazydev.nvim",  opts = {} },
       { "sigmaSd/deno-nvim" }, -- no opts, as we require it down below
     },
     keys = {
@@ -27,7 +27,7 @@ return {
       require('which-key').add({ '<leader>ll', group = 'lspconfig' })
     end,
     config = function()
-      require 'neodev'
+      require 'lazydev'
       require 'cmp'
       local lspconfig = require 'lspconfig'
       local servers = {
