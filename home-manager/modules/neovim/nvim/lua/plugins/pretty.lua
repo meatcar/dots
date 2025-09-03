@@ -117,7 +117,10 @@ return {
     opts = {
       filetypes_denylist = _G.me.o.panels,
     },
-    config = true
+    config = function(_, opts)
+      -- illuminate doesn't export a setup function, so we have to call configure
+      require('illuminate').configure(opts)
+    end,
   },
 
   {
