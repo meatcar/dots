@@ -135,6 +135,12 @@
       zig.symbol = "󱐋 ";
 
       custom.jj = {
+        # for speed
+        shell = [
+          "sh"
+          "--norc"
+          "--noprofile"
+        ];
         detect_folders = [ ".jj" ];
         symbol = "🐦️ ";
         command = ''
