@@ -20,6 +20,7 @@
     # ../../modules/docker
     ../../modules/activitywatch
     ../../modules/ghostty
+    ../../modules/clipse
     ../../modules/obsidian
     ../../modules/ai
     ../../modules/vscode
