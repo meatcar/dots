@@ -133,6 +133,36 @@
       ruby.symbol = " ";
       rust.symbol = " ";
       zig.symbol = "󱐋 ";
+
+      custom.jj = {
+        detect_folders = [".jj"];
+        symbol = "🐦️ ";
+        command = ''
+          jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
+            separate(" ",
+              change_id.shortest(1),
+              commit_id.shortest(4),
+              bookmarks,
+              "|",
+              concat(
+                if(conflict, "💥"),
+                if(divergent, "🚧"),
+                if(hidden, "👻"),
+                if(immutable, "🔒"),
+              ),
+              raw_escape_sequence("\x1b[1;32m") ++ if(empty, "∅"),
+              raw_escape_sequence("\x1b[1;32m") ++ coalesce(
+                concat(
+                  "(",
+                  truncate_end(29, description.first_line(), "…"),
+                  ")"
+                ),
+                "()",
+              ) ++ raw_escape_sequence("\x1b[0m"),
+            )
+          '
+        '';
+      };
     };
   };
 }
