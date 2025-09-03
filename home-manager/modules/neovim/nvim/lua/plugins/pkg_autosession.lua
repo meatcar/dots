@@ -79,7 +79,7 @@ return {
       vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
       ---@diagnostic disable-next-line: missing-fields
       require('auto-session').setup {
-        use_git_branch = true,
+        git_use_branch_name = true,
         pre_save_cmds = { 'Neotree close', function()
           require('neogit').close()
         end, function()
