@@ -1,11 +1,11 @@
 return {
-  { -- A plethora of syntaxes
-    'sheerun/vim-polyglot',
-    event = me.o.events.buf_early,
-    init = function()
-      vim.g.polyglot_disabled = { 'yaml', 'markdown', 'scala' }
-    end,
-  },
+  -- { -- A plethora of syntaxes
+  --   'sheerun/vim-polyglot',
+  --   event = me.o.events.buf_early,
+  --   init = function()
+  --     vim.g.polyglot_disabled = { 'ftdetect', 'yaml', 'markdown', 'scala' }
+  --   end,
+  -- },
 
   { 'zirrostig/vim-shbed',       ft = { 'sh', 'fish' } },
   {
