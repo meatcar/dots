@@ -17,6 +17,8 @@ _: {
       ".local/state/wireplumber"
       ".cache/thumbnails"
       ".local/share/man"
+      ".config/waypaper"
+      ".config/htop"
 
       # wallpapers
       ".cache/swww"
@@ -27,10 +29,13 @@ _: {
       ".npm"
       ".cache/npm"
       ".cache/pnpm"
+      ".cache/.bun"
+      ".cache/bun"
       ".cache/nixpkgs-review"
       ".local/share/zed"
       ".config/zed"
       ".aider"
+      ".local/share/aider"
       ".aws"
       ".mcp-auth"
       ".local/share/opencode"
