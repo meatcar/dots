@@ -42,7 +42,7 @@
             tooltip = false;
           };
           "custom/cpu-temp" = {
-            format = "<small>{}C</small>";
+            format = "<small>{}c</small>";
             interval = 5;
             exec = "echo $(($(cat /sys/class/thermal/thermal_zone0/temp)/1000))";
             tooltip-format = "CPU Temperature: {}°C";
