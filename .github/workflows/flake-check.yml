@@ -5,7 +5,9 @@ on:
 
 jobs:
   check:
-    runs-on: sprinters:aws:ubuntu-latest:spot=auto
+    runs-on: 
+      - sprinters:aws:ubuntu-latest:spot=auto
+      - ${{ github.run_id }}-${{ github.run_attempt }}-flake-check
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
