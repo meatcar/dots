@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ jjui lazyjj ];
+  home.packages = with pkgs; [
+    jjui
+    lazyjj
+  ];
   programs.jujutsu = {
     enable = true;
     settings = {
