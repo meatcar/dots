@@ -24,4 +24,4 @@ jobs:
           gpg --batch --import <<< '${{ secrets.GPG_KEY }}'
       - run: git-crypt unlock
       - name: Run flake check
-        run: nix flake check
+        run: nix flake check --accept-flake-config
