@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  specialArgs,
   ...
 }:
 let
@@ -13,6 +14,8 @@ in
 {
   programs.spotify-player = {
     enable = true;
+    # FIXME: until nixos 25.09 is out
+    package = specialArgs.nixpkgs-unstable.spotify-player;
     settings = {
       default_device = name;
       client_id_command = {
