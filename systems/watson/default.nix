@@ -116,6 +116,7 @@
   ];
 
   networking.firewall.allowedUDPPorts = [
+    22000 # for syncthing
     21027 # for syncthing discovery
   ];
 
@@ -129,6 +130,8 @@
     # FIXME: pending https://github.com/NixOS/nixpkgs/issues/438765
     package = nixpkgs-unstable.tailscale;
   };
+
+  services.syncthing.enable = false; # prefer HM module
   services.flatpak.enable = true;
 
   environment.enableAllTerminfo = lib.mkForce false;
