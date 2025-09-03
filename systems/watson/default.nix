@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -123,10 +124,10 @@
 
   programs.niri.enable = true;
 
-  services.tailscale.enable = true;
-  services.syncthing = {
-    enable = false;
-    openDefaultPorts = false;
+  services.tailscale = {
+    enable = true;
+    # FIXME: pending https://github.com/NixOS/nixpkgs/issues/438765
+    package = nixpkgs-unstable.tailscale;
   };
   services.flatpak.enable = true;
 
