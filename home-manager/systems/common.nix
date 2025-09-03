@@ -11,6 +11,7 @@
     ../modules/nix-your-shell
     ../modules/man
     ../modules/git
+    ../modules/jujutsu
     ../modules/fish
     ../modules/starship
     ../modules/ssh
