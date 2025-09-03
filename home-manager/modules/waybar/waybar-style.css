@@ -1,4 +1,6 @@
 /* source: https://github.com/catppuccin/waybar/blob/main/themes/mocha.css */
+/* This is a GTK CSS file, not a regular web CSS file, hence LSP warnings */
+
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
 @define-color pink #f5c2e7;
@@ -257,7 +259,7 @@ window#waybar.left .modules-right {
 
 @keyframes blink-active {
   to {
-    background-color: @active;
+    background-color: @crust;
     color: @foreground;
   }
 }
