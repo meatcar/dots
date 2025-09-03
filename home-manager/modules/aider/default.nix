@@ -37,6 +37,6 @@ in
     notifications = true;
     cache-prompts = true;
     analytics-disable = true;
-    git-commit-verify = true;
+    no-auto-commits = true;
   };
 }
