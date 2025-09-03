@@ -14,7 +14,7 @@ let
     "-Du+g" # underline = formatted green
     "-Ds+kw" # standout = formatted Black on White
   ];
-  manpager = pkgs.writeShellScript "manpager" ''
+  manpager = pkgs.writeShellScriptBin "manpager" ''
     export LESS_TERMCAP_mb=$(tput bold)             # begin blinking
     export LESS_TERMCAP_md=$(tput bold)             # begin bold
     export LESS_TERMCAP_me=$(tput sgr0)             # end mode
@@ -46,6 +46,13 @@ in
 
   home.sessionVariables = {
     MANROFFOPT = "-c";
-    MANPAGER = "${manpager}";
+    MANPAGER = "${manpager}/bin/manpager";
   };
+  home.packages = [
+    manpager
+    pkgs.python3Packages.help2man
+    (pkgs.writeShellScriptBin "manhelp" ''
+      ${pkgs.python3Packages.help2man}/bin/help2man "$@" | man -l -
+    '')
+  ];
 }
