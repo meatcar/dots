@@ -30,8 +30,12 @@
         # Settings from https://oppi.li/posts/configuring_jujutsu/
         template-aliases = {
           "format_timestamp(timestamp)" = "timestamp.ago()";
+          "format_short_id(id)" = "id.shortest(4)";
         };
         templates = {
+          git_push_bookmark = ''
+            "meatcar/push-" ++ change_id.short()
+          '';
           log_node = ''
             label("node",
               coalesce(
@@ -108,8 +112,10 @@
           "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:'') & (~empty() | merges()))";
         };
         git = {
+          colocate = true;
           write-change-id-header = true;
           fetch = [ "glob:*" ];
+          private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
         };
         fix.tools = {
           treefmt = {
