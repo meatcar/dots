@@ -8,7 +8,13 @@
 }:
 {
   home.packages = with nixpkgs-unstable; [
-    jjui
+    (pkgs.writeShellScriptBin "jjui" ''
+      # jjui's dep doesn't allow tmux to access background color so lets' just lie to it
+      # see https://github.com/muesli/termenv/blob/2eeba510a727c7211d3797e19294bf7d8859f726/termenv_unix.go#L238
+      # pending on https://github.com/muesli/termenv/pull/123
+      export TERM=$(echo "$TERM" | sed 's/^tmux/xterm/');
+      ${lib.getExe jjui} "$@"
+    '')
     lazyjj
   ];
   programs.jujutsu =
