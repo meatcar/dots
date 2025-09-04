@@ -1105,6 +1105,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "plug-kak": "plug-kak",
+        "tinted-jjui": "tinted-jjui",
         "treefmt-nix": "treefmt-nix_2",
         "vscode-fish": "vscode-fish",
         "vscode-server": "vscode-server",
@@ -1225,6 +1226,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tinted-jjui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754701548,
+        "narHash": "sha256-sT3TVSjGq5X/nJQtPQN4Kby7254udrZCAMAO5rCzUjk=",
+        "owner": "vic",
+        "repo": "tinted-jjui",
+        "rev": "25dc3531e01fe155d4bdcf4bcb4b707fe5e56b3f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "tinted-jjui",
         "type": "github"
       }
     },

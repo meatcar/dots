@@ -3,6 +3,7 @@
   pkgs,
   lib,
   nixpkgs-unstable,
+  inputs,
   ...
 }:
 {
@@ -117,10 +118,6 @@
             program = "treefmt";
           };
         };
-        ui = {
-          default-command = "status";
-          diff-editor = "lazygit";
-        };
         merge-tools =
           let
             # source: https://github.com/jj-vcs/jj/wiki/Vim,-Neovim#using-neovim-as-a-diff-editor-with-existing-git-tooling
@@ -183,4 +180,29 @@
         ];
       };
     };
+  home.file.".config/jjui/themes".source = "${inputs.tinted-jjui}/themes";
+  xdg.configFile."jjui/config.toml".source = (pkgs.formats.toml { }).generate "config.toml" {
+    ui.theme = {
+      light = "base24-catppuccin-latte";
+      dark = "base24-catppuccin-mocha";
+    };
+    preview = {
+      show_at_start = true;
+    };
+    custom_commands = {
+      delta = {
+        show = "interactive";
+        args = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            jj show -r $change_id --summary --git --color=always | delta --pager 'less -FRX'
+          ''
+        ];
+      };
+    };
+  };
 }
