@@ -95,6 +95,10 @@
       url = "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css";
       flake = false;
     };
+    tinted-jjui = {
+      url = "github:vic/tinted-jjui";
+      flake = false;
+    };
   };
 
   outputs =
