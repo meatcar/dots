@@ -163,33 +163,22 @@
               ];
             };
           };
+        ui = {
+          default-command = "status";
+          diff-editor = "lazygit";
+          diff-formatter = "delta";
+          pager = [
+            delta
+            # apparently jj calls less with -X, pass it through
+            "--pager"
+            "less -FRX"
+          ]
+          ++ deltaArgs;
+        };
         "--scope" = [
           {
-            "--when.commands" = [ "log" ];
-            ui.diff.tool = "delta"; # defined in merge-tools.delta
-          }
-          {
-            "--when.commands" = [
-              "diff"
-              "show"
-            ];
-            ui = {
-              pager = [
-                delta
-              ]
-              ++ deltaArgs
-              ++ [
-                # apparently jj calls less with -X, pass it through
-                "--pager"
-                "less -FRX"
-              ];
-              diff-formatter = ":git";
-              diff.format = "git";
-            };
-          }
-          {
-            "--when.repositories" = [ "/git/hub/alipes" ];
-            "user.email" = "denysp@alipes.com";
+            "--when".repositories = [ "/git/hub/alipes" ];
+            user.email = "denysp@alipes.com";
           }
         ];
       };
