@@ -2,10 +2,11 @@
   config,
   pkgs,
   lib,
+  nixpkgs-unstable,
   ...
 }:
 {
-  home.packages = with pkgs; [
+  home.packages = with nixpkgs-unstable; [
     jjui
     lazyjj
   ];
@@ -21,6 +22,7 @@
     in
     {
       enable = true;
+      package = nixpkgs-unstable.jujutsu;
       settings = {
         user = {
           name = "Denys Pavlov";
