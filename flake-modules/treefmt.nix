@@ -12,7 +12,6 @@
       programs.shellcheck.excludes = [
         ".envrc"
       ];
-      programs.stylua.enable = true;
     };
   };
 }
