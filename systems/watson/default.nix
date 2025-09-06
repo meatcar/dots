@@ -38,9 +38,8 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-  # TODO: linux 6.13 causes bug. Wait for resolution.
-  # https://gitlab.freedesktop.org/drm/amd/-/issues/3697
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "video=DP-8:2560x1440@60"
@@ -55,8 +54,6 @@
     pkgs.rocmPackages.clr.icd
     pkgs.rocmPackages.rocm-smi
   ];
-  # environment.variables.AMD_VULKAN_ICD = "RADV";
-  #
   boot.initrd.systemd = {
     # for hibernation, tpm2 luks unlock
     enable = true;
