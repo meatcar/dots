@@ -31,6 +31,7 @@
     ../../modules/spotify
     ../../modules/television
     ../../modules/kdeconnect
+    ../../modules/mime-apps
     ./impermanence.nix
   ];
 
