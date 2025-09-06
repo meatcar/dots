@@ -31,7 +31,7 @@
     ../modules/nix-index
     ../modules/docker
     ../modules/npm
-    ../modules/junction
+    # ../modules/junction
   ];
 
   home.packages =

@@ -14,6 +14,9 @@ let
   };
 in
 {
+  imports = [
+    ../ringboard
+  ];
   home.sessionVariables = env;
   systemd.user.sessionVariables = env;
   home.packages = [

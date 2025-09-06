@@ -1,3 +1,4 @@
+# TODO: move away from niri-flake due to slower maintenance
 {
   config,
   pkgs,
@@ -156,13 +157,6 @@ in
               "${manage-monitors}/bin/manage-monitors"
             ];
           }
-          {
-            command = [
-              "bash"
-              "-c"
-              "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store &"
-            ];
-          }
         ];
         cursor = {
           size = 16;
@@ -284,7 +278,7 @@ in
             action.spawn = [
               "${lib.getExe nixpkgs-unstable._1password-gui}"
               "--quick-access"
-              "--ozone-platform-hint=auto"
+              "--ozone-platform=wayland"
             ];
           };
           "Mod+N".action.spawn = [
@@ -294,10 +288,7 @@ in
             "toggle"
           ];
           "Mod+V".action.spawn = [
-            "dms"
-            "ipc"
-            "clipboard"
-            "toggle"
+            "ringboard-egui"
           ];
           "Mod+Tab".action.spawn = "${winswitch}";
           "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
@@ -375,8 +366,7 @@ in
 
           "Mod+D".action.close-window = { };
           "Mod+Z".action.expand-column-to-available-width = { };
-          "Mod+Shift+Z".action.maximize-window-to-edges = { };
-          "Mod+Alt+Z".action.maximize-column = {};
+          "Mod+Shift+Z".action.maximize-column = { };
           "Mod+F".action.fullscreen-window = { };
           "Mod+Shift+F".action.toggle-windowed-fullscreen = { };
 
@@ -424,8 +414,7 @@ in
           "Mod+Shift+Space".action.toggle-window-floating = { };
 
           "Mod+S".action.set-dynamic-cast-monitor = { };
-          "Mod+Shift+S".action.clear-dynamic-cast-target = { };
-          "Mod+Ctrl+S" = {
+          "Mod+Shift+S" = {
             repeat = false;
             action.spawn = [
               "bash"
@@ -579,6 +568,7 @@ in
               # { title = "^.+ Mail - Vivaldi$"; } # gmail notification summon
               { app-id = "org.kde.polkit-kde-authentication-agent-1"; }
               { app-id = "org.gnome.polkit-gnome-authentication-agent-1"; }
+              { app-id = "ringboard-egui"; }
             ];
             open-floating = true;
             block-out-from = "screen-capture";
