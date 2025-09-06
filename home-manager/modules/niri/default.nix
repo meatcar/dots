@@ -375,7 +375,8 @@ in
 
           "Mod+D".action.close-window = { };
           "Mod+Z".action.expand-column-to-available-width = { };
-          "Mod+Shift+Z".action.maximize-column = { };
+          "Mod+Shift+Z".action.maximize-window-to-edges = { };
+          "Mod+Alt+Z".action.maximize-column = {};
           "Mod+F".action.fullscreen-window = { };
           "Mod+Shift+F".action.toggle-windowed-fullscreen = { };
 
