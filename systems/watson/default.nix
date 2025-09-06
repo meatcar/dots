@@ -30,6 +30,7 @@
     ../../modules/printing
     # ../../modules/opensnitch
     ../../modules/steam
+    ../../modules/vm
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "25.05";
