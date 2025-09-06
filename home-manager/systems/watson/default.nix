@@ -25,6 +25,7 @@
     ../../modules/ai
     ../../modules/vscode
     ../../modules/zed
+    ../../modules/jira
     ../../modules/go
     ../../modules/calendar
     ../../modules/evince
