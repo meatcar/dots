@@ -131,10 +131,10 @@ in
           selectedRangeBgColor = [ "reverse" ];
         };
       };
-      git.paging = {
+      git.pagers = [{
         colorArg = "always";
         pager = "${pkgs.delta}/bin/delta --paging=never";
-      };
+      }];
     };
   };
 
