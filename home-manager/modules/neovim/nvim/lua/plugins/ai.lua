@@ -37,4 +37,9 @@ return {
       { "<localleader>aa", "<cmd>CodeCompanionChat Add<cr>",    mode = { "v" } },
     }
   },
+  {
+    "sourcegraph/amp.nvim",
+    branch = "main",
+    lazy = false,
+  }
 }
