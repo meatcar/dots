@@ -217,12 +217,12 @@
                       ./git-crypt/hm-me.nix
                     ];
                     nixpkgs.config = nixpkgsConfig;
-                    home.stateVersion = "25.05";
+                    home.stateVersion = "25.11";
                   };
               }
             ];
             iso = mkSystem "x86_64-linux" [
-              { system.stateVersion = "24.11"; }
+              { system.stateVersion = "25.11"; }
               (
                 {
                   pkgs,
