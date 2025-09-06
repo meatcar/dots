@@ -55,6 +55,10 @@
       ".cache/mozilla"
       ".mozilla/firefox"
     ]
+    ++ lib.optionals config.programs.zen-browser.enable [
+      ".cache/zen"
+      ".zen"
+    ]
     ++ lib.optionals config.programs.chromium.enable [
       ".cache/chromium"
       ".config/chromium"

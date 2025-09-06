@@ -12,6 +12,7 @@
     ../../modules/gtk.nix
     ../../modules/gnome-keyring.nix
     ../../modules/firefox
+    ../../modules/zen
     ../../modules/darkman
     ../../modules/niri
     # ../../modules/hyperland
