@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -55,7 +55,7 @@
     ]
     ++ [
       # FIXME: fails to build from stable, use unstable for now
-      specialArgs.nixpkgs-unstable.devenv
+      nixpkgs-unstable.devenv
     ];
 
   xdg.enable = true;

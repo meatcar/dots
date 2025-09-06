@@ -1,8 +1,8 @@
-{ pkgs, specialArgs, ... }:
+{ nixpkgs-unstable, ... }:
 {
   programs.ghostty = {
     enable = true;
-    package = specialArgs.nixpkgs-unstable.ghostty;
+    package = nixpkgs-unstable.ghostty;
     enableBashIntegration = true;
     enableFishIntegration = true;
     settings = {
