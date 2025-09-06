@@ -18,7 +18,7 @@ if [ -f ~/.nix-defexpr/channels ] \
     set -x NIX_PATH "$HOME/.nix-defexpr/channels:$NIX_PATH"
 end
 
-if [ -n "$fish_user_paths" ]
+if [ -z "$fish_user_paths" ]
     set-fish-user-paths
 end
 
