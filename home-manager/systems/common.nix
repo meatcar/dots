@@ -30,6 +30,8 @@
     ../modules/helix
     ../modules/nix-index
     ../modules/docker
+    ../modules/npm
+    ../modules/junction
   ];
 
   home.packages =
@@ -38,6 +40,7 @@
       curl
       htop
       imgcat
+      p7zip-rar
 
       # dev
       entr
