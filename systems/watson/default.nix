@@ -150,6 +150,8 @@
   services.syncthing.enable = false; # prefer HM module
   services.flatpak.enable = true;
 
+  services.languagetool.enable = true;
+
   programs.kdeconnect.enable = true;
 
   environment.enableAllTerminfo = lib.mkForce false;
