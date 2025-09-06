@@ -47,19 +47,23 @@
           },
         ]
       '')
-      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-disable-devices.conf" ''
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-rename-hdmi.conf" ''
+        monitor.alsa.rules = [
+          {
+            matches = [{ node.nick = "LG TV SSCR2" }],
+            actions = { update-props = { node.description = "LG Flex Monitor" } }
+          }
+        ]
+      '')
+      # Disable all HDMI sinks
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-disable-hdmi-sinks.conf" ''
         monitor.alsa.rules = [
           {
             matches = [
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI1__sink" },
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI2__sink" },
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI3__sink" },
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI4__sink" },
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI5__sink" },
-              { node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI6__sink" }
+              { node.description = "~Navi 10 HDMI Audio HDMI .*" }
             ]
-            actions = { update-props = { devices.disabled = true} }
-          },
+            actions = { update-props = { device.disabled = true } }
+          }
         ]
       '')
     ];
