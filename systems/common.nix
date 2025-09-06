@@ -6,6 +6,7 @@
 {
   imports = [
     ../modules/nix.nix
+    ../modules/appimage
   ];
 
   # using nix-index instead in home-manager
