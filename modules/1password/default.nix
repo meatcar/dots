@@ -15,6 +15,8 @@
     "1password/custom_allowed_browsers" = {
       text = ''
         zen
+        chrome
+        helium
       ''; # or just "zen" if you use unwrapped package
       mode = "0755";
     };
