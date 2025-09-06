@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -94,7 +95,10 @@
             ];
           };
           "group/audio-output" = group {
-            modules = [ "pulseaudio#output" ];
+            modules = [
+              "pulseaudio#output"
+              "pulseaudio/slider#output"
+            ];
           };
           "pulseaudio#output" = {
             justify = "center";
@@ -126,28 +130,38 @@
             on-click-right = "${pkgs.swayosd}/bin/swayosd-client --output-volume=mute-toggle";
             on-click-up = "${pkgs.swayosd}/bin/swayosd-client --output-volume=raise";
             on-click-down = "${pkgs.swayosd}/bin/swayosd-client --output-volume=lower";
+            on-scroll-up = "${pkgs.swayosd}/bin/swayosd-client --output-volume=+1";
+            on-scroll-down = "${pkgs.swayosd}/bin/swayosd-client --output-volume=-1";
             smooth-scrolling-threshold = 1;
           };
           "pulseaudio/slider#output" = {
             target = "sink";
             orientation = "vertical";
+            min = 0;
+            max = 100;
           };
           "group/audio-input" = group {
-            modules = [ "pulseaudio#input" ];
+            modules = [
+              "pulseaudio#input"
+            ];
           };
           "pulseaudio#input" = {
             format = "{format_source}";
             format-source = "";
             format-source-muted = "";
-            tooltip-format = "{volume}% {format_source} ";
+            tooltip-format = "{volume}% {icon} | {format_source} ";
             on-click = "${lib.getExe pkgs.pavucontrol} --tab=4";
             on-click-right = "${pkgs.swayosd}/bin/swayosd-client --input-volume=mute-toggle";
             on-click-up = "${pkgs.swayosd}/bin/swayosd-client --input-volume=raise";
             on-click-down = "${pkgs.swayosd}/bin/swayosd-client --input-volume=lower";
+            on-scroll-up = "${pkgs.swayosd}/bin/swayosd-client --input-volume=+1";
+            on-scroll-down = "${pkgs.swayosd}/bin/swayosd-client --input-volume=-1";
           };
           "pulseaudio/slider#input" = {
             target = "source";
             orientation = "vertical";
+            min = 0;
+            max = 100;
           };
           "group/net" = group {
             modules = [ "network" ];
@@ -166,7 +180,7 @@
             tooltip-format = "{ifname}: {ipaddr}";
             tooltip-format-wifi = "${format-wifi} {essid} ({signalStrength}%)\n{ipaddr} | {frequency} MHz";
             tooltip-format-ethernet = "${format-ethernet} {ifname}\n{ipaddr} | {frequency} MHz";
-            on-click = "${lib.getExe pkgs.ghostty} --gtk-single-instance=false --command=${pkgs.networkmanager}/bin/nmtui";
+            on-click = "${lib.getExe config.programs.ghostty.package} --gtk-single-instance=false --command=${pkgs.networkmanager}/bin/nmtui";
           };
           "group/bt" = group {
             modules = [ "bluetooth" ];
@@ -182,7 +196,7 @@
             tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
             tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
             tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-            on-click = "${lib.getExe pkgs.ghostty} --gtk-single-instance=false --command=${lib.getExe pkgs.bluetui}";
+            on-click = "${lib.getExe config.programs.ghostty.package} --gtk-single-instance=false --command=${lib.getExe pkgs.bluetui}";
           };
           "group/power" = group {
             modules = [ "battery" ];

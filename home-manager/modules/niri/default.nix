@@ -7,7 +7,7 @@
 }:
 let
   cfg = config.programs.niri;
-  ghostty = specialArgs.inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ghostty = config.programs.ghostty.package;
   winswitch = pkgs.writeScript "winswitch" ''
     #!/usr/bin/env bash
     ${lib.getExe pkgs.python3} -u ${./winswitch.py}
@@ -62,18 +62,19 @@ in
 {
   imports = [
     ../wayland
-    ../waybar
     ../fuzzel
-    ../gammastep.nix
-    ../swaync
     ../nautilus
+    # ../waybar
+    # ../gammastep.nix
+    # ../swaync
+    ../dms # replaces all of the above, and more.
   ];
   home.packages =
     (with pkgs; [
-      swaylock
+      # swaylock
       fuzzel
-      swww
-      waypaper
+      # swww
+      # waypaper
       xwayland-satellite
     ])
     ++ [
@@ -103,7 +104,7 @@ in
     configPackages = [ pkgs.niri ];
   };
   services.swayosd.enable = true;
-  services.swww.enable = true;
+  # services.swww.enable = true;
   programs.fuzzel.settings.main.launch-prefix = "niri msg action spawn --";
   programs.fuzzel.settings.main.terminal = "${lib.getExe ghostty}";
   programs.niri =
@@ -145,14 +146,21 @@ in
               "timeout"
               (builtins.toString (60 * 15))
               "niri msg action power-off-monitors"
-              # "timeout"
-              # (builtins.toString (60 * 20))
-              # "${lock}"
+              "timeout"
+              (builtins.toString (60 * 20))
+              "dms ipc lock lock"
             ];
           }
           {
             command = [
               "${manage-monitors}/bin/manage-monitors"
+            ];
+          }
+          {
+            command = [
+              "bash"
+              "-c"
+              "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store &"
             ];
           }
         ];
@@ -249,39 +257,47 @@ in
             "toggle-overview"
           ];
           "Mod+Shift+Slash".action.show-hotkey-overlay = { };
-          "Mod+Return".action.spawn = "ghostty";
-          "Mod+Return".repeat = false;
-          "Mod+P".action.spawn = [ "fuzzel" ];
-          "Mod+P".repeat = false;
-          "Mod+Shift+P".action.spawn = [
-            "${lib.getExe specialArgs.nixpkgs-unstable._1password-gui}"
-            "--quick-access"
-            "--ozone-platform-hint=auto"
-          ];
-          "Mod+Shift+P".repeat = false;
-          "Mod+Shift+N".action.spawn = [
-            "swaync-client"
-            "-t"
-            "-sw"
-          ];
-          "Mod+Shift+N".repeat = false;
+          "Mod+Return" = {
+            repeat = false;
+            action.spawn = [
+              "${lib.getExe ghostty}"
+              "+new-window"
+              "--window-inherit-working-directory=false"
+              "--gtk-single-instance=false"
+            ];
+          };
+          "Mod+Shift+Return" = {
+            repeat = false;
+            action.spawn = "${lib.getExe ghostty}";
+          };
+          "Mod+P" = {
+            repeat = false;
+            action.spawn = [
+              "dms"
+              "ipc"
+              "spotlight"
+              "toggle"
+            ];
+          };
+          "Mod+Shift+P" = {
+            repeat = false;
+            action.spawn = [
+              "${lib.getExe specialArgs.nixpkgs-unstable._1password-gui}"
+              "--quick-access"
+              "--ozone-platform-hint=auto"
+            ];
+          };
           "Mod+N".action.spawn = [
-            "swaync-client"
-            "--hide-latest"
-            "-sw"
+            "dms"
+            "ipc"
+            "notifications"
+            "toggle"
           ];
           "Mod+V".action.spawn = [
-            "sh"
-            "-c"
-            (builtins.concatStringsSep " " (
-              inTerminal
-                {
-                  title = "float";
-                }
-                [
-                  "${lib.getExe pkgs.clipse}"
-                ]
-            ))
+            "dms"
+            "ipc"
+            "clipboard"
+            "toggle"
           ];
           "Mod+Tab".action.spawn = "${winswitch}";
           "Mod+Period".action.spawn = "${lib.getExe pkgs.smile}";
@@ -299,32 +315,63 @@ in
           ];
 
           "XF86AudioRaiseVolume".action.spawn = [
-            "swayosd-client"
-            "--output-volume=raise"
+            "dms"
+            "ipc"
+            "audio"
+            "increment"
+            "1"
           ];
           "XF86AudioLowerVolume".action.spawn = [
-            "swayosd-client"
-            "--output-volume=lower"
+            "dms"
+            "ipc"
+            "audio"
+            "decrement"
+            "1"
           ];
           "XF86AudioMute".action.spawn = [
-            "swayosd-client"
-            "--output-volume=mute-toggle"
+            "dms"
+            "ipc"
+            "audio"
+            "mute"
           ];
           "XF86AudioMicMute".action.spawn = [
-            "swayosd-client"
-            "--input-volume=mute-toggle"
+            "dms"
+            "ipc"
+            "audio"
+            "micmute"
           ];
           "XF86MonBrightnessUp".action.spawn = [
-            "swayosd-client"
-            "--brightness=raise"
+            "dms"
+            "ipc"
+            "brightness"
+            "increment"
+            "5"
+            "" # default device
           ];
           "XF86MonBrightnessDown".action.spawn = [
-            "swayosd-client"
-            "--brightness=lower"
+            "dms"
+            "ipc"
+            "brightness"
+            "decrement"
+            "5"
+            "" # default device
           ];
 
-          "Mod+Q".action.power-off-monitors = { };
-          "Mod+Shift+Q".action.quit = { };
+          "Mod+Q".action.spawn = [
+            "bash"
+            "-c"
+            ''
+              niri msg action power-off-monitors &&
+              sleep 0.5 &&
+              dms ipc lock lock
+            ''
+          ];
+          "Mod+Shift+Q".action.spawn = [
+            "dms"
+            "ipc"
+            "powermenu"
+            "toggle"
+          ];
 
           "Mod+D".action.close-window = { };
           "Mod+Z".action.expand-column-to-available-width = { };
@@ -377,6 +424,17 @@ in
 
           "Mod+S".action.set-dynamic-cast-monitor = { };
           "Mod+Shift+S".action.clear-dynamic-cast-target = { };
+          "Mod+Ctrl+S" = {
+            repeat = false;
+            action.spawn = [
+              "bash"
+              "-c"
+              ''
+                $output=$(niri msg --json focused-output | jq -r '.name')
+                ${pkgs.wl-mirror}/bin/wl-mirror "$output"
+              ''
+            ];
+          };
           "Mod+W".action.set-dynamic-cast-window = { };
           "Mod+Shift+W".action.clear-dynamic-cast-target = { };
 
@@ -456,9 +514,11 @@ in
             tab-indicator.inactive.color = "#7d0d2d";
           }
           {
-            # Firefox / Zen PiP
             matches = [
+              # Firefox / Zen PiP
               { title = "^Picture-in-Picture$"; }
+              # Vivaldi
+              { title = "^Picture in Picture$"; }
             ];
             open-floating = true;
             default-floating-position.relative-to = "bottom";
