@@ -126,15 +126,18 @@ in
       gui = {
         showFileTree = true;
         nerdFontsVersion = "3";
+        useHunkModeInStagingView = false;
         theme = {
           selectedLineBgColor = [ "reverse" ];
           selectedRangeBgColor = [ "reverse" ];
         };
       };
-      git.pagers = [{
-        colorArg = "always";
-        pager = "${pkgs.delta}/bin/delta --paging=never";
-      }];
+      git.pagers = [
+        {
+          colorArg = "always";
+          pager = "${pkgs.delta}/bin/delta --paging=never";
+        }
+      ];
     };
   };
 
