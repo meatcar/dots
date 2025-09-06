@@ -10,8 +10,8 @@
     "nix-command"
     "flakes"
   ];
+
   nix.registry = {
-    nixpkgs.flake = inputs.nixpkgs;
     dots.flake = inputs.self;
   };
 
