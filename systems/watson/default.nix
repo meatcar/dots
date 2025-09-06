@@ -175,6 +175,7 @@
     extraGroups = [
       "wheel"
       "docker"
+      "dialout"
     ];
   };
 }
