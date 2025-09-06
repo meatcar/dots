@@ -7,7 +7,8 @@
 {
   imports = [ ./jjui.nix ];
   home.packages = with nixpkgs-unstable; [
-    lazyjj
+    # FIXME: failing to build, pending https://nixpk.gs/pr-tracker.html?pr=441579
+    # lazyjj
   ];
   programs.jujutsu =
     let
