@@ -14,6 +14,7 @@
     ../../modules/impermanence
     ../../modules/secureboot
     # ../../modules/ddcci
+    ../../modules/fc660c-hasu
     ../../modules/backup
     ../../modules/laptop
     ../../modules/nix-ld
