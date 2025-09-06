@@ -34,7 +34,7 @@
     ../../modules/vm
     ./t14s-micmuteled.nix
   ];
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
