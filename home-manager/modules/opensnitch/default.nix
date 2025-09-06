@@ -4,6 +4,7 @@
   ...
 }:
 {
+  services.opensnitch-ui.enable = true;
   systemd.user.services."opensnitch-ui" = {
     Unit = {
       Description = "Opensnitch UI";
