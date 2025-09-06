@@ -18,6 +18,7 @@
     ../modules/direnv
     ../modules/bat
     ../modules/lsd
+    ../modules/btop
     ../modules/tmux
     ../modules/neovim
     # ../modules/weechat
