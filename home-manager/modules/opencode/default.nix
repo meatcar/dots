@@ -1,17 +1,14 @@
 {
   config,
   pkgs,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
-let
-  uPkgs = specialArgs.nixpkgs-unstable;
-in
 {
   home.packages = [
     (pkgs.writeShellScriptBin "opencode" ''
       source ${config.age.secrets.aienv.path}
-      ${uPkgs.opencode}/bin/opencode "$@"
+      ${nixpkgs-unstable.opencode}/bin/opencode "$@"
     '')
   ];
   xdg.configFile."opencode/opencode.json".text = builtins.toJSON {

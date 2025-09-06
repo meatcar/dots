@@ -1,6 +1,7 @@
 {
   pkgs,
-  specialArgs,
+  inputs,
+  nixpkgs-unstable,
   ...
 }:
 let
@@ -35,7 +36,7 @@ in
     };
     includes = [
       { path = ./config; }
-      { path = "${specialArgs.inputs.catppuccin-delta}/catppuccin.gitconfig"; }
+      { path = "${inputs.catppuccin-delta}/catppuccin.gitconfig"; }
       {
         condition = "gitdir:~/git/hub/alipes/**";
         contents = {
@@ -93,7 +94,7 @@ in
         ${builtins.readFile ./git-op-crypt.sh}
       '')
     ]
-    ++ (with specialArgs.nixpkgs-unstable; [
+    ++ (with nixpkgs-unstable; [
       gitu # cli magit
     ]);
 

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  specialArgs,
+  inputs,
   ...
 }:
 {
@@ -32,7 +32,7 @@
   programs.fish.plugins = [
     {
       name = "fish-ssh-agent";
-      src = specialArgs.inputs.fish-ssh-agent;
+      src = inputs.fish-ssh-agent;
     }
   ];
 
