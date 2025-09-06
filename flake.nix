@@ -53,6 +53,8 @@
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
     centerpiece.url = "github:friedow/centerpiece";
     centerpiece.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -194,11 +196,12 @@
                       inputs.agenix.homeManagerModules.default
                       inputs.impermanence.homeManagerModules.impermanence
                       inputs.centerpiece.hmModules."x86_64-linux".default
+                      inputs.zen-browser.homeModules.default
                       ./home-manager/systems/watson
                       ./git-crypt/hm-me.nix
                     ];
                     nixpkgs.config = nixpkgsConfig;
-                    home.stateVersion = "24.11";
+                    home.stateVersion = "25.05";
                   };
               }
             ];
