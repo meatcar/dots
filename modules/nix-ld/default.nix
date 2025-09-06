@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.nix-ld = {
     enable = true;
-    libraries = pkgs.steam-run.args.multiPkgs pkgs;
+    libraries = config.programs.steam.package.args.multiPkgs pkgs;
   };
 }
