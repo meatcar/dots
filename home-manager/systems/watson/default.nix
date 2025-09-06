@@ -32,6 +32,7 @@
     ../../modules/spotify
     ../../modules/television
     ../../modules/centerpiece
+    ../../modules/kdeconnect
     ./impermanence.nix
   ];
 
