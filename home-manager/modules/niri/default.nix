@@ -255,7 +255,6 @@ in
             repeat = false;
             action.spawn = [
               "${lib.getExe ghostty}"
-              "+new-window"
               "--window-inherit-working-directory=false"
               "--gtk-single-instance=false"
             ];
