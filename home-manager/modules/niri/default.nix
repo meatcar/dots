@@ -165,7 +165,7 @@ in
           max-scroll-amount = "10%";
         };
         input.warp-mouse-to-focus = {
-          enable = true;
+          enable = false;
           mode = "center-xy";
         };
         input.touchpad = {
@@ -254,8 +254,9 @@ in
           "Mod+P".action.spawn = [ "fuzzel" ];
           "Mod+P".repeat = false;
           "Mod+Shift+P".action.spawn = [
-            "1password"
+            "${lib.getExe specialArgs.nixpkgs-unstable._1password-gui}"
             "--quick-access"
+            "--ozone-platform-hint=auto"
           ];
           "Mod+Shift+P".repeat = false;
           "Mod+Shift+N".action.spawn = [
@@ -327,9 +328,9 @@ in
 
           "Mod+D".action.close-window = { };
           "Mod+Z".action.expand-column-to-available-width = { };
-          "Mod+F".action.maximize-column = { };
-          "Mod+Shift+F".action.fullscreen-window = { };
-          "Mod+Alt+Shift+F".action.toggle-windowed-fullscreen = { };
+          "Mod+Shift+Z".action.maximize-column = { };
+          "Mod+F".action.fullscreen-window = { };
+          "Mod+Shift+F".action.toggle-windowed-fullscreen = { };
 
           "Mod+B".action.center-window = { };
 
@@ -447,10 +448,36 @@ in
             matches = [ { is-window-cast-target = true; } ];
             focus-ring.active.color = "#f38ba8";
             focus-ring.inactive.color = "#7d0d2d";
+            focus-ring.width = 4;
             border.inactive.color = "#7d0d2d";
+            border.width = 4;
             shadow.color = "#7d0d2d70";
             tab-indicator.active.color = "#f38ba8";
             tab-indicator.inactive.color = "#7d0d2d";
+          }
+          {
+            # Firefox / Zen PiP
+            matches = [
+              { title = "^Picture-in-Picture$"; }
+            ];
+            open-floating = true;
+            default-floating-position.relative-to = "bottom";
+            default-floating-position.x = 0;
+            default-floating-position.y = 0;
+          }
+          {
+            # Meet
+            matches = [
+              {
+                title = "^Meet - \w+-\w+-\w+$"; # not ending in browser name
+              }
+            ];
+            open-floating = true;
+            default-floating-position.relative-to = "top-left";
+            default-floating-position.x = 0;
+            default-floating-position.y = 0;
+            default-window-height.proportion = 0.25;
+            default-column-width.proportion = 0.25;
           }
           {
             # Private Tray Floater
