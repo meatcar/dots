@@ -2,11 +2,11 @@
 set -eux -o pipefail
 
 if [ "$#" -eq 0 ]; then
-  echo "usage: $0 [editor cmd line]" >&2
+  echo "usage: $0 [cmd line]" >&2
   echo "       run a command in a zoxide directory" >&2
   exit 1
 fi
-edit=$*
+cmd=$*
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
@@ -22,9 +22,10 @@ dir=$(fuzzel -d <"$fifo")
 zoxide add "$dir" || true
 cd "$dir"
 
-if [ -f ".envrc" ]; then
-  # shellcheck disable=SC2086
-  direnv exec . $edit
-else
-  $edit
-fi
+$cmd
+# if [ -f ".envrc" ]; then
+#   # shellcheck disable=SC2086
+#   direnv exec . $cmd
+# else
+#   $cmd
+# fi
