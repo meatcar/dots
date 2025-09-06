@@ -23,7 +23,15 @@ in
     extraConfig = {
       user.name = "Denys Pavlov";
       user.email = "me@denys.me";
+      user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBcq01gh2tn/+hcm75N3LnS003mUBjXcT6qNndMhObPO";
       commit.template = "${gitmessage}";
+
+      gpg = {
+        format = "ssh";
+      };
+      commit = {
+        gpgsign = true;
+      };
     };
     includes = [
       { path = ./config; }
@@ -98,16 +106,18 @@ in
     };
   };
 
-  programs.git.delta.enable = true;
-  programs.git.delta.options = {
-    navigate = true;
-    light = {
-      light = true;
-      features = "catppuccin-latte";
-    };
-    dark = {
-      light = false;
-      features = "catppuccin-mocha";
+  programs.git.delta = {
+    enable = true;
+    options = {
+      navigate = true;
+      light = {
+        light = true;
+        features = "catppuccin-latte";
+      };
+      dark = {
+        light = false;
+        features = "catppuccin-mocha";
+      };
     };
   };
 
