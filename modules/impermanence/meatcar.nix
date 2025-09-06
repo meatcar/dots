@@ -77,6 +77,8 @@ _: {
         directory = ".cache/uv";
         mode = "0755";
       }
+      ".amp"
+      ".config/amp"
       ".local/share/amp"
       ".cache/amp"
       ".infisical"
