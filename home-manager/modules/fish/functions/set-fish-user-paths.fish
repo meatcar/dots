@@ -18,7 +18,7 @@ function set-fish-user-paths \
     end
 
     if command_exists emacs
-        addpath $HOME/.emacs.d/bin # DOOM EMACS
+        addpath $HOME/.emacs.d/bin
     end
 
     if [ -d $HOME/.local/bin ]
