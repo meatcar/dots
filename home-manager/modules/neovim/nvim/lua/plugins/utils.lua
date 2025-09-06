@@ -80,22 +80,45 @@ return {
     }
   },
 
-  { -- ctrl-[ax] on drugs
-    'zegervdv/nrpattern.nvim',
-    keys = { '<C-a>', '<C-x>' },
+  -- { -- ctrl-[ax] on drugs
+  --   'zegervdv/nrpattern.nvim',
+  --   keys = { '<C-a>', '<C-x>' },
+  --   config = function()
+  --     -- Get the default dict of patterns
+  --     local patterns = require 'nrpattern.default'
+  --
+  --     -- Add a cyclic pattern (toggles between yes and no)
+  --     patterns[{ 'yes', 'no' }] = { priority = 10 }
+  --     patterns[{ 'True', 'False' }] = { priority = 10 }
+  --     patterns[{ 'true', 'false' }] = { priority = 10 }
+  --     patterns[{ '[ ]', '[x]', '[-]', '[>]', '[~]', '[!]' }] = { priority = 10 }
+  --     patterns[{ 'TODO', 'DONE', 'FIX', 'NOTE', 'WARN', 'TEST', 'HACK', 'WARN', 'PERF' }] = { priority = 10 }
+  --
+  --     -- Call the setup to enable the patterns
+  --     require('nrpattern').setup(patterns)
+  --   end,
+  -- },
+
+  {
+    'monaqa/dial.nvim',
+    keys = {
+      { '<C-a>', function() return require('dial.map').manipulate("increment", "normal") end, desc = 'Increment' },
+      { '<C-x>', function() return require('dial.map').manipulate("decrement", "normal") end, desc = 'Decrement' },
+      { '<C-a>', function() return require('dial.map').manipulate("increment", "visual") end, desc = 'Increment',  mode = 'x' },
+      { '<C-x>', function() return require('dial.map').manipulate("decrement", "visual") end, desc = 'Decrement',  mode = 'x' },
+    },
     config = function()
-      -- Get the default dict of patterns
-      local patterns = require 'nrpattern.default'
+      local augend = require("dial.augend")
+      require("dial.config").augends:register_group {
+        default = {
+          augend.constant.alias.bool,
+          augend.integer.alias.decimal_int,
+          augend.date.alias["%Y-%m-%d"],
+          augend.constant.new({ elements = {"DONE", "TODO", "FIX", "FIXME", "WARN", "NOTE"}, cyclic = true}),
+        },
 
-      -- Add a cyclic pattern (toggles between yes and no)
-      patterns[{ 'yes', 'no' }] = { priority = 10 }
-      patterns[{ 'True', 'False' }] = { priority = 10 }
-      patterns[{ '[ ]', '[x]', '[-]', '[>]', '[~]', '[!]' }] = { priority = 10 }
-      patterns[{ 'TODO', 'DONE', 'FIX', 'NOTE', 'WARN', 'TEST', 'HACK', 'WARN', 'PERF' }] = { priority = 10 }
-
-      -- Call the setup to enable the patterns
-      require('nrpattern').setup(patterns)
-    end,
+      }
+    end
   },
 
   { -- show lines for indents on blank lines
