@@ -2,8 +2,6 @@
 {
   home.packages = [
     pkgs.evince
+    pkgs.papers
   ];
-  xdg.mimeApps.defaultApplications = {
-    "application/pdf" = "org.gnome.Evince.desktop";
-  };
 }
