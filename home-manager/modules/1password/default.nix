@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -18,7 +18,7 @@
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${lib.getExe specialArgs.nixpkgs-unstable._1password-gui} --silent --ozone-platform-hint=auto";
+      ExecStart = "${lib.getExe nixpkgs-unstable._1password-gui} --silent --ozone-platform-hint=auto";
       Restart = "always";
       KeyringMode = "inherit";
     };

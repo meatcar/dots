@@ -1,11 +1,11 @@
 {
-  specialArgs,
+  inputs,
   pkgs,
   lib,
   ...
 }:
 let
-  themes = specialArgs.inputs.catppuccin-bat;
+  themes = inputs.catppuccin-bat;
 in
 {
   programs.bat = {

@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
 let
@@ -282,7 +282,7 @@ in
           "Mod+Shift+P" = {
             repeat = false;
             action.spawn = [
-              "${lib.getExe specialArgs.nixpkgs-unstable._1password-gui}"
+              "${lib.getExe nixpkgs-unstable._1password-gui}"
               "--quick-access"
               "--ozone-platform-hint=auto"
             ];

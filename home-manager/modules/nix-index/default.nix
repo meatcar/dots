@@ -1,10 +1,10 @@
 {
-  specialArgs,
+  inputs,
   ...
 }:
 {
   imports = [
-    specialArgs.inputs.nix-index-database.homeModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
   ];
   programs.nix-index.enable = true;
   # TODO: fixes https://github.com/nix-community/nix-index-database/issues/134

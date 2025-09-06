@@ -1,6 +1,6 @@
 {
   pkgs,
-  specialArgs,
+  inputs,
   ...
 }:
 {
@@ -11,8 +11,8 @@
     "flakes"
   ];
   nix.registry = {
-    nixpkgs.flake = specialArgs.inputs.nixpkgs;
-    dots.flake = specialArgs.inputs.self;
+    nixpkgs.flake = inputs.nixpkgs;
+    dots.flake = inputs.self;
   };
 
   programs.nh = {

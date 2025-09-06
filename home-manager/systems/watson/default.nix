@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -46,7 +46,7 @@
       loupe
       pantheon.epiphany
     ]
-    ++ (with specialArgs.nixpkgs-unstable; [
+    ++ (with nixpkgs-unstable; [
       vivaldi-ffmpeg-codecs
       widevine-cdm
       (vivaldi.override {

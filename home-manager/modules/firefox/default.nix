@@ -1,4 +1,4 @@
-{ specialArgs, ... }:
+{ inputs, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -18,7 +18,7 @@
   };
 
   home.file.".mozilla/firefox/default/chrome" = {
-    source = specialArgs.inputs.firefox-arcwtf;
+    source = inputs.firefox-arcwtf;
     recursive = true;
   };
 

@@ -1,4 +1,4 @@
-{ specialArgs, ... }:
+{ inputs, ... }:
 {
   services.swaync = {
     enable = true;
@@ -34,7 +34,7 @@
     };
     style =
       let
-        cattpuccin-mocha = "${specialArgs.inputs.catppuccin-swaync}";
+        cattpuccin-mocha = "${inputs.catppuccin-swaync}";
       in
       ''
         ${builtins.readFile cattpuccin-mocha}

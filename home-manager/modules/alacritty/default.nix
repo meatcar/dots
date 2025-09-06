@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  specialArgs,
+  inputs,
   ...
 }:
 {
@@ -26,7 +26,7 @@
   config = {
     themes =
       let
-        theme = specialArgs.inputs.alacritty-theme;
+        theme = inputs.alacritty-theme;
       in
       {
         light.alacritty = "${theme}/themes/pencil_light.yaml";

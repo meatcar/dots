@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  specialArgs,
+  inputs,
   ...
 }:
 {
@@ -27,7 +27,7 @@
     '';
   };
 
-  xdg.configFile."kak/plugins/plug.kak".source = specialArgs.inputs.plug-kak;
+  xdg.configFile."kak/plugins/plug.kak".source = inputs.plug-kak;
 
   home.packages = with pkgs; [ fzf ];
 }

@@ -1,6 +1,6 @@
 {
   pkgs,
-  specialArgs,
+  inputs,
   ...
 }:
 {
@@ -24,7 +24,7 @@
       ++ (builtins.map
         (name: {
           inherit name;
-          src = specialArgs.inputs.${name};
+          src = inputs.${name};
         })
         [
           # flake inputs

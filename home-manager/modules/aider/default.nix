@@ -1,17 +1,14 @@
 {
   config,
   pkgs,
-  specialArgs,
+  nixpkgs-unstable,
   ...
 }:
-let
-  uPkgs = specialArgs.nixpkgs-unstable;
-in
 {
   home.packages = [
     (pkgs.writeShellScriptBin "aider" ''
       source ${config.age.secrets.aienv.path}
-      ${uPkgs.aider-chat}/bin/aider \
+      ${nixpkgs-unstable.aider-chat}/bin/aider \
         --config '${config.xdg.configHome}/aider/aider.conf.yml' \
         --chat-history-file '${config.xdg.dataHome}/aider/chat-history.json' \
         --input-history-file '${config.xdg.dataHome}/aider/input-history.json' \
@@ -20,7 +17,7 @@ in
 
     (pkgs.writeShellScriptBin "opencode" ''
       source ${config.age.secrets.aienv.path}
-      ${uPkgs.opencode}/bin/opencode "$@"
+      ${nixpkgs-unstable.opencode}/bin/opencode "$@"
     '')
   ];
   programs.git.ignores = [
