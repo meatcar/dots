@@ -1,0 +1,83 @@
+"$schema"="https://gitlab.com/Lanastara/lanastara_foss/-/raw/v0.3.0/schema.json?ref_type=tags"
+module_separator = " "
+reset_color = true
+
+[bookmarks]
+search_depth = 100
+exclude = []
+
+[[module]]
+type = "Symbol"
+symbol = "jj"
+color = "Blue"
+
+[[module]]
+type = "Bookmarks"
+separator = " "
+color = "Magenta"
+behind_symbol = ""
+surround_with_quotes = false
+ignore_empty_commits = "None"
+
+[[module]]
+type = "Commit"
+previous_message_symbol = ""
+max_length = 16
+show_previous_if_empty = false
+empty_text = ""
+surround_with_quotes = true
+change = "Magenta"
+commit = "Blue"
+
+[module.non_unique]
+color = "Black"
+
+[[module]]
+type = "State"
+separator = " "
+
+[module.conflict]
+disabled = false
+text = "( )"
+color = "Red"
+
+[module.divergent]
+disabled = false
+text = "(󰹷 )"
+color = "Cyan"
+
+[module.empty]
+disabled = false
+text = "(Ø)"
+color = "Yellow"
+
+[module.immutable]
+disabled = false
+text = "( )"
+color = "Yellow"
+
+[module.hidden]
+disabled = false
+text = "(󰈉 )"
+color = "Yellow"
+
+[[module]]
+type = "Metrics"
+template = "[{changed}{added}{removed}]"
+hide_if_empty = false
+color = "Magenta"
+
+[module.changed_files]
+prefix = ""
+suffix = ""
+color = "Cyan"
+
+[module.added_lines]
+prefix = "+"
+suffix = ""
+color = "Green"
+
+[module.removed_lines]
+prefix = "-"
+suffix = ""
+color = "Red"
