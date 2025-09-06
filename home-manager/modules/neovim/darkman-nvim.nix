@@ -11,8 +11,8 @@ let
   src = fetchFromGitHub {
     owner = "4e554c4c";
     repo = pname;
-    rev = "300b441eaa1187ffaa541fc54971ee8ce731884f";
-    sha256 = "sha256-f0gL0PUalz+A+OhnR0D+l8DEsdt30Ww17JQ7vI5c08I=";
+    rev = "2213b2b484606a20e260bb14b907586d7c6e7eaf";
+    sha256 = "sha256-bNLrONEOlDwm899lbvvCmI+mj1mt6CFyTeOQC56qF00=";
   };
 
   package = buildGoModule {
