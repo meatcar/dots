@@ -30,7 +30,13 @@ return {
   { 'ConradIrwin/vim-bracketed-paste', lazy = false }, -- better paste in supported terminals
   { 'jghauser/mkdir.nvim',             lazy = false }, -- create directory when :e unknown/paths
 
-  {                                                    -- smartly exit things
+  {
+    'nmac427/guess-indent.nvim', -- guess indent
+    lazy = false,
+    opts = {}
+  },
+
+  { -- smartly exit things
     'marklcrns/vim-smartq',
     keys = {
       { 'Q',     'q' },
