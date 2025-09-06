@@ -34,24 +34,24 @@ return {
   },
 
   -- Markdown
-  {
-    'tpope/vim-markdown',
-    ft = { '*.md', '*.markdown' },
-    config = function()
-      vim.g.vim_markdown_fenced_languages = {
-        'javascript',
-        'js=javascript',
-        'json=javascript',
-        'java',
-        'css',
-        'sass',
-        'mustache',
-        'html=mustache',
-        'sh',
-        'shell=sh',
-      }
-    end,
-  },
+  -- {
+  --   'tpope/vim-markdown',
+  --   ft = { '*.md', '*.markdown' },
+  --   config = function()
+  --     vim.g.vim_markdown_fenced_languages = {
+  --       'javascript',
+  --       'js=javascript',
+  --       'json=javascript',
+  --       'java',
+  --       'css',
+  --       'sass',
+  --       'mustache',
+  --       'html=mustache',
+  --       'sh',
+  --       'shell=sh',
+  --     }
+  --   end,
+  -- },
   -- { -- Fancy markdown extras
   --   'SidOfc/mkdx',
   --   ft = { 'md', 'markdown' },
@@ -80,49 +80,93 @@ return {
   -- },
   { -- make editing freetext easier
     'reedes/vim-pencil',
-    ft = { 'md', 'markdown', 'text', 'mail' },
+    ft = { 'markdown', 'text', 'mail' },
     config = function()
       vim.g.pencil_gutter_color = true
     end,
   },
   { -- preview markdown
     'npxbr/glow.nvim',
-    ft = { 'md', 'markdown' },
+    ft = { 'markdown' },
     cmd = 'Glow',
     config = function()
       vim.keymap.set('n', '<localleader>p', [[<Cmd>Glow<CR>]], { buffer = 0 })
     end,
   },
-  { -- highlight headlines and codeblocks in markdown
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    ft = { 'md', 'markdown' },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
     opts = {
-      completions = { blink = { enabled = true } },
-      bullet = {
-        enabled = false
-      },
-      checkbox = {
-        bullet = true,
-        right_pad = 1,
-        unchecked = { icon = '  ' },
-        checked = { icon = '  ', scope_highlight = '@markup.strikethrough' },
-        custom = {
-          todo = { raw = '[-]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-          arrow = { raw = '[>]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-          tilde = { raw = '[~]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = '@markup.strikethrough' },
-          important = { raw = '[!]', rendered = '  ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+      markdown_inline = {
+        checkboxes = {
+          enable = true,
+
+          checked = { text = "󰗠 ", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxStriked"},
+          unchecked = { text = "󰄰 ", hl = "MarkviewCheckboxUnchecked", scope_hl = "none" },
+
+          ["-"] = { text = "󱎖 ", hl = "MarkviewCheckboxPending", scope_hl = "none" },
+          [">"] = { text = " ", hl = "MarkviewCheckboxCancelled" },
+          ["<"] = { text = "󰃖 ", hl = "MarkviewCheckboxCancelled" },
+          ["/"] = { text = "󰍶 ", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
+
+          ["?"] = { text = "󰋗 ", hl = "MarkviewCheckboxPending" },
+          ["!"] = { text = "󰀦 ", hl = "MarkviewCheckboxUnchecked" },
+          ["*"] = { text = "󰓎 ", hl = "MarkviewCheckboxPending" },
+          ['"'] = { text = "󰸥 ", hl = "MarkviewCheckboxCancelled" },
+          ["l"] = { text = "󰆋 ", hl = "MarkviewCheckboxProgress" },
+          ["b"] = { text = "󰃀 ", hl = "MarkviewCheckboxProgress" },
+          ["i"] = { text = "󰰄 ", hl = "MarkviewCheckboxChecked" },
+          ["$"] = { text = " ", hl = "MarkviewCheckboxChecked" },
+          ["I"] = { text = "󰛨 ", hl = "MarkviewCheckboxPending" },
+          ["y"] = { text = " ", hl = "MarkviewCheckboxChecked" },
+          ["n"] = { text = " ", hl = "MarkviewCheckboxUnchecked" },
+          ["f"] = { text = "󱠇 ", hl = "MarkviewCheckboxUnchecked" },
+          ["k"] = { text = " ", hl = "MarkviewCheckboxPending" },
+          ["w"] = { text = " ", hl = "MarkviewCheckboxProgress" },
+          ["u"] = { text = "󰔵 ", hl = "MarkviewCheckboxChecked" },
+          ["d"] = { text = "󰔳 ", hl = "MarkviewCheckboxUnchecked" },
         }
       },
-      heading = {
-        icons = {
-          '󰎦 ', '󰎩 ', '󰎬 ', '󰎮 ', '󰎰 ', '󰎵 '
-        },
-        -- border = true,
-        -- border_virtual = true
+      markdown = {
+        list_items = {
+          enable = true
+        }
+      },
+      preview = {
+        modes = { "i", "n", "no", "c" },
+        hybrid_modes = { "i" },
+                linewise_hybrid_mode = true,
+        edit_range = {1,1},
+
+        callbacks = {
+          on_enable = function(_, win)
+            vim.wo[win].conceallevel = 3;
+            vim.wo[win].concealcursor = "nc";
+          end
+        }
       }
+    },
+    config = function(_, opts)
+      require("markview").setup(opts)
+      require("markview.extras.checkboxes").setup({
+        default = " ",
+        remove_style = "checkbox",
+        states = {
+          { " ", "-", "x" },
+          { "/", "<", ">" },
+          { "!", "?", "*" },
+          { "y", "n" }
+        }
+      })
+    end,
+    keys = {
+      { "<localleader>tt", "<cmd>Checkbox change 1 0<cr>", desc = "Toggle checkbox" },
+      { "<localleader>tn", "<cmd>Checkbox change 0 1<cr>", desc = "Toggle checkbox" },
+      { "<localleader>tp", "<cmd>Checkbox change 0 -1<cr>", desc = "Toggle checkbox" },
     }
   },
+
+
 
   -- clojure
   { 'tpope/vim-classpath',    ft = 'clojure' },
