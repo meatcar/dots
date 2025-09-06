@@ -3,3 +3,5 @@ pack/packager
 tmp/*
 shada/*
 autoload/env.vim
+spell/*.spl
+spell/*.add
