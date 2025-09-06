@@ -36,6 +36,10 @@ _: {
       ".config/kdeconnect"
       ".config/clipse"
       ".local/share/khal"
+      ".config/television"
+      ".local/share/television"
+      ".cache/nix-search-tv"
+      ".config/ringboard"
 
       # dms
       ".config/DankMaterialShell"
@@ -73,10 +77,14 @@ _: {
         directory = ".cache/uv";
         mode = "0755";
       }
+      ".local/share/amp"
+      ".cache/amp"
+      ".infisical"
 
       # graphics
       ".cache/mesa_shader_cache_db"
       ".cache/radv_builtin_shaders"
+      ".cache/mesa_shader_cache"
 
       # audio
       ".config/easyeffects"
