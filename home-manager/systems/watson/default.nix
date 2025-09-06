@@ -69,6 +69,6 @@
   programs.chromium.enable = true;
 
   services.syncthing.enable = true;
-  services.easyeffects.enable = false; # true; TODO: causes shutdown to be slow
+  services.easyeffects.enable = true;
   home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
