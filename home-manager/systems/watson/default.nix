@@ -46,7 +46,12 @@
       pantheon.epiphany
     ]
     ++ (with specialArgs.nixpkgs-unstable; [
-      vivaldi
+      vivaldi-ffmpeg-codecs
+      widevine-cdm
+      (vivaldi.override {
+        proprietaryCodecs = true;
+        enableWidevine = true;
+      })
     ]);
 
   home.sessionVariables = {
