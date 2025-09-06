@@ -51,10 +51,6 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     niri-flake.url = "github:sodiboo/niri-flake";
-    ghostty.url = "github:ghostty-org/ghostty";
-    ghostty.inputs.nixpkgs.follows = "nixpkgs";
-    centerpiece.url = "github:friedow/centerpiece";
-    centerpiece.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     dankMaterialShell = {
@@ -201,7 +197,6 @@
                     imports = [
                       inputs.agenix.homeManagerModules.default
                       inputs.impermanence.homeManagerModules.impermanence
-                      inputs.centerpiece.hmModules."x86_64-linux".default
                       inputs.zen-browser.homeModules.default
                       inputs.dankMaterialShell.homeModules.dankMaterialShell.default
                       inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
