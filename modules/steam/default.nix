@@ -4,31 +4,9 @@
   lib,
   ...
 }:
-{
-  environment.systemPackages = with pkgs; [
-    steamcmd
-    steam-tui
-    mangohud
-    gamescope-wsi
-    pkgsi686Linux.gperftools
-    protonup-ng
-    protonup-qt
-  ];
-
-  programs.steam = {
-    enable = true;
-    package = (pkgs.steam.override { extraLibraries = pkgs: [ pkgs.gperftools ]; });
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
-
-    protontricks = {
-      enable = lib.mkDefault true;
-      package = lib.mkDefault pkgs.protontricks;
-    };
-    extraPackages = with pkgs; [
-      gamescope
+let
+  extraLibraries =
+    p: with p; [
       # X11 libraries
       xorg.libXcursor
       xorg.libXi
@@ -46,7 +24,63 @@
       libvorbis
       mangohud
       lsof
+
+      gperftools
+      brotli.lib
+      zstd
+      openssl
+      zlib
+      libssh2
+      libnghttp2
+      libidn2
+      glibc
+      gtk3
+
+      # for steam-run
+      ncurses
+
+      # for nix-ld
+      libGLU
+      xorg.libX11
+      nspr
     ];
+  extraPkgs =
+    p:
+    with p;
+    [
+      gamescope
+      steamtinkerlaunch
+    ]
+    ++ (extraLibraries p);
+in
+{
+  environment.systemPackages =
+    with pkgs;
+    [
+      steamcmd
+      steam-tui
+      mangohud
+      gamescope-wsi
+      pkgsi686Linux.gperftools
+      protonup-ng
+      protonup-qt
+      steamtinkerlaunch
+    ]
+    ++ [ config.programs.steam.package.run ];
+
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam.override { inherit extraLibraries extraPkgs; };
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+
+    protontricks = {
+      enable = lib.mkDefault true;
+      package = lib.mkDefault pkgs.protontricks;
+    };
+    extraPackages = extraPkgs pkgs;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
@@ -78,10 +112,6 @@
       enable32Bit = true;
     };
 
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
   };
   programs.appimage = {
     enable = true;
