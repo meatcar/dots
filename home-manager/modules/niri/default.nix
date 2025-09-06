@@ -541,7 +541,10 @@ in
           }
           {
             matches = [
-              { app-id="steam"; title="^notificationtoasts_\d+_desktop$";}
+              {
+                app-id = "steam";
+                title = "^notificationtoasts_\d+_desktop$";
+              }
             ];
             default-floating-position.relative-to = "bottom-right";
             default-floating-position.x = 10;
@@ -564,6 +567,7 @@ in
               { app-id = "float"; }
               { title = "float"; }
               { app-id = "it.mijorus.smile"; }
+              { app-id = "re.sonny.Junction"; }
             ];
             open-floating = true;
           }
