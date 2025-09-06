@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.programs.niri;
-  DISPLAY = ":0";
   ghostty = specialArgs.inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
   winswitch = pkgs.writeScript "winswitch" ''
     #!/usr/bin/env bash
@@ -75,6 +74,7 @@ in
       fuzzel
       swww
       waypaper
+      xwayland-satellite
     ])
     ++ [
       screen-record
@@ -104,6 +104,8 @@ in
   };
   services.swayosd.enable = true;
   services.swww.enable = true;
+  programs.fuzzel.settings.main.launch-prefix = "niri msg action spawn --";
+  programs.fuzzel.settings.main.terminal = "${lib.getExe ghostty}";
   programs.niri =
     let
       workspace-names = [
@@ -126,21 +128,13 @@ in
     {
       settings = {
         inherit workspaces;
-        environment = {
-          inherit DISPLAY;
-        };
+        environment = { };
+        xwayland-satellite.path = "${lib.getExe pkgs.xwayland-satellite}";
         spawn-at-startup = [
-          {
-            command = [
-              "${lib.getExe pkgs.xwayland-satellite}"
-              "${DISPLAY}"
-            ];
-          }
           {
             command = [
               "${pkgs.dbus}/bin/dbus-update-activation-environment"
               "--systemd"
-              "DISPLAY=${DISPLAY}"
               "WAYLAND_DISPLAY"
               "XDG_CURRENT_DESKTOP"
             ];
@@ -169,6 +163,10 @@ in
         input.focus-follows-mouse = {
           enable = true;
           max-scroll-amount = "10%";
+        };
+        input.warp-mouse-to-focus = {
+          enable = true;
+          mode = "center-xy";
         };
         input.touchpad = {
           dwtp = true;
@@ -199,7 +197,7 @@ in
           mode = {
             width = 3840;
             height = 2160;
-            refresh = 120.0;
+            refresh = 60.0; # 120; # LG C2 supports 120Hz, but seems to have issues with red on black
           };
         };
         layout = {
@@ -237,9 +235,6 @@ in
               angle = 45;
 
             };
-          # focus-ring.active.color = "#c6d0f5"; # catppuccin text
-          # focus-ring.inactive.color = "#303446"; # catppuccin base
-          # border.off = true;
         };
 
         switch-events.lid-close.action.spawn = [
