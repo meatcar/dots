@@ -195,7 +195,6 @@
               };
           in
           {
-            # tormund = mkSystem [ ./systems/tormund ];
             watson = mkSystem "x86_64-linux" [
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
@@ -222,22 +221,6 @@
                   };
               }
             ];
-            # nixos = mkSystem [
-            #   { system.stateVersion = "23.05"; }
-            #   ./systems/wsl-nixos
-            #   {
-            #     home-manager.useGlobalPkgs = true;
-            #     home-manager.useUserPackages = true;
-            #     home-manager.users.meatcar =
-            #       { ... }:
-            #       {
-            #         imports = [
-            #           ./home-manager/systems/wsl-nixos.nix
-            #         ];
-            #         home.stateVersion = "23.05";
-            #       };
-            #   }
-            # ];
             iso = mkSystem "x86_64-linux" [
               { system.stateVersion = "24.11"; }
               (
@@ -266,20 +249,6 @@
             );
           in
           {
-            # meatcar = inputs.home-manager.lib.homeManagerConfiguration {
-            #   inherit pkgs extraSpecialArgs;
-            #   modules = [
-            #     ./home-manager/systems/wsl-singleuser.nix
-            #     {
-            #       nixpkgs = nixpkgsConfig;
-            #       home = rec {
-            #         username = "meatcar";
-            #         homeDirectory = "/home/${username}";
-            #         stateVersion = "20.09";
-            #       };
-            #     }
-            #   ];
-            # };
             deck = inputs.home-manager.lib.homeManagerConfiguration {
               inherit pkgs extraSpecialArgs;
               modules = [
