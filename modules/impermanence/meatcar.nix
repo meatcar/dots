@@ -6,7 +6,9 @@ _: {
       "Pictures"
       "Documents"
       "Sync"
+      "AppImages"
       ".ssh"
+      ".local/share/applications"
       ".local/share/calendars"
       ".local/share/vdirsyncer"
       ".local/share/fonts"
@@ -19,6 +21,27 @@ _: {
       ".local/share/man"
       ".config/waypaper"
       ".config/htop"
+      ".cache/fuzzel"
+      ".qt_material"
+      ".config/pavucontrol.ini"
+      {
+        directory = ".local/share/flatpak";
+        mode = "0755";
+      }
+      ".cache/flatpak"
+      {
+        directory = ".var";
+        mode = "0755";
+      }
+
+      # dms
+      ".config/DankMaterialShell"
+      ".local/state/DankMaterialShell"
+      ".cache/DankMaterialShell"
+      ".config/dgop"
+      ".local/share/color-schemes"
+      ".cache/quickshell"
+      ".config/cava"
 
       # wallpapers
       ".cache/swww"
@@ -68,6 +91,12 @@ _: {
       # epiphany
       ".cache/epiphany"
       ".local/share/epiphany"
+
+      # appimage
+      ".cache/appimage-run"
+
+      # helium
+      ".config/net.imput.helium"
 
       # podman
       ".local/share/containers"

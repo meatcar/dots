@@ -38,7 +38,9 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     # hardware incantations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    # FIXME: pin to 25.11 when released. Need master for quickshell
+    # home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +57,10 @@
     centerpiece.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -197,6 +203,8 @@
                       inputs.impermanence.homeManagerModules.impermanence
                       inputs.centerpiece.hmModules."x86_64-linux".default
                       inputs.zen-browser.homeModules.default
+                      inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+                      inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
                       ./home-manager/systems/watson
                       ./git-crypt/hm-me.nix
                     ];
