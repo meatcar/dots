@@ -28,11 +28,5 @@ in
     settings = {
       usegeoclue = true;
     };
-    darkModeScripts = {
-      brightness = "${pkgs.swayosd}/bin/swayosd-client --brightness 50";
-    };
-    lightModeScripts = {
-      brightness = "${pkgs.swayosd}/bin/swayosd-client --brightness 100";
-    };
   };
 }
