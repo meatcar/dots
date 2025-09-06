@@ -17,7 +17,7 @@ return {
       local function auto_session_restore()
         -- important! without vim.schedule other necessary plugins might not load (eg treesitter) after restoring the session
         vim.schedule(function()
-          require("auto-session").AutoRestoreSession()
+          require("auto-session").auto_restore_session()
         end)
       end
 
