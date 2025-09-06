@@ -9,6 +9,10 @@
   # some programs assume zeditor is zed
   home.packages = [
     (pkgs.writeShellScriptBin "zed" ''
+      # TODO: remove after updating AMD drivers.
+      # fix for zed-editor not starting in wayland sessions
+      # see https://github.com/zed-industries/zed/issues/35948#issuecomment-3189128449
+      export WAYLAND_DISPLAY=""
       zeditor "$@"
     '')
   ]
