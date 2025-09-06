@@ -33,6 +33,9 @@ _: {
         directory = ".var";
         mode = "0755";
       }
+      ".config/kdeconnect"
+      ".config/clipse"
+      ".local/share/khal"
 
       # dms
       ".config/DankMaterialShell"
@@ -64,6 +67,10 @@ _: {
       ".local/share/opencode"
       {
         directory = ".cache/opencode";
+        mode = "0755";
+      }
+      {
+        directory = ".cache/uv";
         mode = "0755";
       }
 
@@ -142,6 +149,10 @@ _: {
       }
       {
         directory = ".paradoxlauncher";
+        mode = "0755";
+      }
+      {
+        directory = ".local/share/Paradox Interactive";
         mode = "0755";
       }
     ];
