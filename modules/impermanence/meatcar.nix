@@ -8,6 +8,7 @@ _: {
       "Sync"
       "AppImages"
       ".ssh"
+      ".local/bin"
       ".local/share/applications"
       ".local/share/calendars"
       ".local/share/vdirsyncer"
@@ -40,6 +41,7 @@ _: {
       ".local/share/television"
       ".cache/nix-search-tv"
       ".config/ringboard"
+      ".config/qmk"
 
       # dms
       ".config/DankMaterialShell"
@@ -64,6 +66,7 @@ _: {
       ".cache/nixpkgs-review"
       ".local/share/zed"
       ".config/zed"
+      ".config/jiratui"
       ".aider"
       ".local/share/aider"
       ".aws"
@@ -75,6 +78,12 @@ _: {
       }
       {
         directory = ".cache/uv";
+        mode = "0755";
+      }
+      ".claude"
+      ".local/share/claude"
+      {
+        directory = ".local/share/claude/versions";
         mode = "0755";
       }
       ".amp"
