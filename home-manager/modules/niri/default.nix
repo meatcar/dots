@@ -540,6 +540,14 @@ in
             default-column-width.proportion = 0.25;
           }
           {
+            matches = [
+              { app-id="steam"; title="^notificationtoasts_\d+_desktop$";}
+            ];
+            default-floating-position.relative-to = "bottom-right";
+            default-floating-position.x = 10;
+            default-floating-position.y = 10;
+          }
+          {
             # Private Tray Floater
             matches = [
               { app-id = "opensnitch_ui"; }
@@ -563,7 +571,7 @@ in
             # Private Floater
             matches = [
               { app-id = "opensnitch_ui"; }
-              { title = "^.+ Mail - Vivaldi$"; } # gmail notification summon
+              # { title = "^.+ Mail - Vivaldi$"; } # gmail notification summon
               { app-id = "org.kde.polkit-kde-authentication-agent-1"; }
               { app-id = "org.gnome.polkit-gnome-authentication-agent-1"; }
             ];
