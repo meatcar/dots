@@ -128,7 +128,7 @@
         };
         overlays = [
           # inputs.niri.overlays.default
-          inputs.nix-cachyos-kernel.overlay
+          inputs.nix-cachyos-kernel.overlays.pinned
         ];
       };
       specialArgs = { inherit inputs; };
