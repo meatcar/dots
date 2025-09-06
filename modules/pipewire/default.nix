@@ -1,17 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 {
   # security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    package = nixpkgs-unstable.pipewire;
     pulse.enable = true;
-    # alsa.enable = true;
-    # alsa.support32Bit = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     # jack.enable = true;
     wireplumber.configPackages = [
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-bluez.conf" ''
         monitor.bluez.properties = {
           bluez5.roles = [ a2dp_sink a2dp_source bap_sink bap_source hsp_hs hsp_ag hfp_hf hfp_ag ]
-          bluez5.codecs = [ sbc sbc_xq aac aptx aptx_hd aptx_ll opus_05 ]
+          bluez5.codecs = [ sbc sbc_xq aac aptx aptx_hd aptx_ll opus_05 lc3 ldac ]
           bluez5.enable-sbc-xq = true
           bluez5.enable-msbc = true
           bluez5.enable-hw-volume = true
