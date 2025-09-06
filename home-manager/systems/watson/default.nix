@@ -11,11 +11,10 @@
     ../../modules/agenix
     ../../modules/gtk.nix
     ../../modules/gnome-keyring.nix
-    ../../modules/firefox
+    # ../../modules/firefox
     ../../modules/zen
     ../../modules/darkman
     ../../modules/niri
-    # ../../modules/hyperland
     ../../modules/1password
     ../../modules/bitwarden
     # ../../modules/docker
@@ -31,7 +30,6 @@
     ../../modules/evince
     ../../modules/spotify
     ../../modules/television
-    ../../modules/centerpiece
     ../../modules/kdeconnect
     ./impermanence.nix
   ];
