@@ -30,7 +30,7 @@
     ../../modules/steam
     ./t14s-micmuteled.nix
   ];
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
@@ -38,9 +38,19 @@
   # https://gitlab.freedesktop.org/drm/amd/-/issues/3697
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    "video=DP-8:2560x1440@60"
+    "video=HDMI-A-2:3840x2160@60"
+  ];
+  boot.initrd.availableKernelModules = [
+    "thunderbolt"
+    "amdgpu"
+  ];
 
   hardware.graphics.extraPackages = [
+    pkgs.amdvlk
     pkgs.rocmPackages.clr.icd
+    pkgs.rocmPackages.rocm-smi
   ];
   environment.variables.AMD_VULKAN_ICD = "RADV";
   #
@@ -130,8 +140,8 @@
   programs.niri.enable = true;
 
   services.tailscale = {
-    enable = true;
-    # FIXME: pending https://github.com/NixOS/nixpkgs/issues/438765
+    enable = false;
+    # FIX: for https://github.com/NixOS/nixpkgs/issues/438765
     package = nixpkgs-unstable.tailscale;
   };
 
