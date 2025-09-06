@@ -14,6 +14,7 @@
     ../../modules/impermanence
     ../../modules/secureboot
     # ../../modules/ddcci
+    ../../modules/backup
     ../../modules/laptop
     ../../modules/resolved
     ../../modules/geoclue
