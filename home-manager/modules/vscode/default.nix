@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   programs.vscode.enable = true;
   programs.vscode.package = pkgs.vscode-fhs;
@@ -16,4 +19,34 @@
   home.sessionVariables = {
     "NEXT_TELEMETRY_DISABLED" = "1";
   };
+
+  # This is a workaround to make direnv work with VS Code's integrated terminal
+  # when using the direnv extension, by making sure to reload
+  # the environment the first time terminal is opened.
+  #
+  # See <https://github.com/direnv/direnv-vscode/issues/561#issuecomment-2310756248>.
+  #
+  # The variable VSCODE_INJECTION is apparently set by VS Code itself, and this is how
+  # we can detect if we're running inside the VS Code terminal or not.
+  # programs.fish.interactiveShellInit = ''
+  #   # if test \( -n "$VSCODE_INJECTION" \) -o \( -n "$ZED_TERM" \)
+  #   if test -n "$VSCODE_INJECTION"
+  #       and test -z "$VSCODE_TERMINAL_DIRENV_LOADED"
+  #       and test -f .envrc
+
+  #       # fish only emits `fish_prompt` in interactive mode,
+  #       # so emit it explicitly to trigger direnv to reload.
+  #       cd ..
+  #       emit fish_prompt
+  #       cd -
+  #       emit fish_prompt
+
+  #       # I'm not sure if this is actually helpful?
+  #       # new terminals created by vscode don't inheret env variables,
+  #       # so all new terminals will still re-execute this
+  #       if test -n "$VSCODE_INJECTION"
+  #         export VSCODE_TERMINAL_DIRENV_LOADED=1
+  #       end
+  #   end
+  # '';
 }
