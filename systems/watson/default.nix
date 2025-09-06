@@ -119,6 +119,10 @@
     22000 # for syncthing
     21027 # for syncthing discovery
   ];
+  networking.hosts = {
+    # FIX: for https://github.com/Spotifyd/spotifyd/issues/1358
+    "0.0.0.0" = [ "apresolve.spotify.com" ];
+  };
 
   time.timeZone = lib.mkDefault "Canada/Eastern";
   services.automatic-timezoned.enable = true;
