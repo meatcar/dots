@@ -1,14 +1,14 @@
 {
   config,
   lib,
+  pkgs,
   nixpkgs-unstable,
   ...
 }:
 {
   imports = [ ./jjui.nix ];
   home.packages = with nixpkgs-unstable; [
-    # FIXME: failing to build, pending https://nixpk.gs/pr-tracker.html?pr=441579
-    # lazyjj
+    lazyjj
   ];
   programs.jujutsu =
     let
@@ -28,6 +28,15 @@
           name = "Denys Pavlov";
           email = "github@denys.me";
         };
+        signing = {
+          behavior = "drop";
+          backend = "ssh";
+          key = config.programs.git.extraConfig.user.signingKey;
+          backends.ssh = {
+            program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+          };
+        };
+        git.sign-on-push = true;
         # Settings from https://oppi.li/posts/configuring_jujutsu/
         template-aliases = {
           "format_timestamp(timestamp)" = "timestamp.ago()";
@@ -50,6 +59,7 @@
           '';
           draft_commit_description = ''
             concat(
+              "JJ: A short and descriptive commit message following conventional commits:\n",
               coalesce(description, default_commit_description, "\n"),
               surround(
                 "\nJJ: This commit contains the following changes:\n", "",
