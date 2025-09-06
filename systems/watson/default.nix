@@ -16,6 +16,7 @@
     # ../../modules/ddcci
     ../../modules/backup
     ../../modules/laptop
+    ../../modules/nix-ld
     ../../modules/resolved
     ../../modules/geoclue
     ../../modules/pipewire
