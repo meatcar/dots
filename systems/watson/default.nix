@@ -54,7 +54,7 @@
     pkgs.rocmPackages.clr.icd
     pkgs.rocmPackages.rocm-smi
   ];
-  environment.variables.AMD_VULKAN_ICD = "RADV";
+  # environment.variables.AMD_VULKAN_ICD = "RADV";
   #
   boot.initrd.systemd = {
     # for hibernation, tpm2 luks unlock
