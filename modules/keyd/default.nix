@@ -6,11 +6,11 @@ _: {
         ids = [ "*" ];
         settings = {
           main = {
-            capslock = "esc";
+            capslock = "overload(control, esc)";
             "rightcontrol" = "layer(rightcontrol)";
             "wakeup" = "layer(rightcontrol)"; # t14s fn = "wakeup"
           };
-          rightcontrol = {
+          "rightcontrol:C" = {
             # mac-ish bindings
             "left" = "home";
             "right" = "end";
@@ -21,6 +21,8 @@ _: {
             "insert" = "volumeup";
             "delete" = "volumedown";
             "backspace" = "mute";
+            "backslash" = "micmute";
+            "grave" = "esc";
           };
         };
       };
