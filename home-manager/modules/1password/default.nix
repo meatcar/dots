@@ -8,7 +8,7 @@
   programs.ssh.matchBlocks."*".extraOptions = {
     IdentityAgent = "~/.1password/agent.sock";
   };
-  programs.git.extraConfig."gpg \"ssh\"" = {
+  programs.git.settings."gpg \"ssh\"" = {
     program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
   };
   systemd.user.services."1password" = {

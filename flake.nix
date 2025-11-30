@@ -24,7 +24,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     # rest
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # secrets
     agenix.url = "github:yaxitech/ragenix";
@@ -39,8 +39,7 @@
     # hardware incantations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # FIXME: pin to 25.11 when released. Need master for quickshell
-    # home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";

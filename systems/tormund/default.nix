@@ -58,7 +58,7 @@
       enable = true;
       fileSystems = [ "/" ];
     };
-    logind = {
+    logind.settings.Login = {
       lidSwitch = "hybrid-sleep";
       lidSwitchDocked = "hybrid-sleep";
       extraConfig = ''

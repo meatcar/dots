@@ -7,7 +7,7 @@
 {
   programs.dankMaterialShell = {
     enable = true;
-    enableSystemd = true;
+    systemd.enable = true;
     niri.enableKeybinds = false; # we'll map our own
     niri.enableSpawn = false;
     quickshell.package = nixpkgs-unstable.quickshell;

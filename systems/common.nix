@@ -48,7 +48,7 @@
       corefonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-extra
+      noto-fonts
       # proportional
       inter
       # monospace

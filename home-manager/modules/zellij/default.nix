@@ -7,6 +7,6 @@ _: {
     };
     # use third-party zellij package that provides plugins until issue is fixed:
     # https://github.com/NixOS/nixpkgs/issues/197377
-    # package = inputs.zellij.packages."${pkgs.system}".default;
+    # package = inputs.zellij.packages."${pkgs.stdenv.hostPlatform.system}".default;
   };
 }
