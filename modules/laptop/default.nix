@@ -10,11 +10,12 @@
   networking.networkmanager.enable = true;
 
   # suspend-then-hibernate suspends faster, but the wakeup can leave the system in a stuck state.
-  services.logind.extraConfig = ''
-    SleepOperation=hybrid-sleep
-  '';
-  services.logind.lidSwitch = "sleep";
-  services.logind.suspendKey = "sleep";
-  services.logind.powerKey = "sleep";
-  services.logind.powerKeyLongPress = "poweroff";
+  services.logind.settings.Login = {
+    SleepOperation = "hybrid-sleep";
+    LidSwitch = "sleep";
+    SuspendKey = "sleep";
+    PowerKey = "sleep";
+    PowerKeyLongPress = "poweroff";
+  };
+
 }

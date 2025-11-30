@@ -49,7 +49,6 @@
   ];
 
   hardware.graphics.extraPackages = [
-    pkgs.amdvlk
     pkgs.rocmPackages.clr.icd
     pkgs.rocmPackages.rocm-smi
   ];
@@ -107,7 +106,7 @@
     usbutils
     radeontop
     v4l-utils
-    config.boot.kernelPackages.perf
+    perf
   ];
 
   services.fwupd.enable = true;

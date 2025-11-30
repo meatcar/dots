@@ -19,9 +19,9 @@ in
 
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     lfs.enable = true;
-    extraConfig = {
+    settings = {
       user.name = "Denys Pavlov";
       user.email = "me@denys.me";
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBcq01gh2tn/+hcm75N3LnS003mUBjXcT6qNndMhObPO";
@@ -82,12 +82,8 @@ in
       glab # gitlab CLI
       git-absorb # quick fixup rebases
       git-crypt # transparent encryption
-
-    ])
-    ++ (with pkgs.gitAndTools; [
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
-      delta # delta
     ])
     ++ [
       (pkgs.writeShellScriptBin "git-op-crypt" ''
@@ -107,7 +103,7 @@ in
     };
   };
 
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
     options = {
       navigate = true;
@@ -137,7 +133,7 @@ in
       };
       git.paging = {
         colorArg = "always";
-        pager = "${pkgs.gitAndTools.delta}/bin/delta --paging=never";
+        pager = "${pkgs.delta}/bin/delta --paging=never";
       };
     };
   };

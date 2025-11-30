@@ -1,7 +1,12 @@
 { inputs, ... }:
 {
   perSystem =
-    { pkgs, config, ... }:
+    {
+      system,
+      pkgs,
+      config,
+      ...
+    }:
     {
       devShells.default = pkgs.mkShell {
         name = "dots";
