@@ -34,13 +34,12 @@
       lua-language-server
       terraform-ls
       gopls
-      ansible-language-server
-      elixir_ls
+      elixir-ls
       nodePackages.vscode-langservers-extracted # css,eslint,html,json,markdown
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server-nodejs
+      dockerfile-language-server
 
       # formatters
       eslint_d

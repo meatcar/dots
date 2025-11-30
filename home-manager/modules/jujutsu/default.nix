@@ -12,7 +12,7 @@
   ];
   programs.jujutsu =
     let
-      delta = "${lib.getExe config.programs.git.delta.package}";
+      delta = "${lib.getExe config.programs.delta.package}";
       deltaArgs = [
         # trim file paths to just the filename relative to the repo
         "--file-transformation"
@@ -31,7 +31,7 @@
         signing = {
           behavior = "drop";
           backend = "ssh";
-          key = config.programs.git.extraConfig.user.signingKey;
+          key = config.programs.git.settings.user.signingKey;
           backends.ssh = {
             program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
           };
