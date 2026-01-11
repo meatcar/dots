@@ -141,66 +141,67 @@
       git_metrics.disabled = true;
       git_branch.disabled = true;
 
-      custom = let
-        mkGitCustomModule = name: {
-          when = "! jj --ignore-working-copy root";
-          command = "starship module ${name}";
-          style = ""; # This disables the default "(bold green)" style
-          description = "Only show ${name} if we're not in a jj repo";
-        };
-      in
-      {
-        git_status = mkGitCustomModule "git_status";
-        git_commit = mkGitCustomModule "git_commit";
-        git_metrics = mkGitCustomModule "git_metrics";
-        git_branch = mkGitCustomModule "git_branch";
+      custom =
+        let
+          mkGitCustomModule = name: {
+            when = "! jj --ignore-working-copy root";
+            command = "starship module ${name}";
+            style = ""; # This disables the default "(bold green)" style
+            description = "Only show ${name} if we're not in a jj repo";
+          };
+        in
+        {
+          git_status = mkGitCustomModule "git_status";
+          git_commit = mkGitCustomModule "git_commit";
+          git_metrics = mkGitCustomModule "git_metrics";
+          git_branch = mkGitCustomModule "git_branch";
 
-        jj = {
-          command = "prompt";
-          format = "$output";
-          ignore_timeout = true;
-          shell = [
-            "${inputs.starship-jj.packages.${pkgs.stdenv.system}.default}/bin/starship-jj"
-            "--ignore-working-copy"
-            "starship"
-          ];
-          use_stdin = false;
-          detect_folders = [ ".jj" ];
-        #   # for speed
-        #   shell = [
-        #     "sh"
-        #     "--norc"
-        #     "--noprofile"
-        #   ];
-        #   detect_folders = [ ".jj" ];
-        #   symbol = "jj ";
-        #   command = ''
-        #     jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-        #     separate(" ",
-        #     change_id.shortest(4),
-        #     commit_id.shortest(4),
-        #     bookmarks,
-        #     "|",
-        #     concat(
-        #     if(conflict, "💥"),
-        #     if(divergent, "🚧"),
-        #     if(hidden, "👻"),
-        #     if(immutable, "🔒"),
-        #     ),
-        #     raw_escape_sequence("\x1b[1;32m") ++ if(empty, "\""),
-        #     raw_escape_sequence("\x1b[1;32m") ++ coalesce(
-        #     concat(
-        #     "(",
-        #     truncate_end(29, description.first_line(), "…"),
-        #     ")"
-        #     ),
-        #     "∅",
-        #     ) ++ raw_escape_sequence("\x1b[0m"),
-        #     )
-        #     '
-        #   '';
+          jj = {
+            command = "prompt";
+            format = "$output";
+            ignore_timeout = true;
+            shell = [
+              "${inputs.starship-jj.packages.${pkgs.stdenv.system}.default}/bin/starship-jj"
+              "--ignore-working-copy"
+              "starship"
+            ];
+            use_stdin = false;
+            detect_folders = [ ".jj" ];
+            #   # for speed
+            #   shell = [
+            #     "sh"
+            #     "--norc"
+            #     "--noprofile"
+            #   ];
+            #   detect_folders = [ ".jj" ];
+            #   symbol = "jj ";
+            #   command = ''
+            #     jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
+            #     separate(" ",
+            #     change_id.shortest(4),
+            #     commit_id.shortest(4),
+            #     bookmarks,
+            #     "|",
+            #     concat(
+            #     if(conflict, "💥"),
+            #     if(divergent, "🚧"),
+            #     if(hidden, "👻"),
+            #     if(immutable, "🔒"),
+            #     ),
+            #     raw_escape_sequence("\x1b[1;32m") ++ if(empty, "\""),
+            #     raw_escape_sequence("\x1b[1;32m") ++ coalesce(
+            #     concat(
+            #     "(",
+            #     truncate_end(29, description.first_line(), "…"),
+            #     ")"
+            #     ),
+            #     "∅",
+            #     ) ++ raw_escape_sequence("\x1b[0m"),
+            #     )
+            #     '
+            #   '';
+          };
         };
-      };
     };
   };
   xdg.configFile."starship-jj/starship-jj.toml".text = builtins.readFile ./starship-jj.toml;

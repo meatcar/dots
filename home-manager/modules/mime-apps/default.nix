@@ -7,8 +7,6 @@
   xdg.mimeApps.defaultApplications =
     let
       dms = "dms-open.desktop";
-      zed = "dev.zed.Zed.desktop";
-      evince = "org.gnome.Evince.desktop";
       papers = "org.gnome.Papers.desktop";
     in
     {
