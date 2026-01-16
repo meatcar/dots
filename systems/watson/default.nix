@@ -43,8 +43,10 @@
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
-    "video=DP-8:2560x1440@60"
     "video=HDMI-A-2:3840x2160@60"
+    "video=DP-8:off"
+    # "video=eDP-1:d"
+    "amdgpu.aspm=0"
   ];
   boot.initrd.availableKernelModules = [
     "thunderbolt"
@@ -175,6 +177,7 @@
       "wheel"
       "docker"
       "dialout"
+      "video"
     ];
   };
 }
