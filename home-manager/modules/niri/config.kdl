@@ -1,0 +1,252 @@
+workspace "me"
+workspace "work"
+workspace "code"
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+hotkey-overlay { skip-at-startup; }
+cursor {
+    xcursor-theme "Posy_Cursor"
+    xcursor-size 16
+}
+input {
+    keyboard {
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        dwtp
+        drag-lock
+        natural-scroll
+        scroll-factor 0.8
+    }
+    trackpoint { accel-profile "flat"; }
+    focus-follows-mouse max-scroll-amount="10%"
+}
+layout {
+    gaps 16
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    focus-ring {
+        width 4
+        // active-gradient angle=45 from="#ca9ee6" relative-to="workspace-view" to="#c6d0f5"
+    }
+    border { off; }
+    tab-indicator {
+        gap 5.000000
+        width 4.000000
+        length total-proportion=0.500000
+        position "right"
+        gaps-between-tabs 0.000000
+        corner-radius 0.000000
+    }
+    // insert-hint { gradient angle=45 from="#ca9ee680" relative-to="window" to="#c6d0f580"; }
+    default-column-width
+    preset-column-widths {
+        proportion 0.333333
+        proportion 0.500000
+        proportion 0.666667
+        proportion 1.000000
+    }
+    preset-window-heights {
+        proportion 0.333333
+        proportion 0.500000
+        proportion 0.666667
+        proportion 1.000000
+    }
+    center-focused-column "never"
+    always-center-single-column
+}
+switch-events { lid-close { spawn "systemctl" "suspend"; }; }
+binds {
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Alt+1 { move-column-to-workspace 1; }
+    Mod+Alt+2 { move-column-to-workspace 2; }
+    Mod+Alt+3 { move-column-to-workspace 3; }
+    Mod+Alt+4 { move-column-to-workspace 4; }
+    Mod+Alt+5 { move-column-to-workspace 5; }
+    Mod+Alt+6 { move-column-to-workspace 6; }
+    Mod+Alt+7 { move-column-to-workspace 7; }
+    Mod+Alt+8 { move-column-to-workspace 8; }
+    Mod+Alt+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+A { spawn "niri" "msg" "action" "toggle-overview"; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    XF86AudioLowerVolume { spawn "dms" "ipc" "audio" "decrement" "1"; }
+    XF86AudioMicMute { spawn "dms" "ipc" "audio" "micmute"; }
+    XF86AudioMute { spawn "dms" "ipc" "audio" "mute"; }
+    XF86AudioRaiseVolume { spawn "dms" "ipc" "audio" "increment" "1"; }
+    XF86MonBrightnessDown { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
+    XF86MonBrightnessUp { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
+
+    Mod+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && dms ipc lock lock"; }
+    Mod+Shift+Q { spawn "dms" "ipc" "powermenu" "toggle"; }
+
+    Mod+D { close-window; }
+    Mod+Z { expand-column-to-available-width; }
+    Mod+Shift+Z { maximize-window-to-edges; }
+    Mod+F { fullscreen-window; }
+    Mod+Shift+F { toggle-windowed-fullscreen; }
+
+    Mod+B { center-window; }
+
+    Mod+H { focus-column-or-monitor-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-or-monitor-right; }
+    Mod+Shift+H { consume-or-expel-window-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { consume-or-expel-window-right; }
+    Mod+Alt+H { move-column-left-or-to-monitor-left; }
+    Mod+Alt+J { move-column-to-workspace-down; }
+    Mod+Alt+K { move-column-to-workspace-up; }
+    Mod+Alt+L { move-column-right-or-to-monitor-right; }
+    Mod+Ctrl+H { move-workspace-to-monitor-left; }
+    Mod+Ctrl+J { move-workspace-to-monitor-down; }
+    Mod+Ctrl+K { move-workspace-to-monitor-up; }
+    Mod+Ctrl+L { move-workspace-to-monitor-right; }
+    Mod+Ctrl+Shift+H { move-window-to-monitor-left; }
+    Mod+Ctrl+Shift+J { move-window-to-monitor-up; }
+    Mod+Ctrl+Shift+K { move-window-to-monitor-down; }
+    Mod+Ctrl+Shift+L { move-window-to-monitor-right; }
+    Mod+Ctrl+Alt+H { move-column-to-monitor-left; }
+    Mod+Ctrl+Alt+J { move-column-to-monitor-up; }
+    Mod+Ctrl+Alt+K { move-column-to-monitor-down; }
+    Mod+Ctrl+Alt+L { move-column-to-monitor-right; }
+    Mod+Bracketleft { swap-window-left; }
+    Mod+Bracketright { swap-window-right; }
+    Mod+Shift+Bracketleft { consume-window-into-column; }
+    Mod+Shift+Bracketright { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+T { toggle-column-tabbed-display; }
+
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Shift+Minus { set-window-height "-5%"; }
+    Mod+Shift+Equal { set-window-height "+5%"; }
+    Mod+Shift+0 { reset-window-height; }
+
+    Mod+Space { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Space { toggle-window-floating; }
+
+    Mod+S { set-dynamic-cast-monitor; }
+    Mod+W { set-dynamic-cast-window; }
+    Mod+Shift+W { clear-dynamic-cast-target; }
+
+    Print { screenshot; }
+    Mod+Print { screenshot-window; }
+    Mod+Shift+Print { screenshot-screen; }
+    Mod+Ctrl+Print { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty" "--title=float" "-e" "/nix/store/8ympds7aryqv8irbcck8m1d97rx34vqg-screen-record/bin/screen-record" "-g"; }
+
+    Mod+N { spawn "dms" "ipc" "notifications" "toggle"; }
+    Mod+O { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
+    Mod+P repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
+    Mod+Period { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":"; }
+    Mod+Shift+Return repeat=false { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty"; }
+    Mod+V { spawn "dms" "ipc" "call" "clipboard" "open"; }
+}
+window-rule {
+    open-focused true
+    geometry-corner-radius 8 8 8 8
+    clip-to-geometry true
+}
+window-rule {
+    match is-floating=true
+    shadow { on; }
+}
+window-rule {
+    match app-id="code"
+    open-on-workspace "code"
+}
+window-rule {
+    match is-window-cast-target=true
+    border {
+        width 4
+        inactive-color "#7d0d2d"
+    }
+    focus-ring {
+        width 4
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+    shadow { color "#7d0d2d70"; }
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+window-rule {
+    // Firefox / Zen PiP
+    match title="^Picture-in-Picture$"
+    // Vivaldi
+    match title="^Picture in Picture$"
+    open-floating true
+    default-floating-position relative-to="bottom" x=0 y=0
+}
+
+// Meet
+window-rule {
+    match title="^Meet - w+-w+-w+$" // not ending in browser name
+    default-column-width { proportion 0.250000; }
+    default-window-height { proportion 0.250000; }
+    open-floating true
+    default-floating-position relative-to="top-left" x=0 y=0
+}
+
+window-rule {
+    match app-id="steam" title="^notificationtoasts_d+_desktop$"
+    default-floating-position relative-to="bottom-right" x=10 y=10
+}
+
+// Private Tray Floater
+window-rule {
+    match app-id="opensnitch_ui"
+    open-floating true
+    block-out-from "screen-capture"
+    default-floating-position relative-to="bottom-right" x=0 y=0
+}
+
+// Public Floater
+window-rule {
+    match app-id="float"
+    match title="float"
+    match app-id="it.mijorus.smile"
+    match app-id="re.sonny.Junction"
+    match app-id="org.quickshell" title="Settings" // dms
+    open-floating true
+}
+
+// Private Floater
+window-rule {
+    match app-id="opensnitch_ui"
+    match app-id="org.kde.polkit-kde-authentication-agent-1"
+    match app-id="org.gnome.polkit-gnome-authentication-agent-1"
+    match app-id="ringboard-egui"
+    open-floating true
+    block-out-from "screen-capture"
+}
