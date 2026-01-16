@@ -1,4 +1,7 @@
-_:
+{
+  lib,
+  ...
+}:
 let
   env_store = "~/Sync/backup/dev/env";
 in
@@ -39,17 +42,8 @@ in
 
   programs.fish = {
     interactiveShellInit = ''
-      # NOTE: Can't be in functions dir because of load order (I think...)
-      #       needs to be loaded before direnv is hooked in
-      function autotmux_on_direnv_enter --on-variable=DIRENV_DIR \
-        --description="start or attach to a tmux session when direnv is activated"
-          test -z "$DIRENV_DIR" && return
-          set -x TMUX_SESSION_NAME (basename "/$DIRENV_DIR" | tr . -)
-          if test -z "$TMUX" && command -qs tmux
-            echo "starting session $TMUX_SESSION_NAME" >&2
-            tmux new-session -t "$TMUX_SESSION_NAME"
-          end
-      end
+      # NOTE: must load before direnv hook
+      source ${./autotmux.fish}
     '';
     functions = {
       env-store-path = {
