@@ -14,11 +14,6 @@
         --input-history-file '${config.xdg.dataHome}/aider/input-history.json' \
         "$@"
     '')
-
-    (pkgs.writeShellScriptBin "opencode" ''
-      source ${config.age.secrets.aienv.path}
-      ${nixpkgs-unstable.opencode}/bin/opencode "$@"
-    '')
   ];
   programs.git.ignores = [
     ".aider*"
