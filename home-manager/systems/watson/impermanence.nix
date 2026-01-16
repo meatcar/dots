@@ -11,10 +11,13 @@
       # ".config/user-dirs.locale"
       # ".config/monitors.xml"
       # ".config/mimeapps.list"
+      ".claude.json"
+      ".clasprc.json" # for clasp gscript upload tool
     ];
     directories = [
       # ".cache/nix"
       # ".local/state/nix"
+      ".config/niri"
       {
         directory = ".cache/typescript";
         mode = "0755";
@@ -35,6 +38,12 @@
         directory = ".local/state/opencode";
         mode = "0755";
       }
+      ".local/share/opentui" # for opencode
+      {
+        directory = ".local/share/pnpm";
+        mode = "0755";
+      }
+      ".local/share/lazygit"
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"
     ++ lib.optional config.programs.gh.enable ".config/gh"
@@ -79,12 +88,16 @@
       ".qt_material"
       ".local/share/copyq"
     ]
+    ++ lib.optionals config.services.kdeconnect.enable [
+      ".config/kdeconnect"
+      ".cache/kdeconnect.daemon"
+    ]
     ++ [
       ".config/vivaldi"
       ".cache/vivaldi"
       ".local/lib/vivaldi"
     ]
-    ++ [
+    ++ lib.optionals config.services.activitywatch.enable [
       ".config/activitywatch"
       ".cache/activitywatch"
       ".local/share/activitywatch"
