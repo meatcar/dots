@@ -66,7 +66,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dankMaterialShell = {
+    dank-material-shell = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -213,10 +213,9 @@
                   {
                     imports = [
                       inputs.agenix.homeManagerModules.default
-                      inputs.impermanence.homeManagerModules.impermanence
                       inputs.zen-browser.homeModules.default
-                      inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-                      inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
+                      inputs.dank-material-shell.homeModules.dank-material-shell
+                      inputs.dank-material-shell.homeModules.niri
                       ./home-manager/systems/watson
                       ./git-crypt/hm-me.nix
                     ];
