@@ -32,6 +32,7 @@
     # ../../modules/opensnitch
     ../../modules/steam
     ../../modules/vm
+    ../../modules/keyring.nix
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "25.11";
@@ -113,7 +114,6 @@
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 
   services.hardware.bolt.enable = true;
-  services.gnome.gnome-keyring.enable = true;
   hardware.trackpoint = {
     enable = true;
     emulateWheel = true;
