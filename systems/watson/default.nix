@@ -143,10 +143,19 @@
   services.accounts-daemon.enable = true; # for dms
 
   services.tailscale = {
-    enable = false;
+    enable = true;
     # FIX: for https://github.com/NixOS/nixpkgs/issues/438765
     package = nixpkgs-unstable.tailscale;
   };
+
+  services.openssh = {
+    enable = true;
+    openFirewall = false;
+  };
+
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [
+    22
+  ];
 
   services.syncthing.enable = false; # prefer HM module
   services.flatpak.enable = true;
