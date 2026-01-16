@@ -5,16 +5,17 @@
   ...
 }:
 {
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
     niri.enableKeybinds = false; # we'll map our own
     niri.enableSpawn = false;
     quickshell.package = nixpkgs-unstable.quickshell;
+    dgop.package = nixpkgs-unstable.dgop;
   };
   services.darkman =
     let
-      qs = lib.getExe config.programs.dankMaterialShell.quickshell.package;
+      qs = lib.getExe config.programs.dank-material-shell.quickshell.package;
     in
     {
       darkModeScripts = {

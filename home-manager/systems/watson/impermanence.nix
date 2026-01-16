@@ -4,13 +4,12 @@
   ...
 }:
 {
-  home.persistence."/persist/${config.home.homeDirectory}" = {
-    allowOther = true;
+  home.persistence."/persist" = {
     files = [
       # FIXME: don't reliably work, see https://github.com/nix-community/impermanence/issues/107
       # ".config/user-dirs.dirs"
       # ".config/user-dirs.locale"
-      ".config/monitors.xml"
+      # ".config/monitors.xml"
       # ".config/mimeapps.list"
     ];
     directories = [
@@ -18,15 +17,23 @@
       # ".local/state/nix"
       {
         directory = ".cache/typescript";
-        method = "symlink";
+        mode = "0755";
       }
       {
         directory = ".hex";
-        method = "symlink";
+        mode = "0755";
       }
       {
         directory = ".mix";
-        method = "symlink";
+        mode = "0755";
+      }
+      {
+        directory = ".config/opencode";
+        mode = "0755";
+      }
+      {
+        directory = ".local/state/opencode";
+        mode = "0755";
       }
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"
@@ -42,9 +49,8 @@
       ".config/Code"
       ".local/share/vscode-beggar"
       {
-        # seems to consume a lot of CPU as a non-symlink
         directory = ".continue";
-        method = "symlink";
+        mode = "0755";
       }
     ]
     ++ lib.optionals config.programs.direnv.enable [
