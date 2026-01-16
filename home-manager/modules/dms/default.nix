@@ -8,8 +8,8 @@
   programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
-    niri.enableKeybinds = false; # we'll map our own
-    niri.enableSpawn = false;
+    # niri.enableKeybinds = false; # we'll map our own
+    # niri.enableSpawn = false;
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
@@ -20,14 +20,14 @@
     {
       darkModeScripts = {
         dms = ''
-          ${qs} -c dms ipc call night enable
-          ${qs} -c dms ipc call theme dark
+          dms ipc call night enable
+          dms ipc call theme dark
         '';
       };
       lightModeScripts = {
         dms = ''
-          ${qs} -c dms ipc call night disable
-          ${qs} -c dms ipc call theme light
+          dms ipc call night disable
+          dms ipc call theme light
         '';
       };
     };

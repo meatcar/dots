@@ -138,6 +138,7 @@
   services.automatic-timezoned.enable = true;
 
   programs.niri.enable = true;
+  services.accounts-daemon.enable = true; # for dms
 
   services.tailscale = {
     enable = false;

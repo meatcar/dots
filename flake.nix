@@ -57,7 +57,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri-flake.url = "github:sodiboo/niri-flake";
     niri = {
       url = "github:YaLTeR/niri/v25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -205,7 +204,6 @@
               inputs.impermanence.nixosModules.impermanence
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
-              inputs.niri-flake.nixosModules.niri
               ./systems/watson
               {
                 home-manager.users.meatcar =
@@ -215,7 +213,7 @@
                       inputs.agenix.homeManagerModules.default
                       inputs.zen-browser.homeModules.default
                       inputs.dank-material-shell.homeModules.dank-material-shell
-                      inputs.dank-material-shell.homeModules.niri
+                      # inputs.dank-material-shell.homeModules.niri
                       ./home-manager/systems/watson
                       ./git-crypt/hm-me.nix
                     ];
