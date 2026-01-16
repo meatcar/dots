@@ -58,7 +58,6 @@ in
     with pkgs;
     [
       steamcmd
-      steam-tui
       mangohud
       gamescope-wsi
       pkgsi686Linux.gperftools
