@@ -7,7 +7,10 @@
 {
   home.packages = [
     (pkgs.writeShellScriptBin "opencode" ''
+      set -a
       source ${config.age.secrets.aienv.path}
+      source ${config.age.secrets.pushover.path}
+      set +a
       ${nixpkgs-unstable.opencode}/bin/opencode "$@"
     '')
   ];
@@ -27,6 +30,7 @@
       webfetch = "allow";
     };
   };
+  xdg.configFile."opencode/plugins/pushover.ts".source = ./pushover.ts;
   programs.git.ignores = [
     "opencode.json"
   ];

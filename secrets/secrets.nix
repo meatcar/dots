@@ -10,6 +10,7 @@ let
 in
 {
   "aienv.age".publicKeys = systems;
+  "pushover.age".publicKeys = systems;
   # https://console.cloud.google.com/auth/clients/create
   "gcalClientId.age".publicKeys = systems;
   "gcalClientSecret.age".publicKeys = systems;
