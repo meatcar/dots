@@ -10,16 +10,17 @@ let
 in
 {
   imports = [
-    ./networkmanager.nix
     ./bluetooth.nix
+    ./cups.nix
+    ./docker.nix
+    ./fprintd.nix
     ./fwupd.nix
     ./gnome.nix
-    ./fprintd.nix
-    ./docker.nix
+    ./ly.nix
+    ./networkmanager.nix
+    ./opensnitch.nix
     ./podman.nix
     ./tailscale.nix
-    ./cups.nix
-    ./opensnitch.nix
     ./meatcar.nix
   ];
   # Setup a service that will automatically rollback the root subvolume to a fresh state.

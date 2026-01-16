@@ -34,7 +34,6 @@ _: {
         directory = ".var";
         mode = "0755";
       }
-      ".config/kdeconnect"
       ".config/clipse"
       ".local/share/khal"
       ".config/television"
