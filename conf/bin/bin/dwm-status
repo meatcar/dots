@@ -1,7 +1,0 @@
-#!/bin/sh
-
-while true
-do
-    xsetroot -name "`~/dots/status/statusline.sh`" 
-    sleep 3s
-done

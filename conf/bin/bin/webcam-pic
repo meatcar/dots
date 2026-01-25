@@ -1,9 +1,0 @@
-#!/bin/sh 
-
-## Open ffmpeg and take a webcam pic
-
-FOLDER="$HOME/Pictures/Webcam"
-
-cd $FOLDER
-
-ffmpeg -loglevel -8 -f video4linux2 -i /dev/video0 -vframes 2 `date '+%s_%F_%T'`.jpg

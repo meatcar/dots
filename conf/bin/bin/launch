@@ -1,9 +1,0 @@
-#!/bin/sh 
-FONT='smoothansi-10'
-NB='black' #normal background
-NF='white' #normal foreground
-SB='#666666' #selected BG
-SF='#ffcc00' #selected FG
-PROMPT='Run: '
-PARAMS="-fn $FONT -nb $NB -nf $NF -sb $SB -sf $SF -i -t -p $PROMPT" 
-dmenu_run $PARAMS

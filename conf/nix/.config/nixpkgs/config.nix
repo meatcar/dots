@@ -1,1 +1,0 @@
-../../../../home-manager/config.nix

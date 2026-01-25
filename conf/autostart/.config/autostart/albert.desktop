@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Albert
-Comment=Albert Launcher
-Icon=albert
-Exec=albert
-Terminal=false
-Type=Application
-NotShownIn=GNOME;KDE;Unity;
-X-GNOME-Autostart-enabled=false

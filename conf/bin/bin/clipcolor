@@ -1,2 +1,0 @@
-#!/bin/sh
-zenity --color-selection --color=$(xclip -o)

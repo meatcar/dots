@@ -1,7 +1,0 @@
-#!/bin/bash
-xrandr --dpi 144 
-echo 'Xft.dpi: 144' | xrdb -merge
-#touchegg >/dev/null 2>&1 &
-#xkbcomp \
-#  -i "$(xinput | grep 'Surface Pro 3/4 Buttons' | sed 's/\s/\n/g' | grep id | sed 's/id=//')" \
-#  .config/sp3buttons.xkb "$DISPLAY" &

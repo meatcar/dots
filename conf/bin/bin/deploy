@@ -1,1 +1,0 @@
-rsync -trvuzEX --delete --timeout=120 /home/meatcar/dev/Viafoura-Core denys@denys.whothaman.com:/home/denys/ 

@@ -1,5 +1,0 @@
-[Unit]
-Description=Unmetered connection
-Documentation=https://github.com/jdorel/systemd-metered-connection-dependency
-Requires=check-metered-connection.service
-After=check-metered-connection.service

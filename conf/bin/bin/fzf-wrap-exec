@@ -1,5 +1,0 @@
-#!/bin/sh
-if pgrep sway >/dev/null 2>&1; then
-	EXEC='swaymsg exec'
-fi
-alacritty --class fzf -e sh -c "$@ | xargs -n1 $EXEC >/dev/null 2>&1"

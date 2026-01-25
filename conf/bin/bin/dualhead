@@ -1,6 +1,0 @@
-#!/bin/sh 
-
-# set dual-head
-xrandr --output LVDS --auto
-xrandr --output DVI-0 --auto --right-of LVDS --rotate normal
-nitrogen --restore
