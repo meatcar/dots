@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+_:
 let
   env_store = "~/Sync/backup/dev/env";
 in

@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   nixpkgs-unstable,
   ...
 }:
@@ -13,22 +11,18 @@
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
-  services.darkman =
-    let
-      qs = lib.getExe config.programs.dank-material-shell.quickshell.package;
-    in
-    {
-      darkModeScripts = {
-        dms = ''
-          dms ipc call night enable
-          dms ipc call theme dark
-        '';
-      };
-      lightModeScripts = {
-        dms = ''
-          dms ipc call night disable
-          dms ipc call theme light
-        '';
-      };
+  services.darkman = {
+    darkModeScripts = {
+      dms = ''
+        dms ipc call night enable
+        dms ipc call theme dark
+      '';
     };
+    lightModeScripts = {
+      dms = ''
+        dms ipc call night disable
+        dms ipc call theme light
+      '';
+    };
+  };
 }
