@@ -5,13 +5,15 @@ on:
 
 jobs:
   check:
-    runs-on: 
+    runs-on:
       - sprinters:aws:ubuntu-latest:spot=auto
       - ${{ github.run_id }}-${{ github.run_attempt }}-flake-check
 
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
-      - uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31
+      - uses: DeterminateSystems/determinate-nix-action@89ab342bd48ff7318caf8d39d6a330c7b1df8f2f #v3.15.2
+        with:
+          diagnostic-endpoint: ""
       - uses: nix-community/cache-nix-action@106bba72ed8e29c8357661199511ef07790175e9 # v7
         with:
           primary-key: ${{runner.os}}-${{hashFiles('./flake.nix', './flake-modules/**/*.nix', './flake.lock')}}
