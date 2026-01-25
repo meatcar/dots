@@ -19,8 +19,9 @@ in
   ];
   home.sessionVariables = env;
   systemd.user.sessionVariables = env;
-  home.packages = [
-    pkgs.wl-clipboard
+  home.packages = with pkgs; [
+    libnotify
+    wl-clipboard
   ];
 
   services.darkman = {
