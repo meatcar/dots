@@ -1,6 +1,6 @@
 {
   "$schema": "http://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", "security:openssf-scorecard"],
+  "extends": ["config:best-practices", "security:openssf-scorecard", "schedule:weekly"],
   "packageRules": [
     {
       "matchFileNames": ["home-manager/modules/clojure/deps.edn"],
@@ -8,5 +8,15 @@
       "groupName": "Clojure deps.edn",
       "groupSlug": "clj-deps-edn"
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+  	"enabled": true,
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "nix": {
+    "enabled": true
+  }
 }
