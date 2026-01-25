@@ -1,8 +1,0 @@
-[Unit]
-Description=Metered connection status checker
-Documentation=https://github.com/jdorel/systemd-metered-connection-dependency
-After=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=sh -c "test $(%h/.local/bin/metered-connection status) != yes"

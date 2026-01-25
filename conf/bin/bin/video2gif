@@ -1,5 +1,0 @@
-#!/bin/sh
-
-mplayer "$1" -vo png:outdir=/tmp/gif
-convert /tmp/gif/*.png /tmp/gif/tmp.gif
-gifsicle -d 3 --colors 64 -O /tmp/gif/tmp.gif -o "$2"

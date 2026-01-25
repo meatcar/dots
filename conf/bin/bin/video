@@ -1,3 +1,0 @@
-#!/bin/sh
-
-youtube-dl -q -o- $(xclip -o) | mplayer - #-cache 8192
