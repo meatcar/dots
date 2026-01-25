@@ -17,12 +17,9 @@
 
         buildInputs = with pkgs; [
           (import inputs.home-manager { inherit pkgs; }).home-manager
-          nixVersions.stable
           git
           git-crypt
           gnupg
-          (nixos-rebuild.override { nix = nixVersions.stable; })
-          stow
           inputs.agenix.packages.${system}.default
           nil # nix lsp server
           nixd

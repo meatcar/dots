@@ -18,6 +18,8 @@ jobs:
         with:
           primary-key: ${{runner.os}}-${{hashFiles('./flake.nix', './flake-modules/**/*.nix', './flake.lock')}}
       - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1
+        with:
+          arguments: "--accept-flake-config"
 
       - name: load ssh key for agenix
         run: |
