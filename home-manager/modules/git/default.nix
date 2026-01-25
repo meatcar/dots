@@ -81,7 +81,6 @@ in
     (with pkgs; [
       glab # gitlab CLI
       git-absorb # quick fixup rebases
-      git-crypt # transparent encryption
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
     ])
