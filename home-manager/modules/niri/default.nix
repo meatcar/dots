@@ -8,10 +8,6 @@
 }:
 let
   ghostty = config.programs.ghostty.package;
-  winswitch = pkgs.writeScript "winswitch" ''
-    #!/usr/bin/env bash
-    ${lib.getExe pkgs.python3} -u ${./winswitch.py}
-  '';
   edit-screenshot = pkgs.writeScript "editScreenshot" ''
     DIRECTORY=~/Pictures/Screenshots
     LATEST=$(ls -t "$DIRECTORY" | head -n 1)
