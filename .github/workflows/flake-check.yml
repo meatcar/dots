@@ -17,17 +17,18 @@ jobs:
       - uses: nix-community/cache-nix-action@106bba72ed8e29c8357661199511ef07790175e9 # v7
         with:
           primary-key: ${{runner.os}}-${{hashFiles('./flake.nix', './flake-modules/**/*.nix', './flake.lock')}}
-      - uses: nicknovitski/nix-develop@9be7cfb4b10451d3390a75dc18ad0465bed4932a # v1
-        with:
-          arguments: "--accept-flake-config"
+
+      - name: build shell
+        run: nix develop --accept-flake-config --command true
 
       - name: load ssh key for agenix
         run: |
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< '${{ secrets.SSH_KEY }}'
+          eval "$(nix develop --command ssh-agent -s)"
+          nix develop --command ssh-add - <<< '${{ secrets.SSH_KEY }}'
       - name: load gpg key for git-crypt
         run: |
-          gpg --batch --import <<< '${{ secrets.GPG_KEY }}'
-      - run: git-crypt unlock
+          nix develop --command gpg --batch --import <<< '${{ secrets.GPG_KEY }}'
+      - run: nix develop --command git-crypt unlock
+
       - name: Run flake check
         run: nix flake check --accept-flake-config
