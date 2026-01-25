@@ -18,7 +18,6 @@
         buildInputs = with pkgs; [
           (import inputs.home-manager { inherit pkgs; }).home-manager
           git
-          git-crypt
           gnupg
           inputs.agenix.packages.${system}.default
           nil # nix lsp server
@@ -30,13 +29,13 @@
         ];
         NIXOS_CONFIG = ../configuration.nix;
         shellHook = ''
-          if [ ! -f .git/git-crypt/keys/default ]; then
+          if [ ! -f crypt/hm-me.nix ]; then
             if which op 2>&1 >/dev/null; then
-              echo "WARN: importing git-crypt key from 1password"
-              mkdir -p .git/git-crypt/keys
-              op document get git-crypt-dots --force --out-file .git/git-crypt/keys/default
+              echo "WARN: importing secrets from 1password"
+              mkdir -p crypt/
+              op document get 'crypt dots' --force --out-file crypt/hm-me.nix
             else
-              echo "ERROR: `op` command missing, can't import git-crypt key" >&2
+              echo "ERROR: `op` command missing, can't import secrets" >&2
             fi
           fi
         '';

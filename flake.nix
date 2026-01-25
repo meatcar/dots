@@ -216,7 +216,7 @@
                       inputs.dank-material-shell.homeModules.dank-material-shell
                       # inputs.dank-material-shell.homeModules.niri
                       ./home-manager/systems/watson
-                      ./git-crypt/hm-me.nix
+                      ./crypt/hm-me.nix
                     ];
                     nixpkgs.config = nixpkgsConfig;
                     home.stateVersion = "25.11";
