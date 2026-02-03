@@ -29,11 +29,11 @@
         ];
         NIXOS_CONFIG = ../configuration.nix;
         shellHook = ''
-          if [ ! -f crypt/hm-me.nix ]; then
+          if [ ! -f git-crypt/hm-me.nix ]; then
             if which op 2>&1 >/dev/null; then
               echo "WARN: importing secrets from 1password"
-              mkdir -p crypt/
-              op document get 'crypt dots' --force --out-file crypt/hm-me.nix
+              mkdir -p git-crypt/
+              op document get 'crypt dots' --force --out-file git-crypt/hm-me.nix
             else
               echo "ERROR: `op` command missing, can't import secrets" >&2
             fi
