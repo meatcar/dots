@@ -1,0 +1,13 @@
+{
+  me.calendar.accounts = {
+    personal = {
+      primary = true;
+      primaryCollection = "Denys' Personal Life";
+      addresses = [ "denys.pavlov@gmail.com" ];
+    };
+    alipes = {
+      primaryCollection = "denysp@alipes.com";
+      addresses = [ "denysp@alipes.com" ];
+    };
+  };
+}
