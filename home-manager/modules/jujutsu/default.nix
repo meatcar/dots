@@ -7,9 +7,13 @@
 }:
 {
   imports = [ ./jjui.nix ];
-  home.packages = with nixpkgs-unstable; [
-    lazyjj
-  ];
+  home.packages =
+    (with nixpkgs-unstable; [
+      lazyjj
+    ])
+    ++ (with pkgs; [
+      watchman
+    ]);
   programs.jujutsu =
     let
       delta = "${lib.getExe config.programs.delta.package}";
@@ -122,17 +126,32 @@
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
           "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:'') & (~empty() | merges()))";
         };
+
+        # use watchman to auto-snapshot, no need to re-run jj
+        # source: https://github.com/yum0e/kekkai?tab=readme-ov-file#watchman-setup
+        fsmontior.backend = "watchman";
+        fsmonitor.watchman.register-snapshot-trigger = true;
+        snapshot.auto-update-stale = true;
+
         git = {
           colocate = true;
           write-change-id-header = true;
           fetch = [ "glob:*" ];
           private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
         };
+        remotes.origin.auto-track-bookmarks = "*";
         fix.tools = {
-          treefmt = {
-            program = "treefmt";
+          "50_treefmt" = {
+            command = [
+              "treefmt"
+              "--no-cache"
+              "--stdin"
+              "$path"
+            ];
+            patterns = [ "glob:'**/*'" ];
           };
         };
+        merge.hunk-level = "word";
         merge-tools =
           let
             # source: https://github.com/jj-vcs/jj/wiki/Vim,-Neovim#using-neovim-as-a-diff-editor-with-existing-git-tooling
