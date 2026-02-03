@@ -84,11 +84,6 @@ in
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
     ])
-    ++ [
-      (pkgs.writeShellScriptBin "git-op-crypt" ''
-        ${builtins.readFile ./git-op-crypt.sh}
-      '')
-    ]
     ++ (with nixpkgs-unstable; [
       gitu # cli magit
     ]);
