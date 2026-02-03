@@ -60,8 +60,6 @@ _: {
       ".npm"
       ".cache/npm"
       ".cache/pnpm"
-      ".cache/.bun"
-      ".cache/bun"
       ".cache/nixpkgs-review"
       ".local/share/zed"
       ".config/zed"
