@@ -31,6 +31,7 @@
     ../modules/nix-index
     ../modules/docker
     ../modules/npm
+    ../modules/bun
     # ../modules/junction
   ];
 

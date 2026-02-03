@@ -83,6 +83,13 @@
       ".cache/nvim"
       ".local/state/nvim"
     ]
+    ++ lib.optionals config.programs.bun.enable [
+      ".cache/bun"
+      {
+        directory = ".cache/.bun";
+        mode = "0755";
+      }
+    ]
     ++ lib.optionals config.services.copyq.enable [
       ".config/copyq"
       ".qt_material"
