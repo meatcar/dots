@@ -6,6 +6,9 @@
     spice-gtk
     spice-protocol
     spice-vdagent
+    gnome-boxes
+    phodav
+    dnsmasq
     # qemu
   ];
   # from https://github.com/quickemu-project/quickemu/wiki/05-Advanced-quickemu-configuration#usb-redirection
