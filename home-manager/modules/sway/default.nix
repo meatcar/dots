@@ -5,7 +5,7 @@
   ...
 }:
 let
-  gebaar-libinput = pkgs.gebaar-libinput.overrideAttrs (_attrs: rec {
+  gebaar-libinput = pkgs.gebaar-libinput.overrideAttrs (_attrs: {
     version = "2019-11-29";
     src = pkgs.fetchFromGitHub {
       owner = "osleg";
