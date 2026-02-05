@@ -187,6 +187,7 @@
       "docker"
       "dialout"
       "video"
+      "input"
     ];
   };
 }
