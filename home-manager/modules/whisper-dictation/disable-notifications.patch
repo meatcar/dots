@@ -1,0 +1,12 @@
+diff -ruN a/src/whisper_dictation/ui.py b/src/whisper_dictation/ui.py
+--- a/src/whisper_dictation/ui.py
++++ b/src/whisper_dictation/ui.py
+@@ -23,6 +23,8 @@
+
+     def _notify(self, title: str, message: str, urgency: str = "normal"):
+         """Show desktop notification"""
++        if not self.config.get("ui.notifications", True):
++            return
+         try:
+             subprocess.Popen(
+                 [

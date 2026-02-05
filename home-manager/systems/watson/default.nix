@@ -33,6 +33,7 @@
     ../../modules/television
     ../../modules/kdeconnect
     ../../modules/mime-apps
+    ../../modules/whisper-dictation
     ./impermanence.nix
   ];
 

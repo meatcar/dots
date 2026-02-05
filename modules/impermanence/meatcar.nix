@@ -96,6 +96,9 @@ _: {
       ".cache/radv_builtin_shaders"
       ".cache/mesa_shader_cache"
 
+      # whisper-dictation
+      ".local/share/whisper-models"
+
       # audio
       ".config/easyeffects"
 

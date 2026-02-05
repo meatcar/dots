@@ -1,0 +1,33 @@
+diff -ruN a/src/whisper_dictation/config.py b/src/whisper_dictation/config.py
+--- a/src/whisper_dictation/config.py
++++ b/src/whisper_dictation/config.py
+@@ -14,6 +14,7 @@
+
+     DEFAULT_CONFIG = {
+         "hotkey": {"modifiers": ["super"], "key": "period"},  # super, ctrl, alt, shift
++        "device": {"name": None},
+         "whisper": {"model": "medium", "language": "en", "threads": 4},
+         "ui": {"show_waveform": False, "theme": "dark"},  # Not implemented yet
+         "processing": {
+diff -ruN a/src/whisper_dictation/daemon.py b/src/whisper_dictation/daemon.py
+--- a/src/whisper_dictation/daemon.py
++++ b/src/whisper_dictation/daemon.py
+@@ -78,6 +78,7 @@
+
+     def find_keyboard_device(self):
+         """Find the main keyboard device that supports our hotkey"""
++        device_name = self.config.get("device.name")
+         candidates = []
+
+         for device_path in list_devices():
+@@ -93,6 +94,10 @@
+                     logger.debug(f"Skip {device.name}: no modifier keys")
+                     continue
+
++                if device_name and device_name.lower() in device.name.lower():
++                    logger.info(f"Matched configured device: {device.name} at {device_path}")
++                    return device
++
+                 if self._is_virtual_device(device.name):
+                     logger.info(f"Skip virtual device: {device.name} at {device_path}")
+                     continue
