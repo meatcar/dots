@@ -26,11 +26,12 @@ max_length = 16
 show_previous_if_empty = false
 empty_text = ""
 surround_with_quotes = true
-change = "Magenta"
-commit = "Blue"
-
+[module.change]
+fg = "Magenta"
+[module.commit]
+fg = "Blue"
 [module.non_unique]
-color = "Black"
+fg = "Black"
 
 [[module]]
 type = "State"
