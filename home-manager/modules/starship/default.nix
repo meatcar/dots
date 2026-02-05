@@ -4,7 +4,11 @@
   inputs,
   ...
 }:
+let
+  starship-jj = inputs.starship-jj.packages.${pkgs.stdenv.system}.default;
+in
 {
+  home.packages = [ starship-jj ];
   programs.starship = {
     enable = true;
 
