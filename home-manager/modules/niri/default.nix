@@ -129,6 +129,7 @@ in
       Mod+C { spawn "/bin/sh" "-c" "${lib.getExe pkgs.hyprpicker} | ${pkgs.wl-clipboard}/bin/wl-copy"; }
       Mod+E { spawn "${lib.getExe pkgs.nautilus}"; }
       Mod+Shift+S repeat=false { spawn "bash" "-c" "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
+      Mod+Semicolon repeat=false { spawn "handy-ptt" "KEY_SEMICOLON"; }
       Mod+Alt+Print { spawn "${edit-screenshot}"; }
       Mod+Ctrl+Print { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
     }

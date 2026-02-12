@@ -75,8 +75,8 @@
       url = "gitlab:lanastara_foss/starship-jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    whisper-dictation = {
-      url = "github:jacopone/whisper-dictation";
+    handy = {
+      url = "github:cjpais/Handy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

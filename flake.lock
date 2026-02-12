@@ -463,24 +463,6 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
-      "inputs": {
-        "systems": "systems_5"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "git-hooks-nix": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -541,6 +523,26 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
+    "handy": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770943285,
+        "narHash": "sha256-p89OyRpIJ+CnSJ7CxLNPFV/NHcX/NOyq6skh5LgmUSc=",
+        "owner": "cjpais",
+        "repo": "Handy",
+        "rev": "3b88717091a1c965ce96ab7e7f7d4629c1c9f258",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cjpais",
+        "repo": "Handy",
         "type": "github"
       }
     },
@@ -1020,6 +1022,7 @@
         "fish-ssh-agent": "fish-ssh-agent",
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
+        "handy": "handy",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
@@ -1038,7 +1041,6 @@
         "treefmt-nix": "treefmt-nix",
         "vscode-fish": "vscode-fish",
         "vscode-server": "vscode-server",
-        "whisper-dictation": "whisper-dictation",
         "wsl-open": "wsl-open",
         "zen-browser": "zen-browser"
       }
@@ -1206,21 +1208,6 @@
         "type": "github"
       }
     },
-    "systems_5": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "tinted-jjui": {
       "flake": false,
       "locked": {
@@ -1287,27 +1274,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixos-vscode-server",
-        "type": "github"
-      }
-    },
-    "whisper-dictation": {
-      "inputs": {
-        "flake-utils": "flake-utils_4",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1770828207,
-        "narHash": "sha256-qAP4jRAto20pC8yQCMmxB11jita23SVz6wTF93zT5Vg=",
-        "owner": "jacopone",
-        "repo": "whisper-dictation",
-        "rev": "a8d9d918d8d203c8c8be1c7b1e99898829814648",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jacopone",
-        "repo": "whisper-dictation",
         "type": "github"
       }
     },
