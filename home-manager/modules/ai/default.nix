@@ -13,6 +13,7 @@
       source ${config.age.secrets.aienv.path}
       exec "$@"
     '')
+    pkgs.uv # for mcps
   ];
   programs.git.ignores = [
     ".claude/*.local.*"
