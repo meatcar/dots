@@ -1,3 +1,6 @@
+debug {
+  honor-xdg-activation-with-invalid-serial // for obsidian clipper
+}
 workspace "me"
 workspace "work"
 workspace "code"
