@@ -7,6 +7,7 @@
   imports = [
     ../aider
     ../opencode
+    ./peon-ping
   ];
   home.packages = [
     (pkgs.writeShellScriptBin "with-aienv" ''
@@ -15,6 +16,7 @@
     '')
     pkgs.uv # for mcps
   ];
+  programs.peon-ping.enable = true;
   programs.git.ignores = [
     ".claude/*.local.*"
     "CLAUDE.local.md"

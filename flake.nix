@@ -125,6 +125,14 @@
       url = "github:vic/tinted-jjui";
       flake = false;
     };
+    peon-ping = {
+      url = "github:PeonPing/peon-ping";
+      flake = false;
+    };
+    peon-ping-packs = {
+      url = "github:PeonPing/og-packs/v1.0.0";
+      flake = false;
+    };
   };
 
   outputs =
@@ -137,6 +145,12 @@
         overlays = [
           # inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
+          (final: _prev: {
+            peon-ping = final.callPackage ./pkgs/peon-ping {
+              src = inputs.peon-ping;
+              packsSrc = inputs.peon-ping-packs;
+            };
+          })
         ];
       };
       specialArgs = { inherit inputs; };
@@ -221,7 +235,7 @@
                       ./home-manager/systems/watson
                       ./crypt/hm-me.nix
                     ];
-                    nixpkgs.config = nixpkgsConfig;
+                    nixpkgs = nixpkgsConfig;
                     home.stateVersion = "25.11";
                   };
               }
