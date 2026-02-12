@@ -158,9 +158,8 @@
           ...
         }:
         {
-          # expose the system nixpkgs for searching, shells
-          # run 'nix registry add dots /path/to/repo`
-          # then you can search like `nix search dots <query>`
+          # expose nixpkgs + overlays for CLI use via nix
+          # e.g. `nix search . <query>`, `nix run dots#nvim`
           _module.args.pkgs = import inputs.nixpkgs (
             {
               inherit system;

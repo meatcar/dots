@@ -13,6 +13,7 @@
 
   nix.registry = {
     dots.flake = inputs.self;
+    pkgs.flake = inputs.nixpkgs-unstable;
   };
 
   programs.nh = {
