@@ -146,6 +146,7 @@
           # inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
+            cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
             peon-ping = final.callPackage ./pkgs/peon-ping {
               src = inputs.peon-ping;
               packsSrc = inputs.peon-ping-packs;

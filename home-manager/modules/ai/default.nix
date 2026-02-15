@@ -7,6 +7,7 @@
   imports = [
     ../aider
     ../opencode
+    ./cli-proxy-api
     ./peon-ping
   ];
   home.packages = [
@@ -16,6 +17,7 @@
     '')
     pkgs.uv # for mcps
   ];
+  services.cli-proxy-api.enable = true;
   programs.peon-ping.enable = true;
   programs.git.ignores = [
     ".claude/*.local.*"

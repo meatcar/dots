@@ -110,6 +110,7 @@
       ".local/share/activitywatch"
       ".config/awatcher"
     ]
+    ++ lib.optional config.services.cli-proxy-api.enable ".local/share/cli-proxy-api"
     ++ [ ".config/opensnitch" ]
     ++ [ ".config/obsidian" ];
   };
