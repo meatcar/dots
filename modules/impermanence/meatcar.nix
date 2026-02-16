@@ -1,6 +1,8 @@
 _: {
   environment.persistence."/persist".users.meatcar = {
-    files = [ ];
+    files = [
+      ".claude.json"
+    ];
     directories = [
       "Downloads"
       "Pictures"

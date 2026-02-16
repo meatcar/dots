@@ -11,7 +11,6 @@
       # ".config/user-dirs.locale"
       # ".config/monitors.xml"
       # ".config/mimeapps.list"
-      ".claude.json"
       ".clasprc.json" # for clasp gscript upload tool
     ];
     directories = [
