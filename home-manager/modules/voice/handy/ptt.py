@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-"""Push-to-talk for Handy via evdev.
+"""Generic push-to-talk via evdev.
 
-Usage: handy-ptt KEY_SEMICOLON [KEY_LEFTMETA ...]
+Usage: ptt KEY [KEY ...] -- COMMAND [ARGS ...]
 
-Spawned by a keybinding on press. Sends SIGUSR2 to start recording,
-waits for any of the given keys to be released, then sends SIGUSR2
-to stop recording.
+Runs COMMAND on start, monitors evdev for any of the listed keys
+to be released, then runs COMMAND again.
 """
 
-import argparse
 import selectors
 import signal
 import subprocess
@@ -21,29 +19,20 @@ TIMEOUT = 120  # max recording seconds, safety net
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description="Push-to-talk for Handy via evdev. "
-        "Sends SIGUSR2 to start recording, waits for any of the given "
-        "keys to be released, then sends SIGUSR2 to stop.",
-    )
-    parser.add_argument(
-        "keys",
-        nargs="+",
-        metavar="KEY",
-        help="evdev key name(s) to watch for release (e.g. KEY_SEMICOLON KEY_LEFTMETA)",
-    )
-    parser.add_argument(
-        "-t",
-        "--timeout",
-        type=int,
-        default=TIMEOUT,
-        help=f"max recording seconds before auto-stop (default: {TIMEOUT})",
-    )
-    return parser.parse_args()
-
-
-def send_sigusr2():
-    subprocess.Popen(["pkill", "-USR2", "-n", "handy"])
+    argv = sys.argv[1:]
+    if "--" not in argv:
+        print("Usage: ptt KEY [KEY ...] -- COMMAND [ARGS ...]", file=sys.stderr)
+        sys.exit(1)
+    sep = argv.index("--")
+    key_names = argv[:sep]
+    command = argv[sep + 1 :]
+    if not key_names:
+        print("No keys specified", file=sys.stderr)
+        sys.exit(1)
+    if not command:
+        print("No command specified", file=sys.stderr)
+        sys.exit(1)
+    return key_names, command
 
 
 def resolve_keys(names):
@@ -70,21 +59,23 @@ def find_keyboards():
 
 
 def main():
-    args = parse_args()
-    watch_keys = resolve_keys(args.keys)
-    timeout = args.timeout
+    key_names, command = parse_args()
+    watch_keys = resolve_keys(key_names)
 
     keyboards = find_keyboards()
     if not keyboards:
         print("No keyboard devices found", file=sys.stderr)
         sys.exit(1)
 
-    # Start recording
-    send_sigusr2()
+    def run():
+        subprocess.Popen(command)
 
-    # Stop recording on SIGTERM/SIGINT (cleanup if killed)
+    # Start
+    run()
+
+    # Stop on SIGTERM/SIGINT
     def stop(_sig, _frame):
-        send_sigusr2()
+        run()
         sys.exit(0)
 
     signal.signal(signal.SIGTERM, stop)
@@ -94,10 +85,9 @@ def main():
     for kb in keyboards:
         sel.register(kb, selectors.EVENT_READ)
 
-    # Wait for any watched key to be released
     try:
         while True:
-            ready = sel.select(timeout=timeout)
+            ready = sel.select(timeout=TIMEOUT)
             if not ready:
                 break
             for key, _ in ready:
@@ -109,7 +99,7 @@ def main():
                             and event.code in watch_keys
                             and event.value == 0
                         ):
-                            send_sigusr2()
+                            run()
                             return
                 except OSError:
                     sel.unregister(device)
@@ -117,7 +107,7 @@ def main():
         sel.close()
 
     # Reached timeout
-    send_sigusr2()
+    run()
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@
     ../../modules/television
     ../../modules/kdeconnect
     ../../modules/mime-apps
-    ../../modules/handy
+    ../../modules/voice
     ./impermanence.nix
   ];
 
@@ -47,6 +47,7 @@
       inkscape
       loupe
       pantheon.epiphany
+      mplayer
     ]
     ++ (with nixpkgs-unstable; [
       vivaldi-ffmpeg-codecs

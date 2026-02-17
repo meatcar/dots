@@ -43,6 +43,7 @@
         mode = "0755";
       }
       ".local/share/lazygit"
+      ".local/share/com.pais.handy"
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"
     ++ lib.optional config.programs.gh.enable ".config/gh"
