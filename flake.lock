@@ -914,39 +914,6 @@
         "type": "indirect"
       }
     },
-    "peon-ping": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770929764,
-        "narHash": "sha256-mrpqgRUrVU/f8jrZqmHI8UCily4Fpw9TF6aMkWmzAeQ=",
-        "owner": "PeonPing",
-        "repo": "peon-ping",
-        "rev": "c413e0c46614d59bc886c4abc49c708e1f200298",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PeonPing",
-        "repo": "peon-ping",
-        "type": "github"
-      }
-    },
-    "peon-ping-packs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770928850,
-        "narHash": "sha256-+QwJ9f9we/ha1kOhKAXeWq3L1PzEDDHQuSSIUyKPS3c=",
-        "owner": "PeonPing",
-        "repo": "og-packs",
-        "rev": "ec8630d43ae2cdb2af2617aa69a3df7737ec1c6d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PeonPing",
-        "ref": "v1.0.0",
-        "repo": "og-packs",
-        "type": "github"
-      }
-    },
     "plug-kak": {
       "flake": false,
       "locked": {
@@ -1033,8 +1000,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "peon-ping": "peon-ping",
-        "peon-ping-packs": "peon-ping-packs",
         "plug-kak": "plug-kak",
         "starship-jj": "starship-jj",
         "tinted-jjui": "tinted-jjui",

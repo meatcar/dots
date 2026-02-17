@@ -125,14 +125,6 @@
       url = "github:vic/tinted-jjui";
       flake = false;
     };
-    peon-ping = {
-      url = "github:PeonPing/peon-ping";
-      flake = false;
-    };
-    peon-ping-packs = {
-      url = "github:PeonPing/og-packs/v1.0.0";
-      flake = false;
-    };
   };
 
   outputs =
@@ -147,10 +139,6 @@
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
-            peon-ping = final.callPackage ./pkgs/peon-ping {
-              src = inputs.peon-ping;
-              packsSrc = inputs.peon-ping-packs;
-            };
           })
         ];
       };
