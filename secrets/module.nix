@@ -5,4 +5,5 @@
   age.secrets.gcalClientSecret.file = ./gcalClientSecret.age;
   age.secrets.spotifyClientId.file = ./spotifyClientId.age;
   age.secrets.spotifyClientSecret.file = ./spotifyClientSecret.age;
+  age.secrets.cliProxyApiEnv.file = ./cliProxyApiEnv.age;
 }

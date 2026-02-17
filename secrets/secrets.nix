@@ -16,4 +16,5 @@ in
   "gcalClientSecret.age".publicKeys = systems;
   "spotifyClientId.age".publicKeys = systems;
   "spotifyClientSecret.age".publicKeys = systems;
+  "cliProxyApiEnv.age".publicKeys = systems;
 }

@@ -17,7 +17,10 @@
     '')
     pkgs.uv # for mcps
   ];
-  services.cli-proxy-api.enable = true;
+  services.cli-proxy-api = {
+    enable = true;
+    environmentFile = config.age.secrets.cliProxyApiEnv.path;
+  };
   programs.peon-ping.enable = true;
   programs.git.ignores = [
     ".claude/*.local.*"

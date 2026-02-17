@@ -18,11 +18,6 @@ let
         auth-dir = dataDir;
         api-keys = cfg.apiKeys;
       }
-      // lib.optionalAttrs (cfg.managementKey != "") {
-        remote-management = {
-          secret-key = cfg.managementKey;
-        };
-      }
       // cfg.settings
     )
   );
@@ -62,10 +57,10 @@ in
       description = "API keys for authenticating clients to the proxy.";
     };
 
-    managementKey = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "Secret key for the management API. Empty disables management routes.";
+    environmentFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = "Path to an environment file loaded by the systemd service (e.g. MANAGEMENT_PASSWORD).";
     };
 
     settings = lib.mkOption {
@@ -78,6 +73,18 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [ wrappedPackage ];
 
+    home.activation.cliProxyApiConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p "${dataDir}"
+      if [ ! -f "${runtimeConfig}" ]; then
+        cp "${generatedConfig}" "${runtimeConfig}"
+        verboseEcho "cli-proxy-api: seeded config from nix"
+      elif ! diff -q "${generatedConfig}" "${runtimeConfig}" >/dev/null 2>&1; then
+        warnEcho "cli-proxy-api: ${runtimeConfig} has drifted from nix config"
+        warnEcho "  nix: ${generatedConfig}"
+        warnEcho "  to reset: cp ${generatedConfig} ${runtimeConfig}"
+      fi
+    '';
+
     systemd.user.services.cli-proxy-api = {
       Unit = {
         Description = "CLIProxyAPI proxy server";
@@ -87,10 +94,12 @@ in
       };
       Service = {
         Type = "simple";
-        ExecStartPre = "${pkgs.coreutils}/bin/install -Dm644 ${generatedConfig} ${runtimeConfig}";
         ExecStart = "${lib.getExe cfg.package} -config ${runtimeConfig}";
         Restart = "on-failure";
         RestartSec = 5;
+      }
+      // lib.optionalAttrs (cfg.environmentFile != null) {
+        EnvironmentFile = cfg.environmentFile;
       };
     };
   };
