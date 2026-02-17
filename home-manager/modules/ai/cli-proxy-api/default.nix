@@ -7,23 +7,31 @@
 let
   cfg = config.services.cli-proxy-api;
 
-  configDir = "${config.xdg.configHome}/cli-proxy-api";
+  dataDir = "${config.xdg.dataHome}/cli-proxy-api";
+  runtimeConfig = "${dataDir}/config.yaml";
 
-  configContent = builtins.toJSON (
-    {
-      inherit (cfg) host;
-      inherit (cfg) port;
-      auth-dir = "${config.xdg.dataHome}/cli-proxy-api";
-      api-keys = cfg.apiKeys;
-    }
-    // cfg.settings
+  generatedConfig = pkgs.writeText "cli-proxy-api-config.yaml" (
+    builtins.toJSON (
+      {
+        inherit (cfg) host;
+        inherit (cfg) port;
+        auth-dir = dataDir;
+        api-keys = cfg.apiKeys;
+      }
+      // lib.optionalAttrs (cfg.managementKey != "") {
+        remote-management = {
+          secret-key = cfg.managementKey;
+        };
+      }
+      // cfg.settings
+    )
   );
 
   wrappedPackage =
     pkgs.runCommand "cli-proxy-api-wrapped" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
       ''
         makeWrapper ${lib.getExe cfg.package} $out/bin/cli-proxy-api \
-          --add-flags "-config ${configDir}/config.yaml"
+          --add-flags "-config ${runtimeConfig}"
       '';
 in
 {
@@ -54,6 +62,12 @@ in
       description = "API keys for authenticating clients to the proxy.";
     };
 
+    managementKey = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Secret key for the management API. Empty disables management routes.";
+    };
+
     settings = lib.mkOption {
       type = lib.types.attrs;
       default = { };
@@ -64,8 +78,6 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [ wrappedPackage ];
 
-    xdg.configFile."cli-proxy-api/config.yaml".text = configContent;
-
     systemd.user.services.cli-proxy-api = {
       Unit = {
         Description = "CLIProxyAPI proxy server";
@@ -75,7 +87,8 @@ in
       };
       Service = {
         Type = "simple";
-        ExecStart = "${lib.getExe cfg.package} -config ${configDir}/config.yaml";
+        ExecStartPre = "${pkgs.coreutils}/bin/install -Dm644 ${generatedConfig} ${runtimeConfig}";
+        ExecStart = "${lib.getExe cfg.package} -config ${runtimeConfig}";
         Restart = "on-failure";
         RestartSec = 5;
       };
