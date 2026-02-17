@@ -48,6 +48,7 @@
       loupe
       pantheon.epiphany
       mplayer
+      ffmpeg
     ]
     ++ (with nixpkgs-unstable; [
       vivaldi-ffmpeg-codecs
