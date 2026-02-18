@@ -85,7 +85,7 @@ in
       hub # github cli (pre-gh, less official)
     ])
     ++ (with nixpkgs-unstable; [
-      gitu # cli magit
+      # gitu # cli magit
     ]);
 
   xdg.configFile."gitu/config.toml".source = ./gitu-config.toml;
