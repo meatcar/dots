@@ -44,6 +44,7 @@
         mode = "0755";
       }
       ".local/share/lazygit"
+      ".railway"
       ".local/share/com.pais.handy"
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"

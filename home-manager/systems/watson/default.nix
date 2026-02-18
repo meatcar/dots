@@ -59,6 +59,7 @@
         proprietaryCodecs = true;
         enableWidevine = true;
       })
+      railway
     ]);
 
   home.sessionVariables = {
