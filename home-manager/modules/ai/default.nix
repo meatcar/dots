@@ -14,6 +14,7 @@
       source ${config.age.secrets.aienv.path}
       exec "$@"
     '')
+    pkgs.python3
     pkgs.uv # for mcps
   ];
   services.cli-proxy-api = {
