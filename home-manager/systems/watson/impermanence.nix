@@ -44,8 +44,14 @@
         mode = "0755";
       }
       ".local/share/lazygit"
+      ".local/share/webkitgtk-6.0"
       ".railway"
+      # ai
       ".local/share/com.pais.handy"
+      ".cache/handy"
+      ".happy"
+      ".cache/huggingface"
+      ".agents"
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"
     ++ lib.optional config.programs.gh.enable ".config/gh"
