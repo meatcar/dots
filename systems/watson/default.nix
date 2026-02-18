@@ -153,6 +153,8 @@
     openFirewall = false;
   };
 
+  services.usbmuxd.enable = true; # for ios debugging with ios-webkit-debug-proxy
+
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [
     22
   ];
