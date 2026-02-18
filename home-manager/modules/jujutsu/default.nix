@@ -125,6 +125,9 @@
           # Last Common Commit
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
           "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:'') & (~empty() | merges()))";
+          # jjflow
+          "unmerged()" = "bookmarks() & ~::dev()";
+          "unpublished()" = "bookmarks() & ~::trunk()";
         };
 
         # use watchman to auto-snapshot, no need to re-run jj
