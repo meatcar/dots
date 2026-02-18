@@ -49,6 +49,8 @@
       pantheon.epiphany
       mplayer
       ffmpeg
+      # dev
+      cloudflared
     ]
     ++ (with nixpkgs-unstable; [
       vivaldi-ffmpeg-codecs

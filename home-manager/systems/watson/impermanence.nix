@@ -17,6 +17,7 @@
       # ".cache/nix"
       # ".local/state/nix"
       ".config/niri"
+      ".cloudflared"
       {
         directory = ".cache/typescript";
         mode = "0755";
