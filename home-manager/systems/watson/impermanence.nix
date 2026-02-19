@@ -80,7 +80,7 @@
     ]
     ++ lib.optionals config.programs.zen-browser.enable [
       ".cache/zen"
-      ".zen"
+      ".config/zen"
     ]
     ++ lib.optionals config.programs.chromium.enable [
       ".cache/chromium"
