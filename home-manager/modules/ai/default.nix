@@ -16,6 +16,8 @@
     '')
     pkgs.python3
     pkgs.uv # for mcps
+    pkgs.rodney
+    pkgs.showboat
   ];
   services.cli-proxy-api = {
     enable = true;

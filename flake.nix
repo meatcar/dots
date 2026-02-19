@@ -139,6 +139,8 @@
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
+            rodney = final.callPackage ./pkgs/rodney { };
+            showboat = final.callPackage ./pkgs/showboat { };
           })
         ];
       };
