@@ -56,6 +56,7 @@
     ++ lib.optional config.programs.bat.enable ".cache/bat"
     ++ lib.optional config.programs.gh.enable ".config/gh"
     ++ lib.optional config.programs.ssh.enable ".cache/ssh"
+    ++ lib.optional config.programs.jujutsu.enable ".config/jj"
     ++ lib.optional config.programs.starship.enable ".cache/starship"
     ++ lib.optionals config.programs.fish.enable [
       ".local/share/fish"
