@@ -1,16 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    quickemu
-    spice
-    spice-gtk
-    spice-protocol
-    spice-vdagent
-    gnome-boxes
-    phodav
-    dnsmasq
-    # qemu
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      spice
+      spice-gtk
+      spice-protocol
+      spice-vdagent
+      gnome-boxes
+      phodav
+      dnsmasq
+      # qemu
+    ]
+    ++ (with nixpkgs-unstable; [
+      quickemu
+    ]);
   # from https://github.com/quickemu-project/quickemu/wiki/05-Advanced-quickemu-configuration#usb-redirection
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation = {
