@@ -14,7 +14,10 @@
     ]
     ++ (with nixpkgs-unstable; [
       quickemu
-    ]);
+    ])
+    ++ [
+      pkgs.qe-mac-apid
+    ];
   # from https://github.com/quickemu-project/quickemu/wiki/05-Advanced-quickemu-configuration#usb-redirection
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation = {
