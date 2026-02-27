@@ -141,6 +141,18 @@
   services.automatic-timezoned.enable = true;
 
   programs.niri.enable = true;
+  # Niri is systemd-aware (Type=notify) but NixOS doesn't know that,
+  # so it starts a fake graphical-session.target that races portals.
+  # Adding X-NIXOS-SYSTEMD-AWARE lets niri's notify signal control
+  # when graphical-session.target is reached.
+  # programs.niri.package = pkgs.niri.overrideAttrs (old: {
+  #   postInstall =
+  #     (old.postInstall or "")
+  #     + ''
+  #       substituteInPlace $out/share/wayland-sessions/niri.desktop \
+  #         --replace-fail "DesktopNames=niri" "DesktopNames=niri;X-NIXOS-SYSTEMD-AWARE"
+  #     '';
+  # });
   services.accounts-daemon.enable = true; # for dms
 
   services.tailscale = {
