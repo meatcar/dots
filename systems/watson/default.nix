@@ -26,7 +26,7 @@
     # ../../modules/displaylink
     ../../modules/keyd
     ../../modules/podman
-    ../../modules/fingerprint
+    # ../../modules/fingerprint
     ../../modules/1password
     ../../modules/printing
     # ../../modules/opensnitch
