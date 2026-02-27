@@ -177,7 +177,7 @@ binds {
 }
 window-rule {
     open-focused true
-    geometry-corner-radius 8 8 8 8
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 window-rule {
@@ -216,16 +216,24 @@ window-rule {
 
 // Meet
 window-rule {
-    match title="^Meet - w+-w+-w+$" // not ending in browser name
+    match title=r#"^Meet - \w+-\w+-\w+$"# // not ending in browser name
     default-column-width { proportion 0.250000; }
     default-window-height { proportion 0.250000; }
     open-floating true
     default-floating-position relative-to="top-left" x=0 y=0
 }
 
+// Notifications
 window-rule {
-    match app-id="steam" title="^notificationtoasts_d+_desktop$"
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    match title="^Vivaldi is sharing a window.$"
+    open-floating true
     default-floating-position relative-to="bottom-right" x=10 y=10
+    border { off; }
+    focus-ring { off; }
+    geometry-corner-radius 0
+    clip-to-geometry false
+    opacity 0.9
 }
 
 // Private Tray Floater

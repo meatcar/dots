@@ -81,11 +81,7 @@ in
       TimeoutStopSec = 10;
     };
   };
-  xdg.portal = {
-    enable = lib.mkDefault true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-    configPackages = [ pkgs.niri ];
-  };
+  dbus.packages = [ pkgs.nautilus ];
   services.swayosd.enable = true;
   # services.swww.enable = true;
   programs.fuzzel.settings.main.launch-prefix = "niri msg action spawn --";
@@ -109,18 +105,20 @@ in
     spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session"
     spawn-at-startup "${manage-monitors}/bin/manage-monitors"
     output "${monitors.internal}" {
-        scale 1.0
-        transform "normal"
-        position x=0 y=0
+      variable-refresh-rate on-demand=true
+      scale 1.0
+      transform "normal"
+      position x=0 y=0
     }
     output "${monitors.vertical}" {
-        transform "270"
-        position x=0 y=0
+      variable-refresh-rate on-demand=true
+      transform "270"
+      position x=0 y=0
     }
     output "${monitors.flex}" {
       transform "normal"
       mode "3840x2160@60.0"
-      variable-refresh-rate on-demand=false
+      variable-refresh-rate on-demand=true
     }
     binds {
       Mod+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }

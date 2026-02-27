@@ -59,7 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:YaLTeR/niri/v25.11";
+      url = "github:niri-wm/niri";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -135,7 +135,7 @@
           allowUnfree = true;
         };
         overlays = [
-          # inputs.niri.overlays.default
+          inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
