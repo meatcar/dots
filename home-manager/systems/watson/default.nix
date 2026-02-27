@@ -47,7 +47,8 @@
       inkscape
       loupe
       pantheon.epiphany
-      mplayer
+      cameractrls-gtk4
+      mpv
       ffmpeg
       # dev
       cloudflared
