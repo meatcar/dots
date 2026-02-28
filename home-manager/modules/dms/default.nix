@@ -1,7 +1,14 @@
 {
+  pkgs,
+  lib,
+  inputs,
   nixpkgs-unstable,
   ...
 }:
+let
+  dms = lib.getExe inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  pathPrefix = "PATH=${lib.makeBinPath [ nixpkgs-unstable.quickshell ]}:$PATH";
+in
 {
   programs.dank-material-shell = {
     enable = true;
@@ -12,14 +19,16 @@
   services.darkman = {
     darkModeScripts = {
       dms = ''
-        dms ipc call night enable
-        dms ipc call theme dark
+        export ${pathPrefix}
+        ${dms} ipc night enable
+        ${dms} ipc theme dark
       '';
     };
     lightModeScripts = {
       dms = ''
-        dms ipc call night disable
-        dms ipc call theme light
+        export ${pathPrefix}
+        ${dms} ipc night disable
+        ${dms} ipc theme light
       '';
     };
   };
