@@ -12,6 +12,7 @@
       # ".config/monitors.xml"
       # ".config/mimeapps.list"
       ".clasprc.json" # for clasp gscript upload tool
+      ".config/apps.json" # for gearlever. Doesn't make a subdir.
     ];
     directories = [
       # ".cache/nix"
