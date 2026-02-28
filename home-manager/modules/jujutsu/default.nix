@@ -132,7 +132,7 @@
 
         # use watchman to auto-snapshot, no need to re-run jj
         # source: https://github.com/yum0e/kekkai?tab=readme-ov-file#watchman-setup
-        fsmontior.backend = "watchman";
+        fsmonitor.backend = "watchman";
         fsmonitor.watchman.register-snapshot-trigger = true;
         snapshot.auto-update-stale = true;
 
