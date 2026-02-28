@@ -174,7 +174,7 @@ binds {
     Mod+Shift+Return repeat=false { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty"; }
     Mod+V { spawn "dms" "ipc" "call" "clipboard" "open"; }
     Mod+Semicolon repeat=false { spawn "ptt" "KEY_SEMICOLON" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
-    Insert repeat=false { spawn "ptt" "KEY_INSERT" "--" "handy" "--toggle-post-process"; }
+    Mod+Insert repeat=false { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
 }
 window-rule {
     open-focused true
