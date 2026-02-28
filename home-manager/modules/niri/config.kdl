@@ -104,7 +104,7 @@ binds {
     XF86MonBrightnessDown { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
     XF86MonBrightnessUp { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
 
-    Mod+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && dms ipc lock lock"; }
+    Mod+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
     Mod+Shift+Q { spawn "dms" "ipc" "powermenu" "toggle"; }
 
     Mod+D { close-window; }
