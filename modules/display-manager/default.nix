@@ -19,7 +19,7 @@ in
       enable = true;
       settings = {
         save = true;
-        setup_cms = "${xsession-wrapper}";
+        setup_cmd = "${xsession-wrapper}";
       };
     };
   };
