@@ -166,6 +166,7 @@ binds {
     Mod+Shift+Print { screenshot-screen; }
     Mod+Ctrl+Print { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty" "--title=float" "-e" "/nix/store/8ympds7aryqv8irbcck8m1d97rx34vqg-screen-record/bin/screen-record" "-g"; }
 
+    Mod+C { spawn "dms" "color" "pick" "-a"; }
     Mod+N { spawn "dms" "ipc" "notifications" "toggle"; }
     Mod+O { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
     Mod+P repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
