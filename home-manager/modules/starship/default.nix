@@ -167,6 +167,8 @@ in
             shell = [
               "${inputs.starship-jj.packages.${pkgs.stdenv.system}.default}/bin/starship-jj"
               "--ignore-working-copy"
+              "--config"
+              "git.fetch=[]"
               "starship"
             ];
             use_stdin = false;
