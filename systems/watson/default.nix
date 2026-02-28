@@ -32,6 +32,7 @@
     # ../../modules/opensnitch
     ../../modules/steam
     ../../modules/vm
+    ../../modules/agenix
     ../../modules/keyring.nix
     ./t14s-micmuteled.nix
   ];
@@ -182,8 +183,7 @@
     isNormalUser = true;
     useDefaultShell = false;
     shell = "${pkgs.fish}/bin/fish";
-    # nix-shell -p mkpasswd --command 'mkpasswd -m sha-512'
-    hashedPassword = "***REDACTED***";
+    hashedPasswordFile = config.age.secrets.userPassword.path;
     extraGroups = [
       "wheel"
       "docker"

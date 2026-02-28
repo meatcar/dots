@@ -17,4 +17,5 @@ in
   "spotifyClientId.age".publicKeys = systems;
   "spotifyClientSecret.age".publicKeys = systems;
   "cliProxyApiEnv.age".publicKeys = systems;
+  "userPassword.age".publicKeys = systems;
 }

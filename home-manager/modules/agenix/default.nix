@@ -3,6 +3,6 @@ let
   xdgRuntimeDir = "/run/user/1000";
 in
 {
-  imports = [ ../../../secrets/module.nix ];
+  imports = [ ../../../secrets/hm-module.nix ];
   age.secretsDir = "${xdgRuntimeDir}/agenix";
 }
