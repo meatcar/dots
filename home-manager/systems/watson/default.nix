@@ -21,7 +21,7 @@
     ../../modules/activitywatch
     ../../modules/ghostty
     ../../modules/clipse
-    ../../modules/obsidian
+    # ../../modules/obsidian
     ../../modules/ai
     ../../modules/vscode
     ../../modules/zed
@@ -73,6 +73,7 @@
     builtins.elem (lib.getName pkg) [
       "vivaldi"
       "vscode"
+      "obsidian"
     ];
 
   programs.chromium.enable = true;
