@@ -26,5 +26,6 @@
   programs.git.ignores = [
     ".claude/*.local.*"
     "CLAUDE.local.md"
+    ".rodney/"
   ];
 }
