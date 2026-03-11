@@ -102,7 +102,7 @@ in
   xdg.configFile."niri/extra-config.kdl".text = ''
     xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-    spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session"
+    spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "dms restart"
     spawn-at-startup "${manage-monitors}/bin/manage-monitors"
     output "${monitors.internal}" {
       variable-refresh-rate on-demand=true
