@@ -29,7 +29,8 @@
     # ../modules/kakoune
     ../modules/helix
     ../modules/nix-index
-    ../modules/docker
+    # ../modules/docker
+    ../modules/podman
     ../modules/npm
     ../modules/bun
     # ../modules/junction

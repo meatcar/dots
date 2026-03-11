@@ -1,4 +1,7 @@
-_: {
+{
+  nixpkgs-unstable,
+  ...
+}: {
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
@@ -6,5 +9,6 @@ _: {
     autoPrune.enable = true;
     dockerSocket.enable = true;
     defaultNetwork.settings.dns_enabled = true;
+    package = nixpkgs-unstable.podman;
   };
 }
