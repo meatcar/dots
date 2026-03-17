@@ -5,3 +5,4 @@ shada/*
 autoload/env.vim
 spell/*.spl
 spell/*.add
+lua/plugins/dankcolors.lua
