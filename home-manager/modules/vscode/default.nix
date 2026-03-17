@@ -1,10 +1,9 @@
-{
-  pkgs,
-  ...
-}:
-{
+_: {
   programs.vscode.enable = true;
-  programs.vscode.package = pkgs.vscode-fhs;
+  # Don't use vscode-fhs: it wraps VS Code in bubblewrap, which unconditionally
+  # sets PR_SET_NO_NEW_PRIVS. This breaks rootless podman's newuidmap (setuid),
+  # causing devcontainer builds to fail with "setgroups: Operation not permitted".
+  # bubblewrap issue: https://github.com/containers/bubblewrap/issues/378
   # TODO: vscode-fhs environment has trouble reading .ssh/config.
   # hack source: https://github.com/nix-community/home-manager/issues/322#issuecomment-1856128020
   home.file.".ssh/config" = {
