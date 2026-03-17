@@ -21,7 +21,6 @@ in
     ./opensnitch.nix
     ./podman.nix
     ./tailscale.nix
-    ./meatcar.nix
   ];
   # Setup a service that will automatically rollback the root subvolume to a fresh state.
   boot.initrd.systemd.services.rollback = {
