@@ -82,6 +82,15 @@ in
     };
   };
   dbus.packages = [ pkgs.nautilus ];
+  xdg.configFile."xdg-desktop-portal/niri-portals.conf".text = ''
+    [preferred]
+    default=gtk
+    org.freedesktop.impl.portal.ScreenCast=gnome
+    org.freedesktop.impl.portal.Screenshot=gnome
+    org.freedesktop.impl.portal.RemoteDesktop=gnome
+    org.freedesktop.impl.portal.Settings=gnome
+    org.freedesktop.impl.portal.Secret=gnome-keyring
+  '';
   services.swayosd.enable = true;
   # services.swww.enable = true;
   programs.fuzzel.settings.main.launch-prefix = "niri msg action spawn --";
@@ -100,34 +109,34 @@ in
     include "dms/cursor.kdl"
   '';
   xdg.configFile."niri/extra-config.kdl".text = ''
-    xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
-    spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-    spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "dms restart"
-    spawn-at-startup "${manage-monitors}/bin/manage-monitors"
-    output "${monitors.internal}" {
-      variable-refresh-rate on-demand=true
-      scale 1.0
-      transform "normal"
-      position x=0 y=0
-    }
-    output "${monitors.vertical}" {
-      variable-refresh-rate on-demand=true
-      transform "270"
-      position x=0 y=0
-    }
-    output "${monitors.flex}" {
-      transform "normal"
-      mode "3840x2160@60.0"
-      variable-refresh-rate on-demand=true
-    }
-    binds {
-      Mod+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
-      Mod+Shift+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}"; }
-      Mod+Shift+P repeat=false { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
-      Mod+E { spawn "${lib.getExe pkgs.nautilus}"; }
-      Mod+Shift+S repeat=false { spawn "bash" "-c" "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
-Mod+Alt+Print { spawn "${edit-screenshot}"; }
-      Mod+Ctrl+Print { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
-    }
+        xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
+        spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+        spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "dms restart"
+        spawn-at-startup "${manage-monitors}/bin/manage-monitors"
+        output "${monitors.internal}" {
+          variable-refresh-rate on-demand=true
+          scale 1.0
+          transform "normal"
+          position x=0 y=0
+        }
+        output "${monitors.vertical}" {
+          variable-refresh-rate on-demand=true
+          transform "270"
+          position x=0 y=0
+        }
+        output "${monitors.flex}" {
+          transform "normal"
+          mode "3840x2160@60.0"
+          variable-refresh-rate on-demand=true
+        }
+        binds {
+          Mod+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
+          Mod+Shift+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}"; }
+          Mod+Shift+P repeat=false { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
+          Mod+E { spawn "${lib.getExe pkgs.nautilus}"; }
+          Mod+Shift+S repeat=false { spawn "bash" "-c" "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
+    Mod+Alt+Print { spawn "${edit-screenshot}"; }
+          Mod+Ctrl+Print { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
+        }
   '';
 }
