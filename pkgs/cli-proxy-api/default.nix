@@ -6,7 +6,7 @@
   stdenvNoCC,
 }:
 let
-  version = "6.8.18";
+  version = "6.9.2";
 in
 stdenvNoCC.mkDerivation {
   pname = "cli-proxy-api";
@@ -14,7 +14,7 @@ stdenvNoCC.mkDerivation {
 
   src = fetchurl {
     url = "https://github.com/router-for-me/CLIProxyAPI/releases/download/v${version}/CLIProxyAPI_${version}_linux_amd64.tar.gz";
-    hash = "sha256-zzYEMbphablHpi4yUkmlaPtz3I/TGRojgxJriryKxmQ=";
+    hash = "sha256-Zr+7N4Jm2J8Q2ns35CgkiGNPKfYVCsxwtffUIkfNhpE=";
   };
 
   sourceRoot = ".";
