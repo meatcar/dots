@@ -52,6 +52,7 @@
       ffmpeg
       # dev
       cloudflared
+      weave-merge
     ]
     ++ (with nixpkgs-unstable; [
       vivaldi-ffmpeg-codecs

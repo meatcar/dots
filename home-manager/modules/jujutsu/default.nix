@@ -13,6 +13,7 @@
     ])
     ++ (with pkgs; [
       watchman
+      meld
     ]);
   programs.jujutsu =
     let
@@ -158,7 +159,7 @@
         merge-tools =
           let
             # source: https://github.com/jj-vcs/jj/wiki/Vim,-Neovim#using-neovim-as-a-diff-editor-with-existing-git-tooling
-            nativeWrapper = tool: {
+            nativeWrapper = tool: rec {
               program = "sh";
               edit-args = [
                 "-c"
@@ -181,6 +182,23 @@
             };
           in
           {
+            weave = {
+              program = "${lib.getExe' pkgs.weave-merge "weave-driver"}";
+              merge-args = [
+                "$base"
+                "$left"
+                "$right"
+                "-o"
+                "$output"
+                "-l"
+                "$marker_length"
+                "-p"
+                "$path"
+              ];
+              merge-conflict-exit-codes = [ 1 ];
+              merge-tool-edits-conflict-markers = true;
+              conflict-marker-style = "git";
+            };
             nvim = nativeWrapper "nvim";
             nvim-neogit = nativeWrapper ''nvim -c "lua require('lazy').load({plugins = {'neogit'}})" -c Neogit'';
             lazygit = nativeWrapper "lazygit --screen-mode half";
@@ -199,6 +217,7 @@
           };
         ui = {
           default-command = "status";
+          merge-editor = "weave";
           diff-editor = "lazygit";
           diff-formatter = "delta";
           pager = [

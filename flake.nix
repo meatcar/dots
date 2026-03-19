@@ -142,6 +142,7 @@
             rodney = final.callPackage ./pkgs/rodney { };
             showboat = final.callPackage ./pkgs/showboat { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
+            weave-merge = final.callPackage ./pkgs/weave { };
           })
         ];
       };
