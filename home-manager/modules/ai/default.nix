@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -18,6 +19,9 @@
     pkgs.uv # for mcps
     pkgs.rodney
     pkgs.showboat
+    pkgs.sox # for claude /voice
+    pkgs.bubblewrap # for codex
+    nixpkgs-unstable.openspec
   ];
   services.cli-proxy-api = {
     enable = true;
