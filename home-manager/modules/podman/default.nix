@@ -37,9 +37,28 @@ let
   '';
 in
 {
-  imports = [
-    ./traefik.nix
-  ];
+  imports = [ ../traefik ];
+
+  services.traefik = {
+    enable = true;
+    staticConfigOptions = {
+      entryPoints.web.address = ":80";
+      api = {
+        dashboard = true;
+        insecure = true;
+      };
+      providers.docker = {
+        exposedByDefault = false;
+        defaultRule = "Host(`{{ .ContainerName }}.localhost`)";
+      };
+    };
+    dynamicConfigOptions = {
+      http.routers.dashboard = {
+        rule = "Host(`traefik.localhost`)";
+        service = "api@internal";
+      };
+    };
+  };
 
   home.packages = with nixpkgs-unstable; [
     lazydocker
