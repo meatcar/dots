@@ -11,7 +11,6 @@
       devShells.default = pkgs.mkShell {
         name = "dots";
         inputsFrom = [
-          config.pre-commit.devShell
           config.treefmt.build.devShell
         ];
 

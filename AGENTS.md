@@ -96,7 +96,6 @@ Use these notes when making changes in this repo.
 
 ## Git Hooks and Commit Style
 
-- Pre-commit hooks: `treefmt`, `commitizen`, `flake-checker`.
 - Commit messages follow Conventional Commits.
 - Use `git commit` (commitizen is configured via hooks).
 
