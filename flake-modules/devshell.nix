@@ -19,7 +19,12 @@
           (import inputs.home-manager { inherit pkgs; }).home-manager
           git
           gnupg
-          inputs.agenix.packages.${system}.default
+          (pkgs.writeShellScriptBin "agenix" ''
+            exec ${inputs.agenix.packages.${system}.default}/bin/agenix \
+              -i ~/.config/age/age-plugin-1p-identity.txt \
+              "$@"
+          '')
+          age-plugin-1p
           nil # nix lsp server
           nixd
         ];
