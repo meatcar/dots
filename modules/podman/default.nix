@@ -3,9 +3,21 @@
   ...
 }:
 {
-  virtualisation.containers.enable = true;
-  virtualisation.containers.storage.settings.storage = {
-    # driver = "fuse-overlayfs";
+  # Allow rootless podman/traefik to bind port 80 for local container routing
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
+
+  virtualisation.containers = {
+    enable = true;
+
+    # Default to docker.io for unqualified image names so podman doesn't
+    # prompt interactively (which hangs non-interactive tools like devcontainers).
+    registries.search = [ "docker.io" ];
+
+    # Use file-based event logger instead of journald. The journald backend
+    # drops new events when streaming with --filter event=<type>, which causes
+    # devcontainers to hang waiting for container start events.
+    # TODO: remove when fixed upstream https://github.com/containers/podman/issues/21685
+    containersConf.settings.engine.events_logger = "file";
   };
 
   virtualisation.podman = {

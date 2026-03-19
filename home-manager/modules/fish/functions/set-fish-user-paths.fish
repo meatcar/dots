@@ -38,4 +38,8 @@ function set-fish-user-paths \
     fish_add_path (go env GOROOT)/bin
     fish_add_path (go env GOPATH)/bin
   end
+
+  if test -z "$DOCKER_HOST" -a -n "$XDG_RUNTIME_DIR"
+    set -gx DOCKER_HOST "unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+  end
 end
