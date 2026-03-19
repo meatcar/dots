@@ -77,7 +77,7 @@
     };
     handy = {
       url = "github:cjpais/Handy";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     plug-kak = {

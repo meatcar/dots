@@ -103,6 +103,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    vulkan-tools
     neovim
     wget
 
