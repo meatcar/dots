@@ -126,6 +126,7 @@ in
           selectedRangeBgColor = [ "reverse" ];
         };
       };
+      git.autoFetch = false;
       git.pagers = [
         {
           colorArg = "always";
