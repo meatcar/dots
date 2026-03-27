@@ -30,7 +30,7 @@ stdenvNoCC.mkDerivation {
   meta = {
     description = "OpenAI-compatible API proxy for Claude Max OAuth";
     homepage = "https://github.com/router-for-me/CLIProxyAPI";
-    license = lib.licenses.unfree;
+    license = lib.licenses.mit;
     platforms = [ "x86_64-linux" ];
     mainProgram = "cli-proxy-api";
   };
