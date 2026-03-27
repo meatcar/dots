@@ -68,6 +68,8 @@
     EDITOR = "nvim";
     NOTES_DIR = "~/Sync/notes";
     LESS = "-R --mouse";
+    DO_NOT_TRACK = "1";
+    DISABLE_TELEMETRY = "1";
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -16,19 +16,26 @@
       exec "$@"
     '')
     pkgs.python3
-    pkgs.uv # for mcps
     pkgs.rodney
     pkgs.showboat
     pkgs.sox # for claude /voice
-    pkgs.bubblewrap # for codex
+    pkgs.socat # for sandboxes
+    pkgs.bubblewrap # for sandboxes
     nixpkgs-unstable.openspec
   ];
   services.cli-proxy-api = {
     enable = true;
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
   };
+
+  programs.uv = {
+    enable = true;
+    settings.exclude-newer = "7 days";
+  };
+
   programs.git.ignores = [
     ".claude/*.local.*"
+    ".claude/worktrees/"
     "CLAUDE.local.md"
     ".rodney/"
   ];
