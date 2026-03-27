@@ -35,6 +35,5 @@ jobs:
         run: |
           nix develop --command gpg --batch --import <<< '${{ secrets.GPG_KEY }}'
       - run: nix develop --command git-crypt unlock
-
       - name: Run flake check
         run: nix flake check --accept-flake-config

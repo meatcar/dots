@@ -76,7 +76,7 @@ tooltip label {
   font-size: 14px;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
   animation-name: blink-active;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -109,7 +109,6 @@ window#waybar.left .modules-right {
   border-top-right-radius: 8px;
 }
 
-
 /** modules */
 #custom-notification,
 #tray,
@@ -120,8 +119,7 @@ window#waybar.left .modules-right {
 #net,
 #bt,
 #power,
-#time
-{
+#time {
   border-radius: 6px;
   padding: 6px 4px;
   margin: 4px;
@@ -215,7 +213,7 @@ window#waybar.left .modules-right {
 
 #clock {
   font-weight: bold;
-  padding: 2px 0
+  padding: 2px 0;
 }
 
 #pulseaudio.output.muted,

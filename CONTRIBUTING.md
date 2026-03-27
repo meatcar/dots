@@ -5,6 +5,7 @@ First off, thank you for considering contributing! Your help is appreciated.
 This document provides guidelines for contributing to this repository.
 
 ## Table of Contents
+
 - [How Can I Contribute?](#how-can-i-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
@@ -20,6 +21,7 @@ This document provides guidelines for contributing to this repository.
 ### Reporting Bugs
 
 If you find a bug, please open an issue and provide as much information as possible, including:
+
 - Your operating system and environment.
 - Steps to reproduce the bug.
 - The expected behavior and what happened instead.
@@ -31,6 +33,7 @@ If you have an idea for an enhancement, feel free to open an issue to discuss it
 ### Pull Requests
 
 Pull Requests are welcome! Please follow these steps:
+
 1. Fork the repository.
 2. Create a new branch for your feature or fix: `git checkout -b my-awesome-feature`.
 3. Make your changes.
@@ -49,11 +52,13 @@ The setup is similar to the installation instructions in `README.md`. You will n
 To test your changes, you can build a specific configuration.
 
 To build a NixOS configuration (e.g., for `watson`):
+
 ```bash
 nix build .#nixosConfigurations.watson.config.system.build.toplevel
 ```
 
 To build a Home Manager configuration (e.g., for `deck`):
+
 ```bash
 nix build .#homeConfigurations.deck.activationPackage
 ```

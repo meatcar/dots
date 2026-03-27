@@ -46,7 +46,6 @@ services:
       traefik.http.routers.${COMPOSE_PROJECT_NAME}-api.service: >-
         ${COMPOSE_PROJECT_NAME}-api
       traefik.http.services.${COMPOSE_PROJECT_NAME}-api.loadbalancer.server.port: "8080"
-
       # Debug inspector on port 9229
       traefik.http.routers.${COMPOSE_PROJECT_NAME}-debug.rule: >-
         Host(`debug.${COMPOSE_PROJECT_NAME}.localhost`)

@@ -15,12 +15,8 @@
   "lspconfig": {
     "lua_ls": {
       "diagnostics": {
-        "disable": [
-          "undefined-global"
-        ],
-        "globals": [
-          "vim"
-        ]
+        "disable": ["undefined-global"],
+        "globals": ["vim"]
       },
       "format": {
         "defaultConfig": {

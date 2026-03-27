@@ -1,5 +1,3 @@
 {
-    "diagnostics.globals": [
-        "vscode"
-    ]
+  "diagnostics.globals": ["vscode"]
 }

@@ -10,7 +10,7 @@
     }
   ],
   "lockFileMaintenance": {
-  	"enabled": true,
+    "enabled": true
   },
   "vulnerabilityAlerts": {
     "enabled": true
