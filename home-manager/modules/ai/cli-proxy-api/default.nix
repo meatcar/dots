@@ -88,6 +88,10 @@ in
     systemd.user.services.cli-proxy-api = {
       Unit = {
         Description = "CLIProxyAPI proxy server";
+      }
+      // lib.optionalAttrs (cfg.environmentFile != null) {
+        After = [ "agenix.service" ];
+        Requires = [ "agenix.service" ];
       };
       Install = {
         WantedBy = [ "default.target" ];

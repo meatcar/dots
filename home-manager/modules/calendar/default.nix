@@ -73,6 +73,10 @@ in
       };
 
       services.vdirsyncer.enable = true;
+      systemd.user.services.vdirsyncer.Unit = {
+        After = [ "agenix.service" ];
+        Requires = [ "agenix.service" ];
+      };
       programs.vdirsyncer.enable = true;
 
       programs.khal = {

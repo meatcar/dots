@@ -184,7 +184,8 @@
       ".aider"
       ".local/share/aider"
 
-      # 1password
+      # 1password / agenix
+      ".config/age"
       ".config/aws"
       ".config/1Password"
       {
