@@ -1,8 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  nixpkgs-unstable,
+  ...
+}:
 {
   programs.nix-search-tv.enable = true;
   programs.television = {
     enable = true;
+    package = nixpkgs-unstable.television;
     settings = {
       ui = {
         use_nerd_font_icons = true;
@@ -23,4 +30,12 @@
     };
     enableFishIntegration = config.programs.fish.enable;
   };
+
+  # Restore fish's built-in ctrl-r history search; tv binds it unconditionally
+  programs.fish.interactiveShellInit = lib.mkIf config.programs.fish.enable (
+    lib.mkAfter ''
+      bind --mode default ctrl-r history-pager
+      bind --mode insert ctrl-r history-pager
+    ''
+  );
 }
