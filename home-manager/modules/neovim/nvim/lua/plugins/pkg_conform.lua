@@ -24,10 +24,10 @@ return {
         nix = { 'nixfmt' },
         python = { 'isort', 'black', 'autopep8' },
         javascript = function(bufnr)
-          return { first(bufnr, 'prettierd', 'prettier'), first(bufnr, 'eslint_d', 'eslint'), 'biome', 'biome-check',
+          return { 'oxfmt', first(bufnr, 'prettierd', 'prettier'), first(bufnr, 'eslint_d', 'eslint'), 'biome', 'biome-check',
             'biome-organize-imports' }
         end,
-        css = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         sh = { 'shfmt' },
         go = { 'gofmt' },
         clojure = { 'joker' },

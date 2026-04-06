@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  nixpkgs-unstable,
   ...
 }:
 {
@@ -43,8 +44,6 @@
 
       # formatters
       eslint_d
-      prettierd
-      nodePackages.prettier
       python3Packages.autopep8
       (pkgs.writeShellScriptBin "gofmt" ''
         ${pkgs.go}/bin/gofmt "$@"
@@ -67,17 +66,21 @@
     # "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
   };
 
-  home.packages = with pkgs; [
-    alejandra
-    nixfmt-rfc-style
-    fortune
-    shellcheck
-    shfmt
-    update-nix-fetchgit
-    vim-vint
-    tree-sitter
-    glow
-    stylua
-    cargo
-  ];
+  home.packages =
+    with pkgs;
+    [
+      nixfmt
+      fortune
+      shellcheck
+      shfmt
+      update-nix-fetchgit
+      vim-vint
+      tree-sitter
+      glow
+      stylua
+      cargo
+    ]
+    ++ [
+      nixpkgs-unstable.oxfmt
+    ];
 }
