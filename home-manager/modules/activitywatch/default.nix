@@ -7,6 +7,9 @@
   services.activitywatch = {
     enable = true;
     package = pkgs.aw-server-rust;
+    settings = {
+      cors_regex = [ "chrome-extension://.*" ];
+    };
     watchers = {
       awatcher = {
         package = pkgs.awatcher;

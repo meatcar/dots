@@ -143,6 +143,21 @@
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
             weave-merge = final.callPackage ./pkgs/weave { };
           })
+          # aw-server-rust: use standalone repo HEAD for cors_regex support (ActivityWatch/aw-server-rust#569)
+          # not yet in any tagged activitywatch monorepo release
+          (final: prev: {
+            aw-server-rust = prev.aw-server-rust.overrideAttrs (_: rec {
+              src = final.fetchFromGitHub {
+                owner = "ActivityWatch";
+                repo = "aw-server-rust";
+                rev = "9a8802a374d8e9f587b343dfedf3859ec1a9bba2";
+                hash = "sha256-PhPGZMqg2b2Vb/EZ8DgBi5Z4S6kzepwEhZX7e/rjWsU=";
+              };
+              cargoDeps = prev.rustPlatform.importCargoLock {
+                lockFile = "${src}/Cargo.lock";
+              };
+            });
+          })
         ];
       };
       specialArgs = { inherit inputs; };
