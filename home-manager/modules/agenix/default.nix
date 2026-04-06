@@ -65,8 +65,23 @@ in
     };
 
     systemd.user.services.agenix.Unit = {
-      After = [ "op-daemon.service" ];
+      After = [
+        "op-daemon.service"
+        "agenix-1password-ready.path"
+      ];
       Wants = [ "op-daemon.service" ];
+    };
+
+    # Re-trigger agenix whenever 1Password's CLI socket appears — handles
+    # lock/unlock cycles without restarting 1Password.
+    # %t = $XDG_RUNTIME_DIR; s.sock is the desktop app CLI integration socket.
+    systemd.user.paths.agenix-1password-ready = {
+      Unit.Description = "Watch for 1Password CLI integration socket";
+      Path = {
+        PathExists = "%t/s.sock";
+        Unit = "agenix.service";
+      };
+      Install.WantedBy = [ "default.target" ];
     };
     # Keep the oneshot "active (exited)" so that downstream Requires=
     # (e.g. vdirsyncer) don't re-trigger decryption every 5 minutes.
