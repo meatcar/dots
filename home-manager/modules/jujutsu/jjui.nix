@@ -24,20 +24,14 @@
     preview = {
       show_at_start = true;
     };
-    custom_commands = {
-      delta = {
-        show = "interactive";
-        args = [
-          "util"
-          "exec"
-          "--"
-          "bash"
-          "-c"
-          ''
-            jj show -r $change_id --summary --git --color=always | delta --pager 'less -FRX'
-          ''
-        ];
-      };
-    };
+    actions = [
+      {
+        name = "delta";
+        lua = ''
+          local change_id = context.change_id()
+          jj_interactive("util", "exec", "--", "bash", "-c", "jj show -r " .. change_id .. " --summary --git --color=always | delta --pager 'less -FRX'")
+        '';
+      }
+    ];
   };
 }
