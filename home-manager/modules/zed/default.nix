@@ -1,5 +1,7 @@
 {
+  config,
   pkgs,
+  lib,
   nixpkgs-unstable,
   ...
 }:
@@ -12,12 +14,13 @@
       # TODO: remove after updating AMD drivers.
       # fix for zed-editor not starting in wayland sessions
       # see https://github.com/zed-industries/zed/issues/35948#issuecomment-3189128449
-      export WAYLAND_DISPLAY=""
-      zeditor "$@"
+      # export WAYLAND_DISPLAY=""
+      ${lib.getExe config.programs.zed-editor.package} "$@"
     '')
   ]
   ++ (with pkgs; [
     nodejs
     package-version-server
+    prettier # default built-in formatter
   ]);
 }
