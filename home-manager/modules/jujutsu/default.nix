@@ -65,13 +65,31 @@
           draft_commit_description = ''
             concat(
               "JJ: A short and descriptive commit message following conventional commits:\n",
+              "JJ: Format: <type>(<scope>): <description>\n",
+              "JJ: Types: feat, fix, docs, style, refactor, perf, test, chore, revert, build, ci\n",
+              "JJ: Scope: optional, kebab-case, nested with /, e.g. (auth), (api/token)\n",
               coalesce(description, default_commit_description, "\n"),
+              "\n",
               surround(
                 "\nJJ: This commit contains the following changes:\n", "",
                 indent("JJ:     ", diff.stat(72)),
               ),
               "\nJJ: ignore-rest\n",
               diff.git(),
+            )
+          '';
+          new_commit_description = ''
+            if(parents.len() > 1,
+              "Merge " ++ parents.skip(1).map(|p| if(
+                p.bookmarks(),
+                p.bookmarks().first().name(),
+                p.change_id().shortest(8)
+              )).join(", ") ++ " into " ++ if(
+                parents.first().bookmarks(),
+                parents.first().bookmarks().first().name(),
+                parents.first().change_id().shortest(8)
+              ) ++ "\n",
+              ""
             )
           '';
           short_log = ''
@@ -129,6 +147,8 @@
           # jjflow
           "unmerged()" = "bookmarks() & ~::dev()";
           "unpublished()" = "bookmarks() & ~::trunk()";
+          "private()" = "description(glob:'private*') | description(glob:'wip*')";
+          "work()" = "::@ description('') & private()) & ~bookmarks()";
         };
 
         # use watchman to auto-snapshot, no need to re-run jj
@@ -141,7 +161,7 @@
           colocate = true;
           write-change-id-header = true;
           fetch = [ "glob:*" ];
-          private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
+          private-commits = "private()";
         };
         remotes.origin.auto-track-bookmarks = "*";
         fix.tools = {
