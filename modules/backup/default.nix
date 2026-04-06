@@ -27,6 +27,9 @@
       Type = "simple";
       User = "root";
       Group = "root";
+      Nice = 10;
+      IOSchedulingClass = "best-effort";
+      IOSchedulingPriority = 7;
     };
   };
 }
