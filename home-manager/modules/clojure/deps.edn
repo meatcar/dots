@@ -1,6 +1,6 @@
 {:deps {refactor-nrepl/refactor-nrepl {:mvn/version "3.11.0"}
-        cider/cider-nrepl {:mvn/version "0.58.0"}
-        nrepl/nrepl {:mvn/version "1.5.2"}
+        cider/cider-nrepl {:mvn/version "0.59.0"}
+        nrepl/nrepl {:mvn/version "1.7.0"}
         iced-nrepl/iced-nrepl {:mvn/version "1.2.1"}}
 
  :aliases
@@ -12,8 +12,8 @@
               {find-deps/find-deps
                {:git/url "https://github.com/holyjak/find-deps"
                 :sha "9bf23a52cb0a8190c9c2c7ad1d796da802f8ce7a"}
-               org.clojure/core.async {:mvn/version "1.8.741"}
-               cheshire/cheshire {:mvn/version "6.1.0"}}
+               org.clojure/core.async {:mvn/version "1.9.865"}
+               cheshire/cheshire {:mvn/version "6.2.0"}}
               :main-opts ["-m" "find-deps.core"]}
   :clj-kondo {:extra-deps {clj-kondo {:mvn/version "RELEASE"}}
               :main-opts ["-m" "clj-kondo.main"]}
