@@ -52,7 +52,7 @@
   };
 
   xdg.configFile = {
-    nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/hub/meatcar/dots/home-manager/modules/neovim/nvim";
+    nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.me.PRJ_ROOT}/home-manager/modules/neovim/nvim";
     "luacheck/.luacheckrc".text = ''
       globals = {
           "vim",
