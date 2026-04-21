@@ -1,5 +1,6 @@
 # based on https://github.com/matthewpi/nixos-config/blob/cffedc488740767402615c8790b82bcdff0f3509/modules/persistence/default.nix
 {
+  config,
   lib,
   pkgs,
   ...
@@ -107,6 +108,10 @@ in
 
       {
         directory = "/var/lib/sbctl";
+        mode = "0700";
+      }
+      {
+        directory = config.systemd.services.backrest.environment.BACKREST_DATA;
         mode = "0700";
       }
 
