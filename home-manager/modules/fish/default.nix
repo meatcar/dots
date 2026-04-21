@@ -33,11 +33,17 @@
         ]
       );
     functions = {
+      # In tmux, clear the title so tmux can compose it from pane_current_path +
+      # pane_current_command + any app-set OSC title (e.g. Claude Code session name).
       fish_title.body = ''
-        prompt_pwd
-        set cmd (status current-command)
-        if [ "$cmd" != fish ]
-          echo ":$cmd"
+        if set -q TMUX
+          echo ""
+        else
+          prompt_pwd
+          set cmd (status current-command)
+          if [ "$cmd" != fish ]
+            echo ":$cmd"
+          end
         end
       '';
     };
