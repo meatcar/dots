@@ -5,7 +5,7 @@ NixOS/Home Manager dotfiles repo.
 
 - Dev shell: `nix develop`
 - Flake checks: `nix flake check` | `nix build .#checks.x86_64-linux.<name>`
-- Format/lint: `treefmt` (required for commit)
+- Format/lint: `nix fmt` (required for commit)
 - Build NixOS: `nix build .#nixosConfigurations.<host>.config.system.build.toplevel`
 - Build HM: `nix build .#homeConfigurations.<host>.activationPackage`
 - List outputs: `nix flake show`
