@@ -205,6 +205,12 @@
       }
       ".cache/appimage-run"
 
+      # wine
+      {
+        directory = ".local/share/bottles";
+        mode = "0755";
+      }
+
       # podman
       ".local/share/containers"
 
