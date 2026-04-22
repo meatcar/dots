@@ -17,6 +17,7 @@ in
     ./fwupd.nix
     ./gnome.nix
     ./ly.nix
+    ./netdata.nix
     ./networkmanager.nix
     ./opensnitch.nix
     ./podman.nix

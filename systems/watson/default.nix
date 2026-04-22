@@ -34,6 +34,7 @@
     ../../modules/vm
     ../../modules/agenix
     ../../modules/keyring.nix
+    ../../modules/netdata
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "25.11";

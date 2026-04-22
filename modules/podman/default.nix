@@ -36,6 +36,12 @@
   # subsequent podman operations (including builds) fail.
   systemd.user.services.podman.path = [ "/run/wrappers" ];
 
+  # Suppress per-request access logs from the podman API socket service.
+  # The package unit uses $LOGGING as the log-level flag; override it here
+  # rather than rewriting ExecStart.
+  systemd.services.podman.environment.LOGGING = "--log-level=warning";
+  systemd.user.services.podman.environment.LOGGING = "--log-level=warning";
+
   environment.systemPackages = with nixpkgs-unstable; [
     runc
     conmon
