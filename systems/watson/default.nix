@@ -48,7 +48,7 @@
     "video=HDMI-A-2:3840x2160@60"
     "video=DP-8:off"
     # "video=eDP-1:d"
-    "amdgpu.aspm=0"
+    # "amdgpu.aspm=0"
   ];
   boot.initrd.availableKernelModules = [
     "thunderbolt"
