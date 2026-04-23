@@ -139,6 +139,33 @@
             "log"
             "-Tbuiltin_log_oneline"
           ];
+
+          # source: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+          # `jj stack <revset>` to include specific revs
+          stack = [
+            "rebase"
+            "--after"
+            "trunk()"
+            "--before"
+            "closest_merge(@)"
+            "--revisions"
+          ];
+          # `jj stage` to include the whole stack after the megamerge
+          stage = [
+            "stack"
+            "closest_merge(@)+:: ~ empty()"
+          ];
+
+          # source: https://github.com/thoughtpolice/a/blob/2f768e1b0407bc63d6dd01097ff1c5210e48d8f6/tilde/aseipp/dotfiles/jj/config.toml#L98-L104
+          # via: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+          restack = [
+            "rebase"
+            "--onto"
+            "trunk()"
+            "--source"
+            "roots(trunk()..) & stack()"
+            "--simplify-parents"
+          ];
         };
         revset-aliases = {
           # Last Common Commit
@@ -149,6 +176,15 @@
           "unpublished()" = "bookmarks() & ~::trunk()";
           "private()" = "description(glob:'private*') | description(glob:'wip*')";
           "work()" = "::@ description('') & private()) & ~bookmarks()";
+
+          # source: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+          "closest_merge(to)" = "heads(::to & merges())";
+
+          # source: https://github.com/thoughtpolice/a/blob/2f768e1b0407bc63d6dd01097ff1c5210e48d8f6/tilde/aseipp/dotfiles/jj/config.toml#L98-L104
+          # via: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
+          "stack()" = "stack(@)";
+          "stack(x)" = "stack(x, 2)";
+          "stack(x, n)" = "ancestors(reachable(x, mutable()), n)";
         };
 
         # use watchman to auto-snapshot, no need to re-run jj
