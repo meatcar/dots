@@ -25,8 +25,7 @@
         CPU_BOOST_ON_AC = 1;
         CPU_BOOST_ON_BAT = 0;
 
-        RADEON_DPM_STATE_ON_AC = "performance";
-        RADEON_DPM_STATE_ON_BAT = "battery";
+        PCIE_ASPM_ON_BAT = "powersupersave";
 
         # turn off distracting backlight compensation
         AMDGPU_ABM_LEVEL_ON_AC = 0;
