@@ -113,6 +113,16 @@
     radeontop
     v4l-utils
     perf
+
+    iw
+    tcpdump
+    wireshark-cli
+
+    # nixpkgs wrapper omits glib-networking from GIO_EXTRA_MODULES, so TLS is
+    # unavailable and the Chromecast provider crashes on any discovered device.
+    (gnome-network-displays.overrideAttrs (old: {
+      buildInputs = (old.buildInputs or [ ]) ++ [ glib-networking ];
+    }))
   ];
 
   services.fwupd.enable = true;
@@ -128,6 +138,8 @@
     57621 # for spotify
     5353 # for chromecast
     22000 # for syncthing
+    7236 # miracast RTSP
+    7250 # miracast WFD
   ];
 
   networking.firewall.allowedUDPPorts = [
