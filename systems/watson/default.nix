@@ -134,20 +134,24 @@
     emulateWheel = true;
   };
 
-  # Allow LAN traffic in on WiFi; needed for Cast/Miracast HTTP callbacks.
-  networking.firewall.trustedInterfaces = [ "wlp1s0" ];
-
   networking.firewall.allowedTCPPorts = [
     57621 # for spotify
-    5353 # for chromecast
     22000 # for syncthing
     7236 # miracast RTSP
     7250 # miracast WFD
   ];
 
   networking.firewall.allowedUDPPorts = [
+    5353 # mDNS (avahi / chromecast discovery)
     22000 # for syncthing
     21027 # for syncthing discovery
+  ];
+
+  networking.firewall.allowedUDPPortRanges = [
+    {
+      from = 32768;
+      to = 61000;
+    } # streaming (cast/miracast)
   ];
   networking.hosts = {
     # FIX: for https://github.com/Spotifyd/spotifyd/issues/1358
