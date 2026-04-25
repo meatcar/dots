@@ -134,6 +134,9 @@
     emulateWheel = true;
   };
 
+  # Allow LAN traffic in on WiFi; needed for Cast/Miracast HTTP callbacks.
+  networking.firewall.trustedInterfaces = [ "wlp1s0" ];
+
   networking.firewall.allowedTCPPorts = [
     57621 # for spotify
     5353 # for chromecast
