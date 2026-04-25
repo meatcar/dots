@@ -118,10 +118,14 @@
     tcpdump
     wireshark-cli
 
-    # nixpkgs wrapper omits glib-networking from GIO_EXTRA_MODULES, so TLS is
-    # unavailable and the Chromecast provider crashes on any discovered device.
+    # nixpkgs wrapper omits glib-networking → TLS unavailable, Chromecast crashes.
+    # Running PipeWire is from nixpkgs-unstable; build against the same version
+    # so the pipewiresrc GStreamer plugin matches the daemon's wire protocol.
     (gnome-network-displays.overrideAttrs (old: {
-      buildInputs = (old.buildInputs or [ ]) ++ [ glib-networking ];
+      buildInputs = (old.buildInputs or [ ]) ++ [
+        glib-networking
+        nixpkgs-unstable.pipewire
+      ];
     }))
   ];
 
