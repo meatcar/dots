@@ -121,11 +121,16 @@
     # nixpkgs wrapper omits glib-networking → TLS unavailable, Chromecast crashes.
     # Running PipeWire is from nixpkgs-unstable; build against the same version
     # so the pipewiresrc GStreamer plugin matches the daemon's wire protocol.
+    # HACK: filter the stable pipewire from buildInputs so only one libgstpipewire.so
+    # ends up in GST_PLUGIN_SYSTEM_PATH_1_0. Drop this filter once we no longer
+    # pin pipewire to nixpkgs-unstable (modules/pipewire/default.nix).
     (gnome-network-displays.overrideAttrs (old: {
-      buildInputs = (old.buildInputs or [ ]) ++ [
-        glib-networking
-        nixpkgs-unstable.pipewire
-      ];
+      buildInputs =
+        (lib.filter (p: !(lib.hasPrefix "pipewire" (p.pname or p.name or ""))) (old.buildInputs or [ ]))
+        ++ [
+          glib-networking
+          nixpkgs-unstable.pipewire
+        ];
     }))
   ];
 

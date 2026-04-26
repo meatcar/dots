@@ -4,6 +4,38 @@
 }:
 let
   inherit (pkgs) tmuxPlugins;
+  aw-watcher-tmux = tmuxPlugins.mkTmuxPlugin {
+    pluginName = "aw-watcher-tmux";
+    version = "unstable-2023-10-17";
+    src = pkgs.fetchFromGitHub {
+      owner = "akohlbecker";
+      repo = "aw-watcher-tmux";
+      rev = "efaa7610add52bd2b39cd98d0e8e082b1e126487";
+      hash = "sha256-L6YLyEOmb+vdz6bJdB0m5gONPpBp2fV3i9PiLSNrZNM=";
+    };
+    rtpFilePath = "aw-watcher-tmux.tmux";
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postInstall = ''
+      wrapProgram $out/share/tmux-plugins/aw-watcher-tmux/scripts/monitor-session-activity.sh \
+        --prefix PATH : ${
+          pkgs.lib.makeBinPath [
+            pkgs.curl
+            pkgs.tmux
+          ]
+        }
+
+      # The upstream loader leaks stdout/stderr from the polling loop into
+      # tmux's run-shell capture, which corrupts the status bar.
+      cat > $out/share/tmux-plugins/aw-watcher-tmux/aw-watcher-tmux.tmux <<'EOF'
+      #!${pkgs.runtimeShell}
+      CURRENT_DIR="$( cd "$( dirname "''${BASH_SOURCE[0]}" )" && pwd )"
+      "$CURRENT_DIR/scripts/monitor-session-activity.sh" >/dev/null 2>&1 &
+      disown || true
+      EOF
+      chmod +x $out/share/tmux-plugins/aw-watcher-tmux/aw-watcher-tmux.tmux
+    '';
+    meta.description = "ActivityWatch watcher for tmux sessions";
+  };
 in
 {
   programs.tmux = {
@@ -24,6 +56,7 @@ in
           set -g @prefix_highlight_show_copy_mode "on"
         '';
       }
+      aw-watcher-tmux
     ];
   };
 
