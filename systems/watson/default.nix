@@ -151,6 +151,13 @@
     21027 # for syncthing discovery
   ];
 
+  networking.firewall.allowedTCPPortRanges = [
+    {
+      from = 32768;
+      to = 61000;
+    } # cast HTTP media server (random ephemeral port, Chromecast dials back)
+  ];
+
   networking.firewall.allowedUDPPortRanges = [
     {
       from = 32768;
