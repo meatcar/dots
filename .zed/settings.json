@@ -1,8 +1,22 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 {
   "formatter": {
     "external": {
       "command": "treefmt",
       "arguments": ["--stdin", "{buffer_path}"]
+    }
+  },
+  "languages": {
+    "Nix": {
+      "language_servers": ["nil", "!nixd"],
+      "formatter": {
+        "external": {
+          "command": "nixfmt"
+        }
+      }
     }
   }
 }
