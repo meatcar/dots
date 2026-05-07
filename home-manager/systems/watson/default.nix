@@ -55,6 +55,7 @@
       weave-merge
     ]
     ++ (with nixpkgs-unstable; [
+      microsoft-edge
       vivaldi-ffmpeg-codecs
       widevine-cdm
       (vivaldi.override {
@@ -72,6 +73,7 @@
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
+      "microsoft-edge"
       "vivaldi"
       "vscode"
       "obsidian"

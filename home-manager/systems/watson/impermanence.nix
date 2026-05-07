@@ -284,6 +284,8 @@
       ".cache/kdeconnect.daemon"
     ]
     ++ [
+      ".config/microsoft-edge"
+      ".cache/microsoft-edge"
       ".config/vivaldi"
       ".cache/vivaldi"
       ".local/lib/vivaldi"
