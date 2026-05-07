@@ -9,6 +9,7 @@ NixOS/Home Manager dotfiles repo.
 - Build NixOS: `nix build .#nixosConfigurations.<host>.config.system.build.toplevel`
 - Build HM: `nix build .#homeConfigurations.<host>.activationPackage`
 - List outputs: `nix flake show`
+- Update input: `nix flake lock --override-input <input> <url+rev>`
 
 Nix Conventions:
 
