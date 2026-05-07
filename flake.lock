@@ -521,11 +521,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774565656,
-        "narHash": "sha256-wdn/P59XBBADePGGwDd/g9TWcs9pwqZeg5wjmxGmhS4=",
+        "lastModified": 1777301555,
+        "narHash": "sha256-sCCtp6UAxmCAcYeOM9+RW2czATh4Geqf1H8wXNMniYc=",
         "owner": "cjpais",
         "repo": "Handy",
-        "rev": "18ce41a4effef0f02f456a6ddd1b4eb3d49f615e",
+        "rev": "085cd530a30db479822125c758613c38fe0771b0",
         "type": "github"
       },
       "original": {
