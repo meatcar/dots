@@ -11,6 +11,7 @@
     ../modules/nix-your-shell
     ../modules/man
     ../modules/git
+    ../modules/hunk
     ../modules/jujutsu
     ../modules/fish
     ../modules/starship
@@ -51,6 +52,7 @@
       jq
       fx
       openssl
+        q # dns query tool
 
       (lib.mkDefault (
         pkgs.writeShellScriptBin "get-theme-default" ''

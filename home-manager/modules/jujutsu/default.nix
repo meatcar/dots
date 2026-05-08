@@ -275,14 +275,13 @@
           default-command = "status";
           merge-editor = "weave";
           diff-editor = "lazygit";
-          diff-formatter = "delta";
+          # hunk needs raw git-format diffs to parse;
+          # jjui preview commands override this back to delta per-invocation.
+          diff-formatter = ":git";
           pager = [
-            delta
-            # apparently jj calls less with -X, pass it through
-            "--pager"
-            "less -FRX"
-          ]
-          ++ deltaArgs;
+            "hunk"
+            "pager"
+          ];
         };
         "--scope" = [
           {
