@@ -13,9 +13,8 @@ return {
     event = me.o.events.buf_early,
     dependencies = {
       { "b0o/schemastore.nvim" },
-      { "folke/neoconf.nvim",  opts = {}, cmd = 'Neoconf' },
-      { "folke/lazydev.nvim",  opts = {} },
-      { "sigmaSd/deno-nvim" }, -- no opts, as we require it down below
+      { "folke/neoconf.nvim", opts = {}, cmd = 'Neoconf' },
+      { "folke/lazydev.nvim", opts = {} },
     },
     keys = {
       { '<leader>llr', '<Cmd>LspRestart<CR>', desc = 'Restart' },
@@ -29,17 +28,14 @@ return {
     config = function()
       require 'lazydev'
       require 'cmp'
-      local lspconfig = require 'lspconfig'
       local servers = {
         lua_ls = {
           settings = {
             Lua = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
               runtime = { version = 'LuaJIT' },
               workspace = {
-                checkThirdParty = false, -- disable unhelpful prompts
+                checkThirdParty = false,
               },
-              -- Do not send telemetry data containing a randomized but unique identifier
               telemetry = { enable = false },
             },
           },
@@ -52,7 +48,9 @@ return {
         terraformls = {},
         gopls = {},
         ansiblels = {},
-        elixirls = {},
+        elixirls = {
+          cmd = { "language_server.sh" },
+        },
         eslint = {},
         cssls = {
           handlers = {
@@ -64,8 +62,12 @@ return {
         dockerls = {},
         zls = {},
         ts_ls = {
-          root_dir = lspconfig.util.root_pattern("package.json"),
-          single_file_support = false
+          root_markers = { "package.json" },
+          workspace_required = true,
+        },
+        denols = {
+          root_markers = { "deno.json", "deno.jsonc" },
+          workspace_required = true,
         },
         jsonls = {
           settings = {
@@ -82,30 +84,24 @@ return {
           settings = {
             yaml = {
               schemas = require('schemastore').yaml.schemas(),
-              schemaStore = { enable = false, url = "" }, -- disable built-in schemaStore support
+              schemaStore = { enable = false, url = "" },
             },
           },
         }
       }
 
-      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = vim.tbl_deep_extend('force', default_capabilities,
-        require('blink.cmp').get_lsp_capabilities({}, false))
+      local capabilities = require('blink.cmp').get_lsp_capabilities({}, false)
       local on_attach = keymaps.lsp_on_attach
 
-      for server, config in pairs(servers) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        config.on_attach = on_attach
-        lspconfig[server].setup(config)
-      end
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
-      require("deno-nvim").setup {
-        server = {
-          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-          capabilities = capabilities,
-          on_attach = on_attach,
-        }
-      }
+      for server, config in pairs(servers) do
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+      end
     end,
   },
 

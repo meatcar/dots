@@ -147,7 +147,7 @@ return {
   -- },
 
   { -- jump around
-    'ggandor/leap.nvim',
+    'https://codeberg.org/andyg/leap.nvim',
     event = me.o.events.verylazy,
     config = function()
       vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
