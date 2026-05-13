@@ -21,6 +21,24 @@
     extra-nix-path = [ "nixpkgs=flake:nixpkgs" ];
   };
 
+  nix.optimise = {
+    automatic = true;
+    interval = {
+      Hour = 3;
+      Minute = 15;
+      Weekday = 0;
+    };
+  };
+  nix.gc = {
+    automatic = true;
+    interval = {
+      Hour = 3;
+      Minute = 30;
+      Weekday = 0;
+    };
+    options = "--delete-older-than 30d";
+  };
+
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
     if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
