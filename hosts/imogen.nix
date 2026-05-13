@@ -39,6 +39,12 @@
     options = "--delete-older-than 30d";
   };
 
+  security.pam.services.sudo_local = {
+    enable = true;
+    touchIdAuth = true;
+    reattach = true;
+  };
+
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
     if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
