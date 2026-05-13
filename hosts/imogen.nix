@@ -32,6 +32,7 @@
     home = "/Users/denys";
     shell = pkgs.fish;
   };
+  users.users.amanda.home = "/Users/amanda";
 
   environment.variables.NH_FLAKE = "/Users/Shared/nix-darwin";
 

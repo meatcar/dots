@@ -41,6 +41,7 @@
             home-manager.backupFileExtension = "hm-bak";
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.denys = import ./users/denys.nix;
+            home-manager.users.amanda = import ./users/amanda.nix;
           }
         ];
       };

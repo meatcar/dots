@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-`nix-darwin` flake. Currently one host: `imogen` (aarch64-darwin), one user: `denys`. Laid out for multi-user.
+`nix-darwin` flake. Currently one host: `imogen` (aarch64-darwin), users: `denys`, `amanda`.
 
 ## Layout
 
