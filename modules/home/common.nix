@@ -22,4 +22,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
+
+  targets.darwin.defaults.NSGlobalDomain.NSStatusItemSpacing = 8;
 }
