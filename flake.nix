@@ -136,6 +136,8 @@
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Amandas-MacBook-Air
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+
       darwinConfigurations."imogen" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
@@ -155,6 +157,10 @@
             home-manager.backupFileExtension = "hm-bak";
             home-manager.users.denys =
               { pkgs, ... }:
+              let
+                userName = "Denys Pavlov";
+                userEmail = "github@denys.me";
+              in
               {
                 home.stateVersion = "25.11";
                 programs.fish = {
@@ -168,12 +174,18 @@
                   enable = true;
                   enableFishIntegration = true;
                 };
-                programs.jujutsu.enable = true;
+                programs.jujutsu = {
+                  enable = true;
+                  settings.user = {
+                    name = userName;
+                    email = userEmail;
+                  };
+                };
                 programs.bat.enable = true;
                 programs.git = {
                   enable = true;
-                  settings.user.name = "Denys Pavlov";
-                  settings.user.email = "github@denys.me";
+                  settings.user.name = userName;
+                  settings.user.email = userEmail;
                 };
                 programs.gh.enable = true;
                 programs.starship = {
