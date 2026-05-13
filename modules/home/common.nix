@@ -12,6 +12,7 @@
   };
   programs.bat.enable = true;
   programs.gh.enable = true;
+  programs.git.ignores = [ ".DS_Store" ];
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
