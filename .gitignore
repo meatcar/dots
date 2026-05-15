@@ -3,3 +3,5 @@ config.nix
 result
 .aider*
 .pre-commit-config.yaml
+.codex
+.claude
