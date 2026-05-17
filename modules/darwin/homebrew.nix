@@ -37,6 +37,7 @@
       "gitup-app"
       "helium-browser"
       "hiddenbar"
+      "karabiner-elements"
       "microsoft-edge"
       "obsidian"
       "raycast"

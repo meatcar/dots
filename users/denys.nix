@@ -6,6 +6,38 @@
     })
   ];
 
+  # Caps Lock → Escape on tap, Left Control on hold.
+  home.file.".config/karabiner/karabiner.json".text = builtins.toJSON {
+    profiles = [
+      {
+        name = "Default profile";
+        selected = true;
+        virtual_hid_keyboard.keyboard_type_v2 = "ansi";
+        complex_modifications.rules = [
+          {
+            description = "Caps Lock → Escape (tap) / Left Control (hold)";
+            manipulators = [
+              {
+                type = "basic";
+                from = {
+                  key_code = "caps_lock";
+                  modifiers.optional = [ "any" ];
+                };
+                to = [
+                  {
+                    key_code = "left_control";
+                    lazy = true;
+                  }
+                ];
+                to_if_alone = [ { key_code = "escape"; } ];
+              }
+            ];
+          }
+        ];
+      }
+    ];
+  };
+
   targets.darwin.defaults = {
     NSGlobalDomain = {
       AppleLanguages = [ "en-CA" ];
