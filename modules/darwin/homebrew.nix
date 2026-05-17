@@ -1,7 +1,11 @@
 {
+  environment.variables.HOMEBREW_UPGRADE_GREEDY = "1";
+
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
+    onActivation.upgrade = true;
+    onActivation.cleanup = "uninstall";
     taps = [
       "barutsrb/tap"
       "oven-sh/bun"
