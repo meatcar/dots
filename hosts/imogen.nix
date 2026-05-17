@@ -58,7 +58,7 @@
   };
   users.users.amanda.home = "/Users/amanda";
 
-  environment.variables.NH_FLAKE = "/Users/Shared/nix-darwin";
+  environment.variables.NH_FLAKE = "/Users/denys/git/hub/meatcar/darwin";
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
   system.stateVersion = 6;
