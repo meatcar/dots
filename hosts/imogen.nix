@@ -1,4 +1,9 @@
-{ pkgs, self, ... }:
+{
+  pkgs,
+  self,
+  inputs,
+  ...
+}:
 {
   imports = [ ../modules/darwin/homebrew.nix ];
 
@@ -7,6 +12,7 @@
     nil
     nixfmt
     nh
+    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.oxfmt
   ];
 
   nix.settings = {
