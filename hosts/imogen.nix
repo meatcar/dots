@@ -58,6 +58,16 @@
     end
   '';
 
+  # Homebrew lives under denys's UID, so its zsh fpath dirs trip compinit's
+  # insecure-owner check for other users (e.g. amanda). Take over nix-darwin's
+  # default init so we can pass `-u` (use insecure dirs without prompting).
+  programs.zsh.enableCompletion = false;
+  programs.zsh.enableBashCompletion = false;
+  programs.zsh.interactiveShellInit = ''
+    autoload -U compinit && compinit -u
+    autoload -U bashcompinit && bashcompinit
+  '';
+
   users.users.denys = {
     home = "/Users/denys";
     shell = pkgs.fish;
