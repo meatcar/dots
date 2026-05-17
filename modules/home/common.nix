@@ -1,4 +1,7 @@
+{ pkgs, ... }:
 {
+  home.packages = [ pkgs.mactop ];
+
   programs.fish = {
     enable = true;
     shellInit = ''
