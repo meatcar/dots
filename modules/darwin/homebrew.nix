@@ -41,7 +41,6 @@
       "obsidian"
       "raycast"
       "stats"
-      "steipete/tap/codexbar"
       "t3-code"
       "tailscale-app"
       "theboredteam/boring-notch/boring-notch"
