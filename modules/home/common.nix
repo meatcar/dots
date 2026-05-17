@@ -17,6 +17,13 @@
     enable = true;
     enableFishIntegration = true;
   };
+  programs.tmux = {
+    enable = true;
+    prefix = "C-a";
+    sensibleOnTop = true;
+    baseIndex = 1;
+    mouse = true;
+  };
   programs.lazygit.enable = true;
   programs.jjui.enable = true;
   programs.direnv = {
