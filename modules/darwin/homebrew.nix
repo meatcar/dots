@@ -33,6 +33,8 @@
       "codex"
       "docker-desktop"
       "font-iosevka-nerd-font"
+      "gitahead"
+      "gitup-app"
       "helium-browser"
       "hiddenbar"
       "microsoft-edge"
