@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ../../modules/power
+    ../power
   ];
 
   # more ram!
@@ -12,10 +12,12 @@
   # suspend-then-hibernate suspends faster, but the wakeup can leave the system in a stuck state.
   services.logind.settings.Login = {
     SleepOperation = "hybrid-sleep";
-    LidSwitch = "sleep";
-    SuspendKey = "sleep";
-    PowerKey = "sleep";
-    PowerKeyLongPress = "poweroff";
+    HandleLidSwitch = "sleep";
+    HandleLidSwitchExternalPower = "sleep";
+    HandleLidSwitchDocked = "ignore";
+    HandleSuspendKey = "sleep";
+    HandlePowerKey = "sleep";
+    HandlePowerKeyLongPress = "poweroff";
   };
 
   boot.kernelParams = [
