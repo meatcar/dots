@@ -2,10 +2,8 @@
 {
   imports = [
     ../power
+    ../zswap
   ];
-
-  # more ram!
-  zramSwap.enable = true;
 
   networking.networkmanager.enable = true;
 
