@@ -216,6 +216,8 @@
 
   programs.kdeconnect.enable = true;
 
+  programs.localsend.enable = true;
+
   environment.enableAllTerminfo = lib.mkForce false;
 
   # for nautilus
