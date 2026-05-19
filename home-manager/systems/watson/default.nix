@@ -42,6 +42,7 @@
     [
       pciutils
       code-cursor
+      slack
       calibre
       gimp
       inkscape
@@ -74,6 +75,7 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "microsoft-edge"
+      "slack"
       "vivaldi"
       "vscode"
       "obsidian"
