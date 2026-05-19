@@ -3,11 +3,13 @@
   config,
   pkgs,
   lib,
+  inputs,
   nixpkgs-unstable,
   ...
 }:
 let
   ghostty = config.programs.ghostty.package;
+  dms = lib.getExe inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
   edit-screenshot = pkgs.writeScript "editScreenshot" ''
     DIRECTORY=~/Pictures/Screenshots
     LATEST=$(ls -t "$DIRECTORY" | head -n 1)
@@ -29,28 +31,13 @@ let
     ];
     text = builtins.readFile ./screen-record.sh;
   };
-  monitors = {
-    internal = "eDP-1";
-    flex = "LG Electronics LG TV SSCR2 0x01010101";
-    vertical = "Samsung Electric Company C27JG5x H4ZN100219";
-  };
-  manage-monitors = pkgs.writeShellScriptBin "manage-monitors" ''
-    if niri msg outputs | grep -q "${monitors.flex}"; then
-      niri msg output "${monitors.internal}" off
-    else
-      niri msg outputs "${monitors.internal}" on
-    fi
-  '';
 in
 {
   imports = [
     ../wayland
     ../fuzzel
     ../nautilus
-    # ../waybar
-    # ../gammastep.nix
-    # ../swaync
-    ../dms # replaces all of the above, and more.
+    ../dms # shell/bar/gui
   ];
   home.packages =
     (with pkgs; [
@@ -62,7 +49,6 @@ in
     ])
     ++ [
       screen-record
-      manage-monitors
     ];
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     Unit = {
@@ -100,38 +86,24 @@ in
     // then override with custom settings
     include "extra-config.kdl"
     // dms provides gui controls for these settings
-    include "dms/alttab.kdl"
-    include "dms/colors.kdl"
-    include "dms/layout.kdl"
-    include "dms/outputs.kdl"
-    include "dms/wpblur.kdl"
-    include "dms/cursor.kdl"
+    include optional=true "dms/alttab.kdl"
+    include optional=true "dms/binds.kdl"
+    include optional=true "dms/colors.kdl"
+    include optional=true "dms/cursor.kdl"
+    include optional=true "dms/layout.kdl"
+    include optional=true "dms/outputs.kdl"
+    include optional=true "dms/windowrules.kdl"
+    include optional=true "dms/wpblur.kdl"
   '';
   xdg.configFile."niri/extra-config.kdl".text = ''
         xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
         spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
         spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "systemctl --user restart dms.service"
-        spawn-at-startup "${manage-monitors}/bin/manage-monitors"
-        output "${monitors.internal}" {
-          variable-refresh-rate on-demand=true
-          scale 1.0
-          transform "normal"
-          position x=0 y=0
-        }
-        output "${monitors.vertical}" {
-          variable-refresh-rate on-demand=true
-          transform "270"
-          position x=0 y=0
-        }
-        output "${monitors.flex}" {
-          transform "normal"
-          mode "3840x2160@60.0"
-          variable-refresh-rate on-demand=true
-        }
         binds {
           Mod+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
           Mod+Shift+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}"; }
           Mod+Shift+P repeat=false { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
+          Mod+Shift+N repeat=false { spawn "${dms}" "ipc" "notifications" "dismissAllPopups"; }
           Mod+E { spawn "${lib.getExe pkgs.nautilus}"; }
           Mod+Shift+S repeat=false { spawn "bash" "-c" "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
     Mod+Alt+Print { spawn "${edit-screenshot}"; }
