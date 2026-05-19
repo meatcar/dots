@@ -8,7 +8,24 @@
 }:
 let
   cfg = config.programs.dank-material-shell;
-  dms = lib.getExe inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  dmsPkg = inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  dms = lib.getExe dmsPkg;
+  dms-toggle-outputs = pkgs.writeShellApplication {
+    name = "dms-toggle-outputs";
+    runtimeInputs = [ dmsPkg ];
+    text = builtins.readFile ./dms-toggle-outputs.sh;
+  };
+  dms-output-watch = pkgs.writeShellApplication {
+    name = "dms-output-watch";
+    runtimeInputs = with pkgs; [
+      systemd # udevadm
+      coreutils # stdbuf, seq, sleep
+      gnugrep
+      dmsPkg
+      dms-toggle-outputs
+    ];
+    text = builtins.readFile ./dms-output-watch.sh;
+  };
   pathPrefix = "PATH=${lib.makeBinPath [ cfg.quickshell.package ]}:$PATH";
 in
 {
@@ -25,7 +42,23 @@ in
   systemd.user.services.dms.Unit.After = [ "niri.service" ];
   home.packages = with pkgs; [
     kdePackages.kimageformats
+    dms-toggle-outputs
   ];
+  # Apply the matched output profile on display hotplug. Niri's IPC event
+  # stream has no output events (as of 26.04), so watch DRM uevents instead.
+  systemd.user.services.dms-output-watch = {
+    Unit = {
+      Description = "Apply matched dms output profile on display hotplug";
+      After = [ "dms.service" ];
+      PartOf = [ "dms.service" ];
+    };
+    Service = {
+      ExecStart = lib.getExe dms-output-watch;
+      Restart = "always";
+      RestartSec = 2;
+    };
+    Install.WantedBy = [ "dms.service" ];
+  };
   systemd.user.services.darkman = {
     Unit = {
       After = [ "dms.service" ];
