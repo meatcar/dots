@@ -20,10 +20,9 @@
           gnupg
           (pkgs.writeShellScriptBin "agenix" ''
             exec ${inputs.agenix.packages.${system}.default}/bin/agenix \
-              -i ~/.config/age/age-plugin-1p-identity.txt \
+              -i ~/.config/age/id_ed25519 \
               "$@"
           '')
-          age-plugin-1p
           nil # nix lsp server
           nixd
         ];

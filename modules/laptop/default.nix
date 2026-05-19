@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../power
@@ -6,6 +6,22 @@
   ];
 
   networking.networkmanager.enable = true;
+
+  # TODO: remove once we identify what's triggering hybrid-sleep.
+  systemd.services.suspend-trigger-trace = {
+    description = "Trace D-Bus sleep/suspend/hibernate method calls on login1";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "dbus.service" ];
+    serviceConfig = {
+      Type = "simple";
+      Restart = "on-failure";
+      ExecStart = pkgs.writeShellScript "suspend-trigger-trace" ''
+        ${pkgs.dbus}/bin/dbus-monitor --system \
+          "type='method_call',interface='org.freedesktop.login1.Manager'" \
+          | ${pkgs.gnugrep}/bin/grep --line-buffered -E "Suspend|Hibern|Sleep"
+      '';
+    };
+  };
 
   # suspend-then-hibernate suspends faster, but the wakeup can leave the system in a stuck state.
   services.logind.settings.Login = {
