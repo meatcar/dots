@@ -1,6 +1,5 @@
 {
   imports = [
     ./handy
-    ./pocket-tts
   ];
 }
