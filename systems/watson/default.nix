@@ -114,6 +114,7 @@
     radeontop
     v4l-utils
     perf
+    amdgpu_top
 
     iw
     tcpdump
