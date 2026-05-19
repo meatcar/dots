@@ -50,7 +50,7 @@
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-rename-hdmi.conf" ''
         monitor.alsa.rules = [
           {
-            matches = [{ node.nick = "LG TV SSCR2" }],
+            matches = [{ node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI1__sink" }],
             actions = { update-props = { node.description = "LG Flex Monitor" } }
           }
         ]
