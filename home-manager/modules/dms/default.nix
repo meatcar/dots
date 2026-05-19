@@ -33,14 +33,16 @@ in
     };
   };
   # Bind 1Password to DMS so it cannot start until DMS is active and stops
-  # when DMS stops. BindsTo= + After= together enforce that 1Password is never
-  # active while the SNI watcher (hosted by quickshell) is not ready, ensuring
-  # tray icon registration succeeds on boot and after DMS restarts.
+  # when DMS stops. dms.service going active is not sufficient — quickshell
+  # claims org.kde.StatusNotifierWatcher asynchronously after the service is
+  # ready, and 1Password only attempts tray registration once at startup. Block
+  # on the bus name with gdbus wait so the SNI watcher is guaranteed present.
   systemd.user.services."1password" = {
     Unit = {
       After = [ "dms.service" ];
       BindsTo = [ "dms.service" ];
     };
+    Service.ExecStartPre = "${pkgs.glib.bin}/bin/gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher";
   };
 
   services.darkman = {
