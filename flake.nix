@@ -142,6 +142,7 @@
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
+            codexbar = final.callPackage ./pkgs/codexbar { };
             rodney = final.callPackage ./pkgs/rodney { };
             showboat = final.callPackage ./pkgs/showboat { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
