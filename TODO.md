@@ -1,4 +1,4 @@
 - [-] configure raycast per-user
     - impossible, explore sync later.
-- [ ] reorganize using flake-parts
+- [x] reorganize using flake-parts
 - [ ] integrated with `meatcar/dots`

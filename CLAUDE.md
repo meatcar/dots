@@ -6,14 +6,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Layout
 
-- `flake.nix` — inputs, outputs wiring.
+Built with [flake-parts](https://flake.parts). `flake.nix` is a minimal `mkFlake` entry point that imports the modules under `flakeModules/`.
+
+- `flake.nix` — inputs and `mkFlake` entry point; imports the modules under `flakeModules/`.
+- `flakeModules/darwin.nix` — declares `darwinConfigurations`; list new hosts here.
+- `flakeModules/dev.nix` — `nix develop` shell and `treefmt` formatter config.
 - `hosts/<host>.nix` — per-host darwin system config. Imports darwin modules.
 - `modules/darwin/` — system-level darwin modules (homebrew, etc.).
 - `modules/home/common.nix` — home-manager modules shared by every user.
 - `lib/mkUser.nix` — helper that builds an HM module from `{ fullName, email }`.
 - `users/<user>.nix` — per-user HM config; imports `mkUser` + user-specific extras.
 
-To add a user: create `users/<name>.nix` (model on `users/denys.nix`), add a `users.users.<name>` block to `hosts/imogen.nix`, and add `home-manager.users.<name> = import ./users/<name>.nix;` in `flake.nix`.
+- To add a user: create `users/<name>.nix` (model on `users/denys.nix`), add a `users.users.<name>` block to the host file, and add `home-manager.users.<name> = import ../users/<name>.nix;` inside `mkHost` in `flakeModules/darwin.nix`.
+- To add a host: create `hosts/<name>.nix`, then add `<name> = mkHost ../hosts/<name>.nix;` to `flake.darwinConfigurations` in `flakeModules/darwin.nix`.
 
 ## Commands
 
@@ -23,6 +28,7 @@ To add a user: create `users/<name>.nix` (model on `users/denys.nix`), add a `us
 - Build only: `nh darwin build`
 - Update inputs: `nix flake update`
 - Format: `nix fmt`
+- Dev shell: `nix develop`
 
 ## Where things go
 
