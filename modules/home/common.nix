@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.mactop ];
+  home.packages = [
+    (pkgs.mactop.overrideAttrs (_: { doCheck = false; }))
+  ];
 
   programs.fish = {
     enable = true;

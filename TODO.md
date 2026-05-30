@@ -2,3 +2,5 @@
     - impossible, explore sync later.
 - [x] reorganize using flake-parts
 - [ ] integrated with `meatcar/dots`
+- [ ] update to 26.05
+- [ ] drop `doCheck = false` mactop override in `modules/home/common.nix` once nixpkgs-26.05-darwin ships mactop ≥ 2.1.3 (PR NixOS/nixpkgs#523550, merged 2026-05-30)
