@@ -4,3 +4,4 @@
 - [ ] integrated with `meatcar/dots`
 - [ ] update to 26.05
 - [ ] drop `doCheck = false` mactop override in `modules/home/common.nix` once nixpkgs-26.05-darwin ships mactop ≥ 2.1.3 (PR NixOS/nixpkgs#523550, merged 2026-05-30)
+- [ ] drop the `programs.fish.shellAliases.yy = "y";` shim in `modules/home/common.nix` once the new yazi wrapper name `y` is in muscle memory (added with the 25.11 → 26.05 `home.stateVersion` bump)

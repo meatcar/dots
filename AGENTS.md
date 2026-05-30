@@ -4,8 +4,6 @@ This file provides guidance to coding agents (Claude Code, Codex, etc.) when wor
 
 `nix-darwin` flake. Currently one host: `imogen` (aarch64-darwin), users: `denys`, `amanda`.
 
-> macOS note: copying to non-Apple filesystems (FAT, exFAT, most network shares) scatters `._*` AppleDouble sidecar files to store xattrs. Plain `rsync` (no `-X`/`-A`) avoids the `copyfile()` path that `cp`/`mv` use and is less prone to this, but doesn't eliminate it — existing `._*` files copy through as-is, and some configurations still produce new ones. Run `dot_clean <path>` afterward to merge/remove them.
-
 ## Layout
 
 Built with [flake-parts](https://flake.parts). `flake.nix` is a minimal `mkFlake` entry point that imports the modules under `flakeModules/`.
