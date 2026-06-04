@@ -12,6 +12,7 @@ REAL_HOME=$(getent passwd "${SUDO_USER:-$(whoami)}" | cut -d: -f6)
 if [ -n "${1:-}" ]; then
   DIR="$1"
 else
+  # shellcheck disable=SC2012
   DIR=$(ls -dt "${REAL_HOME}/Downloads/power-runs"/[0-9]* 2>/dev/null | head -1)
   if [ -z "${DIR}" ]; then
     echo "error: no run dirs found in ~/Downloads/power-runs/" >&2

@@ -15,7 +15,7 @@
   documentation = {
     enable = true;
     man.enable = true;
-    man.generateCaches = true;
+    man.cache.enable = true;
     nixos.enable = true;
     dev.enable = true;
   };

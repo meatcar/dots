@@ -72,6 +72,7 @@ while [ "${stop}" -eq 0 ]; do
   bl_pct=$((bl_cur * 100 / bl_max))
 
   # top 3 processes (exclude ps itself)
+  # shellcheck disable=SC2009
   top3=$(ps -eo pid,pcpu,comm --sort=-pcpu --no-headers 2>/dev/null |
     grep -v ' ps$' | head -3)
   t1=$(echo "${top3}" | sed -n '1p')

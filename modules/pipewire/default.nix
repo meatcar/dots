@@ -1,9 +1,8 @@
-{ pkgs, nixpkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   # security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    package = nixpkgs-unstable.pipewire;
     pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;

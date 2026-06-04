@@ -24,7 +24,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     # rest
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix = {
       # secrets
@@ -45,7 +45,7 @@
     # hardware incantations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
@@ -149,21 +149,6 @@
             trufflehog-scrub = final.callPackage ./pkgs/trufflehog-scrub { };
             weave-merge = final.callPackage ./pkgs/weave { };
           })
-          # aw-server-rust: use standalone repo HEAD for cors_regex support (ActivityWatch/aw-server-rust#569)
-          # not yet in any tagged activitywatch monorepo release
-          (final: prev: {
-            aw-server-rust = prev.aw-server-rust.overrideAttrs (_: rec {
-              src = final.fetchFromGitHub {
-                owner = "ActivityWatch";
-                repo = "aw-server-rust";
-                rev = "9a8802a374d8e9f587b343dfedf3859ec1a9bba2";
-                hash = "sha256-PhPGZMqg2b2Vb/EZ8DgBi5Z4S6kzepwEhZX7e/rjWsU=";
-              };
-              cargoDeps = prev.rustPlatform.importCargoLock {
-                lockFile = "${src}/Cargo.lock";
-              };
-            });
-          })
         ];
       };
       specialArgs = { inherit inputs; };
@@ -253,7 +238,10 @@
               }
             ];
             iso = mkSystem "x86_64-linux" [
-              { system.stateVersion = "25.11"; }
+              {
+                system.stateVersion = "25.11";
+                boot.zfs.forceImportRoot = false;
+              }
               (
                 {
                   pkgs,

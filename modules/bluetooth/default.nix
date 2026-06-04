@@ -1,12 +1,7 @@
-{
-  pkgs,
-  nixpkgs-unstable,
-  ...
-}:
+{ pkgs, ... }:
 {
   hardware.bluetooth = {
     enable = true;
-    package = nixpkgs-unstable.bluez;
     powerOnBoot = true;
     # hsphfpd.enable = !config.services.pipewire.wireplumber.enable; # conflicts
     settings = {

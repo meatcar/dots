@@ -39,6 +39,7 @@ if [ "$(id -u)" -eq 0 ]; then
     while kill -0 "${RECORD_PID}" 2>/dev/null; do
       sleep 300
       out="${DIR}/powertop-$(date +%s).html"
+      # shellcheck disable=SC2015
       powertop --time=30 --html="${out}" >/tmp/powertop-err 2>&1 &&
         echo "==> powertop -> ${out}" ||
         {

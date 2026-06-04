@@ -1,7 +1,4 @@
-{
-  nixpkgs-unstable,
-  ...
-}:
+{ pkgs, ... }:
 {
   # Allow rootless podman/traefik to bind port 80 for local container routing
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
@@ -26,7 +23,6 @@
     autoPrune.enable = true;
     dockerSocket.enable = true;
     defaultNetwork.settings.dns_enabled = true;
-    package = nixpkgs-unstable.podman;
   };
 
   # NixOS sets a default PATH for systemd user services that excludes
@@ -42,7 +38,7 @@
   systemd.services.podman.environment.LOGGING = "--log-level=warning";
   systemd.user.services.podman.environment.LOGGING = "--log-level=warning";
 
-  environment.systemPackages = with nixpkgs-unstable; [
+  environment.systemPackages = with pkgs; [
     runc
     conmon
     skopeo

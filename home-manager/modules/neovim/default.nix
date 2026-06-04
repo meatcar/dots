@@ -12,6 +12,12 @@
   programs.neovim = {
     enable = true;
     withNodeJs = true;
+    # Keep legacy defaults (new defaults in stateVersion >= 26.05 are false)
+    withRuby = true;
+    withPython3 = true;
+    # xdg.configFile."nvim" is an outOfStoreSymlink; pass generated plugin
+    # init via --cmd instead of writing to ~/.config/nvim/init.lua
+    sideloadInitLua = true;
 
     plugins = with pkgs.vimPlugins; [
       sqlite-lua
@@ -36,10 +42,10 @@
       terraform-ls
       gopls
       elixir-ls
-      nodePackages.vscode-langservers-extracted # css,eslint,html,json,markdown
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.bash-language-server
+      vscode-langservers-extracted # css,eslint,html,json,markdown
+      typescript
+      typescript-language-server
+      bash-language-server
       dockerfile-language-server
 
       # formatters

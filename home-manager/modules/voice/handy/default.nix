@@ -2,15 +2,10 @@
   pkgs,
   config,
   inputs,
-  nixpkgs-unstable,
   ...
 }:
 let
-  # Handy follows nixpkgs-unstable, so its alsa-lib differs from the NixOS
-  # system's (nixos-stable). The system's /etc/alsa/conf.d/ pipewire plugins
-  # link stable's alsa-lib, causing dlopen failures. Fix: use unstable's
-  # pipewire and alsa-lib so the plugin matches handy's linked alsa-lib.
-  pw = nixpkgs-unstable.pipewire;
+  pw = pkgs.pipewire;
 
   # NixOS generates 49-pipewire-modules.conf to map pcm_type/ctl_type to
   # explicit .so paths. Without it ALSA can't find the pipewire plugin.
@@ -29,7 +24,7 @@ let
     cp ${pipewireModulesConf} $out/conf.d/49-pipewire-modules.conf
 
     sed 's|"/etc/alsa/conf.d"|"'"$out"'/conf.d"|' \
-      ${nixpkgs-unstable.alsa-lib}/share/alsa/alsa.conf > $out/alsa.conf
+      ${pkgs.alsa-lib}/share/alsa/alsa.conf > $out/alsa.conf
   '';
 
   python = pkgs.python3.withPackages (p: [ p.evdev ]);
