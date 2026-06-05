@@ -28,7 +28,7 @@
   # Configure lanzaboote for secureboot
   boot.lanzaboote = {
     enable = lib.mkDefault true;
-    configurationLimit = 5;
+    configurationLimit = 20;
     pkiBundle = lib.mkDefault "/var/lib/sbctl";
   };
 }
