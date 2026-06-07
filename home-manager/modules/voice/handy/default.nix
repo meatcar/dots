@@ -35,6 +35,7 @@ in
 {
   imports = [ inputs.handy.homeManagerModules.default ];
 
+  services.handy.package = pkgs.llm-agents.handy;
   services.handy.enable = true;
 
   # Upstream module doesn't support --start-hidden or ALSA workaround

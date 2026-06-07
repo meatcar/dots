@@ -8,6 +8,7 @@
       "https://wurzelpfropf.cachix.org" # ragenix
       "https://ghostty.cachix.org"
       "https://attic.xuyh0120.win/lantian" # nix-cachyos-kernel
+      "https://cache.numtide.com" # llm-agents.nix
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -16,6 +17,7 @@
       "wurzelpfropf.cachix.org:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
       "ghostty.cachix.org:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
@@ -82,6 +84,9 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
@@ -140,11 +145,14 @@
         overlays = [
           inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
+          inputs.llm-agents.overlays.default
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
             codexbar = final.callPackage ./pkgs/codexbar { };
+            hunk = final.callPackage ./pkgs/hunk { };
+            opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
-            showboat = final.callPackage ./pkgs/showboat { };
+            showboat = final.llm-agents.showboat;
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
             trufflehog-scrub = final.callPackage ./pkgs/trufflehog-scrub { };
             weave-merge = final.callPackage ./pkgs/weave { };

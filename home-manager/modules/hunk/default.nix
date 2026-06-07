@@ -1,6 +1,8 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [ inputs.hunk.homeManagerModules.default ];
+
+  programs.hunk.package = pkgs.hunk;
 
   programs.hunk = {
     enable = true;
