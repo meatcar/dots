@@ -4,11 +4,15 @@
   ...
 }:
 {
-  # Prevent darkman from pulling graphical-session.target active before the
-  # compositor is ready. PartOf= (already set upstream) handles the lifecycle;
-  # BindsTo= is the one that races the compositor via early D-Bus activation.
-  # If this isn't enough, also add Restart=on-failure to xdg-desktop-portal-gtk.
-  systemd.user.services.darkman.Unit.BindsTo = lib.mkForce [ ];
+  # BindsTo=graphical-session.target was removed to prevent D-Bus activation of
+  # darkman from pulling graphical-session.target active before the compositor
+  # is ready. BindsTo implicitly adds After=; restore that ordering explicitly
+  # so darkman doesn't participate in the graphical-session.target activation
+  # job before dms (which is After=graphical-session.target) is ready.
+  systemd.user.services.darkman.Unit = {
+    BindsTo = lib.mkForce [ ];
+    After = [ "graphical-session.target" ];
+  };
 
   services.darkman = {
     darkModeScripts = {
