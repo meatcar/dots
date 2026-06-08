@@ -3,10 +3,11 @@
 # DRM connector hotplug emits kernel "change" uevents on the card device,
 # readable without root via the udev netlink socket.
 
-# Apply the matched profile once at startup: outputs may have changed while
-# the machine was off, leaving a stale profile active. dms.service being
-# active does not mean its IPC is ready yet (cf. the 1password gdbus wait
-# above in default.nix), so poll for it first.
+# Apply the matched profile once at startup only if the active profile
+# doesn't already match the connected outputs (i.e. outputs changed while
+# the machine was off). dms.service being active does not mean its IPC is
+# ready yet (cf. the 1password gdbus wait above in default.nix), so poll
+# for it first.
 for _ in $(seq 30); do
   if dms ipc outputs listProfiles 2>/dev/null | grep -q ' -> '; then
     break
@@ -14,7 +15,15 @@ for _ in $(seq 30); do
   sleep 1
 done
 sleep 2 # let output detection settle before trusting the "matched" tag
-dms-toggle-outputs || echo "warning: failed to apply matched profile at startup" >&2
+
+# If the active profile is already tagged "matched", DMS has loaded the
+# right profile for the connected outputs — no switch needed. Only switch
+# when the active profile is stale (outputs changed while the machine was off).
+list=$(dms ipc outputs listProfiles 2>/dev/null)
+active_line=$(printf '%s\n' "${list}" | grep ' \[[^]]*active[^]]*\] ->' | head -n1)
+if ! printf '%s\n' "${active_line}" | grep -q 'matched'; then
+  dms-toggle-outputs || echo "warning: failed to apply matched profile at startup" >&2
+fi
 
 # Lines look like: KERNEL[1234.5678] change /devices/.../drm/card1 (drm)
 stdbuf -oL udevadm monitor --kernel --subsystem-match=drm |
