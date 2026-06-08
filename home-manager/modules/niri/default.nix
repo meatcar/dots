@@ -102,8 +102,7 @@ in
         binds {
           Mod+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
           Mod+Shift+Return repeat=false { spawn "${lib.getExe pkgs.ghostty}"; }
-          Mod+Shift+P repeat=false { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
-          Mod+Shift+N repeat=false { spawn "${dms}" "ipc" "notifications" "dismissAllPopups"; }
+          Mod+Shift+Space repeat=false { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
           Mod+E { spawn "${lib.getExe pkgs.nautilus}"; }
           Mod+Shift+S repeat=false { spawn "bash" "-c" "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
     Mod+Alt+Print { spawn "${edit-screenshot}"; }

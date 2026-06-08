@@ -103,17 +103,21 @@ binds {
     XF86AudioRaiseVolume { spawn "dms" "ipc" "audio" "increment" "1"; }
     XF86MonBrightnessDown { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
     XF86MonBrightnessUp { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
+    XF86Tools { spawn "dms" "ipc" "settings" "open"; }
 
-    Mod+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
+    Mod+Ctrl+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
     Mod+Shift+Q { spawn "dms" "ipc" "powermenu" "toggle"; }
 
-    Mod+D { close-window; }
-    Mod+Z { expand-column-to-available-width; }
-    Mod+Shift+Z { maximize-window-to-edges; }
-    Mod+F { fullscreen-window; }
-    Mod+Shift+F { toggle-windowed-fullscreen; }
+    Mod+Q { close-window; }
+    Mod+W { close-window; }
+    Mod+Ctrl+F { fullscreen-window; }
+    Mod+Shift+Z { toggle-windowed-fullscreen; }
+    Mod+X { expand-column-to-available-width; }
+    Mod+Shift+X { maximize-window-to-edges; }
+    Mod+M { toggle-window-floating; }
+    Mod+F { switch-focus-between-floating-and-tiling; }
 
-    Mod+B { center-window; }
+    Mod+B { center-column; }
 
     Mod+H { focus-column-or-monitor-left; }
     Mod+J { focus-window-or-workspace-down; }
@@ -145,7 +149,9 @@ binds {
     Mod+Shift+Bracketright { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Shift+R { switch-preset-window-width-back; }
+    Mod+Alt+R { switch-preset-window-height; }
+    Mod+Alt+Shift+R { switch-preset-window-height-back; }
     Mod+T { toggle-column-tabbed-display; }
 
     Mod+Minus { set-column-width "-5%"; }
@@ -154,12 +160,11 @@ binds {
     Mod+Shift+Equal { set-window-height "+5%"; }
     Mod+Shift+0 { reset-window-height; }
 
-    Mod+Space { switch-focus-between-floating-and-tiling; }
-    Mod+Shift+Space { toggle-window-floating; }
+    Mod+Space repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
 
-    Mod+S { set-dynamic-cast-monitor; }
-    Mod+W { set-dynamic-cast-window; }
-    Mod+Shift+W { clear-dynamic-cast-target; }
+    Mod+Grave { set-dynamic-cast-window; }
+    Mod+Shift+Grave { clear-dynamic-cast-target; }
+    Mod+Alt+Grave { set-dynamic-cast-monitor; }
 
     Print { screenshot; }
     Mod+Print { screenshot-window; }
@@ -168,12 +173,11 @@ binds {
 
     Mod+C { spawn "dms" "color" "pick" "-a"; }
     Mod+N { spawn "dms" "ipc" "notifications" "toggle"; }
+    Mod+Shift+N repeat=false { spawn "dms" "ipc" "notifications" "dismissAllPopups"; }
     Mod+O { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
-    Mod+P repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
-    Mod+Period { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":"; }
-    Mod+Shift+Return repeat=false { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty"; }
-    Mod+V { spawn "dms" "ipc" "call" "clipboard" "open"; }
-    Mod+Semicolon repeat=false { spawn "ptt" "KEY_SEMICOLON" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
+    Mod+Period { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
+    Mod+P { spawn "dms" "ipc" "settings" "openWith" "displays"; }
+    Mod+V { spawn "dms" "ipc" "clipboard" "open"; }
     Mod+Insert repeat=false { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
 }
 window-rule {
