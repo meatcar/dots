@@ -67,8 +67,16 @@ in
       }
       aw-watcher-tmux
       pkgs.opensessions
+      {
+        plugin = tmuxPlugins.tmux-which-key;
+        extraConfig = ''
+          set -g @tmux-which-key-xdg-enable 1
+        '';
+      }
     ];
   };
+
+  xdg.configFile."tmux/plugins/tmux-which-key/config.yaml".source = ./whichkey.yaml;
 
   home.packages =
     let
