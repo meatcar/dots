@@ -92,6 +92,12 @@ return {
     keys = {
       { "<leader>tT", ":TSContextToggle<CR>", desc = 'Top TS context' }
     },
+    init = function()
+      -- TODO: remove workaround once fixed upstream
+      -- see: https://github.com/nvim-treesitter/nvim-treesitter-context/issues/670
+      -- see: https://github.com/nvim-treesitter/nvim-treesitter-context/pull/674
+      vim.g._ts_force_sync_parsing = true
+    end,
     opts = {}
   }
 }
