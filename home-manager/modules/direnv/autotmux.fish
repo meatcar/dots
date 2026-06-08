@@ -33,7 +33,7 @@ function autotmux --description "Attach to tmux session for current direnv proje
       tmux attach-session -t "$TMUX_SESSION_NAME"
     else
       echo "starting session $TMUX_SESSION_NAME" >&2
-      tmux new-session -t "$TMUX_SESSION_NAME"
+      tmux new-session -s "$TMUX_SESSION_NAME"
     end
   end
 end
@@ -62,8 +62,17 @@ function __autotmux_should_attach --description "Return success if no tmux clien
   return 1
 end
 
-function __autotmux_on_direnv_enter --on-variable=DIRENV_DIR --description "Start tmux session when entering a direnv project"
-  if __autotmux_should_attach
+function __autotmux_on_direnv_enter --on-variable=DIRENV_DIR --description "Start or switch to tmux session when entering a direnv project"
+  if test -n "$TMUX" && command -qs tmux
+    # Inside tmux: switch to the project session if it already exists.
+    # Only create sessions from outside tmux; inside, just navigate.
+    set -l session_name (__autotmux_session_name)
+    test -z "$session_name" && return
+    set -l current (tmux display-message -p '#{session_name}' 2>/dev/null)
+    if test "$current" != "$session_name" && tmux has-session -t "$session_name" 2>/dev/null
+      tmux switch-client -t "$session_name"
+    end
+  else if __autotmux_should_attach
     autotmux
   end
 end

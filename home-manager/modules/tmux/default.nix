@@ -45,7 +45,16 @@ in
     aggressiveResize = true;
     secureSocket = false;
     terminal = "tmux-256color";
-    extraConfig = builtins.readFile ./tmux.conf;
+    # Use /bin/sh as default-shell so commands passed to split-window (e.g. by
+    # opensessions) can use POSIX ${VAR:-default} syntax, which fish rejects.
+    # default-command keeps interactive panes running fish.
+    shell = "/bin/sh";
+    extraConfig = builtins.readFile ./tmux.conf + ''
+      set -g default-command ${pkgs.fish}/bin/fish
+      # Sessionizer search roots for opensessions' n/c new-session popup.
+      set-environment -g SESSIONIZER_DIR "$HOME/git/hub"
+      set-environment -g SESSIONIZER_MAXDEPTH 3
+    '';
     plugins = [
       tmuxPlugins.sensible
       tmuxPlugins.yank
@@ -57,6 +66,7 @@ in
         '';
       }
       aw-watcher-tmux
+      pkgs.opensessions
     ];
   };
 
@@ -71,7 +81,7 @@ in
         fmt='#{session_id}:|#{?#{session_grouped},@#{session_group},###{session_name}}'
         # fmt='#{session_id}:|#S|(#{session_attached} attached)'
         { ${tmux} display-message -p -F "$fmt" && ${tmux} list-sessions -F "$fmt"; } \
-            | awk -F '|' '!seen[$2]++' \
+            | awk -F '|' '$2 != "_os_stash" && !seen[$2]++' \
             | column -t -s'|' \
             | ${fzf} --reverse --prompt "$prompt> " \
             | cut -d':' -f1

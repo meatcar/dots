@@ -12,6 +12,7 @@ touch "$tmux_calls"
 # Mock tmux with adjustable behavior
 set -g tmux_has_session 1
 set -g tmux_clients ""
+set -g tmux_current_session "other-session"
 function tmux
     switch "$argv[1]"
         case "has-session"
@@ -21,7 +22,10 @@ function tmux
                 printf "%s" "$tmux_clients"
             end
             return 0
-        case "attach-session" "new-session"
+        case "display-message"
+            printf "%s" "$tmux_current_session"
+            return 0
+        case "attach-session" "new-session" "switch-client"
             echo "$argv" >> $tmux_calls
             return 0
         case "*"
@@ -65,10 +69,10 @@ set -e TMUX_SESSION_NAME
 
 autotmux
 set -l tmux_output (cat "$tmux_calls")
-if string match -q "*new-session*" "$tmux_output"
-    printf "✓ test 3: tmux starts new session\n"
+if string match -q "*new-session -s*" "$tmux_output"
+    printf "✓ test 3: tmux starts new session with -s\n"
 else
-    printf "✗ test 3 failed: tmux new-session not called. Output: '%s'\n" "$tmux_output" >&2
+    printf "✗ test 3 failed: tmux new-session -s not called (got: '%s')\n" "$tmux_output" >&2
     exit 1
 end
 
@@ -145,6 +149,55 @@ else
     printf "✗ test 8 failed: prompt hook should fire once only (first: '%s', second: '%s')\n" "$first_session_name" "$second_session_name" >&2
     exit 1
 end
+
+# Test 9: inside tmux, session exists, not current → switch-client
+reset_tmux_calls
+set -x TMUX "attached"
+set -g tmux_has_session 0
+set -g tmux_current_session "other-session"
+
+set -e DIRENV_DIR
+set -x DIRENV_DIR "$project_dir"
+set -l tmux_output (cat "$tmux_calls")
+if string match -q "*switch-client*project*" "$tmux_output"
+    printf "✓ test 9: inside tmux switches to existing project session\n"
+else
+    printf "✗ test 9 failed: switch-client not called. Output: '%s'\n" "$tmux_output" >&2
+    exit 1
+end
+
+# Test 10: inside tmux, session missing → no switch
+reset_tmux_calls
+set -x TMUX "attached"
+set -g tmux_has_session 1
+set -g tmux_current_session "other-session"
+
+set -e DIRENV_DIR
+set -x DIRENV_DIR "$project_dir"
+set -l tmux_output (cat "$tmux_calls")
+if test -z "$tmux_output"
+    printf "✓ test 10: inside tmux does nothing when session missing\n"
+else
+    printf "✗ test 10 failed: should not call tmux. Output: '%s'\n" "$tmux_output" >&2
+    exit 1
+end
+
+# Test 11: inside tmux, already in target session → no switch
+reset_tmux_calls
+set -x TMUX "attached"
+set -g tmux_has_session 0
+set -g tmux_current_session "project"
+
+set -e DIRENV_DIR
+set -x DIRENV_DIR "$project_dir"
+set -l tmux_output (cat "$tmux_calls")
+if test -z "$tmux_output"
+    printf "✓ test 11: inside tmux skips switch when already in project session\n"
+else
+    printf "✗ test 11 failed: should not switch when already in session. Output: '%s'\n" "$tmux_output" >&2
+    exit 1
+end
+set -e TMUX
 
 # Cleanup
 functions -e tmux
