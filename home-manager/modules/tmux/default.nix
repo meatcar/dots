@@ -71,6 +71,8 @@ in
         plugin = tmuxPlugins.tmux-which-key;
         extraConfig = ''
           set -g @tmux-which-key-xdg-enable 1
+          set -g @tmux-which-key-disable-autobuild 1
+          set -g @tmux-which-key-xdg-plugin-path tmux-plugins/tmux-which-key
         '';
       }
     ];
