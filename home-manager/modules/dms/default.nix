@@ -8,7 +8,7 @@
 }:
 let
   cfg = config.programs.dank-material-shell;
-  dmsPkg = inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  dmsPkg = import ./dms-shell.nix { inherit pkgs inputs; };
   dms = lib.getExe dmsPkg;
   dms-toggle-outputs = pkgs.writeShellApplication {
     name = "dms-toggle-outputs";
@@ -31,6 +31,7 @@ in
 {
   programs.dank-material-shell = {
     enable = true;
+    package = dmsPkg;
     systemd.enable = true;
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;

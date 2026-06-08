@@ -9,13 +9,9 @@
 # ready yet (cf. the 1password gdbus wait above in default.nix), so poll
 # for it first.
 for _ in $(seq 30); do
-  result=$(dms ipc outputs listProfiles 2>/dev/null)
-  case "${result}" in
-  *" -> "*) break ;;
-  # IPC is up but profiles not yet validated (async validateProfiles() may have
-  # run before CompositorService.compositor was set); refresh triggers re-validation.
-  "No profiles"*) dms ipc outputs refresh 2>/dev/null ;;
-  esac
+  if dms ipc outputs listProfiles 2>/dev/null | grep -q ' -> '; then
+    break
+  fi
   sleep 1
 done
 sleep 2 # let output detection settle before trusting the "matched" tag

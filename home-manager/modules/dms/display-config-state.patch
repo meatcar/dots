@@ -1,0 +1,19 @@
+--- a/share/quickshell/dms/Modules/Settings/DisplayConfig/DisplayConfigState.qml
++++ b/share/quickshell/dms/Modules/Settings/DisplayConfig/DisplayConfigState.qml
+@@ -362,6 +362,16 @@ pragma Singleton
+     onSavedOutputsChanged: allOutputs = buildAllOutputsMap()
+
+     Connections {
++        target: CompositorService
++        function onCompositorChanged() {
++            if (CompositorService.compositor !== "unknown") {
++                root.checkIncludeStatus();
++                root.validateProfiles();
++            }
++        }
++    }
++
++    Connections {
+         target: WlrOutputService
+         function onStateChanged() {
+             root.outputs = root.buildOutputsMap();
