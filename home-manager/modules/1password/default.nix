@@ -15,9 +15,7 @@ let
   '';
 in
 {
-  programs.ssh.matchBlocks."*".extraOptions = {
-    IdentityAgent = "~/.1password/agent.sock";
-  };
+  programs.ssh.settings."*".IdentityAgent = "~/.1password/agent.sock";
   programs.git.settings."gpg \"ssh\"" = {
     program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
   };

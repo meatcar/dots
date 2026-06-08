@@ -7,9 +7,5 @@
     wireguard-tools
   ];
 
-  programs.ssh.matchBlocks = {
-    "*" = {
-      identityFile = "~/.ssh/keys/id_ed25519";
-    };
-  };
+  programs.ssh.settings."*".IdentityFile = "~/.ssh/keys/id_ed25519";
 }

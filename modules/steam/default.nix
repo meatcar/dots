@@ -8,10 +8,10 @@ let
   extraLibraries =
     p: with p; [
       # X11 libraries
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
+      libxcursor
+      libxi
+      libxinerama
+      libxscrnsaver
 
       # System libraries
       stdenv.cc.cc.lib
@@ -41,7 +41,7 @@ let
 
       # for nix-ld
       libGLU
-      xorg.libX11
+      libx11
       nspr
     ];
   extraPkgs =
