@@ -41,16 +41,11 @@
     fontDir.enable = true;
     packages = with pkgs; [
       # icons
-      noto-fonts-color-emoji
       font-awesome_4
       nerd-fonts.symbols-only
       # web
       corefonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
       noto-fonts
-      # proportional
-      inter
       # monospace
       go-font
       (iosevka-bin.override { variant = "SS07"; })
