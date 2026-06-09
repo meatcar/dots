@@ -162,16 +162,16 @@ binds {
 
     Mod+Space repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
 
-    Mod+Grave { set-dynamic-cast-window; }
-    Mod+Shift+Grave { clear-dynamic-cast-target; }
-    Mod+Alt+Grave { set-dynamic-cast-monitor; }
+    Mod+C { set-dynamic-cast-window; }
+    Mod+Shift+C { clear-dynamic-cast-target; }
+    Mod+Alt+C { set-dynamic-cast-monitor; }
 
     Print { screenshot; }
     Mod+Print { screenshot-window; }
     Mod+Shift+Print { screenshot-screen; }
     Mod+Ctrl+Print { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty" "--title=float" "-e" "/nix/store/8ympds7aryqv8irbcck8m1d97rx34vqg-screen-record/bin/screen-record" "-g"; }
 
-    Mod+C { spawn "dms" "color" "pick" "-a"; }
+    Mod+Shift+P { spawn "dms" "color" "pick" "-a"; }
     Mod+N { spawn "dms" "ipc" "notifications" "toggle"; }
     Mod+Shift+N repeat=false { spawn "dms" "ipc" "notifications" "dismissAllPopups"; }
     Mod+O { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
@@ -179,6 +179,16 @@ binds {
     Mod+P { spawn "dms" "ipc" "settings" "openWith" "displays"; }
     Mod+V { spawn "dms" "ipc" "clipboard" "open"; }
     Mod+Insert repeat=false { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
+}
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 150
+    binds {
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+Grave       { next-window filter="app-id"; }
+        Mod+Shift+Grave { previous-window filter="app-id"; }
+    }
 }
 window-rule {
     open-focused true
