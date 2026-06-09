@@ -1,28 +1,30 @@
-{ config, pkgs, ... }:
-let
-  xsession-wrapper =
-    pkgs.runCommand "xsession-wrapper-fixed"
-      {
-        src = config.services.displayManager.sessionData.wrapper;
-      }
-      ''
-        cp --preserve=mode $src $out
-        substituteInPlace $out --replace "X-NIXOS-SYSTEMD-AWARE" "X-NIXOS-SYSTEMD-AWARE|niri"
-      '';
-in
+{ nixpkgs-unstable, ... }:
 {
-  # services.displayManager.lemurs.enable = true;
-  # users.users.meatcar.extraGroups = [ "seat" ];
+  services.displayManager.dms-greeter = {
+    enable = true;
+    compositor.name = "niri"; # niri is enabled via programs.niri at the system level
+    compositor.customConfig = ''
+      hotkey-overlay {
+          skip-at-startup
+      }
 
-  services.displayManager = {
-    ly = {
-      enable = true;
-      settings = {
-        save = true;
-        setup_cmd = "${xsession-wrapper}";
-      };
-    };
+      environment {
+          DMS_RUN_GREETER "1"
+      }
+
+      gestures {
+         hot-corners {
+           off
+         }
+      }
+
+      layout {
+        background-color "#000000"
+      }
+    '';
+    # Match the running shell's quickshell so the greeter gets the niri Qt null-deref fix.
+    quickshell.package = nixpkgs-unstable.quickshell;
+    # Copy the user's DMS settings (wallpaper/theme) into /var/lib/dms-greeter.
+    configHome = "/home/meatcar";
   };
-
-  # services.displayManager.gdm.enable = true;
 }
