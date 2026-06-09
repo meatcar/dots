@@ -23,6 +23,11 @@ in
         type = with lib.types; listOf str;
         description = "Addresses associated with this account";
       };
+      account.collections = lib.mkOption {
+        type = with lib.types; nullOr (listOf str);
+        default = null;
+        description = "Explicit vdirsyncer collection ids to sync. null syncs all (from a/from b).";
+      };
     in
     lib.mkOption {
       type =
@@ -59,10 +64,14 @@ in
             "color"
             "displayname"
           ];
-          collections = [
-            "from a"
-            "from b"
-          ];
+          collections =
+            if account.collections != null then
+              account.collections
+            else
+              [
+                "from a"
+                "from b"
+              ];
         };
       }) cfg;
     in
@@ -77,6 +86,12 @@ in
         After = [ "agenix.service" ];
         Requires = [ "agenix.service" ];
       };
+      # metasync fails on Google Workspace accounts (PROPPATCH rejected by Google CalDAV).
+      # Prefix with '-' so failures are non-fatal and sync always runs.
+      systemd.user.services.vdirsyncer.Service.ExecStart = lib.mkForce [
+        "-${config.services.vdirsyncer.package}/bin/vdirsyncer metasync"
+        "${config.services.vdirsyncer.package}/bin/vdirsyncer sync"
+      ];
       programs.vdirsyncer.enable = true;
 
       programs.khal = {
