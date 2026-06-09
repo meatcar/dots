@@ -9,7 +9,6 @@
 }:
 let
   ghostty = config.programs.ghostty.package;
-  dms = lib.getExe inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
   edit-screenshot = pkgs.writeScript "editScreenshot" ''
     DIRECTORY=~/Pictures/Screenshots
     LATEST=$(ls -t "$DIRECTORY" | head -n 1)
@@ -96,17 +95,17 @@ in
     include optional=true "dms/wpblur.kdl"
   '';
   xdg.configFile."niri/extra-config.kdl".text = ''
-        xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
-        spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-        spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "systemctl --user restart dms.service"
-        binds {
-          Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
-          Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe pkgs.ghostty}"; }
-          Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
-          Mod+E hotkey-overlay-title="Files" { spawn "${lib.getExe pkgs.nautilus}"; }
-          Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
-          Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
-          Mod+Ctrl+Print hotkey-overlay-title="Screen record" { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
-        }
+    xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
+    spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+    spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "systemctl --user restart dms.service"
+    binds {
+      Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
+      Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe pkgs.ghostty}"; }
+      Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
+      Mod+E hotkey-overlay-title="Files" { spawn "${lib.getExe pkgs.nautilus}"; }
+      Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
+      Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
+      Mod+Ctrl+Print hotkey-overlay-title="Screen record" { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
+    }
   '';
 }
