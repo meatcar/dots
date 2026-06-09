@@ -3,13 +3,14 @@
   powerManagement.enable = true;
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) tlp s-tui powertop;
+    inherit (pkgs) s-tui powertop;
   };
 
   services = {
     upower.enable = true;
     tlp = {
       enable = true;
+      pd.enable = true;
       settings = {
         TLP_ENABLE = 1;
 
@@ -27,9 +28,12 @@
 
         PCIE_ASPM_ON_BAT = "powersupersave";
 
-        # turn off distracting backlight compensation
+        # turn off distracting backlight compensation normally, but allow it in power-saver
         AMDGPU_ABM_LEVEL_ON_AC = 0;
         AMDGPU_ABM_LEVEL_ON_BAT = 0;
+        AMDGPU_ABM_LEVEL_ON_SAV = 3;
+
+        PCIE_ASPM_ON_SAV = "powersupersave";
 
         # only charge up to 80% of the battery capacity
         START_CHARGE_THRESH_BAT0 = "75";
