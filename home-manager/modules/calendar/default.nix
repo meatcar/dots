@@ -6,6 +6,14 @@
 }:
 let
   cfg = config.me.calendar.accounts;
+  khalMeetings = pkgs.writeShellApplication {
+    name = "khal-meetings";
+    runtimeInputs = [
+      pkgs.khal
+      pkgs.gawk
+    ];
+    text = builtins.readFile ./khal-meetings.sh;
+  };
 in
 {
   options.me.calendar.accounts =
@@ -147,6 +155,35 @@ in
         };
         Install = {
           WantedBy = [ "vdirsyncer.service" ];
+        };
+      };
+
+      home.packages = [ khalMeetings ];
+
+      programs.television.channels.khal-meetings = {
+        metadata = {
+          name = "khal-meetings";
+          description = "Upcoming calendar events (14d); fuzzy-filter on title + description, open meeting links";
+        };
+        source = {
+          command = "${khalMeetings}/bin/khal-meetings";
+          # Columns: LINK \t TIME \t CALENDAR \t TITLE \t DESCRIPTION
+          output = "{split:\t:0}";
+          display = "{split:\t:1}  {split:\t:3}  ({split:\t:2})";
+          no_sort = true;
+        };
+        preview = {
+          command = "printf '%s\\n%s  %s\\n\\n%s\\n\\n%s\\n' '{split:\t:3}' '{split:\t:1}' '({split:\t:2})' '{split:\t:0}' '{split:\t:4}'";
+        };
+        keybindings = {
+          "ctrl-o" = "actions:open-link";
+        };
+        actions = {
+          "open-link" = {
+            description = "Open meeting link in browser";
+            command = "${pkgs.xdg-utils}/bin/xdg-open '{split:\t:0}'";
+            mode = "fork";
+          };
         };
       };
     };
