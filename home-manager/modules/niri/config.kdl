@@ -67,118 +67,117 @@ layout {
 }
 switch-events { lid-close { spawn "systemctl" "suspend"; }; }
 binds {
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Alt+1 { move-column-to-workspace 1; }
-    Mod+Alt+2 { move-column-to-workspace 2; }
-    Mod+Alt+3 { move-column-to-workspace 3; }
-    Mod+Alt+4 { move-column-to-workspace 4; }
-    Mod+Alt+5 { move-column-to-workspace 5; }
-    Mod+Alt+6 { move-column-to-workspace 6; }
-    Mod+Alt+7 { move-column-to-workspace 7; }
-    Mod+Alt+8 { move-column-to-workspace 8; }
-    Mod+Alt+9 { move-column-to-workspace 9; }
-    Mod+Shift+1 { move-window-to-workspace 1; }
-    Mod+Shift+2 { move-window-to-workspace 2; }
-    Mod+Shift+3 { move-window-to-workspace 3; }
-    Mod+Shift+4 { move-window-to-workspace 4; }
-    Mod+Shift+5 { move-window-to-workspace 5; }
-    Mod+Shift+6 { move-window-to-workspace 6; }
-    Mod+Shift+7 { move-window-to-workspace 7; }
-    Mod+Shift+8 { move-window-to-workspace 8; }
-    Mod+Shift+9 { move-window-to-workspace 9; }
-    Mod+A { spawn "niri" "msg" "action" "toggle-overview"; }
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+1 hotkey-overlay-title=null { focus-workspace 1; }
+    Mod+2 hotkey-overlay-title=null { focus-workspace 2; }
+    Mod+3 hotkey-overlay-title=null { focus-workspace 3; }
+    Mod+4 hotkey-overlay-title=null { focus-workspace 4; }
+    Mod+5 hotkey-overlay-title=null { focus-workspace 5; }
+    Mod+6 hotkey-overlay-title=null { focus-workspace 6; }
+    Mod+7 hotkey-overlay-title=null { focus-workspace 7; }
+    Mod+8 hotkey-overlay-title=null { focus-workspace 8; }
+    Mod+9 hotkey-overlay-title=null { focus-workspace 9; }
+    Mod+Alt+1 hotkey-overlay-title=null { move-column-to-workspace 1; }
+    Mod+Alt+2 hotkey-overlay-title=null { move-column-to-workspace 2; }
+    Mod+Alt+3 hotkey-overlay-title=null { move-column-to-workspace 3; }
+    Mod+Alt+4 hotkey-overlay-title=null { move-column-to-workspace 4; }
+    Mod+Alt+5 hotkey-overlay-title=null { move-column-to-workspace 5; }
+    Mod+Alt+6 hotkey-overlay-title=null { move-column-to-workspace 6; }
+    Mod+Alt+7 hotkey-overlay-title=null { move-column-to-workspace 7; }
+    Mod+Alt+8 hotkey-overlay-title=null { move-column-to-workspace 8; }
+    Mod+Alt+9 hotkey-overlay-title=null { move-column-to-workspace 9; }
+    Mod+Shift+1 hotkey-overlay-title=null { move-window-to-workspace 1; }
+    Mod+Shift+2 hotkey-overlay-title=null { move-window-to-workspace 2; }
+    Mod+Shift+3 hotkey-overlay-title=null { move-window-to-workspace 3; }
+    Mod+Shift+4 hotkey-overlay-title=null { move-window-to-workspace 4; }
+    Mod+Shift+5 hotkey-overlay-title=null { move-window-to-workspace 5; }
+    Mod+Shift+6 hotkey-overlay-title=null { move-window-to-workspace 6; }
+    Mod+Shift+7 hotkey-overlay-title=null { move-window-to-workspace 7; }
+    Mod+Shift+8 hotkey-overlay-title=null { move-window-to-workspace 8; }
+    Mod+Shift+9 hotkey-overlay-title=null { move-window-to-workspace 9; }
+    Mod+A hotkey-overlay-title="Overview" { toggle-overview; }
+    Mod+Shift+Slash hotkey-overlay-title="Show hotkeys" { spawn "dms" "ipc" "keybinds" "open" "niri"; }
 
-    XF86AudioLowerVolume { spawn "dms" "ipc" "audio" "decrement" "1"; }
-    XF86AudioMicMute { spawn "dms" "ipc" "audio" "micmute"; }
-    XF86AudioMute { spawn "dms" "ipc" "audio" "mute"; }
-    XF86AudioRaiseVolume { spawn "dms" "ipc" "audio" "increment" "1"; }
-    XF86MonBrightnessDown { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
-    XF86MonBrightnessUp { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
-    XF86Tools { spawn "dms" "ipc" "settings" "open"; }
+    XF86AudioLowerVolume hotkey-overlay-title=null { spawn "dms" "ipc" "audio" "decrement" "1"; }
+    XF86AudioMicMute hotkey-overlay-title=null { spawn "dms" "ipc" "audio" "micmute"; }
+    XF86AudioMute hotkey-overlay-title=null { spawn "dms" "ipc" "audio" "mute"; }
+    XF86AudioRaiseVolume hotkey-overlay-title=null { spawn "dms" "ipc" "audio" "increment" "1"; }
+    XF86MonBrightnessDown hotkey-overlay-title=null { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
+    XF86MonBrightnessUp hotkey-overlay-title=null { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
+    XF86Tools hotkey-overlay-title=null { spawn "dms" "ipc" "settings" "open"; }
 
-    Mod+Ctrl+Q { spawn "bash" "-c" "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
-    Mod+Shift+Q { spawn "dms" "ipc" "powermenu" "toggle"; }
+    Mod+Ctrl+Q hotkey-overlay-title="Lock screen" { spawn-sh "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
+    Mod+Shift+Q hotkey-overlay-title="Power menu" { spawn "dms" "ipc" "powermenu" "toggle"; }
 
-    Mod+Q { close-window; }
-    Mod+W { close-window; }
-    Mod+Ctrl+F { fullscreen-window; }
-    Mod+Shift+Z { toggle-windowed-fullscreen; }
-    Mod+X { expand-column-to-available-width; }
-    Mod+Shift+X { maximize-window-to-edges; }
-    Mod+M { toggle-window-floating; }
-    Mod+F { switch-focus-between-floating-and-tiling; }
+    Mod+Q hotkey-overlay-title="Close window" { close-window; }
+    Mod+W hotkey-overlay-title=null { close-window; }
+    Mod+Ctrl+F hotkey-overlay-title="Fullscreen" { fullscreen-window; }
+    Mod+Shift+Z hotkey-overlay-title="Windowed fullscreen" { toggle-windowed-fullscreen; }
+    Mod+X hotkey-overlay-title="Expand column" { expand-column-to-available-width; }
+    Mod+Shift+X hotkey-overlay-title="Maximize" { maximize-window-to-edges; }
+    Mod+M hotkey-overlay-title="Float window" { toggle-window-floating; }
+    Mod+F hotkey-overlay-title="Focus floating/tiling" { switch-focus-between-floating-and-tiling; }
 
-    Mod+B { center-column; }
+    Mod+B hotkey-overlay-title="Center column" { center-column; }
 
-    Mod+H { focus-column-or-monitor-left; }
-    Mod+J { focus-window-or-workspace-down; }
-    Mod+K { focus-window-or-workspace-up; }
-    Mod+L { focus-column-or-monitor-right; }
-    Mod+Shift+H { consume-or-expel-window-left; }
-    Mod+Shift+J { move-window-down; }
-    Mod+Shift+K { move-window-up; }
-    Mod+Shift+L { consume-or-expel-window-right; }
-    Mod+Alt+H { move-column-left-or-to-monitor-left; }
-    Mod+Alt+J { move-column-to-workspace-down; }
-    Mod+Alt+K { move-column-to-workspace-up; }
-    Mod+Alt+L { move-column-right-or-to-monitor-right; }
-    Mod+Ctrl+H { move-workspace-to-monitor-left; }
-    Mod+Ctrl+J { move-workspace-to-monitor-down; }
-    Mod+Ctrl+K { move-workspace-to-monitor-up; }
-    Mod+Ctrl+L { move-workspace-to-monitor-right; }
-    Mod+Ctrl+Shift+H { move-window-to-monitor-left; }
-    Mod+Ctrl+Shift+J { move-window-to-monitor-up; }
-    Mod+Ctrl+Shift+K { move-window-to-monitor-down; }
-    Mod+Ctrl+Shift+L { move-window-to-monitor-right; }
-    Mod+Ctrl+Alt+H { move-column-to-monitor-left; }
-    Mod+Ctrl+Alt+J { move-column-to-monitor-up; }
-    Mod+Ctrl+Alt+K { move-column-to-monitor-down; }
-    Mod+Ctrl+Alt+L { move-column-to-monitor-right; }
-    Mod+Bracketleft { swap-window-left; }
-    Mod+Bracketright { swap-window-right; }
-    Mod+Shift+Bracketleft { consume-window-into-column; }
-    Mod+Shift+Bracketright { expel-window-from-column; }
+    Mod+H hotkey-overlay-title=null { focus-column-or-monitor-left; }
+    Mod+J hotkey-overlay-title=null { focus-window-or-workspace-down; }
+    Mod+K hotkey-overlay-title=null { focus-window-or-workspace-up; }
+    Mod+L hotkey-overlay-title=null { focus-column-or-monitor-right; }
+    Mod+Shift+H hotkey-overlay-title="Move window left" { consume-or-expel-window-left; }
+    Mod+Shift+J hotkey-overlay-title="Move window down" { move-window-down; }
+    Mod+Shift+K hotkey-overlay-title="Move window up" { move-window-up; }
+    Mod+Shift+L hotkey-overlay-title="Move window right" { consume-or-expel-window-right; }
+    Mod+Alt+H hotkey-overlay-title="Move column left" { move-column-left-or-to-monitor-left; }
+    Mod+Alt+J hotkey-overlay-title="Move column to workspace below" { move-column-to-workspace-down; }
+    Mod+Alt+K hotkey-overlay-title="Move column to workspace above" { move-column-to-workspace-up; }
+    Mod+Alt+L hotkey-overlay-title="Move column right" { move-column-right-or-to-monitor-right; }
+    Mod+Ctrl+H hotkey-overlay-title=null { move-workspace-to-monitor-left; }
+    Mod+Ctrl+J hotkey-overlay-title=null { move-workspace-to-monitor-down; }
+    Mod+Ctrl+K hotkey-overlay-title=null { move-workspace-to-monitor-up; }
+    Mod+Ctrl+L hotkey-overlay-title=null { move-workspace-to-monitor-right; }
+    Mod+Ctrl+Shift+H hotkey-overlay-title=null { move-window-to-monitor-left; }
+    Mod+Ctrl+Shift+J hotkey-overlay-title=null { move-window-to-monitor-up; }
+    Mod+Ctrl+Shift+K hotkey-overlay-title=null { move-window-to-monitor-down; }
+    Mod+Ctrl+Shift+L hotkey-overlay-title=null { move-window-to-monitor-right; }
+    Mod+Ctrl+Alt+H hotkey-overlay-title=null { move-column-to-monitor-left; }
+    Mod+Ctrl+Alt+J hotkey-overlay-title=null { move-column-to-monitor-up; }
+    Mod+Ctrl+Alt+K hotkey-overlay-title=null { move-column-to-monitor-down; }
+    Mod+Ctrl+Alt+L hotkey-overlay-title=null { move-column-to-monitor-right; }
+    Mod+Bracketleft hotkey-overlay-title="Swap window left" { swap-window-left; }
+    Mod+Bracketright hotkey-overlay-title="Swap window right" { swap-window-right; }
+    Mod+Shift+Bracketleft hotkey-overlay-title="Pull window into column" { consume-window-into-column; }
+    Mod+Shift+Bracketright hotkey-overlay-title="Pop window from column" { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-width-back; }
-    Mod+Alt+R { switch-preset-window-height; }
-    Mod+Alt+Shift+R { switch-preset-window-height-back; }
-    Mod+T { toggle-column-tabbed-display; }
+    Mod+R hotkey-overlay-title="Cycle column width" { switch-preset-column-width; }
+    Mod+Shift+R hotkey-overlay-title=null { switch-preset-window-width-back; }
+    Mod+Alt+R hotkey-overlay-title="Cycle window height" { switch-preset-window-height; }
+    Mod+Alt+Shift+R hotkey-overlay-title=null { switch-preset-window-height-back; }
+    Mod+T hotkey-overlay-title="Tab column" { toggle-column-tabbed-display; }
 
-    Mod+Minus { set-column-width "-5%"; }
-    Mod+Equal { set-column-width "+5%"; }
-    Mod+Shift+Minus { set-window-height "-5%"; }
-    Mod+Shift+Equal { set-window-height "+5%"; }
-    Mod+Shift+0 { reset-window-height; }
+    Mod+Minus hotkey-overlay-title=null { set-column-width "-5%"; }
+    Mod+Equal hotkey-overlay-title=null { set-column-width "+5%"; }
+    Mod+Shift+Minus hotkey-overlay-title=null { set-window-height "-5%"; }
+    Mod+Shift+Equal hotkey-overlay-title=null { set-window-height "+5%"; }
+    Mod+Shift+0 hotkey-overlay-title="Reset window height" { reset-window-height; }
 
-    Mod+Space repeat=false { spawn "dms" "ipc" "spotlight" "toggle"; }
+    Mod+Space repeat=false hotkey-overlay-title="Spotlight" { spawn "dms" "ipc" "spotlight" "toggle"; }
 
-    Mod+C { set-dynamic-cast-window; }
-    Mod+Shift+C { clear-dynamic-cast-target; }
-    Mod+Alt+C { set-dynamic-cast-monitor; }
+    Mod+C hotkey-overlay-title="Cast window" { set-dynamic-cast-window; }
+    Mod+Shift+C hotkey-overlay-title="Clear cast" { clear-dynamic-cast-target; }
+    Mod+Alt+C hotkey-overlay-title="Cast monitor" { set-dynamic-cast-monitor; }
 
-    Print { screenshot; }
-    Mod+Print { screenshot-window; }
-    Mod+Shift+Print { screenshot-screen; }
-    Mod+Ctrl+Print { spawn "/nix/store/4fkwvnja07zmivbi0l68351rzd3166hp-ghostty-1.2.3/bin/ghostty" "--title=float" "-e" "/nix/store/8ympds7aryqv8irbcck8m1d97rx34vqg-screen-record/bin/screen-record" "-g"; }
+    Print hotkey-overlay-title="Screenshot region" { screenshot; }
+    Mod+Print hotkey-overlay-title="Screenshot window" { screenshot-window; }
+    Mod+Shift+Print hotkey-overlay-title="Screenshot screen" { screenshot-screen; }
 
-    Mod+Shift+P { spawn "dms" "color" "pick" "-a"; }
-    Mod+N { spawn "dms" "ipc" "notifications" "toggle"; }
-    Mod+Shift+N repeat=false { spawn "dms" "ipc" "notifications" "dismissAllPopups"; }
-    Mod+O { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
-    Mod+Period { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
-    Mod+P { spawn "dms" "ipc" "settings" "openWith" "displays"; }
-    Mod+V { spawn "dms" "ipc" "clipboard" "open"; }
-    Mod+Insert repeat=false { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
+    Mod+Shift+P hotkey-overlay-title="Color picker" { spawn "dms" "color" "pick" "-a"; }
+    Mod+N hotkey-overlay-title="Notifications" { spawn "dms" "ipc" "notifications" "toggle"; }
+    Mod+Shift+N repeat=false hotkey-overlay-title="Dismiss notifications" { spawn "dms" "ipc" "notifications" "dismissAllPopups"; }
+    Mod+O hotkey-overlay-title="Open project" { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
+    Mod+Period hotkey-overlay-title="Open file" { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
+    Mod+P hotkey-overlay-title="Display settings" { spawn "dms" "ipc" "settings" "openWith" "displays"; }
+    Mod+V hotkey-overlay-title="Clipboard" { spawn "dms" "ipc" "clipboard" "open"; }
+    Mod+Insert repeat=false hotkey-overlay-title="Push-to-talk" { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
 }
 recent-windows {
     debounce-ms 750
