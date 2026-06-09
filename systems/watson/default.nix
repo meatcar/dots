@@ -216,6 +216,8 @@
   environment.pathsToLink = [
     "/share/nautilus-python/extensions"
   ];
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
   # programs.hyprland.enable = true;
   # we manage this in HM
   systemd.user.services.niri-flake-polkit.enable = false;

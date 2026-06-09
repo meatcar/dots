@@ -14,6 +14,7 @@
       ".clasprc.json" # for clasp gscript upload tool
       ".config/apps.json" # for gearlever. Doesn't make a subdir.
       ".claude.json"
+      ".local/share/recently-used.xbel"
     ];
     directories = [
       # user dirs
@@ -43,6 +44,7 @@
       ".local/share/gnome-shell"
       ".local/share/gnome-settings-daemon"
       ".local/share/nautilus"
+      ".local/share/Trash"
       ".local/share/icc"
       ".local/share/gvfs-metadata"
       ".local/share/evolution"
