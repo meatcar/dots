@@ -41,6 +41,7 @@
     ../modules/npm
     ../modules/bun
     # ../modules/junction
+    ../modules/audio-record
   ];
 
   config = {
