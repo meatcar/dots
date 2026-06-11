@@ -162,20 +162,19 @@ binds {
 
     Mod+Space repeat=false hotkey-overlay-title="Spotlight" { spawn "dms" "ipc" "spotlight" "toggle"; }
 
-    Mod+C hotkey-overlay-title="Cast window" { set-dynamic-cast-window; }
-    Mod+Shift+C hotkey-overlay-title="Clear cast" { clear-dynamic-cast-target; }
-    Mod+Alt+C hotkey-overlay-title="Cast monitor" { set-dynamic-cast-monitor; }
+    Mod+P hotkey-overlay-title="Cast window" { set-dynamic-cast-window; }
+    Mod+Shift+P hotkey-overlay-title="Clear cast" { clear-dynamic-cast-target; }
+    Mod+Alt+P hotkey-overlay-title="Cast monitor" { set-dynamic-cast-monitor; }
 
     Print hotkey-overlay-title="Screenshot region" { screenshot; }
     Mod+Print hotkey-overlay-title="Screenshot window" { screenshot-window; }
     Mod+Shift+Print hotkey-overlay-title="Screenshot screen" { screenshot-screen; }
 
-    Mod+Shift+P hotkey-overlay-title="Color picker" { spawn "dms" "color" "pick" "-a"; }
+    Mod+C hotkey-overlay-title="Color picker" { spawn "dms" "color" "pick" "-a"; }
     Mod+N hotkey-overlay-title="Notifications" { spawn "dms" "ipc" "notifications" "toggle"; }
     Mod+Shift+N repeat=false hotkey-overlay-title="Dismiss notifications" { spawn "dms" "ipc" "notifications" "dismissAllPopups"; }
     Mod+O hotkey-overlay-title="Open project" { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
     Mod+Period hotkey-overlay-title="Open file" { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
-    Mod+P hotkey-overlay-title="Display settings" { spawn "dms" "ipc" "settings" "openWith" "displays"; }
     Mod+V hotkey-overlay-title="Clipboard" { spawn "dms" "ipc" "clipboard" "open"; }
     Mod+Insert repeat=false hotkey-overlay-title="Push-to-talk" { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
 }
