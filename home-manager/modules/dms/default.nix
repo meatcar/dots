@@ -60,6 +60,34 @@ in
     };
     Install.WantedBy = [ "dms.service" ];
   };
+  # Manage swayidle as a systemd user service so that config changes take
+  # effect on switch (the unit restarts) rather than requiring a niri relogin.
+  # niri --session imports NIRI_SOCKET into the user environment before
+  # signalling ready, so any unit After=niri.service gets it automatically.
+  # The HM swayidle module hardcodes PATH=<bash only> in the unit, so every
+  # command must use an absolute store path.
+  services.swayidle = {
+    enable = true; # default extraArgs = [ "-w" ] (wait for command to complete)
+    timeouts = [
+      {
+        timeout = 60 * 15; # 900s
+        command = "/run/current-system/sw/bin/niri msg action power-off-monitors";
+        # no resumeCommand: niri repowers monitors on input automatically
+      }
+      {
+        timeout = 60 * 20; # 1200s
+        command = "${pkgs.systemd}/bin/loginctl lock-session";
+      }
+    ];
+    events = {
+      unlock = "${lib.getExe dms-toggle-outputs}";
+      after-resume = "${lib.getExe dms-toggle-outputs}";
+    };
+  };
+  # Mirror dms.service: order after niri.service so NIRI_SOCKET is present.
+  # graphical-session.target ordering is already set by the HM module default.
+  systemd.user.services.swayidle.Unit.After = [ "niri.service" ];
+
   systemd.user.services.darkman = {
     Unit = {
       After = [ "dms.service" ];

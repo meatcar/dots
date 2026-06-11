@@ -24,6 +24,10 @@ if [ -z "${list}" ]; then
   exit 1
 fi
 
+active=$(printf '%s\n' "${list}" |
+  sed -n 's/^\(.*\) \[[^][]*active[^][]*\] ->.*$/\1/p' |
+  head -n1)
+
 case "${mode}" in
 matched)
   target=$(printf '%s\n' "${list}" |
@@ -36,9 +40,6 @@ matched)
   fi
   ;;
 rotate)
-  active=$(printf '%s\n' "${list}" |
-    sed -n 's/^\(.*\) \[[^][]*active[^][]*\] ->.*$/\1/p' |
-    head -n1)
   target=$(printf '%s\n' "${list}" |
     sed 's/ ->.*//; s/ \[[^][]*\]$//' |
     awk -v cur="${active}" '

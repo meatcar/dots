@@ -3,7 +3,6 @@
   config,
   pkgs,
   lib,
-  inputs,
   nixpkgs-unstable,
   ...
 }:
@@ -97,7 +96,6 @@ in
   xdg.configFile."niri/extra-config.kdl".text = ''
     xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-    spawn-at-startup "${lib.getExe pkgs.swayidle}" "timeout" "${builtins.toString (60 * 15)}" "niri msg action power-off-monitors" "timeout" "${builtins.toString (60 * 20)}" "loginctl lock-session" "unlock" "systemctl --user restart dms.service"
     binds {
       Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
       Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe pkgs.ghostty}"; }
