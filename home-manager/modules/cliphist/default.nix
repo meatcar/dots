@@ -1,4 +1,3 @@
-_:
-{
+_: {
   services.cliphist.enable = true;
 }

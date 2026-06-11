@@ -2,7 +2,7 @@
 {
   imports = [ inputs.hunk.homeManagerModules.default ];
 
-  programs.hunk.package = pkgs.hunk;
+  programs.hunk.package = inputs.hunk.packages.${pkgs.system}.hunk;
 
   programs.hunk = {
     enable = true;

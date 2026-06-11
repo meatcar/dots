@@ -30,6 +30,10 @@
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
   };
 
+  # rodney's bundled (uvx/PyPI) binary has no ROD_CHROME_BIN wrapper; point rod at the
+  # nix chromium so `uvx rodney` can launch a Chrome that runs on NixOS.
+  home.sessionVariables.ROD_CHROME_BIN = "${pkgs.chromium}/bin/chromium";
+
   programs.uv = {
     enable = true;
     settings.exclude-newer = "7 days";
