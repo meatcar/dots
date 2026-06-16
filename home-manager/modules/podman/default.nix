@@ -24,13 +24,15 @@ let
   devcontainer-podman = nixpkgs-unstable.writeShellScriptBin "devcontainer" ''
     set -euo pipefail
     args=()
-    docker_path=false
+    injected=false
     for arg in "$@"; do
       args+=("$arg")
-      if [ "$docker_path" = false ] && { [ "$arg" = "up" ] || [ "$arg" = "build" ]; }; then
+      if [ "$injected" = false ] && { [ "$arg" = "up" ] || [ "$arg" = "build" ] || [ "$arg" = "exec" ] || [ "$arg" = "run-user-commands" ] || [ "$arg" = "set-up" ]; }; then
         args+=("--docker-path" "${lib.getExe podman-bridged}")
-        args+=("--docker-compose-path" "${lib.getExe podman-compose}")
-        docker_path=true
+        if [ "$arg" = "up" ] || [ "$arg" = "build" ]; then
+          args+=("--docker-compose-path" "${lib.getExe podman-compose}")
+        fi
+        injected=true
       fi
     done
     exec ${lib.getExe nixpkgs-unstable.devcontainer} "''${args[@]}"
