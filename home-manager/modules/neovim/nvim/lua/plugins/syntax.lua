@@ -182,5 +182,64 @@ return {
   { 'milisims/nvim-luaref' },
 
   -- nix
-  { "calops/hmts.nvim",       ft = "nix",    version = "*" },
+  {
+    'calops/hmts.nvim',
+    ft = 'nix',
+    version = '*',
+    init = function()
+      -- Neovim 0.12 passes predicate/directive handlers `match` as a list of
+      -- nodes per capture (nil when absent); hmts v1.3.0 assumes a single node.
+      -- Wrap registration to normalize match to single nodes (old `all=false`
+      -- behavior) only for hmts's own handlers; restore the API in `config`.
+      local query = vim.treesitter.query
+      local orig_predicate = query.add_predicate
+      local orig_directive = query.add_directive
+
+      local function normalize(match)
+        local fixed = {}
+        for k, v in pairs(match) do
+          fixed[k] = (type(v) == 'table' and v[#v]) or v
+        end
+        return fixed
+      end
+
+      vim.g._hmts_restore = function()
+        query.add_predicate = orig_predicate
+        query.add_directive = orig_directive
+      end
+
+      query.add_predicate = function(name, handler, opts)
+        if name == 'hmts-path?' then
+          local function wrapped(match, pattern, source, predicate, metadata)
+            local m = normalize(match)
+            if m[predicate[2]] == nil then
+              return false
+            end
+            return handler(m, pattern, source, predicate, metadata)
+          end
+          return orig_predicate(name, wrapped, opts)
+        end
+        return orig_predicate(name, handler, opts)
+      end
+
+      query.add_directive = function(name, handler, opts)
+        if name == 'hmts-inject!' then
+          local function wrapped(match, pattern, source, predicate, metadata)
+            local m = normalize(match)
+            if m[predicate[2]] == nil then
+              return
+            end
+            return handler(m, pattern, source, predicate, metadata)
+          end
+          return orig_directive(name, wrapped, opts)
+        end
+        return orig_directive(name, handler, opts)
+      end
+    end,
+    config = function()
+      if vim.g._hmts_restore then
+        vim.g._hmts_restore()
+      end
+    end,
+  },
 }
