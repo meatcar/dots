@@ -1,10 +1,15 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 {
   home.packages = [ pkgs.nixVersions.stable ];
+
+  nix.extraOptions = ''
+    !include ${config.age.secrets.nixConfAccessTokens.path}
+  '';
 
   nix.settings.experimental-features = [
     "nix-command"

@@ -6,4 +6,5 @@
   age.secrets.spotifyClientId.file = ./spotifyClientId.age;
   age.secrets.spotifyClientSecret.file = ./spotifyClientSecret.age;
   age.secrets.cliProxyApiEnv.file = ./cliProxyApiEnv.age;
+  age.secrets.nixConfAccessTokens.file = ./nixConfAccessTokens.age;
 }
