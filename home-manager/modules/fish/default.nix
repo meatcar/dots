@@ -46,6 +46,25 @@
           end
         end
       '';
+      # Store the literal command line in a per-pane tmux user option so the
+      # pane border can show what the user actually typed (not just the process
+      # name, which loses context for wrappers like "poetry run pytest").
+      __tmux_track_cmd_pre = {
+        onEvent = "fish_preexec";
+        body = ''
+          if set -q TMUX
+            tmux set -p @pane_cmd $argv[1]
+          end
+        '';
+      };
+      __tmux_track_cmd_post = {
+        onEvent = "fish_postexec";
+        body = ''
+          if set -q TMUX
+            tmux set -p -u @pane_cmd
+          end
+        '';
+      };
     };
   };
   programs.fzf.enableFishIntegration = false; # we use fzf.fish
