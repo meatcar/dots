@@ -26,9 +26,12 @@ let
       slurp
       ffmpeg
       wl-clipboard
+      libnotify
     ];
     text = builtins.readFile ./screen-record.sh;
   };
+  # Keep the keybind and the label passed to the notification in sync.
+  recordKey = "Mod+Ctrl+Print";
 in
 {
   imports = [
@@ -103,7 +106,7 @@ in
       Mod+E hotkey-overlay-title="Files" { spawn "${lib.getExe pkgs.nautilus}"; }
       Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
       Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
-      Mod+Ctrl+Print hotkey-overlay-title="Screen record" { spawn "${lib.getExe pkgs.ghostty}" "--title=float" "-e" "${screen-record}/bin/screen-record" "-g"; }
+      ${recordKey} repeat=false hotkey-overlay-title="Screen record" { spawn "${screen-record}/bin/screen-record" "-g" "-k" "${recordKey}"; }
     }
   '';
 }

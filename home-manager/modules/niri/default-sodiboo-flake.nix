@@ -31,6 +31,7 @@ let
       slurp
       ffmpeg
       wl-clipboard
+      libnotify
     ];
     text = builtins.readFile ./screen-record.sh;
   };
@@ -46,19 +47,6 @@ let
       niri msg outputs "${monitors.internal}" on
     fi
   '';
-  inTerminal =
-    {
-      class ? "",
-      title ? "",
-    }:
-    cmd:
-    [
-      "${lib.getExe ghostty}"
-    ]
-    ++ (if title == "" then [ ] else [ "--title=${title}" ])
-    ++ (if class == "" then [ ] else [ "--class=${class}" ])
-    ++ [ "-e" ]
-    ++ cmd;
 in
 {
   imports = [
@@ -431,9 +419,11 @@ in
           "Mod+Print".action.screenshot-window = { };
           "Mod+Shift+Print".action.screenshot-screen = { };
           "Mod+Alt+Print".action.spawn = "${edit-screenshot}";
-          "Mod+Ctrl+Print".action.spawn = inTerminal { title = "float"; } [
+          "Mod+Ctrl+Print".action.spawn = [
             "${screen-record}/bin/screen-record"
             "-g"
+            "-k"
+            "Mod+Ctrl+Print"
           ];
         }
         # Map 1-9 to workspaces
