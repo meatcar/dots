@@ -113,5 +113,24 @@ in
             fi && ${tmux} kill-session -t "$id"
           }
       '')
+      (pkgs.writeShellScriptBin "tmux_opensessions" ''
+        set -eu
+        dir=$(${tmux} show-environment -g OPENSESSIONS_DIR 2>/dev/null \
+          | sed -n 's/^OPENSESSIONS_DIR=//p')
+        if [ -z "$dir" ]; then
+          ${tmux} display-message "opensessions: OPENSESSIONS_DIR not set"
+          exit 1
+        fi
+        scripts="$dir/integrations/tmux-plugin/scripts"
+        case "''${1:-}" in
+          toggle) exec sh "$scripts/toggle.sh" ;;
+          focus)  exec sh "$scripts/focus.sh" ;;
+          even)   exec sh "$scripts/even-horizontal.sh" \
+                    "$(${tmux} display-message -p '#{window_id}')" \
+                    "$(${tmux} display-message -p '#{pane_id}')" ;;
+          jump)   exec sh "$scripts/switch-index.sh" "''${2:?index required}" ;;
+          *) echo "usage: tmux_opensessions {toggle|focus|even|jump N}" >&2; exit 2 ;;
+        esac
+      '')
     ];
 }
