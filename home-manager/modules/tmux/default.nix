@@ -4,6 +4,15 @@
 }:
 let
   inherit (pkgs) tmuxPlugins;
+
+  # Pre-compile whichkey.yaml → init.tmux at Nix build time so the plugin can
+  # load it directly without a runtime Python step (autobuild stays disabled).
+  whichkey-init =
+    pkgs.runCommand "tmux-which-key-init.tmux" { nativeBuildInputs = [ pkgs.python3 ]; }
+      ''
+        python3 ${tmuxPlugins.tmux-which-key}/share/tmux-plugins/tmux-which-key/plugin/build.py \
+          ${./whichkey.yaml} "$out"
+      '';
   aw-watcher-tmux = tmuxPlugins.mkTmuxPlugin {
     pluginName = "aw-watcher-tmux";
     version = "unstable-2023-10-17";
@@ -38,6 +47,8 @@ let
   };
 in
 {
+  imports = [ ./opensessions.nix ];
+
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -51,9 +62,6 @@ in
     shell = "/bin/sh";
     extraConfig = builtins.readFile ./tmux.conf + ''
       set -g default-command ${pkgs.fish}/bin/fish
-      # Sessionizer search roots for opensessions' n/c new-session popup.
-      set-environment -g SESSIONIZER_DIR "$HOME/git/hub"
-      set-environment -g SESSIONIZER_MAXDEPTH 3
     '';
     plugins = [
       tmuxPlugins.sensible
@@ -66,7 +74,6 @@ in
         '';
       }
       aw-watcher-tmux
-      pkgs.opensessions
       {
         plugin = tmuxPlugins.tmux-which-key;
         extraConfig = ''
@@ -79,6 +86,7 @@ in
   };
 
   xdg.configFile."tmux/plugins/tmux-which-key/config.yaml".source = ./whichkey.yaml;
+  xdg.dataFile."tmux/plugins/tmux-which-key/init.tmux".source = whichkey-init;
 
   home.packages =
     let
@@ -112,25 +120,6 @@ in
               ${tmux} switch-client -t "$next"
             fi && ${tmux} kill-session -t "$id"
           }
-      '')
-      (pkgs.writeShellScriptBin "tmux_opensessions" ''
-        set -eu
-        dir=$(${tmux} show-environment -g OPENSESSIONS_DIR 2>/dev/null \
-          | sed -n 's/^OPENSESSIONS_DIR=//p')
-        if [ -z "$dir" ]; then
-          ${tmux} display-message "opensessions: OPENSESSIONS_DIR not set"
-          exit 1
-        fi
-        scripts="$dir/integrations/tmux-plugin/scripts"
-        case "''${1:-}" in
-          toggle) exec sh "$scripts/toggle.sh" ;;
-          focus)  exec sh "$scripts/focus.sh" ;;
-          even)   exec sh "$scripts/even-horizontal.sh" \
-                    "$(${tmux} display-message -p '#{window_id}')" \
-                    "$(${tmux} display-message -p '#{pane_id}')" ;;
-          jump)   exec sh "$scripts/switch-index.sh" "''${2:?index required}" ;;
-          *) echo "usage: tmux_opensessions {toggle|focus|even|jump N}" >&2; exit 2 ;;
-        esac
       '')
     ];
 }

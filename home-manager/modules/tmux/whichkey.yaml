@@ -3,6 +3,14 @@ command_alias_start_index: 200
 keybindings:
   prefix_table: Space
 
+position:
+  x: R
+  y: P
+
+custom_variables: []
+
+macros: []
+
 title:
   style: "align=centre,bold"
   prefix: " tmux"
@@ -18,10 +26,10 @@ items:
     command: "next-window"
   - name: "rename window"
     key: ","
-    command: "command-prompt -I '#W' { rename-window '%%' }"
+    command: 'command-prompt -I "#W" { rename-window "%%" }'
   - name: "kill window"
     key: "&"
-    command: "confirm-before -p 'kill-window #W? (y/n)' kill-window"
+    command: 'confirm-before -p "kill-window #W? (y/n)" kill-window'
   - name: "move window ←"
     key: "<"
     command: "swap-window -d -t -1"
@@ -33,27 +41,33 @@ items:
     command: "choose-tree -Zs"
   - name: "find window"
     key: "f"
-    command: "command-prompt { find-window -Z '%%' }"
+    command: 'command-prompt { find-window -Z "%%" }'
+  - name: "next layout"
+    key: "Space"
+    command: 'run-shell "tmux_opensessions layout"'
+  - name: "rotate panes"
+    key: "r"
+    command: 'run-shell "tmux_opensessions rotate"'
   - separator: true
   # Panes: split
   - name: "split right"
     key: "|"
-    command: "split-window -h -c '#{pane_current_path}'"
+    command: 'split-window -h -c "#{pane_current_path}"'
   - name: "split down"
     key: "-"
-    command: "split-window -v -c '#{pane_current_path}'"
+    command: 'split-window -v -c "#{pane_current_path}"'
   - name: "split full right"
-    key: "\\"
-    command: "split-window -fh -c '#{pane_current_path}'"
+    key: "\\\\"
+    command: 'split-window -fh -c "#{pane_current_path}"'
   - name: "split full down"
     key: "_"
-    command: "split-window -fv -c '#{pane_current_path}'"
+    command: 'split-window -fv -c "#{pane_current_path}"'
   - name: "zoom pane"
     key: "z"
     command: "resize-pane -Z"
   - name: "kill pane"
     key: "x"
-    command: "confirm-before -p 'kill-pane #P? (y/n)' kill-pane"
+    command: 'confirm-before -p "kill-pane #P? (y/n)" kill-pane'
   - name: "break to window"
     key: "!"
     command: "break-pane"
@@ -98,16 +112,16 @@ items:
   # Sessions
   - name: "switch session"
     key: "s"
-    command: "run-shell 'tmux display-popup -E -y0 tmux_select_session; exit 0'"
+    command: 'run-shell "tmux display-popup -E -y0 tmux_select_session; exit 0"'
   - name: "kill session"
     key: "K"
-    command: "run-shell 'tmux display-popup -E -y0 tmux_kill_session; exit 0'"
+    command: 'run-shell "tmux display-popup -E -y0 tmux_kill_session; exit 0"'
   - name: "detach"
     key: "d"
     command: "detach-client"
   - name: "rename session"
     key: "$"
-    command: "command-prompt -I '#S' { rename-session '%%' }"
+    command: 'command-prompt -I "#S" { rename-session "%%" }'
   - name: "prev session"
     key: "("
     command: "switch-client -p"
@@ -119,43 +133,43 @@ items:
     menu:
       - name: "toggle sidebar"
         key: "o"
-        command: "run-shell 'tmux_opensessions toggle'"
+        command: 'run-shell "tmux_opensessions toggle"'
       - name: "focus sidebar"
         key: "f"
-        command: "run-shell 'tmux_opensessions focus'"
+        command: 'run-shell "tmux_opensessions focus"'
       - name: "even-horizontal"
         key: "e"
-        command: "run-shell 'tmux_opensessions even'"
+        command: 'run-shell "tmux_opensessions even"'
       - name: "+jump to session"
         key: "j"
         menu:
           - name: "session 1"
             key: "1"
-            command: "run-shell 'tmux_opensessions jump 1'"
+            command: 'run-shell "tmux_opensessions jump 1"'
           - name: "session 2"
             key: "2"
-            command: "run-shell 'tmux_opensessions jump 2'"
+            command: 'run-shell "tmux_opensessions jump 2"'
           - name: "session 3"
             key: "3"
-            command: "run-shell 'tmux_opensessions jump 3'"
+            command: 'run-shell "tmux_opensessions jump 3"'
           - name: "session 4"
             key: "4"
-            command: "run-shell 'tmux_opensessions jump 4'"
+            command: 'run-shell "tmux_opensessions jump 4"'
           - name: "session 5"
             key: "5"
-            command: "run-shell 'tmux_opensessions jump 5'"
+            command: 'run-shell "tmux_opensessions jump 5"'
           - name: "session 6"
             key: "6"
-            command: "run-shell 'tmux_opensessions jump 6'"
+            command: 'run-shell "tmux_opensessions jump 6"'
           - name: "session 7"
             key: "7"
-            command: "run-shell 'tmux_opensessions jump 7'"
+            command: 'run-shell "tmux_opensessions jump 7"'
           - name: "session 8"
             key: "8"
-            command: "run-shell 'tmux_opensessions jump 8'"
+            command: 'run-shell "tmux_opensessions jump 8"'
           - name: "session 9"
             key: "9"
-            command: "run-shell 'tmux_opensessions jump 9'"
+            command: 'run-shell "tmux_opensessions jump 9"'
   - separator: true
   # Copy/Paste
   - name: "copy mode"
