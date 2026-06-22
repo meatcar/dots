@@ -37,6 +37,11 @@
     ./impermanence.nix
   ];
 
+  # Atomic file-manager switch: flip this one word and rebuild. See
+  # ../../modules/file-manager and the gated xdg.portal.extraPortals in
+  # systems/watson/default.nix.
+  me.fileManager = "dolphin";
+
   home.packages =
     with pkgs;
     [

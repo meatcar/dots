@@ -52,7 +52,7 @@ in
   imports = [
     ../wayland
     ../fuzzel
-    ../nautilus
+    ../file-manager
     # ../waybar
     # ../gammastep.nix
     # ../swaync

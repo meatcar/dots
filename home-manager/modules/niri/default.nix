@@ -8,6 +8,11 @@
 }:
 let
   ghostty = config.programs.ghostty.package;
+  fmExe =
+    if config.me.fileManager == "dolphin" then
+      "${pkgs.kdePackages.dolphin}/bin/dolphin"
+    else
+      lib.getExe pkgs.nautilus;
   edit-screenshot = pkgs.writeScript "editScreenshot" ''
     DIRECTORY=~/Pictures/Screenshots
     LATEST=$(ls -t "$DIRECTORY" | head -n 1)
@@ -37,7 +42,7 @@ in
   imports = [
     ../wayland
     ../fuzzel
-    ../nautilus
+    ../file-manager
     ../dms # shell/bar/gui
   ];
   home.packages =
@@ -68,7 +73,7 @@ in
       TimeoutStopSec = 10;
     };
   };
-  dbus.packages = [ pkgs.nautilus ];
+  # dbus.packages for the file manager lives in ../file-manager
   xdg.configFile."xdg-desktop-portal/niri-portals.conf".text = ''
     [preferred]
     default=gnome;gtk
@@ -76,6 +81,9 @@ in
     org.freedesktop.impl.portal.Notification=gtk
     org.freedesktop.impl.portal.Settings=gnome
     org.freedesktop.impl.portal.Secret=gnome-keyring
+    ${lib.optionalString (
+      config.me.fileManager == "dolphin"
+    ) "org.freedesktop.impl.portal.FileChooser=kde"}
   '';
   services.swayosd.enable = true;
   # services.swww.enable = true;
@@ -103,7 +111,7 @@ in
       Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
       Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe pkgs.ghostty}"; }
       Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
-      Mod+E hotkey-overlay-title="Files" { spawn "${lib.getExe pkgs.nautilus}"; }
+      Mod+E hotkey-overlay-title="Files" { spawn "${fmExe}"; }
       Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
       Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
       ${recordKey} repeat=false hotkey-overlay-title="Screen record" { spawn "${screen-record}/bin/screen-record" "-g" "-k" "${recordKey}"; }

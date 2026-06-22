@@ -4,6 +4,43 @@
   ...
 }:
 {
+  # GTK writes recently-used.xbel via atomic replace (write temp + rename over
+  # target). rename() can't replace a single-file bind mount -> EBUSY, so the
+  # recents list never updates and Nautilus "Recent" stays empty. Symlink it
+  # into /persist instead: GIO follows the symlink and does its temp-write +
+  # rename inside the persisted dir, which works. See impermanence#107.
+  # mkOutOfStoreSymlink points these at /persist, but the target file does not
+  # exist on first run, leaving a dangling symlink. KDE's KConfig (QSaveFile)
+  # SILENTLY DISCARDS writes through a dangling symlink (verified: exits 0,
+  # writes nowhere), so Dolphin settings never persist. Pre-create the targets
+  # after the symlinks are linked so the very first write lands in /persist.
+  home.activation.ensureDolphinPersistTargets = lib.mkIf (config.me.fileManager == "dolphin") (
+    lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals"; do
+        target="$(readlink -f "$cfg")"
+        if [ -n "$target" ] && [ ! -e "$target" ]; then
+          run mkdir -p "$(dirname "$target")"
+          run touch "$target"
+        fi
+      done
+    ''
+  );
+
+  home.file = {
+    ".local/share/recently-used.xbel".source =
+      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/share/recently-used.xbel";
+  }
+  # Dolphin/KDE write these via KConfig's atomic save (temp + rename), which a
+  # single-file bind mount can't replace (EBUSY, impermanence#107). Symlink them
+  # into /persist so the rename happens inside the persisted dir. Same trick as
+  # recently-used.xbel above.
+  // lib.optionalAttrs (config.me.fileManager == "dolphin") {
+    ".config/dolphinrc".source =
+      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/dolphinrc";
+    ".config/kdeglobals".source =
+      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/kdeglobals";
+  };
+
   home.persistence."/persist" = {
     files = [
       # FIXME: don't reliably work, see https://github.com/nix-community/impermanence/issues/107
@@ -14,7 +51,7 @@
       ".clasprc.json" # for clasp gscript upload tool
       ".config/apps.json" # for gearlever. Doesn't make a subdir.
       ".claude.json"
-      ".local/share/recently-used.xbel"
+      # ".local/share/recently-used.xbel" handled via mkOutOfStoreSymlink above
     ];
     directories = [
       # user dirs
@@ -43,7 +80,6 @@
       ".local/share/keyrings"
       ".local/share/gnome-shell"
       ".local/share/gnome-settings-daemon"
-      ".local/share/nautilus"
       ".local/share/Trash"
       ".local/share/icc"
       ".local/share/gvfs-metadata"
@@ -56,6 +92,7 @@
       ".cache/libgweather"
       ".cache/geocode-glib"
       ".cache/clipboard-indicator@tudmotu.com"
+      ".config/BeeperTexts"
 
       # dms
       ".config/DankMaterialShell"
@@ -305,6 +342,16 @@
     ]
     ++ lib.optional config.services.cli-proxy-api.enable ".local/share/cli-proxy-api"
     ++ [ ".config/opensnitch" ]
-    ++ [ ".config/obsidian" ];
+    ++ [ ".config/obsidian" ]
+    # file manager (see me.fileManager). dolphinrc/kdeglobals are persisted via
+    # mkOutOfStoreSymlink below (KConfig atomic-save vs single-file bind mounts).
+    ++ lib.optionals (config.me.fileManager == "nautilus") [
+      ".local/share/nautilus"
+    ]
+    ++ lib.optionals (config.me.fileManager == "dolphin") [
+      ".local/share/dolphin"
+      ".local/share/kxmlgui6"
+      ".local/share/baloo"
+    ];
   };
 }

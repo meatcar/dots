@@ -218,6 +218,15 @@
   ];
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  # Register the KDE file-chooser portal backend only when the HM file manager
+  # is dolphin. The .portal file must live in the system portal dir (nixpkgs
+  # patches xdg-desktop-portal to read NIX_XDG_DESKTOP_PORTAL_DIR), so an
+  # HM-installed backend would be invisible. Routing stays in HM's
+  # niri-portals.conf (FileChooser=kde). Merges with niri-flake's extraPortals.
+  xdg.portal.extraPortals = lib.mkIf (config.home-manager.users.meatcar.me.fileManager == "dolphin") [
+    pkgs.kdePackages.xdg-desktop-portal-kde
+  ];
   # programs.hyprland.enable = true;
   # we manage this in HM
   systemd.user.services.niri-flake-polkit.enable = false;
