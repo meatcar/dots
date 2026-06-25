@@ -215,6 +215,11 @@
                       extraSpecialArgs = extraSpecialArgs // {
                         inherit nixpkgs-unstable;
                       };
+                      # Don't hard-fail activation when a runtime-replaced file
+                      # (e.g. GTK rewriting recently-used.xbel over its managed
+                      # symlink, impermanence#107) is in the way; back it up to
+                      # <file>.hm-bak and relink instead.
+                      backupFileExtension = "hm-bak";
                     };
                   }
                 ];
