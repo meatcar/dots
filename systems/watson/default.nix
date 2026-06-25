@@ -236,6 +236,13 @@
   users.users.meatcar = {
     isNormalUser = true;
     useDefaultShell = false;
+    # Keep user@1000.service alive across logout. Undocking the eGPU crashes
+    # niri and logs the user out; without lingering, systemd tears down the
+    # whole user manager on last-session exit, killing every app.slice scope
+    # (terminals, tmux). Lingering keeps those scopes running so tmux survives
+    # and can be reattached after relogin. graphical-session.target is BoundBy
+    # niri.service, so the graphical stack still tears down and restarts fresh.
+    linger = true;
     shell = "${pkgs.fish}/bin/fish";
     hashedPasswordFile = config.age.secrets.userPassword.path;
     extraGroups = [
