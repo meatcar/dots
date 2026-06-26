@@ -18,6 +18,7 @@ Nix Conventions:
 - Composition: `imports = [ ./path ];`
 - Separate NixOS vs Home Manager concerns.
 - `specialArgs` only for values shared across modules.
+- multi-line scripts in standalone files.
 
 Shell Conventions:
 
@@ -26,7 +27,7 @@ Shell Conventions:
 - Use `set -euo pipefail`.
 - No silent failures; print actionable errors.
 
-Git: Conventional Commits.
+Git: atomic Conventional Commits.
 
 Safety:
 
