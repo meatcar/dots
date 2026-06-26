@@ -111,14 +111,12 @@ in
     darkModeScripts = {
       dms = ''
         export ${pathPrefix}
-        ${dms} ipc night enable
         ${dms} ipc theme dark
       '';
     };
     lightModeScripts = {
       dms = ''
         export ${pathPrefix}
-        ${dms} ipc night disable
         ${dms} ipc theme light
       '';
     };
