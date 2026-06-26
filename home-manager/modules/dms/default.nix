@@ -26,6 +26,12 @@ let
     ];
     text = builtins.readFile ./dms-output-watch.sh;
   };
+  # DMS crash-loops if launched before the Wayland socket exists; wait for it.
+  wait-wayland = pkgs.writeShellApplication {
+    name = "wait-wayland";
+    runtimeInputs = [ pkgs.coreutils ]; # sleep
+    text = builtins.readFile ./wait-wayland.sh;
+  };
   pathPrefix = "PATH=${lib.makeBinPath [ cfg.quickshell.package ]}:$PATH";
 in
 {
@@ -36,17 +42,19 @@ in
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
-  # Start DMS after Niri's socket is ready (niri is Type=notify).
-  # Note: niri sends READY before flushing wl_output globals, so this ordering
-  # is necessary but not fully sufficient — the Qt null-deref patch in recent
-  # quickshell builds is the real fix (quickshell issue #677).
-  systemd.user.services.dms.Unit.After = [ "niri.service" ];
+  # Teach dms to wait for niri
+  systemd.user.services.dms = {
+    Unit.After = [ "niri.service" ];
+    Unit.BindsTo = [ "niri.service" ];
+    Unit.StartLimitIntervalSec = 0;
+    Service.ExecStartPre = "${lib.getExe wait-wayland} 30";
+    Service.RestartSec = 1; # restart slower, effectively a poll
+  };
   home.packages = with pkgs; [
     kdePackages.kimageformats
     dms-toggle-outputs
   ];
-  # Apply the matched output profile on display hotplug. Niri's IPC event
-  # stream has no output events (as of 26.04), so watch DRM uevents instead.
+  # Niri's IPC has no output events (26.04), so watch DRM uevents for hotplug.
   systemd.user.services.dms-output-watch = {
     Unit = {
       Description = "Apply matched dms output profile on display hotplug";
@@ -60,22 +68,18 @@ in
     };
     Install.WantedBy = [ "dms.service" ];
   };
-  # Manage swayidle as a systemd user service so that config changes take
-  # effect on switch (the unit restarts) rather than requiring a niri relogin.
-  # niri --session imports NIRI_SOCKET into the user environment before
-  # signalling ready, so any unit After=niri.service gets it automatically.
-  # The HM swayidle module hardcodes PATH=<bash only> in the unit, so every
-  # command must use an absolute store path.
+  # systemd-managed so config changes apply on switch without a relogin. The HM
+  # module hardcodes a bash-only PATH, so commands need absolute store paths.
   services.swayidle = {
     enable = true; # default extraArgs = [ "-w" ] (wait for command to complete)
     timeouts = [
       {
-        timeout = 60 * 15; # 900s
+        timeout = 60 * 15;
         command = "/run/current-system/sw/bin/niri msg action power-off-monitors";
         # no resumeCommand: niri repowers monitors on input automatically
       }
       {
-        timeout = 60 * 20; # 1200s
+        timeout = 60 * 20;
         command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
     ];
@@ -84,21 +88,11 @@ in
       after-resume = "${lib.getExe dms-toggle-outputs}";
     };
   };
-  # Mirror dms.service: order after niri.service so NIRI_SOCKET is present.
-  # graphical-session.target ordering is already set by the HM module default.
+  # Mirror dms
   systemd.user.services.swayidle.Unit.After = [ "niri.service" ];
 
-  systemd.user.services.darkman = {
-    Unit = {
-      After = [ "dms.service" ];
-      Wants = [ "dms.service" ];
-    };
-  };
-  # Bind 1Password to DMS so it cannot start until DMS is active and stops
-  # when DMS stops. dms.service going active is not sufficient — quickshell
-  # claims org.kde.StatusNotifierWatcher asynchronously after the service is
-  # ready, and 1Password only attempts tray registration once at startup. Block
-  # on the bus name with gdbus wait so the SNI watcher is guaranteed present.
+  # 1Password registers its tray icon once at startup, but DMS's SNI watcher
+  # appears async after the unit is active — wait on the bus name first.
   systemd.user.services."1password" = {
     Unit = {
       After = [ "dms.service" ];
@@ -107,6 +101,12 @@ in
     Service.ExecStartPre = "${pkgs.glib.bin}/bin/gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher";
   };
 
+  systemd.user.services.darkman = {
+    Unit = {
+      After = [ "dms.service" ];
+      Wants = [ "dms.service" ];
+    };
+  };
   services.darkman = {
     darkModeScripts = {
       dms = ''
