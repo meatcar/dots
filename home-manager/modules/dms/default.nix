@@ -32,6 +32,19 @@ let
     runtimeInputs = [ pkgs.coreutils ]; # sleep
     text = builtins.readFile ./wait-wayland.sh;
   };
+  # The DMS backend binds wlr-gamma-control once, only for outputs present at
+  # startup, and never retries. Racing ahead of niri's output enumeration drops
+  # the "gamma" capability, breaking night mode until the service restarts. Wait
+  # for an enabled output so gamma binds on the first try.
+  wait-niri-output = pkgs.writeShellApplication {
+    name = "wait-niri-output";
+    runtimeInputs = [
+      pkgs.niri
+      pkgs.coreutils # sleep
+      pkgs.gnugrep
+    ];
+    text = builtins.readFile ./wait-niri-output.sh;
+  };
   pathPrefix = "PATH=${lib.makeBinPath [ cfg.quickshell.package ]}:$PATH";
 in
 {
@@ -47,7 +60,10 @@ in
     Unit.After = [ "niri.service" ];
     Unit.BindsTo = [ "niri.service" ];
     Unit.StartLimitIntervalSec = 0;
-    Service.ExecStartPre = "${lib.getExe wait-wayland} 30";
+    Service.ExecStartPre = [
+      "${lib.getExe wait-wayland} 30"
+      "${lib.getExe wait-niri-output} 30"
+    ];
     Service.RestartSec = 1; # restart slower, effectively a poll
   };
   home.packages = with pkgs; [
