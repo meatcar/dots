@@ -34,50 +34,6 @@ return {
   },
 
   -- Markdown
-  -- {
-  --   'tpope/vim-markdown',
-  --   ft = { '*.md', '*.markdown' },
-  --   config = function()
-  --     vim.g.vim_markdown_fenced_languages = {
-  --       'javascript',
-  --       'js=javascript',
-  --       'json=javascript',
-  --       'java',
-  --       'css',
-  --       'sass',
-  --       'mustache',
-  --       'html=mustache',
-  --       'sh',
-  --       'shell=sh',
-  --     }
-  --   end,
-  -- },
-  -- { -- Fancy markdown extras
-  --   'SidOfc/mkdx',
-  --   ft = { 'md', 'markdown' },
-  --   config = function()
-  --     vim.g['mkdx#settings'] = {
-  --       map = { prefix = '<localleader>', enable = 1 },
-  --       tokens = {
-  --         enter = { '-', '*', '>' },
-  --         bold = '**',
-  --         italic = '*',
-  --         strike = '',
-  --         list = '-',
-  --         fence = '',
-  --         header = '#',
-  --       },
-  --       checkbox = {
-  --         toggles = { ' ', '-', 'x' },
-  --         update_tree = 2,
-  --         initial_state = ' ',
-  --       },
-  --       highlight = { enable = 1 },
-  --       auto_update = { enable = 1 },
-  --       fold = { enable = 1 },
-  --     }
-  --   end,
-  -- },
   { -- make editing freetext easier
     'reedes/vim-pencil',
     ft = { 'markdown', 'text', 'mail' },
@@ -101,7 +57,7 @@ return {
         checkboxes = {
           enable = true,
 
-          checked = { text = "󰗠 ", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxStriked"},
+          checked = { text = "󰗠 ", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxStriked" },
           unchecked = { text = "󰄰 ", hl = "MarkviewCheckboxUnchecked", scope_hl = "none" },
 
           ["-"] = { text = "󱎖 ", hl = "MarkviewCheckboxPending", scope_hl = "none" },
@@ -135,8 +91,8 @@ return {
       preview = {
         modes = { "i", "n", "no", "c" },
         hybrid_modes = { "i" },
-                linewise_hybrid_mode = true,
-        edit_range = {1,1},
+        linewise_hybrid_mode = true,
+        edit_range = { 1, 1 },
 
         callbacks = {
           on_enable = function(_, win)
@@ -160,8 +116,8 @@ return {
       })
     end,
     keys = {
-      { "<localleader>tt", "<cmd>Checkbox change 1 0<cr>", desc = "Toggle checkbox" },
-      { "<localleader>tn", "<cmd>Checkbox change 0 1<cr>", desc = "Toggle checkbox" },
+      { "<localleader>tt", "<cmd>Checkbox change 1 0<cr>",  desc = "Toggle checkbox" },
+      { "<localleader>tn", "<cmd>Checkbox change 0 1<cr>",  desc = "Toggle checkbox" },
       { "<localleader>tp", "<cmd>Checkbox change 0 -1<cr>", desc = "Toggle checkbox" },
     }
   },
