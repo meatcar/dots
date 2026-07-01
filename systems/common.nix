@@ -49,6 +49,11 @@
       # monospace
       go-font
       (iosevka-bin.override { variant = "SS07"; })
+      # sans/serif
+      (iosevka-bin.override { variant = "Aile"; })
+      (iosevka-bin.override { variant = "Etoile"; })
+      comic-neue
+      fantasque-sans-mono
     ];
   };
 
