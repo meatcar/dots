@@ -108,8 +108,8 @@ in
     xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
     binds {
-      Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe pkgs.ghostty}" "--window-inherit-working-directory=false" "--gtk-single-instance=false"; }
-      Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe pkgs.ghostty}"; }
+      Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe ghostty}" "+new-window" "--working-directory=home"; }
+      Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe ghostty}" "+new-window"; }
       Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
       Mod+E hotkey-overlay-title="Files" { spawn "${fmExe}"; }
       Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }

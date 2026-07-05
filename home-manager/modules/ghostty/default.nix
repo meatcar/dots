@@ -19,6 +19,7 @@
       window-theme = "ghostty";
       quit-after-last-window-closed = false;
       shell-integration-features = true;
+      gtk-single-instance = true;
     };
   };
 }
