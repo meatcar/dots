@@ -40,9 +40,15 @@ in
         action="$1"
         # server-common.sh derives PLUGIN_DIR via SCRIPT_DIR.
         SCRIPT_DIR="$scripts"
+        # These third-party helpers assume unset vars are tolerated (e.g.
+        # server_key() reads $OPENSESSIONS_SERVER_KEY at source time). Our
+        # `set -u` would abort sourcing and make the whole action exit 1, so
+        # scope -u off across the sourcing; every var read afterward is bound.
+        set +u
         . "$scripts/sidebar-common.sh"
         . "$scripts/even-horizontal-common.sh"
         . "$scripts/server-common.sh"
+        set -u
 
         win=$(tmux display-message -p '#{window_id}' 2>/dev/null); [ -n "$win" ] || exit 0
         cur=$(tmux display-message -p '#{pane_id}' 2>/dev/null)
