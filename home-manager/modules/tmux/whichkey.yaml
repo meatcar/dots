@@ -98,7 +98,7 @@ items:
     key: "}"
     command: "swap-pane -D"
   - separator: true
-  # Panes: resize (pain-control; note: K is rebound to kill-session)
+  # Panes: resize (pain-control)
   - name: "resize ←"
     key: "H"
     command: "resize-pane -L 5"
@@ -110,12 +110,33 @@ items:
     command: "resize-pane -R 5"
   - separator: true
   # Sessions
-  - name: "switch session"
+  - name: "+sesh"
     key: "s"
-    command: 'run-shell "tmux display-popup -E -y0 tmux_select_session; exit 0"'
-  - name: "kill session"
-    key: "K"
-    command: 'run-shell "tmux display-popup -E -y0 tmux_kill_session; exit 0"'
+    menu:
+      - name: "switch session"
+        key: "s"
+        command: 'run-shell "sesh_tmux pick"'
+      - name: "tmux sessions"
+        key: "t"
+        command: 'run-shell "sesh_tmux tmux"'
+      - name: "zoxide dirs"
+        key: "z"
+        command: 'run-shell "sesh_tmux zoxide"'
+      - name: "configs"
+        key: "c"
+        command: 'run-shell "sesh_tmux config"'
+      - name: "find dirs"
+        key: "f"
+        command: 'run-shell "sesh_tmux find"'
+      - name: "kill session"
+        key: "k"
+        command: 'run-shell "sesh_tmux kill"'
+      - name: "last session"
+        key: "l"
+        command: 'run-shell "sesh_tmux last"'
+      - name: "root session"
+        key: "r"
+        command: 'run-shell "sesh_tmux root"'
   - name: "detach"
     key: "d"
     command: "detach-client"

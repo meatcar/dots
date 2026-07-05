@@ -61,6 +61,18 @@ else
     exit 1
 end
 
+# Test 2b: dotted directory names use underscores (matches sesh sanitization)
+set -l saved_dir "$DIRENV_DIR"
+set -x DIRENV_DIR "/tmp/petting-zoo.nix-default"
+set -l dotted_name (__autotmux_session_name)
+set -x DIRENV_DIR "$saved_dir"
+if test "$dotted_name" = "petting-zoo_nix-default"
+    printf "✓ test 2b: dotted names use underscores\n"
+else
+    printf "✗ test 2b failed: expected 'petting-zoo_nix-default' got '%s'\n" "$dotted_name" >&2
+    exit 1
+end
+
 # Test 3: autotmux starts a new session when missing
 reset_tmux_calls
 set -g tmux_has_session 1

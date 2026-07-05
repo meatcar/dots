@@ -18,7 +18,9 @@ end
 function __autotmux_session_name --description "Derive tmux session name from project directory"
   set -l direnv_dir (__autotmux_direnv_dir)
   test -z "$direnv_dir" && return 1
-  basename "/$direnv_dir" | tr . -
+  # tmux forbids "." in names; map to "_" to match sesh's sanitization so
+  # autotmux and the sesh picker resolve dotted dirs to the same session.
+  basename "/$direnv_dir" | tr . _
 end
 
 function autotmux --description "Attach to tmux session for current direnv project"
