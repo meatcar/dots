@@ -1,10 +1,19 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
 {
   home.packages = with pkgs; [ grc ];
+
+  # Ctrl+R -> television history with substring matching + recency order (see
+  # _tv_history_recency). mkAfter overrides tv's own ctrl-r bind, which fuzzy
+  # matches and re-ranks by score, losing recency.
+  programs.fish.interactiveShellInit = lib.mkAfter ''
+    bind --mode default ctrl-r _tv_history_recency
+    bind --mode insert ctrl-r _tv_history_recency
+  '';
 
   programs.fish = {
     enable = true;

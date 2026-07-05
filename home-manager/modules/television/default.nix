@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   nixpkgs-unstable,
   ...
@@ -30,12 +29,5 @@
     };
     enableFishIntegration = config.programs.fish.enable;
   };
-
-  # Restore fish's built-in ctrl-r history search; tv binds it unconditionally
-  programs.fish.interactiveShellInit = lib.mkIf config.programs.fish.enable (
-    lib.mkAfter ''
-      bind --mode default ctrl-r history-pager
-      bind --mode insert ctrl-r history-pager
-    ''
-  );
+  # Ctrl+R override lives in modules/fish (binds to fzf.fish).
 }
