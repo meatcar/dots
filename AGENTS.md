@@ -18,13 +18,13 @@ Nix Conventions:
 - Composition: `imports = [ ./path ];`
 - Separate NixOS vs Home Manager concerns.
 - `specialArgs` only for values shared across modules.
-- multi-line scripts in standalone files.
+- Multi-line scripts in standalone files.
+- Strict impermanence: see `home-manager/systems/watson/impermanence.nix` and `modules/impermanence/default.nix` and its imports for paths that survive reboot.
 
 Shell Conventions:
 
 - POSIX shell preferred. `#!/usr/bin/env bash` only if needed.
-- Quote variables: `"${var}"`.
-- Use `set -euo pipefail`.
+- Love shellcheck.
 - No silent failures; print actionable errors.
 
 Git: atomic Conventional Commits.
