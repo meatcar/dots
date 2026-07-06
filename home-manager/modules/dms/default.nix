@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -7,9 +6,7 @@
   ...
 }:
 let
-  cfg = config.programs.dank-material-shell;
   dmsPkg = import ./dms-shell.nix { inherit pkgs inputs; };
-  dms = lib.getExe dmsPkg;
   dms-toggle-outputs = pkgs.writeShellApplication {
     name = "dms-toggle-outputs";
     runtimeInputs = [ dmsPkg ];
@@ -45,7 +42,16 @@ let
     ];
     text = builtins.readFile ./wait-niri-output.sh;
   };
-  pathPrefix = "PATH=${lib.makeBinPath [ cfg.quickshell.package ]}:$PATH";
+  darkman-dms-bridge = pkgs.writeShellApplication {
+    name = "darkman-dms-bridge";
+    runtimeInputs = with pkgs; [
+      glib.bin # gdbus
+      darkman
+      gnugrep
+      coreutils # tail
+    ];
+    text = builtins.readFile ./darkman-dms-bridge.sh;
+  };
 in
 {
   programs.dank-material-shell = {
@@ -118,24 +124,28 @@ in
     Service.ExecStartPre = "${pkgs.glib.bin}/bin/gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher";
   };
 
-  systemd.user.services.darkman = {
+  # DMS drives the theme; darkman follows via the bridge below. Disable its rival
+  # machinery so it can't double-drive or loop: geoclue (DMS schedules) and the
+  # gtk-theme hook (DMS writes gsettings itself).
+  services.darkman.settings.usegeoclue = lib.mkForce false;
+  services.darkman.darkModeScripts.gtk-theme = lib.mkForce "";
+  services.darkman.lightModeScripts.gtk-theme = lib.mkForce "";
+
+  systemd.user.services.darkman-dms-bridge = {
     Unit = {
-      After = [ "dms.service" ];
-      Wants = [ "dms.service" ];
+      Description = "Mirror DMS appearance color-scheme into darkman";
+      After = [
+        "dms.service"
+        "darkman.service"
+        "xdg-desktop-portal.service"
+      ];
+      PartOf = [ "graphical-session.target" ];
     };
-  };
-  services.darkman = {
-    darkModeScripts = {
-      dms = ''
-        export ${pathPrefix}
-        ${dms} ipc theme dark
-      '';
+    Service = {
+      ExecStart = lib.getExe darkman-dms-bridge;
+      Restart = "always";
+      RestartSec = 2;
     };
-    lightModeScripts = {
-      dms = ''
-        export ${pathPrefix}
-        ${dms} ipc theme light
-      '';
-    };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
