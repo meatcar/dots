@@ -69,6 +69,7 @@ in
   home.packages = with pkgs; [
     kdePackages.kimageformats
     dms-toggle-outputs
+    adw-gtk3
   ];
   # Niri's IPC has no output events (26.04), so watch DRM uevents for hotplug.
   systemd.user.services.dms-output-watch = {
