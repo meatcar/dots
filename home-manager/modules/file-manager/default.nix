@@ -6,6 +6,15 @@
 }:
 let
   cfg = config.me.fileManager;
+
+  # The KDE platform theme reads view/window colors from kdeglobals [Colors:*],
+  # but nothing writes them outside Plasma. This imports a .colors file into
+  # kdeglobals; a path watcher runs it when DMS regenerates the scheme.
+  applyKdeColors = pkgs.writeShellApplication {
+    name = "apply-kde-colors";
+    runtimeInputs = [ pkgs.kdePackages.kconfig ]; # kwriteconfig6
+    text = builtins.readFile ./apply-kde-colors.sh;
+  };
 in
 {
   options.me.fileManager = lib.mkOption {
@@ -55,24 +64,64 @@ in
         ffmpegthumbnailer
         kdePackages.kservice # kbuildsycoca6, to (re)build the "Open With" app catalog
         kdePackages.baloo # timeline:/ KIO worker + baloo_file indexer (Places "Modified Today/…")
-        # Qt platform theme: qgnomeplatform reads the org.freedesktop.appearance
-        # color-scheme from the (gnome) Settings portal and swaps the adwaita /
-        # adwaita-dark style live, so Dolphin follows darkman. adwaita-qt6
-        # provides those styles; qadwaitadecorations gives Adwaita CSD.
-        qgnomeplatform-qt6
-        adwaita-qt6
-        qadwaitadecorations-qt6
+        # Qt platform theme. Dolphin is a KDE app; the KDE platform theme
+        # (plasma-integration) reads its palette from kdeglobals [Colors:*] and
+        # its widget style from breeze. qgnomeplatform was tried first but its
+        # QPalette::AlternateBase derivation striped Dolphin's list rows (dark
+        # text on dark alternate rows) and it never reads kdeglobals. Under the
+        # KDE theme the DankMatugen scheme imported into kdeglobals (below) drives
+        # the colors, and kwriteconfig6 --notify swaps light/dark live on recolor.
+        kdePackages.plasma-integration
+        kdePackages.breeze
       ];
       dbus.packages = [ pkgs.kdePackages.dolphin ];
 
-      # qt.enable only wires QT_PLUGIN_PATH/QML2_IMPORT_PATH so the plugins above
-      # resolve. We deliberately do NOT set qt.platformTheme/style: the HM module
-      # would export QT_STYLE_OVERRIDE, which pins a static light style and stops
-      # qgnomeplatform from swapping light/dark on color-scheme changes
-      # (FedoraQt/qgnomeplatform#80). Selecting "gnome" by env instead.
+      # qt.enable wires QT_PLUGIN_PATH/QML2_IMPORT_PATH so the plugins above
+      # resolve. Select the KDE platform theme by env rather than qt.platformTheme
+      # (which would also export QT_STYLE_OVERRIDE): here light/dark is a palette
+      # swap in kdeglobals, not a style swap, so the style stays Breeze and only
+      # colors change on recolor.
       qt.enable = true;
-      home.sessionVariables.QT_QPA_PLATFORMTHEME = "gnome";
-      systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME = "gnome";
+      home.sessionVariables.QT_QPA_PLATFORMTHEME = "kde";
+      systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME = "kde";
+
+      # The KDE platform theme reads Dolphin's colors from kdeglobals [Colors:*],
+      # but nothing writes those outside Plasma. DMS's matugen writes a full KDE
+      # scheme to ~/.local/share/color-schemes/DankMatugen.colors on every recolor
+      # (mode toggle and wallpaper change), tracking the current mode. Watch that
+      # file and import its [Colors:*] into kdeglobals (--notify => running KDE
+      # apps re-read live) so Dolphin follows the shell's Material You palette and
+      # swaps light/dark with darkman. That .colors is only a template; the active
+      # colors are read from kdeglobals, hence the copy.
+      systemd.user.services.dolphin-colors = {
+        Unit = {
+          Description = "Import DMS matugen color scheme into kdeglobals";
+          After = [ "dms.service" ];
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${lib.getExe applyKdeColors} %h/.local/share/color-schemes/DankMatugen.colors DankMatugen";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
+      systemd.user.paths.dolphin-colors = {
+        Unit = {
+          Description = "Watch DMS matugen color scheme for changes";
+          # A PathChanged watcher never fires for a write that lands before it is
+          # active, so DMS's first recolor at login can be missed and kdeglobals
+          # left stale until the next toggle. Order the watcher before dms.service
+          # (and let dms pull it in) so it is watching before DMS can write.
+          Before = [ "dms.service" ];
+        };
+        Path = {
+          PathChanged = "%h/.local/share/color-schemes/DankMatugen.colors";
+          Unit = "dolphin-colors.service";
+        };
+        Install.WantedBy = [
+          "dms.service"
+          "graphical-session.target"
+        ];
+      };
 
       # Force GTK apps to use the (KDE) file-chooser portal instead of their
       # built-in dialog. Mirror modules/wayland's dual-set pattern so the var
