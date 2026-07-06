@@ -100,13 +100,11 @@ return {
     event = me.o.events.buf_late,
     keys = {
       {
-        'n',
         '<a-n>',
         function() require('illuminate').next_reference { wrap = true } end,
         desc = 'Next occurence of word under cursor'
       },
       {
-        'n',
         '<a-p>',
         function()
           require('illuminate').next_reference { reverse = true, wrap = true }
