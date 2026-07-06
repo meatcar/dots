@@ -27,6 +27,18 @@
         command = "${pkgs.zoxide}/bin/zoxide query --list";
       };
     };
+    channels.git-ignore = {
+      metadata = {
+        description = "Select .gitignore templates from github/gitignore";
+        name = "git-ignore";
+      };
+      preview = {
+        command = "${pkgs.gibo}/bin/gibo dump '{0}'";
+      };
+      source = {
+        command = "${pkgs.gibo}/bin/gibo list";
+      };
+    };
     enableFishIntegration = config.programs.fish.enable;
   };
   # Ctrl+R override lives in modules/fish (binds to fzf.fish).

@@ -83,6 +83,7 @@ in
       git-absorb # quick fixup rebases
       lab # gitlab cli
       hub # github cli (pre-gh, less official)
+      gibo # .gitignore boilerplate from github/gitignore
     ])
     ++ (with nixpkgs-unstable; [
       # gitu # cli magit

@@ -139,6 +139,7 @@
       ".cache/mesa_shader_cache"
 
       # dev
+      ".cache/gibo" # github/gitignore clone for `git ignore`
       ".local/share/lazygit"
       ".config/configstore"
       ".config/zed"

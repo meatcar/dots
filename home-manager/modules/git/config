@@ -16,7 +16,7 @@
 [alias]
   s = status -sb
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+  ignore = "!gibo dump $(tv git-ignore)"
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
 [diff]
