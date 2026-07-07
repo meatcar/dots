@@ -107,13 +107,18 @@ return {
             end
             return vim.bo[buffer].shiftwidth or 4
           end,
+        },
+        marker_minus = {
+          add_padding = function(_, item)
+            return item.indent > 1;
+          end
         }
       },
       preview = {
         modes = { "i", "n", "no", "c" },
         hybrid_modes = { "i", "n" },
         linewise_hybrid_mode = true,
-        edit_range = { 1, 1 },
+        edit_range = { 0, 0 },
       }
     },
     config = function(_, opts)
@@ -122,7 +127,7 @@ return {
         default = " ",
         remove_style = "checkbox",
         states = {
-          { " ", "-", "x" },
+          { " ", "x", "-" },
           { "/", "<", ">" },
           { "!", "?", "*" },
           { "y", "n" }
@@ -134,9 +139,11 @@ return {
       { "<localleader>mM", "<cmd>Markview Toggle<cr>",       desc = "Toggle preview (all)" },
       { "<localleader>mh", "<cmd>Markview hybridToggle<cr>", desc = "Toggle hybrid mode" },
       { "<localleader>ms", "<cmd>Markview splitToggle<cr>",  desc = "Toggle split preview" },
-      { "<localleader>cc", "<cmd>Checkbox change 1 0<cr>",   desc = "Cycle checkbox state" },
-      { "<localleader>cn", "<cmd>Checkbox change 0 1<cr>",   desc = "Next checkbox set" },
-      { "<localleader>cp", "<cmd>Checkbox change 0 -1<cr>",  desc = "Prev checkbox set" },
+      { "<localleader>cc", "<cmd>Checkbox change 1 0<cr>",   mode = { "n", "v" }, desc = "Cycle checkbox state" },
+      { "<localleader>cC", "<cmd>Checkbox change -1 0<cr>",  mode = { "n", "v" }, desc = "Cycle checkbox state (rev)" },
+      { "<localleader>cn", "<cmd>Checkbox change 0 1<cr>",   mode = { "n", "v" }, desc = "Next checkbox set" },
+      { "<localleader>cp", "<cmd>Checkbox change 0 -1<cr>",  mode = { "n", "v" }, desc = "Prev checkbox set" },
+      { "<localleader>ct", "<cmd>Checkbox toggle<cr>",       mode = { "n", "v" }, desc = "Toggle checkbox presence" },
     }
   },
 
