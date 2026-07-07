@@ -132,7 +132,9 @@ return {
         char = { '¦', '┆', '┊', '▏' },
       },
       whitespace = { remove_blankline_trail = true },
-      exclude = { filetypes = _G.me.o.panels },
+      -- markdown: overlay guides sit on top of markview's inline icons when
+      -- list indents render compressed, hiding checkboxes on nested items
+      exclude = { filetypes = vim.list_extend({ 'markdown' }, _G.me.o.panels) },
     }
   },
 
