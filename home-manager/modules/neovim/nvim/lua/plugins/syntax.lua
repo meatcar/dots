@@ -63,10 +63,40 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    -- defaults everywhere; markview manages conceallevel/concealcursor itself.
-    -- hybrid + linewise shows the cursor line (±1) as raw text in n/i modes
-    -- so edits line up with actual characters.
+    -- markview manages conceallevel/concealcursor itself; hybrid + linewise
+    -- shows the cursor line (±1) as raw text in n/i modes so edits line up
+    -- with actual characters.
     opts = {
+      markdown_inline = {
+        checkboxes = {
+          enable = true,
+
+          checked = { text = "󰗠 ", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxStriked" },
+          unchecked = { text = "󰄰 ", hl = "MarkviewCheckboxUnchecked", scope_hl = "none" },
+
+          ["-"] = { text = "󱎖 ", hl = "MarkviewCheckboxPending", scope_hl = "none" },
+          [">"] = { text = " ", hl = "MarkviewCheckboxCancelled" },
+          ["<"] = { text = "󰃖 ", hl = "MarkviewCheckboxCancelled" },
+          ["/"] = { text = "󰍶 ", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
+
+          ["?"] = { text = "󰋗 ", hl = "MarkviewCheckboxPending" },
+          ["!"] = { text = "󰀦 ", hl = "MarkviewCheckboxUnchecked" },
+          ["*"] = { text = "󰓎 ", hl = "MarkviewCheckboxPending" },
+          ['"'] = { text = "󰸥 ", hl = "MarkviewCheckboxCancelled" },
+          ["l"] = { text = "󰆋 ", hl = "MarkviewCheckboxProgress" },
+          ["b"] = { text = "󰃀 ", hl = "MarkviewCheckboxProgress" },
+          ["i"] = { text = "󰰄 ", hl = "MarkviewCheckboxChecked" },
+          ["$"] = { text = " ", hl = "MarkviewCheckboxChecked" },
+          ["I"] = { text = "󰛨 ", hl = "MarkviewCheckboxPending" },
+          ["y"] = { text = " ", hl = "MarkviewCheckboxChecked" },
+          ["n"] = { text = " ", hl = "MarkviewCheckboxUnchecked" },
+          ["f"] = { text = "󱠇 ", hl = "MarkviewCheckboxUnchecked" },
+          ["k"] = { text = " ", hl = "MarkviewCheckboxPending" },
+          ["w"] = { text = " ", hl = "MarkviewCheckboxProgress" },
+          ["u"] = { text = "󰔵 ", hl = "MarkviewCheckboxChecked" },
+          ["d"] = { text = "󰔳 ", hl = "MarkviewCheckboxUnchecked" },
+        }
+      },
       preview = {
         modes = { "i", "n", "no", "c" },
         hybrid_modes = { "i", "n" },
@@ -76,7 +106,16 @@ return {
     },
     config = function(_, opts)
       require("markview").setup(opts)
-      require("markview.extras.checkboxes") -- registers :Checkbox
+      require("markview.extras.checkboxes").setup({
+        default = " ",
+        remove_style = "checkbox",
+        states = {
+          { " ", "-", "x" },
+          { "/", "<", ">" },
+          { "!", "?", "*" },
+          { "y", "n" }
+        }
+      })
     end,
     keys = {
       { "<localleader>mm", "<cmd>Markview toggle<cr>",       desc = "Toggle preview" },
