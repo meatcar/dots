@@ -18,7 +18,6 @@
     "commit": "3acbcad1211572342632a6c0151f839e7dead27f"
   },
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
-  "copilot.lua": { "branch": "master", "commit": "0415bd625c3076a6a5ee445be484574d55b4fbfc" },
   "darkman.nvim": { "branch": "main", "commit": "300b441eaa1187ffaa541fc54971ee8ce731884f" },
   "deadcolumn.nvim": { "branch": "master", "commit": "92c86f10bfba2717ca2280e2e759b047135d5288" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
@@ -104,6 +103,7 @@
     "commit": "a798325b7f36acc62741d1029930a7b96d4dd4bf"
   },
   "schemastore.nvim": { "branch": "main", "commit": "0f3cd0e584b4ed221fc44eee5b0b6ce335f7e263" },
+  "sidekick.nvim": { "branch": "main", "commit": "208e1c5b8170c01fd1d07df0139322a76479b235" },
   "space-vim-theme": { "branch": "master", "commit": "4790dbba31f678f75af4f4c7a1465008542bd979" },
   "spaceless.nvim": { "branch": "main", "commit": "927fb0afb416ea39306af5842c247d810dfd5938" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },

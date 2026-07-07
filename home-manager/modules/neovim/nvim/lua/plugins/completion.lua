@@ -98,12 +98,12 @@ return {
       keymap = {
         preset = 'enter',
         ['<Tab>'] = {
-          function(cmp)
-            local copilot = require("copilot.suggestion")
-            if copilot.is_visible() then
-              copilot.accept()
-              return true
-            end
+          'snippet_forward',
+          function()
+            return require('sidekick').nes_jump_or_apply()
+          end,
+          function()
+            return vim.lsp.inline_completion.get()
           end,
           'select_next'
         }

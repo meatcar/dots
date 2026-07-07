@@ -36,6 +36,7 @@
       gcc
 
       # lsps
+      copilot-language-server
       nil
       statix
       lua-language-server

@@ -28,6 +28,8 @@ return {
     config = function()
       require 'lazydev'
       local servers = {
+        -- NES + inline completions, see plugins/ai.lua
+        copilot = {},
         lua_ls = {
           settings = {
             Lua = {
