@@ -27,7 +27,6 @@ return {
     end,
     config = function()
       require 'lazydev'
-      require 'cmp'
       local servers = {
         lua_ls = {
           settings = {
