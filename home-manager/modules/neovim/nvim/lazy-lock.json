@@ -49,7 +49,7 @@
   "lspsaga.nvim": { "branch": "main", "commit": "3e33a6a6c5d379f3d4fae77fae6b53b762a0a30f" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
   "lush.nvim": { "branch": "main", "commit": "9c60ec2279d62487d942ce095e49006af28eed6e" },
-  "markview.nvim": { "branch": "main", "commit": "fbe5ec7d127ab3435ffd62740a7b27e7fabf42dc" },
+  "markview.nvim": { "branch": "main", "commit": "092c0872fd2437b3b862d253910981142d2465aa" },
   "material.nvim": { "branch": "main", "commit": "92f7366a9315cd386bc4fa4d716fde375dda210f" },
   "mini.basics": { "branch": "main", "commit": "4255727accba14db930823da4168c7f1ea68ff80" },
   "mini.surround": { "branch": "main", "commit": "9fd5ebef2b34cc4ac3c0f1811a6726ea6d92fa91" },
