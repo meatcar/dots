@@ -52,73 +52,29 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
+    -- defaults everywhere; markview manages conceallevel/concealcursor itself.
+    -- hybrid + linewise shows the cursor line (±1) as raw text in n/i modes
+    -- so edits line up with actual characters.
     opts = {
-      markdown_inline = {
-        checkboxes = {
-          enable = true,
-
-          checked = { text = "󰗠 ", hl = "MarkviewCheckboxChecked", scope_hl = "MarkviewCheckboxStriked" },
-          unchecked = { text = "󰄰 ", hl = "MarkviewCheckboxUnchecked", scope_hl = "none" },
-
-          ["-"] = { text = "󱎖 ", hl = "MarkviewCheckboxPending", scope_hl = "none" },
-          [">"] = { text = " ", hl = "MarkviewCheckboxCancelled" },
-          ["<"] = { text = "󰃖 ", hl = "MarkviewCheckboxCancelled" },
-          ["/"] = { text = "󰍶 ", hl = "MarkviewCheckboxCancelled", scope_hl = "MarkviewCheckboxStriked" },
-
-          ["?"] = { text = "󰋗 ", hl = "MarkviewCheckboxPending" },
-          ["!"] = { text = "󰀦 ", hl = "MarkviewCheckboxUnchecked" },
-          ["*"] = { text = "󰓎 ", hl = "MarkviewCheckboxPending" },
-          ['"'] = { text = "󰸥 ", hl = "MarkviewCheckboxCancelled" },
-          ["l"] = { text = "󰆋 ", hl = "MarkviewCheckboxProgress" },
-          ["b"] = { text = "󰃀 ", hl = "MarkviewCheckboxProgress" },
-          ["i"] = { text = "󰰄 ", hl = "MarkviewCheckboxChecked" },
-          ["$"] = { text = " ", hl = "MarkviewCheckboxChecked" },
-          ["I"] = { text = "󰛨 ", hl = "MarkviewCheckboxPending" },
-          ["y"] = { text = " ", hl = "MarkviewCheckboxChecked" },
-          ["n"] = { text = " ", hl = "MarkviewCheckboxUnchecked" },
-          ["f"] = { text = "󱠇 ", hl = "MarkviewCheckboxUnchecked" },
-          ["k"] = { text = " ", hl = "MarkviewCheckboxPending" },
-          ["w"] = { text = " ", hl = "MarkviewCheckboxProgress" },
-          ["u"] = { text = "󰔵 ", hl = "MarkviewCheckboxChecked" },
-          ["d"] = { text = "󰔳 ", hl = "MarkviewCheckboxUnchecked" },
-        }
-      },
-      markdown = {
-        list_items = {
-          enable = true
-        }
-      },
       preview = {
         modes = { "i", "n", "no", "c" },
-        hybrid_modes = { "i" },
+        hybrid_modes = { "i", "n" },
         linewise_hybrid_mode = true,
         edit_range = { 1, 1 },
-
-        callbacks = {
-          on_enable = function(_, win)
-            vim.wo[win].conceallevel = 3;
-            vim.wo[win].concealcursor = "nc";
-          end
-        }
       }
     },
     config = function(_, opts)
       require("markview").setup(opts)
-      require("markview.extras.checkboxes").setup({
-        default = " ",
-        remove_style = "checkbox",
-        states = {
-          { " ", "-", "x" },
-          { "/", "<", ">" },
-          { "!", "?", "*" },
-          { "y", "n" }
-        }
-      })
+      require("markview.extras.checkboxes") -- registers :Checkbox
     end,
     keys = {
-      { "<localleader>tt", "<cmd>Checkbox change 1 0<cr>",  desc = "Toggle checkbox" },
-      { "<localleader>tn", "<cmd>Checkbox change 0 1<cr>",  desc = "Toggle checkbox" },
-      { "<localleader>tp", "<cmd>Checkbox change 0 -1<cr>", desc = "Toggle checkbox" },
+      { "<localleader>mm", "<cmd>Markview toggle<cr>",       desc = "Toggle preview" },
+      { "<localleader>mM", "<cmd>Markview Toggle<cr>",       desc = "Toggle preview (all)" },
+      { "<localleader>mh", "<cmd>Markview hybridToggle<cr>", desc = "Toggle hybrid mode" },
+      { "<localleader>ms", "<cmd>Markview splitToggle<cr>",  desc = "Toggle split preview" },
+      { "<localleader>cc", "<cmd>Checkbox change 1 0<cr>",   desc = "Cycle checkbox state" },
+      { "<localleader>cn", "<cmd>Checkbox change 0 1<cr>",   desc = "Next checkbox set" },
+      { "<localleader>cp", "<cmd>Checkbox change 0 -1<cr>",  desc = "Prev checkbox set" },
     }
   },
 
