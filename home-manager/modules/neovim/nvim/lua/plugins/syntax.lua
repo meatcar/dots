@@ -20,10 +20,21 @@ return {
   {
     'mattn/emmet-vim',
     ft = { 'html', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
-    config = function()
+    init = function()
       vim.g.user_emmet_leader_key = '<localleader>'
       vim.g.user_emmet_install_global = false
+      -- insert-mode only, keeps normal-mode <localleader>j for treesj
+      vim.g.user_emmet_mode = 'i'
+    end,
+    config = function()
+      -- lazy's ft trigger fires after FileType, so install for the current
+      -- buffer directly and future buffers via autocmd
       vim.cmd [[EmmetInstall]]
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'html', 'handlebars', 'css', 'less', 'sass', 'scss', 'jsx' },
+        group = vim.api.nvim_create_augroup('me.emmet', {}),
+        command = 'EmmetInstall',
+      })
     end,
   },
 
@@ -42,12 +53,12 @@ return {
     end,
   },
   { -- preview markdown
-    'npxbr/glow.nvim',
-    ft = { 'markdown' },
+    'ellisonleao/glow.nvim',
     cmd = 'Glow',
-    config = function()
-      vim.keymap.set('n', '<localleader>p', [[<Cmd>Glow<CR>]], { buffer = 0 })
-    end,
+    opts = {},
+    keys = {
+      { '<localleader>p', '<Cmd>Glow<CR>', ft = 'markdown', desc = 'Glow preview' },
+    },
   },
   {
     "OXY2DEV/markview.nvim",
