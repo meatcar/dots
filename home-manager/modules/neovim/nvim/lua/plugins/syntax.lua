@@ -97,6 +97,18 @@ return {
           ["d"] = { text = "󰔳 ", hl = "MarkviewCheckboxUnchecked" },
         }
       },
+      markdown = {
+        list_items = {
+          -- follow the buffer's indent like the indent_size default does,
+          -- instead of the hardcoded 4-space render shift
+          shift_width = function(buffer)
+            if type(buffer) ~= "number" then
+              return vim.bo.shiftwidth or 4
+            end
+            return vim.bo[buffer].shiftwidth or 4
+          end,
+        }
+      },
       preview = {
         modes = { "i", "n", "no", "c" },
         hybrid_modes = { "i", "n" },
