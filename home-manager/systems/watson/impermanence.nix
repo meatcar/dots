@@ -14,9 +14,12 @@
   # SILENTLY DISCARDS writes through a dangling symlink (verified: exits 0,
   # writes nowhere), so Dolphin settings never persist. Pre-create the targets
   # after the symlinks are linked so the very first write lands in /persist.
+  # Anchored between linkGeneration (symlinks exist) and qt.kde.settings'
+  # "kconfig" writes (only ordered after writeBoundary by the module), so the
+  # kdeglobals seeds never hit a dangling symlink.
   home.activation.ensureDolphinPersistTargets = lib.mkIf (config.me.fileManager == "dolphin") (
-    lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals"; do
+    lib.hm.dag.entryBetween [ "kconfig" ] [ "linkGeneration" ] ''
+      for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals" "$HOME/.local/state/dolphinstaterc"; do
         target="$(readlink -f "$cfg")"
         if [ -n "$target" ] && [ ! -e "$target" ]; then
           run mkdir -p "$(dirname "$target")"
@@ -39,6 +42,10 @@
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/dolphinrc";
     ".config/kdeglobals".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/kdeglobals";
+    # KF6 keeps window/panel state (open docks, sizes) in XDG_STATE_HOME, not
+    # dolphinrc. Without this, Dolphin reopens all panels after every reboot.
+    ".local/state/dolphinstaterc".source =
+      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/state/dolphinstaterc";
   };
 
   home.persistence."/persist" = {

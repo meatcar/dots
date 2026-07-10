@@ -149,25 +149,30 @@ in
         </Menu>
       '';
 
-      # Point Dolphin's "Open Terminal" action at ghostty. Written via
-      # kwriteconfig6 (touches only this key) so dolphinrc/kdeglobals stay
-      # mutable for Dolphin's own view/window state. Best-effort: the key is
-      # read by KDE's default-terminal lookup.
-      # Runs after linkGeneration so ~/.config/kdeglobals (a symlink to /persist)
-      # exists, and ensures its target exists first — KConfig silently drops
-      # writes through a dangling symlink (see impermanence.nix).
-      home.activation.dolphinTerminal = lib.mkIf config.programs.ghostty.enable (
-        lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-          cfg="$HOME/.config/kdeglobals"
-          target="$(readlink -f "$cfg")"
-          if [ -n "$target" ] && [ ! -e "$target" ]; then
-            run mkdir -p "$(dirname "$target")"
-            run touch "$target"
-          fi
-          run ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
-            --file "$cfg" --group General --key TerminalApplication ghostty
-        ''
-      );
+      # Seed kdeglobals keys via qt.kde.settings, HM's kwriteconfig6 wrapper.
+      # Key-by-key writes keep kdeglobals mutable for Dolphin's own state and
+      # apply-kde-colors' palette imports (a declarative file would not).
+      #
+      # - Icons/Theme: the KDE platform theme resolves icons from kdeglobals
+      #   [Icons] Theme (default breeze) and ignores the GTK/gsettings icon
+      #   theme, so with QT_QPA_PLATFORMTHEME=kde (above) Qt apps -- including
+      #   DMS/quickshell -- fall back to breeze/hicolor while gtk3-themed
+      #   processes use gtk.iconTheme, and app icons flip between the two sets
+      #   depending on which env a process started with. Seed from
+      #   gtk.iconTheme so both agree.
+      # - General/TerminalApplication: Dolphin's "Open Terminal" action.
+      #
+      # The module's "kconfig" activation entry is only ordered after
+      # writeBoundary, and KConfig silently drops writes through a dangling
+      # symlink; ensureDolphinPersistTargets (impermanence.nix) anchors itself
+      # before "kconfig" so the /persist symlink targets exist first.
+      qt.kde.settings.kdeglobals =
+        lib.optionalAttrs (config.gtk.iconTheme != null) {
+          Icons.Theme = config.gtk.iconTheme.name;
+        }
+        // lib.optionalAttrs config.programs.ghostty.enable {
+          General.TerminalApplication = "ghostty";
+        };
 
       # Baloo backs Dolphin's timeline:/ Places ("Modified Today/…") and search.
       # Index ONLY the non-dotfile folders directly under $HOME: the "$HOME"/*/
