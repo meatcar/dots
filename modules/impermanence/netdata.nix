@@ -16,5 +16,13 @@ lib.mkIf cfg.enable {
       inherit (cfg) group;
       mode = "0750";
     }
+    # alert transition audit log, written by custom_sender in
+    # ../netdata/health_alarm_notify.conf
+    {
+      directory = "/var/log/netdata";
+      inherit (cfg) user;
+      inherit (cfg) group;
+      mode = "0750";
+    }
   ];
 }

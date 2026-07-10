@@ -34,6 +34,7 @@
     ../../modules/kdeconnect
     ../../modules/mime-apps
     ../../modules/voice
+    ../../modules/netdata-notify
     ./impermanence.nix
   ];
 
