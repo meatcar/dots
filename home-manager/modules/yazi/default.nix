@@ -1,13 +1,12 @@
 { pkgs, ... }:
 {
   # Preview deps HM's yazi module does not pull in: PDF (poppler), SVG/large
-  # images (resvg, imagemagick), archives (p7zip). Video thumbs come from
-  # ffmpegthumbnailer in common.nix.
+  # images (resvg, imagemagick). Archive (7z) and video thumbs come from
+  # p7zip-rar and ffmpegthumbnailer in common.nix.
   home.packages = with pkgs; [
     poppler-utils
     resvg
     imagemagick
-    p7zip
   ];
 
   programs.yazi = {
