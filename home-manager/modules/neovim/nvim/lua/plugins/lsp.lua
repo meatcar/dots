@@ -107,42 +107,20 @@ return {
   },
 
   {
-    -- pretty LSP popups
-
-    'nvimdev/lspsaga.nvim',
+    -- peek definitions/type-definitions in a floating window (replaces lspsaga peek)
+    'rmagatti/goto-preview',
     event = me.o.events.buf_early,
+    opts = {},
+  },
+
+  {
+    -- symbol outline sidebar (replaces lspsaga outline)
+    'hedyhli/outline.nvim',
+    cmd = 'Outline',
     keys = {
-      { '<leader>la', '<Cmd>Lspsaga code_action<CR>',             desc = 'Action' },
-      { '<leader>lh', '<Cmd>Lspsaga hover_doc<CR>',               desc = 'Hover Doc' },
-      { '<leader>ls', '<Cmd>Lspsaga signature_help<CR>',          desc = 'Signature' },
-      { '<leader>lm', '<Cmd>Lspsaga rename<CR>',                  desc = 'Rename' },
-      { '<leader>ld', '<Cmd>Lspsaga peek_definition<CR>',         desc = 'Definition' },
-      { '<leader>li', '<Cmd>Lspsaga show_line_diagnostics<CR>',   desc = 'Line info' },
-      { '<leader>lc', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', desc = 'Cursor info' },
-      { '<leader>la', '<Cmd>Lspsaga range_code_action<CR>',       desc = 'Action',     mode = 'v' },
+      { '<leader>lo', '<Cmd>Outline<CR>', desc = 'Outline' },
     },
-    opts = function()
-      return {
-        ui = {
-          kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
-        },
-        code_action = {
-          keys = {
-            quit = '<ESC>',
-            exec = '<CR>',
-          },
-        },
-        symbol_in_winbar = {
-          enable = false,
-          color_mode = false,
-          separator = '  ',
-        },
-        lightbulb = {
-          virtual_text = true,
-          sign = false
-        }
-      }
-    end,
+    opts = {},
   },
 
   {

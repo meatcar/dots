@@ -5,7 +5,7 @@ _G.me.o.panels = {
   'fugitive',
   'neo-tree',
   'qf',
-  'sagaoutline',
+  'Outline',
   'terminal',
   'trouble',
   'vista_kind',
@@ -15,7 +15,7 @@ _G.me.o.sidebars = {
   'Mundo',
   'NvimTree',
   'neo-tree',
-  'sagaoutline',
+  'Outline',
   'vista_kind',
 }
 

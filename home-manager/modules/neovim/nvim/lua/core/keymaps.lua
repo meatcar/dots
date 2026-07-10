@@ -31,14 +31,37 @@ end
 
 -- lsp maps
 M.lsp_on_attach = function(_, bufnr)
-  vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'gx', '<Cmd>Lspsaga code_action<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('x', 'gx', ':<C-u>Lspsaga range_code_action<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'geo', '<Cmd>Lspsaga show_line_diagnostics<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'gej', '<Cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'gek', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true, buffer = bufnr })
-  vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true, buffer = bufnr })
+  local function map(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { silent = true, buffer = bufnr, desc = desc })
+  end
+  local lsp, diag = vim.lsp.buf, vim.diagnostic
+
+  -- core LSP actions (native, Neovim 0.11+)
+  map('n', 'gr', lsp.rename, 'Rename')
+  map({ 'n', 'x' }, 'gx', lsp.code_action, 'Code action')
+  map('n', 'K', lsp.hover, 'Hover doc')
+  map('n', 'gd', lsp.definition, 'Definition')
+
+  -- diagnostics (native)
+  map('n', 'geo', diag.open_float, 'Line diagnostics')
+  map('n', 'gej', function() diag.jump({ count = 1, float = true }) end, 'Next diagnostic')
+  map('n', 'gek', function() diag.jump({ count = -1, float = true }) end, 'Prev diagnostic')
+
+  -- <leader>l* lsp group
+  map('n', '<leader>lm', lsp.rename, 'Rename')
+  map({ 'n', 'x' }, '<leader>la', lsp.code_action, 'Action')
+  map('n', '<leader>lh', lsp.hover, 'Hover Doc')
+  map('n', '<leader>ls', lsp.signature_help, 'Signature')
+  map('n', '<leader>li', diag.open_float, 'Line info')
+  map('n', '<leader>lc', function() diag.open_float({ scope = 'cursor' }) end, 'Cursor info')
+
+  -- peek definition/type in a float (goto-preview; replaces lspsaga peek + textobjects lsp_interop)
+  local ok, peek = pcall(require, 'goto-preview')
+  if ok then
+    map('n', '<leader>ld', peek.goto_preview_definition, 'Peek definition')
+    map('n', '<leader>df', peek.goto_preview_definition, 'Peek definition')
+    map('n', '<leader>dF', peek.goto_preview_type_definition, 'Peek type definition')
+  end
 end
 
 return M

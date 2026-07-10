@@ -43,7 +43,6 @@ return {
           colored_indent_levels = false,
         },
         leap = true,
-        lsp_saga = true,
         lsp_trouble = true,
         headlines = true,
         fidget = true,

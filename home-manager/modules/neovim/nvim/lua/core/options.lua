@@ -4,6 +4,9 @@ vim.o.shell = 'sh'
 -- truecolor support
 vim.o.termguicolors = true
 
+-- bordered floating windows (hover, signature, diagnostics)
+vim.o.winborder = 'rounded'
+
 -- window title
 vim.o.title = false -- TODO : see https://github.com/neovim/neovim/issues/18573
 vim.o.titlelen = 20
