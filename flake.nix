@@ -246,13 +246,13 @@
                       ./crypt/hm-me.nix
                     ];
                     nixpkgs = nixpkgsConfig;
-                    home.stateVersion = "25.11";
+                    home.stateVersion = "26.05";
                   };
               }
             ];
             iso = mkSystem "x86_64-linux" [
               {
-                system.stateVersion = "25.11";
+                system.stateVersion = "26.05";
                 boot.zfs.forceImportRoot = false;
               }
               (
