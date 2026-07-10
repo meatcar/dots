@@ -52,20 +52,34 @@ finalize() {
   TIMESTAMP=$(date +%Y-%m-%dT%H-%M-%S)
   OUT="${OUT_DIR}/recording-${TIMESTAMP}${SLUG:+-${SLUG}}.opus"
 
-  # Mix both legs, then trim leading/trailing silence only (areverse idiom
-  # keeps mid-conversation pauses intact).
-  FILTER="[0:a][1:a]amix=inputs=2:duration=longest:normalize=0,"
-  FILTER+="silenceremove=start_periods=1:start_silence=${DUR}:start_threshold=${THRESH}:detection=peak,"
-  FILTER+="areverse,"
-  FILTER+="silenceremove=start_periods=1:start_silence=${DUR}:start_threshold=${THRESH}:detection=peak,"
-  FILTER+="areverse,"
-  # Normalize loudness so quiet recordings come up to a consistent level.
-  FILTER+="loudnorm=I=${LOUDNESS}:TP=-1.5:LRA=11"
+  MIX="[0:a][1:a]amix=inputs=2:duration=longest:normalize=0"
 
-  ffmpeg -y -loglevel warning \
+  # Trim leading/trailing silence only (mid-conversation pauses stay).
+  # The areverse idiom buffers the whole stream in RAM twice and OOMs on
+  # multi-hour recordings; detect bounds in a streaming pass instead.
+  BOUNDS=$(ffmpeg -nostdin -hide_banner -y \
     -i "${MIC_WAV}" \
     -i "${SYS_WAV}" \
-    -filter_complex "${FILTER}" \
+    -filter_complex "${MIX},silencedetect=noise=${THRESH}:d=${DUR}" \
+    -f null - 2>&1 | awk '
+      /^ *Duration:/ { split($2, t, ":"); d = t[1]*3600 + t[2]*60 + t[3]
+                       if (d > total) total = d }
+      /silence_start:/ { s[++n] = $NF }
+      /silence_end:/   { e[n] = $5 }
+      END {
+        start = 0; end = total
+        if (n && s[1] < 0.1 && e[1] != "") start = e[1]
+        # trailing silence: no end logged, or it coincides with EOF
+        if (n && (e[n] == "" || total - e[n] < 0.1)) end = s[n]
+        if (end <= start) { start = 0; end = total }
+        print start, end
+      }')
+  read -r TRIM_START TRIM_END <<<"${BOUNDS}"
+
+  ffmpeg -nostdin -y -loglevel warning \
+    -i "${MIC_WAV}" \
+    -i "${SYS_WAV}" \
+    -filter_complex "${MIX},atrim=start=${TRIM_START}:end=${TRIM_END},asetpts=PTS-STARTPTS,loudnorm=I=${LOUDNESS}:TP=-1.5:LRA=11,aresample=48000" \
     -c:a libopus -b:a "${BITRATE}" -application audio \
     "${OUT}"
 
