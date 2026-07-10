@@ -42,6 +42,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.tmp.cleanOnBoot = true;
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
