@@ -93,11 +93,14 @@ in
       # apps re-read live) so Dolphin follows the shell's Material You palette and
       # swaps light/dark with darkman. That .colors is only a template; the active
       # colors are read from kdeglobals, hence the copy.
+      # No After=dms.service here: WantedBy=graphical-session.target makes the
+      # target implicitly After= this service, and dms is After= the target, so
+      # ordering after dms closes a cycle that gets broken by deleting dms's
+      # start job. The login run just imports whatever scheme file already
+      # exists (the script no-ops if absent); the path watcher below catches
+      # DMS's first write.
       systemd.user.services.dolphin-colors = {
-        Unit = {
-          Description = "Import DMS matugen color scheme into kdeglobals";
-          After = [ "dms.service" ];
-        };
+        Unit.Description = "Import DMS matugen color scheme into kdeglobals";
         Service = {
           Type = "oneshot";
           ExecStart = "${lib.getExe applyKdeColors} %h/.local/share/color-schemes/DankMatugen.colors DankMatugen";
