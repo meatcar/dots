@@ -279,6 +279,8 @@
         directory = ".local/share/Paradox Interactive";
         mode = "0755";
       }
+
+      ".local/share/garry"
     ]
     ++ lib.optional config.programs.bat.enable ".cache/bat"
     ++ lib.optional config.programs.gh.enable ".config/gh"
