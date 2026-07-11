@@ -1,0 +1,21 @@
+{
+  "controls": [
+    {
+      "id": "jj",
+      "title": "jj",
+      "command": "jjui",
+      "height": 300
+    },
+    {
+      "id": "build",
+      "title": "Darwin build",
+      "command": "nh darwin build"
+    },
+    {
+      "id": "auto-update-log",
+      "title": "Auto-update log",
+      "command": "tail -n 50 -f /var/log/auto-update.log",
+      "height": 200
+    }
+  ]
+}

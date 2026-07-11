@@ -14,7 +14,6 @@ in
     taps = [
       "barutsrb/tap"
       "oven-sh/bun"
-      "steipete/tap"
       "theboredteam/boring-notch"
     ];
     brews = extras.brews ++ [
