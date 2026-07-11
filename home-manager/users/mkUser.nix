@@ -3,7 +3,7 @@
   email,
 }:
 {
-  imports = [ ../modules/home/common.nix ];
+  imports = [ ../systems/imogen.nix ];
 
   home.stateVersion = "26.05";
 

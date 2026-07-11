@@ -1,4 +1,4 @@
-import ../lib/mkUser.nix {
+import ./mkUser.nix {
   fullName = "Amanda Wyllie";
   email = "amanda+git@denys.me";
 }

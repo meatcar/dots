@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-    ../modules/darwin/homebrew.nix
-    ../modules/darwin/auto-update.nix
+    ../../modules/darwin/homebrew
+    ../../modules/darwin/auto-update
   ];
 
   environment.systemPackages = with pkgs; [

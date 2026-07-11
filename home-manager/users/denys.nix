@@ -1,6 +1,6 @@
 {
   imports = [
-    (import ../lib/mkUser.nix {
+    (import ./mkUser.nix {
       fullName = "Denys Pavlov";
       email = "github@denys.me";
     })

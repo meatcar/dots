@@ -21,14 +21,14 @@ let
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-bak";
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.denys = import ../users/denys.nix;
-          home-manager.users.amanda = import ../users/amanda.nix;
+          home-manager.users.denys = import ../home-manager/users/denys.nix;
+          home-manager.users.amanda = import ../home-manager/users/amanda.nix;
         }
       ];
     };
 in
 {
   flake.darwinConfigurations = {
-    imogen = mkHost ../hosts/imogen.nix;
+    imogen = mkHost ../systems/imogen;
   };
 }
