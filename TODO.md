@@ -61,3 +61,13 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [ ] Inline multi-line scripts → standalone files: `modules/laptop:19`, `modules/ddcci:37`, `modules/impermanence:75` (fs-diff, dead shebang, no unmount).
 - [ ] `home-manager/modules/ai/default.nix:40` — `allow-remote = true` overrides a commented safety default; document or drop.
 - [ ] `systems/watson/t14s-micmuteled.nix:36` — `Restart=always` w/o `RestartSec`, waits on user pipewire.
+
+## Darwin (imogen)
+
+- [-] configure raycast per-user
+    - impossible, explore sync later.
+- [x] reorganize using flake-parts
+- [ ] integrated with `meatcar/dots`
+- [ ] update to 26.05
+- [ ] drop `doCheck = false` mactop override in `modules/home/common.nix` once nixpkgs-26.05-darwin ships mactop ≥ 2.1.3 (PR NixOS/nixpkgs#523550, merged 2026-05-30)
+- [ ] drop the `programs.fish.shellAliases.yy = "y";` shim in `modules/home/common.nix` once the new yazi wrapper name `y` is in muscle memory (added with the 25.11 → 26.05 `home.stateVersion` bump)
