@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ ../modules/darwin/homebrew.nix ];
+  imports = [
+    ../modules/darwin/homebrew.nix
+    ../modules/darwin/auto-update.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     neovim
