@@ -1,3 +1,8 @@
+let
+  # Ad-hoc `brew install`s recorded by the shared brew wrapper in
+  # modules/home/common.nix, so onActivation.cleanup doesn't remove them.
+  extras = builtins.fromJSON (builtins.readFile ./brew-extras.json);
+in
 {
   environment.variables.HOMEBREW_UPGRADE_GREEDY = "1";
 
@@ -12,7 +17,7 @@
       "steipete/tap"
       "theboredteam/boring-notch"
     ];
-    brews = [
+    brews = extras.brews ++ [
       "container"
       "mas"
       "neovim"
@@ -20,7 +25,7 @@
       "oven-sh/bun/bun"
       "syncthing"
     ];
-    casks = [
+    casks = extras.casks ++ [
       "1password"
       "1password-cli"
       "activitywatch"
@@ -42,6 +47,7 @@
       "microsoft-edge"
       "obsidian"
       "raycast"
+      "shortcat"
       "sourcetree"
       "stats"
       "t3-code"
