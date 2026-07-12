@@ -5,7 +5,7 @@
       email = "github@denys.me";
     })
     # the full dots CLI stack (neovim, fish, jj, tmux, ...)
-    ../systems/darwin-cli.nix
+    ../systems/common.nix
   ];
 
   # Caps Lock → Escape on tap, Left Control on hold.
