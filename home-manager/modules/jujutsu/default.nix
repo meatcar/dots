@@ -47,7 +47,12 @@ in
           backend = "ssh";
           key = config.programs.git.settings.user.signingKey;
           backends.ssh = {
-            program = "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
+            # on darwin 1Password is a homebrew cask, not pkgs._1password-gui
+            program =
+              if pkgs.stdenv.isDarwin then
+                "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+              else
+                "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
           };
         };
         git.sign-on-push = true;

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -22,7 +23,8 @@ let
           }
       '';
 in
-{
+# the opensessions package ships prebuilt x86_64-linux binaries only
+lib.mkIf pkgs.stdenv.isLinux {
   programs.tmux = {
     plugins = [ pkgs.opensessions ];
     extraConfig = ''

@@ -68,11 +68,17 @@
     '';
   };
 
-  xdg.dataFile = {
-    "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.so";
-    "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-    # "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
-  };
+  xdg.dataFile =
+    let
+      # target names stay .so (what nvim/lua/init.lua dlopens); only the
+      # source extension differs per platform
+      soExt = if pkgs.stdenv.isDarwin then "dylib" else "so";
+    in
+    {
+      "nvim/lib/libparinfer_rust.so".source = "${pkgs.parinfer-rust}/lib/libparinfer_rust.${soExt}";
+      "nvim/lib/libsqlite3.so".source = "${pkgs.sqlite.out}/lib/libsqlite3.${soExt}";
+      # "nvim/lib/nvim-treesitter".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}";
+    };
 
   home.packages =
     with pkgs;

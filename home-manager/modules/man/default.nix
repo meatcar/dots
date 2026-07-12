@@ -34,7 +34,8 @@ let
 in
 {
   programs.man.enable = true;
-  programs.man.generateCaches = true;
+  # mkDefault so darwin hosts can keep cache generation off (slow there).
+  programs.man.generateCaches = lib.mkDefault true;
   home.file.".manpath".text =
     let
       inherit (config.home) homeDirectory;

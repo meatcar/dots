@@ -150,14 +150,20 @@ return {
     dependencies = 'mattn/webapi-vim',
     cmd = 'Gist',
     config = function()
-      if vim.env.WAYLAND_DISPLAY then
+      if vim.fn.has 'mac' == 1 then
+        vim.g.gist_clip_command = 'pbcopy'
+      elseif vim.env.WAYLAND_DISPLAY then
         vim.g.gist_clip_command = 'wl-copy'
       else
         vim.g.gist_clip_command = 'xclip -selection clipboard'
       end
       vim.g.gist_detect_filetype = true
       vim.g.gist_open_browser_after_post = true
-      vim.g.gist_browser_command = 'xdg-open %URL% &'
+      if vim.fn.has 'mac' == 1 then
+        vim.g.gist_browser_command = 'open %URL% &'
+      else
+        vim.g.gist_browser_command = 'xdg-open %URL% &'
+      end
     end,
   },
 

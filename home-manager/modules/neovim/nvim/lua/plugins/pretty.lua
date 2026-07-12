@@ -2,6 +2,9 @@ return {
   { -- respect Freedesktop Dark-mode standard
     'darkman.nvim',
     event = 'VimEnter',
+    cond = function()
+      return vim.fn.has 'mac' ~= 1 -- darkman is a Linux-only DBus daemon
+    end,
     opts = {}
   },
   { 'nvim-tree/nvim-web-devicons' },
