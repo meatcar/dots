@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 let
   env_store = "~/Sync/backup/dev/env";
 in
@@ -45,9 +45,16 @@ in
     functions = {
       env-store-path = {
         description = "get the store path of the .env file in directory";
-        body = ''
-          echo "$ENV_STORE"/(systemd-escape -p $PWD/.env)
-        '';
+        # both branches derive a stable filesystem-safe name from $PWD
+        body =
+          if pkgs.stdenv.isLinux then
+            ''
+              echo "$ENV_STORE"/(systemd-escape -p $PWD/.env)
+            ''
+          else
+            ''
+              echo "$ENV_STORE"/(md5 -q -s "$PWD").env
+            '';
       };
       env-link = {
         description = "symlink a .env file from the env store to this directory";

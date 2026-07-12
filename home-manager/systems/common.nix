@@ -75,12 +75,6 @@ in
         fx
         openssl
         q # dns query tool
-
-        (lib.mkDefault (
-          pkgs.writeShellScriptBin "get-theme-default" ''
-            echo dark
-          ''
-        ))
       ]
       ++ [
         # FIXME: fails to build from stable, use unstable for now
@@ -135,9 +129,12 @@ in
     programs.zoxide.enable = true;
     programs.pay-respects.enable = true;
 
-    xdg.systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
+    # xdg.systemDirs hard-asserts Linux in home-manager
+    xdg.systemDirs.data = lib.mkIf pkgs.stdenv.isLinux [
+      "${config.home.homeDirectory}/.nix-profile/share/applications"
+    ];
 
-    xdg.mime.enable = true;
-    xdg.mimeApps.enable = true;
+    xdg.mime.enable = pkgs.stdenv.isLinux;
+    xdg.mimeApps.enable = pkgs.stdenv.isLinux;
   };
 }

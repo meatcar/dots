@@ -44,41 +44,43 @@ in
 {
   imports = [ ../traefik ];
 
-  services.traefik = {
-    enable = true;
-    staticConfigOptions = {
-      entryPoints.web.address = ":80";
-      api = {
-        dashboard = true;
-        insecure = true;
+  config = lib.mkIf pkgs.stdenv.isLinux {
+    services.traefik = {
+      enable = true;
+      staticConfigOptions = {
+        entryPoints.web.address = ":80";
+        api = {
+          dashboard = true;
+          insecure = true;
+        };
+        providers.docker = {
+          exposedByDefault = false;
+          defaultRule = "Host(`{{ .ContainerName }}.localhost`)";
+        };
       };
-      providers.docker = {
-        exposedByDefault = false;
-        defaultRule = "Host(`{{ .ContainerName }}.localhost`)";
+      dynamicConfigOptions = {
+        http.routers.dashboard = {
+          rule = "Host(`traefik.localhost`)";
+          service = "api@internal";
+        };
       };
     };
-    dynamicConfigOptions = {
-      http.routers.dashboard = {
-        rule = "Host(`traefik.localhost`)";
-        service = "api@internal";
-      };
+
+    home.packages = with nixpkgs-unstable; [
+      lazydocker
+      podman-tui
+      devcontainer-podman
+      podman-compose
+    ];
+
+    # not using home-manager
+    # services.podman.enable = true;
+    xdg.configFile."containers/policy.json".source = "${pkgs.skopeo.src}/default-policy.json";
+
+    programs.fish.completions = {
+      podman.body = ''
+        ${nixpkgs-unstable.podman}/bin/podman completion fish | source
+      '';
     };
-  };
-
-  home.packages = with nixpkgs-unstable; [
-    lazydocker
-    podman-tui
-    devcontainer-podman
-    podman-compose
-  ];
-
-  # not using home-manager
-  # services.podman.enable = true;
-  xdg.configFile."containers/policy.json".source = "${pkgs.skopeo.src}/default-policy.json";
-
-  programs.fish.completions = {
-    podman.body = ''
-      ${nixpkgs-unstable.podman}/bin/podman completion fish | source
-    '';
   };
 }

@@ -5,6 +5,9 @@
   ...
 }:
 {
+  # Ctrl+R below binds _tv_history_recency
+  imports = [ ../television ];
+
   home.packages = with pkgs; [ grc ];
 
   # Ctrl+R -> television history with substring matching + recency order (see

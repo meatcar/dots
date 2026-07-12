@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   age.secrets.aienv.file = ./aienv.age;
   age.secrets.pushover.file = ./pushover.age;
@@ -13,4 +14,9 @@
   };
   age.secrets.nixConfAccessTokens.file = ./nixConfAccessTokens.age;
   age.secrets.dynip.file = ./dynip.age;
+
+  # Next to the declaration above so hosts without agenix never touch config.age.
+  nix.extraOptions = ''
+    !include ${config.age.secrets.nixConfAccessTokens.path}
+  '';
 }

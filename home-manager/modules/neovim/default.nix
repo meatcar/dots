@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ../theme # colorschemes.lua shells out to get-theme
     ../yazi
   ];
 

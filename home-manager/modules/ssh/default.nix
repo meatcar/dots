@@ -15,7 +15,11 @@
       UserKnownHostsFile = "~/.ssh/known_hosts";
 
       ControlMaster = "auto"; # impermanence messes with `~/.ssh` permissions
-      ControlPath = "/run/user/%i/ssh-controlmasters_%r@%h:%p";
+      ControlPath =
+        if pkgs.stdenv.isDarwin then
+          "~/.ssh/ssh-controlmasters_%r@%h:%p"
+        else
+          "/run/user/%i/ssh-controlmasters_%r@%h:%p";
       ControlPersist = "10m";
     };
   };

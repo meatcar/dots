@@ -2,17 +2,12 @@
   pkgs,
   inputs,
   config,
-  lib,
-  options,
   ...
 }:
 {
-  home.packages = [ pkgs.nixVersions.stable ];
+  imports = [ ./me.nix ];
 
-  # hosts without agenix (e.g. deck) get no access-tokens include
-  nix.extraOptions = lib.optionalString (options ? age && config.age.secrets ? nixConfAccessTokens) ''
-    !include ${config.age.secrets.nixConfAccessTokens.path}
-  '';
+  home.packages = [ pkgs.nixVersions.stable ];
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -26,7 +21,7 @@
 
   programs.nh = {
     enable = true;
-    flake = "dots";
+    flake = config.me.PRJ_ROOT;
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 3";
   };
