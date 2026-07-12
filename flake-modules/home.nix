@@ -1,4 +1,3 @@
-# Standalone home-manager hosts (no NixOS/nix-darwin underneath).
 {
   inputs,
   nixpkgsConfig,

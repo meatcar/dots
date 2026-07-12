@@ -1,5 +1,3 @@
-# Wrapper around homebrew's brew that records ad-hoc installs in
-# modules/darwin/homebrew/brew-extras.json — see brew.sh for details.
 { pkgs, config, ... }:
 let
   brewWrapper = pkgs.writeShellApplication {

@@ -46,7 +46,7 @@ in
           backend = "ssh";
           key = config.programs.git.settings.user.signingKey;
           backends.ssh = {
-            # on darwin 1Password is a homebrew cask, not pkgs._1password-gui
+            # FIXME: hardcoded app path; check pkgs._1password-gui darwin support later
             program =
               if pkgs.stdenv.isDarwin then
                 "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"

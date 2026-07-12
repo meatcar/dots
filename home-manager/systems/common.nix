@@ -129,7 +129,6 @@ in
     programs.zoxide.enable = true;
     programs.pay-respects.enable = true;
 
-    # xdg.systemDirs hard-asserts Linux in home-manager
     xdg.systemDirs.data = lib.mkIf pkgs.stdenv.isLinux [
       "${config.home.homeDirectory}/.nix-profile/share/applications"
     ];

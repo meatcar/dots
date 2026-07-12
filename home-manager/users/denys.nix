@@ -4,7 +4,6 @@
       fullName = "Denys Pavlov";
       email = "github@denys.me";
     })
-    # the full dots CLI stack (neovim, fish, jj, tmux, ...)
     ../systems/common.nix
   ];
 

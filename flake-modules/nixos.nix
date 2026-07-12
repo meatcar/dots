@@ -1,4 +1,3 @@
-# NixOS hosts (x86_64-linux).
 {
   inputs,
   nixpkgsConfig,

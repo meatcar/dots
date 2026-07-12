@@ -1,4 +1,3 @@
-# nix-darwin hosts (aarch64-darwin).
 {
   inputs,
   self,
@@ -37,7 +36,6 @@ let
             extraSpecialArgs = specialArgs // {
               nixpkgs-unstable = unstableFor system;
             };
-            # per-host baseline every user gets; users layer on top of it
             sharedModules = [ ../home-manager/systems/imogen.nix ];
             users.denys = import ../home-manager/users/denys.nix;
             users.amanda = import ../home-manager/users/amanda.nix;

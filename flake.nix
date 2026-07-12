@@ -26,9 +26,6 @@
     # rest
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # darwin twins of the two inputs above: the *-darwin and nixpkgs-unstable
-    # branches are gated on darwin Hydra jobs, so aarch64-darwin actually hits
-    # the binary cache. Linux hosts keep the nixos-* channels.
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
@@ -176,8 +173,6 @@
           })
         ];
       };
-      # the `nixpkgs-unstable` specialArg for a system; darwin systems track
-      # the darwin-gated branch (see the input comments above)
       unstableFor =
         system:
         import (
@@ -188,7 +183,6 @@
         ) ({ inherit system; } // nixpkgsConfig);
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # shared plumbing for the host flake-modules
       _module.args = {
         inherit nixpkgsConfig unstableFor;
       };
@@ -217,7 +211,6 @@
         {
           # expose nixpkgs + overlays for CLI use via nix
           # e.g. `nix search . <query>`, `nix run dots#nvim`
-          # (darwin systems use the darwin-gated branch for cache coverage)
           _module.args.pkgs =
             import (if lib.hasSuffix "-darwin" system then inputs.nixpkgs-darwin else inputs.nixpkgs)
               (

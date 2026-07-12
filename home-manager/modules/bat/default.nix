@@ -8,7 +8,6 @@ let
   themes = inputs.catppuccin-bat;
 in
 {
-  # the bat wrapper below shells out to get-theme
   imports = [ ../theme ];
 
   programs.bat = {

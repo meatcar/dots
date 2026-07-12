@@ -1,5 +1,3 @@
-# Home-manager baseline shared by every user on imogen
-# (wired via home-manager.sharedModules in flake-modules/darwin.nix).
 {
   config,
   lib,
@@ -12,7 +10,6 @@
     ../modules/brew
   ];
 
-  # where this flake is checked out on imogen
   me.PRJ_ROOT = lib.mkDefault "${config.home.homeDirectory}/git/hub/meatcar/dots";
 
   home.packages = [

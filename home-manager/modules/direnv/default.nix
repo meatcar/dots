@@ -45,7 +45,6 @@ in
     functions = {
       env-store-path = {
         description = "get the store path of the .env file in directory";
-        # both branches derive a stable filesystem-safe name from $PWD
         body =
           if pkgs.stdenv.isLinux then
             ''

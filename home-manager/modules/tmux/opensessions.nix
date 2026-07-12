@@ -23,7 +23,7 @@ let
           }
       '';
 in
-# the opensessions package ships prebuilt x86_64-linux binaries only
+# TODO: drop the isLinux guard once opensessions ships darwin binaries
 lib.mkIf pkgs.stdenv.isLinux {
   programs.tmux = {
     plugins = [ pkgs.opensessions ];

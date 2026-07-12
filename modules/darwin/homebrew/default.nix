@@ -1,6 +1,6 @@
 let
   # Ad-hoc `brew install`s recorded by the shared brew wrapper in
-  # home-manager/systems/brew.sh, so onActivation.cleanup doesn't remove them.
+  # home-manager/modules/brew/brew.sh, so onActivation.cleanup doesn't remove them.
   extras = builtins.fromJSON (builtins.readFile ./brew-extras.json);
 in
 {

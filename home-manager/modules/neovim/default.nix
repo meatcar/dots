@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ../theme # colorschemes.lua shells out to get-theme
+    ../theme
     ../yazi
   ];
 
@@ -71,8 +71,7 @@
 
   xdg.dataFile =
     let
-      # target names stay .so (what nvim/lua/init.lua dlopens); only the
-      # source extension differs per platform
+      # FIXME: init.lua hardcodes the .so names; teach it per-OS and drop this
       soExt = if pkgs.stdenv.isDarwin then "dylib" else "so";
     in
     {
