@@ -1,20 +1,23 @@
+# nix-darwin hosts (aarch64-darwin).
 {
   inputs,
   self,
   nixpkgsConfig,
+  unstableFor,
   ...
 }:
 let
+  system = "aarch64-darwin";
+  specialArgs = {
+    inherit inputs self;
+    llm-agents = inputs.llm-agents.packages.${system};
+  };
   mkHost =
     module:
     inputs.nix-darwin.lib.darwinSystem {
-      specialArgs = {
-        inherit inputs self;
-        llm-agents = inputs.llm-agents.packages.aarch64-darwin;
-      };
+      inherit specialArgs;
       modules = [
         module
-        # same package surface as the Linux hosts: overlays + allowUnfree
         { nixpkgs = nixpkgsConfig; }
         inputs.nix-homebrew.darwinModules.nix-homebrew
         {
@@ -27,20 +30,18 @@ let
         }
         inputs.home-manager.darwinModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-bak";
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            llm-agents = inputs.llm-agents.packages.aarch64-darwin;
-            # darwin twin of the arg mkSystem passes on Linux
-            nixpkgs-unstable = import inputs.nixpkgs-unstable-darwin {
-              system = "aarch64-darwin";
-              config.allowUnfree = true;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "hm-bak";
+            extraSpecialArgs = specialArgs // {
+              nixpkgs-unstable = unstableFor system;
             };
+            # per-host baseline every user gets; users layer on top of it
+            sharedModules = [ ../home-manager/systems/imogen.nix ];
+            users.denys = import ../home-manager/users/denys.nix;
+            users.amanda = import ../home-manager/users/amanda.nix;
           };
-          home-manager.users.denys = import ../home-manager/users/denys.nix;
-          home-manager.users.amanda = import ../home-manager/users/amanda.nix;
         }
       ];
     };

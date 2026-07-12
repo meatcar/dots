@@ -176,16 +176,22 @@
           })
         ];
       };
-      specialArgs = {
-        inherit inputs;
-        # upstream-built packages, served by cache.numtide.com
-        llm-agents = inputs.llm-agents.packages.x86_64-linux;
-      };
-      extraSpecialArgs = specialArgs;
+      # the `nixpkgs-unstable` specialArg for a system; darwin systems track
+      # the darwin-gated branch (see the input comments above)
+      unstableFor =
+        system:
+        import (
+          if inputs.nixpkgs.lib.hasSuffix "-darwin" system then
+            inputs.nixpkgs-unstable-darwin
+          else
+            inputs.nixpkgs-unstable
+        ) ({ inherit system; } // nixpkgsConfig);
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # let flake-modules (darwin.nix) reuse the shared nixpkgs config
-      _module.args.nixpkgsConfig = nixpkgsConfig;
+      # shared plumbing for the host flake-modules
+      _module.args = {
+        inherit nixpkgsConfig unstableFor;
+      };
 
       systems = [
         "x86_64-linux"
@@ -196,7 +202,9 @@
         ./flake-modules/devshell.nix
         ./flake-modules/treefmt.nix
         ./flake-modules/checks.nix
+        ./flake-modules/nixos.nix
         ./flake-modules/darwin.nix
+        ./flake-modules/home.nix
       ];
 
       perSystem =
@@ -224,123 +232,5 @@
           checks.audio-record = pkgs.callPackage ./home-manager/modules/audio-record/tests.nix { };
           checks.parakeet-transcribe = pkgs.callPackage ./pkgs/parakeet-transcribe/tests.nix { };
         };
-
-      flake = {
-        nixosConfigurations =
-          let
-            mkSystem =
-              system: extraModules:
-              let
-                nixpkgs-unstable = import inputs.nixpkgs-unstable (
-                  {
-                    inherit system;
-                  }
-                  // nixpkgsConfig
-                );
-              in
-              inputs.nixpkgs.lib.nixosSystem {
-                specialArgs = specialArgs // {
-                  inherit nixpkgs-unstable;
-                };
-                system = "x86_64-linux";
-                modules = extraModules ++ [
-                  { nixpkgs = nixpkgsConfig; }
-                  inputs.home-manager.nixosModules.home-manager
-                  {
-                    home-manager = {
-                      extraSpecialArgs = extraSpecialArgs // {
-                        inherit nixpkgs-unstable;
-                      };
-                      # Don't hard-fail activation when a runtime-replaced file
-                      # (e.g. GTK rewriting recently-used.xbel over its managed
-                      # symlink, impermanence#107) is in the way; back it up to
-                      # <file>.hm-bak and relink instead.
-                      backupFileExtension = "hm-bak";
-                    };
-                  }
-                ];
-              };
-          in
-          {
-            watson = mkSystem "x86_64-linux" [
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.impermanence.nixosModules.impermanence
-              inputs.lanzaboote.nixosModules.lanzaboote
-              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
-              ./systems/watson
-              {
-                home-manager.users.meatcar =
-                  { ... }:
-                  {
-                    imports = [
-                      inputs.agenix.homeManagerModules.default
-                      inputs.zen-browser.homeModules.default
-                      inputs.dank-material-shell.homeModules.dank-material-shell
-                      # inputs.dank-material-shell.homeModules.niri
-                      ./home-manager/systems/watson
-                      ./crypt/hm-me.nix
-                    ];
-                    nixpkgs = nixpkgsConfig;
-                    home.stateVersion = "26.05";
-                  };
-              }
-            ];
-            iso = mkSystem "x86_64-linux" [
-              {
-                system.stateVersion = "26.05";
-                boot.zfs.forceImportRoot = false;
-              }
-              (
-                {
-                  pkgs,
-                  modulesPath,
-                  ...
-                }:
-                {
-                  imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
-                  environment.systemPackages = [ pkgs.neovim ];
-                  isoImage.forceTextMode = true;
-                }
-              )
-            ];
-          };
-
-        homeConfigurations =
-          let
-            system = "x86_64-linux";
-            pkgs = import inputs.nixpkgs (
-              {
-                inherit system;
-              }
-              // nixpkgsConfig
-            );
-            nixpkgs-unstable = import inputs.nixpkgs-unstable (
-              {
-                inherit system;
-              }
-              // nixpkgsConfig
-            );
-          in
-          {
-            deck = inputs.home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = extraSpecialArgs // {
-                inherit nixpkgs-unstable;
-              };
-              modules = [
-                ./home-manager/systems/steamdeck.nix
-                {
-                  nixpkgs.config = nixpkgsConfig.config;
-                  home = rec {
-                    username = "deck";
-                    homeDirectory = "/home/${username}";
-                    stateVersion = "23.05";
-                  };
-                }
-              ];
-            };
-          };
-      };
     };
 }
