@@ -1,6 +1,6 @@
 # meatcar's dot files
 
-Supports Linux.
+Supports Linux and macOS (via [nix-darwin](https://github.com/nix-darwin/nix-darwin)).
 
 ## Requirements
 
