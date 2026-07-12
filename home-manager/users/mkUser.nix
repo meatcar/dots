@@ -3,18 +3,15 @@
   email,
 }:
 {
-  imports = [ ../systems/imogen.nix ];
+  imports = [ ../modules/me.nix ];
 
   home.stateVersion = "26.05";
 
-  programs.git = {
-    enable = true;
-    settings.user.name = fullName;
-    settings.user.email = email;
+  me.identity = {
+    name = fullName;
+    inherit email;
   };
-  programs.jujutsu = {
-    enable = true;
-    settings.user.name = fullName;
-    settings.user.email = email;
-  };
+
+  programs.git.enable = true;
+  programs.jujutsu.enable = true;
 }

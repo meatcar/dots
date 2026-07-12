@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -17,6 +16,7 @@ let
 in
 {
   imports = [
+    ../me.nix
     ../mr
     ./repos
   ];
@@ -26,17 +26,14 @@ in
     package = pkgs.gitFull;
     lfs.enable = true;
     settings = {
-      # mkDefault: per-user files (e.g. home-manager/users/ on darwin) refine these.
-      user.name = lib.mkDefault "Denys Pavlov";
-      user.email = lib.mkDefault "me@denys.me";
-      user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBcq01gh2tn/+hcm75N3LnS003mUBjXcT6qNndMhObPO";
+      user.signingKey = config.me.signing.key;
       commit.template = "${gitmessage}";
 
       gpg = {
         format = "ssh";
       };
       commit = {
-        gpgsign = true;
+        gpgsign = config.me.signing.enable;
       };
     };
     includes = [

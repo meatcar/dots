@@ -14,7 +14,10 @@ let
   });
 in
 {
-  imports = [ ./jjui.nix ];
+  imports = [
+    ../me.nix
+    ./jjui.nix
+  ];
   home.packages =
     (with nixpkgs-unstable; [
       lazyjj
@@ -38,10 +41,6 @@ in
       enable = true;
       package = nixpkgs-unstable.jujutsu;
       settings = {
-        user = {
-          name = "Denys Pavlov";
-          email = "github@denys.me";
-        };
         signing = {
           behavior = "drop";
           backend = "ssh";
@@ -55,7 +54,7 @@ in
                 "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
           };
         };
-        git.sign-on-push = true;
+        git.sign-on-push = config.me.signing.enable;
         # Settings from https://oppi.li/posts/configuring_jujutsu/
         template-aliases = {
           "format_timestamp(timestamp)" = "timestamp.ago()";
@@ -63,7 +62,7 @@ in
         };
         templates = {
           git_push_bookmark = ''
-            "meatcar/push-" ++ change_id.short()
+            "${config.me.identity.username}/push-" ++ change_id.short()
           '';
           log_node = ''
             label("node",

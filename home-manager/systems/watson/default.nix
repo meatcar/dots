@@ -58,6 +58,8 @@ in
   # systems/watson/default.nix.
   me.fileManager = "dolphin";
 
+  me.signing.enable = true;
+
   # NOTE: tints match the Helium profiles in ../../modules/mime-apps/browser-actions.nix.
   me.amp.desktop.enable = true;
   me.amp.profiles.personal.desktop.tint = [
