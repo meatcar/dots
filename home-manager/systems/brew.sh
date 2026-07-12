@@ -8,7 +8,7 @@
 set -euo pipefail
 
 BREW=/opt/homebrew/bin/brew
-EXTRAS="${NH_FLAKE:-/Users/denys/git/hub/meatcar/darwin}/modules/darwin/brew-extras.json"
+EXTRAS="${NH_FLAKE:-/Users/denys/git/hub/meatcar/dots}/modules/darwin/homebrew/brew-extras.json"
 
 as_denys() {
   if [ "$(id -un)" = denys ]; then "$@"; else /usr/bin/sudo -u denys -H "$@"; fi

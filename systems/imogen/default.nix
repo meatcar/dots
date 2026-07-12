@@ -15,7 +15,7 @@
     nil
     nixfmt
     nh
-    inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.oxfmt
+    inputs.nixpkgs-unstable-darwin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.oxfmt
   ];
 
   nix.settings = {
@@ -77,7 +77,7 @@
   };
   users.users.amanda.home = "/Users/amanda";
 
-  environment.variables.NH_FLAKE = "/Users/denys/git/hub/meatcar/darwin";
+  environment.variables.NH_FLAKE = "/Users/denys/git/hub/meatcar/dots";
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
   system.stateVersion = 7;

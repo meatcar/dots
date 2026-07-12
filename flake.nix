@@ -26,6 +26,16 @@
     # rest
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # darwin twins of the two inputs above: the *-darwin and nixpkgs-unstable
+    # branches are gated on darwin Hydra jobs, so aarch64-darwin actually hits
+    # the binary cache. Linux hosts keep the nixos-* channels.
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs-unstable-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     agenix = {
       # secrets
       url = "github:yaxitech/ragenix";
@@ -174,24 +184,30 @@
       extraSpecialArgs = specialArgs;
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
       imports = [
         ./flake-modules/devshell.nix
         ./flake-modules/treefmt.nix
         ./flake-modules/checks.nix
+        ./flake-modules/darwin.nix
       ];
 
       perSystem =
         {
           pkgs,
           system,
+          lib,
           ...
         }:
         {
           # expose nixpkgs + overlays for CLI use via nix
           # e.g. `nix search . <query>`, `nix run dots#nvim`
-          _module.args.pkgs = import inputs.nixpkgs (
+          # (darwin systems use the darwin-gated branch for cache coverage)
+          _module.args.pkgs = import (if lib.hasSuffix "-darwin" system then inputs.nixpkgs-darwin else inputs.nixpkgs) (
             {
               inherit system;
             }
