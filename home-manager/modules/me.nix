@@ -1,4 +1,3 @@
-# Declarations for the `me.*` option namespace, shared by all hosts.
 { config, lib, ... }:
 {
   options.me = {
@@ -24,6 +23,12 @@
         default = "meatcar";
         description = "Forge username, e.g. for jj push bookmark prefixes.";
       };
+      jjEmail = lib.mkOption {
+        type = lib.types.str;
+        default = config.me.identity.email;
+        defaultText = lib.literalExpression "config.me.identity.email";
+        description = "Author email for jj, when it differs from the git one.";
+      };
     };
 
     signing = {
@@ -40,8 +45,6 @@
     };
   };
 
-  # Single source of identity for every module; inert while the
-  # corresponding program is disabled (nothing is generated then).
   config = {
     programs.git.settings.user = {
       name = config.me.identity.name;
@@ -49,7 +52,7 @@
     };
     programs.jujutsu.settings.user = {
       name = config.me.identity.name;
-      email = config.me.identity.email;
+      email = config.me.identity.jjEmail;
     };
   };
 }

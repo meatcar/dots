@@ -58,6 +58,7 @@ in
   # systems/watson/default.nix.
   me.fileManager = "dolphin";
 
+  me.identity.jjEmail = "github@denys.me";
   me.signing.enable = true;
 
   # NOTE: tints match the Helium profiles in ../../modules/mime-apps/browser-actions.nix.

@@ -72,3 +72,4 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [ ] drop `doCheck = false` mactop override in `home-manager/systems/imogen.nix` once nixpkgs-26.05-darwin ships mactop ≥ 2.1.3 (PR NixOS/nixpkgs#523550, merged 2026-05-30)
 - [ ] drop the `programs.fish.shellAliases.yy = "y";` shim in `home-manager/systems/imogen.nix` once the new yazi wrapper name `y` is in muscle memory (added with the 25.11 → 26.05 `home.stateVersion` bump)
 - [ ] enable 1Password `op-ssh-sign` commit signing on imogen, then set `me.signing.enable = true` in `home-manager/systems/imogen.nix`
+- [ ] imogen: git author email is github@denys.me (carried over from the darwin repo) while watson uses me@denys.me; decide whether to align (jj is github@denys.me everywhere via `me.identity.jjEmail`)
