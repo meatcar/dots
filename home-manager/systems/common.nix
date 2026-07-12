@@ -21,13 +21,8 @@ let
   );
 in
 {
-  options.me.PRJ_ROOT = lib.mkOption {
-    type = lib.types.str;
-    default = "${config.home.homeDirectory}/git/hub/meatcar/dots/dots-default";
-    description = "Absolute filesystem path to the working copy of this flake (PRJ_ROOT per prj-spec; used by mkOutOfStoreSymlink targets).";
-  };
-
   imports = [
+    ../modules/me.nix
     ../modules/nix.nix
     ../modules/nix-your-shell
     ../modules/man

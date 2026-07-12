@@ -1,0 +1,17 @@
+# Wrapper around homebrew's brew that records ad-hoc installs in
+# modules/darwin/homebrew/brew-extras.json — see brew.sh for details.
+{ pkgs, config, ... }:
+let
+  brewWrapper = pkgs.writeShellApplication {
+    name = "brew";
+    runtimeInputs = [ pkgs.jq ];
+    text = builtins.readFile ./brew.sh;
+  };
+in
+{
+  home.packages = [ brewWrapper ];
+
+  # /opt/homebrew/bin sits ahead of the per-user profile in fish's PATH, so
+  # alias the wrapper in for fish users; zsh picks it up from PATH order.
+  programs.fish.shellAliases.brew = "${config.home.profileDirectory}/bin/brew";
+}

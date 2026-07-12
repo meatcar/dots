@@ -19,16 +19,16 @@ sub=""
 names=()
 for arg in "$@"; do
   case "$arg" in
-    -*) ;;
-    *) if [ -z "$sub" ]; then sub="$arg"; else names+=("$arg"); fi ;;
+  -*) ;;
+  *) if [ -z "$sub" ]; then sub="$arg"; else names+=("$arg"); fi ;;
   esac
 done
 
 as_denys "$BREW" "$@"
 
 case "$sub" in
-  install | uninstall | remove | rm) ;;
-  *) exit 0 ;;
+install | uninstall | remove | rm) ;;
+*) exit 0 ;;
 esac
 [ "${#names[@]}" -gt 0 ] || exit 0
 
