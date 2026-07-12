@@ -71,4 +71,4 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [x] update to 26.05
 - [ ] drop `doCheck = false` mactop override in `home-manager/systems/imogen.nix` once nixpkgs-26.05-darwin ships mactop ≥ 2.1.3 (PR NixOS/nixpkgs#523550, merged 2026-05-30)
 - [ ] drop the `programs.fish.shellAliases.yy = "y";` shim in `home-manager/systems/imogen.nix` once the new yazi wrapper name `y` is in muscle memory (added with the 25.11 → 26.05 `home.stateVersion` bump)
-- [ ] enable 1Password `op-ssh-sign` commit signing on imogen, then drop the gpgsign/sign-on-push overrides in `home-manager/systems/darwin-cli.nix`
+- [ ] enable 1Password `op-ssh-sign` commit signing on imogen, then set `me.signing.enable = true` in `home-manager/systems/imogen.nix`

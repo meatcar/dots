@@ -25,11 +25,17 @@ Nix Conventions:
 - New flake input: ask first, with alternatives. Candidates: the app maintainer's own flake, or one updated as often as `llm-agents`.
 - Strict impermanence: see `home-manager/systems/watson/impermanence.nix` and `modules/impermanence/default.nix` and its imports for paths that survive reboot.
 
+Structure:
+
+- Hosts: `flake-modules/nixos.nix` (watson, iso), `flake-modules/darwin.nix` (imogen), `flake-modules/home.nix` (deck). Same mkSystem/mkHost shape; shared plumbing (nixpkgsConfig, unstableFor) comes from flake.nix via `_module.args`.
+- `home-manager/systems/common.nix` is the cross-platform CLI stack, imported per-user on every host. HM modules are platform-aware and self-contained: they import their own deps (bat -> theme) and guard Linux-only parts internally (podman, audio-record, ssh, direnv). To bring a tool to another platform, fix its module — never guard at the import site.
+- `me.*` options (`home-manager/modules/me.nix`) carry cross-cutting intent: `me.identity.{name,email,username}` (mapped into git/jj there — never hardcode identity in modules), `me.signing.enable` (hosts opt in), `me.PRJ_ROOT` (live checkout path; nh and mkOutOfStoreSymlink targets use it).
+- Multi-user hosts: per-host baseline via `home-manager.sharedModules` (e.g. `home-manager/systems/imogen.nix`), per-user files in `home-manager/users/` built on `mkUser.nix` (sets me.identity + light git/jj).
+
 Darwin (macOS):
 
-- Host `imogen` (aarch64-darwin): `systems/imogen/`, wired in `flake-modules/darwin.nix`; users in `home-manager/users/` via `mkUser.nix`.
+- Host `imogen` (aarch64-darwin): `systems/imogen/`, users denys + amanda.
 - Darwin hosts track the darwin-gated channels (`nixpkgs-darwin`, `nixpkgs-unstable-darwin` inputs); Linux hosts keep `nixos-*`.
-- Per-user baseline for everyone on the host: `home-manager/systems/imogen.nix`. Full CLI stack (neovim, jj, tmux, ...): `home-manager/systems/darwin-cli.nix` — darwin twin of `home-manager/systems/common.nix`, which stays Linux-only.
 - GUI apps and mac-only tools go in `homebrew.*` (`modules/darwin/homebrew/`); the shared brew wrapper records ad-hoc installs in `brew-extras.json`. `homebrew.masApps` is intentionally empty — see the comment there.
 
 Shell Conventions:
