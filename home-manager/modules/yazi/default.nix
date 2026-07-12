@@ -47,6 +47,17 @@ in
         toggle-pane
         ;
 
+      starship = {
+        package = pkgs.yaziPlugins.starship;
+        setup = true;
+      };
+
+      osc7 = {
+        package = osc7;
+        setup = true;
+      };
+    }
+    // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
       gvfs = {
         package = pkgs.yaziPlugins.gvfs;
         setup = true;
@@ -58,19 +69,8 @@ in
           password_vault = "keyring";
         };
       };
-
       recycle-bin = {
         package = pkgs.yaziPlugins.recycle-bin;
-        setup = true;
-      };
-
-      starship = {
-        package = pkgs.yaziPlugins.starship;
-        setup = true;
-      };
-
-      osc7 = {
-        package = osc7;
         setup = true;
       };
     };

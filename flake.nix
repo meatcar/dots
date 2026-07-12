@@ -184,6 +184,9 @@
       extraSpecialArgs = specialArgs;
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      # let flake-modules (darwin.nix) reuse the shared nixpkgs config
+      _module.args.nixpkgsConfig = nixpkgsConfig;
+
       systems = [
         "x86_64-linux"
         "aarch64-darwin"
@@ -207,12 +210,14 @@
           # expose nixpkgs + overlays for CLI use via nix
           # e.g. `nix search . <query>`, `nix run dots#nvim`
           # (darwin systems use the darwin-gated branch for cache coverage)
-          _module.args.pkgs = import (if lib.hasSuffix "-darwin" system then inputs.nixpkgs-darwin else inputs.nixpkgs) (
-            {
-              inherit system;
-            }
-            // nixpkgsConfig
-          );
+          _module.args.pkgs =
+            import (if lib.hasSuffix "-darwin" system then inputs.nixpkgs-darwin else inputs.nixpkgs)
+              (
+                {
+                  inherit system;
+                }
+                // nixpkgsConfig
+              );
 
           legacyPackages = pkgs;
           checks.amp-accounts = pkgs.callPackage ./home-manager/modules/ai/amp/tests.nix { };
