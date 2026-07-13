@@ -17,6 +17,11 @@
   ++ (with pkgs; [
     nodejs
     package-version-server
-    prettier # default built-in formatter
-  ]);
+  ])
+  ++ [
+    # default built-in formatter
+    # FIXME(prettier-pnpm-cve): stable prettier builds with insecure
+    # pnpm-9.15.9 (CVE-2026-55699); use unstable until 26.05 catches up
+    nixpkgs-unstable.prettier
+  ];
 }

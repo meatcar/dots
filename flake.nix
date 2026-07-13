@@ -145,7 +145,13 @@
         overlays = [
           inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
-          inputs.llm-agents.overlays.default
+          # FIXME(llm-agents-overlay): upstream dropped overlays.default;
+          # overlays.shared-nixpkgs rebuilds against our nixpkgs and misses
+          # cache.numtide.com, so expose upstream-built packages directly like
+          # the old overlay did. Drop if upstream restores a prebuilt overlay.
+          (final: _prev: {
+            llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
+          })
           (final: _prev: {
             cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
             codexbar = final.callPackage ./pkgs/codexbar { };
