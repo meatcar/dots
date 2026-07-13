@@ -1,11 +1,12 @@
-{ pkgs, config, ... }:
+{ config, nixpkgs-unstable, ... }:
 {
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
-  programs.appimage.package = pkgs.appimage-run.override {
+  # unstable: stable's dwarfs dep isn't on cache.nixos.org (hydra gap)
+  programs.appimage.package = nixpkgs-unstable.appimage-run.override {
     extraPkgs = _: [
       config.programs._1password-gui.package
     ];
   };
-  environment.systemPackages = [ pkgs.gearlever ];
+  environment.systemPackages = [ nixpkgs-unstable.gearlever ];
 }
