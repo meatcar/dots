@@ -2,7 +2,11 @@
 {
   services.displayManager.dms-greeter = {
     enable = true;
-    compositor.name = "niri"; # niri is enabled via programs.niri at the system level
+    # must match home-manger/modules/dms/default.nix
+    quickshell.package = nixpkgs-unstable.quickshell;
+    # Copy the user's DMS settings (wallpaper/theme) into /var/lib/dms-greeter.
+    configHome = "/home/meatcar";
+    compositor.name = "niri";
     compositor.customConfig = ''
       hotkey-overlay {
           skip-at-startup
@@ -21,10 +25,8 @@
       layout {
         background-color "#000000"
       }
+      include optional=true "/home/meatcar/.config/niri/dms/outputs.kdl"
+      include optional=true "/home/meatcar/.config/niri/dms/cursor.kdl"
     '';
-    # Match the running shell's quickshell so the greeter gets the niri Qt null-deref fix.
-    quickshell.package = nixpkgs-unstable.quickshell;
-    # Copy the user's DMS settings (wallpaper/theme) into /var/lib/dms-greeter.
-    configHome = "/home/meatcar";
   };
 }
