@@ -143,7 +143,6 @@
             opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
-            trufflehog-scrub = final.callPackage ./pkgs/trufflehog-scrub { };
             weave-merge = final.callPackage ./pkgs/weave { };
           })
         ];
