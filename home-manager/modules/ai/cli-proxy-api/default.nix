@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  llm-agents,
   ...
 }:
 let
@@ -35,7 +36,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.cli-proxy-api;
+      default = llm-agents.cli-proxy-api;
       description = "The cli-proxy-api package to use.";
     };
 

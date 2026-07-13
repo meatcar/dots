@@ -2,6 +2,7 @@
   config,
   pkgs,
   nixpkgs-unstable,
+  llm-agents,
   ...
 }:
 {
@@ -18,7 +19,7 @@
     pkgs.codexbar
     pkgs.python3
     pkgs.rodney
-    pkgs.showboat
+    llm-agents.showboat
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
     pkgs.bubblewrap # for sandboxes

@@ -138,27 +138,21 @@
         };
         overlays = [
           inputs.nix-cachyos-kernel.overlays.pinned
-          # FIXME(llm-agents-overlay): upstream dropped overlays.default;
-          # overlays.shared-nixpkgs rebuilds against our nixpkgs and misses
-          # cache.numtide.com, so expose upstream-built packages directly like
-          # the old overlay did. Drop if upstream restores a prebuilt overlay.
           (final: _prev: {
-            llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
-          })
-          (final: _prev: {
-            cli-proxy-api = final.callPackage ./pkgs/cli-proxy-api { };
             codexbar = final.callPackage ./pkgs/codexbar { };
-            hunk = final.callPackage ./pkgs/hunk { };
             opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
-            showboat = final.llm-agents.showboat;
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
             trufflehog-scrub = final.callPackage ./pkgs/trufflehog-scrub { };
             weave-merge = final.callPackage ./pkgs/weave { };
           })
         ];
       };
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        # upstream-built packages, served by cache.numtide.com
+        llm-agents = inputs.llm-agents.packages.x86_64-linux;
+      };
       extraSpecialArgs = specialArgs;
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {

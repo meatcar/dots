@@ -1,8 +1,9 @@
-{ inputs, pkgs, ... }:
+{ inputs, llm-agents, ... }:
 {
   imports = [ inputs.hunk.homeManagerModules.default ];
 
-  programs.hunk.package = inputs.hunk.packages.${pkgs.system}.hunk;
+  # same release as the hunk flake, but prebuilt (cache.numtide.com)
+  programs.hunk.package = llm-agents.hunk;
 
   programs.hunk = {
     enable = true;
