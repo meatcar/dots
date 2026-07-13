@@ -71,6 +71,9 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # FIXME(kernel-cache-pin): lock this to a rev whose kernel is already on
+    # attic.xuyh0120.win/lantian; HEAD outruns the cache by ~a day. Check:
+    # curl -s -o /dev/null -w '%{http_code}' https://attic.xuyh0120.win/lantian/$(nix eval --raw .#nixosConfigurations.watson.config.boot.kernelPackages.kernel.outPath | cut -d/ -f4 | cut -c1-32).narinfo
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     starship-jj = {
       url = "gitlab:lanastara_foss/starship-jj";
