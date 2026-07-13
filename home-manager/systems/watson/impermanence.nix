@@ -229,6 +229,10 @@
       ".mcp-auth"
       ".aider"
       ".local/share/aider"
+      {
+        directory = ".pi";
+        mode = "0755";
+      }
 
       # 1password / agenix
       ".config/age"

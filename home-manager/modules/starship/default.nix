@@ -1,11 +1,10 @@
 {
-  pkgs,
   lib,
-  inputs,
+  nixpkgs-unstable,
   ...
 }:
 let
-  starship-jj = inputs.starship-jj.packages.${pkgs.stdenv.system}.default;
+  inherit (nixpkgs-unstable) starship-jj;
 in
 {
   home.packages = [ starship-jj ];
@@ -165,7 +164,7 @@ in
             format = "$output";
             ignore_timeout = true;
             shell = [
-              "${inputs.starship-jj.packages.${pkgs.stdenv.system}.default}/bin/starship-jj"
+              "${starship-jj}/bin/starship-jj"
               "--ignore-working-copy"
               "--config"
               "git.fetch=[]"

@@ -74,10 +74,6 @@
     # HEAD outruns the lantian attic cache by ~a day; after updating, re-pin
     # to a cached kernel with scripts/find-cached-cachyos-kernel.sh --pin
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
-    starship-jj = {
-      url = "gitlab:lanastara_foss/starship-jj";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     handy = {
       url = "github:cjpais/Handy";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
