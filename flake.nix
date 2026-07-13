@@ -285,10 +285,19 @@
               }
               // nixpkgsConfig
             );
+            nixpkgs-unstable = import inputs.nixpkgs-unstable (
+              {
+                inherit system;
+              }
+              // nixpkgsConfig
+            );
           in
           {
             deck = inputs.home-manager.lib.homeManagerConfiguration {
-              inherit pkgs extraSpecialArgs;
+              inherit pkgs;
+              extraSpecialArgs = extraSpecialArgs // {
+                inherit nixpkgs-unstable;
+              };
               modules = [
                 ./home-manager/systems/steamdeck.nix
                 {

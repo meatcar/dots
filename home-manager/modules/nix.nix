@@ -2,12 +2,15 @@
   pkgs,
   inputs,
   config,
+  lib,
+  options,
   ...
 }:
 {
   home.packages = [ pkgs.nixVersions.stable ];
 
-  nix.extraOptions = ''
+  # hosts without agenix (e.g. deck) get no access-tokens include
+  nix.extraOptions = lib.optionalString (options ? age && config.age.secrets ? nixConfAccessTokens) ''
     !include ${config.age.secrets.nixConfAccessTokens.path}
   '';
 
