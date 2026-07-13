@@ -59,10 +59,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:niri-wm/niri";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -141,7 +137,6 @@
           allowUnfree = true;
         };
         overlays = [
-          inputs.niri.overlays.default
           inputs.nix-cachyos-kernel.overlays.pinned
           # FIXME(llm-agents-overlay): upstream dropped overlays.default;
           # overlays.shared-nixpkgs rebuilds against our nixpkgs and misses
