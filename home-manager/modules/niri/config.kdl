@@ -160,7 +160,7 @@ binds {
     Mod+Shift+Equal hotkey-overlay-title=null { set-window-height "+5%"; }
     Mod+Shift+0 hotkey-overlay-title="Reset window height" { reset-window-height; }
 
-    Mod+Space repeat=false hotkey-overlay-title="Spotlight" { spawn "dms" "ipc" "spotlight" "toggle"; }
+    Mod+Space repeat=false hotkey-overlay-title="Spotlight" { spawn "dms" "ipc" "spotlight-bar" "toggle"; }
 
     Mod+P hotkey-overlay-title="Cast window" { set-dynamic-cast-window; }
     Mod+Shift+P hotkey-overlay-title="Clear cast" { clear-dynamic-cast-target; }
