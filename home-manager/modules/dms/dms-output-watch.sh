@@ -19,8 +19,16 @@ sleep 2 # let output detection settle before trusting the "matched" tag
 # If the active profile is already tagged "matched", DMS has loaded the
 # right profile for the connected outputs — no switch needed. Only switch
 # when the active profile is stale (outputs changed while the machine was off).
-list=$(dms ipc outputs listProfiles 2>/dev/null)
-active_line=$(printf '%s\n' "${list}" | grep ' \[[^]]*active[^]]*\] ->' | head -n1)
+list=$(dms ipc outputs listProfiles 2>/dev/null) || {
+  echo "warning: 'dms ipc outputs listProfiles' failed; attempting profile switch anyway" >&2
+  list=""
+}
+# grep may legitimately find nothing (no profile active yet); don't let
+# errexit+pipefail turn that into a silent exit-1 crash loop
+active_line=$(printf '%s\n' "${list}" | { grep ' \[[^]]*active[^]]*\] ->' || true; } | head -n1)
+if [ -z "${active_line}" ]; then
+  echo "warning: dms reported no active output profile" >&2
+fi
 if ! printf '%s\n' "${active_line}" | grep -q 'matched'; then
   dms-toggle-outputs || echo "warning: failed to apply matched profile at startup" >&2
 fi

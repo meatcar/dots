@@ -83,6 +83,9 @@ in
       Description = "Apply matched dms output profile on display hotplug";
       After = [ "dms.service" ];
       PartOf = [ "dms.service" ];
+      # surface persistent failure once instead of restarting forever
+      StartLimitIntervalSec = 300;
+      StartLimitBurst = 5;
     };
     Service = {
       ExecStart = lib.getExe dms-output-watch;
