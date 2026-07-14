@@ -1,143 +1,34 @@
+# DankMaterialShell (dms): bar, launcher, notifications, lock screen, theming.
+#
+# This file declares what we want from dms. Every negotiation with the rest of
+# the world lives in a sibling file, one concern per file. Files headed with
+# UPSTREAM(project) exist only because something is missing upstream; each
+# header says what to send there, and landing it deletes the file.
 {
   pkgs,
-  lib,
   inputs,
   nixpkgs-unstable,
   ...
 }:
-let
-  dmsPkg = import ./dms-shell.nix { inherit pkgs inputs; };
-  dms-toggle-outputs = pkgs.writeShellApplication {
-    name = "dms-toggle-outputs";
-    runtimeInputs = [ dmsPkg ];
-    text = builtins.readFile ./dms-toggle-outputs.sh;
-  };
-  dms-output-watch = pkgs.writeShellApplication {
-    name = "dms-output-watch";
-    runtimeInputs = with pkgs; [
-      systemd # udevadm
-      coreutils # stdbuf, seq, sleep
-      gnugrep
-      dmsPkg
-      dms-toggle-outputs
-    ];
-    text = builtins.readFile ./dms-output-watch.sh;
-  };
-  darkman-dms-bridge = pkgs.writeShellApplication {
-    name = "darkman-dms-bridge";
-    runtimeInputs = with pkgs; [
-      glib.bin # gdbus
-      darkman
-      gnugrep
-      coreutils # tail
-    ];
-    text = builtins.readFile ./darkman-dms-bridge.sh;
-  };
-in
 {
+  imports = [
+    ./lifecycle.nix
+    ./output-profiles.nix
+    ./idle.nix
+    ./tray.nix
+    ./darkman-bridge.nix
+  ];
+
   programs.dank-material-shell = {
     enable = true;
-    package = dmsPkg;
+    package = import ./dms-shell.nix { inherit pkgs inputs; };
     systemd.enable = true;
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
-  # niri (Type=notify) signals READY only after the socket exists and the env
-  # import into systemd completes, so no ExecStartPre waits are needed here
-  systemd.user.services.dms = {
-    Unit.After = [ "niri.service" ];
-    Unit.BindsTo = [ "niri.service" ];
-    Unit.StartLimitIntervalSec = 0;
-    Service.RestartSec = 1; # restart slower, effectively a poll
-  };
-  # BindsTo stops dms when niri restarts, but graphical-session.target stays
-  # active so nothing starts it back up; have niri uphold it. Side effect:
-  # `systemctl --user stop dms` gets revived; stop niri for a shell-less session.
-  xdg.configFile."systemd/user/niri.service.d/10-uphold-dms.conf".text = ''
-    [Unit]
-    Upholds=dms.service
-  '';
-  home.packages = with pkgs; [
-    kdePackages.kimageformats
-    dms-toggle-outputs
-    adw-gtk3
+
+  home.packages = [
+    pkgs.kdePackages.kimageformats
+    pkgs.adw-gtk3
   ];
-  # Niri's IPC has no output events (26.04), so watch DRM uevents for hotplug.
-  systemd.user.services.dms-output-watch = {
-    Unit = {
-      Description = "Apply matched dms output profile on display hotplug";
-      After = [ "dms.service" ];
-      PartOf = [ "dms.service" ];
-      # surface persistent failure once instead of restarting forever
-      StartLimitIntervalSec = 300;
-      StartLimitBurst = 5;
-    };
-    Service = {
-      ExecStart = lib.getExe dms-output-watch;
-      Restart = "always";
-      RestartSec = 2;
-    };
-    Install.WantedBy = [ "dms.service" ];
-  };
-  # systemd-managed so config changes apply on switch without a relogin. The HM
-  # module hardcodes a bash-only PATH, so commands need absolute store paths.
-  services.swayidle = {
-    enable = true; # default extraArgs = [ "-w" ] (wait for command to complete)
-    timeouts = [
-      {
-        timeout = 60 * 15;
-        command = "/run/current-system/sw/bin/niri msg action power-off-monitors";
-        # no resumeCommand: niri repowers monitors on input automatically
-      }
-      {
-        timeout = 60 * 20;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
-      }
-    ];
-    events = {
-      unlock = "${lib.getExe dms-toggle-outputs}";
-      after-resume = "${lib.getExe dms-toggle-outputs}";
-    };
-  };
-  # Mirror dms
-  systemd.user.services.swayidle.Unit.After = [ "niri.service" ];
-
-  # 1Password registers its tray icon once at startup, but DMS's SNI watcher
-  # appears async after the unit is active — wait on the bus name first.
-  systemd.user.services."1password" = {
-    Unit = {
-      After = [ "dms.service" ];
-      BindsTo = [ "dms.service" ];
-    };
-    Service.ExecStartPre = "${pkgs.glib.bin}/bin/gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher";
-  };
-
-  # DMS drives the theme; darkman follows via the bridge below. Disable its rival
-  # machinery so it can't double-drive or loop: geoclue (DMS schedules) and the
-  # gtk-theme hook (DMS writes gsettings itself).
-  services.darkman.settings.usegeoclue = lib.mkForce false;
-  services.darkman.darkModeScripts.gtk-theme = lib.mkForce "";
-  services.darkman.lightModeScripts.gtk-theme = lib.mkForce "";
-
-  systemd.user.services.darkman-dms-bridge = {
-    Unit = {
-      Description = "Mirror DMS appearance color-scheme into darkman";
-      After = [
-        "dms.service"
-        "darkman.service"
-        "xdg-desktop-portal.service"
-        # explicit ordering vs the target suppresses its implicit After= on
-        # wanted units, which otherwise cycles via dms.service and gets this
-        # unit's start job deleted at boot
-        "graphical-session.target"
-      ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = lib.getExe darkman-dms-bridge;
-      Restart = "always";
-      RestartSec = 2;
-    };
-    Install.WantedBy = [ "graphical-session.target" ];
-  };
 }

@@ -1,3 +1,5 @@
+# UPSTREAM(dank-material-shell): both hunks are plain bug fixes; submit as-is.
+#
 # Patches two upstream DisplayConfigState races (display-config-state.patch):
 # - profile validation runs before async compositor detection finishes,
 #   leaving a false "First Time Setup" and empty profiles on cold boot
