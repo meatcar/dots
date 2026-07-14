@@ -40,6 +40,7 @@
   };
 
   programs.git.ignores = [
+    ".pi-*"
     ".claude/*.local.*"
     ".claude/worktrees/"
     "CLAUDE.local.md"
