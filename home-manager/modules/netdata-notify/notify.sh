@@ -18,6 +18,8 @@ journalctl --identifier=netdata-alert --follow --output=json \
     CRITICAL) urgency=critical ;;
     *) continue ;;
     esac
+    # literal <br> keeps DMS from markdown-rendering the body, which
+    # would eat the underscores in chart names as italics
     notify-send --urgency="${urgency}" --app-name=netdata \
-      "netdata ${status}: ${name}" "${chart} is at ${value} (${ts})" || true
+      "netdata ${status}: ${name}" "${chart} is at ${value}<br>(${ts})" || true
   done
