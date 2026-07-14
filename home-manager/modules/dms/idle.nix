@@ -1,8 +1,9 @@
 # Idle policy: blank displays, then lock. dms is the locker, via loginctl.
 { pkgs, ... }:
 {
-  # systemd-managed so config changes apply on switch without a relogin. The HM
-  # module hardcodes a bash-only PATH, so commands need absolute store paths.
+  # the HM module runs swayidle as a user service, so config changes apply on
+  # switch without a relogin — but it hardcodes a bash-only PATH, so commands
+  # need absolute store paths
   services.swayidle = {
     enable = true; # default extraArgs = [ "-w" ] (wait for command to complete)
     timeouts = [

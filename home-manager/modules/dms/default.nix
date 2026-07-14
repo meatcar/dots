@@ -23,12 +23,13 @@
     enable = true;
     package = import ./dms-shell.nix { inherit pkgs inputs; };
     systemd.enable = true;
+    # TODO: stable caught up (quickshell 0.3.0, dgop); try retiring these pins
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
 
   home.packages = [
     pkgs.kdePackages.kimageformats
-    pkgs.adw-gtk3
+    pkgs.adw-gtk3 # dms sets gtk-theme=adw-gtk3; install it so the lookup resolves
   ];
 }

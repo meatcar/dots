@@ -27,9 +27,11 @@ in
         "dms.service"
         "darkman.service"
         "xdg-desktop-portal.service"
-        # explicit ordering vs the target suppresses its implicit After= on
-        # wanted units, which otherwise cycles via dms.service and gets this
-        # unit's start job deleted at boot
+        # targets implicitly order themselves After= their wanted units, so
+        # graphical-session.target waits for this unit; this unit waits for
+        # dms.service (above), and dms.service waits for the target — a cycle
+        # systemd breaks by deleting this unit's start job at login. Any
+        # explicit ordering against the target suppresses that implicit edge.
         "graphical-session.target"
       ];
       PartOf = [ "graphical-session.target" ];

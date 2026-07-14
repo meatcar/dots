@@ -3,16 +3,17 @@
 #
 # The shell's life is tied to the compositor's: start after it, die with it,
 # come back when it does.
-_:
-{
+_: {
   systemd.user.services.dms = {
     # niri (Type=notify) signals READY only after the socket exists and the env
     # import into systemd completes, so ordering alone suffices — no readiness
     # polls needed
     Unit.After = [ "niri.service" ];
     Unit.BindsTo = [ "niri.service" ];
+    # the shell must always come back: never give up (no start limit), but
+    # pace retries at 1s (default 100ms) so a persistent crash doesn't spin
     Unit.StartLimitIntervalSec = 0;
-    Service.RestartSec = 1; # restart slower, effectively a poll
+    Service.RestartSec = 1;
   };
 
   # BindsTo stops dms when niri restarts, but graphical-session.target stays

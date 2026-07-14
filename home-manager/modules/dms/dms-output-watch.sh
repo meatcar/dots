@@ -6,7 +6,7 @@
 # Apply the matched profile once at startup only if the active profile
 # doesn't already match the connected outputs (i.e. outputs changed while
 # the machine was off). dms.service being active does not mean its IPC is
-# ready yet (cf. the 1password gdbus wait above in default.nix), so poll
+# ready yet (the same late-readiness quirk tray.nix waits out), so poll
 # for it first.
 for _ in $(seq 30); do
   if dms ipc outputs listProfiles 2>/dev/null | grep -q ' -> '; then
