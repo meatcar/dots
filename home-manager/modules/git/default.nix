@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  nixpkgs-unstable,
   ...
 }:
 let
@@ -77,17 +76,14 @@ in
     ];
   };
 
-  home.packages =
-    (with pkgs; [
-      glab # gitlab CLI
-      git-absorb # quick fixup rebases
-      lab # gitlab cli
-      hub # github cli (pre-gh, less official)
-      gibo # .gitignore boilerplate from github/gitignore
-    ])
-    ++ (with nixpkgs-unstable; [
-      # gitu # cli magit
-    ]);
+  home.packages = with pkgs; [
+    glab # gitlab CLI
+    git-absorb # quick fixup rebases
+    lab # gitlab cli
+    hub # github cli (pre-gh, less official)
+    gibo # .gitignore boilerplate from github/gitignore
+    # gitu # cli magit
+  ];
 
   xdg.configFile."gitu/config.toml".source = ./gitu-config.toml;
 
