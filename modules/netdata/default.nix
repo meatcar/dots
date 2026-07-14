@@ -14,8 +14,15 @@
       # disk backlog is meaningless on NVMe/dm; stock alert is silent but
       # still flaps constantly, tripping cloud's misconfigured-alert detector
       health."enabled alarms" = "!10min_disk_backlog *";
+      plugins = {
+        tc = "no"; # no traffic shaping on this laptop
+        freeipmi = "no"; # no BMC
+        "charts.d" = "no"; # legacy bash collectors, all superseded by go.d
+      };
     };
     configDir = {
+      # scripts.d logs a watch error every minute if its config dir is absent
+      "scripts.d" = pkgs.emptyDirectory;
       "health.d/sensors.conf" = ./health.d/sensors.conf;
       "health.d/systemdunits.conf" = ./health.d/systemdunits.conf;
       "health_alarm_notify.conf" = ./health_alarm_notify.conf;
