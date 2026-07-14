@@ -23,25 +23,6 @@ let
     ];
     text = builtins.readFile ./dms-output-watch.sh;
   };
-  # DMS crash-loops if launched before the Wayland socket exists; wait for it.
-  wait-wayland = pkgs.writeShellApplication {
-    name = "wait-wayland";
-    runtimeInputs = [ pkgs.coreutils ]; # sleep
-    text = builtins.readFile ./wait-wayland.sh;
-  };
-  # The DMS backend binds wlr-gamma-control once, only for outputs present at
-  # startup, and never retries. Racing ahead of niri's output enumeration drops
-  # the "gamma" capability, breaking night mode until the service restarts. Wait
-  # for an enabled output so gamma binds on the first try.
-  wait-niri-output = pkgs.writeShellApplication {
-    name = "wait-niri-output";
-    runtimeInputs = [
-      pkgs.niri
-      pkgs.coreutils # sleep
-      pkgs.gnugrep
-    ];
-    text = builtins.readFile ./wait-niri-output.sh;
-  };
   darkman-dms-bridge = pkgs.writeShellApplication {
     name = "darkman-dms-bridge";
     runtimeInputs = with pkgs; [
@@ -61,15 +42,12 @@ in
     quickshell.package = nixpkgs-unstable.quickshell;
     dgop.package = nixpkgs-unstable.dgop;
   };
-  # Teach dms to wait for niri
+  # niri (Type=notify) signals READY only after the socket exists and the env
+  # import into systemd completes, so no ExecStartPre waits are needed here
   systemd.user.services.dms = {
     Unit.After = [ "niri.service" ];
     Unit.BindsTo = [ "niri.service" ];
     Unit.StartLimitIntervalSec = 0;
-    Service.ExecStartPre = [
-      "${lib.getExe wait-wayland} 30"
-      "${lib.getExe wait-niri-output} 30"
-    ];
     Service.RestartSec = 1; # restart slower, effectively a poll
   };
   # niri restarts (crash, or loading a new binary after a switch) stop dms via
