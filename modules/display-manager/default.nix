@@ -1,5 +1,26 @@
-{ nixpkgs-unstable, ... }:
 {
+  nixpkgs-unstable,
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  # Shadows the niri package's niri-session (hiPrio wins the profile merge)
+  # to recover from an orphaned niri.service instead of locking out login.
+  environment.systemPackages = [
+    (lib.hiPrio (
+      pkgs.writeShellApplication {
+        name = "niri-session";
+        runtimeInputs = [
+          pkgs.systemd
+          config.programs.niri.package
+        ];
+        text = builtins.readFile ./niri-session-unorphan.sh;
+      }
+    ))
+  ];
+
   services.displayManager.dms-greeter = {
     enable = true;
     # must match home-manger/modules/dms/default.nix
