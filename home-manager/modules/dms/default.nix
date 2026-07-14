@@ -50,11 +50,9 @@ in
     Unit.StartLimitIntervalSec = 0;
     Service.RestartSec = 1; # restart slower, effectively a poll
   };
-  # niri restarts (crash, or loading a new binary after a switch) stop dms via
-  # BindsTo, but graphical-session.target stays active so nothing ever starts
-  # it again. Uphold from niri's side: while niri runs, dms is restarted
-  # whenever it goes inactive. This also revives a manual `systemctl --user
-  # stop dms`; stop niri instead for a shell-less session.
+  # BindsTo stops dms when niri restarts, but graphical-session.target stays
+  # active so nothing starts it back up; have niri uphold it. Side effect:
+  # `systemctl --user stop dms` gets revived; stop niri for a shell-less session.
   xdg.configFile."systemd/user/niri.service.d/10-uphold-dms.conf".text = ''
     [Unit]
     Upholds=dms.service
