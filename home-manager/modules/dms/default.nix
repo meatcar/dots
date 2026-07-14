@@ -138,6 +138,10 @@ in
         "dms.service"
         "darkman.service"
         "xdg-desktop-portal.service"
+        # explicit ordering vs the target suppresses its implicit After= on
+        # wanted units, which otherwise cycles via dms.service and gets this
+        # unit's start job deleted at boot
+        "graphical-session.target"
       ];
       PartOf = [ "graphical-session.target" ];
     };
