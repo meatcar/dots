@@ -1,8 +1,15 @@
 --- a/share/quickshell/dms/Modules/Settings/DisplayConfig/DisplayConfigState.qml
 +++ b/share/quickshell/dms/Modules/Settings/DisplayConfig/DisplayConfigState.qml
-@@ -362,6 +362,16 @@ pragma Singleton
+@@ -873,12 +873,23 @@
+         if (hasPendingChanges)
+             clearPendingChanges();
+         currentOutputSet = newOutputSet;
++        matchedProfile = findMatchingProfile();
+         autoSelectDebounceTimer.restart();
+     }
      onSavedOutputsChanged: allOutputs = buildAllOutputsMap()
-
+     onLastAppliedEntryChanged: allOutputs = buildAllOutputsMap()
+ 
      Connections {
 +        target: CompositorService
 +        function onCompositorChanged() {

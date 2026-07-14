@@ -1,7 +1,13 @@
-# Patched dms-shell: re-runs DisplayConfigState.checkIncludeStatus() and
-# validateProfiles() once CompositorService finishes its async compositor
-# detection, fixing the false "First Time Setup" warning and empty output
-# profiles on a cold boot.  See display-config-state.patch.
+# Patched dms-shell (see display-config-state.patch):
+# - re-runs DisplayConfigState.checkIncludeStatus() and validateProfiles()
+#   once CompositorService finishes its async compositor detection, fixing
+#   the false "First Time Setup" warning and empty output profiles on a
+#   cold boot.
+# - recomputes matchedProfile when the output set changes. Upstream only
+#   computes it in validateProfiles() (which races output enumeration at
+#   startup) and behind displayProfileAutoSelect, so with auto-select off
+#   the [matched] tag in `dms ipc outputs listProfiles` stays stale forever
+#   and dms-toggle-outputs can never find a profile to apply.
 { pkgs, inputs }:
 let
   orig = inputs.dank-material-shell.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
