@@ -1,4 +1,3 @@
-# TODO: move away from rniri-flake due to slower maintenance
 {
   config,
   pkgs,
