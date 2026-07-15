@@ -28,6 +28,10 @@
   services.cli-proxy-api = {
     enable = true;
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
+    settings = {
+      quota-exceeded.switch-preview-model = false;
+      logging-to-file = true;
+    };
   };
 
   # rodney's bundled (uvx/PyPI) binary has no ROD_CHROME_BIN wrapper; point rod at the
