@@ -14,6 +14,12 @@ in
 {
   environment.systemPackages = [ egpu-undock ];
 
+  # UPSTREAM(niri): a hot-removed GPU's outputs are never cleaned up.
+  # Repro and details: https://github.com/meatcar/niri-egpu-repro
+  programs.niri.package = pkgs.niri.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ ./niri-device-removed.patch ];
+  });
+
   # Tag known eGPU enclosures as docks so systemd-logind treats clamshell-with-eGPU
   # as docked (HandleLidSwitchDocked) instead of falling through to HandleLidSwitchExternalPower.
   services.udev.extraRules = ''

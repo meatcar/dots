@@ -1,0 +1,84 @@
+--- a/src/backend/tty.rs
++++ b/src/backend/tty.rs
+@@ -933,22 +933,28 @@
+     fn device_changed(&mut self, device_id: dev_t, niri: &mut Niri, cleanup: bool) {
+         debug!("device changed: {device_id}");
+ 
+-        let Ok(node) = DrmNode::from_dev_id(device_id) else {
+-            warn!("error creating DrmNode");
+-            return;
+-        };
++        // Like device_removed(), avoid sysfs: the device may be mid-removal.
++        let Some((&node, device)) = self
++            .devices
++            .iter_mut()
++            .find(|(node, _)| node.dev_id() == device_id)
++        else {
++            // Unknown device: adding it needs sysfs to exist anyway.
++            let Ok(node) = DrmNode::from_dev_id(device_id) else {
++                warn!("error creating DrmNode");
++                return;
++            };
+ 
+-        if node.ty() != NodeType::Primary {
+-            debug!("not a primary node, skipping");
+-            return;
+-        }
++            if node.ty() != NodeType::Primary {
++                debug!("not a primary node, skipping");
++                return;
++            }
+ 
+-        if self.ignored_nodes.contains(&node) {
+-            debug!("node is ignored, skipping");
+-            return;
+-        }
++            if self.ignored_nodes.contains(&node) {
++                debug!("node is ignored, skipping");
++                return;
++            }
+ 
+-        let Some(device) = self.devices.get_mut(&node) else {
+             if let Some(path) = node.dev_path() {
+                 warn!("unknown device; trying to add");
+ 
+@@ -962,6 +968,11 @@
+             return;
+         };
+ 
++        if self.ignored_nodes.contains(&node) {
++            debug!("node is ignored, skipping");
++            return;
++        }
++
+         // DrmScanner will preserve any existing connector-CRTC mapping.
+         let scan_result = match device.drm_scanner.scan_connectors(&device.drm) {
+             Ok(x) => x,
+@@ -1123,18 +1134,15 @@
+     fn device_removed(&mut self, device_id: dev_t, niri: &mut Niri) {
+         debug!("removing device: {device_id}");
+ 
+-        let Ok(node) = DrmNode::from_dev_id(device_id) else {
+-            warn!("error creating DrmNode");
+-            return;
+-        };
+-
+-        if node.ty() != NodeType::Primary {
+-            debug!("not a primary node, skipping");
+-            return;
+-        }
+-
+-        let Some(device) = self.devices.get_mut(&node) else {
+-            warn!("unknown device");
++        // Look the node up in our device map: the sysfs behind
++        // DrmNode::from_dev_id() is already gone on PCI hot-remove.
++        // Non-primary nodes are never tracked, so they're skipped here too.
++        let Some((&node, device)) = self
++            .devices
++            .iter_mut()
++            .find(|(node, _)| node.dev_id() == device_id)
++        else {
++            debug!("unknown device, skipping");
+             return;
+         };
+ 
