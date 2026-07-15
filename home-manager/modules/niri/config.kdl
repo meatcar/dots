@@ -177,6 +177,7 @@ binds {
     Mod+Period hotkey-overlay-title="Open file" { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
     Mod+V hotkey-overlay-title="Clipboard" { spawn "dms" "ipc" "clipboard" "open"; }
     Mod+Insert repeat=false hotkey-overlay-title="Push-to-talk" { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
+    Mod+Shift+Insert repeat=false hotkey-overlay-title="Copy last transcription" { spawn "handy-last-transcription"; }
 }
 recent-windows {
     debounce-ms 750
