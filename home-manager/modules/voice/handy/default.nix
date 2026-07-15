@@ -33,15 +33,16 @@ let
     exec ${python}/bin/python3 ${./ptt.py} "$@"
   '';
 
-  handy-last-transcription = pkgs.writeShellScriptBin "handy-last-transcription" ''
-    export PATH=${
-      pkgs.lib.makeBinPath [
-        pkgs.sqlite
-        pkgs.wl-clipboard
-      ]
-    }:$PATH
-    exec ${pkgs.runtimeShell} ${./last-transcription.sh}
-  '';
+  handy-history = pkgs.writeShellApplication {
+    name = "handy-history";
+    runtimeInputs = with pkgs; [
+      sqlite
+      wl-clipboard
+      fuzzel
+      dotool
+    ];
+    text = builtins.readFile ./handy-history.sh;
+  };
 in
 {
   imports = [ inputs.handy.homeManagerModules.default ];
@@ -60,7 +61,7 @@ in
   home.packages = [
     config.services.handy.package
     ptt
-    handy-last-transcription
+    handy-history
     pkgs.dotool # uinput-based typing (wtype's virtual keyboard sends garbled keycodes on niri)
     pkgs.wtype # Wayland text input (fallback)
     pkgs.gtk-layer-shell # runtime dep for overlay on Wayland
