@@ -10,6 +10,14 @@ let
     ];
     text = builtins.readFile ./egpu-undock.sh;
   };
+
+  # fbcon draws only on fb0 (the APU), so the boot console never reaches
+  # eGPU displays. fbset ships the classic con2fbmap(1) to remap VTs.
+  egpu-fbcon = pkgs.writeShellApplication {
+    name = "egpu-fbcon";
+    runtimeInputs = [ pkgs.fbset ];
+    text = builtins.readFile ./egpu-fbcon.sh;
+  };
 in
 {
   environment.systemPackages = [ egpu-undock ];
@@ -24,5 +32,9 @@ in
   # as docked (HandleLidSwitchDocked) instead of falling through to HandleLidSwitchExternalPower.
   services.udev.extraRules = ''
     SUBSYSTEM=="thunderbolt", ATTR{vendor_name}=="Razer", ATTR{device_name}=="Core X Chroma", ENV{ID_DOCK}="1", TAG+="systemd"
+
+    # Route text VTs to the eGPU framebuffer when it appears (coldplug replay
+    # covers docked boots); the kernel falls back to fb0 on unplug.
+    ACTION=="add", SUBSYSTEM=="graphics", KERNEL=="fb[1-9]", ATTR{name}=="amdgpudrmfb", RUN+="${egpu-fbcon}/bin/egpu-fbcon %n"
   '';
 }

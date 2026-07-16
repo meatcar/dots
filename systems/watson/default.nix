@@ -27,6 +27,7 @@
     # ../../modules/displaylink
     ../../modules/keyd
     ../../modules/podman
+    ../../modules/quadlet
     # ../../modules/fingerprint
     ../../modules/1password
     ../../modules/printing
@@ -47,7 +48,9 @@
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
-    "video=HDMI-A-2:3840x2160@60"
+    # eGPU outputs: console on the 4k TV (DP-7, active DP->HDMI),
+    # never on the portrait Samsung. No-ops when undocked.
+    "video=DP-7:3840x2160@60"
     "video=DP-8:off"
     # "video=eDP-1:d"
     # "amdgpu.aspm=0"
@@ -106,6 +109,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    helium
     vulkan-tools
     neovim
     wget
@@ -244,6 +248,7 @@
     # and can be reattached after relogin. graphical-session.target is BoundBy
     # niri.service, so the graphical stack still tears down and restarts fresh.
     linger = true;
+    autoSubUidGidRange = true; # rootless podman quadlets
     shell = "${pkgs.fish}/bin/fish";
     hashedPasswordFile = config.age.secrets.userPassword.path;
     extraGroups = [
