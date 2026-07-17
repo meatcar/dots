@@ -57,6 +57,7 @@
       cameractrls-gtk4
       mpv
       ffmpeg
+      qbittorrent
       # dev
       cloudflared
       weave-merge

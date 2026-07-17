@@ -270,6 +270,10 @@
       ".local/share/epiphany"
       ".config/net.imput.helium"
 
+      # torrents
+      ".config/qBittorrent"
+      ".local/share/qBittorrent"
+
       # steam
       {
         directory = ".local/share/Steam";
