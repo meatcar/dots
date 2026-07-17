@@ -20,20 +20,6 @@ surround_with_quotes = false
 ignore_empty_commits = "None"
 
 [[module]]
-type = "Commit"
-previous_message_symbol = ""
-max_length = 16
-show_previous_if_empty = false
-empty_text = ""
-surround_with_quotes = true
-[module.change]
-fg = "Magenta"
-[module.commit]
-fg = "Blue"
-[module.non_unique]
-fg = "Black"
-
-[[module]]
 type = "State"
 separator = " "
 
