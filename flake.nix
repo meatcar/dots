@@ -81,6 +81,7 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix"; # no inputs to follow
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
