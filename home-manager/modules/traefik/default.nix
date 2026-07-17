@@ -1,5 +1,5 @@
-# Home-manager traefik module. Runs traefik as a podman container on the
-# podman network so it can reach other containers by internal IP.
+# Home-manager traefik module. Runs traefik as a rootless podman quadlet on
+# the podman network so it can reach other containers by internal IP.
 {
   config,
   nixpkgs-unstable,
@@ -11,7 +11,6 @@ let
   pkgs = nixpkgs-unstable;
 
   format = pkgs.formats.toml { };
-  podman = lib.getExe pkgs.podman;
 
   dynamicConfigFile =
     if cfg.dynamicConfigFile == null then
@@ -28,15 +27,32 @@ let
       )
     else
       cfg.staticConfigFile;
+
+  # nix-built image: provenance via nixpkgs instead of a mutable registry tag
+  image = pkgs.dockerTools.buildLayeredImage {
+    name = "localhost/traefik";
+    tag = "latest";
+    contents = [
+      cfg.package
+      pkgs.cacert
+    ];
+    config = {
+      Entrypoint = [ "/bin/traefik" ];
+      Env = [ "SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt" ];
+    };
+  };
 in
 {
+  imports = [ ../quadlet ];
+
   options.services.traefik = {
     enable = lib.mkEnableOption "Traefik reverse proxy";
 
-    image = lib.mkOption {
-      type = lib.types.str;
-      default = "docker.io/traefik:v3";
-      description = "Traefik container image to use.";
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.traefik;
+      defaultText = "nixpkgs-unstable.traefik";
+      description = "Traefik package the container image is built from.";
     };
 
     staticConfigFile = lib.mkOption {
@@ -71,10 +87,23 @@ in
       description = "Dynamic configuration for Traefik.";
     };
 
-    network = lib.mkOption {
-      type = lib.types.str;
-      default = "podman";
-      description = "Container network to join.";
+    networks = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ "podman" ];
+      description = ''
+        Container networks to join. Definitions merge, so service modules can
+        append their own networks (e.g. a quadlet network ref).
+      '';
+    };
+
+    networkAliases = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = ''
+        Extra DNS names traefik answers to on joined networks, letting
+        containers reach fronted services through traefik by the same
+        hostname hosts use.
+      '';
     };
 
     ports = lib.mkOption {
@@ -91,38 +120,39 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.configFile."traefik/traefik.toml".source = staticConfigFile;
-    xdg.configFile."traefik/dynamic.toml".source = dynamicConfigFile;
+    virtualisation.quadlet.images.traefik.imageConfig = {
+      image = "docker-archive:${image}";
+      tag = "localhost/traefik:latest";
+    };
 
-    systemd.user.services.traefik = {
-      Unit = {
-        Description = "Traefik reverse proxy";
+    virtualisation.quadlet.containers.traefik = {
+      unitConfig = {
         After = [ "podman.socket" ];
         Requires = [ "podman.socket" ];
       };
-      Service = {
-        ExecStartPre = "-${podman} rm -f traefik";
-        ExecStart = lib.concatStringsSep " " (
-          [
-            "${podman} run"
-            "--name traefik"
-            "--rm"
-            "--network ${cfg.network}"
-          ]
-          ++ map (p: "-p ${p}") cfg.ports
-          ++ [
-            "-v %t/podman/podman.sock:/var/run/docker.sock:ro"
-            "-v ${staticConfigFile}:/etc/traefik/traefik.toml:ro"
-            "-v ${dynamicConfigFile}:/etc/traefik/dynamic.toml:ro"
-          ]
-          ++ map (l: "-l ${l}") cfg.extraLabels
-          ++ [ cfg.image ]
-        );
-        ExecStop = "${podman} stop traefik";
+      serviceConfig = {
         Restart = "on-failure";
         RestartSec = 5;
       };
-      Install.WantedBy = [ "default.target" ];
+      containerConfig = {
+        image = config.virtualisation.quadlet.images.traefik.ref;
+        name = "traefik";
+        inherit (cfg) networks networkAliases;
+        publishPorts = cfg.ports;
+        volumes = [
+          # FIXME: full API access; a compromised traefik can spawn containers
+          # as this uid (:ro doesn't restrict the API). Only the docker
+          # provider (devcontainer auto-routing) needs it. Before exposing
+          # traefik to untrusted workloads (agent sandboxes): front the socket
+          # with an allowlisting filter (e.g. wollomatic/socket-proxy, GET
+          # /containers + /events only), and never join traefik to a sandbox
+          # network while it holds the raw socket.
+          "%t/podman/podman.sock:/var/run/docker.sock:ro"
+          "${staticConfigFile}:/etc/traefik/traefik.toml:ro"
+          "${dynamicConfigFile}:/etc/traefik/dynamic.toml:ro"
+        ];
+        labels = cfg.extraLabels;
+      };
     };
   };
 }
