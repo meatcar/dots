@@ -7,9 +7,7 @@
 let
   cfg = config.me.fileManager;
 
-  # The KDE platform theme reads view/window colors from kdeglobals [Colors:*],
-  # but nothing writes them outside Plasma. This imports a .colors file into
-  # kdeglobals; a path watcher runs it when DMS regenerates the scheme.
+  # import a DMS .colors scheme into kdeglobals (where KDE reads its colors)
   applyKdeColors = pkgs.writeShellApplication {
     name = "apply-kde-colors";
     runtimeInputs = [ pkgs.kdePackages.kconfig ]; # kwriteconfig6
@@ -62,43 +60,25 @@ in
         kdePackages.ffmpegthumbs
         kdePackages.kdegraphics-thumbnailers
         ffmpegthumbnailer
-        kdePackages.kservice # kbuildsycoca6, to (re)build the "Open With" app catalog
-        kdePackages.baloo # timeline:/ KIO worker + baloo_file indexer (Places "Modified Today/…")
-        # Qt platform theme. Dolphin is a KDE app; the KDE platform theme
-        # (plasma-integration) reads its palette from kdeglobals [Colors:*] and
-        # its widget style from breeze. qgnomeplatform was tried first but its
-        # QPalette::AlternateBase derivation striped Dolphin's list rows (dark
-        # text on dark alternate rows) and it never reads kdeglobals. Under the
-        # KDE theme the DankMatugen scheme imported into kdeglobals (below) drives
-        # the colors, and kwriteconfig6 --notify swaps light/dark live on recolor.
+        kdePackages.kservice # kbuildsycoca6, rebuilds the "Open With" catalog
+        kdePackages.kio # KIO workers (file://) for non-Dolphin Qt apps
+        kdePackages.baloo # timeline:/ worker + file indexer
+        # KDE platform theme: palette from kdeglobals, widget style from breeze
         kdePackages.plasma-integration
         kdePackages.breeze
       ];
       dbus.packages = [ pkgs.kdePackages.dolphin ];
 
-      # qt.enable wires QT_PLUGIN_PATH/QML2_IMPORT_PATH so the plugins above
-      # resolve. Select the KDE platform theme by env rather than qt.platformTheme
-      # (which would also export QT_STYLE_OVERRIDE): here light/dark is a palette
-      # swap in kdeglobals, not a style swap, so the style stays Breeze and only
-      # colors change on recolor.
+      # qt.enable wires QT_PLUGIN_PATH. theme via env, not qt.platformTheme, to
+      # avoid QT_STYLE_OVERRIDE: style stays breeze, only colors swap on recolor.
       qt.enable = true;
       home.sessionVariables.QT_QPA_PLATFORMTHEME = "kde";
       systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME = "kde";
 
-      # The KDE platform theme reads Dolphin's colors from kdeglobals [Colors:*],
-      # but nothing writes those outside Plasma. DMS's matugen writes a full KDE
-      # scheme to ~/.local/share/color-schemes/DankMatugen.colors on every recolor
-      # (mode toggle and wallpaper change), tracking the current mode. Watch that
-      # file and import its [Colors:*] into kdeglobals (--notify => running KDE
-      # apps re-read live) so Dolphin follows the shell's Material You palette and
-      # swaps light/dark with darkman. That .colors is only a template; the active
-      # colors are read from kdeglobals, hence the copy.
-      # No After=dms.service here: WantedBy=graphical-session.target makes the
-      # target implicitly After= this service, and dms is After= the target, so
-      # ordering after dms closes a cycle that gets broken by deleting dms's
-      # start job. The login run just imports whatever scheme file already
-      # exists (the script no-ops if absent); the path watcher below catches
-      # DMS's first write.
+      # DMS writes a KDE .colors on every recolor; import its [Colors:*] into
+      # kdeglobals (--notify => live re-read) so Dolphin tracks Material You.
+      # no After=dms: WantedBy=graphical-session already orders us before the
+      # target, and dms is after it, so After=dms would form an ordering cycle.
       systemd.user.services.dolphin-colors = {
         Unit.Description = "Import DMS matugen color scheme into kdeglobals";
         Service = {
@@ -110,10 +90,8 @@ in
       systemd.user.paths.dolphin-colors = {
         Unit = {
           Description = "Watch DMS matugen color scheme for changes";
-          # A PathChanged watcher never fires for a write that lands before it is
-          # active, so DMS's first recolor at login can be missed and kdeglobals
-          # left stale until the next toggle. Order the watcher before dms.service
-          # (and let dms pull it in) so it is watching before DMS can write.
+          # watch before dms: PathChanged ignores writes that land before it's
+          # active, so we'd miss DMS's first recolor otherwise.
           Before = [ "dms.service" ];
         };
         Path = {
@@ -126,20 +104,15 @@ in
         ];
       };
 
-      # Force GTK apps to use the (KDE) file-chooser portal instead of their
-      # built-in dialog. Mirror modules/wayland's dual-set pattern so the var
-      # reaches both session children and user services / D-Bus activation.
+      # route GTK dialogs through the KDE portal; dual-set for services/dbus too
       home.sessionVariables.GTK_USE_PORTAL = "1";
       systemd.user.sessionVariables.GTK_USE_PORTAL = "1";
 
-      # Open folders (inode/directory) and FileManager1 "show in folder" in Dolphin.
+      # open folders + "show in folder" in Dolphin
       xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
 
-      # Dolphin's "Open With" application list is built by KSycoca from an XDG
-      # application menu. Without Plasma there is no applications.menu, so the
-      # list is empty. Provide a minimal one (all apps, plus any system menu
-      # fragments via DefaultMergeDirs). KSycoca finds $XDG_CONFIG_HOME/menus/
-      # and rebuilds on next KDE app launch.
+      # no Plasma => no applications.menu, so "Open With" is empty. seed a
+      # minimal one for KSycoca to rebuild from.
       xdg.configFile."menus/applications.menu".text = ''
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN" "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
@@ -152,23 +125,11 @@ in
         </Menu>
       '';
 
-      # Seed kdeglobals keys via qt.kde.settings, HM's kwriteconfig6 wrapper.
-      # Key-by-key writes keep kdeglobals mutable for Dolphin's own state and
-      # apply-kde-colors' palette imports (a declarative file would not).
-      #
-      # - Icons/Theme: the KDE platform theme resolves icons from kdeglobals
-      #   [Icons] Theme (default breeze) and ignores the GTK/gsettings icon
-      #   theme, so with QT_QPA_PLATFORMTHEME=kde (above) Qt apps -- including
-      #   DMS/quickshell -- fall back to breeze/hicolor while gtk3-themed
-      #   processes use gtk.iconTheme, and app icons flip between the two sets
-      #   depending on which env a process started with. Seed from
-      #   gtk.iconTheme so both agree.
-      # - General/TerminalApplication: Dolphin's "Open Terminal" action.
-      #
-      # The module's "kconfig" activation entry is only ordered after
-      # writeBoundary, and KConfig silently drops writes through a dangling
-      # symlink; ensureDolphinPersistTargets (impermanence.nix) anchors itself
-      # before "kconfig" so the /persist symlink targets exist first.
+      # seed kdeglobals key-by-key (stays mutable for Dolphin state + colors).
+      # Icons.Theme mirrors gtk.iconTheme; KDE ignores the gsettings icon theme.
+      # KConfig silently drops writes through a dangling symlink;
+      # ensureDolphinPersistTargets (impermanence.nix) pre-creates the /persist
+      # targets first.
       qt.kde.settings.kdeglobals =
         lib.optionalAttrs (config.gtk.iconTheme != null) {
           Icons.Theme = config.gtk.iconTheme.name;
@@ -177,15 +138,11 @@ in
           General.TerminalApplication = "ghostty";
         };
 
-      # Baloo backs Dolphin's timeline:/ Places ("Modified Today/…") and search.
-      # Index ONLY the non-dotfile folders directly under $HOME: the "$HOME"/*/
-      # glob skips .* dirs, so HM's ~/.config and the many store symlinks are
-      # never crawled. Using an include list (not excludes) means future
-      # dotfolders are ignored too. "only basic indexing" covers mtime/metadata
-      # (enough for the timeline) without the heavy content extractor.
-      # baloofilerc is on tmpfs (not persisted), so it's rebuilt each activation.
+      # index only non-dotfile top-level dirs ($HOME/*/ skips .*); basic indexing
+      # = mtime/metadata, no content extractor. baloofilerc is on tmpfs, rebuilt
+      # each activation.
       home.activation.balooFolders = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        # Drop a stale store symlink from a prior generation so we can write it.
+        # drop a stale store symlink so we can write baloofilerc
         if [ -L "$HOME/.config/baloofilerc" ]; then
           run rm -f "$HOME/.config/baloofilerc"
         fi
@@ -203,11 +160,8 @@ in
           --group General --key folders "$baloofolders"
       '';
 
-      # baloo_file's XDG autostart is OnlyShowIn=KDE;GNOME and its packaged
-      # systemd unit has an ExecCondition pointing at plasma-workspace (not
-      # installed), so start it ourselves. baloo is independent of kded6 and
-      # only owns org.kde.baloo (no StatusNotifierWatcher), so it won't fight
-      # the DMS tray.
+      # baloo's autostart/unit expect Plasma, so start it ourselves. owns only
+      # org.kde.baloo, no StatusNotifierWatcher, so no conflict with the DMS tray.
       systemd.user.services.kde-baloo = {
         Unit = {
           Description = "Baloo File Indexer Daemon";
