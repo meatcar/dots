@@ -25,4 +25,6 @@ in
   "cliProxyApiEnv.age".publicKeys = users;
   "nixConfAccessTokens.age".publicKeys = users;
   "userPassword.age".publicKeys = systems;
+  # wg-quick conf, watson's key
+  "wireguard.age".publicKeys = systems;
 }

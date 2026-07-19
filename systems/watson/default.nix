@@ -35,6 +35,7 @@
     ../../modules/steam
     ../../modules/vm
     ../../modules/agenix
+    ../../modules/wireguard
     ../../modules/keyring.nix
     ../../modules/netdata
     ./t14s-micmuteled.nix
