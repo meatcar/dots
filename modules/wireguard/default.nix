@@ -7,4 +7,7 @@
 
   # strict rpfilter drops wg0 replies; reverse route is the main table
   networking.firewall.checkReversePath = "loose";
+
+  # keep nm (and gui shells driving it) from tearing the interface down
+  networking.networkmanager.unmanaged = [ "interface-name:wg0" ];
 }
