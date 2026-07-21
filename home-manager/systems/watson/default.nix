@@ -35,6 +35,7 @@
     ../../modules/mime-apps
     ../../modules/voice
     ../../modules/netdata-notify
+    ../../modules/qbittorrent
     ./impermanence.nix
   ];
 
@@ -57,7 +58,6 @@
       cameractrls-gtk4
       mpv
       ffmpeg
-      qbittorrent
       # dev
       cloudflared
       weave-merge

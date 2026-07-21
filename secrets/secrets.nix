@@ -27,4 +27,6 @@ in
   "userPassword.age".publicKeys = systems;
   # wg-quick conf, watson's key
   "wireguard.age".publicKeys = systems;
+  # tracker dynamic-ip endpoint + session cookie, as a curl config
+  "dynip.age".publicKeys = users;
 }
