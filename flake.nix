@@ -82,6 +82,10 @@
       url = "github:numtide/llm-agents.nix";
     };
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix"; # no inputs to follow
+    pi-cliproxyapi-wellknown = {
+      url = "github:abix5/pi-cliproxyapi-wellknown";
+      flake = false;
+    };
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";

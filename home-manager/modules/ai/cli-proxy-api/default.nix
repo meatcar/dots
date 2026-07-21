@@ -59,6 +59,7 @@ in
   imports = [
     ../../quadlet
     ../../traefik
+    ./wellknown
   ];
 
   options.services.cli-proxy-api = {
