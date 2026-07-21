@@ -46,7 +46,9 @@
       layout {
         background-color "#000000"
       }
-      include optional=true "/home/meatcar/.config/niri/dms/outputs.kdl"
+      // FIXME: don't include ~/.config/niri/dms/outputs.kdl here: it's stale
+      // at greeter time and can disable the only connected output (black
+      // screen when booting undocked).
       include optional=true "/home/meatcar/.config/niri/dms/cursor.kdl"
     '';
   };
