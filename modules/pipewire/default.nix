@@ -62,22 +62,34 @@ in
           },
         ]
       '')
+      # eGPU HDMI/DP outputs. The eGPU is hotplugged, so its PCI address is not
+      # stable; key off the card name and the ELD-derived alsa.name instead, which
+      # also survives moving a display between ports. The TV is the only one worth
+      # routing audio to; hide the C27JG5x and the portless outputs, which have no
+      # ELD and so fall back to a generic "HDMI <n>".
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-rename-hdmi.conf" ''
         monitor.alsa.rules = [
           {
-            matches = [{ node.name = "alsa_output.pci-0000_07_00.1.HiFi__HDMI1__sink" }],
-            actions = { update-props = { node.description = "LG Flex Monitor" } }
+            matches = [
+              {
+                alsa.card_name = "HDA ATI HDMI"
+                alsa.name = "LG TV SSCR2"
+              }
+            ]
+            actions = { update-props = { node.description = "eGPU LG TV" } }
           }
-        ]
-      '')
-      # Disable all HDMI sinks
-      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-disable-hdmi-sinks.conf" ''
-        monitor.alsa.rules = [
           {
             matches = [
-              { node.description = "~Navi 10 HDMI Audio HDMI .*" }
+              {
+                alsa.card_name = "HDA ATI HDMI"
+                alsa.name = "C27JG5x"
+              }
+              {
+                alsa.card_name = "HDA ATI HDMI"
+                alsa.name = "~HDMI [0-9]+"
+              }
             ]
-            actions = { update-props = { device.disabled = true } }
+            actions = { update-props = { node.disabled = true } }
           }
         ]
       '')
