@@ -1,6 +1,22 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
+let
+  # FIXME: alsa-ucm-conf hides HDA HDMI PCM device 10, which on watson's eGPU is
+  # the port the TV hangs off. Patching the package rebuilds the audio world, so
+  # ship a corrected tree and point alsa-lib at it instead. Drop once fixed:
+  # https://github.com/alsa-project/alsa-ucm-conf/blob/master/ucm2/codecs/hda/hdmi.conf#L15
+  alsa-ucm-conf-fixed = pkgs.runCommand "alsa-ucm-conf-hdmi-fix" {
+    UCM_SRC = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
+  } (builtins.readFile ./alsa-ucm-hdmi-fix.sh);
+in
 {
   # security.rtkit.enable = true;
+
+  # units ship with the pipewire package, so extend rather than replace them
+  systemd.user.services = lib.genAttrs [ "pipewire" "wireplumber" ] (_: {
+    overrideStrategy = "asDropin";
+    environment.ALSA_CONFIG_UCM2 = "${alsa-ucm-conf-fixed}";
+  });
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
