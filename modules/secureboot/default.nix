@@ -31,4 +31,12 @@
     configurationLimit = 20;
     pkiBundle = lib.mkDefault "/var/lib/sbctl";
   };
+
+  # FIXME: shadow the baked-in EFI app dir
+  # see https://github.com/nix-community/lanzaboote/issues/591
+  systemd.services.fwupd = lib.mkIf config.services.fwupd.enable {
+    serviceConfig.BindReadOnlyPaths = [
+      "/run/fwupd-efi:${config.services.fwupd.package.fwupd-efi}/libexec/fwupd/efi"
+    ];
+  };
 }

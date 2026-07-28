@@ -45,6 +45,7 @@
     ".pi-*"
     ".claude/*.local.*"
     ".claude/worktrees/"
+    ".agents/worktrees/"
     "CLAUDE.local.md"
     ".rodney/"
   ];

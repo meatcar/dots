@@ -11,6 +11,7 @@
     ../../modules/agenix
     ../../modules/gtk.nix
     ../../modules/gnome-keyring.nix
+    ../../modules/impermanence-copy-paths
     # ../../modules/firefox
     ../../modules/zen
     ../../modules/darkman
@@ -36,6 +37,7 @@
     ../../modules/voice
     ../../modules/netdata-notify
     ../../modules/qbittorrent
+    ../../modules/figma-agent
     ./impermanence.nix
   ];
 

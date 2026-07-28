@@ -2,6 +2,10 @@
 {
   powerManagement.enable = true;
 
+  # minimal hibernation image for faster hybrid-sleep
+  # see https://docs.kernel.org/power/swsusp.html
+  systemd.tmpfiles.rules = [ "w /sys/power/image_size - - - - 0" ];
+
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs) s-tui powertop;
   };

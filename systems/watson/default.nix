@@ -38,6 +38,7 @@
     ../../modules/wireguard
     ../../modules/keyring.nix
     ../../modules/netdata
+    ../../modules/ollama
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "26.05";
@@ -102,6 +103,12 @@
   };
 
   services.t14-micmuteled.enable = true;
+
+  # NetworkManager pulls in ModemManager by default, but this machine has no
+  # WWAN hardware: no /sys/class/wwan, no cellular USB/PCI device, and
+  # `mmcli -m list` finds nothing. Drop the daemon rather than run it for
+  # hardware that does not exist.
+  networking.modemmanager.enable = false;
 
   networking.hostName = "watson"; # Define your hostname.
   networking.nameservers = [
@@ -238,6 +245,9 @@
   systemd.user.services.niri-flake-polkit.enable = false;
 
   nix.settings.trusted-users = [ "meatcar" ];
+  # users.*.shell alone doesn't list fish in /etc/shells; anything validating
+  # against it (chsh, niri-session's login-shell re-exec) treats fish as invalid
+  environment.shells = [ pkgs.fish ];
   users.mutableUsers = false;
   users.users.meatcar = {
     isNormalUser = true;

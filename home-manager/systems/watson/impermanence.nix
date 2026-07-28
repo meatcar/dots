@@ -4,22 +4,21 @@
   ...
 }:
 {
-  # GTK writes recently-used.xbel via atomic replace (write temp + rename over
-  # target). rename() can't replace a single-file bind mount -> EBUSY, so the
-  # recents list never updates and Nautilus "Recent" stays empty. Symlink it
-  # into /persist instead: GIO follows the symlink and does its temp-write +
-  # rename inside the persisted dir, which works. See impermanence#107.
+  # GTK's recents list (~/.local/share/recently-used.xbel) can't be persisted
+  # by symlink or bind mount -- see me.impermanence.copyPaths for why.
+  me.impermanence.copyPaths.paths = [ ".local/share/recently-used.xbel" ];
+
   # mkOutOfStoreSymlink points these at /persist, but the target file does not
   # exist on first run, leaving a dangling symlink. KDE's KConfig (QSaveFile)
-  # SILENTLY DISCARDS writes through a dangling symlink (verified: exits 0,
-  # writes nowhere), so Dolphin settings never persist. Pre-create the targets
-  # after the symlinks are linked so the very first write lands in /persist.
+  # SILENTLY DISCARDS writes through a dangling symlink, so Dolphin settings
+  # never persist. Pre-create the targets after the symlinks are linked so
+  # the very first write lands in /persist.
   # Anchored between linkGeneration (symlinks exist) and qt.kde.settings'
   # "kconfig" writes (only ordered after writeBoundary by the module), so the
   # kdeglobals seeds never hit a dangling symlink.
   home.activation.ensureDolphinPersistTargets = lib.mkIf (config.me.fileManager == "dolphin") (
     lib.hm.dag.entryBetween [ "kconfig" ] [ "linkGeneration" ] ''
-      for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals" "$HOME/.local/state/dolphinstaterc"; do
+      for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals" "$HOME/.local/state/dolphinstaterc" "$HOME/.local/share/user-places.xbel"; do
         target="$(readlink -f "$cfg")"
         if [ -n "$target" ] && [ ! -e "$target" ]; then
           run mkdir -p "$(dirname "$target")"
@@ -29,15 +28,11 @@
     ''
   );
 
-  home.file = {
-    ".local/share/recently-used.xbel".source =
-      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/share/recently-used.xbel";
-  }
   # Dolphin/KDE write these via KConfig's atomic save (temp + rename), which a
   # single-file bind mount can't replace (EBUSY, impermanence#107). Symlink them
-  # into /persist so the rename happens inside the persisted dir. Same trick as
-  # recently-used.xbel above.
-  // lib.optionalAttrs (config.me.fileManager == "dolphin") {
+  # into /persist so the rename happens inside the persisted dir. Safe here
+  # (unlike the GTK file above) because QSaveFile resolves symlinks first.
+  home.file = lib.optionalAttrs (config.me.fileManager == "dolphin") {
     ".config/dolphinrc".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/dolphinrc";
     ".config/kdeglobals".source =
@@ -46,6 +41,11 @@
     # dolphinrc. Without this, Dolphin reopens all panels after every reboot.
     ".local/state/dolphinstaterc".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/state/dolphinstaterc";
+    # The Places panel lives in user-places.xbel, written by KBookmarkManager
+    # via QSaveFile. Unpersisted, Dolphin regenerates it from scratch on first
+    # launch after boot and every custom entry is lost.
+    ".local/share/user-places.xbel".source =
+      config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/share/user-places.xbel";
   };
 
   home.persistence."/persist" = {
@@ -58,7 +58,9 @@
       ".clasprc.json" # for clasp gscript upload tool
       ".config/apps.json" # for gearlever. Doesn't make a subdir.
       ".claude.json"
-      # ".local/share/recently-used.xbel" handled via mkOutOfStoreSymlink above
+      # recently-used.xbel is handled by me.impermanence.copyPaths above;
+      # user-places.xbel by mkOutOfStoreSymlink -- neither survives
+      # single-file persistence here.
     ];
     directories = [
       # user dirs

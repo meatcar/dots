@@ -14,6 +14,7 @@
         name = "niri-session";
         runtimeInputs = [
           pkgs.systemd
+          pkgs.coreutils # tee
           config.programs.niri.package
         ];
         text = builtins.readFile ./niri-session-unorphan.sh;
