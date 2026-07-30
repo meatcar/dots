@@ -57,7 +57,6 @@ in
     keyMode = "vi";
     prefix = "C-a";
     aggressiveResize = true;
-    secureSocket = false;
     terminal = "tmux-256color";
     # Use /bin/sh as default-shell so commands passed to split-window (e.g. by
     # opensessions) can use POSIX ${VAR:-default} syntax, which fish rejects.
@@ -90,4 +89,22 @@ in
 
   xdg.configFile."tmux/plugins/tmux-which-key/config.yaml".source = ./whichkey.yaml;
   xdg.dataFile."tmux/plugins/tmux-which-key/init.tmux".source = whichkey-init;
+
+  # secureSocket's home.sessionVariables copy is gated on __HM_SESS_VARS_SOURCED.
+  systemd.user.sessionVariables.TMUX_TMPDIR = "\${XDG_RUNTIME_DIR}";
+
+  systemd.user.services.tmux = {
+    Unit = {
+      Description = "tmux server";
+      Documentation = [ "man:tmux(1)" ];
+    };
+    Service = {
+      Type = "exec";
+      Environment = [ "TMUX_TMPDIR=%t" ];
+      ExecStart = "${pkgs.tmux}/bin/tmux -D";
+      ExecStop = "${pkgs.tmux}/bin/tmux kill-server";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
 }

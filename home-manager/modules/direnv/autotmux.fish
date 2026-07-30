@@ -30,6 +30,11 @@ function autotmux --description "Attach to tmux session for current direnv proje
 
     set -gx TMUX_SESSION_NAME "$session_name"
 
+    if not tmux list-sessions >/dev/null 2>&1
+      echo "WARNING(autotmux): no tmux server" >&2
+      return 1
+    end
+
     if tmux has-session -t "$TMUX_SESSION_NAME" >/dev/null 2>&1
       echo "attaching to session $TMUX_SESSION_NAME" >&2
       tmux attach-session -t "$TMUX_SESSION_NAME"

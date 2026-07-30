@@ -13,10 +13,13 @@ touch "$tmux_calls"
 set -g tmux_has_session 1
 set -g tmux_clients ""
 set -g tmux_current_session "other-session"
+set -g tmux_server_up 0
 function tmux
     switch "$argv[1]"
         case "has-session"
             return $tmux_has_session
+        case "list-sessions"
+            return $tmux_server_up
         case "list-clients"
             if test -n "$tmux_clients"
                 printf "%s" "$tmux_clients"
@@ -210,6 +213,23 @@ else
     exit 1
 end
 set -e TMUX
+
+# Test 12: autotmux bails when no server is running
+reset_tmux_calls
+set -g tmux_server_up 1
+set -g tmux_has_session 1
+set -e TMUX_SESSION_NAME
+
+autotmux 2>"$test_root/err"
+set -l rc $status
+set -l tmux_output (cat "$tmux_calls")
+if test $rc -ne 0 && test -z "$tmux_output" && string match -q -- "*no tmux server*" (cat "$test_root/err")
+    printf "✓ test 12: autotmux never forks a server, bails when none is running\n"
+else
+    printf "✗ test 12 failed: rc=%s tmux: '%s' err: '%s'\n" "$rc" "$tmux_output" (cat "$test_root/err") >&2
+    exit 1
+end
+set -g tmux_server_up 0
 
 # Cleanup
 functions -e tmux
