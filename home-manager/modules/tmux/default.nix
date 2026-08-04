@@ -5,6 +5,15 @@
 let
   inherit (pkgs) tmuxPlugins;
 
+  tmux-autohide =
+    pkgs.runCommandLocal "tmux_autohide" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
+      ''
+        install -Dm755 ${./autohide.sh} $out/bin/tmux_autohide
+        wrapProgram $out/bin/tmux_autohide \
+          --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.tmux ]}
+      '';
+  autohide = "${tmux-autohide}/bin/tmux_autohide";
+
   # Pre-compile whichkey.yaml → init.tmux at Nix build time so the plugin can
   # load it directly without a runtime Python step (autobuild stays disabled).
   whichkey-init =
@@ -64,6 +73,16 @@ in
     shell = "/bin/sh";
     extraConfig = builtins.readFile ./tmux.conf + ''
       set -g default-command ${pkgs.fish}/bin/fish
+
+      # NOTE: store path, not PATH -- run-shell hides a "not found".
+      # NOTE: opensessions clobbers same-named hooks; these three it leaves alone.
+      # see https://github.com/Ataraxy-Labs/opensessions/blob/v0.2.0-alpha.12/packages/runtime-rs/src/tmux_provider.rs
+      set-hook -ga window-linked         'run-shell -b "${autohide} status \"#{socket_path}\""'
+      set-hook -ga window-unlinked       'run-shell -b "${autohide} status \"#{socket_path}\""'
+      set-hook -ga window-layout-changed 'run-shell -b "${autohide} pane-border \"#{socket_path}\""'
+      # NOTE: catches sessions predating the hooks.
+      run-shell -b "${autohide} status '#{socket_path}'"
+      run-shell -b "${autohide} pane-border '#{socket_path}'"
     '';
     plugins = [
       tmuxPlugins.sensible
