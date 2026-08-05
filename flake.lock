@@ -98,7 +98,10 @@
           "hunk",
           "nixpkgs"
         ],
-        "systems": "systems_4",
+        "systems": [
+          "hunk",
+          "systems"
+        ],
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
@@ -672,14 +675,15 @@
         "bun2nix": "bun2nix_2",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1783931038,
-        "narHash": "sha256-gKf9U1sjnmR2Ok7lGAO5qqYsJ7ZWcP41jGqhcMzFQLk=",
+        "lastModified": 1788365094,
+        "narHash": "sha256-lNTwQUaOnND9YPZdFsAcKROiKoq6rRT00MIuct/F9j0=",
         "owner": "modem-dev",
         "repo": "hunk",
-        "rev": "4fdf4bc1e26f6fdceeced81bf7bae8f9bcb8588a",
+        "rev": "c7f91c742b20e94fb3a7e969fae3758c30805b67",
         "type": "github"
       },
       "original": {
@@ -1047,6 +1051,26 @@
         "type": "indirect"
       }
     },
+    "paseo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785954401,
+        "narHash": "sha256-DTgHZB201f+Qog9A9I5KbCSvxzRCsST29SPs+i/9XeI=",
+        "owner": "getpaseo",
+        "repo": "paseo",
+        "rev": "48bdc5610fde3aba9a86a2cd9bdc70b9289de6a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getpaseo",
+        "repo": "paseo",
+        "type": "github"
+      }
+    },
     "pi-cliproxyapi-wellknown": {
       "flake": false,
       "locked": {
@@ -1141,6 +1165,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "paseo": "paseo",
         "pi-cliproxyapi-wellknown": "pi-cliproxyapi-wellknown",
         "plug-kak": "plug-kak",
         "quadlet-nix": "quadlet-nix",
@@ -1241,16 +1266,16 @@
     },
     "systems_4": {
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "lastModified": 1776166891,
+        "narHash": "sha256-bI8yrEGjrohR5hkQox7UrxDH7XqrYMwI8SL/LrJ1+S8=",
         "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "repo": "triplet",
+        "rev": "6de7bc09397911ce03636afbcf6118745ab2cda0",
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
-        "repo": "default",
+        "repo": "triplet",
         "type": "github"
       }
     },

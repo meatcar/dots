@@ -86,6 +86,10 @@
       url = "github:abix5/pi-cliproxyapi-wellknown";
       flake = false;
     };
+    paseo = {
+      url = "github:getpaseo/paseo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";
