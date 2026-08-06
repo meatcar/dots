@@ -74,6 +74,7 @@ in
         enabled = true;
         priority = 3;
         allow_all_api_keys = true;
+        show_extra_analytics = cfg.managerPlus.enable;
         store.version = bridgeVersion;
       };
     };

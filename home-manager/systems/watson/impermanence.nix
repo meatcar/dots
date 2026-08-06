@@ -364,6 +364,7 @@
       ".config/awatcher"
     ]
     ++ lib.optional config.services.cli-proxy-api.enable ".local/share/cli-proxy-api/auth"
+    ++ lib.optional config.services.cli-proxy-api.managerPlus.enable ".local/share/cpa-manager-plus"
     ++ [ ".config/opensnitch" ]
     ++ [ ".config/obsidian" ]
     # file manager (see me.fileManager). dolphinrc/kdeglobals are persisted via

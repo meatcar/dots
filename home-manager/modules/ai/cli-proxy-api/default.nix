@@ -60,6 +60,7 @@ in
   imports = [
     ../../quadlet
     ../../traefik
+    ./manager-plus
     ./pi-bridge
   ];
 

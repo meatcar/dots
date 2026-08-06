@@ -31,8 +31,14 @@
   services.cli-proxy-api = {
     enable = true;
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
+    managerPlus.enable = true;
     piBridge.enable = true;
-    settings.quota-exceeded.switch-preview-model = false;
+    settings = {
+      quota-exceeded.switch-preview-model = false;
+      quota-exceeded.switch-project = true;
+      remote-management.allow-remote = true;
+      usage-statistics-enabled = true;
+    };
   };
 
   # rodney's bundled (uvx/PyPI) binary has no ROD_CHROME_BIN wrapper; point rod at the
