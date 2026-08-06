@@ -19,6 +19,9 @@
     pkgs.codexbar
     pkgs.python3
     pkgs.rodney
+    llm-agents.claude-code
+    llm-agents.codex
+    llm-agents.pi
     llm-agents.showboat
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
