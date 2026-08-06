@@ -54,14 +54,18 @@ load_window() {
 
   if [ "$refresh" = true ] || [ ! -f "$window_cache" ]; then
     echo "Fetching snapshots ($label)..." >&2
+    # Stage to .partial so a failed query never leaves an empty cache behind
+    local tmp="${window_cache}.partial"
     if [ "$days" -gt 0 ]; then
       local oldest
-      oldest=$(date -d "$days days ago" '+%Y-%m-%dT%H:%M:%S')
+      # restic only parses "2006-01-02 15:04:05"; ISO-8601 'T' is rejected
+      oldest=$(date -d "$days days ago" '+%Y-%m-%d %H:%M:%S')
       restic-backrest "$repo_id" find --json -l --oldest "$oldest" "$file_path"
     else
       restic-backrest "$repo_id" find --json -l "$file_path"
     fi | jq -r '.[] | [.snapshot, (.matches[0].size | tostring), .matches[0].mtime] | @tsv' \
-      >"$window_cache"
+      >"$tmp"
+    mv "$tmp" "$window_cache"
   else
     echo "Using cached results ($label). --refresh to re-query." >&2
   fi
