@@ -214,6 +214,24 @@
     22
   ];
 
+  # the vpn hands us one forwarded port, picked at random from the whole
+  # ephemeral range, so the port cannot be named ahead of time. only that one
+  # port is routable from outside, so the range is narrower than it reads.
+  networking.firewall.interfaces."wg0" = {
+    allowedTCPPortRanges = [
+      {
+        from = 1024;
+        to = 65535;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1024;
+        to = 65535;
+      }
+    ];
+  };
+
   services.syncthing.enable = false; # prefer HM module
   services.flatpak.enable = true;
 
