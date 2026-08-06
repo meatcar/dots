@@ -77,8 +77,13 @@ in
       # NOTE: store path, not PATH -- run-shell hides a "not found".
       # NOTE: opensessions clobbers same-named hooks; these three it leaves alone.
       # see https://github.com/Ataraxy-Labs/opensessions/blob/v0.2.0-alpha.12/packages/runtime-rs/src/tmux_provider.rs
+      # NOTE: -gu first -- re-sourcing only appends, so a long-lived server keeps
+      # firing every past generation's entry, dead store paths included.
+      set-hook -gu window-linked
       set-hook -ga window-linked         'run-shell -b "${autohide} status \"#{socket_path}\""'
+      set-hook -gu window-unlinked
       set-hook -ga window-unlinked       'run-shell -b "${autohide} status \"#{socket_path}\""'
+      set-hook -gu window-layout-changed
       set-hook -ga window-layout-changed 'run-shell -b "${autohide} pane-border \"#{socket_path}\""'
       # NOTE: catches sessions predating the hooks.
       run-shell -b "${autohide} status '#{socket_path}'"

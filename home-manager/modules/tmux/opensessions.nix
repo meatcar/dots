@@ -1,9 +1,26 @@
 {
+  config,
   pkgs,
   ...
 }:
 let
   tmux = "${pkgs.tmux}/bin/tmux";
+
+  # OPENSESSIONS_LAZYDIFF replaces the bundled lazydiff; the sidebar reads it at
+  # startup, so a running sidebar needs a restart to pick this up.
+  opensessions-hunk =
+    pkgs.runCommandLocal "opensessions-hunk" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
+      ''
+        install -Dm755 ${./opensessions-hunk.sh} $out/bin/opensessions-hunk
+        wrapProgram $out/bin/opensessions-hunk \
+          --prefix PATH : ${
+            pkgs.lib.makeBinPath [
+              config.programs.hunk.package
+              config.programs.jujutsu.package
+              config.programs.git.package
+            ]
+          }
+      '';
 in
 {
   programs.tmux = {
@@ -12,6 +29,7 @@ in
       # Sessionizer search roots for opensessions' n/c new-session popup.
       set-environment -g SESSIONIZER_DIR "$HOME/git/hub"
       set-environment -g SESSIONIZER_MAXDEPTH 3
+      set-environment -g OPENSESSIONS_LAZYDIFF "${opensessions-hunk}/bin/opensessions-hunk"
     '';
   };
 
