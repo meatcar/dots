@@ -225,6 +225,7 @@
       ".local/share/com.pais.handy"
       ".cache/handy"
       ".happy"
+      ".paseo"
       ".cache/huggingface"
       ".agents"
       ".codex"
@@ -275,6 +276,8 @@
       # torrents
       ".config/qBittorrent"
       ".local/share/qBittorrent"
+      # the tracker session the dynip jar holds outlives any one boot
+      ".local/state/qbittorrent-dynip"
 
       # steam
       {

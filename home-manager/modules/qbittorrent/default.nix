@@ -85,7 +85,7 @@ in
     };
     Service = {
       ExecStart = "${dynip}/bin/qbittorrent-dynip";
-      Environment = "DYNIP_CONF=${config.age.secrets.dynip.path} TUNNEL_ADDR=${tunnelAddr}";
+      Environment = "DYNIP_CONF=${config.age.secrets.dynip.path} TUNNEL_ADDR=${tunnelAddr} DYNIP_JAR=${config.xdg.stateHome}/qbittorrent-dynip/cookies";
       Restart = "on-failure";
       RestartSec = 30;
     };
