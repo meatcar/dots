@@ -82,8 +82,8 @@
       url = "github:numtide/llm-agents.nix";
     };
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix"; # no inputs to follow
-    pi-cliproxyapi-wellknown = {
-      url = "github:abix5/pi-cliproxyapi-wellknown";
+    pi-cliproxyapi-bridge = {
+      url = "github:abix5/pi-cliproxyapi-bridge";
       flake = false;
     };
     paseo = {

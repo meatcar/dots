@@ -31,7 +31,7 @@
   services.cli-proxy-api = {
     enable = true;
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
-    quotaSidecar.enable = true;
+    piBridge.enable = true;
     settings.quota-exceeded.switch-preview-model = false;
   };
 

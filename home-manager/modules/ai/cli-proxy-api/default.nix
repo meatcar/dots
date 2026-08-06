@@ -37,7 +37,8 @@ let
     contents = [
       cfg.package
       pkgs.cacert
-    ];
+    ]
+    ++ lib.optional cfg.piBridge.enable cfg.piBridge.package;
     config = {
       Entrypoint = [
         "/bin/cli-proxy-api"
@@ -59,7 +60,7 @@ in
   imports = [
     ../../quadlet
     ../../traefik
-    ./wellknown
+    ./pi-bridge
   ];
 
   options.services.cli-proxy-api = {

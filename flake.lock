@@ -1071,19 +1071,19 @@
         "type": "github"
       }
     },
-    "pi-cliproxyapi-wellknown": {
+    "pi-cliproxyapi-bridge": {
       "flake": false,
       "locked": {
-        "lastModified": 1779994100,
-        "narHash": "sha256-fGwDVd+JVNetmQkFPoj/WEJi4C7r8GkzFA0+btTktxo=",
+        "lastModified": 1786014250,
+        "narHash": "sha256-L7YVfKA8SsCKJtQp4RTWAJ0mrvrwAFrlIhZoLvRYB8c=",
         "owner": "abix5",
-        "repo": "pi-cliproxyapi-wellknown",
-        "rev": "76eb2532243b9c4dc85fe4a743e3dd06a848f8bd",
+        "repo": "pi-cliproxyapi-bridge",
+        "rev": "7e49bfa99bfcb454a7409b9143817111004b6172",
         "type": "github"
       },
       "original": {
         "owner": "abix5",
-        "repo": "pi-cliproxyapi-wellknown",
+        "repo": "pi-cliproxyapi-bridge",
         "type": "github"
       }
     },
@@ -1166,7 +1166,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "paseo": "paseo",
-        "pi-cliproxyapi-wellknown": "pi-cliproxyapi-wellknown",
+        "pi-cliproxyapi-bridge": "pi-cliproxyapi-bridge",
         "plug-kak": "plug-kak",
         "quadlet-nix": "quadlet-nix",
         "tinted-jjui": "tinted-jjui",
