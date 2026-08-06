@@ -119,10 +119,11 @@ in
               "agenix.service"
               "cli-proxy-api.service"
             ];
-            Requires = [
-              "agenix.service"
-              "cli-proxy-api.service"
-            ];
+            # Wants, not Requires: HM restarts agenix every activation, and
+            # Requires would stop us with it and never start us back
+            Wants = [ "agenix.service" ];
+            Requires = [ "cli-proxy-api.service" ];
+            PartOf = [ "cli-proxy-api.service" ];
           };
           serviceConfig = {
             Restart = "on-failure";

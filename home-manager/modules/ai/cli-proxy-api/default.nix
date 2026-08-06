@@ -145,9 +145,11 @@ in
         };
 
         containers.cli-proxy-api = {
+          # Wants, not Requires: HM restarts agenix every activation, and
+          # Requires would stop us with it and never start us back
           unitConfig = lib.optionalAttrs (cfg.environmentFile != null) {
             After = [ "agenix.service" ];
-            Requires = [ "agenix.service" ];
+            Wants = [ "agenix.service" ];
           };
           serviceConfig = {
             Restart = "on-failure";
