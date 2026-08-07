@@ -3,6 +3,7 @@
   imports = [
     ../power
     ../zswap
+    ../oomd
   ];
 
   networking.networkmanager.enable = true;
