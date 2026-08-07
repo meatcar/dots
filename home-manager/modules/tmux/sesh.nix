@@ -21,10 +21,7 @@ in
     settings = {
       # Hide the opensessions scratch session, mirroring _os_stash filtering.
       blacklist = [ "_os_stash" ];
-      # Auto-lay-out sessions under /git (~/git is a symlink to /git). Only
-      # fires when sesh *creates* the session (picker); autotmux-created
-      # sessions bypass this. Preview lives on the channel below because
-      # `sesh preview` does not consult wildcard preview_command.
+      # NOTE: fires only on sesh-created sessions; autotmux bypasses it
       wildcard = [
         {
           pattern = "/git/**";
