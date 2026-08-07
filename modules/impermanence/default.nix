@@ -61,6 +61,14 @@ in
 
   fileSystems."/persist".neededForBoot = lib.mkDefault true;
 
+  # NOTE: bind, not symlink -- $HOME-clamped tools reject a /git realpath
+  fileSystems."/home/meatcar/git" = {
+    device = "/git";
+    fsType = "none";
+    options = [ "bind" ];
+    depends = [ "/git" ];
+  };
+
   # for home-manager impermanence
   programs.fuse.userAllowOther = true;
 

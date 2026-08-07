@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   nixpkgs-unstable,
   ...
 }:
@@ -94,5 +93,4 @@
   programs.chromium.enable = true;
 
   services.syncthing.enable = true;
-  home.file."/git".source = config.lib.file.mkOutOfStoreSymlink "/git";
 }
