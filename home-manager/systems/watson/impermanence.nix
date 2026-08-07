@@ -266,6 +266,15 @@
 
       # podman
       ".local/share/containers"
+      # quadlet-nix resolves every rootless unit's ExecStart through the pivot
+      # symlink ~/.config/quadlet-nix/out -> $XDG_RUNTIME_DIR/systemd/generator.
+      # Unpersisted it is gone at boot and only recreated during HM activation,
+      # which races the user manager's first unit load -- lose that race and
+      # every quadlet unit loads stub-only ("no ExecStart"), systemd drops its
+      # default.target job, and the whole stack is dead until a manual
+      # `systemctl --user daemon-reload`. Persisted, the pivot is bind-mounted
+      # before the session starts, so the drop-ins always resolve.
+      ".config/quadlet-nix"
 
       # browsers
       ".local/share/webkitgtk-6.0"
