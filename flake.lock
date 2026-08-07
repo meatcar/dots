@@ -227,6 +227,32 @@
         "url": "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css"
       }
     },
+    "cpa-manager-plus-amd64": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785475274,
+        "narHash": "sha256-Ic1voOrhBDOIqcqCZwqdwAHn34IDjMBoH7oU+BU7qyY=",
+        "type": "tarball",
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_amd64.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_amd64.tar.gz"
+      }
+    },
+    "cpa-manager-plus-arm64": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785475295,
+        "narHash": "sha256-6KGiOVRe7los0m3PgWNOCHTsne/Cep0018+kupROnyQ=",
+        "type": "tarball",
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_arm64.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_arm64.tar.gz"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1760924934,
@@ -1147,6 +1173,8 @@
         "catppuccin-bat": "catppuccin-bat",
         "catppuccin-delta": "catppuccin-delta",
         "catppuccin-swaync": "catppuccin-swaync",
+        "cpa-manager-plus-amd64": "cpa-manager-plus-amd64",
+        "cpa-manager-plus-arm64": "cpa-manager-plus-arm64",
         "dank-material-shell": "dank-material-shell",
         "disko": "disko",
         "firefox-arcwtf": "firefox-arcwtf",

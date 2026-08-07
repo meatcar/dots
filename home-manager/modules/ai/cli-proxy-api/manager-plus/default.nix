@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -11,14 +12,8 @@ let
   version = "1.11.11";
   release =
     {
-      x86_64-linux = {
-        arch = "amd64";
-        hash = "sha256-uK7a1SjFcozvlpqZEKSru8fXxmdWXAtlzrj6DKwwwQM=";
-      };
-      aarch64-linux = {
-        arch = "arm64";
-        hash = "sha256-40oqJ7ymFy8y2sWWRsFTpFg3lLfkHI9kRGLv8OYTkn8=";
-      };
+      x86_64-linux = inputs.cpa-manager-plus-amd64;
+      aarch64-linux = inputs.cpa-manager-plus-arm64;
     }
     .${pkgs.stdenv.hostPlatform.system}
       or (throw "CPA Manager Plus does not support ${pkgs.stdenv.hostPlatform.system}");
@@ -27,16 +22,12 @@ let
     pname = "cpa-manager-plus";
     inherit version;
 
-    src = pkgs.fetchurl {
-      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v${version}/cpa-manager-plus_v${version}_linux_${release.arch}.tar.gz";
-      inherit (release) hash;
-    };
-
-    sourceRoot = "cpa-manager-plus_v${version}_linux_${release.arch}";
+    src = release;
+    dontUnpack = true;
 
     installPhase = ''
       runHook preInstall
-      install -Dm755 cpa-manager-plus "$out/bin/cpa-manager-plus"
+      install -Dm755 ${release}/cpa-manager-plus "$out/bin/cpa-manager-plus"
       runHook postInstall
     '';
 
