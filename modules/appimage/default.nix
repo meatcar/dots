@@ -34,7 +34,10 @@ in
 
   systemd.user.paths.fix-appimage-magic = {
     description = "Watch ~/AppImages for self-updater file swaps";
-    pathConfig.PathChanged = "%h/AppImages";
+    pathConfig = {
+      PathChanged = "%h/AppImages";
+      PathModified = "%h/AppImages";
+    };
     wantedBy = [ "paths.target" ];
   };
 }

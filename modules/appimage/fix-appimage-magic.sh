@@ -5,6 +5,8 @@ set -euo pipefail
 # offset 8) zeroed out, so binfmt_misc and appimage-run reject them as
 # "Not an AppImage file". Restore the marker on any zeroed file.
 dir="${1:-$HOME/AppImages}"
+shopt -s nocaseglob nullglob
+
 for f in "$dir"/*.appimage; do
   [ -f "$f" ] || continue
   magic="$(od -An -t x1 -j 8 -N 3 "$f" | tr -d ' \n')"
@@ -16,6 +18,12 @@ for f in "$dir"/*.appimage; do
     ;;
   *)
     echo "$f: unexpected bytes at offset 8 ($magic), leaving alone" >&2
+    continue
     ;;
   esac
+
+  if [ ! -x "$f" ]; then
+    chmod u+x "$f"
+    echo "restored AppImage executable bit: $f"
+  fi
 done
