@@ -9,6 +9,14 @@ _: {
     "zswap.shrinker_enabled=1"
   ];
 
+  # live CachyOS defaults, pinned so a kernel switch can't silently change
+  # reclaim; both suit zswap, where anon eviction round-trips through RAM
+  # NOTE: disk writeback is the shrinker's doing, not these -- see max_pool_percent
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 100;
+    "vm.page-cluster" = 0;
+  };
+
   # zstd compressor requires systemd in initrd.
   boot.initrd.systemd.enable = true;
 }
