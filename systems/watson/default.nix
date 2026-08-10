@@ -129,6 +129,9 @@
     v4l-utils
     perf
     amdgpu_top
+    # already in the closure for netdata's ndsudo; this just puts it on PATH
+    smartmontools
+    nvme-cli
 
     iw
     tcpdump
