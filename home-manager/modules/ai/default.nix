@@ -26,6 +26,7 @@
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
     pkgs.bubblewrap # for sandboxes
+    pkgs.nono # for sandboxes
     nixpkgs-unstable.openspec
   ];
   services.cli-proxy-api = {
