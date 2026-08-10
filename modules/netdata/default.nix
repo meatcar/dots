@@ -12,8 +12,11 @@
     extraNdsudoPackages = [ pkgs.smartmontools ];
     config = {
       # disk backlog is meaningless on NVMe/dm; stock alert is silent but
-      # still flaps constantly, tripping cloud's misconfigured-alert detector
-      health."enabled alarms" = "!10min_disk_backlog *";
+      # still flaps constantly, tripping cloud's misconfigured-alert detector.
+      # The memory three are superseded by health.d/severe.conf; disabling by
+      # name rather than shadowing ram.conf/swap.conf leaves anything upstream
+      # adds to those files still loading.
+      health."enabled alarms" = "!10min_disk_backlog !oom_kill !ram_available !used_swap *";
       plugins = {
         tc = "no"; # no traffic shaping on this laptop
         freeipmi = "no"; # no BMC
@@ -27,6 +30,7 @@
       # scripts.d logs a watch error every minute if its config dir is absent
       "scripts.d" = pkgs.emptyDirectory;
       "health.d/sensors.conf" = ./health.d/sensors.conf;
+      "health.d/severe.conf" = ./health.d/severe.conf;
       "health.d/systemdunits.conf" = ./health.d/systemdunits.conf;
       "health_alarm_notify.conf" = ./health_alarm_notify.conf;
     };
