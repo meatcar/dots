@@ -34,7 +34,7 @@ in
 
     script = ''
       mkdir -p /btrfs
-      mount -t btrfs -o compress=zstd,noatime,nodev,noexec,nosuid,discard=async /dev/mapper/${luksName} /btrfs
+      mount -t btrfs -o compress=zstd,noatime,nodev,noexec,nosuid /dev/mapper/${luksName} /btrfs
 
       echo 'Cleaning subvolumes...'
       btrfs subvolume list -o /btrfs/@${rootSubvolume} | cut -f9 -d ' ' |

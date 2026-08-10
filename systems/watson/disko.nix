@@ -49,8 +49,6 @@ in
                       # Any binaries that need SUID privileges will be created by Nix
                       # and put into `/run/wrappers/bin` which has SUID permissions.
                       "nosuid"
-                      # Use asynchronous discard (https://wiki.archlinux.org/title/Btrfs#SSD_TRIM)
-                      "discard"
                     ];
                   in
                   {
@@ -65,7 +63,7 @@ in
                       MNTPOINT="$(mktemp -d)"
                       SRCMNT='/dev/mapper/${luksName}'
 
-                      mount -t btrfs -o 'compress=zstd,noexec,noatime,nodev,nosuid,discard' "$SRCMNT" "$MNTPOINT"
+                      mount -t btrfs -o 'compress=zstd,noexec,noatime,nodev,nosuid' "$SRCMNT" "$MNTPOINT"
                       trap 'umount $MNTPOINT; rmdir $MNTPOINT' EXIT
 
                       btrfs subvolume snapshot -r "$MNTPOINT"/@${rootSubvolume} "$MNTPOINT"/@${rootSubvolume}-blank
