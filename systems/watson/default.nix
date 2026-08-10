@@ -129,7 +129,7 @@
     v4l-utils
     perf
     amdgpu_top
-    # already in the closure for netdata's ndsudo; this just puts it on PATH
+    # already in netdata's closure; this just puts them on PATH
     smartmontools
     nvme-cli
 
