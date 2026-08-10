@@ -72,12 +72,17 @@ return {
   -- },
   {
     'mikavilpas/yazi.nvim',
+    lazy = false,
+    init = function()
+      vim.g.loaded_netrwPlugin = 1
+    end,
+    opts = {
+      open_for_directories = true,
+    },
     keys = {
-      {
-        '-', '<cmd>Yazi<CR>', desc = "Open Yazi file manager"
-      }
-
-    }
+      { '-', '<cmd>Yazi<CR>', desc = 'Yazi file manager' },
+      { '<leader>oy', '<cmd>Yazi<CR>', desc = 'Yazi file manager' },
+    },
   },
 
   -- { -- ctrl-[ax] on drugs

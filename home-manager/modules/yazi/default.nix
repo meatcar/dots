@@ -16,6 +16,11 @@
       # prompts, where `shell` is not a valid command, so `!` did nothing there.
       mgr.prepend_keymap = [
         {
+          run = "help";
+          on = [ "<A-?>" ];
+          desc = "Open help";
+        }
+        {
           run = "shell \"$SHELL\" --block";
           on = [ "!" ];
           desc = "Open shell here";

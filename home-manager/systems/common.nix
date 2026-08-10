@@ -28,6 +28,8 @@
     ../modules/btop
     ../modules/tmux
     ../modules/neovim
+    ../modules/lf
+    ../modules/vifm
     # ../modules/weechat
     # ../modules/clojure
     # ../modules/emacs
