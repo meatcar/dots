@@ -18,6 +18,9 @@
         tc = "no"; # no traffic shaping on this laptop
         freeipmi = "no"; # no BMC
         "charts.d" = "no"; # legacy bash collectors, all superseded by go.d
+        # no NFACCT objects on this host, and the plugin is unwrapped so it has
+        # no CAP_NET_ADMIN either; conntrack charts come from proc.plugin
+        nfacct = "no";
       };
     };
     configDir = {
