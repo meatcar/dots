@@ -22,6 +22,7 @@
     ../../modules/resolved
     ../../modules/geoclue
     ../../modules/pipewire
+    ../../modules/dbus
     ../../modules/bluetooth
     ../../modules/display-manager
     # ../../modules/displaylink
