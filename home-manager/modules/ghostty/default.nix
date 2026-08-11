@@ -1,5 +1,11 @@
-{ nixpkgs-unstable, ... }:
+{ config, nixpkgs-unstable, ... }:
 {
+  # NOTE: HM links the shipped unit but leaves starting it to D-Bus activation.
+  # Bind it to the session instead: `ghostty +new-window` is an IPC client, so
+  # Mod+Return needs a primary instance already alive to talk to.
+  xdg.configFile."systemd/user/graphical-session.target.wants/app-com.mitchellh.ghostty.service".source =
+    "${config.programs.ghostty.package}/share/systemd/user/app-com.mitchellh.ghostty.service";
+
   programs.ghostty = {
     enable = true;
     package = nixpkgs-unstable.ghostty;
