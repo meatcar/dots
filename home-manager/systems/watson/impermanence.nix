@@ -8,14 +8,10 @@
   # by symlink or bind mount -- see me.impermanence.copyPaths for why.
   me.impermanence.copyPaths.paths = [ ".local/share/recently-used.xbel" ];
 
-  # mkOutOfStoreSymlink points these at /persist, but the target file does not
-  # exist on first run, leaving a dangling symlink. KDE's KConfig (QSaveFile)
-  # SILENTLY DISCARDS writes through a dangling symlink, so Dolphin settings
-  # never persist. Pre-create the targets after the symlinks are linked so
-  # the very first write lands in /persist.
-  # Anchored between linkGeneration (symlinks exist) and qt.kde.settings'
-  # "kconfig" writes (only ordered after writeBoundary by the module), so the
-  # kdeglobals seeds never hit a dangling symlink.
+  # NOTE: KConfig (QSaveFile) SILENTLY DISCARDS writes through a dangling symlink,
+  # and the mkOutOfStoreSymlink targets below don't exist on first run. Pre-create
+  # them after linkGeneration but before qt.kde.settings' "kconfig" writes (which
+  # are only ordered after writeBoundary), so the first write lands in /persist.
   home.activation.ensureDolphinPersistTargets = lib.mkIf (config.me.fileManager == "dolphin") (
     lib.hm.dag.entryBetween [ "kconfig" ] [ "linkGeneration" ] ''
       for cfg in "$HOME/.config/dolphinrc" "$HOME/.config/kdeglobals" "$HOME/.local/state/dolphinstaterc" "$HOME/.local/share/user-places.xbel"; do
@@ -28,22 +24,20 @@
     ''
   );
 
-  # Dolphin/KDE write these via KConfig's atomic save (temp + rename), which a
-  # single-file bind mount can't replace (EBUSY, impermanence#107). Symlink them
-  # into /persist so the rename happens inside the persisted dir. Safe here
-  # (unlike the GTK file above) because QSaveFile resolves symlinks first.
+  # NOTE: Dolphin/KDE write these via KConfig's atomic save (temp + rename), which
+  # a single-file bind mount can't replace (EBUSY, impermanence#107). Symlinks are
+  # safe here (unlike the GTK file above): QSaveFile resolves them first.
   home.file = lib.optionalAttrs (config.me.fileManager == "dolphin") {
     ".config/dolphinrc".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/dolphinrc";
     ".config/kdeglobals".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.config/kdeglobals";
-    # KF6 keeps window/panel state (open docks, sizes) in XDG_STATE_HOME, not
-    # dolphinrc. Without this, Dolphin reopens all panels after every reboot.
+    # KF6 keeps panel state in XDG_STATE_HOME, not dolphinrc; unpersisted,
+    # Dolphin reopens all panels after every reboot
     ".local/state/dolphinstaterc".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/state/dolphinstaterc";
-    # The Places panel lives in user-places.xbel, written by KBookmarkManager
-    # via QSaveFile. Unpersisted, Dolphin regenerates it from scratch on first
-    # launch after boot and every custom entry is lost.
+    # Places panel; KBookmarkManager writes via QSaveFile. Unpersisted, Dolphin
+    # regenerates it from scratch and every custom entry is lost
     ".local/share/user-places.xbel".source =
       config.lib.file.mkOutOfStoreSymlink "/persist${config.home.homeDirectory}/.local/share/user-places.xbel";
   };
@@ -58,9 +52,8 @@
       ".clasprc.json" # for clasp gscript upload tool
       ".config/apps.json" # for gearlever. Doesn't make a subdir.
       ".claude.json"
-      # recently-used.xbel is handled by me.impermanence.copyPaths above;
-      # user-places.xbel by mkOutOfStoreSymlink -- neither survives
-      # single-file persistence here.
+      # NOTE: recently-used.xbel and user-places.xbel don't survive single-file
+      # persistence; handled by copyPaths and mkOutOfStoreSymlink above
     ];
     directories = [
       # user dirs
@@ -137,9 +130,9 @@
       ".local/state/wireplumber"
       ".config/easyeffects"
       ".config/spotifyd"
-      ".cache/spotifyd"
+      ".cache/spotifyd" # NOTE: oauth creds, not regenerable cache -- don't demote
       ".config/spotify-player"
-      ".cache/spotify-player"
+      ".cache/spotify-player" # NOTE: oauth creds, not regenerable cache -- don't demote
       ".local/share/whisper-models"
 
       # graphics
@@ -376,8 +369,7 @@
     ++ lib.optional config.services.cli-proxy-api.managerPlus.enable ".local/share/cpa-manager-plus"
     ++ [ ".config/opensnitch" ]
     ++ [ ".config/obsidian" ]
-    # file manager (see me.fileManager). dolphinrc/kdeglobals are persisted via
-    # mkOutOfStoreSymlink below (KConfig atomic-save vs single-file bind mounts).
+    # NOTE: dolphinrc/kdeglobals persist via mkOutOfStoreSymlink above
     ++ lib.optionals (config.me.fileManager == "nautilus") [
       ".local/share/nautilus"
     ]
