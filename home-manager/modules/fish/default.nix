@@ -78,6 +78,9 @@
   };
   programs.fzf.enableFishIntegration = false; # we use fzf.fish
 
+  # NOTE: carapace erases fish's own completions for every command it knows
+  programs.carapace.enable = true;
+
   xdg.configFile."fish/functions" = {
     source = ./functions;
     recursive = true;
