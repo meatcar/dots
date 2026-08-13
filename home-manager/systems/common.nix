@@ -76,6 +76,16 @@
       ];
 
     xdg.enable = true;
+    # NOTE: dbus-broker silently skips service dirs missing at scan time, and its
+    # inotify mask carries no IN_CREATE, so symlinked-in service files are never
+    # noticed either. Impermanence guarantees both at boot. Reload is config-only.
+    home.activation.reloadDbusServices = lib.hm.dag.entryAfter [ "linkGeneration" "installPackages" ] ''
+      runtimeDir="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+      if [ -S "$runtimeDir/bus" ]; then
+        run env XDG_RUNTIME_DIR="$runtimeDir" ${pkgs.systemd}/bin/systemctl --user reload dbus.service \
+          || echo "warning: could not reload the session bus; D-Bus activation of new apps needs a re-login" >&2
+      fi
+    '';
     home.sessionVariables = {
       EDITOR = "nvim";
       NOTES_DIR = "~/Sync/notes";
