@@ -3,17 +3,15 @@ set -euo pipefail
 
 [ "$(id -u)" -eq 0 ] || exec sudo "$0" "$@"
 
-config="${BACKREST_CONFIG:-/var/lib/backrest/config.json}"
 thorough=false
 refresh=false
 
 usage() {
-  echo "Usage: restic-timemachine [--thorough] [--refresh] <repo-id> <file-path>" >&2
+  echo "Usage: restic-timemachine [--thorough] [--refresh] <backup-name> <file-path>" >&2
   echo "  --thorough  check all snapshot pairs, even when size is unchanged (slower)" >&2
   echo "  --refresh   ignore cache and re-query" >&2
   echo "" >&2
-  echo "Available repos:" >&2
-  jq -r '.repos[].id' "$config" >&2
+  restic-job >&2 || true
   exit 1
 }
 
@@ -33,12 +31,12 @@ done
 
 [ $# -ge 2 ] || usage
 
-repo_id="$1"
+backup="$1"
 file_path="$2"
 
 cache_dir="${XDG_CACHE_HOME:-/root/.cache}/restic-timemachine"
 mkdir -p "$cache_dir"
-cache_key="${repo_id}__${file_path//[^a-zA-Z0-9._-]/_}"
+cache_key="${backup}__${file_path//[^a-zA-Z0-9._-]/_}"
 
 # Window schedule in days; 0 = all time (no --oldest limit)
 windows=(7 30 90 0)
@@ -60,9 +58,9 @@ load_window() {
       local oldest
       # restic only parses "2006-01-02 15:04:05"; ISO-8601 'T' is rejected
       oldest=$(date -d "$days days ago" '+%Y-%m-%d %H:%M:%S')
-      restic-backrest "$repo_id" find --json -l --oldest "$oldest" "$file_path"
+      restic-job "$backup" find --json -l --oldest "$oldest" "$file_path"
     else
-      restic-backrest "$repo_id" find --json -l "$file_path"
+      restic-job "$backup" find --json -l "$file_path"
     fi | jq -r '.[] | [.snapshot, (.matches[0].size | tostring), .matches[0].mtime] | @tsv' \
       >"$tmp"
     mv "$tmp" "$window_cache"
@@ -77,20 +75,20 @@ load_window() {
 show_diff() {
   {
     diff -u \
-      <(restic-backrest "$repo_id" dump "$a_snap" "$file_path" 2>/dev/null || true) \
-      <(restic-backrest "$repo_id" dump "$b_snap" "$file_path" 2>/dev/null || true) ||
+      <(restic-job "$backup" dump "$a_snap" "$file_path" 2>/dev/null || true) \
+      <(restic-job "$backup" dump "$b_snap" "$file_path" 2>/dev/null || true) ||
       true
   } | delta
 }
 
 restore_snapshot() {
   local snap="$1"
-  local backup
-  backup="${file_path}.$(date +%Y%m%dT%H%M%S)"
-  echo "Backing up current file to $backup"
-  cp "$file_path" "$backup"
+  local current_file_backup
+  current_file_backup="${file_path}.$(date +%Y%m%dT%H%M%S)"
+  echo "Backing up current file to $current_file_backup"
+  cp "$file_path" "$current_file_backup"
   echo "Restoring from snapshot $snap..."
-  restic-backrest "$repo_id" restore "$snap" --target / --include "$file_path"
+  restic-job "$backup" restore "$snap" --target / --include "$file_path"
   echo "Restored."
   exit 0
 }

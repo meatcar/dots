@@ -1,64 +1,138 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
 let
-  restic-backrest = pkgs.writeShellApplication {
-    name = "restic-backrest";
-    runtimeInputs = with pkgs; [
-      jq
-      restic
-    ];
-    text = builtins.readFile ./restic-backrest.sh;
+  backupName = "persist";
+  maintenanceName = "${backupName}-maintenance";
+  restic-job = pkgs.writeShellApplication {
+    name = "restic-job";
+    text = lib.replaceStrings [ "@backupNames@" ] [ backupName ] (builtins.readFile ./restic-job.sh);
   };
 in
 {
-  environment.systemPackages = with pkgs; [
-    restic
-    rclone
-    backrest
-    restic-backrest
-    (writeShellApplication {
+  age.secrets.resticPersistEnvironment = {
+    file = ../../secrets/resticPersistEnvironment.age;
+    mode = "0400";
+  };
+
+  environment.systemPackages = [
+    pkgs.restic
+    restic-job
+    (pkgs.writeShellApplication {
       name = "restic-timemachine";
-      runtimeInputs = [
-        jq
-        delta
+      runtimeInputs = with pkgs; [
         coreutils
-        restic-backrest
+        delta
+        jq
+        restic-job
       ];
       text = builtins.readFile ./restic-timemachine.sh;
     })
   ];
 
-  systemd.services.backrest = {
-    description = "Backrest service";
-    wantedBy = [ "multi-user.target" ];
-    requires = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-    path = [
-      pkgs.backrest
-      pkgs.rclone
+  services.restic.backups.${backupName} = {
+    environmentFile = config.age.secrets.resticPersistEnvironment.path;
+    paths = [ "/persist" ];
+    exclude = [
+      "/persist/home/meatcar/.local/share/Steam/steamapps"
+      "/persist/home/meatcar/.cache/"
+      "/persist/home/meatcar/.config/zen/"
+      "/persist/home/meatcar/.local/share/containers/storage"
+      "/persist/git/hub/alipes/emdashsociety25/dumps"
+      "/persist/home/meatcar/.local/share/zed"
+      "/persist/home/meatcar/.local/share/flatpak"
+      "/persist/home/meatcar/.local/share/Paradox Interactive"
+      "/persist/home/meatcar/.local/share/nvim"
+      "/persist/home/meatcar/.local/share/claude"
+      "/persist/home/meatcar/.local/share/com.pais.handy"
+      "/persist/home/meatcar/.local/share/opencode"
+      "/persist/home/meatcar/Downloads/vms"
+      "/persist/home/meatcar/Downloads/AM-builder-list"
+      "/persist/home/meatcar/Downloads/.Trash-1000"
+      "/persist/home/meatcar/.config/vivaldi/"
+      "/persist/home/meatcar/.npm"
+      "/persist/home/meatcar/.paradoxlauncher"
+      "/persist/git/hub/alipes/brt24/brt24-default/debug-artifacts/s3/backup/2026-02-brt.org-bucket/downloads"
+      "/persist/git/.pnpm-store"
     ];
-    environment = {
-      BACKREST_PORT = "127.0.0.1:9898";
-      BACKREST_DATA = "/var/lib/backrest";
-      BACKREST_CONFIG = "/var/lib/backrest/config.json";
-      TZ = config.time.timeZone;
+    extraBackupArgs = [
+      "--exclude-caches"
+      "--retry-lock 2h"
+      "--tag plan:${backupName}"
+      "--tag created-by:watson"
+    ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+  };
+
+  systemd.services."restic-backups-${backupName}" = {
+    unitConfig = {
+      OnSuccess = [ "restic-${backupName}-forget.service" ];
+      RequiresMountsFor = [
+        "/persist"
+        "/persist/home"
+      ];
     };
     serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.backrest}/bin/backrest";
-      User = "root";
-      Group = "root";
       Nice = 10;
       IOSchedulingClass = "best-effort";
       IOSchedulingPriority = 7;
-      StateDirectory = "backrest";
-      StateDirectoryMode = "0700";
+    };
+  };
+
+  systemd.services."restic-${backupName}-forget" = {
+    description = "Apply retention to the ${backupName} Restic snapshots";
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    environment.RESTIC_CACHE_DIR = "/var/cache/restic-backups-${backupName}";
+    serviceConfig = {
+      Type = "oneshot";
+      EnvironmentFile = config.age.secrets.resticPersistEnvironment.path;
+      CacheDirectory = "restic-backups-${backupName}";
+      CacheDirectoryMode = "0700";
       PrivateTmp = true;
-      Restart = "on-failure";
-      RestartSec = "10s";
+      Nice = 10;
+      IOSchedulingClass = "best-effort";
+      IOSchedulingPriority = 7;
+      ExecStart = "${lib.getExe pkgs.restic} forget --retry-lock 2h --keep-hourly 24 --keep-daily 30 --keep-weekly 8 --keep-monthly 24 --keep-yearly 10 --tag plan:${backupName},created-by:watson --group-by=";
+    };
+  };
+
+  systemd.services."restic-${maintenanceName}" = {
+    description = "Maintain the ${backupName} Restic repository";
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    environment = {
+      RESTIC_CACHE_DIR = "/var/cache/restic-backups-${backupName}";
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      EnvironmentFile = config.age.secrets.resticPersistEnvironment.path;
+      CacheDirectory = "restic-backups-${backupName}";
+      CacheDirectoryMode = "0700";
+      PrivateTmp = true;
+      Nice = 10;
+      IOSchedulingClass = "best-effort";
+      IOSchedulingPriority = 7;
+      ExecStart = [
+        "${lib.getExe pkgs.restic} unlock"
+        "${lib.getExe pkgs.restic} prune --retry-lock 2h --max-unused 10%"
+        "${lib.getExe pkgs.restic} check --retry-lock 2h"
+      ];
+    };
+  };
+
+  systemd.timers."restic-${maintenanceName}" = {
+    description = "Monthly maintenance for the ${backupName} Restic repository";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-01 00:45:00";
+      Persistent = true;
     };
   };
 }

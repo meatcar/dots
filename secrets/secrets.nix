@@ -25,6 +25,7 @@ in
   "cliProxyApiEnv.age".publicKeys = users;
   "nixConfAccessTokens.age".publicKeys = users;
   "paseoEnv.age".publicKeys = systems;
+  "resticPersistEnvironment.age".publicKeys = systems;
   "userPassword.age".publicKeys = systems;
   # wg-quick conf, watson's key
   "wireguard.age".publicKeys = systems;
