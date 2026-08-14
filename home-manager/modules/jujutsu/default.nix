@@ -168,6 +168,26 @@
           ];
         };
         revset-aliases = {
+          # NOTE: coalesce = first present wins, unlike default latest()
+          "trunk()" =
+            let
+              names = [
+                "dev"
+                "develop"
+                "stg"
+                "staging"
+                "main"
+                "master"
+              ];
+              remotes = [
+                "origin"
+                "upstream"
+              ];
+              candidates = lib.concatMap (
+                name: map (remote: ''remote_bookmarks(exact:"${name}", exact:"${remote}")'') remotes
+              ) names;
+            in
+            "coalesce(${lib.concatStringsSep ", " (candidates ++ [ "root()" ])})";
           # Last Common Commit
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
           "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:'') & (~empty() | merges()))";
