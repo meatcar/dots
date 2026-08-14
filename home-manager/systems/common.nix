@@ -5,6 +5,21 @@
   nixpkgs-unstable,
   ...
 }:
+let
+  userPath = lib.concatStringsSep ":" (
+    [ "${config.home.profileDirectory}/bin" ]
+    ++ config.home.sessionPath
+    ++ [
+      "/run/wrappers/bin"
+      "/run/current-system/sw/bin"
+      "/etc/profiles/per-user/${config.home.username}/bin"
+      "/nix/var/nix/profiles/default/bin"
+      "/usr/local/bin"
+      "/usr/bin"
+      "/bin"
+    ]
+  );
+in
 {
   options.me.PRJ_ROOT = lib.mkOption {
     type = lib.types.str;
@@ -75,7 +90,21 @@
         nixpkgs-unstable.devenv
       ];
 
-    xdg.enable = true;
+    xdg = {
+      enable = true;
+      localBinInPath = true;
+      # NOTE: 90 sorts after NixOS's /etc/environment.d/50-systemd-path.conf.
+      configFile."environment.d/90-home-manager-path.conf".text = "PATH=${userPath}\n";
+    };
+    home.sessionPath = [ "${config.home.homeDirectory}/bin" ];
+    home.activation.setSystemdUserPath =
+      lib.hm.dag.entryBetween [ "reloadSystemd" ] [ "linkGeneration" ]
+        ''
+          runtimeDir="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+          if [ -S "$runtimeDir/bus" ]; then
+            run env XDG_RUNTIME_DIR="$runtimeDir" ${pkgs.systemd}/bin/systemctl --user set-environment ${lib.escapeShellArg "PATH=${userPath}"}
+          fi
+        '';
     # NOTE: dbus-broker silently skips service dirs missing at scan time, and its
     # inotify mask carries no IN_CREATE, so symlinked-in service files are never
     # noticed either. Impermanence guarantees both at boot. Reload is config-only.

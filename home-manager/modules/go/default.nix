@@ -1,8 +1,14 @@
+let
+  goPath = "/git/go";
+in
 {
-  home.sessionVariables = {
-    # need to be in +x dirs
-    GOPATH = "/git/go";
-    GOCACHE = "/git/go/.cache";
+  home = {
+    sessionPath = [ "${goPath}/bin" ];
+    sessionVariables = {
+      # need to be in +x dirs
+      GOPATH = goPath;
+      GOCACHE = "${goPath}/.cache";
+    };
   };
   programs.go.telemetry.mode = "off";
 }

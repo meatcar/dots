@@ -1,4 +1,4 @@
-set IS_WSL   (uname -a | grep -i microsoft)
+set IS_WSL (uname -a | grep -i microsoft)
 
 set fish_greeting # Disable fish greeting
 # fish struggles when Emacs sets TERM=dumb
@@ -14,13 +14,18 @@ if not set -q NIX_PROFILES; and [ -f ~/.nix-profile/etc/profile.d/nix.sh ]
 end
 
 if [ -f ~/.nix-defexpr/channels ] \
-    && [ "$NIX_PATH[1]" != "$HOME/.nix-defexpr/channels" ]
+        && [ "$NIX_PATH[1]" != "$HOME/.nix-defexpr/channels" ]
 
     set -x NIX_PATH "$HOME/.nix-defexpr/channels:$NIX_PATH"
 end
 
-if [ -z "$fish_user_paths" ]
-    set-fish-user-paths
+# NOTE: Home Manager owns PATH for shells and systemd user services.
+if set -q fish_user_paths
+    set -eU fish_user_paths
+end
+
+if test -z "$DOCKER_HOST" -a -n "$XDG_RUNTIME_DIR"
+    set -gx DOCKER_HOST "unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 end
 
 if [ -d ~/.asdf ]

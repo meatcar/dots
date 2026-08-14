@@ -97,7 +97,6 @@ in
         "PASEO_RELAY_ENABLED=true"
         "PASEO_RELAY_USE_TLS=true"
         "PASEO_RELAY_PUBLIC_USE_TLS=true"
-        "PATH=${config.home.profileDirectory}/bin:/run/current-system/sw/bin:/run/wrappers/bin"
       ];
       Restart = "on-failure";
       RestartSec = 5;

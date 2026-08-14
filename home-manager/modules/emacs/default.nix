@@ -1,9 +1,11 @@
 {
+  config,
   pkgs,
   lib,
   ...
 }:
 {
+  home.sessionPath = [ "${config.home.homeDirectory}/.emacs.d/bin" ];
   fonts.fontconfig.enable = lib.mkDefault true;
   home.packages = with pkgs; [
     fontconfig
