@@ -16,7 +16,6 @@
       source ${config.age.secrets.aienv.path}
       exec "$@"
     '')
-    pkgs.codexbar
     pkgs.python3
     pkgs.rodney
     llm-agents.claude-code

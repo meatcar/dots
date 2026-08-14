@@ -156,7 +156,6 @@
         overlays = [
           inputs.nix-cachyos-kernel.overlays.pinned
           (final: _prev: {
-            codexbar = final.callPackage ./pkgs/codexbar { };
             helium = final.callPackage ./pkgs/helium { };
             opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
