@@ -25,11 +25,11 @@
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
     pkgs.bubblewrap # for sandboxes
-    pkgs.nono # for sandboxes
+    llm-agents.nono # for sandboxes
     nixpkgs-unstable.openspec
   ];
   programs.fish.completions.nono.body = ''
-    ${pkgs.nono}/bin/nono completion fish | source
+    ${llm-agents.nono}/bin/nono completion fish | source
   '';
 
   services.cli-proxy-api = {
