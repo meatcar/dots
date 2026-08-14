@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -135,5 +136,11 @@ in
 
   programs.fish.shellInit = ''
     set -x DELTA_FEATURES "+$(get-theme)"
+  '';
+
+  # NOTE: erase first, carapace claims lazygit with a coarser spec
+  programs.fish.completions.lazygit.body = ''
+    complete -e -c lazygit
+    ${config.programs.lazygit.package}/bin/lazygit completion fish | source
   '';
 }

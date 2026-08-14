@@ -6,6 +6,11 @@
 }:
 {
   programs.nix-search-tv.enable = true;
+
+  programs.fish.completions.tv.body = ''
+    ${config.programs.television.package}/bin/tv completions fish | source
+  '';
+
   programs.television = {
     enable = true;
     package = nixpkgs-unstable.television;

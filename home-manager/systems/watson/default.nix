@@ -75,6 +75,10 @@
       railway
     ]);
 
+  programs.fish.completions.railway.body = ''
+    ${nixpkgs-unstable.railway}/bin/railway completion fish | source
+  '';
+
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";

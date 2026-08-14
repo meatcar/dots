@@ -31,6 +31,10 @@ in
     };
   };
 
+  programs.fish.completions.sesh.body = ''
+    ${sesh} completion fish | source
+  '';
+
   # `tv sesh` channel: smart session list, VCS-aware preview. The picker
   # bindings reuse it and override the source per-invocation with -s.
   programs.television.channels.sesh = {

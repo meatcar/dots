@@ -29,6 +29,10 @@
     pkgs.nono # for sandboxes
     nixpkgs-unstable.openspec
   ];
+  programs.fish.completions.nono.body = ''
+    ${pkgs.nono}/bin/nono completion fish | source
+  '';
+
   services.cli-proxy-api = {
     enable = true;
     environmentFile = config.age.secrets.cliProxyApiEnv.path;
