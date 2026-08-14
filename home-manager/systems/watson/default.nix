@@ -4,6 +4,11 @@
   nixpkgs-unstable,
   ...
 }:
+let
+  # NOTE: Meet's auto-gain control drags the system mic volume around;
+  # this keeps Chromium AGC digital-only.
+  chromiumFlags = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
+in
 {
   imports = [
     ../common.nix
@@ -65,12 +70,13 @@
       weave-merge
     ]
     ++ (with nixpkgs-unstable; [
-      microsoft-edge
+      (microsoft-edge.override { commandLineArgs = chromiumFlags; })
       vivaldi-ffmpeg-codecs
       widevine-cdm
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = true;
+        commandLineArgs = chromiumFlags;
       })
       railway
     ]);
@@ -94,7 +100,10 @@
       "obsidian"
     ];
 
-  programs.chromium.enable = true;
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = chromiumFlags;
+  };
 
   services.syncthing.enable = true;
 }

@@ -118,7 +118,11 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    helium
+    # NOTE: Meet's auto-gain control drags the system mic volume around;
+    # this keeps Chromium AGC digital-only.
+    (helium.override {
+      commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
+    })
     vulkan-tools
     neovim
     wget

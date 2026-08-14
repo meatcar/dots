@@ -5,6 +5,7 @@
   makeWrapper,
   pkgs,
   stdenvNoCC,
+  commandLineArgs ? [ ],
 }:
 
 let
@@ -47,7 +48,8 @@ stdenvNoCC.mkDerivation {
 
     makeWrapper ${contents}/opt/helium/helium "$out/bin/helium" \
       --prefix LD_LIBRARY_PATH : ${lib.escapeShellArg libraryPath} \
-      --set-default CHROME_VERSION_EXTRA appimage-nix-store
+      --set-default CHROME_VERSION_EXTRA appimage-nix-store \
+      ${lib.concatMapStringsSep " " (arg: "--add-flags ${lib.escapeShellArg arg}") commandLineArgs}
 
     install -m 0444 ${contents}/helium.desktop "$out/share/applications/helium.desktop"
     install -m 0444 ${contents}/helium.png "$out/share/icons/hicolor/256x256/apps/helium.png"
