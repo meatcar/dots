@@ -195,7 +195,8 @@
           "unmerged()" = "bookmarks() & ~::dev()";
           "unpublished()" = "bookmarks() & ~::trunk()";
           "private()" = "description(regex:'^(wip|private)') | bookmarks(regex:'^(wip|private)/')";
-          "work()" = "::@ description('') & private()) & ~bookmarks()";
+          # NOTE: description('') is a glob, so it matches only undescribed commits
+          "work()" = "heads(::@ & (description('') | private())) & ~bookmarks()";
 
           # source: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
           "closest_merge(to)" = "heads(::to & merges())";
