@@ -8,7 +8,8 @@ set fish_cursor_insert line
 set fish_cursor_replace_one underscore
 set fish_cursor_visual block
 
-if [ -f ~/.nix-profile/etc/profile.d/nix.sh ] # nix
+# NOTE: single-user only; on NixOS nix.sh shrinks the NIX_PROFILES we already have
+if not set -q NIX_PROFILES; and [ -f ~/.nix-profile/etc/profile.d/nix.sh ]
     fenv source ~/.nix-profile/etc/profile.d/nix.sh
 end
 
