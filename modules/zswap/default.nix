@@ -9,13 +9,24 @@ _: {
     "zswap.shrinker_enabled=1"
   ];
 
-  # live CachyOS defaults, pinned so a kernel switch can't silently change
-  # reclaim; both suit zswap, where anon eviction round-trips through RAM
-  # NOTE: disk writeback is the shrinker's doing, not these -- see max_pool_percent
+  # NOTE: pool cap has never bound -- pswpout == zswpwb means every disk write
+  # was shrinker writeback, not a rejected store. Raising it buys nothing.
+
   boot.kernel.sysctl = {
-    "vm.swappiness" = 100;
+    # bias reclaim toward anon: zswap absorbs it at ~4.4:1 in RAM, while file
+    # eviction bills a real disk read on refault. measured 719G of file
+    # refaults against 79G of disk swapin.
+    "vm.swappiness" = 150;
+    # zswap serves ~88% of swapins, so readahead neighbours are already
+    # resident; speculative loads only churn the pool.
     "vm.page-cluster" = 0;
   };
+
+  # protect the youngest generation through pressure spikes.
+  # NOTE: too high starves reclaim into OOM kills; 1s is conservative.
+  systemd.tmpfiles.rules = [
+    "w! /sys/kernel/mm/lru_gen/min_ttl_ms - - - - 1000"
+  ];
 
   # zstd compressor requires systemd in initrd.
   boot.initrd.systemd.enable = true;
