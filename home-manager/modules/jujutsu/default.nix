@@ -174,7 +174,7 @@
           # jjflow
           "unmerged()" = "bookmarks() & ~::dev()";
           "unpublished()" = "bookmarks() & ~::trunk()";
-          "private()" = "description(glob:'private*') | description(glob:'wip*')";
+          "private()" = "description(regex:'^(wip|private)') | bookmarks(regex:'^(wip|private)/')";
           "work()" = "::@ description('') & private()) & ~bookmarks()";
 
           # source: https://isaaccorbrey.com/notes/jujutsu-megamerges-for-fun-and-profit
