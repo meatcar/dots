@@ -229,6 +229,9 @@
         directory = ".pi";
         mode = "0755";
       }
+      # nono sandbox: profiles and signed packs; audit trail and rollback sessions
+      ".config/nono"
+      ".nono"
 
       # 1password / agenix
       ".config/age"
