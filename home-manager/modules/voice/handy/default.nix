@@ -55,6 +55,11 @@ in
     ExecStart = pkgs.lib.mkForce "${config.services.handy.package}/bin/handy --start-hidden";
     Environment = [
       "ALSA_CONFIG_PATH=${handyAlsaConf}/alsa.conf"
+      # FIXME: drop this and the niri "Recording" window-rule once handy > 0.9.5 ships
+      # Tauri 2.11.5 sizes layer surfaces with gtk_window_resize, which they ignore, so
+      # the overlay maps but never attaches a buffer. Fall back to a plain window.
+      # see https://github.com/cjpais/Handy/pull/1700
+      "HANDY_NO_GTK_LAYER_SHELL=1"
     ];
   };
 

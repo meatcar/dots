@@ -269,6 +269,18 @@ window-rule {
     open-floating true
 }
 
+// Handy recording overlay
+// FIXME: drop with HANDY_NO_GTK_LAYER_SHELL once handy > 0.9.5 ships
+// see https://github.com/cjpais/Handy/pull/1700
+window-rule {
+    match app-id="handy" title="^Recording$"
+    open-floating true
+    open-focused false
+    default-floating-position relative-to="bottom" x=0 y=40
+    border { off; }
+    focus-ring { off; }
+}
+
 // Private Floater
 window-rule {
     match app-id="opensnitch_ui"
