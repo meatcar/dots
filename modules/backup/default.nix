@@ -57,6 +57,17 @@ in
       "/persist/home/meatcar/.paradoxlauncher"
       "/persist/git/hub/alipes/brt24/brt24-default/debug-artifacts/s3/backup/2026-02-brt.org-bucket/downloads"
       "/persist/git/.pnpm-store"
+
+      "node_modules"
+      ".next"
+      ".terraform"
+      ".turbo"
+      ".venv"
+      "__pycache__"
+      ".pytest_cache"
+
+      "/persist/var/lib/private/ollama/models"
+      "/persist/var/cache"
     ];
     extraBackupArgs = [
       "--exclude-caches"
