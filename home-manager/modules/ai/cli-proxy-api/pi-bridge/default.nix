@@ -12,7 +12,7 @@ let
   piConfigFile = "${piConfigDir}/config.json";
 
   bridgeVersion = "0.7.1";
-  cliProxyApiSdkVersion = "7.2.132";
+  cliProxyApiSdkVersion = "7.2.136";
 
   package = pkgs.buildGoModule {
     pname = "pi-bridge";
@@ -25,12 +25,12 @@ let
           "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}"
       substituteInPlace go.sum \
         --replace-fail "github.com/router-for-me/CLIProxyAPI/v7 v7.2.93 h1:qkPSuVXLV8+fcOoRJJxJOt/bt/k+OtsFWSjV6Tfcv8M=" \
-          "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:H4jafHqNEncRX6lZz+eVRC/v/LgqYPo1sIGzf8LE3n8=" \
+          "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:2oFUjLm69cqnn7zAhcswR6/silmXqLi2FVKnW0z5zaI=" \
         --replace-fail "github.com/router-for-me/CLIProxyAPI/v7 v7.2.93/go.mod h1:ytvZNWbCv7PrAyR80+RKsDJPODsdL6qxyFaXDBNZdqs=" \
           "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}/go.mod h1:lTHwMAGajc1wKGQiRtDvYbwV0FWsM7sy+N0ZU5/gxJQ="
     '';
 
-    vendorHash = "sha256-z2ifhZ9k+vLGi/AEXbqMOm1KlDOE+XzqEOGbdFxPcB8=";
+    vendorHash = "sha256-y98Ow+CP33Uz85/Kc5d7impAH+hMIg47+lw5dlLphbw=";
 
     env.CGO_ENABLED = 1;
 
