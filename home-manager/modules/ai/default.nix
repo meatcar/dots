@@ -10,6 +10,7 @@
     ../aider
     ../opencode
     ./cli-proxy-api
+    ./nono
   ];
   home.packages = [
     (pkgs.writeShellScriptBin "with-aienv" ''
@@ -25,12 +26,8 @@
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
     pkgs.bubblewrap # for sandboxes
-    llm-agents.nono # for sandboxes
     nixpkgs-unstable.openspec
   ];
-  programs.fish.completions.nono.body = ''
-    ${llm-agents.nono}/bin/nono completion fish | source
-  '';
 
   services.cli-proxy-api = {
     enable = true;
