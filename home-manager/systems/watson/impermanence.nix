@@ -229,9 +229,13 @@
         directory = ".pi";
         mode = "0755";
       }
-      # nono sandbox: profiles and signed packs; audit trail and rollback sessions
+      # nono sandbox: profiles, audit trail, per-context agent state
       ".config/nono"
       ".nono"
+      {
+        directory = ".local/share/nono-agent-profiles";
+        mode = "0700";
+      }
 
       # 1password / agenix
       ".config/age"
