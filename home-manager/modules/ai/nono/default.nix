@@ -19,6 +19,7 @@
   #   nono pull nolabs-ai/{claude,codex,pi} && nono pin nolabs-ai/<name>
   # Pin, or signed third-party code updates itself outside the flake.
   xdg.configFile."nono/profiles/net-tight.json".source = ./net-tight.json;
+  xdg.configFile."nono/profiles/subagent.json".source = ./subagent.json;
 
   programs.fish = {
     completions.nono.body = ''
