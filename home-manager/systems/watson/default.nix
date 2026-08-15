@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   nixpkgs-unstable,
@@ -41,6 +42,7 @@ in
     ../../modules/mime-apps
     ../../modules/voice
     ../../modules/netdata-notify
+    ../../modules/searxng
     ../../modules/qbittorrent
     ../../modules/figma-agent
     ./impermanence.nix
@@ -106,4 +108,10 @@ in
   };
 
   services.syncthing.enable = true;
+
+  # traefik cannot front this; it has no way to start a stopped container.
+  services.searxng = {
+    enable = true;
+    environmentFile = config.age.secrets.searxngEnv.path;
+  };
 }

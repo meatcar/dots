@@ -23,6 +23,8 @@ in
   "spotifyClientId.age".publicKeys = users;
   "spotifyClientSecret.age".publicKeys = users;
   "cliProxyApiEnv.age".publicKeys = users;
+  # SEARXNG_SECRET: flask session key and image-proxy HMAC
+  "searxngEnv.age".publicKeys = users;
   "nixConfAccessTokens.age".publicKeys = users;
   "paseoEnv.age".publicKeys = systems;
   "resticPersistEnvironment.age".publicKeys = systems;
