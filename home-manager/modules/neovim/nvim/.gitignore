@@ -5,4 +5,7 @@ shada/*
 autoload/env.vim
 spell/*.spl
 spell/*.add
+# dms matugen template output, regenerated on every theme change
 lua/plugins/dankcolors.lua
+colors/dms.lua
+lua/lualine/themes/dms.lua

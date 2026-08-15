@@ -61,6 +61,11 @@ return {
     end,
   },
   {
+    -- backs the generated `dms` colorscheme; loaded on demand by colors/dms.lua
+    'AvengeMedia/base46',
+    opts = {},
+  },
+  {
     'liuchengxu/space-vim-theme',
     lazy = false,
   },
