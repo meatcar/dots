@@ -5,3 +5,4 @@ result
 .pre-commit-config.yaml
 .codex
 .claude
+.amp/portals/*
