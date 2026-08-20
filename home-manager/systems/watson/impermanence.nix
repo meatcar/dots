@@ -117,6 +117,11 @@
       ".config/television"
       ".local/share/television"
       ".cache/nix-search-tv"
+      {
+        # gvfs.yazi's saved mount URIs carrying user/hosts
+        directory = ".local/state/yazi";
+        mode = "0700";
+      }
 
       # sync
       ".cloudflared"
