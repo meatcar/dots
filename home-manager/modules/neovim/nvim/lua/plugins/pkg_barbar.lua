@@ -51,5 +51,15 @@ return {
       minimum_padding = 1,
       focus_on_close = 'previous',
     }
+
+    local events = require('barbar.events')
+    local main_click_handler = events.main_click_handler
+    events.main_click_handler = function(bufnr, clicks, button, modifiers)
+      if button == 'm' or button == 'r' then
+        events.close_click_handler(bufnr)
+        return
+      end
+      main_click_handler(bufnr, clicks, button, modifiers)
+    end
   end,
 }
