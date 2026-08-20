@@ -291,6 +291,7 @@
     extraGroups = [
       "wheel"
       "docker"
+      "networkmanager"
       "dialout"
       "video"
       "input"
