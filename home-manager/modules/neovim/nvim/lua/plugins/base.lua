@@ -71,7 +71,11 @@ return {
 
   {
     'chrisgrieser/nvim-genghis', -- :Delete, :Move, etc
-    opts = {},
+    opts = {
+      fileOperations = {
+        trashCmd = function() return 'trash-put' end,
+      },
+    },
     keys = {
       { '<leader>fn',  '<cmd>Genghis createNewFile<CR>',             desc = 'Create New File' },
       { '<leader>fd',  '<cmd>Genghis duplicateFile<CR>',             desc = 'Duplicate File' },

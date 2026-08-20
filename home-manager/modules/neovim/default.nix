@@ -30,6 +30,7 @@
       luajitPackages.luarocks
       parinfer-rust
       fzf
+      trash-cli # nvim-genghis trashCmd
 
       # for building plugins
       gnumake
