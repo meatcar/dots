@@ -45,6 +45,7 @@ in
     ../../modules/searxng
     ../../modules/qbittorrent
     ../../modules/figma-agent
+    ../../modules/audio-mixers
     ./impermanence.nix
   ];
 
