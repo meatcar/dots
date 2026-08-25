@@ -15,9 +15,6 @@
         programs.oxfmt = {
           enable = true;
           package = pkgsUnstable.oxfmt;
-          # FIXME(oxfmt-gtk-css): newer oxfmt formats CSS but chokes on GTK
-          # CSS extensions (@foreground named colors); exclude GTK stylesheets
-          excludes = [ "home-manager/modules/waybar/waybar-style.css" ];
         };
         programs.shfmt.enable = true;
         programs.shellcheck = {
