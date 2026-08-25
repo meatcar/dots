@@ -131,7 +131,6 @@
       ".local/share/khal"
 
       # audio
-      ".config/pavucontrol.ini"
       ".config/rncbc.org" # qpwgraph window/patchbay state
       ".local/state/wireplumber"
       ".config/easyeffects"
