@@ -133,7 +133,6 @@
       # audio
       ".config/rncbc.org" # qpwgraph window/patchbay state
       ".local/state/wireplumber"
-      ".config/easyeffects"
       ".config/spotifyd"
       ".cache/spotifyd" # NOTE: oauth creds, not regenerable cache -- don't demote
       ".config/spotify-player"
@@ -396,6 +395,9 @@
       ".local/share/dolphin"
       ".local/share/kxmlgui6"
       ".local/share/baloo"
+    ]
+    ++ lib.optionals config.services.easyeffects.enable [
+      ".config/easyeffects"
     ];
   };
 }
