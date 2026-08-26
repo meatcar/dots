@@ -37,14 +37,18 @@ local function collapsed()
 
   -- NOTE: quotePath=false, or git quotes non-ASCII names and the
   -- trailing-slash check below misses them
-  local out = vim.fn.systemlist {
+  -- NOTE: vim.system keeps stderr out of stdout; systemlist merges the two, and
+  -- a warning ending in `/` would read as an ignored directory
+  local git = vim.system({
     'git', '-c', 'core.quotePath=false', 'ls-files',
     '--exclude-standard', '--others', '--ignored', '--directory',
-  }
+  }, { text = true }):wait()
 
   local dirs = vim.tbl_keys(VCS)
-  for _, line in ipairs(out) do
-    if line:sub(-1) == '/' then dirs[#dirs + 1] = line end
+  if git.code == 0 then
+    for line in vim.gsplit(git.stdout or '', '\n', { trimempty = true }) do
+      if line:sub(-1) == '/' then dirs[#dirs + 1] = line end
+    end
   end
 
   cache[cwd] = topmost(dirs)
