@@ -31,7 +31,7 @@ return {
             -- if lazy view is visible do nothing with auto-session
             me.o.lazy_did_show_install_view = true
           elseif vim.fn.argc() > 0 then
-            print("skipping auto-session, args detected")
+            vim.notify('skipping auto-session, args detected', vim.log.levels.DEBUG)
           else
             -- otherwise load (by require'ing) and restore session
             auto_session_restore()
