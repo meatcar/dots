@@ -7,9 +7,14 @@ return {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
     init = function()
-      vim.cmd [[
-        command! Ctrlp execute (exists("*FugitiveHead()") && len(FugitiveHead())) ? 'Telescope git_files show_untracked=true' : 'Telescope find_files'
-      ]]
+      vim.api.nvim_create_user_command('Ctrlp', function()
+        -- NOTE: cwd, not the buffer: the picker's git and fd calls run in cwd
+        if vim.fs.root(vim.uv.cwd(), '.git') then
+          require('core/files').picker()
+        else
+          require('telescope.builtin').find_files { hidden = true, file_ignore_patterns = { '^%.git/' } }
+        end
+      end, {})
     end,
     keys = {
       { '<C-p>',      '<Cmd>Ctrlp<CR>' },
