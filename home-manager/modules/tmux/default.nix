@@ -5,14 +5,14 @@
 let
   inherit (pkgs) tmuxPlugins;
 
-  tmux-autohide =
-    pkgs.runCommandLocal "tmux_autohide" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
+  tmux-window-chrome =
+    pkgs.runCommandLocal "tmux_window_chrome" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
       ''
-        install -Dm755 ${./autohide.sh} $out/bin/tmux_autohide
-        wrapProgram $out/bin/tmux_autohide \
+        install -Dm755 ${./window-chrome.sh} $out/bin/tmux_window_chrome
+        wrapProgram $out/bin/tmux_window_chrome \
           --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.tmux ]}
       '';
-  autohide = "${tmux-autohide}/bin/tmux_autohide";
+  windowChrome = "${tmux-window-chrome}/bin/tmux_window_chrome";
 
   # Pre-compile whichkey.yaml → init.tmux at Nix build time so the plugin can
   # load it directly without a runtime Python step (autobuild stays disabled).
@@ -80,14 +80,13 @@ in
       # NOTE: -gu first -- re-sourcing only appends, so a long-lived server keeps
       # firing every past generation's entry, dead store paths included.
       set-hook -gu window-linked
-      set-hook -ga window-linked         'run-shell -b "${autohide} status \"#{socket_path}\""'
-      set-hook -gu window-unlinked
-      set-hook -ga window-unlinked       'run-shell -b "${autohide} status \"#{socket_path}\""'
+      set-hook -ga window-linked         'run-shell -b "${windowChrome} \"#{socket_path}\""'
       set-hook -gu window-layout-changed
-      set-hook -ga window-layout-changed 'run-shell -b "${autohide} pane-border \"#{socket_path}\""'
-      # NOTE: catches sessions predating the hooks.
-      run-shell -b "${autohide} status '#{socket_path}'"
-      run-shell -b "${autohide} pane-border '#{socket_path}'"
+      set-hook -ga window-layout-changed 'run-shell -b "${windowChrome} \"#{socket_path}\""'
+      # NOTE: window-unlinked no longer used; clears a long-lived server's copy.
+      set-hook -gu window-unlinked
+      # NOTE: catches windows predating the hooks.
+      run-shell -b "${windowChrome} '#{socket_path}'"
     '';
     plugins = [
       tmuxPlugins.sensible
