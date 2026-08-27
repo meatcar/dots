@@ -78,6 +78,10 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    amp-completions = {
+      url = "github:meatcar/amp-completions";
+      flake = false;
+    };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };

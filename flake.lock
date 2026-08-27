@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "amp-completions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788340208,
+        "narHash": "sha256-xwSyP159Xb7SQa9Ryf26UfrF6TRyyN+SxJwalYowLVE=",
+        "owner": "meatcar",
+        "repo": "amp-completions",
+        "rev": "59c9151d50e04d1a6a175adcee5b95dd539569ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meatcar",
+        "repo": "amp-completions",
+        "type": "github"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -1170,6 +1186,7 @@
       "inputs": {
         "agenix": "agenix",
         "alacritty-theme": "alacritty-theme",
+        "amp-completions": "amp-completions",
         "catppuccin-bat": "catppuccin-bat",
         "catppuccin-delta": "catppuccin-delta",
         "catppuccin-swaync": "catppuccin-swaync",

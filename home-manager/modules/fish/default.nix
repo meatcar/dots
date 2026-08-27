@@ -81,6 +81,8 @@
   # NOTE: carapace erases fish's own completions for every command it knows
   programs.carapace.enable = true;
 
+  xdg.configFile."carapace/specs/amp.yaml".source = "${inputs.amp-completions}/amp.yaml";
+
   xdg.configFile."fish/functions" = {
     source = ./functions;
     recursive = true;

@@ -24,7 +24,14 @@ return {
   { 'tpope/vim-repeat',                lazy = false }, -- repeat more things
   { 'wellle/targets.vim',              lazy = false }, -- additional text objects
   { 'kopischke/vim-fetch',             lazy = false }, -- handle line and column numbers in file names
-  { 'airblade/vim-rooter',             lazy = false }, -- auto-cd to root directory
+  { -- auto-cd to root directory
+    'airblade/vim-rooter',
+    lazy = false,
+    init = function()
+      -- NOTE: suppress the `cwd: <root>` echo on every chdir
+      vim.g.rooter_silent_chdir = 1
+    end,
+  },
   { 'Konfekt/FastFold',                lazy = false }, -- speed up folding for big files
   { 'aymericbeaumet/symlink.vim',      lazy = false }, -- follow symlinks
   { 'ConradIrwin/vim-bracketed-paste', lazy = false }, -- better paste in supported terminals
