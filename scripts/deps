@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+import pathlib
+import sys
+
+from depslib.cli import main
+from depslib.core import Context, DependencyError
+
+
+if __name__ == "__main__":
+    try:
+        root = pathlib.Path(__file__).resolve().parent.parent
+        raise SystemExit(main(sys.argv[1:], Context(root)))
+    except DependencyError as error:
+        print(f"deps: {error}", file=sys.stderr)
+        raise SystemExit(1) from error

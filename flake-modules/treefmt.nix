@@ -9,6 +9,7 @@
     {
       treefmt = {
         programs.nixfmt.enable = true;
+        programs.ruff-format.enable = true;
         programs.statix.enable = true;
         programs.deadnix.enable = true;
         programs.actionlint.enable = true;

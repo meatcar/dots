@@ -68,7 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # HEAD outruns the lantian attic cache by ~a day; after updating, re-pin
-    # to a cached kernel with scripts/find-cached-cachyos-kernel.sh --pin
+    # to a cached kernel with scripts/deps update cachyos-kernel
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     handy = {
       url = "github:cjpais/Handy";

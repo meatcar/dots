@@ -18,6 +18,7 @@
           (import inputs.home-manager { inherit pkgs; }).home-manager
           git
           gnupg
+          python3
           (pkgs.writeShellScriptBin "agenix" ''
             exec ${inputs.agenix.packages.${system}.default}/bin/agenix \
               -i ~/.config/age/id_ed25519 \
