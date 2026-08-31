@@ -48,22 +48,6 @@
         "type": "github"
       }
     },
-    "alacritty-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674204607,
-        "narHash": "sha256-pPpIZfGRZ42YEOXs+7mfBj4V+MeqtdJo+B5nuJ9JO2M=",
-        "owner": "eendroroy",
-        "repo": "alacritty-theme",
-        "rev": "4651f270f942d52fda766e47f7dc439addb39051",
-        "type": "github"
-      },
-      "original": {
-        "owner": "eendroroy",
-        "repo": "alacritty-theme",
-        "type": "github"
-      }
-    },
     "amp-completions": {
       "flake": false,
       "locked": {
@@ -1185,7 +1169,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "alacritty-theme": "alacritty-theme",
         "amp-completions": "amp-completions",
         "catppuccin-bat": "catppuccin-bat",
         "catppuccin-delta": "catppuccin-delta",
@@ -1218,7 +1201,6 @@
         "treefmt-nix": "treefmt-nix_4",
         "vscode-fish": "vscode-fish",
         "vscode-server": "vscode-server",
-        "wsl-open": "wsl-open",
         "zen-browser": "zen-browser"
       }
     },
@@ -1486,22 +1468,6 @@
         "owner": "nix-community",
         "repo": "nixos-vscode-server",
         "type": "github"
-      }
-    },
-    "wsl-open": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1680312605,
-        "narHash": "sha256-ck32y/OiWiR5ktRBiBaXdPEh5MYCvP6ARlFP5Llci1g=",
-        "owner": "4U6U57",
-        "repo": "wsl-open",
-        "rev": "9c4f7141e4fa4403d388a12b4ddd7fa2be1fe7a0",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "4U6U57",
-        "repo": "wsl-open",
-        "type": "gitlab"
       }
     },
     "zen-browser": {

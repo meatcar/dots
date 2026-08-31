@@ -107,14 +107,6 @@
       url = "github:andreyorst/plug.kak";
       flake = false;
     };
-    alacritty-theme = {
-      url = "github:eendroroy/alacritty-theme";
-      flake = false;
-    };
-    wsl-open = {
-      url = "gitlab:4U6U57/wsl-open";
-      flake = false;
-    };
     # fish
     fish-ssh-agent = {
       url = "github:danhper/fish-ssh-agent";
