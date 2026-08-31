@@ -12,7 +12,7 @@ let
   piConfigFile = "${piConfigDir}/config.json";
 
   bridgeVersion = "0.7.1";
-  cliProxyApiSdkVersion = "7.2.136";
+  cliProxyApiSdkVersion = "7.2.146";
 
   package = pkgs.buildGoModule {
     pname = "pi-bridge";
@@ -20,17 +20,16 @@ let
     src = inputs.pi-cliproxyapi-bridge;
 
     postPatch = ''
-      substituteInPlace go.mod \
-        --replace-fail "github.com/router-for-me/CLIProxyAPI/v7 v7.2.93" \
-          "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}"
-      substituteInPlace go.sum \
-        --replace-fail "github.com/router-for-me/CLIProxyAPI/v7 v7.2.93 h1:qkPSuVXLV8+fcOoRJJxJOt/bt/k+OtsFWSjV6Tfcv8M=" \
-          "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:2oFUjLm69cqnn7zAhcswR6/silmXqLi2FVKnW0z5zaI=" \
-        --replace-fail "github.com/router-for-me/CLIProxyAPI/v7 v7.2.93/go.mod h1:ytvZNWbCv7PrAyR80+RKsDJPODsdL6qxyFaXDBNZdqs=" \
-          "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}/go.mod h1:lTHwMAGajc1wKGQiRtDvYbwV0FWsM7sy+N0ZU5/gxJQ="
+      go mod edit -require=github.com/router-for-me/CLIProxyAPI/v7@v${cliProxyApiSdkVersion}
+      grep -q '^github.com/router-for-me/CLIProxyAPI/v7 ' go.sum
+      sed -i '\|^github.com/router-for-me/CLIProxyAPI/v7 |d' go.sum
+      printf '%s\n' \
+        "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:RTQpi/7J3NgZ3tXIs+BHaEqQxMUfLol5BxBSKHn2RKk=" \
+        "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}/go.mod h1:lTHwMAGajc1wKGQiRtDvYbwV0FWsM7sy+N0ZU5/gxJQ=" \
+        >> go.sum
     '';
 
-    vendorHash = "sha256-y98Ow+CP33Uz85/Kc5d7impAH+hMIg47+lw5dlLphbw=";
+    vendorHash = "sha256-dyWad88XYATYPMcXAhEfOcAsRnqEIoUiprU7r3tJHOg=";
 
     env.CGO_ENABLED = 1;
 
