@@ -91,11 +91,11 @@
       flake = false;
     };
     cpa-manager-plus-amd64 = {
-      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_amd64.tar.gz";
+      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_amd64.tar.gz";
       flake = false;
     };
     cpa-manager-plus-arm64 = {
-      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.11.11/cpa-manager-plus_v1.11.11_linux_arm64.tar.gz";
+      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_arm64.tar.gz";
       flake = false;
     };
     paseo = {

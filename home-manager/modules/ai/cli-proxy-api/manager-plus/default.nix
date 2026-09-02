@@ -9,7 +9,7 @@ let
   cfg = config.services.cli-proxy-api;
   managerCfg = cfg.managerPlus;
 
-  version = "1.11.11";
+  version = "1.12.8";
   release =
     {
       x86_64-linux = inputs.cpa-manager-plus-amd64;

@@ -11,8 +11,8 @@ let
   piConfigDir = "${config.home.homeDirectory}/.pi/agent/pi-cliproxyapi";
   piConfigFile = "${piConfigDir}/config.json";
 
-  bridgeVersion = "0.7.1";
-  cliProxyApiSdkVersion = "7.2.146";
+  bridgeVersion = "0.9.1";
+  cliProxyApiSdkVersion = "7.2.147";
 
   package = pkgs.buildGoModule {
     pname = "pi-bridge";
@@ -24,12 +24,12 @@ let
       grep -q '^github.com/router-for-me/CLIProxyAPI/v7 ' go.sum
       sed -i '\|^github.com/router-for-me/CLIProxyAPI/v7 |d' go.sum
       printf '%s\n' \
-        "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:RTQpi/7J3NgZ3tXIs+BHaEqQxMUfLol5BxBSKHn2RKk=" \
+        "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion} h1:ec7Z1iURBXb4+11jlq1gLbxlyyCHGcA1REQpPXbzz0s=" \
         "github.com/router-for-me/CLIProxyAPI/v7 v${cliProxyApiSdkVersion}/go.mod h1:lTHwMAGajc1wKGQiRtDvYbwV0FWsM7sy+N0ZU5/gxJQ=" \
         >> go.sum
     '';
 
-    vendorHash = "sha256-dyWad88XYATYPMcXAhEfOcAsRnqEIoUiprU7r3tJHOg=";
+    vendorHash = "sha256-E2K1mC7IiTx7OB8SPtQILSjJOZz8WGJ8kBl9yfdgvRQ=";
 
     env.CGO_ENABLED = 1;
 
