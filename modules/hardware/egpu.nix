@@ -38,9 +38,6 @@ in
   });
 
   services.udev.extraRules = ''
-    # Teach systemd-logind to treat the eGPU as a dock so it doesn't suspend on lid close.
-    SUBSYSTEM=="thunderbolt", ATTR{vendor_name}=="Razer", ATTR{device_name}=="Core X Chroma", ENV{ID_DOCK}="1", TAG+="systemd"
-
     # enable the eGPU displays to show VTs
     ACTION=="add", SUBSYSTEM=="graphics", KERNEL=="fb[1-9]", ATTR{name}=="amdgpudrmfb", RUN+="${egpu-fbcon}/bin/egpu-fbcon %n"
   '';
