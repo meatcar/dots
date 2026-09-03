@@ -70,6 +70,21 @@
       ".local/share/nix"
       ".local/state/home-manager"
 
+      # local application state
+      {
+        directory = ".agentsview";
+        mode = "0700";
+      }
+      ".local/share/aw-timeline"
+      {
+        directory = ".local/state/aw-timeline";
+        mode = "0700";
+      }
+      {
+        directory = ".local/share/pki/nssdb";
+        mode = "0700";
+      }
+
       # desktop / gnome
       ".config/niri"
       ".config/dconf"
@@ -140,6 +155,7 @@
       ".local/share/whisper-models"
 
       # graphics
+      ".config/GIMP"
       ".cache/mesa_shader_cache_db"
       ".cache/radv_builtin_shaders"
       ".cache/mesa_shader_cache"

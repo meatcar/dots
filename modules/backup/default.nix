@@ -55,6 +55,10 @@ in
       "/persist/home/meatcar/.config/vivaldi/"
       "/persist/home/meatcar/.npm"
       "/persist/home/meatcar/.paradoxlauncher"
+      "/persist/home/meatcar/.agentsview/sessions.db*"
+      "/persist/home/meatcar/.agentsview/*.lock"
+      "/persist/home/meatcar/.agentsview/daemon.*.json"
+      "/persist/home/meatcar/.agentsview/debug.log"
       "/persist/git/hub/alipes/brt24/brt24-default/debug-artifacts/s3/backup/2026-02-brt.org-bucket/downloads"
       "/persist/git/.pnpm-store"
 
