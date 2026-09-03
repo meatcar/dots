@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-      - uses: DeterminateSystems/determinate-nix-action@89ab342bd48ff7318caf8d39d6a330c7b1df8f2f #v3.15.2
+      - uses: DeterminateSystems/determinate-nix-action@021c8a1bd3570eb21f5c20a054812b0c4d9ca614 # v3.22.3
         with:
           diagnostic-endpoint: ""
       - uses: nix-community/cache-nix-action@106bba72ed8e29c8357661199511ef07790175e9 # v7
