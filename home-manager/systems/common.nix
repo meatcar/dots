@@ -39,6 +39,7 @@ in
     ../modules/ssh
     ../modules/direnv
     ../modules/bat
+    ../modules/glow
     ../modules/lsd
     ../modules/btop
     ../modules/tmux

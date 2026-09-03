@@ -84,7 +84,6 @@
       update-nix-fetchgit
       vim-vint
       tree-sitter
-      glow
       stylua
       cargo
     ]
