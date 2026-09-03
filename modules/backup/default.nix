@@ -33,6 +33,13 @@ in
     })
   ];
 
+  environment.persistence."/persist".directories = [
+    {
+      directory = "/var/cache/restic-backups-${backupName}";
+      mode = "0700";
+    }
+  ];
+
   services.restic.backups.${backupName} = {
     environmentFile = config.age.secrets.resticPersistEnvironment.path;
     paths = [ "/persist" ];
