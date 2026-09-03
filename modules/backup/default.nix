@@ -67,6 +67,10 @@ in
       ".pytest_cache"
 
       "/persist/var/lib/private/ollama/models"
+      "/persist/var/lib/libvirt/images"
+      "/persist/var/lib/libvirt/qemu/dump"
+      "/persist/var/lib/libvirt/qemu/ram"
+      "/persist/var/lib/libvirt/qemu/save"
       "/persist/var/cache"
     ];
     extraBackupArgs = [
