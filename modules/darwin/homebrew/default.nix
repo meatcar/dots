@@ -12,11 +12,13 @@ in
     onActivation.upgrade = true;
     onActivation.cleanup = "uninstall";
     taps = [
+      "ampcode/tap"
       "barutsrb/tap"
       "oven-sh/bun"
       "theboredteam/boring-notch"
     ];
     brews = extras.brews ++ [
+      "ampcode/tap/ampcode"
       "container"
       "mas"
       "neovim"
