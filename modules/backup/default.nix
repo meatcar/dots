@@ -71,6 +71,7 @@ in
       "/persist/var/lib/libvirt/qemu/dump"
       "/persist/var/lib/libvirt/qemu/ram"
       "/persist/var/lib/libvirt/qemu/save"
+      "/persist/var/lib/systemd/random-seed"
       "/persist/var/cache"
     ];
     extraBackupArgs = [
