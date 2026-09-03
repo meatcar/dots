@@ -103,6 +103,12 @@ in
       ];
     };
 
+    settings.opener.edit = [
+      {
+        run = ''nvim "$@"'';
+        block = true;
+      }
+    ];
     keymap = {
       # mgr = file-browser layer. The old `input` layer only fires inside text
       # prompts, where `shell` is not a valid command, so `!` did nothing there.

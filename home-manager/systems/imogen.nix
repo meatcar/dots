@@ -29,7 +29,6 @@
     enable = true;
     enableFishIntegration = true;
   };
-  programs.fish.shellAliases.yy = "y";
   programs.man.generateCaches = false;
   programs.bat.enable = true;
   programs.gh.enable = true;
