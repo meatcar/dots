@@ -169,7 +169,6 @@
             pipewire-control-center = final.callPackage ./pkgs/pipewire-control-center { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
-            weave-merge = final.callPackage ./pkgs/weave { };
           })
         ];
       };

@@ -98,10 +98,10 @@ in
       ffmpeg
       # dev
       cloudflared
-      weave-merge
     ]
     ++ (with nixpkgs-unstable; [
       (microsoft-edge.override { commandLineArgs = chromiumFlags; })
+      weave
       vivaldi-ffmpeg-codecs
       widevine-cdm
       (

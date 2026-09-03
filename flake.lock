@@ -1176,11 +1176,11 @@
     },
     "nixpkgs-unstable-darwin": {
       "locked": {
-        "lastModified": 1783604885,
-        "narHash": "sha256-tzMgSkV7kljEkqIjlgV6F+n+xD+/a35Db8bs7a4BFAo=",
-        "owner": "NixOS",
+        "lastModified": 1788372231,
+        "narHash": "sha256-7aqErvrAEz/5OcPA5p3M+tVOqeYc4oJXkNIPXfCqxAw=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "767b0d3ec98a143ad9ed7dfc0d5553510ac27133",
+        "rev": "9387b3fcc0c23c86661636da63faabad4235a0a6",
         "type": "github"
       },
       "original": {
@@ -1411,9 +1411,9 @@
         "vscode-fish": "vscode-fish",
         "zen-browser": "zen-browser",
         "nixpkgs-darwin": "nixpkgs-darwin",
-        "nixpkgs-unstable-darwin": "nixpkgs-unstable-darwin",
         "nix-darwin": "nix-darwin",
-        "nix-homebrew": "nix-homebrew"
+        "nix-homebrew": "nix-homebrew",
+        "nixpkgs-unstable-darwin": "nixpkgs-unstable-darwin"
       }
     },
     "rust-overlay": {

@@ -273,7 +273,7 @@ in
           in
           {
             weave = {
-              program = "${lib.getExe' pkgs.weave-merge "weave-driver"}";
+              program = "${lib.getExe' nixpkgs-unstable.weave "weave-driver"}";
               merge-args = [
                 "$base"
                 "$left"
