@@ -1,14 +1,23 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
+let
+  netdata = pkgs.symlinkJoin {
+    name = "${pkgs.netdata.name}-with-ndsudo";
+    paths = [ pkgs.netdata ];
+    postBuild = ''
+      mv "$out/libexec/netdata/plugins.d/ndsudo" "$out/libexec/netdata/plugins.d/ndsudo.org"
+      ln -s /var/lib/netdata/ndsudo/ndsudo "$out/libexec/netdata/plugins.d/ndsudo"
+    '';
+    passthru = pkgs.netdata.passthru // {
+      withNdsudo = true;
+    };
+    meta = pkgs.netdata.meta;
+  };
+in
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "netdata" ];
-
   services.netdata = {
     enable = true;
     enableAnalyticsReporting = false;
-    package = pkgs.netdata.override {
-      withCloudUi = true;
-      withNdsudo = true; # go.d smartctl collector runs smartctl via ndsudo
-    };
+    package = netdata;
     extraNdsudoPackages = [ pkgs.smartmontools ];
     config = {
       # disk backlog is meaningless on NVMe/dm; stock alert is silent but
