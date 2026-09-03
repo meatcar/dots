@@ -65,7 +65,6 @@ layout {
     center-focused-column "never"
     always-center-single-column
 }
-switch-events { lid-close { spawn "systemctl" "suspend"; }; }
 binds {
     Mod+1 hotkey-overlay-title=null { focus-workspace 1; }
     Mod+2 hotkey-overlay-title=null { focus-workspace 2; }
