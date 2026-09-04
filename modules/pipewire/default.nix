@@ -62,11 +62,11 @@ in
           },
         ]
       '')
-      # eGPU HDMI/DP outputs. The eGPU is hotplugged, so its PCI address is not
-      # stable; key off the card name and the ELD-derived alsa.name instead, which
-      # also survives moving a display between ports. The TV is the only one worth
-      # routing audio to; hide the C27JG5x and the portless outputs, which have no
-      # ELD and so fall back to a generic "HDMI <n>".
+      # eGPU HDMI/DP outputs. The eGPU PCI address is not stable across hotplug,
+      # so match on card name and ELD-derived alsa.name, and pin node.name:
+      # WirePlumber keys the remembered default, volume and route on it. Only the
+      # TV gets audio; hide the C27JG5x and the portless outputs (no ELD, generic
+      # "HDMI <n>" name).
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-rename-hdmi.conf" ''
         monitor.alsa.rules = [
           {
@@ -76,7 +76,12 @@ in
                 alsa.name = "LG TV SSCR2"
               }
             ]
-            actions = { update-props = { node.description = "eGPU LG TV" } }
+            actions = {
+              update-props = {
+                node.name = "egpu-tv"
+                node.description = "eGPU LG TV"
+              }
+            }
           }
           {
             matches = [
