@@ -1,8 +1,9 @@
 { lib, pkgs, ... }:
 let
-  # FIXME: alsa-ucm-conf hides HDA HDMI PCM device 10, which on watson's eGPU is
-  # the port the TV hangs off. Patching the package rebuilds the audio world, so
-  # ship a corrected tree and point alsa-lib at it instead. Drop once fixed:
+  # FIXME: alsa-ucm-conf hides HDA HDMI PCM device 10 (the eGPU TV port) and
+  # gates HDMI-only HDA cards' UCM on the ACP card being readable, which races
+  # logind's login ACLs. Patching the package rebuilds the audio world, so ship
+  # a corrected tree and point alsa-lib at it. See alsa-ucm-hdmi-fix.sh.
   # https://github.com/alsa-project/alsa-ucm-conf/blob/master/ucm2/codecs/hda/hdmi.conf#L15
   alsa-ucm-conf-fixed = pkgs.runCommand "alsa-ucm-conf-hdmi-fix" {
     UCM_SRC = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
