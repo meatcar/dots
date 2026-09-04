@@ -13,7 +13,7 @@
   services.logind.settings.Login = {
     SleepOperation = "hybrid-sleep";
     HandleLidSwitch = "sleep";
-    HandleLidSwitchExternalPower = "sleep";
+    HandleLidSwitchExternalPower = "ignore";
     HandleLidSwitchDocked = "ignore";
     HandleSuspendKey = "sleep";
     HandlePowerKey = "sleep";
