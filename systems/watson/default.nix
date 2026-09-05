@@ -141,6 +141,9 @@
     tcpdump
     wireshark-cli
 
+    # NOTE: Include completions without replacing the service's CLI wrapper.
+    (lib.lowPrio config.services.netbird.package)
+
     # nixpkgs wrapper omits glib-networking → TLS unavailable, Chromecast crashes.
     (gnome-network-displays.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [ glib-networking ];
@@ -211,6 +214,20 @@
     package = nixpkgs-unstable.tailscale;
   };
 
+  services.netbird = {
+    enable = true;
+    clients.default = {
+      port = 51821;
+      openInternalFirewall = false;
+      # NOTE: Leave DNS and subnet/exit routing to Tailscale and wg0.
+      config = {
+        DisableDNS = true;
+        DisableClientRoutes = true;
+        DisableServerRoutes = true;
+      };
+    };
+  };
+
   services.openssh = {
     enable = true;
     openFirewall = false;
@@ -251,8 +268,8 @@
 
   environment.enableAllTerminfo = lib.mkForce false;
 
-  # for nautilus
   environment.pathsToLink = [
+    "/share/fish/vendor_completions.d"
     "/share/nautilus-python/extensions"
   ];
   services.gvfs.enable = true;

@@ -133,6 +133,10 @@
       ".local/share/television"
       ".cache/nix-search-tv"
       {
+        directory = ".config/netbird";
+        mode = "0700";
+      }
+      {
         # gvfs.yazi's saved mount URIs carrying user/hosts
         directory = ".local/state/yazi";
         mode = "0700";

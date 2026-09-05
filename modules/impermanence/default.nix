@@ -17,6 +17,7 @@ in
     ./fwupd.nix
     ./gnome.nix
     ./libvirt.nix
+    ./netbird.nix
     ./netdata.nix
     ./networkmanager.nix
     ./opensnitch.nix
