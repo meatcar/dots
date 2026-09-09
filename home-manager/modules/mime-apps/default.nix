@@ -1,6 +1,19 @@
 { pkgs, lib, ... }:
 let
   dms = "dms-open.desktop";
+  junction = "re.sonny.Junction.desktop";
+  junctionPackage = pkgs.junction.overrideAttrs (old: {
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace src/application.js \
+        --replace-fail 'Adw.ColorScheme.FORCE_DARK' 'Adw.ColorScheme.DEFAULT'
+      substituteInPlace src/style.css \
+        --replace-fail 'color: white;' 'color: @window_fg_color;' \
+        --replace-fail 'background-color: #353433;' 'background-color: @window_bg_color;' \
+        --replace-fail 'background-color: #1e1e1e;' 'background-color: @view_bg_color;' \
+        --replace-fail 'alpha(white, 0.3)' 'alpha(currentColor, 0.15)' \
+        --replace-fail 'border: solid 1px black;' 'border: solid 1px alpha(currentColor, 0.2);'
+    '';
+  });
   papers = "org.gnome.Papers.desktop";
   loupe = "org.gnome.Loupe.desktop";
   zed = "dev.zed.Zed.desktop";
@@ -29,9 +42,10 @@ let
   ];
 in
 {
+  imports = [ ./browser-actions.nix ];
 
   home.sessionVariables = {
-    BROWSER = "dms open";
+    BROWSER = lib.getExe junctionPackage;
   };
   xdg.mimeApps.defaultApplications = {
     "image/png" = loupe;
@@ -44,19 +58,19 @@ in
     "image/heif" = loupe;
     "image/avif" = loupe;
     "image/x-icon" = loupe;
-    "application/x-extension-shtml" = dms;
-    "application/x-extension-xhtml" = dms;
-    "application/x-extension-html" = dms;
-    "application/x-extension-xht" = dms;
-    "application/x-extension-htm" = dms;
+    "application/x-extension-shtml" = junction;
+    "application/x-extension-xhtml" = junction;
+    "application/x-extension-html" = junction;
+    "application/x-extension-xht" = junction;
+    "application/x-extension-htm" = junction;
     "x-scheme-handler/unknown" = dms;
     "x-scheme-handler/mailto" = dms;
     "x-scheme-handler/chrome" = dms;
     "x-scheme-handler/about" = dms;
-    "x-scheme-handler/https" = dms;
-    "x-scheme-handler/http" = dms;
-    "application/xhtml+xml" = dms;
-    "text/html" = dms;
+    "x-scheme-handler/https" = junction;
+    "x-scheme-handler/http" = junction;
+    "application/xhtml+xml" = junction;
+    "text/html" = junction;
     "application/pdf" = papers;
   }
   // lib.genAttrs textTypes (_: zed);
@@ -76,5 +90,6 @@ in
       ls ~/.nix-profile/share/applications # for home-manager packages
     '')
     pkgs.shared-mime-info
+    junctionPackage
   ];
 }
