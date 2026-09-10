@@ -14,6 +14,9 @@ let
         --replace-fail 'border: solid 1px black;' 'border: solid 1px alpha(currentColor, 0.2);'
     '';
   });
+  browser = pkgs.writeShellScript "browser" ''
+    ${lib.getExe' pkgs.glib "gio"} open "$@" &
+  '';
   papers = "org.gnome.Papers.desktop";
   loupe = "org.gnome.Loupe.desktop";
   zed = "dev.zed.Zed.desktop";
@@ -45,7 +48,7 @@ in
   imports = [ ./browser-actions.nix ];
 
   home.sessionVariables = {
-    BROWSER = lib.getExe junctionPackage;
+    BROWSER = browser;
   };
   xdg.mimeApps.defaultApplications = {
     "image/png" = loupe;
