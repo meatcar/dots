@@ -24,7 +24,21 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     # jack.enable = true;
+    wireplumber.extraScripts."bluetooth-fallback.lua" = builtins.readFile ./bluetooth-fallback.lua;
     wireplumber.configPackages = [
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/20-bluetooth-fallback.conf" ''
+        wireplumber.components = [
+          {
+            name = bluetooth-fallback.lua
+            type = script/lua
+            provides = hooks.default-nodes.bluetooth-fallback
+            requires = [ metadata.default ]
+          }
+        ]
+        wireplumber.profiles.main = {
+          hooks.default-nodes.bluetooth-fallback = required
+        }
+      '')
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-bluez.conf" ''
         monitor.bluez.properties = {
           bluez5.roles = [ a2dp_sink a2dp_source bap_sink bap_source hsp_hs hsp_ag hfp_hf hfp_ag ]
