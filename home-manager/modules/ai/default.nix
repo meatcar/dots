@@ -9,6 +9,7 @@
   imports = [
     ../aider
     ../opencode
+    ./amp
     ./cli-proxy-api
     ./nono
   ];

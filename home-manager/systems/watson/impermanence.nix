@@ -226,6 +226,10 @@
       ".local/share/amp"
       ".cache/amp"
       {
+        directory = ".local/share/amp-accounts";
+        mode = "0700";
+      }
+      {
         directory = ".config/opencode";
         mode = "0755";
       }

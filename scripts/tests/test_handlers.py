@@ -9,6 +9,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
 
 from depslib.core import DependencyError
 from depslib.handlers import (
+    amp_completions,
     cachyos_kernel,
     cpa_manager_plus,
     opensessions,
@@ -60,6 +61,31 @@ class HandlerCheckTest(unittest.TestCase):
         self.write("flake.lock", json.dumps({"nodes": {}}))
         with self.assertRaisesRegex(DependencyError, "missing from flake.lock"):
             cpa_manager_plus.check(types.SimpleNamespace(root=self.root))
+
+    def test_amp_completions_requires_a_non_flake_pin(self):
+        lock = self.write(
+            "flake.lock",
+            json.dumps({"nodes": {"amp-completions": {"flake": False}}}),
+        )
+        amp_completions.check(types.SimpleNamespace(root=self.root))
+
+        lock.write_text(json.dumps({"nodes": {"amp-completions": {"flake": True}}}))
+        with self.assertRaisesRegex(DependencyError, "non-flake input"):
+            amp_completions.check(types.SimpleNamespace(root=self.root))
+
+    def test_amp_completions_updates_only_its_pin(self):
+        self.write(
+            "flake.lock",
+            json.dumps({"nodes": {"amp-completions": {"flake": False}}}),
+        )
+        calls = []
+        context = types.SimpleNamespace(
+            root=self.root, run=lambda *args: calls.append(args)
+        )
+
+        amp_completions.update(context)
+
+        self.assertEqual(calls, [("nix", "flake", "update", "amp-completions")])
 
     def test_opensessions_requires_two_hashes_and_versioned_binary(self):
         self.write(
