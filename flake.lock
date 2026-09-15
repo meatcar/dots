@@ -199,27 +199,27 @@
     "cpa-manager-plus-amd64": {
       "flake": false,
       "locked": {
-        "lastModified": 1788358937,
-        "narHash": "sha256-MIZkxaAcmDTOGTIErOotsw6FqKKr+YDdzk/VjjZO2CE=",
+        "lastModified": 1789446334,
+        "narHash": "sha256-MdPvhPa07LcRVLozUNQxDuccCSXgAZgF+IA/G+UZlzA=",
         "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_amd64.tar.gz"
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_amd64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_amd64.tar.gz"
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_amd64.tar.gz"
       }
     },
     "cpa-manager-plus-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1788358955,
-        "narHash": "sha256-Enf5bSJw+nYhKQY+qp9BYfgpWm+Ds7XeVPZZjhvIKJk=",
+        "lastModified": 1789446357,
+        "narHash": "sha256-7cZtyuYUhDjdGIXi2PIgIkCI6dZJISXgPHyJE/xEy8I=",
         "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_arm64.tar.gz"
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_arm64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.8/cpa-manager-plus_v1.12.8_linux_arm64.tar.gz"
+        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_arm64.tar.gz"
       }
     },
     "crane": {
@@ -492,11 +492,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788306937,
-        "narHash": "sha256-lbrI1UYVpFgKSsyrU9oeF7FHfnu8nLD9ja0ou9f2rxk=",
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f16b25b8c3d2809b87925d0b76652d7821a75c68",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
         "type": "github"
       },
       "original": {
@@ -510,11 +510,11 @@
         "nixpkgs-lib": "nixpkgs-lib_4"
       },
       "locked": {
-        "lastModified": 1787559586,
-        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
         "type": "github"
       },
       "original": {
@@ -768,11 +768,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1788350369,
-        "narHash": "sha256-Vk+oVo4FNa/McD2/K5BO2Off6Z8l9mKmT9f0xZ6mDYQ=",
+        "lastModified": 1789473883,
+        "narHash": "sha256-VpnOzjgdNUk/vcfsU4wNjARkIoxiJpL128YGkqpf2AM=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "4ab625e16a6cc52fe3f606b95f1e2ac20dafa80b",
+        "rev": "52aac5d0a0c206feaeb1889cbec62ad37dc8843e",
         "type": "github"
       },
       "original": {
@@ -788,11 +788,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1788293386,
-        "narHash": "sha256-33w8JNrFVqkR1sOHxxsnOX4IAZGFBX1SkUN//vptiIc=",
+        "lastModified": 1789241994,
+        "narHash": "sha256-kY+k8kGBd8w4kxrw8IPzQGpnYZQV4mik2ZNHtGN0eHI=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "cec0952eb2b65decb90a8fc7c2f89c9da6979ebf",
+        "rev": "444d135dde71c1de547cf7bfd73e67145e67aebb",
         "type": "github"
       },
       "original": {
@@ -924,11 +924,11 @@
     },
     "nixpkgs-lib_4": {
       "locked": {
-        "lastModified": 1785031560,
-        "narHash": "sha256-OmshNvn2vupOFpYinLUu+1Dnpu4n7Q5N3ggGVNHpkUI=",
+        "lastModified": 1788057806,
+        "narHash": "sha256-DTQSMxzDWmT0zhguthvegnVkn7CFqGCv4IHCzk5ZUpM=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "0e79af5e3d4dcfcd676ab5ba3f95d2e3352e078c",
+        "rev": "596e2e3940e09b2abbeb03f75fa1828c57fcd72c",
         "type": "github"
       },
       "original": {
@@ -970,11 +970,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1787964612,
-        "narHash": "sha256-0N9nghg3nwzX6b6qc77EzjR9cu/Z+UR66FlfsCqiURs=",
+        "lastModified": 1789073787,
+        "narHash": "sha256-xfX/toC2QV707s06GbP4II/TxYF0fNQj7s5/LClNDKc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e8be7818e19ada32105a8af937a6a473b38167ca",
+        "rev": "aff8a0b28396750446e5537a96461bc4facdb287",
         "type": "github"
       },
       "original": {
@@ -986,11 +986,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1788227581,
-        "narHash": "sha256-/ijjX74ZCe+RPnaFwCCc50B/oqLhY8JLzQ8DnbZ/8m8=",
+        "lastModified": 1789181251,
+        "narHash": "sha256-8yaO1XLoObzYgb6Uj+0IkUxbkCI6kBLuImoZAuAHzB4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4951e020b824ae716cbb07d0a8f771d13a2e70e1",
+        "rev": "f496248152e1ad8c61b59a6739cc499b447168e4",
         "type": "github"
       },
       "original": {
@@ -1052,11 +1052,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788369105,
-        "narHash": "sha256-0jWsQ1O2SZtSgxfaSbbbmya3gvSBj+8aEnzDSoNwt/I=",
+        "lastModified": 1789512498,
+        "narHash": "sha256-OXA80wigRG0JkLBgnLDBCmzkUUqIne5PMug8v4UlEuE=",
         "owner": "getpaseo",
         "repo": "paseo",
-        "rev": "53d824a320ccacecb08583be3cffc61ed2974576",
+        "rev": "0eac75be7dd11a6623abb763b3a44d23e711c550",
         "type": "github"
       },
       "original": {
