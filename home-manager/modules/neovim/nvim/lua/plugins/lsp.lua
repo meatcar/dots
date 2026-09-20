@@ -29,7 +29,13 @@ return {
       require 'lazydev'
       local servers = {
         -- NES + inline completions, see plugins/ai.lua
-        copilot = {},
+        copilot = {
+          root_dir = function(bufnr, on_dir)
+            local name = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+            if name == '.env' or name:match('^%.env%.') then return end
+            on_dir(vim.fs.root(bufnr, '.git'))
+          end,
+        },
         lua_ls = {
           settings = {
             Lua = {
