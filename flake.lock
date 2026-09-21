@@ -196,32 +196,6 @@
         "url": "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css"
       }
     },
-    "cpa-manager-plus-amd64": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789446334,
-        "narHash": "sha256-MdPvhPa07LcRVLozUNQxDuccCSXgAZgF+IA/G+UZlzA=",
-        "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_amd64.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_amd64.tar.gz"
-      }
-    },
-    "cpa-manager-plus-arm64": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789446357,
-        "narHash": "sha256-7cZtyuYUhDjdGIXi2PIgIkCI6dZJISXgPHyJE/xEy8I=",
-        "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_arm64.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_arm64.tar.gz"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1760924934,
@@ -786,11 +760,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1789473883,
-        "narHash": "sha256-VpnOzjgdNUk/vcfsU4wNjARkIoxiJpL128YGkqpf2AM=",
+        "lastModified": 1789998255,
+        "narHash": "sha256-2KoMd35h7QRN6SjYqhjoAjV1PCuSXMRodEtF7kgrkN4=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "52aac5d0a0c206feaeb1889cbec62ad37dc8843e",
+        "rev": "15d9dfb1f95f7fe2aae505e18a7a413c06a4a722",
         "type": "github"
       },
       "original": {
@@ -806,11 +780,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1789241994,
-        "narHash": "sha256-kY+k8kGBd8w4kxrw8IPzQGpnYZQV4mik2ZNHtGN0eHI=",
+        "lastModified": 1789933482,
+        "narHash": "sha256-F3OI9rQdLWbIAbpjWz9I9mmyyQydZHi9gezTvs99nzI=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "444d135dde71c1de547cf7bfd73e67145e67aebb",
+        "rev": "679cbad52fdcce02d342926e3db6bbaa776058e1",
         "type": "github"
       },
       "original": {
@@ -988,11 +962,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1789073787,
-        "narHash": "sha256-xfX/toC2QV707s06GbP4II/TxYF0fNQj7s5/LClNDKc=",
+        "lastModified": 1789813231,
+        "narHash": "sha256-dsU+UU4X3ND95E/O6Z33qK5jPxIeB/7akn/+NfAk+nY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aff8a0b28396750446e5537a96461bc4facdb287",
+        "rev": "c80073788adf88abfdc443465311f00e7a231600",
         "type": "github"
       },
       "original": {
@@ -1004,11 +978,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1789181251,
-        "narHash": "sha256-8yaO1XLoObzYgb6Uj+0IkUxbkCI6kBLuImoZAuAHzB4=",
+        "lastModified": 1789894232,
+        "narHash": "sha256-enCZUALGMPc9atdDRW0wC899lgDC3ZAEXIwf7z2Ne2k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f496248152e1ad8c61b59a6739cc499b447168e4",
+        "rev": "41f451c6e217e53a6ddae8403b4dd76a2c21dfe8",
         "type": "github"
       },
       "original": {
@@ -1108,32 +1082,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1789512498,
-        "narHash": "sha256-OXA80wigRG0JkLBgnLDBCmzkUUqIne5PMug8v4UlEuE=",
+        "lastModified": 1789986881,
+        "narHash": "sha256-l7aY1wxWOWn+OcBEgyLoAE9LaxXC77n2OoLeLIUialw=",
         "owner": "getpaseo",
         "repo": "paseo",
-        "rev": "0eac75be7dd11a6623abb763b3a44d23e711c550",
+        "rev": "2c8e8a826810337492cc5a38bb0bbd705b6fb632",
         "type": "github"
       },
       "original": {
         "owner": "getpaseo",
         "repo": "paseo",
-        "type": "github"
-      }
-    },
-    "pi-cliproxyapi-bridge": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1786285681,
-        "narHash": "sha256-CYrZv/zcPJEgpNPMeemZ7kZepPU1IRG76g636DdwnS4=",
-        "owner": "abix5",
-        "repo": "pi-cliproxyapi-bridge",
-        "rev": "039c28b23abcc2e475252a92cd115a7eb943a251",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abix5",
-        "repo": "pi-cliproxyapi-bridge",
         "type": "github"
       }
     },
@@ -1197,8 +1155,6 @@
         "catppuccin-bat": "catppuccin-bat",
         "catppuccin-delta": "catppuccin-delta",
         "catppuccin-swaync": "catppuccin-swaync",
-        "cpa-manager-plus-amd64": "cpa-manager-plus-amd64",
-        "cpa-manager-plus-arm64": "cpa-manager-plus-arm64",
         "dank-material-shell": "dank-material-shell",
         "disko": "disko",
         "firefox-arcwtf": "firefox-arcwtf",
@@ -1219,7 +1175,6 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oyui": "oyui",
         "paseo": "paseo",
-        "pi-cliproxyapi-bridge": "pi-cliproxyapi-bridge",
         "plug-kak": "plug-kak",
         "quadlet-nix": "quadlet-nix",
         "tinted-jjui": "tinted-jjui",

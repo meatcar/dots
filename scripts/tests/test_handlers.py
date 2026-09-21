@@ -7,16 +7,14 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
 
-from depslib.core import DependencyError
 from depslib.handlers import (
     amp_completions,
     cachyos_kernel,
-    cpa_manager_plus,
     opensessions,
     paseo,
-    pi_bridge,
     swaync_theme,
 )
+from depslib.core import DependencyError
 
 
 class HandlerCheckTest(unittest.TestCase):
@@ -32,35 +30,6 @@ class HandlerCheckTest(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
         return path
-
-    def test_cpa_manager_plus_requires_versions_and_lock_urls_to_agree(self):
-        version = "1.2.3"
-        urls = {
-            architecture: cpa_manager_plus.release_url(version, architecture)
-            for architecture in cpa_manager_plus.INPUTS
-        }
-        self.write("flake.nix", "\n".join(f'url = "{url}";' for url in urls.values()))
-        self.write(
-            "home-manager/modules/ai/cli-proxy-api/manager-plus/default.nix",
-            f'  version = "{version}";\n',
-        )
-        self.write(
-            "flake.lock",
-            json.dumps(
-                {
-                    "nodes": {
-                        input_name: {"locked": {"url": urls[architecture]}}
-                        for architecture, input_name in cpa_manager_plus.INPUTS.items()
-                    }
-                }
-            ),
-        )
-
-        cpa_manager_plus.check(types.SimpleNamespace(root=self.root))
-
-        self.write("flake.lock", json.dumps({"nodes": {}}))
-        with self.assertRaisesRegex(DependencyError, "missing from flake.lock"):
-            cpa_manager_plus.check(types.SimpleNamespace(root=self.root))
 
     def test_amp_completions_requires_a_non_flake_pin(self):
         lock = self.write(
@@ -103,24 +72,6 @@ class HandlerCheckTest(unittest.TestCase):
             '      npmDepsHash = "sha256-dependencies";\n',
         )
         paseo.check(types.SimpleNamespace(root=self.root))
-
-    def test_pi_bridge_requires_source_and_sdk_versions_to_match(self):
-        bridge = self.root / "bridge"
-        bridge.mkdir()
-        (bridge / "registry.json").write_text(
-            json.dumps({"plugins": [{"id": "pi-bridge", "version": "0.7.1"}]})
-        )
-        self.write(
-            "home-manager/modules/ai/cli-proxy-api/pi-bridge/default.nix",
-            '  bridgeVersion = "0.7.1";\n  cliProxyApiSdkVersion = "7.2.146";\n',
-        )
-
-        def output(*command):
-            return (
-                "7.2.146" if command[-1] == pi_bridge.PACKAGE_ATTRIBUTE else str(bridge)
-            )
-
-        pi_bridge.check(types.SimpleNamespace(root=self.root, output=output))
 
     def test_swaync_theme_requires_lock_url_to_match_flake(self):
         url = "https://github.com/catppuccin/swaync/releases/download/v1.0.1/catppuccin-mocha.css"

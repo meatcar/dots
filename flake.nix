@@ -90,18 +90,6 @@
       url = "github:numtide/llm-agents.nix";
     };
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix"; # no inputs to follow
-    pi-cliproxyapi-bridge = {
-      url = "github:abix5/pi-cliproxyapi-bridge";
-      flake = false;
-    };
-    cpa-manager-plus-amd64 = {
-      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_amd64.tar.gz";
-      flake = false;
-    };
-    cpa-manager-plus-arm64 = {
-      url = "https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.12.13/cpa-manager-plus_v1.12.13_linux_arm64.tar.gz";
-      flake = false;
-    };
     paseo = {
       url = "github:getpaseo/paseo";
       inputs.nixpkgs.follows = "nixpkgs";

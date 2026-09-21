@@ -404,11 +404,9 @@
       ".local/share/activitywatch"
       ".config/awatcher"
     ]
-    ++ lib.optional config.services.cli-proxy-api.enable ".local/share/cli-proxy-api/auth"
     # engine traits and tokens; unpersisted, the first search after a boot
     # re-bootstraps every engine and half of them time out
     ++ lib.optional config.services.searxng.enable ".cache/searxng"
-    ++ lib.optional config.services.cli-proxy-api.managerPlus.enable ".local/share/cpa-manager-plus"
     ++ [ ".config/opensnitch" ]
     ++ [ ".config/obsidian" ]
     # NOTE: dolphinrc/kdeglobals persist via mkOutOfStoreSymlink above
