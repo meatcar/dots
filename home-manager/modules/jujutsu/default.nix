@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   nixpkgs-unstable,
@@ -14,7 +15,8 @@
     ++ (with pkgs; [
       watchman
       meld
-    ]);
+    ])
+    ++ [ inputs.oyui.packages.${pkgs.stdenv.hostPlatform.system}.oyui ];
   programs.jujutsu =
     let
       delta = "${lib.getExe config.programs.delta.package}";
@@ -280,6 +282,14 @@
             nvim-neogit = nativeWrapper ''nvim -c "lua require('lazy').load({plugins = {'neogit'}})" -c Neogit'';
             lazygit = nativeWrapper "lazygit --screen-mode half";
             gitu = nativeWrapper "gitu";
+            oyui = {
+              program = lib.getExe' inputs.oyui.packages.${pkgs.stdenv.hostPlatform.system}.oyui "oyui";
+              edit-args = [
+                "diff"
+                "$left"
+                "$right"
+              ];
+            };
             delta = {
               program = delta;
               diff-expected-exit-codes = [
@@ -295,7 +305,8 @@
         ui = {
           default-command = "status";
           merge-editor = "weave";
-          diff-editor = "lazygit";
+          diff-editor = "oyui";
+          diff-instructions = false;
           # hunk needs raw git-format diffs to parse;
           # jjui preview commands override this back to delta per-invocation.
           diff-formatter = ":git";

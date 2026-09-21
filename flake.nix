@@ -78,6 +78,10 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    oyui = {
+      url = "github:emilien-jegou/oyui";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     amp-completions = {
       url = "github:meatcar/amp-completions";
       flake = false;
