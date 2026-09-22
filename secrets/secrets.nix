@@ -29,7 +29,7 @@ in
   "paseoEnv.age".publicKeys = systems;
   "resticPersistEnvironment.age".publicKeys = systems;
   "userPassword.age".publicKeys = systems;
-  # wg-quick conf, watson's key
+  # NOTE: WireGuard private key only; public configuration is in modules/wireguard.
   "wireguard.age".publicKeys = systems;
   # tracker dynamic-ip endpoint + session cookie, as a curl config
   "dynip.age".publicKeys = users;

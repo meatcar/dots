@@ -1,37 +1,23 @@
+{ config, ... }:
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-let
-  splitUp = pkgs.writeShellApplication {
-    name = "wireguard-split-up";
-    runtimeInputs = with pkgs; [
-      coreutils
-      gawk
-      iproute2
-      kmod
-      wireguard-tools
-    ];
-    text = builtins.readFile ./up.sh;
-  };
-  splitDown = pkgs.writeShellApplication {
-    name = "wireguard-split-down";
-    runtimeInputs = with pkgs; [
-      coreutils
-      iproute2
-      wireguard-tools
-    ];
-    text = builtins.readFile ./down.sh;
-  };
-in
-{
-  networking.wg-quick.interfaces.wg0.configFile = config.age.secrets.wireguard.path;
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.2.0.2/30" ];
+    mtu = 1420;
+    privateKeyFile = config.age.secrets.wireguard.path;
+    allowedIPsAsRoutes = false;
 
-  systemd.services.wg-quick-wg0.serviceConfig = {
-    ExecStart = lib.mkForce "${lib.getExe splitUp} ${config.age.secrets.wireguard.path}";
-    ExecStop = lib.mkForce (lib.getExe splitDown);
+    peers = [
+      {
+        name = "proton";
+        publicKey = "FOE5x/2kGMZLC1snxv2ff4qOTYk/07WKmjARnVAyzE4=";
+        endpoint = "185.111.110.2:51820";
+        allowedIPs = [ "0.0.0.0/0" ];
+        persistentKeepalive = 25;
+      }
+    ];
+
+    postSetup = builtins.readFile ./up.sh;
+    postShutdown = "ip -4 rule del priority 10000 from 10.2.0.2/32 table 51820";
   };
 
   # strict rpfilter drops wg0 replies; reverse route is the main table
