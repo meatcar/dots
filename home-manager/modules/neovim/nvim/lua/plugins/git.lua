@@ -1,4 +1,88 @@
 return {
+  {
+    'NicolasGB/jj.nvim',
+    version = '*',
+    cmd = {
+      'J', 'Jdiff', 'Jvdiff', 'Jhdiff', 'Jbrowse',
+      'Jread', 'Jedit', 'Jsplit', 'Jvsplit', 'Jtabedit',
+    },
+    keys = {
+      { '<leader>jj', ':<C-u>J<Space>',        desc = ':J' },
+      { '<leader>js', '<cmd>J status<CR>',    desc = 'Status' },
+      { '<leader>jl', '<cmd>J log<CR>',       desc = 'Log' },
+      { '<leader>jD', '<cmd>J describe<CR>',  desc = 'Describe' },
+      { '<leader>jc', '<cmd>J commit<CR>',    desc = 'Commit and create new change' },
+      { '<leader>jn', '<cmd>J new<CR>',       desc = 'New change' },
+      { '<leader>jd', '<cmd>J diff<CR>',      desc = 'Diff repo' },
+      { '<leader>jf', '<cmd>Jdiff<CR>',       desc = 'Diff file' },
+    },
+    init = function()
+      require('which-key').add({ '<leader>j', group = 'jujutsu' })
+    end,
+    opts = {
+      diff = { backend = 'hunk' },
+      cmd = {
+        keymaps = {
+          log = {
+            diff = 'd',
+            describe = 'D',
+            edit = 'e',
+            split = 's',
+            squash = 'S',
+            undo = 'u',
+            redo = 'U',
+            summary = 'l',
+            quick_squash = false,
+            push = false,
+            open_pr = false,
+            summary_tooltip = { diff = 'd', edit = 'e' },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      local function show_hunk(args, path)
+        local theme = vim.g.colors_name or ''
+        if not theme:match('^catppuccin%-') then
+          theme = vim.o.background == 'light' and 'github-light-default' or 'github-dark-default'
+        end
+        local pager = { 'hunk', 'pager', '--theme', theme, '--no-transparent-bg' }
+        local command = vim.list_extend({
+          'jj', '--color=never', '--config=ui.diff-formatter=:git', '--config=ui.paginate=auto',
+          '--config=ui.pager=' .. vim.json.encode(pager),
+        }, args)
+        if path then
+          vim.list_extend(command, { '--', vim.json.encode(path) })
+        end
+        local zindex = (vim.api.nvim_win_get_config(0).zindex or 50) + 1
+        require('jj.ui.terminal').run_floating(command, nil, {
+          interactive = true,
+          title = ' Hunk Diff ',
+          on_exit = function(code)
+            if code ~= 0 then
+              local quoted = vim.tbl_map(vim.fn.shellescape, command)
+              vim.notify(('Hunk diff failed (exit %d). Run in a terminal:\n%s'):format(
+                code, table.concat(quoted, ' ')
+              ), vim.log.levels.ERROR)
+            end
+          end,
+        })
+        vim.api.nvim_win_set_config(0, { zindex = zindex })
+        vim.wo.winblend = 0
+      end
+
+      require('jj.diff').register_backend('hunk', {
+        show_revision = function(diff)
+          show_hunk({ diff.path and 'diff' or 'show', '--quiet', '-r', diff.rev }, diff.path)
+        end,
+        diff_revisions = function(diff)
+          show_hunk({ 'diff', '--quiet', '--from', diff.left, '--to', diff.right }, diff.path)
+        end,
+      })
+      require('jj').setup(opts)
+    end,
+  },
+
   { -- auto-complete Github issues in fugitive
     'tpope/vim-rhubarb',
     event = me.o.events.insert,

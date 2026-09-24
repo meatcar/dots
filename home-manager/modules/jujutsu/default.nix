@@ -59,8 +59,8 @@
                 if(!self, label("elided", "~")),
                 if(current_working_copy, label("working_copy", "@")),
                 if(conflict, label("conflict", "×")),
-                if(immutable, label("immutable", "*")),
-                label("normal", "·")
+                if(immutable, label("immutable", "◆")),
+                label("normal", "○")
               )
             )
           '';
