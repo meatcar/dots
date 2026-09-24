@@ -13,16 +13,14 @@ def get_selection(input_list, prompt="") -> str:
         stdout=PIPE,
         stderr=PIPE,
     ) as fuzzel:
-        selection = fuzzel.communicate(
-            input=bytes("\n".join(input_list), "utf-8"))[0]
+        selection = fuzzel.communicate(input=bytes("\n".join(input_list), "utf-8"))[0]
         if fuzzel.returncode != 0:
             sys.exit(1)
         return selection.decode().strip()
 
 
 def get_windows():
-    niri_windows = Popen(["niri", "msg", "-j", "windows"],
-                         stdout=PIPE, text=True)
+    niri_windows = Popen(["niri", "msg", "-j", "windows"], stdout=PIPE, text=True)
     windows = json.loads(niri_windows.stdout.read())
     windows.sort(key=lambda window: window["id"])
     return windows
