@@ -1,0 +1,93 @@
+--- a/share/quickshell/dms/Services/CalendarKhalBackend.qml
++++ b/share/quickshell/dms/Services/CalendarKhalBackend.qml
+@@ -18,10 +18,16 @@
+     property string dateFormat: "MM/dd/yyyy"
+ 
+     function checkAvailability() {
+-        if (!formatProcess.running)
++        if (!formatProcess.running && !checkProcess.running)
+             formatProcess.running = true;
+     }
+ 
++    function availabilityFailed(message) {
++        if (lastError !== message)
++            log.warn(message);
++        lastError = message;
++    }
++
+     function loadCurrentMonth() {
+         let today = new Date();
+         let firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+@@ -55,28 +61,39 @@
+ 
+     Component.onCompleted: checkAvailability()
+ 
++    Timer {
++        interval: 30000
++        running: !root.installed
++        repeat: true
++        onTriggered: root.checkAvailability()
++    }
++
+     Process {
+         id: formatProcess
+ 
+         command: ["khal", "printformats"]
+         running: false
+         onExited: exitCode => {
+-            if (exitCode !== 0)
+-                checkProcess.running = true;
++            if (exitCode !== 0) {
++                root.availabilityFailed("khal printformats failed (exit code: " + exitCode + "): " + formatErrors.text.trim());
++                return;
++            }
++            let lines = formatOutput.text.split('\n');
++            for (let line of lines) {
++                if (!line.startsWith('dateformat:'))
++                    continue;
++                let formatExample = line.substring(line.indexOf(':') + 1).trim();
++                root.dateFormat = root._parseDateFormat(formatExample);
++                break;
++            }
++            checkProcess.running = true;
+         }
+ 
+         stdout: StdioCollector {
+-            onStreamFinished: {
+-                let lines = text.split('\n');
+-                for (let line of lines) {
+-                    if (!line.startsWith('dateformat:'))
+-                        continue;
+-                    let formatExample = line.substring(line.indexOf(':') + 1).trim();
+-                    root.dateFormat = root._parseDateFormat(formatExample);
+-                    break;
+-                }
+-                checkProcess.running = true;
+-            }
++            id: formatOutput
++        }
++        stderr: StdioCollector {
++            id: formatErrors
+         }
+     }
+ 
+@@ -87,8 +104,17 @@
+         running: false
+         onExited: exitCode => {
+             root.installed = (exitCode === 0);
+-            if (root.installed)
+-                root.loadCurrentMonth();
++            if (!root.installed) {
++                root.availabilityFailed("khal list today failed (exit code: " + exitCode + "): " + checkErrors.text.trim());
++                return;
++            }
++            root.lastError = "";
++            root.loadCurrentMonth();
++        }
++
++        stdout: StdioCollector {}
++        stderr: StdioCollector {
++            id: checkErrors
+         }
+     }
+ 

@@ -21,7 +21,10 @@
 
   programs.dank-material-shell = {
     enable = true;
-    package = import ./dms-shell.nix { inherit pkgs inputs; };
+    package = import ./dms-shell.nix {
+      inherit pkgs inputs;
+      inherit (nixpkgs-unstable) quickshell;
+    };
     systemd.enable = true;
     # TODO: stable caught up (quickshell 0.3.0); try retiring this pin
     quickshell.package = nixpkgs-unstable.quickshell;
