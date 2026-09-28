@@ -1,4 +1,5 @@
 {
+  inputs,
   nixpkgs-unstable,
   pkgs,
   lib,
@@ -6,6 +7,8 @@
   ...
 }:
 {
+  imports = [ inputs.dank-greeter.nixosModules.default ];
+
   # Shadows the niri package's niri-session (hiPrio wins the profile merge)
   # to recover from an orphaned niri.service instead of locking out login.
   environment.systemPackages = [
@@ -22,9 +25,23 @@
     ))
   ];
 
-  services.displayManager.dms-greeter = {
+  users.groups.dms-greeter = { };
+  users.users.dms-greeter = {
+    description = "DankMaterialShell greeter user";
+    isSystemUser = true;
+    home = "/var/lib/dms-greeter";
+    homeMode = "0750";
+    createHome = true;
+    group = "dms-greeter";
+    extraGroups = [ "video" ];
+  };
+  services.greetd.settings.default_session.user = "dms-greeter";
+  hardware.graphics.enable = lib.mkDefault true;
+  services.libinput.enable = lib.mkDefault true;
+
+  programs.dms-greeter = {
     enable = true;
-    # must match home-manger/modules/dms/default.nix
+    # must match home-manager/modules/dms/default.nix
     quickshell.package = nixpkgs-unstable.quickshell;
     # Copy the user's DMS settings (wallpaper/theme) into /var/lib/dms-greeter.
     configHome = "/home/meatcar";

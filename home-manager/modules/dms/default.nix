@@ -23,9 +23,8 @@
     enable = true;
     package = import ./dms-shell.nix { inherit pkgs inputs; };
     systemd.enable = true;
-    # TODO: stable caught up (quickshell 0.3.0, dgop); try retiring these pins
+    # TODO: stable caught up (quickshell 0.3.0); try retiring this pin
     quickshell.package = nixpkgs-unstable.quickshell;
-    dgop.package = nixpkgs-unstable.dgop;
   };
 
   home.packages = [
