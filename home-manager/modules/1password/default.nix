@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -15,9 +16,8 @@ let
   '';
 in
 {
-  programs.ssh.settings."*".IdentityAgent = "~/.1password/agent.sock";
   programs.git.settings."gpg \"ssh\"" = {
-    program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+    program = "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
   };
   systemd.user.services."1password" = {
     Unit = {
@@ -26,7 +26,7 @@ in
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${lib.getExe pkgs._1password-gui} --silent --ozone-platform-hint=auto";
+      ExecStart = "${lib.getExe config.programs._1password-gui.package} --silent --ozone-platform-hint=auto";
       Restart = "always";
       KeyringMode = "inherit";
     };

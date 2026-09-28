@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -8,7 +7,7 @@ let
   name = "1password";
 in
 {
-  services.opensnitch.rules.${name} = lib.mkIf config.programs._1password.enable {
+  services.opensnitch.rules.${name} = lib.mkIf config.programs._1password-gui.enable {
     inherit name;
     enabled = true;
     action = "allow";
@@ -17,7 +16,7 @@ in
     operator = {
       type = "simple";
       operand = "process.path";
-      data = "${pkgs._1password}/share/1password/1password";
+      data = "${config.programs._1password-gui.package}/share/1password/1password";
     };
   };
 }

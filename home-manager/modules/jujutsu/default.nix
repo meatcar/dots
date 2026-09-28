@@ -47,7 +47,7 @@ in
           backend = "ssh";
           key = config.programs.git.settings.user.signingKey;
           backends.ssh = {
-            program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+            program = "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
           };
         };
         git.sign-on-push = true;

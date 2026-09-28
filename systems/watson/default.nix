@@ -233,6 +233,9 @@
     openFirewall = false;
   };
 
+  # NOTE: The mux owns the session socket; GCR keeps its service-local socket.
+  systemd.user.sockets.gcr-ssh-agent.socketConfig.ExecStartPost = "";
+
   services.usbmuxd.enable = true; # for ios debugging with ios-webkit-debug-proxy
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [

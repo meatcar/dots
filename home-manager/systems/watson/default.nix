@@ -1,5 +1,6 @@
 {
   config,
+  osConfig,
   pkgs,
   lib,
   nixpkgs-unstable,
@@ -22,6 +23,7 @@ in
     ../../modules/darkman
     ../../modules/niri
     ../../modules/1password
+    ../../modules/ssh-agent-mux
     ../../modules/bitwarden
     # ../../modules/docker
     ../../modules/activitywatch
@@ -53,6 +55,9 @@ in
   # ../../modules/file-manager and the gated xdg.portal.extraPortals in
   # systems/watson/default.nix.
   me.fileManager = "dolphin";
+
+  programs._1password.package = osConfig.programs._1password.package;
+  programs._1password-gui.package = osConfig.programs._1password-gui.package;
 
   home.packages =
     with pkgs;

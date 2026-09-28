@@ -31,6 +31,7 @@ in
     ../modules/nix.nix
     ../modules/nix-your-shell
     ../modules/man
+    ../modules/1password/packages.nix
     ../modules/git
     ../modules/hunk
     ../modules/jujutsu

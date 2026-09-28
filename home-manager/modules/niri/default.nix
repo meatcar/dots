@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  nixpkgs-unstable,
   ...
 }:
 let
@@ -109,7 +108,7 @@ in
     binds {
       Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe ghostty}" "+new-window" "--working-directory=home"; }
       Mod+Shift+Return repeat=false hotkey-overlay-title="Terminal (inherit cwd)" { spawn "${lib.getExe ghostty}" "+new-window"; }
-      Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe nixpkgs-unstable._1password-gui}" "--quick-access" "--ozone-platform=wayland"; }
+      Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe config.programs._1password-gui.package}" "--quick-access" "--ozone-platform=wayland"; }
       Mod+E hotkey-overlay-title="Files" { spawn "${fmExe}"; }
       Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
       Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
