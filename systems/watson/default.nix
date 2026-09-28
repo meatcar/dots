@@ -287,6 +287,12 @@
   # we manage this in HM
   systemd.user.services.niri-flake-polkit.enable = false;
 
+  systemd.services.nix-daemon.serviceConfig = {
+    Nice = 10;
+    CPUWeight = 20;
+    IOWeight = 20;
+  };
+  nix.daemonIOSchedClass = "idle";
   nix.settings.trusted-users = [ "meatcar" ];
   # users.*.shell alone doesn't list fish in /etc/shells; anything validating
   # against it (chsh, niri-session's login-shell re-exec) treats fish as invalid
