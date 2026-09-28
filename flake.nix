@@ -67,6 +67,10 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dank-greeter = {
+      url = "github:AvengeMedia/dank-greeter/v1.6.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # HEAD outruns the lantian attic cache by ~a day; after updating, re-pin
     # to a cached kernel with scripts/deps update cachyos-kernel
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
