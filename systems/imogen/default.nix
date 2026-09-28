@@ -8,6 +8,7 @@
   imports = [
     ../../modules/darwin/homebrew
     ../../modules/darwin/auto-update
+    ../../modules/nix-cache
   ];
 
   environment.systemPackages = with pkgs; [
@@ -22,6 +23,10 @@
     experimental-features = "nix-command flakes";
     always-allow-substitutes = true;
     max-jobs = "auto";
+    trusted-users = [
+      "denys"
+      "amanda"
+    ];
     extra-trusted-substituters = [ "https://cache.lix.systems" ];
     extra-trusted-public-keys = [
       "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="

@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./nix-cache ];
+
   # Rewrite SSH GitHub URLs to HTTPS for the Nix daemon only,
   # so it doesn't stall on SSH auth when keys are in 1Password.
   systemd.services.nix-daemon.environment.GIT_CONFIG_GLOBAL = toString (
