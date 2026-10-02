@@ -149,7 +149,9 @@
           inputs.nix-cachyos-kernel.overlays.pinned
           (import ./overlays/bun-cve-2026-111497.nix)
           (final: _prev: {
+            forgemap = final.callPackage ./pkgs/forgemap { };
             helium = final.callPackage ./pkgs/helium { };
+            hrd = final.callPackage ./pkgs/hrd { };
             opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };

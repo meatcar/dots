@@ -15,7 +15,10 @@ let
     #'';
 in
 {
-  imports = [ ../mr ];
+  imports = [
+    ../mr
+    ./repos
+  ];
 
   programs.git = {
     enable = true;
