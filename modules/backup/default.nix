@@ -11,6 +11,33 @@ let
     name = "restic-job";
     text = lib.replaceStrings [ "@backupNames@" ] [ backupName ] (builtins.readFile ./restic-job.sh);
   };
+  restic-redu = pkgs.writeShellApplication {
+    name = "restic-redu";
+    runtimeInputs = [
+      pkgs.redu
+      pkgs.restic
+    ];
+    text =
+      lib.replaceStrings
+        [ "@environmentFile@" "@cacheDir@" ]
+        [ config.age.secrets.resticPersistEnvironment.path "/var/cache/restic-backups-${backupName}" ]
+        (builtins.readFile ./restic-redu.sh);
+  };
+  cachedir-tag = pkgs.writeShellApplication {
+    name = "cachedir-tag";
+    runtimeInputs = [ pkgs.coreutils ];
+    text = builtins.readFile ./cachedir-tag.sh;
+  };
+  restic-purge-excluded = pkgs.writeShellApplication {
+    name = "restic-purge-excluded";
+    runtimeInputs = with pkgs; [
+      coreutils
+      findutils
+      restic-job
+      systemd
+    ];
+    text = builtins.readFile ./restic-purge-excluded.sh;
+  };
 in
 {
   age.secrets.resticPersistEnvironment = {
@@ -20,7 +47,11 @@ in
 
   environment.systemPackages = [
     pkgs.restic
+    pkgs.redu
     restic-job
+    restic-redu
+    cachedir-tag
+    restic-purge-excluded
     (pkgs.writeShellApplication {
       name = "restic-timemachine";
       runtimeInputs = with pkgs; [
