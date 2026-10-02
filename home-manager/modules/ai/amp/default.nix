@@ -8,10 +8,10 @@
 }:
 let
   profiles = config.me.amp.profiles;
-  wrappers = lib.mapAttrs (
-    name: profile:
+  accounts = lib.mapAttrs (
+    name: _:
     pkgs.writeShellApplication {
-      name = "amp-${profile.alias}";
+      name = "amp-account-${name}";
       runtimeInputs = [
         pkgs.bubblewrap
         pkgs.coreutils
@@ -21,6 +21,16 @@ let
           [ "@amp@" "@account@" ]
           [ "${llm-agents.amp}/bin/amp" (lib.escapeShellArg name) ]
           (builtins.readFile ./amp-account.sh);
+    }
+  ) profiles;
+  wrappers = lib.mapAttrs (
+    name: profile:
+    let
+      runner = lib.optionalString (profile.runner.directory != null) profile.runner.id;
+    in
+    pkgs.writeShellApplication {
+      name = "amp-${profile.alias}";
+      text = ''exec ${pkgs.python3}/bin/python3 ${./amp-launch.py} ${lib.getExe accounts.${name}} ${lib.escapeShellArg runner} "$PWD" "$@"'';
     }
   ) profiles;
 in
@@ -80,6 +90,10 @@ in
       }
     ];
 
+    home.shellAliases = {
+      amp = "amp-p";
+    };
+
     home.packages = builtins.attrValues wrappers;
     systemd.user.services = lib.mapAttrs' (
       name: profile:
@@ -93,7 +107,7 @@ in
           WorkingDirectory = profile.runner.directory;
           ExecStart = lib.escapeShellArgs (
             [
-              (lib.getExe wrappers.${name})
+              (lib.getExe accounts.${name})
               "--no-tui"
               "--runner-id"
               profile.runner.id
