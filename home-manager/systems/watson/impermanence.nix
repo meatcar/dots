@@ -167,6 +167,8 @@
       # dev
       ".cache/gibo" # github/gitignore clone for `git ignore`
       ".local/share/lazygit"
+      ".config/hrd"
+      ".config/forgemap"
       ".config/configstore"
       ".config/zed"
       ".local/share/zed"

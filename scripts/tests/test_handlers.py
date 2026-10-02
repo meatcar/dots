@@ -121,12 +121,53 @@ class HandlerCheckTest(unittest.TestCase):
             + ["verify"],
         )
 
-    def test_hrd_updates_source_before_go_dependencies(self):
-        self.assert_package_update(
-            "hrd",
-            "hugoh/hrd",
-            "goModules",
+    def test_hrd_tracks_fork_branch_and_updates_source_before_go_dependencies(self):
+        source = self.write(
+            "pkgs/hrd/default.nix",
+            '  version = "unstable-2026-09-30";\n'
+            '    rev = "1111111111111111111111111111111111111111";\n'
+            '    hash = "sha256-old-source";\n'
             '  vendorHash = "sha256-old-dependencies";\n',
+        )
+        calls = []
+        attribute = ".#legacyPackages.x86_64-linux.hrd"
+
+        def github(path):
+            self.assertEqual(path, "/repos/meatcar/hrd/commits/fix/tui-root-groups")
+            return {
+                "sha": "2222222222222222222222222222222222222222",
+                "commit": {"committer": {"date": "2026-10-04T21:10:32Z"}},
+            }
+
+        def run(*command, **kwargs):
+            calls.append(command[2])
+            text = source.read_text()
+            self.assertIn('version = "unstable-2026-10-04";', text)
+            self.assertIn('rev = "2222222222222222222222222222222222222222";', text)
+            if command[2] == f"{attribute}.src":
+                self.assertIn('vendorHash = "sha256-old-dependencies";', text)
+                hash_value = "sha256-new-source"
+            else:
+                self.assertEqual(command[2], f"{attribute}.goModules")
+                self.assertIn('hash = "sha256-new-source";', text)
+                hash_value = "sha256-new-dependencies"
+            if kwargs.get("check") is False:
+                return subprocess.CompletedProcess(
+                    command, 1, "", f"got: {hash_value}\n"
+                )
+            self.assertIn(f'"{hash_value}"', text)
+            return subprocess.CompletedProcess(command, 0, "", "")
+
+        context = types.SimpleNamespace(
+            root=self.root,
+            github=github,
+            run=run,
+            verify=lambda: calls.append("verify"),
+        )
+        cli.main(["update", "hrd"], context)
+        self.assertEqual(
+            calls,
+            [f"{attribute}.src"] * 2 + [f"{attribute}.goModules"] * 2 + ["verify"],
         )
 
     def test_forgemap_distinguishes_pnpm_hash_from_source_hash(self):

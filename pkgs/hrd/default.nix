@@ -9,13 +9,13 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "hrd";
-  version = "1.10.1";
+  version = "unstable-2026-10-04";
 
   src = fetchFromGitHub {
-    owner = "hugoh";
+    owner = "meatcar";
     repo = "hrd";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-213IK2HOcg1+626YZp1a9vDkEA8WyV4vc3A9cKxqoTE=";
+    rev = "fde89f94431094c51496ffb3a6548f0455a33a4f";
+    hash = "sha256-5jNiJUhTy0sC87KTgzVhVDK81e78nJor+amggCF6TdQ=";
   };
 
   vendorHash = "sha256-OxGT9+WgbG4H4uVyuZqq4yiZFAJIVw8mlKYrnJ9MyXU=";
@@ -48,7 +48,7 @@ buildGoModule (finalAttrs: {
 
   meta = {
     description = "Multi-repository status and command runner for Git and Jujutsu";
-    homepage = "https://github.com/hugoh/hrd";
+    homepage = "https://github.com/meatcar/hrd";
     license = lib.licenses.mit;
     mainProgram = "hrd";
   };
