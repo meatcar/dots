@@ -40,6 +40,7 @@
     ../../modules/keyring.nix
     ../../modules/netdata
     ../../modules/ollama
+    ../../modules/hister
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "26.05";
