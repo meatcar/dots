@@ -175,7 +175,6 @@ binds {
     Mod+O hotkey-overlay-title="Open project" { spawn "fuzzel-git-projects" "zeditor" "-n" "."; }
     Mod+Period hotkey-overlay-title="Open file" { spawn "dms" "ipc" "call" "spotlight" "openQuery" ":e"; }
     Mod+V hotkey-overlay-title="Clipboard" { spawn "dms" "ipc" "clipboard" "open"; }
-    Mod+Insert repeat=false hotkey-overlay-title="Push-to-talk" { spawn "ptt" "KEY_INSERT" "KEY_LEFTMETA" "--" "handy" "--toggle-post-process"; }
     Mod+Shift+Insert repeat=false hotkey-overlay-title="Transcription history: copy" { spawn "handy-history" "copy"; }
     Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Transcription history: type" { spawn "handy-history" "type"; }
 }
@@ -278,6 +277,7 @@ window-rule {
     default-floating-position relative-to="bottom" x=0 y=40
     border { off; }
     focus-ring { off; }
+    shadow { off; }
 }
 
 // Private Floater

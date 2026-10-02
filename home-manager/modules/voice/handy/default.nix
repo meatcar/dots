@@ -28,11 +28,6 @@ let
       ${pkgs.alsa-lib}/share/alsa/alsa.conf > $out/alsa.conf
   '';
 
-  python = pkgs.python3.withPackages (p: [ p.evdev ]);
-  ptt = pkgs.writeShellScriptBin "ptt" ''
-    exec ${python}/bin/python3 ${./ptt.py} "$@"
-  '';
-
   handy-history = pkgs.writeShellApplication {
     name = "handy-history";
     runtimeInputs = with pkgs; [
@@ -65,7 +60,6 @@ in
 
   home.packages = [
     config.services.handy.package
-    ptt
     handy-history
     pkgs.dotool # uinput-based typing (wtype's virtual keyboard sends garbled keycodes on niri)
     pkgs.wtype # Wayland text input (fallback)
