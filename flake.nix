@@ -98,6 +98,7 @@
       url = "github:getpaseo/paseo";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    awtrix-pipewire-on-air.url = "github:meatcar/awtrix-pipewire-on-air";
 
     plug-kak = {
       url = "github:andreyorst/plug.kak";

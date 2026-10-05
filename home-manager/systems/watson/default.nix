@@ -48,6 +48,7 @@ in
     ../../modules/qbittorrent
     ../../modules/figma-agent
     ../../modules/audio-mixers
+    ../../modules/awtrix-pipewire-on-air
     ./impermanence.nix
   ];
 
@@ -120,4 +121,9 @@ in
     enable = true;
     environmentFile = config.age.secrets.searxngEnv.path;
   };
+
+  systemd.user.services.awtrix-pipewire-on-air.Service.Environment = [
+    "AWTRIX_HOST=awtrix_bbff64.local"
+    "AWTRIX_IGNORE_APPS=cava,pavucontrol,PulseAudio Volume Control"
+  ];
 }
