@@ -85,6 +85,15 @@ in
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-rename-hdmi.conf" ''
         monitor.alsa.rules = [
           {
+            matches = [{ device.name = "~alsa_card.*", api.alsa.card.name = "HDA ATI HDMI" }]
+            actions = {
+              update-props = {
+                # NOTE: Samsung uses PCM 8 / HDMI3; node.disabled does not hide card routes.
+                api.acp.hidden-ports = [ "[Out] HDMI3" ]
+              }
+            }
+          }
+          {
             matches = [
               {
                 alsa.card_name = "HDA ATI HDMI"
