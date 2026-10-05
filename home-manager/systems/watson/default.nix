@@ -124,6 +124,6 @@ in
 
   systemd.user.services.awtrix-pipewire-on-air.Service.Environment = [
     "AWTRIX_HOST=awtrix_bbff64.local"
-    "AWTRIX_IGNORE_APPS=cava,pavucontrol,PulseAudio Volume Control"
+    ''"AWTRIX_IGNORE_APPS=cava,pavucontrol,PulseAudio Volume Control"''
   ];
 }
