@@ -16,7 +16,6 @@ in
     ./fprintd.nix
     ./fwupd.nix
     ./gnome.nix
-    ./hister.nix
     ./libvirt.nix
     ./netbird.nix
     ./netdata.nix

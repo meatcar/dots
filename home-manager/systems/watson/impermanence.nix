@@ -81,6 +81,10 @@
         mode = "0700";
       }
       {
+        directory = ".local/share/hister";
+        mode = "0700";
+      }
+      {
         directory = ".local/share/pki/nssdb";
         mode = "0700";
       }
