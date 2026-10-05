@@ -20,6 +20,11 @@ def account_script(account, amp):
         .read_text()
         .replace("@account@", shlex.quote(account))
         .replace("@amp@", shlex.quote(str(amp)))
+        .replace("@python@", shlex.quote(os.sys.executable))
+        .replace(
+            "@bwrap-helper@",
+            shlex.quote(str(Path(__file__).with_name("amp-bwrap.py").resolve())),
+        )
     )
 
 
@@ -102,6 +107,38 @@ class AccountsTest(unittest.TestCase):
                     )
                     self.assertEqual(result.returncode, 0, result.stderr)
                     self.assertEqual(json.loads(result.stdout), defaults + arguments)
+
+    def test_system_ssh_config(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            env = {**os.environ, "HOME": tmp}
+            for kind in ("CONFIG", "DATA", "CACHE", "STATE"):
+                env[f"XDG_{kind}_HOME"] = str(base / kind.lower())
+            launcher = base / "launcher.sh"
+            launcher.write_text(account_script("personal", "ssh"))
+            for host, proxy in (
+                ("github.com", None),
+                ("qemu:system/test", "libvirt-ssh-proxy"),
+                ("vsock/3", "systemd-ssh-proxy"),
+            ):
+                with self.subTest(host=host):
+                    result = subprocess.run(
+                        ["sh", str(launcher), "-G", host],
+                        text=True,
+                        capture_output=True,
+                        env=env,
+                        cwd=base,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    settings = dict(
+                        line.split(" ", 1) for line in result.stdout.splitlines()
+                    )
+                    self.assertEqual(
+                        settings["globalknownhostsfile"], "/etc/ssh/ssh_known_hosts"
+                    )
+                    if proxy:
+                        self.assertIn(proxy, settings["proxycommand"])
+                        self.assertEqual(settings["proxyusefdpass"], "yes")
 
     def test_account_mounts(self):
         for symlinks in (False, True):

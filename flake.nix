@@ -193,6 +193,7 @@
           );
 
           legacyPackages = pkgs;
+          checks.amp-accounts = pkgs.callPackage ./home-manager/modules/ai/amp/tests.nix { };
         };
 
       flake = {

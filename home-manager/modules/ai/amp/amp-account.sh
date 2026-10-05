@@ -15,7 +15,7 @@ root=$data_home/amp-accounts/$account
   mkdir -p "$config_home/amp" "$data_home/amp" "$cache_home/amp" "$state_home/amp" "$HOME/.amp"
 )
 
-exec bwrap --bind / / \
+exec @python@ @bwrap-helper@ bwrap --bind / / \
   --dev-bind /dev /dev \
   --bind "$root/config" "$(realpath -e "$config_home/amp")" \
   --bind "$root/data" "$(realpath -e "$data_home/amp")" \

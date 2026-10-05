@@ -18,8 +18,13 @@ let
       ];
       text =
         builtins.replaceStrings
-          [ "@amp@" "@account@" ]
-          [ "${llm-agents.amp}/bin/amp" (lib.escapeShellArg name) ]
+          [ "@amp@" "@account@" "@python@" "@bwrap-helper@" ]
+          [
+            "${llm-agents.amp}/bin/amp"
+            (lib.escapeShellArg name)
+            "${pkgs.python3}/bin/python3"
+            "${./amp-bwrap.py}"
+          ]
           (builtins.readFile ./amp-account.sh);
     }
   ) profiles;
