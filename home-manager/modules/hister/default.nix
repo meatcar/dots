@@ -8,6 +8,10 @@ in
   imports = [ ../quadlet ];
 
   virtualisation.quadlet.containers.hister = {
+    unitConfig = {
+      After = [ "agenix.service" ];
+      Wants = [ "agenix.service" ];
+    };
     serviceConfig = {
       Restart = "on-failure";
       RestartSec = 5;
@@ -27,6 +31,7 @@ in
       volumes = [
         "${dataDir}:/hister/data:rw"
         "${./start.sh}:/hister/start.sh:ro"
+        "${config.age.secrets.histerToken.path}:/run/secrets/hister-token:ro"
       ];
       environments = {
         HISTER_DATA_DIR = "/hister/data";
@@ -34,7 +39,6 @@ in
         HISTER__SERVER__BASE_URL = "http://127.0.0.1:4433";
         HISTER__APP__PUBLIC = "false";
       };
-      secrets = [ "hister-access-token,type=env,target=HISTER__APP__ACCESS_TOKEN" ];
 
       dropCapabilities = [ "all" ];
       noNewPrivileges = true;

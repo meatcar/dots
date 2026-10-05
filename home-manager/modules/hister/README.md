@@ -3,7 +3,7 @@
 Hister runs in a rootless Home Manager Quadlet using the digest-pinned v0.20.0
 image. The host publishes only `127.0.0.1:4433`. The container runs as UID/GID
 65532, drops all capabilities, uses a read-only root filesystem, and mounts
-only its data and startup script.
+only its data, startup script, and read-only token file.
 
 Data lives at `~/.local/share/hister`, persisted through Watson's Home Manager
 impermanence configuration. The container binds the `/persist` source directly
@@ -13,17 +13,15 @@ page contents.
 
 ## Token and browser setup
 
-The container requires the rootless Podman secret `hister-access-token`. Create
-it as `meatcar`, without sudo, on a new installation:
+The token is encrypted in `secrets/histerToken.age`. Home Manager's agenix
+service decrypts it to `/run/user/1000/agenix/histerToken`, owned by `meatcar`
+with mode `0400`. The Quadlet waits for agenix and mounts that file read-only.
+The startup script reads it into Hister's access-token environment variable.
+
+Read it privately in your own Watson terminal, without sudo:
 
 ```sh
-openssl rand -hex 32 | tr -d '\n' | podman secret create hister-access-token -
-```
-
-Retrieve it privately in your own terminal:
-
-```sh
-podman secret inspect --showsecret hister-access-token | jq -r '.[0].SecretData'
+cat /run/user/1000/agenix/histerToken
 ```
 
 Install the browser extension yourself. Set its server to
@@ -32,10 +30,9 @@ Install the browser extension yourself. Set its server to
 shell history, logs, or a chat transcript. Missing, empty, or whitespace-only
 tokens prevent startup.
 
-Podman keeps the secret in its persisted storage. Its file driver is not a
-secret vault; Watson's disk encryption protects it while the disk is locked.
-The existing backup excludes container storage, so retain the token separately
-if you want to restore it rather than generate a replacement.
+The token is not regenerated at startup. Reboots and rebuilds decrypt the same
+encrypted value. Restore access with the encrypted file and an authorized age
+identity; no persistent Podman secret copy is needed.
 
 ## Operation
 
@@ -44,9 +41,10 @@ systemctl --user status hister.service
 systemctl --user restart hister.service
 ```
 
-Rotate the token with `podman secret create --replace hister-access-token -`,
-then restart the service and update the extension. An existing container does
-not receive a replaced secret until it is recreated.
+To rotate the token, use `agenix -e histerToken.age` from `secrets/` in the
+repository's development shell. Save a new random token as a single line,
+apply the updated Home Manager configuration, restart `hister.service`, and
+update the extension. The running process keeps its startup token until restart.
 
 For version upgrades, stop the service and preserve its complete state before
 starting the new image. Database migrations are not undone by reverting the

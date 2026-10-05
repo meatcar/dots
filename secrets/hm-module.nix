@@ -7,6 +7,10 @@
   age.secrets.spotifyClientSecret.file = ./spotifyClientSecret.age;
   age.secrets.cliProxyApiEnv.file = ./cliProxyApiEnv.age;
   age.secrets.searxngEnv.file = ./searxngEnv.age;
+  age.secrets.histerToken = {
+    file = ./histerToken.age;
+    mode = "0400";
+  };
   age.secrets.nixConfAccessTokens.file = ./nixConfAccessTokens.age;
   age.secrets.paseoEnv.file = ./paseoEnv.age;
   age.secrets.dynip.file = ./dynip.age;
