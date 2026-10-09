@@ -1,5 +1,15 @@
-{ lib, pkgs, ... }:
 {
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  home.packages = [
+    inputs.figma-linux-next.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.figma-console-mcp
+  ];
+
   # Serve local fonts to figma.com. Units mirror upstream's install.sh:
   # https://github.com/neetly/figma-agent-linux/blob/main/files/install.sh
   # NOTE: browser must spoof a Windows user agent for Figma to connect.

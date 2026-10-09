@@ -233,6 +233,14 @@ class HandlerCheckTest(unittest.TestCase):
             "  };\n",
         )
 
+    def test_figma_console_mcp_distinguishes_npm_hash_from_source_hash(self):
+        self.assert_package_update(
+            "figma-console-mcp",
+            "southleft/figma-console-mcp",
+            "npmDeps",
+            '  npmDepsHash = "sha256-old-dependencies";\n',
+        )
+
     def test_forgemap_rejects_missing_source_hash(self):
         self.write(
             "pkgs/forgemap/default.nix",

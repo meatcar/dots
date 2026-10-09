@@ -86,6 +86,10 @@
       url = "github:emilien-jegou/oyui";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    figma-linux-next = {
+      url = "github:arximus88/figma-linux-next/dev";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     amp-completions = {
       url = "github:meatcar/amp-completions";
       flake = false;
@@ -150,6 +154,7 @@
           inputs.nix-cachyos-kernel.overlays.pinned
           (import ./overlays/bun-cve-2026-111497.nix)
           (final: _prev: {
+            figma-console-mcp = final.callPackage ./pkgs/figma-console-mcp { };
             forgemap = final.callPackage ./pkgs/forgemap { };
             helium = final.callPackage ./pkgs/helium { };
             hrd = final.callPackage ./pkgs/hrd { };

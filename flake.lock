@@ -390,6 +390,27 @@
         "type": "github"
       }
     },
+    "figma-linux-next": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791470470,
+        "narHash": "sha256-rz/y8+BUFz7C+bmHve3oRsOj/d7VlAbMfB0FBgkIgJU=",
+        "owner": "arximus88",
+        "repo": "figma-linux-next",
+        "rev": "4813117912d4a403c4957d176cebd7ea737eb331",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arximus88",
+        "ref": "dev",
+        "repo": "figma-linux-next",
+        "type": "github"
+      }
+    },
     "firefox-arcwtf": {
       "flake": false,
       "locked": {
@@ -1359,6 +1380,7 @@
         "dank-greeter": "dank-greeter",
         "dank-material-shell": "dank-material-shell",
         "disko": "disko",
+        "figma-linux-next": "figma-linux-next",
         "firefox-arcwtf": "firefox-arcwtf",
         "fish-docker-compose": "fish-docker-compose",
         "fish-ssh-agent": "fish-ssh-agent",
