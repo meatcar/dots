@@ -1,3 +1,4 @@
+import base64
 import json
 import pathlib
 import subprocess
@@ -168,6 +169,58 @@ class HandlerCheckTest(unittest.TestCase):
         self.assertEqual(
             calls,
             [f"{attribute}.src"] * 2 + [f"{attribute}.goModules"] * 2 + ["verify"],
+        )
+
+    def test_insta360_linux_tracks_main_with_package_json_version(self):
+        source = self.write(
+            "pkgs/insta360-linux/default.nix",
+            '  version = "0.1.0-unstable-2026-03-03";\n'
+            "  src = fetchFromGitHub {\n"
+            '    rev = "1111111111111111111111111111111111111111";\n'
+            '    hash = "sha256-old-source";\n'
+            "  };\n"
+            "  pnpmDeps = fetchPnpmDeps {\n"
+            '    hash = "sha256-old-dependencies";\n'
+            "  };\n",
+        )
+        revision = "2222222222222222222222222222222222222222"
+        attribute = ".#legacyPackages.x86_64-linux.insta360-linux"
+        responses = {
+            "/repos/EdenCoder/insta360-linux/commits/main": {
+                "sha": revision,
+                "commit": {"committer": {"date": "2026-10-04T21:10:32Z"}},
+            },
+            f"/repos/EdenCoder/insta360-linux/contents/package.json?ref={revision}": {
+                "encoding": "base64",
+                "content": base64.b64encode(b'{"version": "0.2.0"}').decode(),
+            },
+        }
+
+        def run(*command, **kwargs):
+            if kwargs.get("check") is False:
+                hash_value = {
+                    f"{attribute}.src": "sha256-new-source",
+                    f"{attribute}.pnpmDeps": "sha256-new-dependencies",
+                }[command[2]]
+                return subprocess.CompletedProcess(
+                    command, 1, "", f"got: {hash_value}\n"
+                )
+            return subprocess.CompletedProcess(command, 0, "", "")
+
+        context = types.SimpleNamespace(
+            root=self.root, github=responses.__getitem__, run=run, verify=lambda: None
+        )
+        cli.main(["update", "insta360-linux"], context)
+        self.assertEqual(
+            source.read_text(),
+            '  version = "0.2.0-unstable-2026-10-04";\n'
+            "  src = fetchFromGitHub {\n"
+            f'    rev = "{revision}";\n'
+            '    hash = "sha256-new-source";\n'
+            "  };\n"
+            "  pnpmDeps = fetchPnpmDeps {\n"
+            '    hash = "sha256-new-dependencies";\n'
+            "  };\n",
         )
 
     def test_forgemap_distinguishes_pnpm_hash_from_source_hash(self):
