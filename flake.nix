@@ -153,6 +153,7 @@
             forgemap = final.callPackage ./pkgs/forgemap { };
             helium = final.callPackage ./pkgs/helium { };
             hrd = final.callPackage ./pkgs/hrd { };
+            insta360-linux = final.callPackage ./pkgs/insta360-linux { };
             opensessions = final.callPackage ./pkgs/opensessions { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };

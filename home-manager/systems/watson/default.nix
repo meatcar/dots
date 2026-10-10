@@ -73,6 +73,7 @@ in
       loupe
       pantheon.epiphany
       cameractrls-gtk4
+      insta360-linux
       mpv
       ffmpeg
       # dev
