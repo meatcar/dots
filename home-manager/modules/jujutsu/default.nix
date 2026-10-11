@@ -311,6 +311,10 @@ in
           };
         ui = {
           default-command = "status";
+          editor = [
+            "nvim"
+            "+$line"
+          ];
           merge-editor = "weave";
           diff-editor = "oyui";
           diff-instructions = false;
