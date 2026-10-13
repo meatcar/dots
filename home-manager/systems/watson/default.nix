@@ -42,6 +42,7 @@ in
     ../../modules/television
     ../../modules/kdeconnect
     ../../modules/mime-apps
+    ../../modules/webapp-icons
     ../../modules/voice
     ../../modules/netdata-notify
     ../../modules/searxng
