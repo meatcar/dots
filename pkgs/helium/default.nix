@@ -49,6 +49,7 @@ stdenvNoCC.mkDerivation {
     makeWrapper ${contents}/opt/helium/helium "$out/bin/helium" \
       --prefix LD_LIBRARY_PATH : ${lib.escapeShellArg libraryPath} \
       --set-default CHROME_VERSION_EXTRA appimage-nix-store \
+      --set CHROME_WRAPPER ${pname} \
       ${lib.concatMapStringsSep " " (arg: "--add-flags ${lib.escapeShellArg arg}") commandLineArgs}
 
     install -m 0444 ${contents}/helium.desktop "$out/share/applications/helium.desktop"

@@ -85,11 +85,21 @@ in
       (microsoft-edge.override { commandLineArgs = chromiumFlags; })
       vivaldi-ffmpeg-codecs
       widevine-cdm
-      (vivaldi.override {
-        proprietaryCodecs = true;
-        enableWidevine = true;
-        commandLineArgs = chromiumFlags;
-      })
+      (
+        (vivaldi.override {
+          proprietaryCodecs = true;
+          enableWidevine = true;
+          commandLineArgs = chromiumFlags;
+        }).overrideAttrs
+          (old: {
+            # NOTE: CHROME_WRAPPER becomes web-app shortcut Exec=; a store path breaks after GC
+            postFixup = (old.postFixup or "") + ''
+              substituteInPlace $out/opt/vivaldi/vivaldi \
+                --replace-fail 'export CHROME_WRAPPER="$(readlink -f "$0")"' 'export CHROME_WRAPPER=vivaldi' \
+                --replace-fail 'export HERE="$(dirname "$CHROME_WRAPPER")"' 'export HERE="$(dirname "$(readlink -f "$0")")"'
+            '';
+          })
+      )
       railway
     ]);
 
