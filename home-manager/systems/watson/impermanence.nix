@@ -66,6 +66,7 @@
       ".local/bin"
       ".local/share/applications"
       ".local/share/fonts"
+      ".local/share/icons"
       ".local/share/man"
       ".local/share/nix"
       ".local/state/home-manager"
