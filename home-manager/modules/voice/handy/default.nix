@@ -28,6 +28,11 @@ let
       ${pkgs.alsa-lib}/share/alsa/alsa.conf > $out/alsa.conf
   '';
 
+  keep-dmabuf = pkgs.runCommandCC "handy-keep-dmabuf" { } ''
+    mkdir -p $out/lib
+    $CC -shared -fPIC -O2 -Wall ${./keep-dmabuf.c} -o $out/lib/libhandy-keep-dmabuf.so -ldl
+  '';
+
   handy-history = pkgs.writeShellApplication {
     name = "handy-history";
     runtimeInputs = with pkgs; [
@@ -50,6 +55,8 @@ in
     ExecStart = pkgs.lib.mkForce "${config.services.handy.package}/bin/handy --start-hidden";
     Environment = [
       "ALSA_CONFIG_PATH=${handyAlsaConf}/alsa.conf"
+      # FIXME: drop the shim and set WEBKIT_DISABLE_DMABUF_RENDERER=0 once a Handy release includes cjpais/Handy#2249.
+      "LD_PRELOAD=${keep-dmabuf}/lib/libhandy-keep-dmabuf.so"
     ];
   };
 
