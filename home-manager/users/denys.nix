@@ -9,6 +9,7 @@
 
   # Caps Lock → Escape on tap, Left Control on hold.
   home.file.".config/karabiner/karabiner.json".text = builtins.toJSON {
+    global.check_for_updates = false; # brew upgrades it
     profiles = [
       {
         name = "Default profile";

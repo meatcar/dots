@@ -7,6 +7,8 @@ let
   };
 in
 {
+  imports = [ ./no-self-update.nix ];
+
   home.packages = [ brewWrapper ];
 
   # /opt/homebrew/bin sits ahead of the per-user profile in fish's PATH, so

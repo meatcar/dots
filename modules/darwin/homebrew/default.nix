@@ -4,6 +4,8 @@ let
   extras = builtins.fromJSON (builtins.readFile ./brew-extras.json);
 in
 {
+  imports = [ ./no-self-update.nix ];
+
   environment.variables.HOMEBREW_UPGRADE_GREEDY = "1";
 
   homebrew = {
@@ -40,11 +42,14 @@ in
       "codex"
       "codex-app"
       "docker-desktop"
+      "ghostty"
       "gitfiend"
       "github"
+      "google-chrome"
       "helium-browser"
       "hiddenbar"
       "karabiner-elements"
+      "mailspring"
       "microsoft-edge"
       "obsidian"
       "raycast"
