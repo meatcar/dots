@@ -20,6 +20,8 @@ fi
 
 if [ -x "$nix_profile/bin/nix" ]; then
   export PATH="$nix_profile/bin:$PATH"
+elif [ -x "$HOME/.nix-profile/bin/nix" ]; then
+  export PATH="$HOME/.nix-profile/bin:$PATH"
 fi
 
 if [ -f "$nix_profile/etc/profile.d/nix-daemon.sh" ]; then
@@ -27,7 +29,7 @@ if [ -f "$nix_profile/etc/profile.d/nix-daemon.sh" ]; then
   source "$nix_profile/etc/profile.d/nix-daemon.sh"
 fi
 
-if [ ! -x "$nix_profile/bin/nix" ]; then
+if ! command -v nix >/dev/null 2>&1; then
   step "Installing Nix"
   installer="$(mktemp)"
   trap 'rm -f "$installer"' EXIT
@@ -47,6 +49,7 @@ if ! command -v nix >/dev/null 2>&1; then
   printf 'error: Nix was installed but is unavailable in this shell\n' >&2
   exit 1
 fi
+nix_bin="$(command -v nix)"
 
 step "Enabling flakes"
 mkdir -p "$HOME/.config/nix"
@@ -56,36 +59,38 @@ if ! grep -Fqx "$feature_line" "$user_nix_config" 2>/dev/null; then
   printf '\n%s\n' "$feature_line" >>"$user_nix_config"
 fi
 
-step "Enabling the flake's binary caches"
-nix_config=/etc/nix/nix.conf
-amp_nix_config=/etc/nix/amp-orb.conf
-include_line="!include amp-orb.conf"
-if sudo grep -Eq '^!?include[[:space:]]+(.*/)?nix\.custom\.conf([[:space:]]|$)' "$nix_config"; then
-  include_config=/etc/nix/nix.custom.conf
-else
-  include_config="$nix_config"
-fi
-desired_nix_config="$(mktemp)"
-trap 'rm -f "$desired_nix_config"' EXIT
-printf '# Managed by dots/.agents/setup\nextra-trusted-users = %s\n' "$(id -un)" \
-  >"$desired_nix_config"
-nix_config_changed=false
-if ! sudo cmp -s "$desired_nix_config" "$amp_nix_config"; then
-  sudo install -m 0644 "$desired_nix_config" "$amp_nix_config"
-  nix_config_changed=true
-fi
-if ! sudo grep -Eq '^!?include[[:space:]]+(.*/)?amp-orb\.conf([[:space:]]|$)' "$include_config"; then
-  printf '\n%s\n' "$include_line" | sudo tee -a "$include_config" >/dev/null
-  nix_config_changed=true
-fi
-rm -f "$desired_nix_config"
-trap - EXIT
-if $nix_config_changed; then
-  sudo systemctl restart nix-daemon.service
-fi
+step "Checking Nix store trust for the flake's binary caches"
 if ! nix store info --json | grep -Fq '"trusted":true'; then
-  printf 'error: Nix daemon does not trust user %s\n' "$(id -un)" >&2
-  exit 1
+  nix_config=/etc/nix/nix.conf
+  amp_nix_config=/etc/nix/amp-orb.conf
+  include_line="!include amp-orb.conf"
+  if sudo grep -Eq '^!?include[[:space:]]+(.*/)?nix\.custom\.conf([[:space:]]|$)' "$nix_config"; then
+    include_config=/etc/nix/nix.custom.conf
+  else
+    include_config="$nix_config"
+  fi
+  desired_nix_config="$(mktemp)"
+  trap 'rm -f "$desired_nix_config"' EXIT
+  printf '# Managed by dots/.agents/setup\nextra-trusted-users = %s\n' "$(id -un)" \
+    >"$desired_nix_config"
+  nix_config_changed=false
+  if ! sudo cmp -s "$desired_nix_config" "$amp_nix_config"; then
+    sudo install -m 0644 "$desired_nix_config" "$amp_nix_config"
+    nix_config_changed=true
+  fi
+  if ! sudo grep -Eq '^!?include[[:space:]]+(.*/)?amp-orb\.conf([[:space:]]|$)' "$include_config"; then
+    printf '\n%s\n' "$include_line" | sudo tee -a "$include_config" >/dev/null
+    nix_config_changed=true
+  fi
+  rm -f "$desired_nix_config"
+  trap - EXIT
+  if $nix_config_changed; then
+    sudo systemctl restart nix-daemon.service
+  fi
+  if ! nix store info --json | grep -Fq '"trusted":true'; then
+    printf 'error: Nix daemon does not trust user %s\n' "$(id -un)" >&2
+    exit 1
+  fi
 fi
 
 step "Configuring login shells"
@@ -99,7 +104,7 @@ case "\$PWD" in
   "$repo_root"|"$repo_root"/*)
     if [[ -z "\${IN_NIX_SHELL:-}" ]]; then
       original_pwd="\$PWD"
-      if cd "$repo_root" && nix_env="\$("$nix_profile/bin/nix" print-dev-env --accept-flake-config --no-update-lock-file "$repo_root")"; then
+      if cd "$repo_root" && nix_env="\$("$nix_bin" print-dev-env --accept-flake-config --no-update-lock-file "$repo_root")"; then
         if ! eval "\$nix_env"; then
           printf 'error: failed to activate the dots Nix development shell\n' >&2
           cd "\$original_pwd"
@@ -108,7 +113,7 @@ case "\$PWD" in
         unset nix_env
         cd "\$original_pwd"
         unset original_pwd
-        export PATH="$nix_profile/bin:\${PATH}"
+        export PATH="$(dirname "$nix_bin"):\${PATH}"
       else
         printf 'error: failed to load the dots Nix development shell\n' >&2
         cd "\$original_pwd"
@@ -131,7 +136,7 @@ if ! grep -Fqx "$profile_source" "$HOME/.bash_profile" 2>/dev/null; then
 fi
 
 step "Preparing the locked development shell"
-time nix build --accept-flake-config --no-link --no-update-lock-file \
-  "$repo_root#devShells.x86_64-linux.default"
+time nix print-dev-env --accept-flake-config --no-update-lock-file \
+  "$repo_root" >/dev/null
 
 step "Setup complete"
