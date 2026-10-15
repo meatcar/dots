@@ -19,6 +19,8 @@
     inputs.nixpkgs-unstable-darwin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.oxfmt
   ];
 
+  fonts.packages = [ pkgs.nerd-fonts.iosevka ];
+
   nix.settings = {
     experimental-features = "nix-command flakes";
     always-allow-substitutes = true;

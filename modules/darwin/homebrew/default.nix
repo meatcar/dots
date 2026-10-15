@@ -39,7 +39,6 @@ in
       "codex"
       "codex-app"
       "docker-desktop"
-      "font-iosevka-nerd-font"
       "gitfiend"
       "github"
       "helium-browser"
