@@ -12,7 +12,6 @@ sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
 from depslib import cli
 from depslib.handlers import (
     amp_completions,
-    cachyos_kernel,
     opensessions,
     paseo,
     swaync_theme,
@@ -265,23 +264,6 @@ class HandlerCheckTest(unittest.TestCase):
             json.dumps({"nodes": {swaync_theme.INPUT: {"locked": {"url": url}}}}),
         )
         swaync_theme.check(types.SimpleNamespace(root=self.root))
-
-    def test_cachyos_kernel_checks_the_locked_revision(self):
-        revision = "abc123"
-        self.write(
-            "flake.lock",
-            json.dumps(
-                {"nodes": {"nix-cachyos-kernel": {"locked": {"rev": revision}}}}
-            ),
-        )
-        context = types.SimpleNamespace(
-            root=self.root,
-            output=lambda *command: (
-                "/nix/store/0123456789abcdefghijklmnopqrstuv-linux-7.1.3"
-            ),
-            url_status=lambda url: 200,
-        )
-        cachyos_kernel.check(context)
 
 
 if __name__ == "__main__":

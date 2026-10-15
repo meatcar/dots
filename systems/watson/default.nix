@@ -12,6 +12,7 @@
     ../../modules/hardware/thinkpad_trackpoint_keyboard_ii.nix
     ../../modules/hardware/egpu.nix
     ../common.nix
+    ../../modules/cachyos-kernel
     ../../modules/impermanence
     ../../modules/secureboot
     # ../../modules/ddcci
@@ -48,7 +49,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.tmp.cleanOnBoot = true;
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [

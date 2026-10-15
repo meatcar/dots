@@ -6,16 +6,16 @@
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://ghostty.cachix.org"
-      "https://cache.lantian.pub/lantian" # nix-cachyos-kernel
       "https://cache.numtide.com" # llm-agents.nix
+      "https://nyx-cache.chaotic.cx" # chaotic (cachyos kernel)
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "ghostty.cachix.org:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
-      "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
     ];
   };
 
@@ -69,9 +69,8 @@
       url = "github:AvengeMedia/dank-greeter/v1.6.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # HEAD outruns the lantian attic cache by ~a day; after updating, re-pin
-    # to a cached kernel with scripts/deps update cachyos-kernel
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    # nyxpkgs-unstable only advances once its builds are cached; no follows, or the cache misses
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     handy = {
       url = "github:cjpais/Handy";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -82,6 +81,11 @@
     };
     oyui = {
       url = "github:emilien-jegou/oyui";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     figma-linux-next = {
@@ -149,7 +153,6 @@
           allowUnfree = true;
         };
         overlays = [
-          inputs.nix-cachyos-kernel.overlays.pinned
           (import ./overlays/bun-cve-2026-111497.nix)
           (final: _prev: {
             figma-console-mcp = final.callPackage ./pkgs/figma-console-mcp { };
