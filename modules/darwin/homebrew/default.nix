@@ -13,7 +13,6 @@ in
     onActivation.cleanup = "uninstall";
     taps = [
       "ampcode/tap"
-      "barutsrb/tap"
       "oven-sh/bun"
       "theboredteam/boring-notch"
     ];
@@ -30,9 +29,11 @@ in
       "1password"
       "1password-cli"
       "activitywatch"
+      "amp-app"
       "appcleaner"
       "applite"
-      "barutsrb/tap/omniwm"
+      "omniwm"
+      "bitwarden"
       "claude"
       "claude-code"
       "cmux"
