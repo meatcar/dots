@@ -1,39 +1,66 @@
 #!/bin/sh
-# Unattended update run: macOS -> flake inputs -> darwin switch (which
-# upgrades brew during activation). Run as root by launchd; FLAKE_DIR is
-# injected via the plist's EnvironmentVariables (see auto-update.nix).
+# Unattended update run, as root via launchd. Each job runs at most once per
+# period (its stamp holds the last period attempted), so hourly launches catch
+# up after sleep, power-off, or no network. FLAKE_DIR and OWNER come from the
+# plist's EnvironmentVariables (see default.nix).
 set -u
-: "${FLAKE_DIR:?}"
-export PATH=/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/sbin:/usr/bin:/bin
+: "${FLAKE_DIR:?}" "${OWNER:?}"
+export PATH=/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export HOME=/var/root
 
-stamp=/var/db/auto-update.stamp
-if [ -f "$stamp" ] && [ "$(($(date +%s) - $(stat -f %m "$stamp")))" -lt 259200 ]; then
-  exit 0
-fi
+brew=/opt/homebrew/bin/brew
+git=/etc/profiles/per-user/$OWNER/bin/git
 
-# wait up to 5 minutes for a default route, then bail quietly
-for _ in $(seq 30); do
-  route -n get default >/dev/null 2>&1 && break
+log() { echo "$(date '+%F %T') $*"; }
+
+# NOTE: sudo resets PATH, so commands run as OWNER use absolute paths.
+as_owner() { sudo -u "$OWNER" -H "$@"; }
+
+# $1 job, $2 date(1) format naming the period
+due() { [ "$(cat "/var/db/auto-update.$1.stamp" 2>/dev/null)" != "$(date "+$2")" ]; }
+mark() { date "+$2" >"/var/db/auto-update.$1.stamp"; }
+
+brew_upgrade() {
+  as_owner "$brew" update &&
+    as_owner "$brew" upgrade --greedy &&
+    as_owner "$brew" cleanup
+}
+
+# flake inputs, then switch (activation also runs brew bundle)
+system_update() {
+  as_owner "$(command -v nix)" flake update --flake "$FLAKE_DIR" || return
+  darwin-rebuild switch --flake "$FLAKE_DIR" || return
+  if ! as_owner "$git" -C "$FLAKE_DIR" diff --quiet -- flake.lock; then
+    as_owner "$git" -C "$FLAKE_DIR" commit -m "chore(deps): nix flake update (auto)" -- flake.lock
+  fi
+}
+
+# $1 job, $2 period format, $3 function
+run() {
+  due "$1" "$2" || return 0
+  log "$1: start"
+  if "$3"; then
+    log "$1: ok"
+  else
+    log "$1: FAILED (exit $?), retry next period"
+  fi
+  mark "$1" "$2"
+}
+
+due brew %F || due system %G-%V || exit 0
+
+i=0
+until route -n get default >/dev/null 2>&1; do
+  i=$((i + 1))
+  if [ "$i" -gt 30 ]; then
+    log "no network after 5 min, retry next hour"
+    exit 1
+  fi
   sleep 10
 done
-route -n get default >/dev/null 2>&1 || exit 0
 
-echo "=== auto-update: $(date) ==="
+# keep the Mac awake until this script exits
+caffeinate -i -w $$ &
 
-# 1. macOS. Restart-required updates can't be installed unattended on
-# Apple Silicon (needs a volume owner); this stages them so the native
-# auto-installer only has the reboot left to do.
-softwareupdate --install --all || true
-
-# 2 + 3. flake inputs, then switch (upgrades brew during activation).
-sudo -u denys -H nix flake update --flake "$FLAKE_DIR" || true
-export HOMEBREW_UPGRADE_GREEDY=1
-if darwin-rebuild switch --flake "$FLAKE_DIR"; then
-  touch "$stamp"
-  # commit the lock bump only once it has switched successfully
-  git() { sudo -u denys -H /etc/profiles/per-user/denys/bin/git -C "$FLAKE_DIR" "$@"; }
-  if ! git diff --quiet -- flake.lock; then
-    git commit -m "chore(deps): nix flake update (auto)" -- flake.lock
-  fi
-fi
+run brew %F brew_upgrade
+run system %G-%V system_update

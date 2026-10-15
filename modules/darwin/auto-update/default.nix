@@ -1,10 +1,10 @@
-# Unattended updates for a rarely-used machine: macOS settings are declared
-# below, and a launchd daemon runs on boot (throttled) since the usual
-# overnight windows never happen when the laptop is asleep or off.
+# Unattended updates for a rarely-used laptop. macOS updates itself natively
+# (settings below). A launchd daemon does the rest (see auto-update.sh):
+#   nightly: brew update + upgrade --greedy
+#   weekly:  nix flake update + darwin-rebuild switch
+# It fires hourly, at boot, and at 03:00 (a scheduled wake), but each job runs
+# once per period, so missed runs catch up as soon as the Mac is up.
 { config, ... }:
-let
-  flakeDir = config.environment.variables.NH_FLAKE;
-in
 {
   # macOS + App Store: check, download, and install automatically.
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
@@ -18,19 +18,18 @@ in
     "/Library/Preferences/com.apple.commerce".AutoUpdate = true;
   };
 
-  # OS → brew → darwin, in order (see auto-update.sh). Runs at every boot
-  # and Sunday 4am, but skips if it succeeded within the last 3 days. Brew
-  # is upgraded by the homebrew module during `darwin-rebuild switch`
-  # activation.
   launchd.daemons.auto-update = {
     script = builtins.readFile ./auto-update.sh;
     serviceConfig = {
-      EnvironmentVariables.FLAKE_DIR = flakeDir;
+      EnvironmentVariables = {
+        FLAKE_DIR = config.environment.variables.NH_FLAKE;
+        OWNER = config.system.primaryUser;
+      };
       RunAtLoad = true;
+      StartInterval = 3600;
       StartCalendarInterval = [
         {
-          Weekday = 0;
-          Hour = 4;
+          Hour = 3;
           Minute = 0;
         }
       ];
@@ -38,4 +37,10 @@ in
       StandardErrorPath = "/var/log/auto-update.log";
     };
   };
+
+  # NOTE: wake from sleep just before the 03:00 run. Replaces any other
+  # `pmset repeat` schedule.
+  system.activationScripts.postActivation.text = ''
+    pmset repeat wakeorpoweron MTWRFSU 02:58:00
+  '';
 }
