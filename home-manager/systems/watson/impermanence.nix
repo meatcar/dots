@@ -119,9 +119,9 @@
       ".local/share/onlyoffice"
 
       # dms
-      ".config/DankMaterialShell"
-      ".local/state/DankMaterialShell"
-      ".cache/DankMaterialShell"
+      ".config/dms"
+      ".local/state/dms"
+      ".cache/dms"
       ".config/dgop"
       ".cache/quickshell"
       ".config/cava"
