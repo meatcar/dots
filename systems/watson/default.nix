@@ -15,7 +15,7 @@
     ../../modules/cachyos-kernel
     ../../modules/impermanence
     ../../modules/secureboot
-    # ../../modules/ddcci
+    ../../modules/ddc
     ../../modules/fc660c-hasu
     ../../modules/backup
     ../../modules/laptop
