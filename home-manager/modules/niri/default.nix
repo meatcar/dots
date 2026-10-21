@@ -100,7 +100,6 @@ in
       config.me.fileManager == "dolphin"
     ) "org.freedesktop.impl.portal.FileChooser=kde"}
   '';
-  services.swayosd.enable = true;
   # services.swww.enable = true;
   programs.fuzzel.settings.main.launch-prefix = "niri msg action spawn --";
   programs.fuzzel.settings.main.terminal = "${lib.getExe ghostty}";
@@ -114,6 +113,7 @@ in
     include optional=true "dms/binds.kdl"
     include optional=true "dms/colors.kdl"
     include optional=true "dms/cursor.kdl"
+    include optional=true "dms/input.kdl"
     include optional=true "dms/layout.kdl"
     include optional=true "dms/outputs.kdl"
     include optional=true "dms/windowrules.kdl"

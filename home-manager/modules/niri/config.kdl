@@ -7,38 +7,19 @@ workspace "code"
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 hotkey-overlay { skip-at-startup; }
-cursor {
-    xcursor-theme "Posy_Cursor"
-    xcursor-size 16
-}
+// dms owns cursor, keyboard, touchpad, mouse, gaps, radius, colors: see dms/*.kdl
 input {
-    keyboard {
-        repeat-delay 600
-        repeat-rate 25
-        track-layout "global"
-    }
-    touchpad {
-        tap
-        dwtp
-        drag-lock
-        natural-scroll
-        scroll-factor 0.8
-    }
     trackpoint { accel-profile "flat"; }
     focus-follows-mouse max-scroll-amount="10%"
 }
 layout {
-    gaps 16
     struts {
         left 0
         right 0
         top 0
         bottom 0
     }
-    focus-ring {
-        width 4
-        // active-gradient angle=45 from="#ca9ee6" relative-to="workspace-view" to="#c6d0f5"
-    }
+    // dms can set border width but not turn it off
     border { off; }
     tab-indicator {
         gap 5.000000
@@ -104,7 +85,7 @@ binds {
     XF86MonBrightnessUp hotkey-overlay-title=null { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
     XF86Tools hotkey-overlay-title=null { spawn "dms" "ipc" "settings" "open"; }
 
-    Mod+Ctrl+Q hotkey-overlay-title="Lock screen" { spawn-sh "niri msg action power-off-monitors && sleep 0.5 && loginctl lock-session"; }
+    Mod+Ctrl+Q hotkey-overlay-title="Lock screen" { spawn "loginctl" "lock-session"; }
     Mod+Shift+Q hotkey-overlay-title="Power menu" { spawn "dms" "ipc" "powermenu" "toggle"; }
 
     Mod+Q hotkey-overlay-title="Close window" { close-window; }
@@ -190,8 +171,6 @@ recent-windows {
 }
 window-rule {
     open-focused true
-    geometry-corner-radius 8
-    clip-to-geometry true
 }
 window-rule {
     match is-floating=true
@@ -200,6 +179,14 @@ window-rule {
 window-rule {
     match app-id="code"
     open-on-workspace "code"
+}
+window-rule {
+    match app-id="^helium$"
+    open-on-workspace "me"
+}
+window-rule {
+    match app-id="^helium-alipes$"
+    open-on-workspace "work"
 }
 window-rule {
     match is-window-cast-target=true
@@ -263,15 +250,12 @@ window-rule {
     match title="float"
     match app-id="it.mijorus.smile"
     match app-id="re.sonny.Junction"
-    match app-id="org.quickshell" title="Settings" // dms
     open-floating true
 }
 
 // Private Floater
 window-rule {
     match app-id="opensnitch_ui"
-    match app-id="org.kde.polkit-kde-authentication-agent-1"
-    match app-id="org.gnome.polkit-gnome-authentication-agent-1"
     match app-id="ringboard-egui"
     open-floating true
     block-out-from "screen-capture"
