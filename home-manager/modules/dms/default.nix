@@ -26,7 +26,7 @@
       inherit (nixpkgs-unstable) quickshell;
     };
     systemd.enable = true;
-    # TODO: stable caught up (quickshell 0.3.0); try retiring this pin
+    # TODO: retire this pin once stable quickshell reaches 0.3.2 (stable: 0.3.0)
     quickshell.package = nixpkgs-unstable.quickshell;
   };
 
