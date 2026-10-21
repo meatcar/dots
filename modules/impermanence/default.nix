@@ -12,6 +12,7 @@ in
   imports = [
     ./bluetooth.nix
     ./cups.nix
+    ./dms-greeter.nix
     ./docker.nix
     ./fprintd.nix
     ./fwupd.nix
