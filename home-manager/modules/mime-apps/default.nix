@@ -3,6 +3,7 @@ let
   dms = "dms-open.desktop";
   junction = "re.sonny.Junction.desktop";
   junctionPackage = pkgs.junction.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ ./junction-shortcuts.patch ];
     postPatch = (old.postPatch or "") + ''
       substituteInPlace src/application.js \
         --replace-fail 'Adw.ColorScheme.FORCE_DARK' 'Adw.ColorScheme.DEFAULT'
@@ -22,6 +23,22 @@ let
   zed = "dev.zed.Zed.desktop";
   nvim = "nvim.desktop"; # the "Neovim wrapper" (Terminal=true) desktop entry
   onlyoffice = "onlyoffice-desktopeditors.desktop";
+
+  # NOTE: order sets Junction positions for keys 1…9.
+  browsers = [
+    "zen-beta.desktop"
+    "helium.desktop"
+    "chromium-browser.desktop"
+    "vivaldi-stable.desktop"
+    "microsoft-edge.desktop"
+    "org.gnome.Epiphany.desktop"
+  ];
+  webTypes = [
+    "x-scheme-handler/http"
+    "x-scheme-handler/https"
+    "text/html"
+    "application/xhtml+xml"
+  ];
 
   tabularTypes = [
     "text/csv"
@@ -171,7 +188,8 @@ in
     // lib.genAttrs tabularTypes (_: [
       onlyoffice
       zed
-    ]);
+    ])
+    // lib.genAttrs webTypes (_: browsers);
 
   home.packages = [
     (pkgs.writeShellScriptBin "mime-apps-list" ''

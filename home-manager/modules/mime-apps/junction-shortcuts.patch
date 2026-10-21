@@ -1,0 +1,140 @@
+--- a/src/AppButton.js
++++ b/src/AppButton.js
+@@ -130,7 +130,10 @@ export default function AppButton({ appInfo, content_type, entry, window }) {
+     "key-released",
+     (self, keyval, keycode, modifier_state) => {
+       const keyname = Gdk.keyval_name(keyval);
+-      if (keyname === "Menu") {
++      if (
++        keyname === "Menu" ||
++        (keyname === "F10" && modifier_state & Gdk.ModifierType.SHIFT_MASK)
++      ) {
+         popupActionsMenu({
+           appInfo,
+           popoverMenu,
+--- a/src/ShortcutsWindow.blp
++++ b/src/ShortcutsWindow.blp
+@@ -34,6 +34,16 @@ ShortcutsWindow window {
+         accelerator: "1...9";
+         title: _("Open with application at position");
+       }
++
++      ShortcutsShortcut {
++        accelerator: "<Shift>1...9";
++        title: _("Open private window with application at position");
++      }
++
++      ShortcutsShortcut {
++        accelerator: "Menu <Shift>F10";
++        title: _("Show actions for selected application");
++      }
+     }
+ 
+     ShortcutsGroup {
+--- a/src/util.js
++++ b/src/util.js
+@@ -188,18 +188,6 @@ export function openWithApplication({ appInfo, location, content_type }) {
+     success = appInfo.launch([file], context);
+   }
+ 
+-  // FIXME: This is broken on Flatpak
+-  // https://gitlab.gnome.org/GNOME/glib/-/blob/fdac7118ceab456c0d7e3674b99ee52672d42bd6/gio/gdesktopappinfo.c#L4078
+-  // because appInfo does not have filename
+-  if (!Xdp.Portal.running_under_flatpak() && success && content_type) {
+-    try {
+-      const result = appInfo.set_as_last_used_for_type(content_type);
+-      console.debug("set_as_last_used_for_type", result);
+-    } catch (err) {
+-      console.debug("set_as_last_used_for_type", err);
+-    }
+-  }
+-
+   if (!success) {
+     console.error(
+       `Could not launch ${location} with "${appInfo.get_commandline()}"`,
+--- a/src/window.blp
++++ b/src/window.blp
+@@ -39,10 +39,11 @@ Adw.ApplicationWindow window {
+     content: WindowHandle {
+       ScrolledWindow {
+         vexpand: true;
++        hscrollbar-policy: never;
+         FlowBox list {
+           halign: center;
+           valign: center;
+-          max-children-per-line: 5;
++          max-children-per-line: 9;
+           min-children-per-line: 2;
+           homogeneous: true;
+           styles ["list"]
+--- a/src/window.js
++++ b/src/window.js
+@@ -64,24 +64,56 @@ export default function Window({ application, file }) {
+     );
+   }
+ 
+-  function getButtonForKeyval(keyval) {
++  list.max_children_per_line = Math.min(Math.max(options.length, 2), 9);
++  const [, listWidth] = list.measure(Gtk.Orientation.HORIZONTAL, -1);
++  window.default_width = Math.max(window.default_width, listWidth);
++
++  // NOTE: Shift+digit yields a symbol keyval; read the unshifted level.
++  function getPosition(self, keycode) {
++    const [, keyval] = window
++      .get_display()
++      .translate_key(keycode, 0, self.get_group());
+     const keyname = Gdk.keyval_name(keyval);
+-    // Is not 0...9
+-    if (!/^\d$/.test(keyname)) return null;
++    if (!/^[1-9]$/.test(keyname)) return null;
+     const n = +keyname;
+-    return options[n - 1];
++    return options[n - 1] ? n : null;
+   }
+ 
++  function openPrivate(appInfo) {
++    const action = appInfo
++      ?.list_actions()
++      .find((name) => /private|incognito/i.test(name));
++    if (!action) return;
++    const success = openWithAction({
++      appInfo,
++      action,
++      location: entry.get_text(),
++    });
++    if (success) window.close();
++  }
++
++  let privatePosition = null;
+   const eventController = new Gtk.EventControllerKey();
+-  eventController.connect("key-pressed", (self, keyval) => {
+-    const button = getButtonForKeyval(keyval);
+-    button?.grab_focus();
+-    return !!button;
++  eventController.connect("key-pressed", (self, keyval, keycode, state) => {
++    const n = getPosition(self, keycode);
++    if (!n) return false;
++    if (state & Gdk.ModifierType.SHIFT_MASK) {
++      privatePosition = n;
++      openPrivate(applications[n - 1]);
++      return true;
++    }
++    options[n - 1].grab_focus();
++    return true;
+   });
+-  eventController.connect("key-released", (self, keyval) => {
+-    const button = getButtonForKeyval(keyval);
+-    button?.activate();
+-    return !!button;
++  eventController.connect("key-released", (self, keyval, keycode) => {
++    const n = getPosition(self, keycode);
++    if (!n) return false;
++    if (privatePosition === n) {
++      privatePosition = null;
++      return true;
++    }
++    options[n - 1].activate();
++    return true;
+   });
+   window.add_controller(eventController);
+ 
