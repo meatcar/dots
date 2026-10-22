@@ -31,7 +31,7 @@ in
         ''
           if [ ! -s "${identityFile}" ]; then
             run mkdir -p "$(dirname "${identityFile}")"
-            ${config.programs._1password.package}/bin/op read ${lib.escapeShellArg cfg.opPrivateKeyRef} > "${identityFile}"
+            /run/wrappers/bin/op read ${lib.escapeShellArg cfg.opPrivateKeyRef} > "${identityFile}"
             chmod 600 "${identityFile}"
             run ${pkgs.openssh}/bin/ssh-keygen -y -f "${identityFile}" > "${identityFile}.pub"
             echo "Age identity restored from 1Password."
