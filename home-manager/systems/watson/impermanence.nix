@@ -125,6 +125,7 @@
       ".config/dgop"
       ".cache/quickshell"
       ".config/cava"
+      ".cache/cliproxy-quota" # quota widget daily-activity history
 
       # wallpapers
       ".cache/swww"
