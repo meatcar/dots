@@ -66,7 +66,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dank-greeter = {
-      url = "github:AvengeMedia/dank-greeter/v1.6.2";
+      url = "github:duxlabs-dev/dux-greeter/v2.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # nyxpkgs-unstable only advances once its builds are cached; no follows, or the cache misses

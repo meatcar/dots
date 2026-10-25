@@ -43,7 +43,7 @@ for scenario in (
         (root / "shell.qml").write_text("""import QtQuick
 import Quickshell
 ShellRoot {
-    CalendarKhalBackend { id: backend }
+    CalendarKhalBackend { id: backend; enabled: true }
     Timer {
         interval: 2000
         running: true

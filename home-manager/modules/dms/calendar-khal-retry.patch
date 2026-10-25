@@ -1,12 +1,14 @@
 --- a/share/quickshell/dms/Services/CalendarKhalBackend.qml
 +++ b/share/quickshell/dms/Services/CalendarKhalBackend.qml
-@@ -18,10 +18,16 @@
+@@ -20,12 +20,17 @@
      property string dateFormat: "MM/dd/yyyy"
  
      function checkAvailability() {
--        if (!formatProcess.running)
-+        if (!formatProcess.running && !checkProcess.running)
-             formatProcess.running = true;
+-        if (_checked || !enabled)
++        if (_checked || !enabled || formatProcess.running || checkProcess.running)
+             return;
+-        _checked = true;
+         formatProcess.running = true;
      }
  
 +    function availabilityFailed(message) {
@@ -15,16 +17,16 @@
 +        lastError = message;
 +    }
 +
+     onEnabledChanged: checkAvailability()
+ 
      function loadCurrentMonth() {
-         let today = new Date();
-         let firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-@@ -55,28 +61,39 @@
+@@ -61,28 +66,43 @@
  
      Component.onCompleted: checkAvailability()
  
 +    Timer {
 +        interval: 30000
-+        running: !root.installed
++        running: root.enabled && !root._checked && !root.installed
 +        repeat: true
 +        onTriggered: root.checkAvailability()
 +    }
@@ -35,8 +37,11 @@
          command: ["khal", "printformats"]
          running: false
          onExited: exitCode => {
--            if (exitCode !== 0)
--                checkProcess.running = true;
+-            if (exitCode === 127)
++            if (exitCode === 127) {
++                root._checked = true;
+                 return;
++            }
 +            if (exitCode !== 0) {
 +                root.availabilityFailed("khal printformats failed (exit code: " + exitCode + "): " + formatErrors.text.trim());
 +                return;
@@ -49,7 +54,7 @@
 +                root.dateFormat = root._parseDateFormat(formatExample);
 +                break;
 +            }
-+            checkProcess.running = true;
+             checkProcess.running = true;
          }
  
          stdout: StdioCollector {
@@ -62,7 +67,6 @@
 -                    root.dateFormat = root._parseDateFormat(formatExample);
 -                    break;
 -                }
--                checkProcess.running = true;
 -            }
 +            id: formatOutput
 +        }
@@ -71,7 +75,7 @@
          }
      }
  
-@@ -87,8 +104,17 @@
+@@ -93,8 +113,18 @@
          running: false
          onExited: exitCode => {
              root.installed = (exitCode === 0);
@@ -81,6 +85,7 @@
 +                root.availabilityFailed("khal list today failed (exit code: " + exitCode + "): " + checkErrors.text.trim());
 +                return;
 +            }
++            root._checked = true;
 +            root.lastError = "";
 +            root.loadCurrentMonth();
 +        }

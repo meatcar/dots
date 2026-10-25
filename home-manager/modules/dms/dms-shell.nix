@@ -1,8 +1,6 @@
 # UPSTREAM(dank-material-shell): local bug fixes; submit upstream.
 #
-# Patches upstream display-profile races and khal startup recovery:
-# - profile validation runs before async compositor detection finishes,
-#   leaving a false "First Time Setup" and empty profiles on cold boot
+# Patches upstream display-profile and khal startup bugs:
 # - matchedProfile is only computed at startup and behind auto-select, so
 #   with auto-select off the `dms ipc` [matched] tag goes permanently stale
 # - khal availability stays false after a transient startup failure
