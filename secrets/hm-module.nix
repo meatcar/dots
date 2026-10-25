@@ -5,7 +5,7 @@
   age.secrets.gcalClientSecret.file = ./gcalClientSecret.age;
   age.secrets.spotifyClientId.file = ./spotifyClientId.age;
   age.secrets.spotifyClientSecret.file = ./spotifyClientSecret.age;
-  age.secrets.cliProxyApiEnv.file = ./cliProxyApiEnv.age;
+  age.secrets.cliProxyApiKey.file = ./cliProxyApiKey.age;
   age.secrets.searxngEnv.file = ./searxngEnv.age;
   age.secrets.histerToken = {
     file = ./histerToken.age;

@@ -22,7 +22,8 @@ in
   "gcalClientSecret.age".publicKeys = users;
   "spotifyClientId.age".publicKeys = users;
   "spotifyClientSecret.age".publicKeys = users;
-  "cliProxyApiEnv.age".publicKeys = users;
+  # CLIProxyAPI client key only, no env wrapper
+  "cliProxyApiKey.age".publicKeys = users;
   # SEARXNG_SECRET: flask session key and image-proxy HMAC
   "searxngEnv.age".publicKeys = users;
   "histerToken.age".publicKeys = users;
