@@ -147,6 +147,7 @@
         };
         overlays = [
           inputs.nix-cachyos-kernel.overlays.pinned
+          (import ./overlays/bun-cve-2026-111497.nix)
           (final: _prev: {
             helium = final.callPackage ./pkgs/helium { };
             opensessions = final.callPackage ./pkgs/opensessions { };
@@ -169,6 +170,7 @@
       imports = [
         ./flake-modules/devshell.nix
         ./flake-modules/treefmt.nix
+        ./flake-modules/checks.nix
       ];
 
       perSystem =
@@ -296,7 +298,7 @@
               modules = [
                 ./home-manager/systems/steamdeck.nix
                 {
-                  nixpkgs = nixpkgsConfig;
+                  nixpkgs.config = nixpkgsConfig.config;
                   home = rec {
                     username = "deck";
                     homeDirectory = "/home/${username}";

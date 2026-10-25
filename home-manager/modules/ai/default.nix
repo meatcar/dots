@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   nixpkgs-unstable,
   llm-agents,
@@ -21,12 +22,26 @@
     pkgs.rodney
     llm-agents.claude-code
     llm-agents.codex
-    llm-agents.pi
+    # TODO: drop pi override once llm-agents builds pi with bun >= 1.4.4 (CVE-2026-111497).
+    # see https://github.com/numtide/llm-agents.nix/commits/main/flake.lock
+    # see https://github.com/NixOS/nixpkgs/pull/574334
+    # see https://github.com/NixOS/nixpkgs/pull/577354
+    (
+      let
+        piBun = lib.findFirst (d: lib.getName d == "bun") null llm-agents.pi.nativeBuildInputs;
+      in
+      if lib.versionOlder (lib.getVersion piBun) "1.4.4" then
+        llm-agents.pi.override { inherit (pkgs) bun; }
+      else
+        llm-agents.pi
+    )
     llm-agents.showboat
     pkgs.sox # for claude /voice
     pkgs.socat # for sandboxes
     pkgs.bubblewrap # for sandboxes
-    nixpkgs-unstable.openspec
+    # TODO: use default nodejs once nixos-unstable Node 24 links brotli 1.2.1 (CVE-2026-111497).
+    # see https://nixpk.gs/pr-tracker.html?pr=577208
+    (nixpkgs-unstable.openspec.override { nodejs = nixpkgs-unstable.nodejs_22; })
   ];
 
   # rodney's bundled (uvx/PyPI) binary has no ROD_CHROME_BIN wrapper; point rod at the

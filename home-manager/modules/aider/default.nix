@@ -1,14 +1,15 @@
 {
   config,
   pkgs,
-  nixpkgs-unstable,
   ...
 }:
 {
   home.packages = [
+    # TODO: back to nixpkgs-unstable aider-chat once posthog is unbroken there
+    # see https://github.com/NixOS/nixpkgs/pull/578265
     (pkgs.writeShellScriptBin "aider" ''
       source ${config.age.secrets.aienv.path}
-      ${nixpkgs-unstable.aider-chat}/bin/aider \
+      ${pkgs.aider-chat}/bin/aider \
         --config '${config.xdg.configHome}/aider/aider.conf.yml' \
         --chat-history-file '${config.xdg.dataHome}/aider/chat-history.json' \
         --input-history-file '${config.xdg.dataHome}/aider/input-history.json' \

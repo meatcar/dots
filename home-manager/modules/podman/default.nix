@@ -6,6 +6,9 @@
 }:
 let
   podman = lib.getExe nixpkgs-unstable.podman;
+  # TODO: use default nodejs once nixos-unstable Node 24 links brotli 1.2.1 (CVE-2026-111497).
+  # see https://nixpk.gs/pr-tracker.html?pr=577208
+  devcontainer = nixpkgs-unstable.devcontainer.override { nodejs = nixpkgs-unstable.nodejs_22; };
   # Wrapper that puts containers on the podman bridge network so Traefik can
   # reach them.  Only affects run/create; other subcommands pass through.
   podman-bridged = nixpkgs-unstable.writeShellScriptBin "podman-bridged" ''
@@ -35,7 +38,7 @@ let
         injected=true
       fi
     done
-    exec ${lib.getExe nixpkgs-unstable.devcontainer} "''${args[@]}"
+    exec ${lib.getExe devcontainer} "''${args[@]}"
   '';
 in
 {
