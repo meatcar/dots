@@ -13,7 +13,6 @@
 {
   imports = [
     ./lifecycle.nix
-    ./output-profiles.nix
     ./idle.nix
     ./tray.nix
     ./darkman-bridge.nix
