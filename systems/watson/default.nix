@@ -42,6 +42,7 @@
     ../../modules/keyring.nix
     ../../modules/netdata
     ../../modules/ollama
+    ../../modules/languagetool
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "26.05";
@@ -263,8 +264,6 @@
 
   services.syncthing.enable = false; # prefer HM module
   services.flatpak.enable = true;
-
-  services.languagetool.enable = true;
 
   programs.kdeconnect.enable = true;
 
