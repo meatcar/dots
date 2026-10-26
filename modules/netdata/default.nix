@@ -25,6 +25,8 @@ in
       # the memory three are replaced in health.d/severe.conf; disabling by name
       # lets upstream keep adding to ram.conf/swap.conf
       health."enabled alarms" = "!10min_disk_backlog !oom_kill !ram_available !used_swap *";
+      # anomaly detection only flagged routine desktop events; not worth its memory
+      ml.enabled = "no";
       plugins = {
         tc = "no"; # no traffic shaping on this laptop
         freeipmi = "no"; # no BMC
