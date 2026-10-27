@@ -85,26 +85,6 @@
   # if you're not going to work reliably, don't work at all.
   # boot.plymouth.enable = true;
 
-  systemd.services.t14-hibernate-pre = {
-    description = "T14s Gen4 Hibernate Tweak (pre)";
-    before = [ "hibernate.target" ];
-    wantedBy = [ "hibernate.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [ "/run/current-system/sw/sbin/rmmod ath11k_pci" ];
-    };
-  };
-
-  systemd.services.t14-hibernate-post = {
-    description = "T14s Gen4 Hibernate Tweak (post)";
-    after = [ "hibernate.target" ];
-    wantedBy = [ "hibernate.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [ "/run/current-system/sw/sbin/modprobe ath11k_pci" ];
-    };
-  };
-
   services.t14-micmuteled.enable = true;
 
   # NetworkManager pulls in ModemManager by default, but this machine has no

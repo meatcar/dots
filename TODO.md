@@ -21,7 +21,6 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [ ] `home-manager/modules/television/default.nix:26` — git-dirs channel `metadata.name = "zoxide"` shadows builtin.
 - [ ] `flake-modules/devshell.nix:36,41` — backticks in echo run `op`; `which` redirect order wrong.
 - [ ] `systems/watson/t14s-micmuteled.sh:24` — multi-line jq output compared to `"true"`; LED wrong on multi-route devices.
-- [ ] `systems/watson/default.nix:88` — `t14-hibernate-pre` should order against `systemd-hibernate.service`/`sleep.target`, not `hibernate.target`.
 - [ ] `home-manager/modules/jujutsu/default.nix:195` — `unmerged()` calls undefined `dev()`.
 - [ ] `home-manager/modules/niri/config.kdl:139-144` — J/K inverted for move-window/column-to-monitor.
 - [ ] `home-manager/modules/bat/default.nix:33`, `git/default.nix:138` — call `get-theme`; `common.nix:83` ships `get-theme-default`. Breaks `deck`.
