@@ -1,5 +1,19 @@
-_:
+{ config, pkgs, ... }:
+let
+  sleep-smoke = pkgs.writeShellApplication {
+    name = "sleep-smoke";
+    runtimeInputs = [
+      config.systemd.package
+      pkgs.coreutils
+      pkgs.gnugrep
+      pkgs.util-linux
+    ];
+    text = builtins.readFile ./sleep-smoke.sh;
+  };
+in
 {
+  environment.systemPackages = [ sleep-smoke ];
+
   # NOTE: hybrid-sleep writes an image on every sleep (~60s entry); 7.2.2-7.2.8 hung there.
   # Suspend at once, and write the image only after a delay on battery.
   services.logind.settings.Login = {
