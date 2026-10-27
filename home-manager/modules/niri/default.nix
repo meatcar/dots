@@ -121,6 +121,8 @@ in
   '';
   xdg.configFile."niri/extra-config.kdl".text = ''
     xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
+    // NOTE: Electron uses basic_text (plaintext) secret storage unless the desktop list names GNOME.
+    environment { XDG_CURRENT_DESKTOP "niri:GNOME"; }
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
     binds {
       Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "${lib.getExe ghostty}" "+new-window" "--working-directory=home"; }
