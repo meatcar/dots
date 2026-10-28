@@ -2,7 +2,6 @@
 {
   perSystem =
     {
-      system,
       pkgs,
       config,
       ...
@@ -20,7 +19,7 @@
           gnupg
           python3
           (pkgs.writeShellScriptBin "agenix" ''
-            exec ${inputs.agenix.packages.${system}.default}/bin/agenix \
+            exec ${pkgs.ragenix}/bin/agenix \
               -i ~/.config/age/id_ed25519 \
               "$@"
           '')
