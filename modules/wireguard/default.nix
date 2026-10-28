@@ -23,10 +23,10 @@
   # NOTE: key loads only at interface setup; new key needs a restart
   systemd.services.wireguard-wg0.restartTriggers = [ config.age.secrets.wireguard.file ];
 
-  # strict rpfilter drops wg0 replies; reverse route is the main table
+  # NOTE: strict rpfilter drops wg0 replies; their reverse route is in main
   networking.firewall.checkReversePath = "loose";
 
-  # keep nm (and gui shells driving it) from tearing the interface down
+  # NOTE: stops NetworkManager and GUI shells from removing wg0
   networking.networkmanager.unmanaged = [ "interface-name:wg0" ];
 
   # NOTE: peer can handshake but forward nothing; stock ping alerts detect it

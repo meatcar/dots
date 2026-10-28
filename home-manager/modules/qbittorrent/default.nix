@@ -5,7 +5,7 @@
   ...
 }:
 let
-  # tunnel addresses; must match the wg conf in the secret
+  # NOTE: must match modules/wireguard
   tunnelAddr = "10.2.0.2";
   tunnelGw = "10.2.0.1";
   dynip = pkgs.writeShellApplication {
@@ -21,7 +21,7 @@ let
   portfwd = pkgs.writeShellApplication {
     name = "qbittorrent-portfwd";
     runtimeInputs = with pkgs; [
-      libnatpmp # natpmpc
+      libnatpmp # NOTE: provides natpmpc
       curl
       gawk
       coreutils
@@ -46,11 +46,9 @@ in
 
   home.packages = [ pkgs.qbittorrent ];
 
-  # stop on metered connections, resume off them
   me.unmetered.suspend = [ "qbittorrent" ];
 
-  # gui as a service so companions can track its lifetime; started on
-  # demand by the desktop entry, not at login
+  # NOTE: service so companions bind to its lifetime; desktop entry starts it, not login
   systemd.user.services.qbittorrent = {
     Unit = {
       Description = "qBittorrent";
@@ -60,7 +58,6 @@ in
     Service.ExecStart = "${pkgs.qbittorrent}/bin/qbittorrent";
   };
 
-  # runs while qbittorrent runs, so the tunnel is live exactly then
   systemd.user.services.qbittorrent-portfwd = {
     Unit = {
       Description = "NAT-PMP port forwarding for qBittorrent";
@@ -76,7 +73,6 @@ in
     Install.WantedBy = [ "qbittorrent.service" ];
   };
 
-  # keeps the tracker pointed at whatever address the tunnel exits from
   systemd.user.services.qbittorrent-dynip = {
     Unit = {
       Description = "Dynamic IP registration for qBittorrent";
@@ -96,8 +92,7 @@ in
     Install.WantedBy = [ "qbittorrent.service" ];
   };
 
-  # shadow the package's desktop entry: launch via the service, keep
-  # magnet/.torrent associations
+  # NOTE: shadows package entry to launch via the service; keeps magnet/.torrent handlers
   xdg.desktopEntries."org.qbittorrent.qBittorrent" = {
     name = "qBittorrent";
     genericName = "BitTorrent client";
