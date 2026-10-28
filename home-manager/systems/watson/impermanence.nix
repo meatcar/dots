@@ -320,6 +320,9 @@
       ".config/net.imput.helium"
       ".config/net.imput.helium-alipes"
 
+      # books
+      ".config/calibre"
+
       # torrents
       ".config/qBittorrent"
       ".local/share/qBittorrent"
