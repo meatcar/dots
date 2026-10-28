@@ -22,6 +22,9 @@ in
   environment.systemPackages = [ egpu-undock ];
 
   boot.kernelParams = [
+    # keep the BIOS-authorized PCIe tunnel so the eGPU drives clamshell displays
+    # from initrd. A reset drops the link mid-probe; the oops leaves the iGPU unbound.
+    "thunderbolt.host_reset=0"
     # see https://docs.kernel.org/gpu/amdgpu/module-parameters.html
     # never runtime-power-down the eGPU; BACO wake over a TB tunnel hangs.
     "amdgpu.runpm=0"
