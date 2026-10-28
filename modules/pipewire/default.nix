@@ -25,7 +25,23 @@ in
     alsa.support32Bit = true;
     # jack.enable = true;
     wireplumber.extraScripts."bluetooth-fallback.lua" = builtins.readFile ./bluetooth-fallback.lua;
+    wireplumber.extraScripts."source-ranking.lua" = builtins.readFile ./source-ranking.lua;
     wireplumber.configPackages = [
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/20-source-ranking.conf" ''
+        wireplumber.components = [
+          {
+            name = source-ranking.lua
+            type = script/lua
+            provides = hooks.default-nodes.source-ranking
+            requires = [ metadata.default ]
+          }
+        ]
+        wireplumber.profiles = {
+          main = {
+            hooks.default-nodes.source-ranking = required
+          }
+        }
+      '')
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/20-bluetooth-fallback.conf" ''
         wireplumber.components = [
           {
@@ -35,8 +51,10 @@ in
             requires = [ metadata.default ]
           }
         ]
-        wireplumber.profiles.main = {
-          hooks.default-nodes.bluetooth-fallback = required
+        wireplumber.profiles = {
+          main = {
+            hooks.default-nodes.bluetooth-fallback = required
+          }
         }
       '')
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-bluez.conf" ''
