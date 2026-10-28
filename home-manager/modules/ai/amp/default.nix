@@ -110,6 +110,10 @@ in
         Service = {
           Type = "exec";
           WorkingDirectory = profile.runner.directory;
+          # NOTE: user units cannot order after the system network-online.target.
+          ExecStartPre = lib.mkIf osConfig.networking.networkmanager.enable "${pkgs.networkmanager}/bin/nm-online -q -t 60";
+          # NOTE: amp exits on SIGTERM, but some child processes outlive it.
+          TimeoutStopSec = 10;
           ExecStart = lib.escapeShellArgs (
             [
               (lib.getExe accounts.${name})
