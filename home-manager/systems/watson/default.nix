@@ -29,6 +29,7 @@ in
     ../../modules/activitywatch
     ../../modules/ghostty
     ../../modules/cliphist
+    ../../modules/flatpak
     # ../../modules/obsidian
     ../../modules/ai
     # ../../modules/paseo
