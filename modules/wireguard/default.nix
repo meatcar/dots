@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.2.0.2/32" ];
@@ -25,4 +25,11 @@
 
   # keep nm (and gui shells driving it) from tearing the interface down
   networking.networkmanager.unmanaged = [ "interface-name:wg0" ];
+
+  # NOTE: peer can handshake but forward nothing; stock ping alerts detect it
+  services.netdata.configDir."go.d/ping.conf" = ./egress-ping.conf;
+  # NOTE: raw ICMP; upstream installs set this on go.d.plugin with setcap
+  systemd.services.netdata.serviceConfig = lib.mkIf config.services.netdata.enable {
+    AmbientCapabilities = [ "CAP_NET_RAW" ];
+  };
 }
