@@ -69,6 +69,7 @@ in
       code-cursor
       slack
       calibre
+      onlyoffice-desktopeditors
       gimp
       inkscape
       loupe

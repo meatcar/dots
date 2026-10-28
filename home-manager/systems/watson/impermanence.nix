@@ -115,6 +115,8 @@
       ".cache/geocode-glib"
       ".cache/clipboard-indicator@tudmotu.com"
       ".config/BeeperTexts"
+      ".config/onlyoffice"
+      ".local/share/onlyoffice"
 
       # dms
       ".config/DankMaterialShell"
