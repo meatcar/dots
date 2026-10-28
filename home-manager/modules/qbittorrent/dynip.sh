@@ -6,10 +6,17 @@ set -euo pipefail
 conf=${DYNIP_CONF:?}
 addr=${TUNNEL_ADDR:?}
 jar=${DYNIP_JAR:?}
+rev=${DYNIP_REV:?}
 state=$XDG_RUNTIME_DIR/qbittorrent.dynip
 
 umask 077
 mkdir -p "$(dirname "$jar")"
+
+# NOTE: new secret is a new session; drop old cookie and ip. No record keeps the jar.
+if [ -f "$jar.rev" ] && [ "$(cat "$jar.rev")" != "$rev" ]; then
+  rm -f "$jar" "$state"
+fi
+printf '%s\n' "$rev" >"$jar.rev"
 
 # the tracker reissues the session cookie, so once seeded the jar is the
 # live session and the secret is only a bootstrap. sending both at once

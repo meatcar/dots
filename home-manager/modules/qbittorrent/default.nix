@@ -80,12 +80,16 @@ in
   systemd.user.services.qbittorrent-dynip = {
     Unit = {
       Description = "Dynamic IP registration for qBittorrent";
-      After = [ "qbittorrent.service" ];
+      After = [
+        "qbittorrent.service"
+        "agenix.service"
+      ];
       BindsTo = [ "qbittorrent.service" ];
+      X-Restart-Triggers = [ "${config.age.secrets.dynip.file}" ];
     };
     Service = {
       ExecStart = "${dynip}/bin/qbittorrent-dynip";
-      Environment = "DYNIP_CONF=${config.age.secrets.dynip.path} TUNNEL_ADDR=${tunnelAddr} DYNIP_JAR=${config.xdg.stateHome}/qbittorrent-dynip/cookies";
+      Environment = "DYNIP_CONF=${config.age.secrets.dynip.path} DYNIP_REV=${config.age.secrets.dynip.file} TUNNEL_ADDR=${tunnelAddr} DYNIP_JAR=${config.xdg.stateHome}/qbittorrent-dynip/cookies";
       Restart = "on-failure";
       RestartSec = 30;
     };

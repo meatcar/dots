@@ -20,6 +20,9 @@
     postShutdown = "ip -4 rule del priority 10000 from 10.2.0.2/32 table 51820";
   };
 
+  # NOTE: key loads only at interface setup; new key needs a restart
+  systemd.services.wireguard-wg0.restartTriggers = [ config.age.secrets.wireguard.file ];
+
   # strict rpfilter drops wg0 replies; reverse route is the main table
   networking.firewall.checkReversePath = "loose";
 
