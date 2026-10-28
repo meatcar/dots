@@ -36,6 +36,9 @@
     extraGroups = [ "video" ];
   };
   services.greetd.settings.default_session.user = "dms-greeter";
+  # NOTE: upstream Type=idle holds ExecStartPre and ExecStart ~6s each while
+  # boot jobs (NetworkManager-wait-online) run: a 12s greeter delay.
+  systemd.services.greetd.serviceConfig.Type = lib.mkForce "simple";
   hardware.graphics.enable = lib.mkDefault true;
   services.libinput.enable = lib.mkDefault true;
 
