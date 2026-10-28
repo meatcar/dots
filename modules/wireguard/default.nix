@@ -1,7 +1,7 @@
 { config, ... }:
 {
   networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.2.0.2/30" ];
+    ips = [ "10.2.0.2/32" ];
     mtu = 1420;
     privateKeyFile = config.age.secrets.wireguard.path;
     allowedIPsAsRoutes = false;
@@ -9,8 +9,8 @@
     peers = [
       {
         name = "proton";
-        publicKey = "FOE5x/2kGMZLC1snxv2ff4qOTYk/07WKmjARnVAyzE4=";
-        endpoint = "185.111.110.2:51820";
+        publicKey = "28hrybwV/NiiMXvl1ynBvDvEvs1m8ABUzyvkQ7+ST3I=";
+        endpoint = "146.70.198.34:51820";
         allowedIPs = [ "0.0.0.0/0" ];
         persistentKeepalive = 25;
       }
