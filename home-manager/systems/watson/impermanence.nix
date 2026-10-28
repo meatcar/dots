@@ -319,6 +319,7 @@
       ".cache/epiphany"
       ".local/share/epiphany"
       ".config/net.imput.helium"
+      ".config/net.imput.helium-alipes"
 
       # torrents
       ".config/qBittorrent"

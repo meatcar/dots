@@ -28,6 +28,7 @@ let
   browsers = [
     "zen-beta.desktop"
     "helium.desktop"
+    "helium-alipes.desktop"
     "chromium-browser.desktop"
     "vivaldi-stable.desktop"
     "microsoft-edge.desktop"
