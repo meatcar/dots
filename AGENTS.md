@@ -19,6 +19,9 @@ Nix Conventions:
 - Separate NixOS vs Home Manager concerns.
 - `specialArgs` only for values shared across modules.
 - Multi-line scripts in standalone files.
+- Package source: first one that is current enough, in order: stable nixpkgs, `nixpkgs-unstable`, existing flake input, own package in `pkgs/`. Desktop apps may use Flatpak or a Gear Lever AppImage instead of an own package.
+- Flatpaks: declare in `home-manager/modules/flatpak`.
+- New flake input: ask first, with alternatives. Candidates: the app maintainer's own flake, or one updated as often as `llm-agents`.
 - Strict impermanence: see `home-manager/systems/watson/impermanence.nix` and `modules/impermanence/default.nix` and its imports for paths that survive reboot.
 
 Shell Conventions:
