@@ -52,6 +52,10 @@ class CliTest(unittest.TestCase):
         ):
             cli.main(["check", "missing"], self.context, self.handlers)
 
+    def test_flatpak_updates_gearlever_before_gearlever_updates_appimages(self):
+        names = list(cli.discover_handlers())
+        self.assertLess(names.index("flatpak"), names.index("gearlever"))
+
 
 class CoreTest(unittest.TestCase):
     def test_replace_exact_is_atomic_and_requires_one_match(self):
