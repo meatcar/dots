@@ -50,7 +50,6 @@
       # ".config/monitors.xml"
       # ".config/mimeapps.list"
       ".clasprc.json" # for clasp gscript upload tool
-      ".config/apps.json" # for gearlever. Doesn't make a subdir.
       ".claude.json"
       # NOTE: recently-used.xbel and user-places.xbel don't survive single-file
       # persistence; handled by copyPaths and mkOutOfStoreSymlink above

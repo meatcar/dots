@@ -18,7 +18,7 @@ in
       config.programs._1password-gui.package
     ];
   };
-  environment.systemPackages = [ pkgs.gearlever ];
+  # NOTE: Gear Lever is a Flatpak (home-manager/modules/flatpak); nixpkgs lags upstream.
 
   systemd.user.services.fix-appimage-magic = {
     description = "Restore AppImage magic bytes zeroed by self-updaters";
