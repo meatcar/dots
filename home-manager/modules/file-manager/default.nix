@@ -135,8 +135,15 @@ in
           Icons.Theme = config.gtk.iconTheme.name;
         }
         // lib.optionalAttrs config.programs.ghostty.enable {
-          General.TerminalApplication = "ghostty";
+          # NOTE: plain `ghostty` hands off to the single instance without its
+          # cwd; `+new-window` forwards the cwd Dolphin sets.
+          General.TerminalApplication = "ghostty +new-window";
         };
+
+      # drop ghostty's own "Open Ghostty Here"; "Open Terminal Here" covers it
+      qt.kde.settings.kservicemenurc = lib.mkIf config.programs.ghostty.enable {
+        Show.RunGhosttyDir = false;
+      };
 
       # index only non-dotfile top-level dirs ($HOME/*/ skips .*); basic indexing
       # = mtime/metadata, no content extractor. baloofilerc is on tmpfs, rebuilt
