@@ -36,6 +36,7 @@
     ../../modules/steam
     ../../modules/vm
     ../../modules/agenix
+    ../../modules/nixbuild
     ../../modules/wireguard
     ../../modules/keyring.nix
     ../../modules/netdata

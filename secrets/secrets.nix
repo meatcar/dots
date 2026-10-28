@@ -32,6 +32,8 @@ in
   "userPassword.age".publicKeys = systems;
   # NOTE: WireGuard private key only; public configuration is in modules/wireguard.
   "wireguard.age".publicKeys = systems;
+  # nix-daemon SSH key for eu.nixbuild.net remote builds
+  "nixbuildKey.age".publicKeys = systems;
   # tracker dynamic-ip endpoint + session cookie, as a curl config
   "dynip.age".publicKeys = users;
 }
