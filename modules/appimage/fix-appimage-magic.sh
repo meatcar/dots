@@ -7,23 +7,33 @@ set -euo pipefail
 dir="${1:-$HOME/AppImages}"
 shopt -s nocaseglob nullglob
 
-for f in "$dir"/*.appimage; do
-  [ -f "$f" ] || continue
-  magic="$(od -An -t x1 -j 8 -N 3 "$f" | tr -d ' \n')"
-  case "$magic" in
-  414901 | 414902) ;; # already tagged
-  000000)
-    printf 'AI\002' | dd of="$f" bs=1 seek=8 count=3 conv=notrunc status=none
-    echo "restored AppImage magic: $f"
-    ;;
-  *)
-    echo "$f: unexpected bytes at offset 8 ($magic), leaving alone" >&2
-    continue
-    ;;
-  esac
+sweep() {
+  for f in "$dir"/*.appimage; do
+    [ -f "$f" ] || continue
+    magic="$(od -An -t x1 -j 8 -N 3 "$f" | tr -d ' \n')"
+    case "$magic" in
+    414901 | 414902) ;; # already tagged
+    000000)
+      printf 'AI\002' | dd of="$f" bs=1 seek=8 count=3 conv=notrunc status=none
+      echo "restored AppImage magic: $f"
+      ;;
+    *)
+      echo "$f: unexpected bytes at offset 8 ($magic), leaving alone" >&2
+      continue
+      ;;
+    esac
 
-  if [ ! -x "$f" ]; then
-    chmod u+x "$f"
-    echo "restored AppImage executable bit: $f"
-  fi
+    if [ ! -x "$f" ]; then
+      chmod u+x "$f"
+      echo "restored AppImage executable bit: $f"
+    fi
+  done
+}
+
+# NOTE: path unit drops events while this runs; resweep until dir is stable.
+while :; do
+  before="$(stat -c %y "$dir")"
+  sweep
+  sleep 1
+  [ "$before" = "$(stat -c %y "$dir")" ] && break
 done
