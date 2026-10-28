@@ -15,20 +15,24 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "forgemap";
-  version = "0.10.0";
+  version = "0.10.2";
 
   src = fetchFromGitHub {
     owner = "TitusKirch";
     repo = "forgemap";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-Ana8AGKCz9xExQPvqaPWGDeYxJ1Qt/3E73hcdK7eSHg=";
+    hash = "sha256-BAW1br4RsYNQrJ1+Alq6r9U+4ItvHbU1+ulbwScGV3g=";
+    # FIXME: lockfile from pnpm 12.11 writes self-link as `link:.`; older pnpm wants `link:`. Drop once nixpkgs pnpm >= 12.11
+    postFetch = ''
+      substituteInPlace $out/pnpm-lock.yaml --replace-fail "specifier: link:." "specifier: 'link:'"
+    '';
   };
 
   pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     inherit pnpm;
     fetcherVersion = 4;
-    hash = "sha256-hY6bnMjHzUrQvFIHbF3/5vIpCy9PIu5fQKon2gTuzCo=";
+    hash = "sha256-+jgo/YNjIBsZiXkDUH/xjFY6f1bPJal+DJDnEOq3R6M=";
   };
 
   nativeBuildInputs = [
