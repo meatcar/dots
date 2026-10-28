@@ -107,6 +107,7 @@ in
       ".venv"
       "__pycache__"
       ".pytest_cache"
+      ".amp/in"
 
       "/persist/var/lib/private/ollama/models"
       "/persist/var/lib/libvirt/images"
