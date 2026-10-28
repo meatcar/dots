@@ -12,7 +12,7 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [ ] `home-manager/modules/vscode/default.nix:11` — `.ssh/config` onChange chmods 400 after write; later regenerations fail, live config stale since 2025-02. ssh module never applied.
 - [ ] `systems/watson/default.nix:290` — password hash committed; wire `age.secrets.userPassword` to `hashedPasswordFile` instead.
 - [ ] `.github/workflows/flake-check.yml:32-37` — still runs `git-crypt unlock` (removed); ssh-agent socket not exported to later steps. CI never reaches `nix flake check`.
-- [ ] `home-manager/modules/fish/config.fish:48` — `set -U --append __done_exclude` in shellInit grows unboundedly per shell.
+- [ ] `home-manager/modules/fish/config.fish:46` — `set -U --append __done_exclude` in shellInit grows unboundedly per shell.
 - [ ] `home-manager/modules/niri/default.nix:15,22` — edit-screenshot: `writeScript` has no shebang (niri spawn ENOEXEC); satty gets basename without `$DIRECTORY`.
 - [ ] `home-manager/modules/niri/default.nix:114` — Mod+Shift+S mirror: `$output=` stray `$`, assignment never happens.
 - [ ] `home-manager/modules/direnv/default.nix:3` — `ENV_STORE="~/..."` literal tilde; env-store helpers can't resolve.
@@ -50,7 +50,6 @@ Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 - [ ] `modules/bluetooth/default.nix:21` — `pulseaudio-modules-bt` gone; landmine if pulseaudio enabled.
 - [ ] `modules/power/untune-hid.sh:3` — `^` anchor vs absolute paths, always empty.
 - [ ] `home-manager/modules/clojure` (`import`, wrong path), `email` (`../neomutt` missing), `emacs:77` (mangled vterm fish body), `opensnitch` (unmergeable unit override).
-- [ ] `systems/wsl-nixos/`, `home-manager/systems/wsl-*.nix` — `nix-ld-rs`, bad `gnome-keyring.nix` path, missing `overlays/`, EN DASH in `–ExecutionPolicy`, `get-theme` `2>&1`.
 - [ ] Unwired: `pkgs/showboat`, `home-manager/modules/voice/pocket-tts`, `home-manager/modules/opencode/pushover.js`, `secrets/git-crypt/hm-me.nix`, `niri/winswitch.py`, `gitu` merge-tool w/o package.
 - [ ] `allowUnfreePredicate` defs (`modules/netdata`, `modules/steam`, `home-manager/systems/watson/default.nix:93`) are dead under `allowUnfree = true` and clobber each other.
 

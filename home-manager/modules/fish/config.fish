@@ -1,5 +1,3 @@
-set IS_WSL (uname -a | grep -i microsoft)
-
 set fish_greeting # Disable fish greeting
 # fish struggles when Emacs sets TERM=dumb
 fish_vi_key_bindings >/dev/null 2>&1

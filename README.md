@@ -1,6 +1,6 @@
 # meatcar's dot files
 
-Supports Linux and WSL.
+Supports Linux.
 
 ## Requirements
 
