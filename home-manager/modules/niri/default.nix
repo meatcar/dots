@@ -11,17 +11,16 @@ let
       "${pkgs.kdePackages.dolphin}/bin/dolphin"
     else
       lib.getExe pkgs.nautilus;
-  edit-screenshot = pkgs.writeScript "editScreenshot" ''
-    DIRECTORY=~/Pictures/Screenshots
-    LATEST=$(ls -t "$DIRECTORY" | head -n 1)
-    EXTENSION="''${LATEST##*.}"
-    NAME="''${LATEST%.*}"
-    OUTPUT_FILE="$DIRECTORY/$NAME-edited-$(date +%Y-%m-%d_%H-%M-%S).$EXTENSION"
-    ${lib.getExe pkgs.satty} \
-      --file "$LATEST"  --output-filename "$OUTPUT_FILE" \
-      --early-exit \
-      "$@"
-  '';
+  annotate-screenshot = pkgs.writeShellApplication {
+    name = "annotate-screenshot";
+    runtimeInputs = with pkgs; [
+      coreutils
+      satty
+      libnotify
+      wl-clipboard
+    ];
+    text = builtins.readFile ./annotate-screenshot.sh;
+  };
   screen-record = pkgs.writeShellApplication {
     name = "screen-record";
     runtimeInputs = with pkgs; [
@@ -34,7 +33,7 @@ let
     text = builtins.readFile ./screen-record.sh;
   };
   # Keep the keybind and the label passed to the notification in sync.
-  recordKey = "Mod+Ctrl+Print";
+  recordKey = "Mod+Alt+Print";
 in
 {
   imports = [
@@ -52,8 +51,43 @@ in
       xwayland-satellite
     ])
     ++ [
+      annotate-screenshot
+      pkgs.satty
       screen-record
     ];
+  xdg.configFile."satty/config.toml".text = ''
+    [general]
+    early-exit = false
+    copy-command = "${pkgs.wl-clipboard}/bin/wl-copy --type image/png"
+  '';
+  xdg.dataFile."kio/servicemenus/annotate-screenshot.desktop" =
+    lib.mkIf (config.me.fileManager == "dolphin")
+      {
+        executable = true;
+        text = ''
+          [Desktop Entry]
+          Type=Service
+          MimeType=image/png;
+          Actions=annotate;
+          X-KDE-Priority=TopLevel
+          X-KDE-Protocols=file
+          X-KDE-RequiredNumberOfUrls=1
+
+          [Desktop Action annotate]
+          Name=Annotate screenshot
+          Icon=satty
+          Exec=${lib.getExe annotate-screenshot} %f
+        '';
+      };
+  xdg.dataFile."nautilus/scripts/Annotate screenshot" =
+    lib.mkIf (config.me.fileManager == "nautilus")
+      {
+        executable = true;
+        text = ''
+          #!${pkgs.runtimeShell}
+          exec ${lib.getExe annotate-screenshot} "$@"
+        '';
+      };
   # dbus.packages for the file manager lives in ../file-manager
   xdg.configFile."xdg-desktop-portal/niri-portals.conf".text = ''
     [preferred]
@@ -94,8 +128,8 @@ in
       Mod+Shift+Space repeat=false hotkey-overlay-title="1Password" { spawn "${lib.getExe config.programs._1password-gui.package}" "--quick-access" "--ozone-platform=wayland"; }
       Mod+E hotkey-overlay-title="Files" { spawn "${fmExe}"; }
       Mod+Shift+S repeat=false hotkey-overlay-title="Mirror screen" { spawn-sh "$output=$(niri msg --json focused-output | jq -r '.name') ${pkgs.wl-mirror}/bin/wl-mirror \"$output\""; }
-      Mod+Alt+Print hotkey-overlay-title="Edit screenshot" { spawn "${edit-screenshot}"; }
-      ${recordKey} repeat=false hotkey-overlay-title="Screen record" { spawn "${screen-record}/bin/screen-record" "-g" "-k" "${recordKey}"; }
+      Mod+Ctrl+Print repeat=false hotkey-overlay-title="Annotate latest screenshot" { spawn "${lib.getExe annotate-screenshot}"; }
+      ${recordKey} repeat=false hotkey-overlay-title="Screen record (start/stop)" { spawn "${screen-record}/bin/screen-record" "-g" "-k" "${recordKey}"; }
     }
   '';
 }
