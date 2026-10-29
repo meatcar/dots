@@ -1,6 +1,6 @@
-{:deps {refactor-nrepl/refactor-nrepl {:mvn/version "3.14.0"}
-        cider/cider-nrepl {:mvn/version "0.62.2"}
-        nrepl/nrepl {:mvn/version "1.7.0"}
+{:deps {refactor-nrepl/refactor-nrepl {:mvn/version "3.15.0"}
+        cider/cider-nrepl {:mvn/version "0.64.0"}
+        nrepl/nrepl {:mvn/version "1.8.0"}
         iced-nrepl/iced-nrepl {:mvn/version "1.2.1"}}
 
  :aliases
