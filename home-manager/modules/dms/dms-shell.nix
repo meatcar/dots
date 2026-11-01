@@ -1,9 +1,10 @@
 # UPSTREAM(dank-material-shell): local bug fixes; submit upstream.
 #
-# Patches upstream display-profile and khal startup bugs:
+# Patches upstream display-profile, khal startup, and app strip bugs:
 # - matchedProfile is only computed at startup and behind auto-select, so
 #   with auto-select off the `dms ipc` [matched] tag goes permanently stale
 # - khal availability stays false after a transient startup failure
+# - ApplicationStrip reads `name` of null toplevel screens and floods the log
 {
   pkgs,
   inputs,
@@ -25,6 +26,7 @@ pkgs.runCommand "dms-shell-patched"
     chmod -R u+w $out
     patch -p1 -d $out < ${./display-config-state.patch}
     patch -p1 -d $out < ${./calendar-khal-retry.patch}
+    patch -p1 -d $out < ${./application-strip-null-screen.patch}
     python3 ${./test-calendar-khal-retry.py} $out/share/quickshell/dms/Services/CalendarKhalBackend.qml
     # The bin/dms wrapper hardcodes the original store path for both the
     # .dms-wrapped binary and the -c QML directory.  Repoint them to $out
