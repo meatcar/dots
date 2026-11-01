@@ -1,0 +1,24 @@
+--- a/share/quickshell/dms/Services/DgopService.qml
++++ b/share/quickshell/dms/Services/DgopService.qml
+@@ -436,15 +436,18 @@
+         if (hasModule("memory") && data.memory) {
+             const mem = data.memory;
+             const totalKB = mem.total || 0;
+-            const availableKB = mem.available || 0;
++            // FIXME: kernel GPUReclaim can exceed MemTotal; dgop then counts page cache as used.
++            // see https://github.com/duxlabs-dev/dux-gop/issues/44
++            const gpuReclaimInvalid = (mem.available || 0) > totalKB;
++            const availableKB = gpuReclaimInvalid ? mem.available - (mem.gpuReclaim || 0) : (mem.available || 0);
+             const freeKB = mem.free || 0;
+-            const usedKB = mem.used !== undefined ? mem.used : (totalKB - availableKB);
++            const usedKB = gpuReclaimInvalid ? totalKB - freeKB - (mem.cached || 0) - (mem.sreclaimable || 0) - (mem.buffers || 0) + (mem.shared || 0) : mem.used !== undefined ? mem.used : (totalKB - availableKB);
+ 
+             totalMemoryMB = Math.round(totalKB / 1024);
+             availableMemoryMB = Math.round(availableKB / 1024);
+             freeMemoryMB = Math.round(freeKB / 1024);
+             usedMemoryMB = Math.round(usedKB / 1024);
+-            const rawMemUsage = mem.usedPercent !== undefined ? mem.usedPercent : (totalKB > 0 ? ((totalKB - availableKB) / totalKB) * 100 : 0);
++            const rawMemUsage = gpuReclaimInvalid ? (usedKB / totalKB) * 100 : mem.usedPercent !== undefined ? mem.usedPercent : (totalKB > 0 ? ((totalKB - availableKB) / totalKB) * 100 : 0);
+             memoryUsage = Math.round(rawMemUsage * 10) / 10;
+ 
+             totalMemoryKB = totalKB;
