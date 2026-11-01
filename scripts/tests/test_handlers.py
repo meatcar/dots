@@ -240,6 +240,42 @@ class HandlerCheckTest(unittest.TestCase):
             '  npmDepsHash = "sha256-old-dependencies";\n',
         )
 
+    def test_pipewire_control_center_updates_release_and_source_hash(self):
+        source = self.write(
+            "pkgs/pipewire-control-center/default.nix",
+            '  version = "1.2.3";\n'
+            "  src = fetchFromGitHub {\n"
+            '    tag = "v${finalAttrs.version}";\n'
+            '    hash = "sha256-old-source";\n'
+            "  };\n",
+        )
+        attribute = ".#legacyPackages.x86_64-linux.pipewire-control-center"
+
+        def latest_release(repo):
+            self.assertEqual(repo, "knightinfected/PipeWireController")
+            return {"tag_name": "v9.8.7"}
+
+        def run(*command, **kwargs):
+            self.assertEqual(command[2], f"{attribute}.src")
+            if kwargs.get("check") is False:
+                return subprocess.CompletedProcess(
+                    command, 1, "", "got: sha256-new-source\n"
+                )
+            return subprocess.CompletedProcess(command, 0, "", "")
+
+        context = types.SimpleNamespace(
+            root=self.root, latest_release=latest_release, run=run, verify=lambda: None
+        )
+        cli.main(["update", "pipewire-control-center"], context)
+        self.assertEqual(
+            source.read_text(),
+            '  version = "9.8.7";\n'
+            "  src = fetchFromGitHub {\n"
+            '    tag = "v${finalAttrs.version}";\n'
+            '    hash = "sha256-new-source";\n'
+            "  };\n",
+        )
+
     def test_forgemap_rejects_missing_source_hash(self):
         self.write(
             "pkgs/forgemap/default.nix",

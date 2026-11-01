@@ -157,6 +157,7 @@
             hrd = final.callPackage ./pkgs/hrd { };
             insta360-linux = final.callPackage ./pkgs/insta360-linux { };
             opensessions = final.callPackage ./pkgs/opensessions { };
+            pipewire-control-center = final.callPackage ./pkgs/pipewire-control-center { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
             weave-merge = final.callPackage ./pkgs/weave { };
