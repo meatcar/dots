@@ -1,16 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 let
+  # NOTE: 2.12+ fixes inverted prepare checks that break /api/v1/alarm_log on 2.10.
+  # see https://github.com/netdata/netdata/pull/23545
+  upstream = nixpkgs-unstable.netdata;
   netdata = pkgs.symlinkJoin {
-    name = "${pkgs.netdata.name}-with-ndsudo";
-    paths = [ pkgs.netdata ];
+    name = "${upstream.name}-with-ndsudo";
+    paths = [ upstream ];
     postBuild = ''
       mv "$out/libexec/netdata/plugins.d/ndsudo" "$out/libexec/netdata/plugins.d/ndsudo.org"
       ln -s /var/lib/netdata/ndsudo/ndsudo "$out/libexec/netdata/plugins.d/ndsudo"
     '';
-    passthru = pkgs.netdata.passthru // {
+    passthru = upstream.passthru // {
       withNdsudo = true;
     };
-    meta = pkgs.netdata.meta;
+    inherit (upstream) meta;
   };
 in
 {
