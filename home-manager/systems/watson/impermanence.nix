@@ -159,6 +159,10 @@
       # audio
       ".config/rncbc.org" # qpwgraph window/patchbay state
       ".local/state/wireplumber"
+      # pipewire-control-center state and the drop-in configs it writes
+      ".config/pipewire-controller"
+      ".config/pipewire"
+      ".config/wireplumber"
       ".config/spotifyd"
       ".cache/spotifyd" # NOTE: oauth creds, not regenerable cache -- don't demote
       ".config/spotify-player"
