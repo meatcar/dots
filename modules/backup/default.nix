@@ -7,6 +7,8 @@
 let
   backupName = "persist";
   maintenanceName = "${backupName}-maintenance";
+  timemachineCacheDir = "/var/cache/restic-timemachine";
+  timemachineSavedDir = "/var/lib/restic-timemachine";
   restic-job = pkgs.writeShellApplication {
     name = "restic-job";
     text = lib.replaceStrings [ "@backupNames@" ] [ backupName ] (builtins.readFile ./restic-job.sh);
@@ -55,18 +57,35 @@ in
     (pkgs.writeShellApplication {
       name = "restic-timemachine";
       runtimeInputs = with pkgs; [
+        bash
         coreutils
         delta
+        diffutils
+        findutils
+        fzf
+        gnused
         jq
         restic-job
       ];
-      text = builtins.readFile ./restic-timemachine.sh;
+      text =
+        lib.replaceStrings
+          [ "@backupNames@" "@cacheDir@" "@savedDir@" ]
+          [ backupName timemachineCacheDir timemachineSavedDir ]
+          (builtins.readFile ./restic-timemachine.sh);
     })
   ];
 
   environment.persistence."/persist".directories = [
     {
       directory = "/var/cache/restic-backups-${backupName}";
+      mode = "0700";
+    }
+    {
+      directory = timemachineCacheDir;
+      mode = "0700";
+    }
+    {
+      directory = timemachineSavedDir;
       mode = "0700";
     }
   ];
@@ -116,6 +135,7 @@ in
       "/persist/var/lib/libvirt/qemu/save"
       "/persist/var/lib/systemd/random-seed"
       "/persist/var/cache"
+      "/persist${timemachineSavedDir}"
     ];
     extraBackupArgs = [
       "--exclude-caches"
