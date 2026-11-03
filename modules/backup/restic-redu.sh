@@ -2,8 +2,8 @@
 set -euo pipefail
 
 if ((EUID != 0)); then
-	echo 'Run as root: sudo restic-redu [redu arguments...]' >&2
-	exit 1
+  echo 'Run as root: sudo restic-redu [redu arguments...]' >&2
+  exit 1
 fi
 
 set -a
