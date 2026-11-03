@@ -265,6 +265,7 @@ window-rule {
 window-rule {
     match app-id="opensnitch_ui"
     match app-id="ringboard-egui"
+    match app-id="^chrome-nngceckbapebfimnlniiiahkandclblb-" title="^Bitwarden$"
     open-floating true
     block-out-from "screen-capture"
 }
