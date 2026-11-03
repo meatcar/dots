@@ -7,6 +7,7 @@ let
     name = "${upstream.name}-with-ndsudo";
     paths = [ upstream ];
     postBuild = ''
+      ln -s godplugin "$out/libexec/netdata/plugins.d/go.d.plugin"
       mv "$out/libexec/netdata/plugins.d/ndsudo" "$out/libexec/netdata/plugins.d/ndsudo.org"
       ln -s /var/lib/netdata/ndsudo/ndsudo "$out/libexec/netdata/plugins.d/ndsudo"
     '';
