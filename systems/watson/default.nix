@@ -197,6 +197,10 @@
   services.openssh = {
     enable = true;
     openFirewall = false;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
 
   # NOTE: The mux owns the session socket; GCR keeps its service-local socket.
