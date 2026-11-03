@@ -59,6 +59,14 @@ class Context:
                 f"GitHub request failed for {path}: {error}"
             ) from error
 
+    def fetch_text(self, url):
+        request = urllib.request.Request(url, headers={"User-Agent": "dots-deps"})
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.read().decode()
+        except Exception as error:
+            raise DependencyError(f"request failed for {url}: {error}") from error
+
     def latest_release(self, repo, include_prereleases=False):
         releases = self.github(f"/repos/{repo}/releases?per_page=30")
         for release in releases:

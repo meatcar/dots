@@ -276,6 +276,50 @@ class HandlerCheckTest(unittest.TestCase):
             "  };\n",
         )
 
+    def test_amp_desktop_takes_its_version_from_the_apt_index(self):
+        source = self.write(
+            "pkgs/amp-desktop/default.nix",
+            '  version = "0.1.1";\n'
+            "  src = fetchurl {\n"
+            '    url = "https://static.ampcode.com/linux/${finalAttrs.version}/x.deb";\n'
+            '    hash = "sha256-old-source";\n'
+            "  };\n",
+        )
+        index = (
+            "Package: amp-desktop-beta\n"
+            "Version: 0.2.0\n"
+            "\n"
+            "Package: amp-desktop\n"
+            "Architecture: amd64\n"
+            "Version: 0.1.2\n"
+            "SHA256: 00\n"
+        )
+        attribute = ".#legacyPackages.x86_64-linux.amp-desktop"
+
+        def run(*command, **kwargs):
+            self.assertEqual(command[2], f"{attribute}.src")
+            if kwargs.get("check") is False:
+                return subprocess.CompletedProcess(
+                    command, 1, "", "got: sha256-new-source\n"
+                )
+            return subprocess.CompletedProcess(command, 0, "", "")
+
+        context = types.SimpleNamespace(
+            root=self.root,
+            fetch_text=lambda url: index,
+            run=run,
+            verify=lambda: None,
+        )
+        cli.main(["update", "amp-desktop"], context)
+        self.assertEqual(
+            source.read_text(),
+            '  version = "0.1.2";\n'
+            "  src = fetchurl {\n"
+            '    url = "https://static.ampcode.com/linux/${finalAttrs.version}/x.deb";\n'
+            '    hash = "sha256-new-source";\n'
+            "  };\n",
+        )
+
     def test_forgemap_rejects_missing_source_hash(self):
         self.write(
             "pkgs/forgemap/default.nix",
