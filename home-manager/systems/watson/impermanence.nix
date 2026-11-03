@@ -75,9 +75,19 @@
         directory = ".agentsview";
         mode = "0700";
       }
+      ".config/aw-timeline"
       ".local/share/aw-timeline"
       {
         directory = ".local/state/aw-timeline";
+        mode = "0700";
+      }
+      {
+        directory = ".cache/aw-timeline";
+        mode = "0700";
+      }
+      {
+        # Amp thread exports agentsview indexes; refetching all is slow
+        directory = ".cache/amp-agentsview";
         mode = "0700";
       }
       {
