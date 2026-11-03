@@ -7,7 +7,6 @@
 {
   home.packages = [
     inputs.figma-linux-next.packages.${pkgs.stdenv.hostPlatform.system}.default
-    pkgs.figma-console-mcp
   ];
 
   # Serve local fonts to figma.com. Units mirror upstream's install.sh:

@@ -151,7 +151,6 @@
         overlays = [
           (import ./overlays/bun-cve-2026-111497.nix)
           (final: _prev: {
-            figma-console-mcp = final.callPackage ./pkgs/figma-console-mcp { };
             amp-desktop = final.callPackage ./pkgs/amp-desktop { };
             forgemap = final.callPackage ./pkgs/forgemap { };
             helium = final.callPackage ./pkgs/helium { };
