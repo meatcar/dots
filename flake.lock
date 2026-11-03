@@ -51,11 +51,11 @@
     "amp-completions": {
       "flake": false,
       "locked": {
-        "lastModified": 1792494516,
-        "narHash": "sha256-1SV/Ra+JIW1rxGIFxf6cBVe41TCGo3BYU4G5bjj/g3Y=",
+        "lastModified": 1793510483,
+        "narHash": "sha256-tqGAKdTh1i9i9KpV7l4LgmW74RYomQEIH8Cru+h13QY=",
         "owner": "meatcar",
         "repo": "amp-completions",
-        "rev": "f1cbef61eaab96bfbc8fcb790c5624990b01935c",
+        "rev": "1c78bb2de8415b129f95c1b0f8c12e5009c42170",
         "type": "github"
       },
       "original": {
