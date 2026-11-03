@@ -1,15 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = [
-    (pkgs.writeShellApplication {
-      name = "audio-record";
-      runtimeInputs = with pkgs; [
-        pipewire # pw-record
-        ffmpeg
-        coreutils # date, mktemp, mv, rm
-        libnotify # notify-send
+    (pkgs.writers.writePython3Bin "audio-record" {
+      flakeIgnore = [
+        "E501" # ruff-format line length
+        "W503"
       ];
-      text = builtins.readFile ./record.sh;
-    })
+      makeWrapperArgs = [
+        "--prefix"
+        "PATH"
+        ":"
+        (lib.makeBinPath [
+          pkgs.pipewire # pw-record
+          pkgs.ffmpeg
+          pkgs.libnotify # notify-send
+        ])
+      ];
+    } (builtins.readFile ./audio_record.py))
   ];
 }

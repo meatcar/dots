@@ -199,6 +199,7 @@
 
           legacyPackages = pkgs;
           checks.amp-accounts = pkgs.callPackage ./home-manager/modules/ai/amp/tests.nix { };
+          checks.audio-record = pkgs.callPackage ./home-manager/modules/audio-record/tests.nix { };
         };
 
       flake = {
