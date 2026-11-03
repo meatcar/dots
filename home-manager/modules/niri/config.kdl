@@ -186,6 +186,7 @@ window-rule {
 }
 window-rule {
     match app-id="^helium-alipes$"
+    exclude title="^Meet - "
     open-on-workspace "work"
 }
 window-rule {
@@ -224,11 +225,10 @@ window-rule {
 
 // Meet
 window-rule {
-    match title=r#"^Meet - \w+-\w+-\w+$"# // not ending in browser name
-    default-column-width { proportion 0.250000; }
-    default-window-height { proportion 0.250000; }
+    match title="^Meet - "
+    exclude title=" - Helium$"
     open-floating true
-    default-floating-position relative-to="top-left" x=0 y=0
+    default-floating-position relative-to="top" x=0 y=0
 }
 
 // Notifications
