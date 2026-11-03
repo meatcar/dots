@@ -189,6 +189,14 @@ window-rule {
     open-on-workspace "work"
 }
 window-rule {
+    match app-id="^amp-desktop-personal$"
+    open-on-workspace "me"
+}
+window-rule {
+    match app-id="^amp-desktop-work$"
+    open-on-workspace "work"
+}
+window-rule {
     match is-window-cast-target=true
     border {
         width 4
