@@ -40,6 +40,8 @@ let
   ) profiles;
 in
 {
+  imports = [ ./desktop.nix ];
+
   options.me.amp.profiles = lib.mkOption {
     default = { };
     description = "Isolated Amp profiles and optional background runners.";

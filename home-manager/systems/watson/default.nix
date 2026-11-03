@@ -60,6 +60,22 @@ in
   # systems/watson/default.nix.
   me.fileManager = "dolphin";
 
+  # NOTE: tints match the Helium profiles in ../../modules/mime-apps/browser-actions.nix.
+  me.amp.desktop.enable = true;
+  me.amp.profiles.personal.desktop.tint = [
+    "-channel"
+    "RGB"
+    "-fill"
+    "#985bd3"
+    "-colorize"
+    "28"
+    "+channel"
+  ];
+  me.amp.profiles.work.desktop.tint = [
+    "-modulate"
+    "70,60,44"
+  ];
+
   programs._1password.package = osConfig.programs._1password.package;
   programs._1password-gui.package = osConfig.programs._1password-gui.package;
 
