@@ -17,7 +17,7 @@
     ];
 
     postSetup = builtins.readFile ./up.sh;
-    postShutdown = "ip -4 rule del priority 10000 from 10.2.0.2/32 table 51820";
+    postShutdown = "ip -4 rule del priority 90 from 10.2.0.2/32 table 51820";
   };
 
   # NOTE: key loads only at interface setup; new key needs a restart
