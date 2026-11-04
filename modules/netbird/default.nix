@@ -3,6 +3,7 @@
 let
   cfg = config.services.netbird;
   client = {
+    hardened = true;
     openInternalFirewall = false;
     # NOTE: Leave DNS and subnet/exit routing to Tailscale and wg0.
     # Both daemons would also share one routing table and fwmark.
