@@ -1,14 +1,15 @@
 # Work and personal NetBird networks, up at the same time.
+# DNS: each daemon sets match domains on its own resolved link, next to tailscale0.
 { config, lib, ... }:
 let
   cfg = config.services.netbird;
   client = {
     hardened = true;
     openInternalFirewall = false;
-    # NOTE: Leave DNS and subnet/exit routing to Tailscale and wg0.
-    # Both daemons would also share one routing table and fwmark.
+    # NOTE: Routes stay off: both daemons share one routing table and fwmark.
+    # NOTE: config.d merges into config.json; a removed key keeps its old value.
     config = {
-      DisableDNS = true;
+      DisableDNS = false;
       DisableClientRoutes = true;
       DisableServerRoutes = true;
     };
@@ -31,6 +32,14 @@ in
       };
     };
   };
+
+  # NOTE: resolved queries port 53 only. Without this, hardened DNS needs XDP on lo.
+  systemd.services = lib.mapAttrs' (
+    _: c:
+    lib.nameValuePair c.service.name {
+      serviceConfig.AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
+    }
+  ) cfg.clients;
 
   users.users.meatcar.extraGroups = lib.mapAttrsToList (_: c: c.user.group) (
     lib.filterAttrs (_: c: c.hardened) cfg.clients
