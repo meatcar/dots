@@ -39,6 +39,7 @@
     ../../modules/agenix
     ../../modules/nixbuild
     ../../modules/wireguard
+    ../../modules/netbird
     ../../modules/keyring.nix
     ../../modules/netdata
     ../../modules/ollama
@@ -123,9 +124,6 @@
     tcpdump
     wireshark-cli
 
-    # NOTE: Include completions without replacing the service's CLI wrapper.
-    (lib.lowPrio config.services.netbird.package)
-
     # nixpkgs wrapper omits glib-networking → TLS unavailable, Chromecast crashes.
     (gnome-network-displays.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [ glib-networking ];
@@ -194,20 +192,6 @@
     enable = true;
     # FIX: for https://github.com/NixOS/nixpkgs/issues/438765
     package = nixpkgs-unstable.tailscale;
-  };
-
-  services.netbird = {
-    enable = true;
-    clients.default = {
-      port = 51821;
-      openInternalFirewall = false;
-      # NOTE: Leave DNS and subnet/exit routing to Tailscale and wg0.
-      config = {
-        DisableDNS = true;
-        DisableClientRoutes = true;
-        DisableServerRoutes = true;
-      };
-    };
   };
 
   services.openssh = {
