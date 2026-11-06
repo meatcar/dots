@@ -30,7 +30,7 @@ in
     description = "Isolated Amp profiles and optional background runners.";
     type = lib.types.attrsOf (
       lib.types.submodule (
-        { name, config, ... }:
+        { name, ... }:
         {
           options = {
             alias = lib.mkOption {
