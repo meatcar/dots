@@ -1,10 +1,22 @@
 {
+  config,
   pkgs,
   lib,
   nixpkgs-unstable,
   inputs,
   ...
 }:
+let
+  open-pr = pkgs.writeShellApplication {
+    name = "jjui-open-pr";
+    runtimeInputs = [
+      config.programs.gh.package
+      pkgs.util-linux # setsid
+      pkgs.xdg-utils
+    ];
+    text = builtins.readFile ./jjui-open-pr.sh;
+  };
+in
 {
   home.packages = [
     (pkgs.writeShellScriptBin "jjui" ''
@@ -91,6 +103,40 @@
           end
         '';
       }
+      {
+        name = "open-pr";
+        desc = "open PR for bookmark in browser";
+        lua = ''
+          local change_id = context.change_id()
+          if not change_id then
+            return
+          end
+          local out, err = jj("log", "--no-graph", "--color", "never", "-r", change_id,
+            "-T", 'bookmarks.map(|b| b.name()).join(" ")')
+          if err then
+            flash({ text = err, error = true })
+            return
+          end
+          local names, seen = {}, {}
+          for name in out:gmatch("%S+") do
+            if not seen[name] then
+              seen[name] = true
+              table.insert(names, name)
+            end
+          end
+          if #names == 0 then
+            flash({ text = "no bookmark on revision", error = true })
+            return
+          end
+          local bookmark = names[1]
+          if #names > 1 then
+            bookmark = choose({ options = names, title = "open PR for" })
+          end
+          if bookmark then
+            jj_async("util", "exec", "--", "${lib.getExe open-pr}", bookmark)
+          end
+        '';
+      }
     ];
     bindings = [
       {
@@ -104,6 +150,12 @@
         key = "d";
         scope = "revisions.details";
         desc = "diff in hunk";
+      }
+      {
+        action = "open-pr";
+        key = "shift+o";
+        scope = "revisions";
+        desc = "open PR";
       }
     ];
   };
