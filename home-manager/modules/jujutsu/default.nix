@@ -6,6 +6,13 @@
   nixpkgs-unstable,
   ...
 }:
+let
+  # TODO: drop once oyui flake adds oniguruma to buildInputs (cargoSetupHook forces system libonig).
+  # see https://github.com/NixOS/nixpkgs/commit/44cddf92c432
+  oyui = inputs.oyui.packages.${pkgs.stdenv.hostPlatform.system}.oyui.overrideAttrs (old: {
+    buildInputs = (old.buildInputs or [ ]) ++ [ nixpkgs-unstable.oniguruma ];
+  });
+in
 {
   imports = [ ./jjui.nix ];
   home.packages =
@@ -16,7 +23,7 @@
       watchman
       meld
     ])
-    ++ [ inputs.oyui.packages.${pkgs.stdenv.hostPlatform.system}.oyui ];
+    ++ [ oyui ];
   programs.jujutsu =
     let
       delta = "${lib.getExe config.programs.delta.package}";
@@ -283,7 +290,7 @@
             lazygit = nativeWrapper "lazygit --screen-mode half";
             gitu = nativeWrapper "gitu";
             oyui = {
-              program = lib.getExe' inputs.oyui.packages.${pkgs.stdenv.hostPlatform.system}.oyui "oyui";
+              program = lib.getExe' oyui "oyui";
               edit-args = [
                 "diff"
                 "$left"
