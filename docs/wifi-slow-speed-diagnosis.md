@@ -64,7 +64,7 @@ the WCN6855 (2x2, MCS 0–15) cannot satisfy.
 - "RX MCS 0–76" is from the **HT Capabilities IE** — it's what the AP can
   _receive_, not what it requires of clients. The Basic MCS Set lives in a
   _different_ IE (HT Operation, 16-byte `basic_set` field) which `iw scan
-dump` does not print and which we could not capture without monitor mode
+  dump` does not print and which we could not capture without monitor mode
   (broken on WCN6855: `Operation not supported -95`).
 - The "disabling HT → fall back to legacy" cascade described above is wrong
   in mechanism: each protocol layer (HT/VHT/HE/EHT) has its own independent
