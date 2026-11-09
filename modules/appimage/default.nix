@@ -20,7 +20,17 @@ in
       config.programs._1password-gui.package
     ];
   };
-  environment.systemPackages = [ nixpkgs-unstable.gearlever ];
+  environment.systemPackages = with nixpkgs-unstable; [
+    # TODO: drop once nixpkgs dwarfs passes dwarfsextract_format_test again.
+    # see https://github.com/NixOS/nixpkgs/issues/585413
+    (gearlever.override {
+      dwarfs = dwarfs.overrideAttrs (old: {
+        env = old.env // {
+          GTEST_FILTER = old.env.GTEST_FILTER + ":dwarfs/dwarfsextract_format_test.basic/*";
+        };
+      });
+    })
+  ];
 
   systemd.user.services.fix-appimage-magic = {
     description = "Restore AppImage magic bytes zeroed by self-updaters";
