@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
-  # sudo (the setuid wrapper) and niri (must match the running compositor) come
-  # from the system PATH; only the plain CLI tools are pinned here.
+  # sudo (the setuid wrapper), systemctl (must match the running systemd) and
+  # niri (must match the running compositor) come from the system PATH; only
+  # the plain CLI tools are pinned here.
   egpu-undock = pkgs.writeShellApplication {
     name = "egpu-undock";
     runtimeInputs = [

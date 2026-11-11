@@ -54,5 +54,16 @@ else
   echo "egpu-undock: niri IPC unavailable; removing without graceful teardown" >&2
 fi
 
-echo "egpu-undock: removing $bdf" >&2
-echo 1 | sudo tee "$gpu/remove" >/dev/null
+# NOTE: wireplumber holds the eGPU's HDMI audio card open. Removing the card then
+# blocks in snd_card_free() under the PCI rescan lock and wedges all PCI hotplug
+# until reboot. Keep it stopped until every function of the slot is gone.
+if systemctl --user is-active --quiet wireplumber; then
+  systemctl --user stop wireplumber
+  trap 'systemctl --user start wireplumber' EXIT
+fi
+
+# Remove every function of the slot: GPU (.0) first, then HDMI audio (.1).
+for dev in /sys/bus/pci/devices/"${bdf%.*}".*; do
+  echo "egpu-undock: removing ${dev##*/}" >&2
+  echo 1 | sudo tee "$dev/remove" >/dev/null
+done
