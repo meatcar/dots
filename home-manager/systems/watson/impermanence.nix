@@ -297,6 +297,16 @@
         mode = "0700";
       }
 
+      # bitwarden: rbw device id and encrypted vault copy
+      {
+        directory = ".local/share/rbw";
+        mode = "0700";
+      }
+      {
+        directory = ".cache/rbw";
+        mode = "0700";
+      }
+
       # flatpak / appimage
       {
         directory = ".local/share/flatpak";
