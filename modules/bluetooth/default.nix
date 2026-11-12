@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [ ./airpods.nix ];
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
