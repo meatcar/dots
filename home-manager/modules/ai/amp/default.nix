@@ -101,6 +101,9 @@ in
       amp = "amp-p";
     };
 
+    # NOTE: lets Nix fetch private flake inputs hosted on Amp, such as bw-broker.
+    programs.git.settings.credential."https://ampcode.com/".helper = "!amp git-credential-helper";
+
     home.packages = builtins.attrValues wrappers;
     systemd.user.services = lib.mapAttrs' (
       name: profile:
