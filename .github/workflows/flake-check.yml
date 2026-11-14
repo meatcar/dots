@@ -27,9 +27,5 @@ jobs:
       - name: build shell
         run: nix develop --accept-flake-config --command true
 
-      - name: load ssh key for agenix
-        run: |
-          eval "$(nix develop --command ssh-agent -s)"
-          nix develop --command ssh-add - <<< '${{ secrets.SSH_KEY }}'
       - name: Run flake check
         run: nix flake check --accept-flake-config
