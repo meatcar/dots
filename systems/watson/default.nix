@@ -254,6 +254,8 @@
   xdg.portal.extraPortals = lib.mkIf (config.home-manager.users.meatcar.me.fileManager == "dolphin") [
     pkgs.kdePackages.xdg-desktop-portal-kde
   ];
+  # NOTE: xdg-utils reads XDG_CURRENT_DESKTOP=niri:GNOME as generic and waits for the handler (Junction) to exit.
+  xdg.portal.xdgOpenUsePortal = true;
   # programs.hyprland.enable = true;
   # we manage this in HM
   systemd.user.services.niri-flake-polkit.enable = false;
