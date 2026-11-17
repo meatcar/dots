@@ -96,10 +96,6 @@
     };
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix"; # no inputs to follow
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.8.0"; # no inputs to follow
-    paseo = {
-      url = "github:getpaseo/paseo";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     awtrix-pipewire-on-air.url = "github:meatcar/awtrix-pipewire-on-air";
 
     plug-kak = {

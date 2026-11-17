@@ -12,6 +12,5 @@
     mode = "0400";
   };
   age.secrets.nixConfAccessTokens.file = ./nixConfAccessTokens.age;
-  age.secrets.paseoEnv.file = ./paseoEnv.age;
   age.secrets.dynip.file = ./dynip.age;
 }

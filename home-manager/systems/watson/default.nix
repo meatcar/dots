@@ -32,7 +32,6 @@ in
     ../../modules/flatpak
     # ../../modules/obsidian
     ../../modules/ai
-    # ../../modules/paseo
     ../../modules/vscode
     ../../modules/zed
     ../../modules/jira

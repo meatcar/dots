@@ -265,7 +265,6 @@
       ".local/share/com.pais.handy"
       ".cache/handy"
       ".happy"
-      ".paseo"
       ".cache/huggingface"
       ".agents"
       ".codex"

@@ -13,7 +13,6 @@ from depslib import cli
 from depslib.handlers import (
     amp_completions,
     opensessions,
-    paseo,
     swaync_theme,
 )
 from depslib.core import DependencyError
@@ -67,13 +66,6 @@ class HandlerCheckTest(unittest.TestCase):
             '      hash = "sha256-binary";\n',
         )
         opensessions.check(types.SimpleNamespace(root=self.root))
-
-    def test_paseo_requires_an_npm_hash(self):
-        self.write(
-            "home-manager/modules/paseo/default.nix",
-            '      npmDepsHash = "sha256-dependencies";\n',
-        )
-        paseo.check(types.SimpleNamespace(root=self.root))
 
     def assert_package_update(self, name, repository, dependency_attribute, dependency):
         source = self.write(

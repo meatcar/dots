@@ -1212,26 +1212,6 @@
         "type": "github"
       }
     },
-    "paseo": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792555942,
-        "narHash": "sha256-Zjafk+d7Xeo35PL9OD3ljDyeCugUKrdbqo3QC2l+kY0=",
-        "owner": "getpaseo",
-        "repo": "paseo",
-        "rev": "9bce7dbd25a2b0c700ca83130e597b9c44bbd1dd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getpaseo",
-        "repo": "paseo",
-        "type": "github"
-      }
-    },
     "plug-kak": {
       "flake": false,
       "locked": {
@@ -1314,7 +1294,6 @@
         "nixpkgs": "nixpkgs_7",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oyui": "oyui",
-        "paseo": "paseo",
         "plug-kak": "plug-kak",
         "quadlet-nix": "quadlet-nix",
         "rust-overlay": "rust-overlay_3",
