@@ -42,6 +42,7 @@ class Request:
     limit: int | None
     limit_text: str
     slug: str
+    transcribe: bool = False
 
 
 class Stop(Exception):
@@ -112,6 +113,12 @@ def parse_request(argv: list[str]) -> Request:
         "-d", "--duration", type=duration_arg, help="stop after this long, e.g. 1h"
     )
     parser.add_argument("-l", "--label", help="appended to the filename")
+    parser.add_argument(
+        "-t",
+        "--transcribe",
+        action="store_true",
+        help="also write a speaker-labelled .txt transcript (parakeet-transcribe)",
+    )
     parser.add_argument("words", nargs="*", help="free text: duration and label")
     args = parser.parse_intermixed_args(argv)
 
@@ -131,7 +138,9 @@ def parse_request(argv: list[str]) -> Request:
             parser.error(str(error))
 
     limit_text = " ".join(duration_words)
-    return Request(parse_duration(limit_text), limit_text, slugify(label))
+    return Request(
+        parse_duration(limit_text), limit_text, slugify(label), args.transcribe
+    )
 
 
 def notify(title: str, body: str) -> None:
@@ -273,7 +282,31 @@ def main(argv: list[str]) -> int:
     shutil.rmtree(workdir)
     print(f"Saved: {out}")
     notify("Recording saved", str(out))
-    return 0
+    return transcribe(out) if request.transcribe else 0
+
+
+def transcribe(audio: Path) -> int:
+    transcript = audio.with_suffix(".txt")
+    print("Transcribing… Ctrl-C to skip; the recording is kept.", flush=True)
+    signal.signal(signal.SIGINT, signal.default_int_handler)
+    signal.signal(signal.SIGTERM, signal.SIG_DFL)
+    try:
+        subprocess.run(
+            ["parakeet-transcribe", str(audio), "-o", str(transcript)], check=True
+        )
+    except OSError:
+        reason = "parakeet-transcribe is not installed"
+    except subprocess.CalledProcessError:
+        reason = "parakeet-transcribe failed"
+    except KeyboardInterrupt:
+        reason = "interrupted"
+    else:
+        print(f"Transcript: {transcript}")
+        notify("Transcript saved", str(transcript))
+        return 0
+    print(f"No transcript ({reason}); recording kept: {audio}", file=sys.stderr)
+    notify("Transcription failed", f"{reason}; recording kept")
+    return 1
 
 
 if __name__ == "__main__":

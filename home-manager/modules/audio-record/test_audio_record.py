@@ -18,6 +18,11 @@ from audio_record import Request, parse_request
 SCRIPT = Path(__file__).with_name("audio_record.py")
 RATE = 48000
 
+FAKE_TRANSCRIBE = """#!/bin/sh
+[ "$FAKE_TRANSCRIBE" = fail ] && exit 1
+[ "$2" = -o ] && printf 'SPEAKER_00 [00:00]: hi\\n' > "$3"
+"""
+
 FAKE_PW_RECORD = f"""#!{sys.executable}
 import os, signal, sys, time, wave
 if os.environ.get("FAKE_PW") == "die":
@@ -69,6 +74,10 @@ class ParseRequestTest(unittest.TestCase):
             parse_request(["-l", "Q3 5m review", "1h", "30m"]),
             Request(5400, "1h 30m", "q3-5m-review"),
         )
+        self.assertEqual(
+            parse_request(["standup", "-t", "1h"]),
+            Request(3600, "1h", "standup", transcribe=True),
+        )
 
     def test_rejects_mistyped_durations(self):
         for argv in (
@@ -94,6 +103,7 @@ class RecordingTest(unittest.TestCase):
         bin_dir.mkdir()
         (bin_dir / "pw-record").write_text(FAKE_PW_RECORD)
         (bin_dir / "notify-send").write_text("#!/bin/sh\n")
+        (bin_dir / "parakeet-transcribe").write_text(FAKE_TRANSCRIBE)
         for tool in bin_dir.iterdir():
             tool.chmod(0o755)
         mic, system = self.root / "mic-src.wav", self.root / "system-src.wav"
@@ -146,6 +156,22 @@ class RecordingTest(unittest.TestCase):
         [saved] = os.listdir(self.out)
         self.assertTrue(saved.endswith("-standup.opus"), saved)
         self.assertAlmostEqual(self.saved_duration(saved), 1.0, delta=0.15)
+
+    def test_transcribe_writes_transcript_next_to_recording(self):
+        proc = self.start("1s", "-t", "sync")
+        output, _ = proc.communicate(timeout=30)
+        self.assertEqual(proc.returncode, 0, output)
+        [opus] = self.out.glob("*-sync.opus")
+        self.assertEqual(
+            opus.with_suffix(".txt").read_text(), "SPEAKER_00 [00:00]: hi\n"
+        )
+
+    def test_failed_transcription_keeps_recording(self):
+        proc = self.start("1s", "-t", FAKE_TRANSCRIBE="fail")
+        output, _ = proc.communicate(timeout=30)
+        self.assertEqual(proc.returncode, 1)
+        self.assertIn("recording kept", output)
+        self.assertEqual([p.suffix for p in self.out.iterdir()], [".opus"])
 
     def test_sigterm_saves_unlimited_recording(self):
         proc = self.start()
