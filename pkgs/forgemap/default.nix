@@ -15,13 +15,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "forgemap";
-  version = "0.10.2";
+  version = "0.11.0";
 
   src = fetchFromGitHub {
     owner = "TitusKirch";
     repo = "forgemap";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-BAW1br4RsYNQrJ1+Alq6r9U+4ItvHbU1+ulbwScGV3g=";
+    hash = "sha256-5mEPGFxJ/mEXxG5Nbe7uYCbaCuWLD8/xJJVpufSL/Qw=";
     # FIXME: lockfile from pnpm 12.11 writes self-link as `link:.`; older pnpm wants `link:`. Drop once nixpkgs pnpm >= 12.11
     postFetch = ''
       substituteInPlace $out/pnpm-lock.yaml --replace-fail "specifier: link:." "specifier: 'link:'"

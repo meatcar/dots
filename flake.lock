@@ -51,11 +51,11 @@
     "amp-completions": {
       "flake": false,
       "locked": {
-        "lastModified": 1793510483,
-        "narHash": "sha256-tqGAKdTh1i9i9KpV7l4LgmW74RYomQEIH8Cru+h13QY=",
+        "lastModified": 1794893011,
+        "narHash": "sha256-PjrgsFDScYVTe0I3Hj8ygxC5cUvFfDpGfX6B2jU+yPI=",
         "owner": "meatcar",
         "repo": "amp-completions",
-        "rev": "1c78bb2de8415b129f95c1b0f8c12e5009c42170",
+        "rev": "b6d3cac6808d3310e9a35fd610f8b1cfbe1abde5",
         "type": "github"
       },
       "original": {
@@ -230,13 +230,13 @@
     "catppuccin-swaync": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-PLckTUZEEYe8NTAkk/0KxPHodZ1xzO5Qy9uFoyeQX00=",
+        "narHash": "sha256-m7XPZBUamnqgVFZrNxQt9GmAti8GwpW81iwiXpYDXFw=",
         "type": "file",
-        "url": "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css"
+        "url": "https://github.com/catppuccin/swaync/releases/download/v1.0.1/catppuccin-mocha.css"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css"
+        "url": "https://github.com/catppuccin/swaync/releases/download/v1.0.1/catppuccin-mocha.css"
       }
     },
     "chaotic": {
@@ -614,11 +614,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790898470,
-        "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
+        "lastModified": 1793576659,
+        "narHash": "sha256-V1h85lUaJBQoHFrB2vpXZOE0Ju1MYSnIpsehoVZYlDo=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
+        "rev": "ea2630b7470978622c7689a1ff75d2b389175399",
         "type": "github"
       },
       "original": {
@@ -922,11 +922,11 @@
         "treefmt-nix": "treefmt-nix_5"
       },
       "locked": {
-        "lastModified": 1792555095,
-        "narHash": "sha256-mb6gi8Tg7gWCf0aFdXv+ILMs+ZlmzCKUaiuo3Rhw52w=",
+        "lastModified": 1794921748,
+        "narHash": "sha256-NSkvZS3SHtvhjjwMxhoh8U/AgvxE2WwK2m3otedppUw=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "852e0cb4b0b0a96b496def884a22974e7367fc58",
+        "rev": "9b3e4b6bde4f5618b3cff4bef829a789d91c5e2f",
         "type": "github"
       },
       "original": {
@@ -1129,11 +1129,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1792116957,
-        "narHash": "sha256-EjZqHKObBfIOeHZnMRVV87HB3pPq/WBkmRJWyFxmZu8=",
+        "lastModified": 1793977579,
+        "narHash": "sha256-WrSODdZFVIs/Hh2NzC0bY+ROByi0bATg8WfePX8dPj8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f20cd90e28fe0403873f473b29e42662cd86e8c4",
+        "rev": "4fe25e12eb9f4c744966dd3de5a05246cf098601",
         "type": "github"
       },
       "original": {

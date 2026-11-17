@@ -36,11 +36,11 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "amp-desktop";
-  version = "0.1.29906641";
+  version = "0.1.29915281";
 
   src = fetchurl {
     url = "https://static.ampcode.com/linux/${finalAttrs.version}/amp-desktop-${finalAttrs.version}-amd64.deb";
-    hash = "sha256-eJBWM6D5BtAtKK/zOqyLf7uyrqioJyI51lqjPTwsAYU=";
+    hash = "sha256-UwuArV/8P05kiwkE6UcmsTzHPA7hVfEVeOwEo0Sd8P0=";
   };
 
   nativeBuildInputs = [

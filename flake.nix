@@ -128,7 +128,7 @@
       flake = false;
     };
     catppuccin-swaync = {
-      url = "https://github.com/catppuccin/swaync/releases/download/v0.2.3/mocha.css";
+      url = "https://github.com/catppuccin/swaync/releases/download/v1.0.1/catppuccin-mocha.css";
       flake = false;
     };
     tinted-jjui = {
