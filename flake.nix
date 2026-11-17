@@ -153,6 +153,7 @@
             hrd = final.callPackage ./pkgs/hrd { };
             insta360-linux = final.callPackage ./pkgs/insta360-linux { };
             opensessions = final.callPackage ./pkgs/opensessions { };
+            parakeet-cpp = final.callPackage ./pkgs/parakeet-cpp { };
             pipewire-control-center = final.callPackage ./pkgs/pipewire-control-center { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
