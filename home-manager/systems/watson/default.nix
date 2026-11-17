@@ -47,7 +47,6 @@ in
     ../../modules/voice
     ../../modules/netdata-notify
     ../../modules/searxng
-    ../../modules/hister
     ../../modules/qbittorrent
     ../../modules/figma-agent
     ../../modules/audio-mixers
