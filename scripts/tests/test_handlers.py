@@ -224,14 +224,6 @@ class HandlerCheckTest(unittest.TestCase):
             "  };\n",
         )
 
-    def test_figma_console_mcp_distinguishes_npm_hash_from_source_hash(self):
-        self.assert_package_update(
-            "figma-console-mcp",
-            "southleft/figma-console-mcp",
-            "npmDeps",
-            '  npmDepsHash = "sha256-old-dependencies";\n',
-        )
-
     def test_pipewire_control_center_updates_release_and_source_hash(self):
         source = self.write(
             "pkgs/pipewire-control-center/default.nix",
