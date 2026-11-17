@@ -14,8 +14,22 @@ let
     cp ${./screensaver-proxy.py} $out/bin/gnome-screensaver-proxy
     chmod +x $out/bin/gnome-screensaver-proxy
   '';
+  op-request = pkgs.writeShellApplication {
+    name = "op-request";
+    runtimeInputs = with pkgs; [
+      coreutils
+      dash
+      git
+      gnugrep
+      gnused
+      systemd
+      util-linux
+    ];
+    text = builtins.readFile ./op-request.sh;
+  };
 in
 {
+  home.packages = [ op-request ];
   programs.git.settings."gpg \"ssh\"" = {
     program = "${lib.getExe' config.programs._1password-gui.package "op-ssh-sign"}";
   };
