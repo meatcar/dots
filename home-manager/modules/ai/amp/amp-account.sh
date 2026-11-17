@@ -18,6 +18,7 @@ root=$data_home/amp-accounts/$account
 exec @python@ @bwrap-helper@ bwrap --bind / / \
   --dev-bind /dev /dev \
   --bind "$root/config" "$(realpath -e "$config_home/amp")" \
+  --ro-bind-try "$config_home/amp/AGENTS.md" "$(realpath -e "$config_home/amp")/AGENTS.md" \
   --bind "$root/data" "$(realpath -e "$data_home/amp")" \
   --bind "$root/cache" "$(realpath -e "$cache_home/amp")" \
   --bind "$root/state" "$(realpath -e "$state_home/amp")" \

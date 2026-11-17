@@ -174,6 +174,7 @@ class AccountsTest(unittest.TestCase):
                     "import json, os, pathlib, sys\n"
                     "with open('/dev/null', 'w') as device: device.write('test')\n"
                     f"paths = {list(map(str, paths.values()))!r}\n"
+                    f"agents = pathlib.Path({str(paths['config'] / 'AGENTS.md')!r})\n"
                     "before = []\n"
                     "for path in paths:\n"
                     "    marker = pathlib.Path(path) / 'marker'\n"
@@ -181,18 +182,22 @@ class AccountsTest(unittest.TestCase):
                     "    temp = marker.with_suffix('.tmp')\n"
                     "    temp.write_text(sys.argv[1])\n"
                     "    temp.replace(marker)\n"
-                    "print(json.dumps([before, sys.argv[1:], sys.stdin.read(), "
+                    "print(json.dumps([before, "
+                    "agents.read_text() if agents.exists() else None, "
+                    "sys.argv[1:], sys.stdin.read(), "
                     "os.getcwd(), [os.getenv(k) for k in "
                     "['AMP_API_KEY', 'AMP_SETTINGS_FILE', 'AMP_LOG_FILE']]]))\n"
                     "sys.exit(int(sys.argv[2]))\n"
                 )
                 probe.chmod(0o700)
                 launcher = base / "launcher.sh"
-                for account, expected in (
-                    ("work", None),
-                    ("personal", None),
-                    ("work", "work"),
+                for account, expected, agents in (
+                    ("work", None, None),
+                    ("personal", None, "shared"),
+                    ("work", "work", "shared"),
                 ):
+                    if agents:
+                        (paths["config"] / "AGENTS.md").write_text(agents)
                     launcher.write_text(account_script(account, probe))
                     result = subprocess.run(
                         ["sh", str(launcher), account, "17", "two words", ""],
@@ -207,6 +212,7 @@ class AccountsTest(unittest.TestCase):
                         json.loads(result.stdout),
                         [
                             [expected] * 5,
+                            agents,
                             [account, "17", "two words", ""],
                             "piped input",
                             str(home),
