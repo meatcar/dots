@@ -1,12 +1,13 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
-  programs.rbw = {
+  imports = [ inputs.bw-broker.homeManagerModules.default ];
+
+  services.bw-broker = {
     enable = true;
-    settings = {
-      email = "denysp@alipes.com";
-      pinentry = pkgs.pinentry-gnome3;
-    };
+    email = "denysp@alipes.com";
+    unlockTimeout = 900;
   };
+
   # TODO: move to a gtk/gnome package. Needed for pinentry-gnome3
   dbus.packages = [ pkgs.gcr ];
   home.packages = [

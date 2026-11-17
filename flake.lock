@@ -195,6 +195,26 @@
         "type": "github"
       }
     },
+    "bw-broker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794773061,
+        "narHash": "sha256-t953LKOHHHgRE+IbcJBvyuYSg2cq3cBQLKdntnw17k4=",
+        "ref": "refs/heads/main",
+        "rev": "28c075decd23060022675a032f0461ab4500aea5",
+        "revCount": 27,
+        "type": "git",
+        "url": "https://ampcode.com/@meatcar/bw-broker"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://ampcode.com/@meatcar/bw-broker"
+      }
+    },
     "catppuccin-bat": {
       "flake": false,
       "locked": {
@@ -1270,6 +1290,7 @@
         "agenix": "agenix",
         "amp-completions": "amp-completions",
         "awtrix-pipewire-on-air": "awtrix-pipewire-on-air",
+        "bw-broker": "bw-broker",
         "catppuccin-bat": "catppuccin-bat",
         "catppuccin-delta": "catppuccin-delta",
         "catppuccin-swaync": "catppuccin-swaync",
