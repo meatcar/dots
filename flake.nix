@@ -154,6 +154,7 @@
             insta360-linux = final.callPackage ./pkgs/insta360-linux { };
             opensessions = final.callPackage ./pkgs/opensessions { };
             parakeet-cpp = final.callPackage ./pkgs/parakeet-cpp { };
+            parakeet-transcribe = final.callPackage ./pkgs/parakeet-transcribe { };
             pipewire-control-center = final.callPackage ./pkgs/pipewire-control-center { };
             rodney = final.callPackage ./pkgs/rodney { };
             qe-mac-apid = final.callPackage ./pkgs/qe-mac-apid { };
@@ -196,6 +197,7 @@
           legacyPackages = pkgs;
           checks.amp-accounts = pkgs.callPackage ./home-manager/modules/ai/amp/tests.nix { };
           checks.audio-record = pkgs.callPackage ./home-manager/modules/audio-record/tests.nix { };
+          checks.parakeet-transcribe = pkgs.callPackage ./pkgs/parakeet-transcribe/tests.nix { };
         };
 
       flake = {
