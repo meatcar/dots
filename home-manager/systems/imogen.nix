@@ -1,16 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ../modules/me.nix
     ../modules/brew
   ];
-
-  me.PRJ_ROOT = lib.mkDefault "${config.home.homeDirectory}/git/hub/meatcar/dots";
 
   home.packages = [
     (pkgs.mactop.overrideAttrs (_: {

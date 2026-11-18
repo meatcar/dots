@@ -84,7 +84,7 @@
   };
   users.users.amanda.home = "/Users/amanda";
 
-  environment.variables.NH_FLAKE = "/Users/denys/git/hub/meatcar/dots";
+  environment.variables.NH_FLAKE = "/Users/denys/git/hub/meatcar/dots/dots-default";
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
   system.stateVersion = 7;
