@@ -58,22 +58,8 @@ in
       }
     ];
     iso = mkSystem "x86_64-linux" [
-      {
-        system.stateVersion = "26.05";
-        boot.zfs.forceImportRoot = false;
-      }
-      (
-        {
-          pkgs,
-          modulesPath,
-          ...
-        }:
-        {
-          imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
-          environment.systemPackages = [ pkgs.neovim ];
-          isoImage.forceTextMode = true;
-        }
-      )
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
+      ../systems/iso
     ];
   };
 }

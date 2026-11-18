@@ -22,22 +22,14 @@ let
 in
 {
   imports = [
+    ./cli.nix
     ../modules/me.nix
     ../modules/nix.nix
-    ../modules/nix-your-shell
-    ../modules/man
     ../modules/1password/packages.nix
     ../modules/git
     ../modules/hunk
     ../modules/jujutsu
-    ../modules/fish
-    ../modules/starship
-    ../modules/ssh
-    ../modules/direnv
-    ../modules/bat
     ../modules/glow
-    ../modules/lsd
-    ../modules/btop
     ../modules/tmux
     ../modules/neovim
     ../modules/lf
@@ -46,7 +38,6 @@ in
     # ../modules/clojure
     # ../modules/emacs
     # ../modules/nnn
-    ../modules/yazi
     # ../modules/kakoune
     ../modules/helix
     ../modules/nix-index
@@ -62,7 +53,6 @@ in
     home.packages =
       with pkgs;
       [
-        curl
         htop
         imgcat
         p7zip-rar
@@ -70,7 +60,6 @@ in
         # dev
         entr
         mosh
-        ripgrep
         jq
         fx
         openssl
@@ -82,7 +71,6 @@ in
       ];
 
     xdg = {
-      enable = true;
       localBinInPath = true;
       # NOTE: 90 sorts after NixOS's /etc/environment.d/50-systemd-path.conf.
       configFile."environment.d/90-home-manager-path.conf".text = "PATH=${userPath}\n";
@@ -107,26 +95,15 @@ in
       '';
     };
     home.sessionVariables = {
-      EDITOR = "nvim";
       NOTES_DIR = "~/Sync/notes";
-      LESS = "-R --mouse";
-      DO_NOT_TRACK = "1";
-      DISABLE_TELEMETRY = "1";
     };
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
     programs.bash = {
-      enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
     };
-    programs.less.enable = true;
-    programs.fd.enable = true;
-    programs.jq.enable = true;
-    programs.fzf.enable = true;
     programs.lsd.enable = true;
-    programs.dircolors.enable = true;
-    programs.zoxide.enable = true;
     programs.pay-respects.enable = true;
 
     xdg.systemDirs.data = lib.mkIf pkgs.stdenv.isLinux [
