@@ -60,7 +60,6 @@ in
       "tailscale-app"
       "theboredteam/boring-notch/boring-notch"
       "visual-studio-code"
-      "warp"
       "whatsapp"
       "zed"
       "zen"

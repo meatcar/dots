@@ -3,7 +3,7 @@
 # modules/darwin/homebrew/no-self-update.nix.
 # NOTE: no known switch: Chrome (needs MDM), 1Password and Claude (need a
 # configuration profile), Docker (needs Business), GitHub Desktop, GitFiend,
-# Mailspring, Raycast, Warp, WhatsApp.
+# Mailspring, Raycast, WhatsApp.
 { lib, pkgs, ... }:
 let
   sparkleApps = [
