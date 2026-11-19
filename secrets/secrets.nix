@@ -26,7 +26,7 @@ in
   "cliProxyApiKey.age".publicKeys = users;
   # SEARXNG_SECRET: flask session key and image-proxy HMAC
   "searxngEnv.age".publicKeys = users;
-  "histerToken.age".publicKeys = users;
+  "nogonToken.age".publicKeys = users;
   "nixConfAccessTokens.age".publicKeys = users;
   "resticPersistEnvironment.age".publicKeys = systems;
   "userPassword.age".publicKeys = systems;

@@ -8,8 +8,8 @@
   age.secrets.spotifyClientSecret.file = ./spotifyClientSecret.age;
   age.secrets.cliProxyApiKey.file = ./cliProxyApiKey.age;
   age.secrets.searxngEnv.file = ./searxngEnv.age;
-  age.secrets.histerToken = {
-    file = ./histerToken.age;
+  age.secrets.nogonToken = {
+    file = ./nogonToken.age;
     mode = "0400";
   };
   age.secrets.nixConfAccessTokens.file = ./nixConfAccessTokens.age;

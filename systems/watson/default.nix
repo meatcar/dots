@@ -44,7 +44,7 @@
     ../../modules/netdata
     ../../modules/ollama
     ../../modules/languagetool
-    ../../modules/hister
+    ../../modules/nogon
     ./t14s-micmuteled.nix
   ];
   system.stateVersion = "26.05";
