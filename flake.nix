@@ -149,6 +149,12 @@
         };
         overlays = [
           (import ./overlays/bun-cve-2026-111497.nix)
+          # FIXME: weave 0.5.4 sets LIBGIT2_NO_VENDOR but lacks libgit2. Drop once nixpkgs builds it again.
+          (final: prev: {
+            weave = prev.weave.overrideAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [ final.libgit2 ];
+            });
+          })
           (final: _prev: {
             amp-desktop = final.callPackage ./pkgs/amp-desktop { };
             forgemap = final.callPackage ./pkgs/forgemap { };
