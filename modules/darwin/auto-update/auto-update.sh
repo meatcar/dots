@@ -27,9 +27,15 @@ brew_upgrade() {
 }
 
 # flake inputs, then switch (activation also runs brew bundle)
+# NOTE: build as OWNER. libgit2 refuses a checkout that root does not own.
 system_update() {
-  as_owner "$(command -v nix)" flake update --flake "$FLAKE_DIR" || return
-  darwin-rebuild switch --flake "$FLAKE_DIR" || return
+  nix=$(command -v nix)
+  as_owner "$nix" flake update --flake "$FLAKE_DIR" || return
+  host=$(scutil --get LocalHostName) || return
+  out=$(as_owner "$nix" build --no-link --print-out-paths \
+    "$FLAKE_DIR#darwinConfigurations.$host.system") || return
+  nix-env -p /nix/var/nix/profiles/system --set "$out" || return
+  "$out/activate" || return
   if ! as_owner "$git" -C "$FLAKE_DIR" diff --quiet -- flake.lock; then
     as_owner "$git" -C "$FLAKE_DIR" commit -m "chore(deps): nix flake update (auto)" -- flake.lock
   fi

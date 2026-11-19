@@ -2,8 +2,10 @@
 # (settings below). A launchd daemon does the rest (see auto-update.sh):
 #   nightly: brew update + upgrade --greedy
 #   weekly:  nix flake update + darwin-rebuild switch
-# It fires hourly, at boot, and at 03:00 (a scheduled wake), but each job runs
-# once per period, so missed runs catch up as soon as the Mac is up.
+# It fires hourly and at 03:00 (a scheduled wake), but each job runs once per
+# period, so missed runs catch up within an hour of the Mac being up.
+# NOTE: no RunAtLoad. Activation reloads this daemon, then runs brew bundle;
+# a run at load races it for the brew lock and fails the switch.
 { config, ... }:
 {
   # macOS + App Store: check, download, and install automatically.
@@ -25,7 +27,9 @@
         FLAKE_DIR = config.environment.variables.NH_FLAKE;
         OWNER = config.system.primaryUser;
       };
-      RunAtLoad = true;
+      # NOTE: the weekly switch reloads this daemon mid-activation; keep
+      # activate alive when launchd stops the script.
+      AbandonProcessGroup = true;
       StartInterval = 3600;
       StartCalendarInterval = [
         {
