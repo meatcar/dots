@@ -215,7 +215,7 @@ in
       Nice = 10;
       IOSchedulingClass = "best-effort";
       IOSchedulingPriority = 7;
-      ExecStart = "${lib.getExe pkgs.restic} forget --retry-lock 2h --keep-hourly 24 --keep-daily 30 --keep-weekly 8 --keep-monthly 24 --keep-yearly 10 --tag plan:${backupName},created-by:watson --group-by=";
+      ExecStart = "${lib.getExe pkgs.restic} forget --retry-lock 2h --keep-hourly 24 --keep-daily 30 --keep-weekly 8 --keep-monthly 24 --keep-yearly 10 --keep-tag keep:watson-ssd-failure --tag plan:${backupName},created-by:watson --group-by=";
     };
   };
 
