@@ -89,7 +89,7 @@ in
       reloadDbusServices = lib.hm.dag.entryAfter [ "linkGeneration" "installPackages" ] ''
         runtimeDir="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
         if [ -S "$runtimeDir/bus" ]; then
-          run env XDG_RUNTIME_DIR="$runtimeDir" ${pkgs.systemd}/bin/systemctl --user reload dbus.service \\
+          run env XDG_RUNTIME_DIR="$runtimeDir" ${pkgs.systemd}/bin/systemctl --user reload dbus.service \
             || echo "warning: could not reload the session bus; D-Bus activation of new apps needs a re-login" >&2
         fi
       '';
