@@ -3,6 +3,7 @@
 Codebase audit, 2026-08-15. Pointers only; verify before fixing.
 
 ## Features
+
 - [ ] can `dms open` browser picker use shortcuts to pick an option?
 - [ ] offline email (work + personal)
 
