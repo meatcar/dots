@@ -101,7 +101,7 @@ in
       amp = "amp-p";
     };
 
-    # NOTE: lets Nix fetch private flake inputs hosted on Amp, such as bw-broker.
+    # NOTE: lets git and Nix fetch private repos hosted on Amp.
     programs.git.settings.credential."https://ampcode.com/".helper = "!amp git-credential-helper";
 
     home.packages = builtins.attrValues wrappers;

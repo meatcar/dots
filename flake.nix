@@ -97,7 +97,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.8.0"; # no inputs to follow
     awtrix-pipewire-on-air.url = "github:meatcar/awtrix-pipewire-on-air";
     bw-broker = {
-      url = "git+https://ampcode.com/@meatcar/bw-broker";
+      url = "git+ssh://git@github.com/meatcar/bw-broker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

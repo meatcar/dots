@@ -225,11 +225,11 @@
         "rev": "28c075decd23060022675a032f0461ab4500aea5",
         "revCount": 27,
         "type": "git",
-        "url": "https://ampcode.com/@meatcar/bw-broker"
+        "url": "ssh://git@github.com/meatcar/bw-broker"
       },
       "original": {
         "type": "git",
-        "url": "https://ampcode.com/@meatcar/bw-broker"
+        "url": "ssh://git@github.com/meatcar/bw-broker"
       }
     },
     "catppuccin-bat": {
@@ -1397,11 +1397,15 @@
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "llm-agents": "llm-agents",
+        "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
+        "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_7",
+        "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-unstable-darwin": "nixpkgs-unstable-darwin",
         "oyui": "oyui",
         "plug-kak": "plug-kak",
         "quadlet-nix": "quadlet-nix",
@@ -1409,11 +1413,7 @@
         "tinted-jjui": "tinted-jjui",
         "treefmt-nix": "treefmt-nix_6",
         "vscode-fish": "vscode-fish",
-        "zen-browser": "zen-browser",
-        "nixpkgs-darwin": "nixpkgs-darwin",
-        "nix-darwin": "nix-darwin",
-        "nix-homebrew": "nix-homebrew",
-        "nixpkgs-unstable-darwin": "nixpkgs-unstable-darwin"
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
