@@ -77,6 +77,12 @@ in
     "70,60,44"
   ];
 
+  # NOTE: netdata's btrfs_space_audit alert starts the space audit in this Amp thread.
+  systemd.user.services.netdata-notify.Service.Environment = [
+    "SPACE_AUDIT_THREAD=T-01a1f496-bdea-746a-8a3b-8add910e28d7"
+    "SPACE_AUDIT_AMP=${config.home.profileDirectory}/bin/amp-p"
+  ];
+
   programs._1password.package = osConfig.programs._1password.package;
   programs._1password-gui.package = osConfig.programs._1password-gui.package;
 

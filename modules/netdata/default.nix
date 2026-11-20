@@ -49,6 +49,7 @@ in
       "go.d/sd/net_listeners.conf" = ./net-listeners.conf;
       "health.d/sensors.conf" = ./health.d/sensors.conf;
       "health.d/severe.conf" = ./health.d/severe.conf;
+      "health.d/space-audit.conf" = ./health.d/space-audit.conf;
       "health.d/systemdunits.conf" = ./health.d/systemdunits.conf;
       "health_alarm_notify.conf" = ./health_alarm_notify.conf;
     };
