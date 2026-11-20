@@ -24,6 +24,15 @@ jobs:
           purge-created: 0
           purge-last-accessed: P1DT12H
 
+      - name: SSH key for private flake inputs
+        env:
+          BW_BROKER_DEPLOY_KEY: ${{ secrets.BW_BROKER_DEPLOY_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$BW_BROKER_DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' >> ~/.ssh/known_hosts
+
       - name: build shell
         run: nix develop --accept-flake-config --command true
 
